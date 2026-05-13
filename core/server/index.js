@@ -38,12 +38,16 @@ export function createApp({ courseDir, classDir }) {
   const PORT = process.env.PORT || 3000;
 
   // Load course configuration
-  const configPath = join(courseDir, 'course-config.json');
-  if (existsSync(configPath)) {
-    app.locals.courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
+  if (options.config) {
+    app.locals.courseConfig = options.config;
   } else {
-    console.warn(`⚠️  course-config.json not found at ${configPath}`);
-    app.locals.courseConfig = { meta: {}, sessions: [] };
+    const configPath = join(courseDir, 'course-config.json');
+    if (existsSync(configPath)) {
+      app.locals.courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
+    } else {
+      console.warn(`⚠️  course-config.json not found at ${configPath}`);
+      app.locals.courseConfig = { meta: {}, sessions: [] };
+    }
   }
 
   // Store paths for routes to use
