@@ -8,11 +8,12 @@ import { config } from 'dotenv';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Import config directly to ensure bundling
-import courseConfig from '../course-config.json' assert { type: 'json' };
-
 // Load .env
 config();
+
+// Nạp JSON theo cách thủ công để tránh lỗi cú pháp ESM trên Vercel
+const configPath = join(__dirname, '..', 'course-config.json');
+const courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
 
 // Import app factory from local core
 import { createApp } from '../core/server/index.js';
