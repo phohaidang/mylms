@@ -1,40 +1,28 @@
 /**
- * LMS Hub — Social Commerce — Lớp D01 (DEBUG MODE)
+ * LMS Hub — Social Commerce — Lớp D01
  */
-import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 import { config } from 'dotenv';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Import config directly to ensure bundling
+import courseConfig from '../course-config.json' assert { type: 'json' };
+
 // Load .env
 config();
 
-export default async function handler(req, res) {
-  try {
-    // Nạp JSON theo cách an toàn nhất cho ESM
-    const configPath = join(__dirname, '..', 'course-config.json');
-    const courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
+// Import app factory from local core
+import { createApp } from '../core/server/index.js';
 
-    // Dynamically import core
-    const { createApp } = await import('../core/server/index.js');
-    
-    const rootDir = join(__dirname, '..');
-    const app = createApp({ 
-      courseDir: rootDir, 
-      classDir: rootDir,
-      config: courseConfig
-    });
-    
-    return app(req, res);
-  } catch (err) {
-    console.error('SERVER CRASH:', err);
-    res.status(500).json({
-      error: 'Server crashed during startup',
-      message: err.message,
-      stack: err.stack,
-      path_attempted: join(__dirname, '..', 'course-config.json')
-    });
-  }
-}
+const rootDir = join(__dirname, '..');
+
+const app = createApp({ 
+  courseDir: rootDir, 
+  classDir: rootDir,
+  config: courseConfig
+});
+
+export default app;
