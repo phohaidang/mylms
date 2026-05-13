@@ -12,8 +12,13 @@ const router = Router();
 router.get('/sessions', authenticate, (req, res) => {
   const { courseConfig } = req.app.locals;
   res.json({
-    course: courseConfig.meta,
-    sessions: courseConfig.sessions
+    course: {
+      code: courseConfig.meta?.code || process.env.COURSE_CODE || 'ITS717',
+      name: courseConfig.meta?.name || process.env.COURSE_NAME || 'Thương mại Xã hội',
+      description: courseConfig.meta?.description || 'Học phần Thương mại Xã hội',
+      ...courseConfig.meta
+    },
+    sessions: courseConfig.sessions || []
   });
 });
 

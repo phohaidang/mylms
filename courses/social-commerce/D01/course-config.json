@@ -2,20 +2,17 @@
   "meta": {
     "code": "ITS717",
     "name": "Thương mại Xã hội",
-    "total_sessions": 9,
-    "chapters": 6,
-    "university": "ĐH Ngân Hàng TP.HCM",
-    "textbook": "Social Commerce — Turban et al."
+    "description": "Lớp học Social Commerce — ĐH Ngân Hàng TP.HCM"
   },
   "sessions": [
-    { "id": 1, "chapter": "Ch.1", "title": "Giới thiệu về Thương Mại Xã Hội", "topics": "Social Computing, Social Web, Web 2.0, Social Media, Định nghĩa SC, E-Commerce vs SC", "clo": "CLO1", "textbook": "Ch.1 Turban", "duration": "4 tiết (200 phút)" },
-    { "id": 2, "chapter": "Ch.2", "title": "Công cụ & Nền tảng Social Commerce", "topics": "Social Media Platforms, Social Plugins, UGC, Social Analytics Tools", "clo": "CLO1, CLO2", "textbook": "Ch.2 Turban", "duration": "4 tiết (200 phút)" },
-    { "id": 3, "chapter": "Ch.3", "title": "Hành vi Người tiêu dùng trong SC", "topics": "Consumer Behavior Online, Social Influence, Trust, WoM, Reviews & Ratings", "clo": "CLO1, CLO2", "textbook": "Ch.3 Turban", "duration": "4 tiết (200 phút)" },
-    { "id": 4, "chapter": "Ch.4", "title": "Social Media Marketing & Metrics", "topics": "Social Media Marketing Strategy, KPIs, Engagement, Influencer Marketing, Content Strategy", "clo": "CLO2, CLO3", "textbook": "Ch.4 Turban", "duration": "4 tiết (200 phút)", "hasExam": true, "examId": "midterm-1" },
-    { "id": 5, "chapter": "Ch.5", "title": "Social Shopping & Social CRM", "topics": "Group Buying, Flash Sales, Social Recommendations, Customer Service via Social", "clo": "CLO2, CLO3", "textbook": "Ch.5 Turban", "duration": "4 tiết (200 phút)" },
-    { "id": 6, "chapter": "Ch.4-5", "title": "Kiểm tra giữa kỳ & Ôn tập", "topics": "Tổng hợp Ch.1-5 + Kiểm tra giữa kỳ", "clo": "CLO1-3", "textbook": "Ch.1-5 Turban", "duration": "4 tiết (200 phút)", "hasExam": true, "examId": "midterm-2" },
-    { "id": 7, "chapter": "Ch.6", "title": "Strategy, ROI & Analytics", "topics": "SC Strategy Framework, ROI Measurement, Analytics, KPIs, Business Models", "clo": "CLO3", "textbook": "Ch.6 Turban", "duration": "4 tiết (200 phút)" },
-    { "id": 8, "chapter": "Ch.7", "title": "Triển khai, Bảo mật & Tương lai", "topics": "Implementation, Security & Privacy, Legal Issues, Future of SC, Emerging Trends", "clo": "CLO3", "textbook": "Ch.7 Turban", "duration": "4 tiết (200 phút)" },
-    { "id": 9, "chapter": "Tổng kết", "title": "Trình bày dự án & Ôn tập cuối kỳ", "topics": "Project Presentations, Course Review, Final Exam Prep", "clo": "CLO1-3", "textbook": "All Chapters", "duration": "4 tiết (200 phút)" }
+    { "id": 1, "title": "Giới thiệu về Thương mại Xã hội", "description": "Tổng quan và xu hướng", "chapters": 1 },
+    { "id": 2, "title": "Tâm lý người tiêu dùng trên MXH", "description": "Hành vi và quyết định mua hàng", "chapters": 1 },
+    { "id": 3, "title": "Xây dựng thương hiệu cá nhân", "description": "Personal Branding trên nền tảng số", "chapters": 1 },
+    { "id": 4, "title": "Content Marketing cho Social Commerce", "description": "Kỹ thuật viết và sáng tạo nội dung", "chapters": 1 },
+    { "id": 5, "title": "Video Marketing & Livestream", "description": "Kỹ năng bán hàng qua video", "chapters": 1 },
+    { "id": 6, "title": "Quảng cáo trên Mạng xã hội", "description": "Facebook, TikTok Ads cơ bản", "chapters": 1 },
+    { "id": 7, "title": "Social CRM & Chăm sóc khách hàng", "description": "Quản lý mối quan hệ khách hàng", "chapters": 1 },
+    { "id": 8, "title": "Phân tích dữ liệu Social", "description": "Đo lường hiệu quả chiến dịch", "chapters": 1 },
+    { "id": 9, "title": "Tổng kết và Seminar", "description": "Báo cáo cuối kỳ", "chapters": 1 }
   ]
 }
