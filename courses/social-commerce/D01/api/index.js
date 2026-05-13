@@ -1,21 +1,40 @@
 /**
- * LMS Hub — Social Commerce — Lớp D01
+ * LMS Hub — Social Commerce — Lớp D01 (DEBUG MODE)
  */
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { config } from 'dotenv';
-// Import trực tiếp file cấu hình để Vercel đóng gói vào bundle
-import courseConfig from '../course-config.json' assert { type: 'json' };
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Load .env
 config();
 
-// Import app factory from local core copy
-import { createApp } from '../core/server/index.js';
+export default async function handler(req, res) {
+  try {
+    // Nạp JSON theo cách an toàn nhất cho ESM
+    const configPath = join(__dirname, '..', 'course-config.json');
+    const courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
 
-// Khởi tạo app với cấu hình đã import sẵn
-const app = createApp({ 
-  courseDir: process.cwd(), 
-  classDir: process.cwd(),
-  config: courseConfig // Truyền config trực tiếp vào
-});
-
-export default app;
+    // Dynamically import core
+    const { createApp } = await import('../core/server/index.js');
+    
+    const rootDir = join(__dirname, '..');
+    const app = createApp({ 
+      courseDir: rootDir, 
+      classDir: rootDir,
+      config: courseConfig
+    });
+    
+    return app(req, res);
+  } catch (err) {
+    console.error('SERVER CRASH:', err);
+    res.status(500).json({
+      error: 'Server crashed during startup',
+      message: err.message,
+      stack: err.stack,
+      path_attempted: join(__dirname, '..', 'course-config.json')
+    });
+  }
+}
