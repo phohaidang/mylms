@@ -45,10 +45,10 @@ function renderNavbar() {
   return `
     <nav class="navbar">
       <div class="navbar-inner">
-        <a href="#/dashboard" class="navbar-brand">
+        <div class="navbar-brand">
           <div class="brand-icon">🎓</div>
           <span>LMS Hub</span>
-        </a>
+        </div>
         <ul class="navbar-nav">
           <li><a href="#/dashboard" class="${location.hash === '#/dashboard' ? 'active' : ''}">📊 Dashboard</a></li>
           <li><a href="#/course" class="${location.hash === '#/course' ? 'active' : ''}">📚 Buổi học</a></li>
