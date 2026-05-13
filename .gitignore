@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Environment files (secrets!)
+.env
+courses/**/.env
+
+# Build output
+dist/
+courses/**/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (local mock)
+data/_mock_db.json

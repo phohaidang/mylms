@@ -1,0 +1,32 @@
+{
+  "name": "lms-hub",
+  "version": "2.0.0",
+  "description": "LMS Hub — Shared-Core Multi-Course Learning Management System",
+  "type": "module",
+  "scripts": {
+    "dev:client": "npx vite core/client --port 5173",
+    "build:client": "npx vite build core/client",
+    "scaffold:course": "node core/scripts/scaffold-course.js",
+    "scaffold:class": "node core/scripts/scaffold-class.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "docx": "^9.6.1",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.0",
+    "googleapis": "^144.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.1.1",
+    "pdfkit": "^0.15.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.14",
+    "vite": "^6.0.0"
+  }
+}
