@@ -17,8 +17,8 @@ config({ path: join(__dirname, '..', '.env') });
 // Path: api/ → D01/ → social-commerce/ → courses/ → lms-hub/ → core/server/
 import { createApp } from '../../../../core/server/index.js';
 
-const courseDir = join(__dirname, '..', '..');  // courses/social-commerce/
-const classDir = join(__dirname, '..');          // courses/social-commerce/D01/
+const courseDir = join(__dirname, '..');  // Giờ đây nội dung đã nằm trong D01
+const classDir = join(__dirname, '..');
 
 const app = createApp({ courseDir, classDir });
 export default app;
