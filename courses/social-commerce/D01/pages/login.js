@@ -13,7 +13,7 @@ export function renderLogin(app) {
         <div class="auth-logo">
           <div class="auth-logo-icon">🎓</div>
           <h1>LMS Hub</h1>
-          <p>Giới thiệu Khoa học máy tính — BAF737</p>
+          <p>Thương mại Xã hội — ITS717</p>
         </div>
 
         <div id="auth-error" class="alert alert-danger" style="display:none"></div>
