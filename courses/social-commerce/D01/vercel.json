@@ -1,8 +1,8 @@
 {
   "version": 2,
   "installCommand": "cd ../../.. && npm install",
-  "buildCommand": "cd ../../.. && npx vite build core/client --outDir courses/social-commerce/D01/dist",
-  "outputDirectory": "dist",
+  "buildCommand": "",
+  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/api/(.*)",
