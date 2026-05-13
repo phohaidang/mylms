@@ -13,9 +13,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Load .env from class directory BEFORE importing core
 config({ path: join(__dirname, '..', '.env') });
 
-// Import app factory from core
-// Path: api/ → D01/ → social-commerce/ → courses/ → lms-hub/ → core/server/
-import { createApp } from '../../../../core/server/index.js';
+// Import app factory from local core copy
+// Path: api/ → D01/ → core/server/
+import { createApp } from '../core/server/index.js';
 
 const courseDir = join(__dirname, '..');  // Giờ đây nội dung đã nằm trong D01
 const classDir = join(__dirname, '..');
