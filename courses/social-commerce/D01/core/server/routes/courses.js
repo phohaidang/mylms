@@ -9,7 +9,7 @@ const router = Router();
  * GET /api/courses/sessions
  * List all sessions — reads from course-config.json via app.locals
  */
-router.get('/sessions', authenticate, (req, res) => {
+router.get('/sessions', (req, res) => {
   const { courseConfig } = req.app.locals;
   res.json({
     course: {
@@ -26,7 +26,7 @@ router.get('/sessions', authenticate, (req, res) => {
  * GET /api/courses/sessions/:id
  * Get single session metadata
  */
-router.get('/sessions/:id', authenticate, (req, res) => {
+router.get('/sessions/:id', (req, res) => {
   const { courseConfig, contentDir } = req.app.locals;
   const id = parseInt(req.params.id);
   const session = courseConfig.sessions.find(s => s.id === id);
