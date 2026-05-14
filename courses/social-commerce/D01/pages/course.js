@@ -11,12 +11,15 @@ export async function renderCourse(app) {
   let examResults = {};
 
   try {
-    const data = await api.get('/courses/sessions');
-    if (Array.isArray(data)) {
-      sessions = data;
-    } else if (data && data.sessions) {
-      sessions = data.sessions;
-      courseMeta = data.course || courseMeta;
+    const response = await api.get('/courses/sessions');
+    if (Array.isArray(response)) {
+      sessions = response;
+    } else if (response && response.sessions) {
+      sessions = response.sessions;
+      courseMeta = response.course || courseMeta;
+    } else if (response && response.data) {
+      // Hỗ trợ định dạng { status, data: [] }
+      sessions = response.data;
     }
 
     const quizAttempts = await api.get('/quizzes/my/attempts') || [];
