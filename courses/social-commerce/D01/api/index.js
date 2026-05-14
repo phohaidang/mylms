@@ -42,4 +42,9 @@ const app = createApp({
   config: courseConfig
 });
 
+// Đường dẫn kiểm tra trực tiếp - Không thông qua core
+app.get('/api/debug', (req, res) => {
+  res.json({ status: 'ok', sessions_count: courseConfig.sessions.length, data: courseConfig.sessions });
+});
+
 export default app;
