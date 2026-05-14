@@ -18,11 +18,13 @@ const courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
 // Import app factory from local core
 import { createApp } from '../core/server/index.js';
 
-const rootDir = join(__dirname, '..');
+const rootDir = process.cwd();
+const contentDir = join(rootDir, 'public');
 
 const app = createApp({ 
   courseDir: rootDir, 
   classDir: rootDir,
+  contentDir: contentDir, // Chỉ định rõ thư mục content
   config: courseConfig
 });
 

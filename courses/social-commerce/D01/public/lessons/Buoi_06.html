@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 6 – Doanh nghiệp Xã hội & Ứng dụng SC + Kiểm tra Quá trình</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf8f5;--surface:#fff;--surface-alt:#f3efe9;--ink:#1a1612;--ink-light:#5a5249;--ink-muted:#8a8279;--accent:#c44b25;--accent-light:#fdf0ec;--accent-dark:#9a3a1c;--teal:#1a7a6d;--teal-light:#e8f5f2;--blue:#2c5aa0;--blue-light:#edf2fa;--gold:#b8860b;--gold-light:#fdf8ec;--border:#e5dfd6;--shadow:0 2px 12px rgba(26,22,18,.06);--radius:10px;--red:#c0392b;--red-light:#fdf2f2}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Source Sans Pro',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16.5px}.hero{background:linear-gradient(135deg,#1a1612 0%,#2c2520 40%,#3d2e1e 100%);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}.hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:1.2rem}.hero h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;line-height:1.2;margin-bottom:.6rem}.hero h1 span{color:var(--accent)}.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.7);font-weight:300;max-width:620px}.hero-meta{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}.hero-meta-item{font-size:.85rem;color:rgba(255,255,255,.55)}.hero-meta-item strong{display:block;color:rgba(255,255,255,.92);font-size:1rem;font-weight:600}.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.section-label{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:.4rem;line-height:1.3}h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem;line-height:1.4}.section-desc{color:var(--ink-light);font-size:1rem;margin-bottom:2rem;max-width:680px}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}.card-accent{border-left:4px solid var(--accent)}.card-teal{border-left:4px solid var(--teal);background:var(--teal-light)}.card-blue{border-left:4px solid var(--blue);background:var(--blue-light)}.card-gold{border-left:4px solid var(--gold);background:var(--gold-light)}.card-red{border-left:4px solid var(--red);background:var(--red-light)}.scqa-flow{display:grid;gap:0;margin:1.5rem 0}.scqa-step{padding:1.5rem 2rem;position:relative;border-left:3px solid var(--border);margin-left:1rem}.scqa-step::before{position:absolute;left:-3.6rem;top:1.5rem;width:2.2rem;height:2.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff}.scqa-step.s{border-color:var(--teal)}.scqa-step.s::before{background:var(--teal);content:'S'}.scqa-step.c{border-color:var(--accent)}.scqa-step.c::before{background:var(--accent);content:'C'}.scqa-step.q{border-color:var(--blue)}.scqa-step.q::before{background:var(--blue);content:'Q'}.scqa-step.a{border-color:var(--gold)}.scqa-step.a::before{background:var(--gold);content:'A'}.scqa-step h4{font-family:'Source Sans Pro',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}.scqa-step.s h4{color:var(--teal)}.scqa-step.c h4{color:var(--accent)}.scqa-step.q h4{color:var(--blue)}.scqa-step.a h4{color:var(--gold)}.scqa-step p,.scqa-step ul{color:var(--ink-light);font-size:.98rem;line-height:1.75}.scqa-step ul{padding-left:1.2rem;margin-top:.5rem}.scqa-step li{margin-bottom:.35rem}.timeline{position:relative;margin:1.5rem 0}.timeline-item{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--border);align-items:start}.timeline-item:last-child{border-bottom:none}.time-badge{background:var(--surface-alt);border-radius:6px;padding:6px 12px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--ink-light);white-space:nowrap}.time-badge.highlight{background:var(--accent-light);color:var(--accent-dark)}.time-badge.exam{background:var(--red-light);color:var(--red)}.timeline-content h4{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}.timeline-content p{font-size:.92rem;color:var(--ink-light);line-height:1.6}.activity{background:var(--accent-light);border:1px solid #f0d4c9;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.activity-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}.activity h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}.activity p,.activity ul{font-size:.95rem;color:var(--ink-light);line-height:1.7}.activity ul{padding-left:1.2rem}.discussion{background:var(--teal-light);border:1px solid #c4e0db;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.discussion-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}.case-study{background:var(--blue-light);border:1px solid #c9d6ea;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.case-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}.key-concept{display:flex;gap:1rem;padding:1rem 1.4rem;background:var(--surface-alt);border-radius:8px;margin:.8rem 0;align-items:flex-start}.key-concept .kc-term{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--accent);background:var(--accent-light);padding:3px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px}.key-concept .kc-def{font-size:.95rem;color:var(--ink-light);line-height:1.6}.divider{height:1px;background:var(--border);margin:3rem 0}.footer-note{text-align:center;color:var(--ink-muted);font-size:.85rem;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem}@media print{body{font-size:11pt;background:#fff}.hero{background:#333!important}.card,.activity,.discussion,.case-study{break-inside:avoid}}@media(max-width:640px){.hero h1{font-size:1.7rem}h2{font-size:1.4rem}.container{padding:1.5rem 1rem}.card{padding:1.3rem 1.2rem}.timeline-item{grid-template-columns:80px 1fr;gap:1rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS717 — Chương 3 · Buổi 6/9 · Có kiểm tra</div>
+    <h1>Doanh nghiệp Xã hội & <span>Ứng dụng SC sáng tạo</span></h1>
+    <p class="hero-sub">Kiểm tra quá trình (30') + Social Enterprise, B2B Social, Gamification, Social Collaboration — khi SC vượt ra ngoài B2C.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>5 tiết (250 phút)</strong>Giải lao 20 phút</div>
+      <div class="hero-meta-item"><strong>Chương 3 đề cương</strong>DN xã hội & Ứng dụng</div>
+      <div class="hero-meta-item"><strong>CLO1, CLO2, CLO3</strong>Chuẩn đầu ra</div>
+      <div class="hero-meta-item"><strong>Ch.8, Ch.9 Turban</strong>Giáo trình</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════ KIỂM TRA QUÁ TRÌNH ═══════ -->
+<section>
+  <p class="section-label">⚠️ Kiểm tra quá trình</p>
+  <h2>Đánh giá quá trình 1 — Bài tự luận (30 phút)</h2>
+
+  <div class="card card-red" style="margin-top:1rem;">
+    <h3>Thông tin kiểm tra</h3>
+    <ul style="padding-left:1.2rem;line-height:2;color:var(--ink-light);">
+      <li><strong>Thời gian:</strong> 30 phút (đầu buổi: phút 0–30)</li>
+      <li><strong>Hình thức:</strong> Tự luận, cá nhân, không sử dụng tài liệu</li>
+      <li><strong>Kết cấu:</strong> 1 đề bài tình huống + 3 yêu cầu cụ thể</li>
+      <li><strong>Phạm vi:</strong> Toàn bộ Chương 1 + Chương 2 (Buổi 1–5)</li>
+      <li><strong>Tỷ trọng:</strong> 20% tổng điểm môn học</li>
+    </ul>
+
+    <h3 style="margin-top:1.5rem;">Rubric đánh giá</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.5rem;">
+      <thead><tr style="background:var(--surface-alt);"><th style="text-align:left;padding:8px 12px;border-bottom:2px solid var(--border);font-weight:700;">Tiêu chí</th><th style="text-align:center;padding:8px;border-bottom:2px solid var(--border);font-weight:700;">Trọng số</th><th style="text-align:left;padding:8px 12px;border-bottom:2px solid var(--border);font-weight:700;">Rất tốt (8.5–10)</th><th style="text-align:left;padding:8px 12px;border-bottom:2px solid var(--border);font-weight:700;">Không đạt (<4)</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Cơ sở lý luận</td><td style="text-align:center;padding:8px;border-bottom:1px solid var(--border);">40%</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Sử dụng chính xác, thuyết phục lý luận khoa học</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Không sử dụng lý luận</td></tr>
+        <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Lập luận giải quyết vấn đề</td><td style="text-align:center;padding:8px;border-bottom:1px solid var(--border);">40%</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Lập luận chặt chẽ, minh chứng thuyết phục</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Không logic, thiếu minh chứng</td></tr>
+        <tr><td style="padding:8px 12px;">Văn phong</td><td style="text-align:center;padding:8px;">20%</td><td style="padding:8px 12px;">Hành văn rõ ràng, mạch lạc</td><td style="padding:8px 12px;">Hành văn tối nghĩa</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:1.5rem;">Gợi ý đề thi mẫu (GV tham khảo)</h3>
+    <p style="color:var(--ink-light);margin-top:.5rem;line-height:1.8;">
+      <strong>Tình huống:</strong> <em>"Một startup thời trang VN muốn xây dựng chiến lược Social Commerce trên TikTok và Instagram. Họ có ngân sách hạn chế, target nữ 20-30 tuổi, sản phẩm quần áo thời trang."</em>
+    </p>
+    <p style="color:var(--ink-light);margin-top:.5rem;line-height:1.8;">
+      <strong>Yêu cầu 1 (CLO1):</strong> Phân biệt Social Commerce với E-Commerce truyền thống. Sử dụng mô hình AISAS để giải thích tại sao SC phù hợp cho startup này.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;">
+      <strong>Yêu cầu 2 (CLO2):</strong> Đề xuất chiến lược Owned/Paid/Earned Media cụ thể cho startup. Giải thích lý do chọn từng loại.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;">
+      <strong>Yêu cầu 3 (CLO2):</strong> Chọn 3 metrics phù hợp nhất để đo lường hiệu quả chiến dịch SC. Giải thích tại sao.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ MỤC TIÊU ═══════ -->
+<section>
+  <p class="section-label">Mục tiêu phần giảng dạy (sau kiểm tra)</p>
+  <h2>Sau buổi học, sinh viên có thể…</h2>
+  <div class="card" style="margin-top:1rem;">
+    <ol style="padding-left:1.3rem;color:var(--ink-light);line-height:2.2;">
+      <li><strong>Định nghĩa</strong> social enterprise và phân biệt với social business.</li>
+      <li><strong>Mô tả</strong> mạng xã hội định hướng kinh doanh (business-oriented SNS) và enterprise social network.</li>
+      <li><strong>Giải thích</strong> vai trò của MXH trong tuyển dụng, quản lý tri thức, và giải quyết vấn đề.</li>
+      <li><strong>Mô tả</strong> ứng dụng SC trong: chính phủ điện tử, B2B, giải trí, gamification, P2P.</li>
+      <li><strong>Phân tích</strong> case study thực tế về social enterprise và gamification.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section>
+  <p class="section-label">Lộ trình buổi học</p>
+  <h2>250 phút — Kiểm tra + Giảng dạy</h2>
+  <p class="section-desc">30 phút đầu: KT quá trình. Còn lại 220 phút (200' thực dạy + 20' giải lao) cho nội dung mới.</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="time-badge exam">0'–30'</div><div class="timeline-content"><h4>📝 KIỂM TRA QUÁ TRÌNH (30 phút)</h4><p>Bài tự luận, cá nhân, không tài liệu. Phạm vi: Ch.1 + Ch.2 (Buổi 1–5).</p></div></div>
+    <div class="timeline-item"><div class="time-badge">30'–40'</div><div class="timeline-content"><h4>🔓 Chuyển tiếp + Kiểm tra tiến độ tiểu luận nhóm</h4><p>GV thu bài KT. Hỏi nhanh các nhóm về ý tưởng tiểu luận. Dẫn dắt sang nội dung mới.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">40'–100'</div><div class="timeline-content"><h4>🏢 Phần 1: Doanh nghiệp Xã hội (SCQA #1)</h4><p>Social Enterprise, Business-oriented SNS, Enterprise SNS. LinkedIn & tuyển dụng. Knowledge Management. Social Collaboration.</p></div></div>
+    <div class="timeline-item"><div class="time-badge highlight">100'–120'</div><div class="timeline-content"><h4>☕ Giải lao 20 phút</h4><p></p></div></div>
+    <div class="timeline-item"><div class="time-badge">120'–185'</div><div class="timeline-content"><h4>🎮 Phần 2: Ứng dụng SC sáng tạo (SCQA #2)</h4><p>Social Government, B2B Social, Social Entertainment, Gamification, P2P. Case Justin Bieber.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">185'–240'</div><div class="timeline-content"><h4>🗺️ Phần 3: Hoạt động nhóm — SC vượt ra ngoài B2C</h4><p>Nhóm thiết kế ứng dụng SC cho tình huống phi B2C: chính phủ, B2B, giáo dục, gamification.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">240'–250'</div><div class="timeline-content"><h4>🔑 Phần 4: Tổng kết & Giao nhiệm vụ Buổi 7</h4><p>Tóm tắt + giao bài đọc Ch.10 Turban (Strategy & ROI).</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 1: DOANH NGHIỆP XÃ HỘI — SCQA #1 ═══════ -->
+<section>
+  <p class="section-label">Phần 1 · 60 phút · SCQA #1</p>
+  <h2>Doanh nghiệp Xã hội: Từ Tuyển dụng đến Giải quyết Vấn đề</h2>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation</h4>
+      <p>Từ Buổi 1-5, SV đã học SC chủ yếu dưới góc nhìn <strong>B2C</strong>: DN bán hàng cho NTD qua MXH. Nhưng SC không chỉ là bán hàng — nó còn thay đổi cách DN <strong>vận hành nội bộ</strong>: tuyển dụng, giải quyết vấn đề, quản lý tri thức, hợp tác giữa nhân viên.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication</h4>
+      <p>DN truyền thống dùng email, meeting, intranet — chậm, phân mảnh. Nhân viên Gen Z quen dùng MXH hàng ngày nhưng đến công ty lại dùng email. 94% nhà tuyển dụng Mỹ dùng LinkedIn — nhưng nhiều DN VN vẫn chưa khai thác. Tri thức trong DN nằm rải rác trong đầu cá nhân — không được chia sẻ, mất khi nhân viên nghỉ.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>Social Enterprise là gì? DN dùng MXH nội bộ (Enterprise SNS) như thế nào? MXH hỗ trợ tuyển dụng, quản lý tri thức, và collaboration ra sao?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>Social Enterprise = DN sử dụng MXH cho mục tiêu thương mại hoặc phi lợi nhuận. Bao gồm: public business SNS (LinkedIn), private enterprise SNS (Yammer, Slack), crowdsourcing nội bộ, social collaboration.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>Khái niệm cốt lõi</h3>
+    <div class="key-concept"><span class="kc-term">Social Enterprise</span><span class="kc-def">Sử dụng công cụ MXH trong tổ chức với mục tiêu thương mại hoặc phi lợi nhuận. Lý do chuyển đổi: xây dựng quan hệ KH/nhân viên tốt hơn, tuyển dụng hiệu quả, giảm chi phí vận hành, tăng doanh thu.</span></div>
+    <div class="key-concept"><span class="kc-term">Business Network</span><span class="kc-def">Nhóm người có mối quan hệ kinh doanh chuyên nghiệp. <strong>Business social networks</strong> = mạng hướng kinh doanh xây trên quan hệ xã hội (LinkedIn, Xing, Ryze).</span></div>
+    <div class="key-concept"><span class="kc-term">Enterprise SNS</span><span class="kc-def">MXH riêng tư, nội bộ DN ("behind the firewall"). VD: Yammer, Slack, Microsoft Teams, My Starbucks Idea. Lợi ích: truy cập nhanh tri thức, mở rộng kết nối, referrals, benchmarking.</span></div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>3 ứng dụng then chốt trong DN</h3>
+    <div class="key-concept"><span class="kc-term">Tuyển dụng xã hội</span><span class="kc-def">94% nhà tuyển dụng Mỹ dùng LinkedIn. Virtual job fairs: chiến lược tìm ứng viên nhanh, chi phí thấp. SV đăng CV, tìm việc, networking với hiring managers. DN quảng bá employer brand trên MXH.</span></div>
+    <div class="key-concept"><span class="kc-term">Knowledge Management</span><span class="kc-def">Quy trình thu thập, lưu trữ, cập nhật, phân phối và sử dụng tri thức. MXH hỗ trợ: wiki nội bộ, Q&A forums, expert networks, social tagging. VD: IBM Connections, Jive Software.</span></div>
+    <div class="key-concept"><span class="kc-term">Social Collaboration</span><span class="kc-def">Hợp tác giữa cá nhân trong và giữa các cộng đồng nhờ công cụ MXH. Công cụ: wikis, blogs, microblogging, forums, crowdsourcing nội bộ, virtual worlds. VD: CEMEX dùng Shift — mạng xã hội nội bộ biến đổi cả tổ chức.</span></div>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Thảo luận nhanh (10 phút)</div>
+    <h4>"DN VN nào đang làm Social Enterprise tốt?"</h4>
+    <ul>
+      <li>GV hỏi: <em>"Ai biết công ty VN nào dùng Slack/Teams/Lark để làm việc nhóm?"</em></li>
+      <li><em>"Ai đã dùng LinkedIn để tìm việc hoặc networking?"</em></li>
+      <li><em>"Nếu bạn là CEO, bạn sẽ dùng MXH nội bộ nào cho DN mình?"</em></li>
+      <li>GV chia sẻ ví dụ: VNG dùng Lark, FPT dùng Workplace by Meta (trước đây).</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 2: ỨNG DỤNG SC SÁNG TẠO — SCQA #2 ═══════ -->
+<section>
+  <p class="section-label">Phần 2 · 65 phút · SCQA #2</p>
+  <h2>Ứng dụng SC sáng tạo: Chính phủ, B2B, Giải trí & Gamification</h2>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation</h4>
+      <p>SV đã biết SC trong B2C (bán hàng cho NTD) và trong nội bộ DN (social enterprise). Nhưng SC còn mở rộng sang nhiều lĩnh vực khác: chính phủ, B2B, giải trí, game, P2P.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication</h4>
+      <p>Nhiều SV nghĩ SC = "bán hàng trên Facebook/TikTok". Thực tế, SC đang thay đổi cách chính phủ phục vụ công dân (e-gov 2.0), cách DN giao dịch B2B, cách ngành giải trí vận hành, và tạo ra mô hình kinh doanh mới (gamification, P2P lending). Không hiểu phạm vi rộng này sẽ bỏ lỡ nhiều cơ hội.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>SC ứng dụng trong chính phủ ra sao? B2B social networking hoạt động thế nào? Gamification là gì và tại sao quan trọng? P2P lending/sharing economy có phải SC?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>SC mở rộng ra 6 lĩnh vực ứng dụng sáng tạo, mỗi lĩnh vực có đặc thù và mô hình riêng.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>6 lĩnh vực ứng dụng SC sáng tạo</h3>
+    <div class="key-concept"><span class="kc-term">Social Government</span><span class="kc-def">Chính phủ dùng MXH cải thiện dịch vụ cho công dân, tổ chức, và nhân viên. E-government 2.0: ePetitions, shared workspaces, phân phối nội dung qua YouTube, crowdsourcing ý tưởng công dân. VD: New Zealand, Singapore GovTech.</span></div>
+    <div class="key-concept"><span class="kc-term">B2B Social</span><span class="kc-def">Marketing và networking B2B qua MXH. E-communities kết nối nhân viên, nhà cung cấp, đối tác, KH. Virtual trade shows: chi phí thấp, không carbon footprint. LinkedIn là nền tảng B2B mạnh nhất.</span></div>
+    <div class="key-concept"><span class="kc-term">Social Entertainment</span><span class="kc-def">Internet TV (xem qua Internet), Social TV (xem cùng nhau từ xa — thảo luận, tweet, review đồng thời). Social Radio (Pandora + social features). Streaming: Netflix, Spotify kết hợp MXH.</span></div>
+    <div class="key-concept"><span class="kc-term">Gamification</span><span class="kc-def">Đưa yếu tố game vào MXH và hoạt động kinh doanh. Mục đích: tăng engagement, loyalty, hành vi mong muốn. VD: Shopee Coins, Duolingo streaks, Nike Run Club badges, Starbucks Rewards levels. <strong>Xu hướng rất mạnh 2025-2026.</strong></span></div>
+    <div class="key-concept"><span class="kc-term">Social Games</span><span class="kc-def">Game multiplayer trên MXH/thế giới ảo. Monetization: in-app purchases, virtual goods. VD: Roblox, Fortnite, FarmVille. DN tích hợp thương hiệu vào game (advergaming).</span></div>
+    <div class="key-concept"><span class="kc-term">P2P Activities</span><span class="kc-def">Hoạt động giữa cá nhân: P2P lending (cho vay ngang hàng — Lending Club), sharing economy (Grab, Airbnb), collaborative consumption. MXH tạo nền tảng tin cậy cho giao dịch P2P.</span></div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-label">📋 Case Study — Gamification tại Việt Nam</div>
+    <h4>Ví dụ Gamification đang dùng hàng ngày</h4>
+    <p>GV hỏi SV: <em>"Bạn nào đang chơi game trên Shopee/Lazada để nhận xu?"</em> — hầu hết sẽ giơ tay.</p>
+    <ul style="padding-left:1.2rem;line-height:1.8;margin-top:.5rem;">
+      <li><strong>Shopee:</strong> Shopee Farm, Shopee Coins, daily check-in, shake to win</li>
+      <li><strong>Duolingo:</strong> Streaks, XP points, leaderboard, hearts</li>
+      <li><strong>Grab:</strong> GrabRewards levels (Member → Platinum), missions</li>
+      <li><strong>MoMo:</strong> Lắc xì, thu thập phong bao, mini-games</li>
+    </ul>
+    <p style="margin-top:.5rem;"><em>→ Tất cả đều là GAMIFICATION: dùng cơ chế game (điểm, cấp độ, phần thưởng, bảng xếp hạng) để thúc đẩy hành vi mong muốn (mua hàng, quay lại, chia sẻ).</em></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 3: HOẠT ĐỘNG NHÓM ═══════ -->
+<section>
+  <p class="section-label">Phần 3 · 55 phút</p>
+  <h2>Hoạt động nhóm: SC vượt ra ngoài B2C</h2>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động nhóm chính (25' chuẩn bị + 20' trình bày + 10' GV tổng kết)</div>
+    <h4>Thiết kế ứng dụng SC cho lĩnh vực PHI B2C</h4>
+    <p>Mỗi nhóm nhận 1 tình huống:</p>
+    <ul>
+      <li><strong>Tình huống A — Social Government:</strong> UBND TP.HCM muốn dùng MXH để tăng tương tác với công dân: tiếp nhận ý kiến, phản ánh, và công khai xử lý. Thiết kế giải pháp SC.</li>
+      <li><strong>Tình huống B — B2B Social:</strong> Công ty nguyên liệu thực phẩm VN muốn tìm đối tác/đại lý mới ở ĐNA qua MXH thay vì hội chợ truyền thống. Chiến lược nào?</li>
+      <li><strong>Tình huống C — Gamification:</strong> Một app học tiếng Anh VN (kiểu Duolingo local) muốn tăng retention rate (tỷ lệ quay lại) từ 20% lên 50%. Thiết kế hệ thống gamification.</li>
+    </ul>
+    <p style="margin-top:1rem;"><strong>Yêu cầu:</strong></p>
+    <ul>
+      <li>Dùng đúng thuật ngữ: social enterprise, enterprise SNS, gamification, P2P, e-government…</li>
+      <li>Chọn nền tảng/công cụ SC cụ thể</li>
+      <li>Dự kiến metrics để đo hiệu quả</li>
+      <li>Trình bày 5 phút/nhóm → phản biện chéo</li>
+    </ul>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 GV tổng kết</div>
+    <ul style="padding-left:1.2rem;line-height:1.8;">
+      <li>SC không chỉ là "bán hàng online" — nó thay đổi CẢ CÁCH TỔ CHỨC VẬN HÀNH.</li>
+      <li>Gamification là xu hướng cực mạnh — gần như mọi app thành công đều dùng.</li>
+      <li>Social Government đang phát triển nhanh tại VN: Zalo Connect, cổng dịch vụ công quốc gia.</li>
+      <li>B2B thường bị bỏ quên trong SC nhưng tiềm năng rất lớn — đặc biệt qua LinkedIn và virtual events.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 4: TỔNG KẾT ═══════ -->
+<section>
+  <p class="section-label">Phần 4 · 10 phút</p>
+  <h2>Tổng kết & Giao nhiệm vụ</h2>
+
+  <div class="card card-accent" style="margin-top:1rem;">
+    <h3>Tóm tắt buổi hôm nay</h3>
+    <p style="color:var(--ink-light);line-height:1.8;">
+      <strong>Social Enterprise:</strong> DN dùng MXH nội bộ (Enterprise SNS) + MXH kinh doanh (LinkedIn) cho tuyển dụng, KM, collaboration. CEMEX Shift là case kinh điển.
+      <strong>Ứng dụng SC sáng tạo:</strong> Social Government (e-gov 2.0), B2B Social (virtual trade shows, LinkedIn B2B), Social Entertainment (Social TV, streaming), Gamification (điểm, cấp độ, phần thưởng — Shopee Coins, Duolingo), Social Games (advergaming), P2P (lending, sharing economy).
+      <strong>Một câu tóm gọn:</strong> SC không giới hạn ở B2C bán hàng — nó đang biến đổi mọi loại tổ chức và mọi loại tương tác giữa con người.
+    </p>
+  </div>
+
+  <div class="card card-teal" style="margin-top:1rem;">
+    <h3>Giao nhiệm vụ cho Buổi 7</h3>
+    <ul style="padding-left:1.2rem;line-height:2;color:var(--ink-light);">
+      <li><strong>Bài đọc trước:</strong> Ch.10 Turban — "Strategy and Performance Management in Social Commerce" (tập trung: strategy cycle, strategic planning, ROI, market research, analytics).</li>
+      <li><strong>Suy ngẫm:</strong> <em>"Nếu bạn là CMO, bạn sẽ thuyết phục CEO đầu tư vào SC bằng cách nào? ROI tính thế nào?"</em></li>
+      <li><strong>Tiểu luận nhóm:</strong> Tiếp tục triển khai. Deadline: nộp bài trước Buổi 9. Buổi 9 sẽ trình bày.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHỤ LỤC ═══════ -->
+<section>
+  <p class="section-label">Phụ lục</p>
+  <h2>Gợi ý cho Giảng viên</h2>
+  <div class="card" style="margin-top:1rem;">
+    <h3>🎯 Điểm cần lưu ý</h3>
+    <ul style="padding-left:1.2rem;line-height:2;color:var(--ink-light);">
+      <li><strong>Kiểm tra quá trình đầu buổi:</strong> GV cần chuẩn bị đề + in sẵn. Phát đề ngay khi SV ổn định chỗ ngồi. Thu bài đúng 30 phút. Sau đó cho SV nghỉ 5 phút trước khi bắt đầu giảng.</li>
+      <li><strong>Kiểm tra tiến độ nhóm:</strong> Sau KT, dành 5 phút hỏi nhanh các nhóm: "Ý tưởng gì? Ai làm gì? Timeline?" — tạo pressure để nhóm không để đến cuối mới làm.</li>
+      <li><strong>Gamification dễ engage SV nhất:</strong> Đây là phần SV relate nhất (Shopee game, Duolingo, Grab Rewards). Dùng nhiều ví dụ VN.</li>
+      <li><strong>Social Enterprise/B2B có thể xa SV:</strong> Dùng ví dụ gần: "Lúc đi thực tập, công ty bạn dùng Slack/Teams/Lark không?" hoặc "LinkedIn profile của bạn đã tạo chưa?"</li>
+      <li><strong>Thời lượng giảng ít hơn bình thường:</strong> Vì mất 30' cho KT + 10' chuyển tiếp. Cần compact hơn — tập trung khái niệm cốt lõi, không đi sâu chi tiết.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📊 Câu hỏi Testbank liên quan</h3>
+    <ul style="padding-left:1.2rem;line-height:1.8;color:var(--ink-light);font-size:.92rem;">
+      <li>MC: Social enterprise → use of SM tools in organizations (Đáp án: D)</li>
+      <li>MC: Business network → group with professional relationship (Đáp án: A)</li>
+      <li>MC: Business social networks → built on social relationships (Đáp án: B)</li>
+      <li>MC: Reasons to become social enterprise EXCEPT → Decrease sales (Đáp án: D)</li>
+      <li>MC: Virtual job fairs → finding candidates at reduced cost (Đáp án: B)</li>
+      <li>MC: Knowledge management → capturing, storing, updating knowledge (Đáp án: B)</li>
+      <li>MC: Crowdsourcing → gathering ideas from crowds (Đáp án: A)</li>
+      <li>MC: Social collaboration → people's collaboration via SM tools (Đáp án: B)</li>
+      <li>MC: Collective intelligence → problem solving, ideas, innovations (Đáp án: A)</li>
+      <li>MC: E-government → IT for government services (Đáp án: B)</li>
+      <li>MC: Social government → SM to improve services (Đáp án: A)</li>
+      <li>MC: Gamification → introduction of gaming into social networking (Đáp án: B)</li>
+      <li>MC: Social game → video multiplayer game on Internet (Đáp án: D)</li>
+      <li>MC: P2P lending → lending money to each other (Đáp án: D)</li>
+      <li>MC: Virtual world features EXCEPT → 2-D visualization (Đáp án: D)</li>
+      <li>T/F: "Social business is designed to achieve social goals" → True</li>
+      <li>T/F: "Virtual job fairs are new strategies for finding candidates" → True</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p>ITS717 — Thương Mại Xã Hội | Chương 3 · Buổi 6/9 | Trường ĐH Ngân Hàng TP.HCM</p>
+  <p style="margin-top:.3rem;">Soạn theo khung SCQA · Có kiểm tra quá trình 30' · 5 tiết (250 phút)</p>
+</footer>
+
+</div>
+</body>
+</html>
