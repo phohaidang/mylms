@@ -1,5 +1,5 @@
 /**
- * LMS Hub — Social Commerce — Lớp D01 (FINAL INLINE CONFIG)
+ * LMS Hub — Social Commerce — Lớp D01 (VERIFICATION BUILD)
  */
 import { config } from 'dotenv';
 import { join } from 'path';
@@ -7,11 +7,11 @@ import { join } from 'path';
 // Load .env
 config();
 
-// Dán trực tiếp dữ liệu môn học vào đây để đảm bảo 100% không lỗi nạp file trên Vercel
+// Dữ liệu inline với tên mới để kiểm tra update
 const courseConfig = {
   "meta": {
     "code": "ITS717",
-    "name": "Thương mại Xã hội",
+    "name": "TMXH D01 - TEST UPDATE", // Đổi tên để kiểm chứng
     "description": "Lớp học Social Commerce — ĐH Ngân Hàng TP.HCM",
     "total_sessions": 9,
     "chapters": 9
@@ -29,7 +29,7 @@ const courseConfig = {
   ]
 };
 
-// Import app factory from local core
+// Import app factory
 import { createApp } from '../core/server/index.js';
 
 const rootDir = process.cwd();
@@ -37,7 +37,15 @@ const rootDir = process.cwd();
 const app = createApp({ 
   courseDir: rootDir, 
   classDir: rootDir,
-  config: courseConfig // Dùng dữ liệu inline
+  config: courseConfig
 });
 
-export default app;
+// Middleware để xóa cache hoàn toàn cho API
+const handler = (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  return app(req, res);
+};
+
+export default handler;
