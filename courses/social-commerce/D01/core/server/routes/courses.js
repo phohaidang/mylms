@@ -42,7 +42,12 @@ router.get('/sessions/:id', (req, res) => {
   res.json({
     ...session,
     hasLesson: existsSync(join(lessonsDir, `Buoi_${paddedId}.html`)),
-    hasSlide: existsSync(join(slidesDir, `Buoi_${paddedId}.pdf`))
+    hasSlide: existsSync(join(slidesDir, `Buoi_${paddedId}.pdf`)),
+    _debug: {
+      contentDir,
+      lessonsDir,
+      lessonPath: join(lessonsDir, `Buoi_${paddedId}.html`)
+    }
   });
 });
 
