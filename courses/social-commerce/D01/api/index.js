@@ -41,6 +41,25 @@ export default async function handler(req, res) {
       config: courseConfig
     });
     
+    // Debug endpoint để kiểm tra đường dẫn
+    app.get('/api/debug-paths', async (req, res) => {
+      const { readdirSync, existsSync } = await import('fs');
+      const contentDir = app.locals.contentDir;
+      let files = [];
+      try { files = readdirSync(contentDir); } catch(e) { files = ['ERROR: ' + e.message]; }
+      let lessonFiles = [];
+      try { lessonFiles = readdirSync(contentDir + '/lessons'); } catch(e) { lessonFiles = ['ERROR: ' + e.message]; }
+      res.json({ 
+        dirname: __dirname, 
+        D01_DIR, 
+        cwd: process.cwd(),
+        contentDir,
+        contentExists: existsSync(contentDir),
+        files,
+        lessonFiles
+      });
+    });
+    
     return app(req, res);
   } catch (err) {
     res.status(500).json({
