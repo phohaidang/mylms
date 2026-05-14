@@ -3,7 +3,7 @@
  */
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { config } from 'dotenv';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -11,20 +11,24 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Load .env
 config();
 
-// Nạp JSON theo cách thủ công để tránh lỗi cú pháp ESM trên Vercel
+// Nạp JSON theo cách đã xác nhận chạy được
 const configPath = join(__dirname, '..', 'course-config.json');
-const courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
+let courseConfig = { meta: {}, sessions: [] };
+try {
+  courseConfig = JSON.parse(readFileSync(configPath, 'utf-8'));
+} catch (err) {
+  console.error('Failed to load course-config.json', err);
+}
 
 // Import app factory from local core
 import { createApp } from '../core/server/index.js';
 
+// Dùng process.cwd() cho các thư mục tĩnh trên Vercel
 const rootDir = process.cwd();
-const contentDir = join(rootDir, 'public');
 
 const app = createApp({ 
   courseDir: rootDir, 
   classDir: rootDir,
-  contentDir: contentDir, // Chỉ định rõ thư mục content
   config: courseConfig
 });
 
