@@ -1,6 +1,17 @@
 import jwt from 'jsonwebtoken';
 
 /**
+ * Generate JWT token for a user
+ */
+export function generateToken(user) {
+  return jwt.sign(
+    { id: user.student_id, email: user.email, full_name: user.full_name, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+}
+
+/**
  * JWT Authentication middleware
  * Extracts token from Authorization header, verifies, attaches user to req
  */
