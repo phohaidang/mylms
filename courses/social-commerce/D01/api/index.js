@@ -1,7 +1,13 @@
 /**
- * LMS Hub — Social Commerce — Lớp D01 (DEBUG + DYNAMIC IMPORT)
+ * LMS Hub — Social Commerce — Lớp D01 (PRODUCTION)
  */
 import { config } from 'dotenv';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const D01_DIR = join(__dirname, '..'); // = /var/task/courses/social-commerce/D01
+
 config();
 
 const courseConfig = {
@@ -29,11 +35,9 @@ export default async function handler(req, res) {
   try {
     const { createApp } = await import('../core/server/index.js');
     
-    const rootDir = process.cwd();
     const app = createApp({ 
-      courseDir: rootDir, 
-      classDir: rootDir,
-      contentDir: rootDir + '/public',
+      courseDir: D01_DIR,   // Trỏ đúng thư mục D01
+      classDir: D01_DIR,
       config: courseConfig
     });
     
