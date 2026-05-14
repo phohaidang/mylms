@@ -4,8 +4,21 @@ export async function renderCourse(app) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
   const user = getUser() || {};
   
-  const data = await api.get('/courses/sessions') || { sessions: [] };
-  const sessions = data.sessions || [];
+  let sessions = [];
+  let courseMeta = { name: 'Thương mại Xã hội', code: 'ITS717' };
+
+  try {
+    const data = await api.get('/courses/sessions');
+    if (Array.isArray(data)) {
+      sessions = data;
+    } else if (data && data.sessions) {
+      sessions = data.sessions;
+      courseMeta = data.course || courseMeta;
+    }
+  } catch (err) {
+    console.error('Fetch sessions failed', err);
+  }
+
   const quizAttempts = await api.get('/quizzes/my/attempts') || [];
   
   const quizMap = {};
@@ -32,8 +45,11 @@ export async function renderCourse(app) {
   app.innerHTML = `
     <div class="container page">
       <div class="page-header">
-        <h1 class="page-title">📚 ${data.course.name}</h1>
-        <p class="page-subtitle">${data.course.code} — ${data.course.total_sessions} buổi học · ${data.course.chapters} chương</p>
+        <div class="page-title-group">
+          <div class="page-icon">📚</div>
+          <h1 class="page-title">${courseMeta.name}</h1>
+        </div>
+        <p class="page-subtitle">${courseMeta.code} — ${sessions.length} buổi học &middot; ${courseMeta.chapters || 9} chương</p>
       </div>
       
       ${user.role === 'admin' ? `
