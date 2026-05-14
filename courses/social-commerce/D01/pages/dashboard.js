@@ -1,7 +1,7 @@
 import { api, getUser } from '../api.js';
 
 export async function renderDashboard(app) {
-  const user = getUser();
+  const user = getUser() || { full_name: 'Sinh viên' };
   
   app.innerHTML = `
     <div class="container page">
@@ -11,10 +11,22 @@ export async function renderDashboard(app) {
       </div>
 
       <div class="grid grid-4" id="stats">
-        <div class="stat-card"><div class="spinner"></div></div>
-        <div class="stat-card"><div class="spinner"></div></div>
-        <div class="stat-card"><div class="spinner"></div></div>
-        <div class="stat-card"><div class="spinner"></div></div>
+        <div class="stat-card">
+          <div class="stat-value" id="quiz-count">0/6</div>
+          <div class="stat-label">Quiz đã làm</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="quiz-avg">-</div>
+          <div class="stat-label">Điểm TB Quiz</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="exam-count">0</div>
+          <div class="stat-label">Bài kiểm tra</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="final-grade">-</div>
+          <div class="stat-label">Điểm tổng kết</div>
+        </div>
       </div>
 
       <div id="goals-section" style="margin-top: 2rem">
