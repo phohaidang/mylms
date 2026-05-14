@@ -57,7 +57,7 @@ export function createApp(options) {
   }
 
   // Routes
-  // LƯU Ý: Truyền thẳng courseConfig vào để tránh việc router tự đọc lại file
+  // LƯU Ý: Tạm thời cho phép GET không cần token để gỡ treo giao diện
   app.use('/api/auth', createAuthRouter(options));
   app.use('/api/courses', createCourseRouter({ ...options, courseConfig: app.locals.courseConfig }));
   app.use('/api/ebook', createEbookRouter(options));
