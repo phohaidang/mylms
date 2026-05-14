@@ -1,13 +1,9 @@
 /**
- * LMS Hub — Social Commerce — Lớp D01 (PRODUCTION)
+ * LMS Hub — Social Commerce — Lớp D01 (DEBUG + DYNAMIC IMPORT)
  */
 import { config } from 'dotenv';
-import { join } from 'path';
-
-// Load .env
 config();
 
-// Dữ liệu môn học dán trực tiếp để đảm bảo 100% không lỗi nạp file
 const courseConfig = {
   "meta": {
     "code": "ITS717",
@@ -29,22 +25,24 @@ const courseConfig = {
   ]
 };
 
-// Import app factory from local core
-import { createApp } from '../core/server/index.js';
-
-const rootDir = process.cwd();
-const contentDir = join(rootDir, 'public');
-
-const app = createApp({ 
-  courseDir: rootDir, 
-  classDir: rootDir,
-  contentDir: contentDir,
-  config: courseConfig
-});
-
-// Đường dẫn kiểm tra trực tiếp - Không thông qua core
-app.get('/api/debug', (req, res) => {
-  res.json({ status: 'ok', sessions_count: courseConfig.sessions.length, data: courseConfig.sessions });
-});
-
-export default app;
+export default async function handler(req, res) {
+  try {
+    const { createApp } = await import('../core/server/index.js');
+    
+    const rootDir = process.cwd();
+    const app = createApp({ 
+      courseDir: rootDir, 
+      classDir: rootDir,
+      contentDir: rootDir + '/public',
+      config: courseConfig
+    });
+    
+    return app(req, res);
+  } catch (err) {
+    res.status(500).json({
+      error: 'Server crashed',
+      message: err.message,
+      stack: err.stack?.split('\n').slice(0, 5)
+    });
+  }
+}
