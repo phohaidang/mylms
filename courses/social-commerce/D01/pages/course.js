@@ -4,8 +4,9 @@ export async function renderCourse(app) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
   const user = getUser() || {};
   
-  const data = await api.get('/courses/sessions');
-  const quizAttempts = await api.get('/quizzes/my/attempts');
+  const data = await api.get('/courses/sessions') || { sessions: [] };
+  const sessions = data.sessions || [];
+  const quizAttempts = await api.get('/quizzes/my/attempts') || [];
   
   const quizMap = {};
   quizAttempts.forEach(a => { quizMap[a.session_number] = a; });
@@ -13,13 +14,13 @@ export async function renderCourse(app) {
   // Check attendance
   let attendanceSet = new Set();
   try {
-    const attendanceData = await api.get('/feedback/my-attendance');
+    const attendanceData = await api.get('/feedback/my-attendance') || [];
     attendanceSet = new Set(attendanceData);
   } catch {}
 
   // Check exam results
   const examResults = {};
-  for (const s of data.sessions) {
+  for (const s of sessions) {
     if (s.hasExam && s.examId) {
       try {
         const result = await api.get(`/exams/${s.examId}/my-result`);
