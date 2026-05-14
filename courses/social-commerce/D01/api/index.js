@@ -1,17 +1,20 @@
 /**
- * LMS Hub — Social Commerce — Lớp D01 (VERIFICATION BUILD)
+ * LMS Hub — Social Commerce — Lớp D01 (DEBUG MODE)
  */
 import { config } from 'dotenv';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Load .env
 config();
 
-// Dữ liệu inline với tên mới để kiểm tra update
+// Dữ liệu inline
 const courseConfig = {
   "meta": {
     "code": "ITS717",
-    "name": "TMXH D01 - TEST UPDATE", // Đổi tên để kiểm chứng
+    "name": "TMXH D01 - DEBUGGING",
     "description": "Lớp học Social Commerce — ĐH Ngân Hàng TP.HCM",
     "total_sessions": 9,
     "chapters": 9
@@ -29,23 +32,27 @@ const courseConfig = {
   ]
 };
 
-// Import app factory
-import { createApp } from '../core/server/index.js';
-
-const rootDir = process.cwd();
-
-const app = createApp({ 
-  courseDir: rootDir, 
-  classDir: rootDir,
-  config: courseConfig
-});
-
-// Middleware để xóa cache hoàn toàn cho API
-const handler = (req, res) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-  return app(req, res);
-};
-
-export default handler;
+export default async function handler(req, res) {
+  try {
+    // Dynamically import core from the local copy in D01
+    const { createApp } = await import('../core/server/index.js');
+    
+    const rootDir = process.cwd();
+    const app = createApp({ 
+      courseDir: rootDir, 
+      classDir: rootDir,
+      config: courseConfig
+    });
+    
+    return app(req, res);
+  } catch (err) {
+    console.error('SERVER CRASH:', err);
+    res.status(500).json({
+      error: 'Server crashed during startup',
+      message: err.message,
+      stack: err.stack,
+      cwd: process.cwd(),
+      dirname: __dirname
+    });
+  }
+}
