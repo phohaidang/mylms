@@ -35,19 +35,13 @@ router.get('/sessions/:id', (req, res) => {
     return res.status(404).json({ error: 'Không tìm thấy buổi học' });
   }
 
-  const lessonsDir = join(contentDir, 'lessons');
-  const slidesDir = join(contentDir, 'slides');
+  // Files được serve qua Vite public/ — không cần kiểm tra existsSync
   const paddedId = id.toString().padStart(2, '0');
 
   res.json({
     ...session,
-    hasLesson: existsSync(join(lessonsDir, `Buoi_${paddedId}.html`)),
-    hasSlide: existsSync(join(slidesDir, `Buoi_${paddedId}.pdf`)),
-    _debug: {
-      contentDir,
-      lessonsDir,
-      lessonPath: join(lessonsDir, `Buoi_${paddedId}.html`)
-    }
+    hasLesson: true,
+    hasSlide: false
   });
 });
 
