@@ -16,9 +16,6 @@ export function generateToken(user) {
  * Extracts token from Authorization header, verifies, attaches user to req
  */
 export function authenticate(req, res, next) {
-  // CHO PHÉP TẤT CẢ CÁC YÊU CẦU LẤY DỮ LIỆU (GET) ĐI QUA
-  if (req.method === 'GET') return next();
-
   const authHeader = req.headers.authorization;
   
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
