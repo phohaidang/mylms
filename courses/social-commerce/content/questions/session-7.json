@@ -1,0 +1,124 @@
+{
+  "session": 7,
+  "chapter": "Ch.4 §4.1",
+  "title": "Chiến lược & Quản lý Hiệu quả TMXH",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "s7-mc1",
+      "type": "mc",
+      "question": "Chiến lược (Strategy) là ____.",
+      "options": ["A. Bộ khung hay một bản nháp chung chỉ định hướng đi và cách hành động tổ chức đã lên kế hoạch để hoàn thành sứ mệnh đã đặt ra", "B. Chỉ là 1 chiến dịch chạy thông điệp marketing", "C. 1 bản cáo bạch và xem xét định kỳ tài chính", "D. Sự vận hành Nền tảng MXH"],
+      "correct": "A"
+    },
+    {
+      "id": "s7-mc2",
+      "type": "mc",
+      "question": "Lập kế hoạch chiến lược (Strategic planning) là toàn bộ quá trình ____.",
+      "options": ["A. Sự sáng tạo những câu từ thông điệp của quảng cáo", "B. Quá trình Thiết kế, xây nên toàn bộ website", "C. Quá trình Xác định cụ thể một chiến lược, từ đó điều hòa và tiến hành phân bổ tất yếu các nguồn lực (nhân viên, tiền bạc, tgian) nhằm hoàn thành mục tiêu", "D. Nhằm thu xếp thuê làm nhân công con người"],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc3",
+      "type": "mc",
+      "question": "Phân tích chi phí-lợi ích (Cost-benefit analysis) là tập hợp phương pháp tính toán ____.",
+      "options": ["A. Những khâu chỉ thống kê vào hao tốn đi bao nhiêu khoản (chi phí)", "B. Các kết chuyển số liệu thống kê follower tài khoản mạng xã hội", "C. Rà soát, so sánh giữa những tổn thất phí tổn với các hiệu ứng giá trị (Lợi ích mang lại) nhằm thông qua các quyết định và xác thực hiệu năng của 1 kế hoạch", "D. Lên ngân quỹ cho riêng các chiến dịch quảng cáo mạng"],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc4",
+      "type": "mc",
+      "question": "Biểu đồ chu kỳ kỳ vọng Gartner (Gartner Hype Cycle) đánh giá về yếu tố ____.",
+      "options": ["A. Trạng thái, mức độ nhận thức công chúng, khả năng thông quan áp dụng phát triển, khai thác những loại mô hình hay hệ ứng dụng giải pháp CNTT hoặc TMĐT mạng mới nổi", "B. Tăng trưởng lượng quan tâm followers trên facebook", "C. Lực đẩy doanh số chi tiết ở kênh quảng cáo", "D. Đo lường hiệu quả nỗ lực người lao động cá nhân"],
+      "correct": "A"
+    },
+    {
+      "id": "s7-mc5",
+      "type": "mc",
+      "question": "Ngòi nổ công nghệ (Technology Trigger) nằm tại vị trí đầu của Gartner Hype Cycle đại diện cho điều gì ____.",
+      "options": ["A. Khởi đầu chu kỳ đầu tiên — Sự giới thiệu một ý tưởng khai sinh sản phẩm công nghệ hoàn toàn chưa định hình ra thực tế nhưng đủ kéo sự thổi phồng giới thiệu ồ ạt từ truyền thông báo chí", "B. Chóp Đỉnh Cao Mọi Khởi Mong (Peak of Inflated Expectations)", "C. Vùng lõm, sự suy thoái không còn lưu tâm vào sự lặp đổi chờ đợi không như mơ (Trough of disillusionment)", "D. Cao nguyên năng suất tối hậu đi vào cuộc sống dài hơi (The plateau of productivity)"],
+      "correct": "A"
+    },
+    {
+      "id": "s7-mc6",
+      "type": "mc",
+      "question": "Sườn dốc khai sáng (Slope of Enlightenment) chỉ đến điều gì trong chu kỳ Hype Cycle ____.",
+      "options": ["A. Trào lưu hừng hực và rùm beng của lúc khai sinh ra ban đầu", "B. Khủng hoảng sụp đổ trên thị trường", "C. Những vấn nạn về khiếm khuyết trong hạ tầng công nghệ lõi", "D. Bước giai đoạn tập trung vào nghiên cứu, thử nghiệm trải nghiêm chi tiết nhằm hiểu tận tình xem thực chứng công nghệ hay phát minh ấy sẽ tỏ rõ tính hữu dụng mang giá trị thương mại ra sao"],
+      "correct": "D"
+    },
+    {
+      "id": "s7-mc7",
+      "type": "mc",
+      "question": "Trong các yếu tố sau đâu là KHÔNG PHẢI khó khăn cần đắn đo giải trình thường thấy liên quan tới dự án đầu tư vô hệ sinh thái Thương Mại Xã Hội?",
+      "options": ["A. Khó đong đếm được bằng lượng vật chất chuẩn cho nhiều dạng thuộc về sức mạnh hay lợi ích phi vật thể vô hình (intangible benefits)", "B. Các mức chịu đựng nguy cơ hình sự rủi ro pháp lý phạm pháp nghiêm trọng của quy trình làm việc buôn bán", "C. Hiệu quả đi lùi và có một độ chênh lạc hoặc gián đoạn mất thời gian chờ giữa việc chi bao nhiêu tiền và độ nhận thấy rõ hiệu suất đem lên được (Time lag)", "D. Một thành quả thu lượm sau khi làm ra cũng chịu can thiệp xéo bởi vài yếu tố phụ thêm mà không rõ phân lập tách biệt với các đầu vào cơ bản (Multiple factors)"],
+      "correct": "B"
+    },
+    {
+      "id": "s7-mc8",
+      "type": "mc",
+      "question": "Mục đích sâu nhất của các hoạt động thiết quân luật cho mảng Marketing nghiên cứu thị trường dựa chủ lực trên TMXH (Social media market research) là ____.",
+      "options": ["A. Đẩy nhanh quy mô cho số follower mến mộ", "B. Trực diện rải các banner đẩy thông báo tiếp thị quảng bá", "C. Kích cầu năng suất xây cất những kênh phân phối mạng trang web chuẩn", "D. Trải nghiệm việc liên tục có thể đọc lại thấu hiểu nội tại học hỏi đúc kết rút trích sâu sắc và thực sự từ lượng lời nhắn chia sẻ qua mọi tệp khách hàng tiềm năng"],
+      "correct": "D"
+    },
+    {
+      "id": "s7-mc9",
+      "type": "mc",
+      "question": "Live Chat (tại thời gian thực) có tác động trong khâu nghiên cứu khách hàng bằng cách để cho doanh nghiệp thực thi chức năng ____.",
+      "options": ["A. Đẩy nhanh phát tán hệ thống danh sách tiếp thị qua hệ thống tin nhắn email chủ lực", "B. Tạo dựng thêm các mẫu thiết kế của nền tảng banner hay mẫu in quảng cáo", "C. Không thể bỏ qua bước vừa phục vụ hỏi đáp tư vấn cũng vừa thu lại được những lời phàn nàn/cảm nhận, những tệp data trực tiếp vô vàn (Interactive data collected) xuyên suốt tại chính môi trường thời gian phát sinh mà khách ghé chân (In real time)", "D. Khởi tác tiến độ thiết kế sản xuất lập trình viết mã App điện thoại"],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc10",
+      "type": "mc",
+      "question": "Phân tích Web (Web analytics) là phần chức năng nhằm ____.",
+      "options": ["A. Đo lường, tổng hợp lưu giữ và chia nhỏ dữ kiện hoạt động báo cáo tương tác và tần suất sử dụng của toàn vẹn những sự kiện của lượng khách luân chuyển và các cú nhấn chạm qua trang chủ chính và các hệ dịch vụ Website tích hợp", "B. Thể thức sản xuất lên nội dung đăng nội tuyến của trang cá nhân trên TMXH", "C. Cung cấp một phương hướng kỹ thuật của bước đầu xây dựng dàn dựng nền tảng HTML của mạng web", "D. Một môn học ứng dụng cho thiết kế rải rác thư tín thương mại điện tử qua hình thức Gửi Thư điện tử"],
+      "correct": "A"
+    },
+    {
+      "id": "s7-mc11",
+      "type": "mc",
+      "question": "Phân tích nền tảng xã hội (Social media analytics) nhắm vô các chuỗi chức năng về ____.",
+      "options": ["A. Mảng tối ưu lập trình và phác thảo giao diện Web hiện đại", "B. Cắt giảm và đọc được báo cáo tần suất hiệu lọt (Open rate) thông qua hệ thống Gửi tin điện tử (Email maketing analysis)", "C. Đi giám sát thu quét, báo ghi, chi nhỏ kiểm duyệt rạch ròi tỉ mẩn các chuỗi hội thoại những tư tưởng trao đổi mạn đàm quan điểm giữa đối tượng mạng lưới cộng đồng khổng lồ có ở trên vạn nền tảng hệ không gian Truyền Thông & Marketing MXH", "D. SEO"],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc12",
+      "type": "mc",
+      "question": "Phân tích sắc thái ngôn luận / Phân tích cảm xúc (Sentiment analysis hay Opinion Mining) chuyên tra soát ____.",
+      "options": ["A. Dung lượng các băng thông mạng ra/vào ghé một website (Web Traffic)", "B. Tính bao trùm đọc các tin hộp mail của nhân viên gửi phản hồi cho nội bộ cty", "C. Doanh thu tốn thất đối trừ vào với các chi phí trả cho một loạt công ty thiết kế", "D. Xác dạng nhận diện được trạng thái màu sắc thái độ tư tưởng nhận định (vui, tiêu cực, hoài nghi) hay mọi định kiến ngầm chứa sau lưng mỗi cuộc thảo luận mạn thoại ở thế giới mạng (online conversations)"],
+      "correct": "D"
+    },
+    {
+      "id": "s7-mc13",
+      "type": "mc",
+      "question": "Bảng điều khiển đa luồng thông tin (Information dashboard) thực chất là ____.",
+      "options": ["A. 1 nhánh ngách của sàn buôn bán đa kênh thương mại qua các phương thức công cụ kết nối", "B. Khâu ứng dụng đọc thư từ khách hàng Client Email", "C. Là thể tích cực của biểu diễn số liệu hình tượng trực quan những sự kiện đồ sộ đã nhặt gom qua quá trình tổ chức phân loại theo các tiêu chí nhằm thể hiện lại dễ nhìn bắt mắt người làm số liệu quản lý", "D. Công cụ cho điều hành lên dự án"],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc14",
+      "type": "mc",
+      "question": "Tình báo cạnh tranh (Competitive intelligence) liên đới tới việc ____.",
+      "options": ["A. Rõ ràng xác lập tiêu chí giới hạn từ trước nhằm dò xét, gặt hái tìm về và thẩm sát giải nén truyền đạt một bộ kết tinh trí khôn dữ liệu về cục diện tổng thể tình hình hiện tại (nhu cầu thay đổi môi trường đối đầu của địch thủ xung quanh thương hiệu mình đang có)", "B. Đội lốt người mua gửi tay trong dọ thám lấy trộm hay làm lén trái vòng xoáy pháp luận để hack ăn cắp đi dữ kiện đối địch kinh khủng nhất", "C. Copy mô típ y chang chiến lược thành phẩm của các thương trường kỳ lân lớn", "D. Cố sống cố chết làm lơ chẳng buồn lắng lo về dòng xoay đi của nhu cầu khách hàng ngoài rìa xã hội"],
+      "correct": "A"
+    },
+    {
+      "id": "s7-tf1",
+      "type": "tf",
+      "question": "Các dự án hệ sinh thái MXH (Social media projects) thực sự được tiến cử ra xây dựng nhắm vào khả thi tăng biến đổi năng suất hiệu năng tối ưu vận động của một vòng xích của doanh nghiệp lớn.",
+      "correct": true
+    },
+    {
+      "id": "s7-tf2",
+      "type": "tf",
+      "question": "Chiến lược (Strategy) làm nhiệm vụ vạch nên đường ray khung xương nền để 1 đơn vị tổ chức hay kinh doanh phải nhắm chuẩn đi theo mong cuối cùng tìm kiếm và đạt bằng được sứ mạng, lời hứa mục tiêu họ vẽ ra.",
+      "correct": true
+    },
+    {
+      "id": "s7-tf3",
+      "type": "tf",
+      "question": "Số liệu chỉ báo tính chất đo đếm (Metrics) đa phần khi áp dụng được cô đọng gọi lại chung là khái niệm KPI tiêu chí thực thể.",
+      "correct": true
+    }
+  ]
+}

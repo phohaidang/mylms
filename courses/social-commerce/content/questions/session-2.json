@@ -1,0 +1,77 @@
+{
+  "session": 2,
+  "chapter": "Ch.1 §1.2",
+  "title": "Công cụ và Nền tảng cho Thương Mại Xã Hội",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s2-mc1",
+      "type": "mc",
+      "question": "Thuật ngữ \"Blog\" có nguồn gốc từ ____.",
+      "options": ["A. Nhật ký Internet (Internet diary)", "B. Tạp chí số (Digital journal)", "C. Nhật ký web (Web logging)", "D. Xuất bản trực tuyến (Online publishing)"],
+      "correct": "C"
+    },
+    {
+      "id": "s2-mc2",
+      "type": "mc",
+      "question": "____ là một hình thức blog cho phép người dùng gửi cập nhật văn bản ngắn gọn hoặc tệp hình ảnh/âm thanh nhỏ.",
+      "options": ["A. Tiểu blog (Microblogging)", "B. Wiki", "C. Podcast", "D. Nguồn cung cấp tin tức (RSS feed)"],
+      "correct": "A"
+    },
+    {
+      "id": "s2-mc3",
+      "type": "mc",
+      "question": "____ là một dịch vụ tiểu blog (microblogging) nổi tiếng.",
+      "options": ["A. Twitter", "B. Wikipedia", "C. Spotify", "D. WordPress"],
+      "correct": "A"
+    },
+    {
+      "id": "s2-mc4",
+      "type": "mc",
+      "question": "Một ____ cho phép người dùng cùng nhau tạo và chỉnh sửa các tài liệu số.",
+      "options": ["A. Blog", "B. Podcast", "C. Wiki", "D. RSS"],
+      "correct": "C"
+    },
+    {
+      "id": "s2-mc5",
+      "type": "mc",
+      "question": "____ là một cấu trúc mô tả các mối quan hệ và luồng thông tin giữa các thành viên của nó.",
+      "options": ["A. Phương tiện truyền thông xã hội (Social media)", "B. Điện toán xã hội (Social computing)", "C. Web xã hội (Social Web)", "D. Mạng xã hội (Social network)"],
+      "correct": "D"
+    },
+    {
+      "id": "s2-mc6",
+      "type": "mc",
+      "question": "LinkedIn là một ví dụ về một mạng xã hội ____.",
+      "options": ["A. Định hướng giải trí (Leisure-oriented)", "B. Định hướng kinh doanh (Business-oriented)", "C. Chia sẻ phương tiện (Media sharing)", "D. Thế giới ảo (Virtual world)"],
+      "correct": "B"
+    },
+    {
+      "id": "s2-mc7",
+      "type": "mc",
+      "question": "____ là một nền tảng cho trí tuệ tập thể và phản hồi, nơi các nhiệm vụ được thuê ngoài (outsourced) cho một nhóm lớn người.",
+      "options": ["A. Mạng lưới xã hội (Social networking)", "B. Thương mại di động (Mobile commerce)", "C. Tiếp thị nội dung (Content marketing)", "D. Nguồn lực đám đông (Crowdsourcing)"],
+      "correct": "D"
+    },
+    {
+      "id": "s2-mc8",
+      "type": "mc",
+      "question": "____ là một trang web cộng đồng trực tuyến nơi các thành viên tương tác qua các nhân vật mô phỏng (avatars) trong một môi trường 3D.",
+      "options": ["A. Thế giới ảo (Virtual world)", "B. Mạng xã hội (Social network)", "C. Wiki", "D. Blog"],
+      "correct": "A"
+    },
+    {
+      "id": "s2-mc9",
+      "type": "mc",
+      "question": "Mạng xã hội di động (Mobile social networking) đề cập đến ____.",
+      "options": ["A. Mạng xã hội nơi các thành viên trò chuyện và kết nối bằng thiết bị di động", "B. Thương mại điện tử chỉ trên điện thoại thông minh", "C. Quảng cáo qua SMS", "D. Các dịch vụ theo dõi vị trí"],
+      "correct": "A"
+    },
+    {
+      "id": "s2-tf1",
+      "type": "tf",
+      "question": "Cộng tác xã hội (Social collaboration) đề cập đến sự hợp tác của mọi người trong và giữa các cộng đồng được kích hoạt bởi các công cụ truyền thông xã hội.",
+      "correct": true
+    }
+  ]
+}

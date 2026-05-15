@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 5 – Mua sắm Xã hội & Social CRM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf8f5;--surface:#fff;--surface-alt:#f3efe9;--ink:#1a1612;--ink-light:#5a5249;--ink-muted:#8a8279;--accent:#c44b25;--accent-light:#fdf0ec;--accent-dark:#9a3a1c;--teal:#1a7a6d;--teal-light:#e8f5f2;--blue:#2c5aa0;--blue-light:#edf2fa;--gold:#b8860b;--gold-light:#fdf8ec;--border:#e5dfd6;--shadow:0 2px 12px rgba(26,22,18,.06);--radius:10px}
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Source Sans Pro',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16.5px}
+  .hero{background:linear-gradient(135deg,#1a1612 0%,#2c2520 40%,#3d2e1e 100%);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}.hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:1.2rem}.hero h1{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;line-height:1.2;margin-bottom:.6rem}.hero h1 span{color:var(--accent)}.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.7);font-weight:300;max-width:620px}.hero-meta{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}.hero-meta-item{font-size:.85rem;color:rgba(255,255,255,.55)}.hero-meta-item strong{display:block;color:rgba(255,255,255,.92);font-size:1rem;font-weight:600}
+  .container{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.section-label{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:.4rem;line-height:1.3}h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem;line-height:1.4}.section-desc{color:var(--ink-light);font-size:1rem;margin-bottom:2rem;max-width:680px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}.card-accent{border-left:4px solid var(--accent)}.card-teal{border-left:4px solid var(--teal);background:var(--teal-light)}.card-blue{border-left:4px solid var(--blue);background:var(--blue-light)}.card-gold{border-left:4px solid var(--gold);background:var(--gold-light)}
+  .scqa-flow{display:grid;gap:0;margin:1.5rem 0}.scqa-step{padding:1.5rem 2rem;position:relative;border-left:3px solid var(--border);margin-left:1rem}.scqa-step::before{position:absolute;left:-3.6rem;top:1.5rem;width:2.2rem;height:2.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff}.scqa-step.s{border-color:var(--teal)}.scqa-step.s::before{background:var(--teal);content:'S'}.scqa-step.c{border-color:var(--accent)}.scqa-step.c::before{background:var(--accent);content:'C'}.scqa-step.q{border-color:var(--blue)}.scqa-step.q::before{background:var(--blue);content:'Q'}.scqa-step.a{border-color:var(--gold)}.scqa-step.a::before{background:var(--gold);content:'A'}.scqa-step h4{font-family:'Source Sans Pro',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}.scqa-step.s h4{color:var(--teal)}.scqa-step.c h4{color:var(--accent)}.scqa-step.q h4{color:var(--blue)}.scqa-step.a h4{color:var(--gold)}.scqa-step p,.scqa-step ul{color:var(--ink-light);font-size:.98rem;line-height:1.75}.scqa-step ul{padding-left:1.2rem;margin-top:.5rem}.scqa-step li{margin-bottom:.35rem}
+  .timeline{position:relative;margin:1.5rem 0}.timeline-item{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--border);align-items:start}.timeline-item:last-child{border-bottom:none}.time-badge{background:var(--surface-alt);border-radius:6px;padding:6px 12px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--ink-light);white-space:nowrap}.time-badge.highlight{background:var(--accent-light);color:var(--accent-dark)}.timeline-content h4{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}.timeline-content p{font-size:.92rem;color:var(--ink-light);line-height:1.6}
+  .activity{background:var(--accent-light);border:1px solid #f0d4c9;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.activity-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}.activity h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}.activity p,.activity ul{font-size:.95rem;color:var(--ink-light);line-height:1.7}.activity ul{padding-left:1.2rem}
+  .discussion{background:var(--teal-light);border:1px solid #c4e0db;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.discussion-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+  .case-study{background:var(--blue-light);border:1px solid #c9d6ea;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.case-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+  .key-concept{display:flex;gap:1rem;padding:1rem 1.4rem;background:var(--surface-alt);border-radius:8px;margin:.8rem 0;align-items:flex-start}.key-concept .kc-term{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--accent);background:var(--accent-light);padding:3px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px}.key-concept .kc-def{font-size:.95rem;color:var(--ink-light);line-height:1.6}
+  .divider{height:1px;background:var(--border);margin:3rem 0}.footer-note{text-align:center;color:var(--ink-muted);font-size:.85rem;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem}
+  @media print{body{font-size:11pt;background:#fff}.hero{background:#333!important}.card,.activity,.discussion,.case-study{break-inside:avoid}}@media(max-width:640px){.hero h1{font-size:1.7rem}h2{font-size:1.4rem}.container{padding:1.5rem 1rem}.card{padding:1.3rem 1.2rem}.timeline-item{grid-template-columns:80px 1fr;gap:1rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS717 — Chương 2 · Buổi 5/9</div>
+    <h1>Mua sắm Xã hội & <span>Social CRM</span></h1>
+    <p class="hero-sub">Từ Groupon đến TikTok Shop, từ Call Center đến Social CRM — hành trình chăm sóc khách hàng trong kỷ nguyên xã hội.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>5 tiết (250 phút)</strong>Giải lao 20 phút</div>
+      <div class="hero-meta-item"><strong>Mục 2.3 – 2.4</strong>Social Shopping & CRM</div>
+      <div class="hero-meta-item"><strong>CLO1, CLO2</strong>Chuẩn đầu ra</div>
+      <div class="hero-meta-item"><strong>Ch.6, Ch.7 Turban</strong>Giáo trình</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════ MỤC TIÊU ═══════ -->
+<section>
+  <p class="section-label">Mục tiêu buổi 5</p>
+  <h2>Sau buổi học, sinh viên có thể…</h2>
+  <div class="card" style="margin-top:1rem;">
+    <ol style="padding-left:1.3rem;color:var(--ink-light);line-height:2.2;">
+      <li><strong>Định nghĩa</strong> social shopping và mô tả các động lực thúc đẩy.</li>
+      <li><strong>Phân biệt</strong> các mô hình mua sắm xã hội: group buying, flash sale, shopping communities, social marketplace.</li>
+      <li><strong>Đánh giá</strong> vai trò của ratings, reviews, recommendations trong quyết định mua.</li>
+      <li><strong>Phân biệt</strong> CRM → e-CRM → Social CRM (SCRM) và giải thích sự tiến hóa.</li>
+      <li><strong>Mô tả</strong> 4 loại ứng dụng tương tác KH và so sánh reactive vs. proactive customer service.</li>
+      <li><strong>Vận dụng</strong> kiến thức để thiết kế chiến lược SCRM cho một tình huống DN cụ thể.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section>
+  <p class="section-label">Lộ trình buổi học</p>
+  <h2>250 phút (230' thực dạy + 20' giải lao)</h2>
+  <p class="section-desc">Buổi hôm nay chia thành 2 phần lớn: Mua sắm xã hội (trước giải lao) và Social CRM (sau giải lao). Mỗi phần đều có hoạt động thảo luận/nhóm.</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="time-badge highlight">0'–20'</div><div class="timeline-content"><h4>🔓 Phần 1: Khởi động — "Lần cuối bạn mua deal online?"</h4><p>Warm-up: SV chia sẻ trải nghiệm mua deal/flash sale/group buying. GV kết nối sang khái niệm Social Shopping.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">20'–70'</div><div class="timeline-content"><h4>🛒 Phần 2: Social Shopping — Khái niệm, Mô hình & Case Groupon (SCQA #1)</h4><p>Định nghĩa, drivers, các mô hình (group buying, flash sale, communities, marketplace). Ratings/Reviews/Recommendations. Virtual goods.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">70'–105'</div><div class="timeline-content"><h4>🎯 Phần 3: Thảo luận nhóm — Phân tích mô hình mua sắm VN</h4><p>Nhóm phân tích Shopee Live, TikTok Shop, Groupon VN, Tiki Deal. Trình bày & phản biện.</p></div></div>
+    <div class="timeline-item"><div class="time-badge highlight">105'–125'</div><div class="timeline-content"><h4>☕ Giải lao 20 phút</h4><p></p></div></div>
+    <div class="timeline-item"><div class="time-badge">125'–185'</div><div class="timeline-content"><h4>🤝 Phần 4: Social CRM — Từ CRM đến SCRM (SCQA #2)</h4><p>CRM → e-CRM → SCRM. 4 loại ứng dụng tương tác KH. Reactive vs. Proactive. Case Study Sony. 5 chiều tiến hóa.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">185'–235'</div><div class="timeline-content"><h4>🗺️ Phần 5: Hoạt động nhóm — Thiết kế chiến lược SCRM</h4><p>Nhóm thiết kế chiến lược SCRM cho DN VN thực tế. Trình bày & GV tổng kết.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">235'–250'</div><div class="timeline-content"><h4>🔑 Phần 6: Tổng kết & Giao nhiệm vụ</h4><p>Tổng kết + nhắc chuẩn bị kiểm tra quá trình Buổi 6 + tiểu luận nhóm.</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 1: KHỞI ĐỘNG ═══════ -->
+<section>
+  <p class="section-label">Phần 1 · 20 phút</p>
+  <h2>Khởi động: "Lần cuối bạn mua deal online?"</h2>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Warm-up nhanh (10 phút)</div>
+    <h4>Khảo sát lớp + Chia sẻ trải nghiệm</h4>
+    <p>GV hỏi lần lượt, SV giơ tay:</p>
+    <ul>
+      <li><em>"Ai đã từng mua deal giảm giá sốc trên Shopee/Lazada trong tháng vừa rồi?"</em></li>
+      <li><em>"Ai đã từng mua hàng qua livestream?"</em></li>
+      <li><em>"Ai đã từng đọc review trước khi mua và THAY ĐỔI quyết định vì review đó?"</em></li>
+      <li><em>"Ai đã từng rủ bạn bè cùng mua để được giảm giá thêm?"</em></li>
+    </ul>
+    <p style="margin-top:.8rem;">GV gọi 2-3 SV chia sẻ câu chuyện cụ thể (2 phút/người).</p>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 Chuyển tiếp</div>
+    <p>GV chốt: <em>"Tất cả những trải nghiệm các bạn vừa mô tả — mua deal, livestream, đọc review, rủ bạn mua chung — đều thuộc về một lĩnh vực gọi là Social Shopping. Và cách DN chăm sóc các bạn sau khi mua — trả lời comment, inbox, chatbot — đó là Social CRM. Hôm nay chúng ta đi sâu vào cả hai."</em></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 2: SOCIAL SHOPPING — SCQA #1 ═══════ -->
+<section>
+  <p class="section-label">Phần 2 · 50 phút · SCQA #1</p>
+  <h2>Social Shopping: Khái niệm, Mô hình & Công cụ hỗ trợ</h2>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation</h4>
+      <p>Thương mại điện tử truyền thống: KH vào website → tìm SP → so sánh giá → mua. Quá trình này chủ yếu là <strong>cá nhân và đơn độc</strong>. SV đã quen với mô hình này từ môn TMĐT.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication</h4>
+      <p>Thực tế 2025-2026 hoàn toàn khác: NTD không còn mua sắm một mình. Họ <strong>rủ bạn bè cùng mua</strong> (group buying), <strong>xem livestream</strong> rồi mua (flash sale), <strong>đọc review của cộng đồng</strong> trước khi quyết định, và <strong>chia sẻ trải nghiệm mua</strong> cho người khác. Mua sắm đã trở thành <strong>hoạt động XÃ HỘI</strong>.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>Social Shopping là gì? Có bao nhiêu mô hình? Các công cụ hỗ trợ (ratings, reviews, recommendations) hoạt động ra sao? Và virtual goods — hàng hóa ảo — tại sao người ta lại bỏ tiền thật mua?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>Social Shopping = mua sắm trực tuyến kết hợp công cụ MXH + chia sẻ trải nghiệm. Có nhiều mô hình, mỗi mô hình phù hợp ngành hàng và đối tượng khác nhau.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>Định nghĩa & Các bên tham gia</h3>
+    <div class="key-concept"><span class="kc-term">Social Shopping</span><span class="kc-def"><strong>Sales 2.0</strong> — mua sắm trực tuyến sử dụng công cụ MXH và chia sẻ trải nghiệm với bạn bè. Khác EC truyền thống ở yếu tố XÃ HỘI: bạn bè tham gia vào quá trình mua.</span></div>
+    <div class="key-concept"><span class="kc-term">Communal Shopping</span><span class="kc-def">Phương thức mua sắm nhờ bạn bè và người tin tưởng tư vấn nên mua gì. VD: hỏi ý kiến trong group chat trước khi mua.</span></div>
+    <p style="color:var(--ink-light);margin-top:1rem;"><strong>Các bên tham gia:</strong> Connectors (người kết nối — giới thiệu), Mavens (chuyên gia — cho lời khuyên), Seekers (người tìm kiếm — nhờ tư vấn), Salespeople (người bán).</p>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>Các mô hình Social Shopping chính</h3>
+    <div class="key-concept"><span class="kc-term">Group Buying</span><span class="kc-def">Nhóm người cùng mua để được giảm giá số lượng. VD: Groupon, PinDuoDuo (TQ). Tại VN: tính năng "Mua cùng bạn" trên Shopee.</span></div>
+    <div class="key-concept"><span class="kc-term">Flash Sales</span><span class="kc-def">Ưu đãi giảm sốc trong thời gian ngắn (daily deals). Tạo urgency: "Chỉ còn 2 giờ!" VD: Shopee Flash Sale, Lazada Mega Sale, TikTok Shop deal giờ vàng.</span></div>
+    <div class="key-concept"><span class="kc-term">Shopping Communities</span><span class="kc-def">Cộng đồng chia sẻ cảm hứng mua sắm, tạo thiết kế, thảo luận sản phẩm. VD: Polyvore (thời trang), Hội mê son (Facebook group VN), Pantip (Thái Lan).</span></div>
+    <div class="key-concept"><span class="kc-term">Social Marketplace</span><span class="kc-def">Sàn giao dịch dùng công cụ MXH: mua-bán, tương tác, so sánh, thanh toán. VD: Facebook Marketplace, Chợ Tốt, Carousell.</span></div>
+    <div class="key-concept"><span class="kc-term">Virtual Goods</span><span class="kc-def">Hàng hóa ảo — hình ảnh máy tính của hàng thực hoặc tưởng tượng. Mua bằng tiền thật trong game, MXH, thế giới ảo. Lý do: trải nghiệm đặc biệt, cảm xúc, chi phí thấp.</span></div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>Công cụ hỗ trợ mua sắm xã hội</h3>
+    <p style="color:var(--ink-light);margin-bottom:.8rem;">Đa số NTD dựa vào MXH để định hướng quyết định mua. Các công cụ hỗ trợ chính:</p>
+    <div class="key-concept"><span class="kc-term">Ratings & Reviews</span><span class="kc-def">Đánh giá sao + bình luận từ KH thực. Tích hợp trên trang SP, MXH, hoặc site review (TripAdvisor, Yelp). Bao gồm: customer reviews, expert reviews, sponsored reviews, video reviews, blogger reviews.</span></div>
+    <div class="key-concept"><span class="kc-term">Recommendations</span><span class="kc-def">Đề xuất sản phẩm: Social bookmarking (bookmark & chia sẻ deal), Referral programs (thưởng giới thiệu KH mới — Groupon, Gilt), Personal social recommendations (dựa trên profile tương tự), Matching algorithms (thuật toán đề xuất — Netflix, Amazon).</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 3: THẢO LUẬN NHÓM — SOCIAL SHOPPING VN ═══════ -->
+<section>
+  <p class="section-label">Phần 3 · 35 phút</p>
+  <h2>Thảo luận nhóm: Phân tích mô hình mua sắm VN</h2>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động nhóm (20' chuẩn bị + 15' trình bày)</div>
+    <h4>Mỗi nhóm phân tích 1 mô hình social shopping tại VN</h4>
+    <ul>
+      <li><strong>Nhóm 1-2:</strong> <strong>Shopee Live + Flash Sale</strong> — Phân tích: thuộc mô hình SS nào? Ai là Connectors/Mavens/Seekers? Tại sao flash sale hiệu quả (tâm lý urgency, FOMO)?</li>
+      <li><strong>Nhóm 3-4:</strong> <strong>TikTok Shop</strong> — So sánh với Shopee: khác biệt gì? Vai trò của KOL/KOC trong TikTok Shop? Ratings/reviews trên TikTok khác Shopee thế nào?</li>
+      <li><strong>Nhóm 5-6:</strong> <strong>Facebook Group "Hội mê..." + Marketplace</strong> — Đây là shopping community hay social marketplace? Ưu/nhược điểm so với sàn TMĐT? Vai trò trust (niềm tin) từ cộng đồng?</li>
+    </ul>
+    <p style="margin-top:.8rem;"><strong>Yêu cầu:</strong> Dùng đúng thuật ngữ đã học (Social Shopping, Group Buying, Flash Sale, Community, Marketplace, Ratings/Reviews). Trình bày 5 phút/nhóm.</p>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 GV tổng kết</div>
+    <p><strong>Các điểm GV cần chốt:</strong></p>
+    <ul style="padding-left:1.2rem;line-height:1.8;">
+      <li>VN là thị trường social shopping phát triển cực nhanh — livestream bán hàng là hiện tượng đặc trưng ĐNA, không phổ biến ở Mỹ/EU.</li>
+      <li>TikTok Shop thay đổi cuộc chơi: kết hợp entertainment + shopping (shoppertainment).</li>
+      <li>Trust từ cộng đồng (Facebook group) vẫn rất mạnh ở VN — đặc biệt với hàng đặc sản, handmade, second-hand.</li>
+      <li><strong>Chia sẻ kinh nghiệm:</strong> GV kể 1-2 case thực tế.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 4: SOCIAL CRM — SCQA #2 ═══════ -->
+<section>
+  <p class="section-label">Phần 4 · 60 phút · SCQA #2</p>
+  <h2>Social CRM: Từ Call Center đến Chăm sóc KH trên MXH</h2>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation</h4>
+      <p>CRM (Customer Relationship Management) đã tồn tại hàng chục năm: DN quản lý quan hệ KH qua call center, email, database. SV biết cơ bản về CRM từ các môn quản trị. Sau đó, e-CRM (CRM 1.0) ra đời: dùng công cụ điện tử quản lý CRM.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication</h4>
+      <p>Nhưng KH năm 2025 không còn gọi call center nữa. Khi gặp vấn đề, họ <strong>lên Facebook comment, tweet, review 1 sao trên Google</strong>. Một bình luận tiêu cực có thể lan viral trong vài giờ. KH cũng <strong>không chờ email reply trong 24 giờ</strong> — họ kỳ vọng phản hồi trong vài phút. CRM truyền thống (one-way, linear) không đáp ứng được thực tế này.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>Social CRM (SCRM) khác CRM truyền thống như thế nào? DN tương tác với KH qua MXH bằng cách nào? Nên chăm sóc KH chủ động (proactive) hay bị động (reactive)?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>SCRM = CRM + Social Media: dùng MXH để engage KH trong hội thoại, chia sẻ, tương tác → tăng trust và loyalty. SCRM là mở rộng của CRM, không phải thay thế.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>CRM → e-CRM → Social CRM: Hành trình tiến hóa</h3>
+    <div class="key-concept"><span class="kc-term">CRM</span><span class="kc-def"><strong>Customer Relationship Management</strong> — tiếp cận tập trung vào xây dựng quan hệ dài hạn, bền vững với KH, tạo giá trị cho cả KH lẫn DN. Truyền thống: linear (marketing → sales → customer service).</span></div>
+    <div class="key-concept"><span class="kc-term">e-CRM</span><span class="kc-def"><strong>CRM 1.0</strong> — bộ công cụ điện tử hỗ trợ quản lý CRM: email, website, database KH, autoresponders. Tự động hóa quy trình nhưng vẫn một chiều.</span></div>
+    <div class="key-concept"><span class="kc-term">SCRM</span><span class="kc-def"><strong>Social CRM / CRM 2.0</strong> — CRM được hỗ trợ bởi MXH (Web 2.0, SNS). Thiết kế để engage KH trong hội thoại, chia sẻ, tương tác → tối ưu trải nghiệm KH, xây dựng trust & loyalty. <strong>SCRM mở rộng CRM, không thay thế.</strong></span></div>
+    <p style="color:var(--ink-light);margin-top:1rem;"><strong>Touch point</strong> = bất kỳ điểm tương tác nào giữa KH và thương hiệu. Trong SCRM, touch points bùng nổ: Facebook comment, Instagram DM, TikTok reply, Zalo chat, Google review, Twitter mention…</p>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>4 loại ứng dụng tương tác KH</h3>
+    <div class="key-concept"><span class="kc-term">Customer-facing</span><span class="kc-def">KH tương tác với nhân viên DN qua các kênh: MXH, call center, sales force, field service. VD: nhân viên reply comment Facebook, chat Zalo.</span></div>
+    <div class="key-concept"><span class="kc-term">Customer-touching</span><span class="kc-def">KH tương tác trực tiếp với ứng dụng (không qua nhân viên): self-service, FAQ, chatbot, UGC. VD: chatbot trên Messenger, tra cứu đơn hàng tự động.</span></div>
+    <div class="key-concept"><span class="kc-term">Customer-centric Intelligence</span><span class="kc-def">Phân tích kết quả vận hành để cải thiện CRM: web analytics, sentiment analysis, social analytics. VD: phân tích comment tiêu cực → cải thiện SP.</span></div>
+    <div class="key-concept"><span class="kc-term">Online Networking</span><span class="kc-def">Xây dựng quan hệ cá nhân qua mạng: chat rooms, blogs, wikis, forums, SNS. VD: cộng đồng người dùng, group hỗ trợ, brand ambassador.</span></div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>Reactive vs. Proactive Customer Service</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:.92rem;margin-top:.5rem;">
+      <thead><tr style="background:var(--surface-alt);"><th style="text-align:left;padding:10px 14px;border-bottom:2px solid var(--border);font-weight:700;">Tiêu chí</th><th style="text-align:left;padding:10px 14px;border-bottom:2px solid var(--border);font-weight:700;">Reactive (Bị động)</th><th style="text-align:left;padding:10px 14px;border-bottom:2px solid var(--border);font-weight:700;">Proactive (Chủ động)</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Khi nào hành động?</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);">SAU khi KH phàn nàn</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);">TRƯỚC khi có vấn đề</td></tr>
+        <tr><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Cách tiếp cận</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Chờ KH liên hệ → giải quyết</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Theo dõi MXH → phát hiện → can thiệp sớm</td></tr>
+        <tr><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Ví dụ</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Reply khi KH inbox khiếu nại</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);">Phát hiện mention tiêu cực → liên hệ KH trước</td></tr>
+        <tr><td style="padding:10px 14px;">Hiệu quả SC</td><td style="padding:10px 14px;">Cần thiết nhưng không đủ</td><td style="padding:10px 14px;">Tạo ấn tượng mạnh, tăng loyalty, WoM tích cực</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CASE SONY -->
+  <div class="case-study">
+    <div class="case-label">📋 Case Study — Sony: Social Media cải thiện CRM</div>
+    <h4>Sony sử dụng MXH đa kênh cho SCRM</h4>
+    <p>Sony dùng đa nền tảng (YouTube, Facebook, Tumblr, website, customer service app) để tương tác KH. Họ <strong>monitor MXH</strong> để phát hiện khiếu nại sớm, <strong>proactively</strong> giải quyết vấn đề trước khi lan rộng. <strong>community.sony.com</strong> cho phép KH tự giúp nhau (customer-touching). Kết quả: tăng trust, tăng tương tác, cải thiện dịch vụ.</p>
+    <p style="margin-top:.5rem;"><em>→ Câu hỏi: "Thương hiệu VN nào làm SCRM tốt? Ai đã từng được DN VN liên hệ chủ động trên MXH?"</em></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 5: HOẠT ĐỘNG NHÓM — SCRM ═══════ -->
+<section>
+  <p class="section-label">Phần 5 · 50 phút</p>
+  <h2>Hoạt động nhóm: Thiết kế chiến lược SCRM</h2>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động nhóm chính (25' chuẩn bị + 20' trình bày + 5' GV tổng kết)</div>
+    <h4>Tình huống: DN VN cần xây dựng hệ thống SCRM</h4>
+    <p>Mỗi nhóm nhận 1 tình huống:</p>
+    <ul>
+      <li><strong>Tình huống A — Chuỗi trà sữa 20 chi nhánh:</strong> KH thường xuyên comment phàn nàn chất lượng trên Facebook. Review 1 sao trên Google Maps ngày càng nhiều. Cần xây dựng hệ thống SCRM.</li>
+      <li><strong>Tình huống B — Shop thời trang online trên TikTok:</strong> Bán hàng tốt nhờ livestream nhưng hậu mãi yếu: KH inbox hỏi mà không ai trả lời, hàng lỗi không biết liên hệ đâu. Cần SCRM.</li>
+      <li><strong>Tình huống C — Công ty SaaS (phần mềm quản lý):</strong> Có 500 KH doanh nghiệp. Muốn chuyển từ support qua email sang SCRM. KH hay hỏi nhau trên group LinkedIn.</li>
+    </ul>
+    <p style="margin-top:1rem;"><strong>Yêu cầu:</strong></p>
+    <ul>
+      <li>Chọn các <strong>kênh MXH</strong> nào cho SCRM? Tại sao?</li>
+      <li>Dùng loại ứng dụng nào? (Customer-facing? Touching? Intelligence? Networking?)</li>
+      <li>Chiến lược <strong>reactive hay proactive</strong>? Hoặc kết hợp cả hai?</li>
+      <li>Đề xuất <strong>1 công cụ SCRM cụ thể</strong> (Batchbook, Sprout Social, Salesforce, hoặc đơn giản là Zalo OA + Chatbot)?</li>
+      <li>Trình bày 5 phút/nhóm → phản biện chéo</li>
+    </ul>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 GV tổng kết hoạt động nhóm</div>
+    <ul style="padding-left:1.2rem;line-height:1.8;">
+      <li>SCRM không phải là "thêm Facebook vào CRM" — mà là <strong>thay đổi mindset</strong>: từ kiểm soát → đối thoại, từ bị động → chủ động.</li>
+      <li>Ở VN, SCRM thường bắt đầu từ <strong>Zalo OA + Facebook Messenger + Chatbot</strong> — đơn giản, chi phí thấp, phù hợp SME.</li>
+      <li>Proactive SCRM tạo ra hiệu quả WoM tích cực lớn nhất — nhưng đòi hỏi hệ thống monitoring tốt.</li>
+      <li>Lợi ích lớn nhất của SCRM: <strong>giảm chi phí chăm sóc KH</strong> (qua self-help communities) + <strong>tăng loyalty</strong> (qua engagement).</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 6: TỔNG KẾT ═══════ -->
+<section>
+  <p class="section-label">Phần 6 · 15 phút</p>
+  <h2>Tổng kết & Giao nhiệm vụ</h2>
+
+  <div class="card card-accent" style="margin-top:1rem;">
+    <h3>Tóm tắt 2 trụ cột buổi hôm nay</h3>
+    <p style="color:var(--ink-light);line-height:1.8;">
+      <strong>Trụ 1 — Social Shopping:</strong> Mua sắm đã trở thành hoạt động xã hội. Các mô hình chính: Group Buying (mua nhóm giảm giá), Flash Sales (deal thời gian giới hạn), Shopping Communities (cộng đồng mua sắm), Social Marketplace (sàn giao dịch xã hội), Virtual Goods (hàng hóa ảo). Ratings, Reviews, Recommendations là công cụ hỗ trợ quyết định mua then chốt.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;margin-top:.8rem;">
+      <strong>Trụ 2 — Social CRM:</strong> CRM → e-CRM → SCRM (CRM 2.0). Touch points bùng nổ trên MXH. 4 loại ứng dụng tương tác KH. Proactive > Reactive. SCRM không thay thế CRM mà mở rộng — thêm yếu tố social, dialogue, và real-time.
+    </p>
+  </div>
+
+  <div class="card card-gold" style="margin-top:1rem;">
+    <h3>⚠️ Nhắc nhở: Kiểm tra quá trình Buổi 6</h3>
+    <p style="color:var(--ink-light);line-height:1.8;">
+      <strong>Buổi 6 sẽ có kiểm tra quá trình (30 phút)</strong> — bài tự luận, 3 yêu cầu dựa trên tình huống. Phạm vi: <strong>toàn bộ nội dung Chương 1 + Chương 2</strong> (Buổi 1–5). SV cần ôn tập: các khái niệm nền tảng SC, công cụ/nền tảng, lý thuyết hành vi NTD, AISAS, social shopping models, SCRM. Rubric: Cơ sở lý luận (40%) + Lập luận giải quyết vấn đề (40%) + Văn phong (20%).
+    </p>
+  </div>
+
+  <div class="card card-teal" style="margin-top:1rem;">
+    <h3>Giao nhiệm vụ cho Buổi 6</h3>
+    <ul style="padding-left:1.2rem;line-height:2;color:var(--ink-light);">
+      <li><strong>Ôn tập:</strong> Toàn bộ nội dung Buổi 1–5 cho bài kiểm tra quá trình.</li>
+      <li><strong>Bài đọc trước:</strong> Ch.8 & Ch.9 Turban — "Social Enterprise" & "Innovative SC Applications" (tập trung: doanh nghiệp xã hội, B2B social, gamification).</li>
+      <li><strong>Tiểu luận nhóm:</strong> Đã chốt ý tưởng chưa? Buổi 6 GV sẽ kiểm tra tiến độ nhóm. Deadline nộp bài: trước Buổi 9.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHỤ LỤC ═══════ -->
+<section>
+  <p class="section-label">Phụ lục</p>
+  <h2>Gợi ý cho Giảng viên</h2>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>🎯 Điểm cần lưu ý</h3>
+    <ul style="padding-left:1.2rem;line-height:2;color:var(--ink-light);">
+      <li><strong>Social Shopping gần gũi SV nhất:</strong> Họ là NTD thực thụ của Shopee, TikTok Shop, Lazada. Tận dụng tối đa trải nghiệm thực tế — buổi này SV sẽ rất hào hứng nếu dùng ví dụ VN.</li>
+      <li><strong>Groupon case trong sách đã cũ:</strong> Groupon không còn hot. GV nên thay bằng TikTok Shop, Shopee Live, PinDuoDuo (TQ) — các mô hình social shopping đang thống trị.</li>
+      <li><strong>CRM có thể "khô":</strong> Dùng ví dụ cụ thể để minh họa: "Khi bạn inbox fanpage Highlands nhưng không ai trả lời trong 3 ngày — đó là thất bại CRM. Khi bạn vừa review 1 sao và DN liên hệ ngay — đó là proactive SCRM."</li>
+      <li><strong>Nhắc kiểm tra quá trình:</strong> Buổi 6 có KT 30 phút. GV nên dành 5 phút cuối nhắc SV ôn tập, và nêu rõ phạm vi + hình thức (tự luận, 3 yêu cầu, 60 phút → đã giảm còn 30 phút cho phù hợp lịch).</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📊 Câu hỏi Testbank liên quan</h3>
+    <ul style="padding-left:1.2rem;line-height:1.8;color:var(--ink-light);font-size:.92rem;">
+      <li>MC: Social Shopping definition → (Đáp án: D — Social Shopping)</li>
+      <li>MC: Communal Shopping → method where consumers enlist friends (Đáp án: C)</li>
+      <li>MC: Group buying model → quantity discount (Đáp án: D)</li>
+      <li>MC: Social marketplace → uses social media tools (Đáp án: A)</li>
+      <li>MC: Virtual Goods → computer images (Đáp án: D)</li>
+      <li>MC: CRM definition → long-term relationships (Đáp án: C)</li>
+      <li>MC: e-CRM → electronically delivered tools (Đáp án: A)</li>
+      <li>MC: SCRM → CRM supported by social media (Đáp án: B)</li>
+      <li>MC: Touch point → any point of interaction (Đáp án: A)</li>
+      <li>MC: Customer-touching applications → interact directly with apps (Đáp án: B)</li>
+      <li>MC: Proactive customer service → engages before problem (Đáp án: C)</li>
+      <li>T/F: "SCRM is an extension of CRM, not a replacement" → True</li>
+      <li>T/F: "Reactive customer service engages before problem" → False (đó là Proactive)</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p>ITS717 — Thương Mại Xã Hội | Chương 2 · Buổi 5/9 | Trường ĐH Ngân Hàng TP.HCM</p>
+  <p style="margin-top:.3rem;">Soạn theo khung SCQA · Thiết kế: Discussion-based Learning · 5 tiết (250 phút)</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{
+  "session": 8,
+  "chapter": "Ch.4 §4.2",
+  "title": "Triển khai TMXH: Bảo mật, Pháp lý, Đạo đức & Tương lai",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "s8-mc1",
+      "type": "mc",
+      "question": "Triển khai (Implementation) là việc ____.",
+      "options": ["A. Lên kế hoạch cho dự án", "B. Phân tích phân rã dữ liệu", "C. Phát hành một chiến dịch truyền thông", "D. Nguyên quá trình hành động rốt ráo để đưa một kế hoạch/dự án kinh doanh vào trong thực tiễn thành quả (carrying out a business plan or project)"],
+      "correct": "D"
+    },
+    {
+      "id": "s8-mc2",
+      "type": "mc",
+      "question": "Công nghệ kỹ nghệ xã hội học (Social engineering) hay lừa đảo thao túng tâm lý trên mạng là khi tội phạm ____.",
+      "options": ["A. Đi xây ra các ứng dụng cho MXH", "B. Vận dụng thao túng tâm lý học nhằm lừa phỉnh các nạn nhân (ví dụ doạ nạt hoặc dụ dỗ) rò rỉ hoặc tự tay chắp dâng nộp các bằng chứng thẻ tín dụng/bí mật cá nhân", "C. Thao tác xây web dạo", "D. Phát triển nên các nền tảng thiết bị trên phiên bản app gốc"],
+      "correct": "B"
+    },
+    {
+      "id": "s8-mc3",
+      "type": "mc",
+      "question": "Chiếm đoạt tài khoản xã hội (Social phishing) là ____.",
+      "options": ["A. Đánh cá giải trí trên MXH (Fishing)", "B. 1 nhóm của kỹ nghệ bán hàng MXH", "C. Các thủ đoạn hành vi thao tác phi pháp (như gửi link giả mạo) hòng ngụy tạo để cướp bóc đoạt lấy hàng loạt thông tin bảo mật tuyệt mật của thành viên", "D. Một dòng thể loại Trò chơi Xã hội"],
+      "correct": "C"
+    },
+    {
+      "id": "s8-mc4",
+      "type": "mc",
+      "question": "Đâu là yếu tố KHÔNG CẤU THÀNH nên một hệ luỵ tổn thất liên đới vấn đề pháp lý (legal issue) khi tham gia thương mại xã hội?",
+      "options": ["A. Cho đăng bài tuyên ngôn bất cẩn và chứa nội dung độc hại trên tường blog của công ty", "B. Văng những hành vi và quy định có tính kì thị sắc tộc phân biệt đối xử khi đăng thông tin tuyển người", "C. Vi phạm quyền phát sinh các tác quyền ấn phẩm bị khoá (Copyright violations)", "D. Rà vô xem coi hồ sơ tài khoản (mục public profile/công khai) của ai đó ngẫu nhiên trên mạng"],
+      "correct": "D"
+    },
+    {
+      "id": "s8-mc5",
+      "type": "mc",
+      "question": "Bắt nạt ảo / Bạo lực mạng (Cyberbullying) đề cập đến việc ____.",
+      "options": ["A. Tích cực Quảng bá bạo hành thông qua mạng xã hội", "B. Hành vi đe dọa, tẩy chay ruồng bỏ hoặc miệt thị 1 ai đó nặng nề bởi hàng loạt các phương tiện số hóa và MXH hiện hành (electronic technology)", "C. Làm nick nặc danh Fake accounts", "D. Làm hacker tống tiền website"],
+      "correct": "B"
+    },
+    {
+      "id": "s8-mc6",
+      "type": "mc",
+      "question": "Trong Thương mại xã hội, điều nào sau đây KHÔNG THƯỜNG XUYÊN được coi là vướng mắc vấn đề đạo đức (ethical issue)?",
+      "options": ["A. Hỏi khách hàng vui lòng tự gõ tên để mở một biểu mẫu ghi danh (registration form) khi mua hàng thông thường ở web", "B. Độ liêm chính cũng như công tâm của 1 công cụ máy móc khi học và nảy ra những Khuyến nghị Tự động dành cho người mua", "C. Hiện tượng thiết kế gian dối mập mờ có ý dụ dỗ người đọc lỡ tay nhất nút lách luật (Dark patterns in website design)", "D. Sự thao túng, ngâm tôm của lượng chất lượng nội dung người dùng tạo ra nhằm bôi nhọ bị làm giả"],
+      "correct": "A"
+    },
+    {
+      "id": "s8-mc7",
+      "type": "mc",
+      "question": "Trong tổng hòa môi trường đạo đức thương mại xã hội văn minh (ethical social commerce), thì ____ hay là nhân tố cấu thành chi phối lớn nhất.",
+      "options": ["A. Những cỗ máy công nghệ cao", "B. Túi tiền làm marketing của đơn vị", "C. Thước đo các giá trị nhân phẩm của từng cá nhân / người xây đắp nó và chính tổ chức tham gia trực tiếp (Personal values of the practitioners)", "D. Luật lệ và còng số 8 của các ban Ngành điều lệ Chính quy"],
+      "correct": "C"
+    },
+    {
+      "id": "s8-mc8",
+      "type": "mc",
+      "question": "Tái thiết kế lại cấu trúc quy trình kinh doanh (Business process reengineering - BPR) là ____.",
+      "options": ["A. Sàng lọc tinh giãn chỉnh lí quy trình cực kì quy mô nhỏ (Minor improvement)", "B. Đại dỡ bỏ sửa đổi toàn vẹn thấu đáo về cấu trúc vận hành cốt tủy của guồng kinh doanh nhằm tìm ra những tối ưu đột xuất mới", "C. Công tác mở lại các khóa giáo huấn training cho đội ngũ staff", "D. Nối gắn thêm nhiều profile cá nhân facebook / Zalo nữa cho cty"],
+      "correct": "B"
+    },
+    {
+      "id": "s8-mc9",
+      "type": "mc",
+      "question": "Quản trị sự thay đổi (Change management) là chức năng ____.",
+      "options": ["A. Là việc hoạch định, tiếp cận có tổ chức nhằm hỗ trợ trang bị để dịch dời toàn bộ một nhóm con người / đội nhóm làm việc ở vị thế hiện tại để sang thích ứng hòa nhập hoàn hảo vào vùng thay đổi mới như mong cầu", "B. Thiết kế rụp bộ mới mọi guồng quy trình nghiệp vụ (Business processes from scratch) mà không kể đến con người", "C. Là cớ để cắt giảm mạnh tay chấm dứt hợp đồng loại đi 1 lượng lớn NV Firing employees", "D. Thay hình đổi khối thu lại quy mô hoạt động cty (Reducing company size)"],
+      "correct": "A"
+    },
+    {
+      "id": "s8-mc10",
+      "type": "mc",
+      "question": "Trong việc Cài cắm áp dụng TMXH thì mọi sự trục trặc dính líu đến Nhân viên (Employee-related issues) gồm các sự vụ sau ngoại trừ (EXCEPT) ____.",
+      "options": ["A. Các tranh cãi xôn xao xoay quanh về việc rớt chất lượng với nội dung UGT bị mỏng kém nhạt (Quality of user-generated content)", "B. Rụt rè chần chừ nhút nhát không tình nguyện tuân theo của quy trình mới (Reluctance to participate)", "C. Trây ỳ ăn cắp giờ kiếm tiền của trụ sở để luớt facebook cày phím sống ảo (Time wasting)", "D. Tất cả các mục nêu lên trên thảy đều chính là các ví dụ cho nhóm rắc rối tới Nhân sự lao động (All of the above)"],
+      "correct": "D"
+    },
+    {
+      "id": "s8-mc11",
+      "type": "mc",
+      "question": "Đâu KHÔNG PHẢI là kiểu chiến lược thường thấy để dàn binh bố trận áp dụng Thương Mại Xã Hội (deployment strategy)?",
+      "options": ["A. Lắp chèn thêm công cụ tính năng (Add-on collaborative tools) gài đè lên nền có sẵn", "B. Coi như từ rày Chỉ duy trì cộng tác kết bạn cùng với những tổ chức nộp tiền làm hội viên hàng tháng", "C. Lồng ghép (Integrating) xuyên qua nền nối liền hệ quản lý giao hoán dữ liệu EC commerce kinh điển vào cùng mạng MXH", "D. Nhờ vả hoàn toàn lệ thuộc sức mạnh các môi trường TMXH phía thứ ba đã rất hoành tráng sẵn mọc lên rồi"],
+      "correct": "B"
+    },
+    {
+      "id": "s8-mc12",
+      "type": "mc",
+      "question": "Nguyên nhân nào sau đây KHÔNG THƯỜNG XUYÊN được nhắc tới xem như 1 thế lực Đòn bẩy Thúc đẩy sự phát triển siêu bão cho nền Thương Mại Xã Hội?",
+      "options": ["A. Sự hấp thu và tỷ lệ sử dụng MXH bùng cháy chóng mặt của thời hiện đại (Social media adoption growth)", "B. Thế giới bão hòa với mức thiết bị Mobile device lan tràn khắp chốn", "C. Dịch vụ chăm sóc người dùng của các cửa hiệu hiện thống bị lao đao thoái hoá suy vi không hồi lại nổi", "D. Trọn vẹn các lời bàn bảo nhau đến từ vô biên bạn bè ở bên MXH đem lại độ tin cậy khủng khiếp từ người mua (Peer recommendations)"],
+      "correct": "C"
+    },
+    {
+      "id": "s8-tf1",
+      "type": "tf",
+      "question": "Quyền cá nhân (Privacy) là mọi quyền năng tiên sinh của cá thể mong sẽ được thả yên lành tự do và chưa từng phải nhận lãnh bất kì sự chọc ngoáy chen lấn nhét mũi vô từ ngoài (to be left alone without intruded upon).",
+      "correct": true
+    },
+    {
+      "id": "s8-tf2",
+      "type": "tf",
+      "question": "Quản trị thay đổi (Change management) vốn đơn thuần là tiến trình phá hủy thiết lập thiết kế cho ra mới những quy trình vận hành sản xuất thương mại.",
+      "correct": false
+    },
+    {
+      "id": "s8-tf3",
+      "type": "tf",
+      "question": "Gây dựng lên sổ tay Nguyên tắc và Cẩm nang Điều lệ ứng xử (guidelines and policies) là tối ưu hệ trọng nếu đụng đến dính dáng sinh hoạt của Thương mại Xã hội trong cty.",
+      "correct": true
+    },
+    {
+      "id": "s8-tf4",
+      "type": "tf",
+      "question": "Việc tung ra trận (deployment) bất kỳ những bộ tính năng mạng Xã hội kinh tế Thương Mại nào vào guồng có thể ngầm đem gánh những tác đứt gãy, biến cố đe dọa đi lùi (risks).",
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "session": 6,
+  "chapter": "Ch.3",
+  "title": "Doanh nghiệp Xã hội & Ứng dụng SC sáng tạo",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "s6-mc1",
+      "type": "mc",
+      "question": "Doanh nghiệp xã hội (Social enterprise) đề cập đến ____.",
+      "options": ["A. Chỉ riêng tiếp thị truyền thông xã hội", "B. Quảng cáo trực tuyến", "C. Nền tảng thương mại điện tử", "D. Việc sử dụng các công cụ truyền thông xã hội vào trong các tổ chức nhằm mục đích thương mại hoặc phi lợi nhuận"],
+      "correct": "D"
+    },
+    {
+      "id": "s6-mc2",
+      "type": "mc",
+      "question": "Mạng lưới kinh doanh (business network) là ____.",
+      "options": ["A. Một nhóm những người có mối quan hệ kinh doanh chuyên nghiệp", "B. Một nền tảng không gian mạng xã hội", "C. Một agency quảng cáo", "D. Một tổ chức chính phủ chính quy"],
+      "correct": "A"
+    },
+    {
+      "id": "s6-mc3",
+      "type": "mc",
+      "question": "Mạng lưới xã hội kinh doanh (Business social networks) là ____.",
+      "options": ["A. Các nền tảng cho chơi game", "B. Mạng lưới được xây trên nền tảng của các mối quan hệ xã hội nhưng mang định hướng kinh doanh và công việc", "C. Danh sách sổ liên lạc email", "D. Các kênh truyền thông đại chúng truyền thống"],
+      "correct": "B"
+    },
+    {
+      "id": "s6-mc4",
+      "type": "mc",
+      "question": "Đâu là LÝ DO KHÔNG ĐÚNG khi nói về vì sao một tổ chức muốn trở thành một doanh nghiệp xã hội (social enterprise)?",
+      "options": ["A. Xây dựng mối liên kết gắn bó sâu sắc hơn với khách hàng", "B. Nâng cao hiệu quả cải thiện đội ngũ nhân sự và tuyển dụng", "C. Giảm bớt các chi phí vận hành chung", "D. Kéo giảm doanh số bán hàng"],
+      "correct": "D"
+    },
+    {
+      "id": "s6-mc5",
+      "type": "mc",
+      "question": "Hội chợ việc làm ảo diễn ra trên mạng (Virtual job fairs) là ____.",
+      "options": ["A. Những ngày hội hướng nghiệp vật lý truyền thống", "B. Chiến lược mới nhằm tìm kiếm các ứng viên nộp việc với chi phí tối ưu và thời gian nhanh nhất", "C. Chiến dịch ứng tuyển qua tin nhắn email điện tử", "D. Chuyến thăm quan tuyển sinh ở những sân trường đại học"],
+      "correct": "B"
+    },
+    {
+      "id": "s6-mc6",
+      "type": "mc",
+      "question": "Quản trị tri thức (Knowledge management) là quá trình ____.",
+      "options": ["A. Gửi bản tin hàng tháng (newsletters)", "B. Thu nạp, lưu trữ, cập nhật, phân phối đa kênh và sử dụng tri thức một cách hiệu quả", "C. Chạy quảng cáo thông qua phương tiện MXH", "D. Chỉ đơn thuần lập ra và xây các trang website"],
+      "correct": "B"
+    },
+    {
+      "id": "s6-mc7",
+      "type": "mc",
+      "question": "Nguồn lực đám đông (Crowdsourcing) liên quan đến việc ____.",
+      "options": ["A. Thu thập ý tưởng, phản hồi và giải pháp từ những nhóm người rất lớn (đám đông)", "B. Thuê ngoài (outsource) chỉ duy nhất 1 đơn vị gia công", "C. Khép kín họp nhóm động não nội bộ công ty", "D. Thuê các chuyên gia tư vấn hàng đầu"],
+      "correct": "A"
+    },
+    {
+      "id": "s6-mc8",
+      "type": "mc",
+      "question": "Cộng tác xã hội (Social collaboration) là ____.",
+      "options": ["A. Thể thức làm việc độc lập một mình (Solo work)", "B. Sự phối hợp ăn ý của con người trong và giữa vô số các cộng đồng nhờ vào công cụ MXH", "C. Chỉ những buổi họp gò óp và họp báo truyền thống", "D. Sự giao tiếp trao đổi một chiều thông qua việc gửi văn bản tin nhắn email"],
+      "correct": "B"
+    },
+    {
+      "id": "s6-mc9",
+      "type": "mc",
+      "question": "Trí tuệ tập thể (Collective intelligence) đề cập đến ____.",
+      "options": ["A. Khả năng giải quyết vấn đề, sáng tạo ý tưởng mới thiết thực và đột phá bởi các nhóm đông người", "B. Thiên tài cá nhân phi phàm xuất chúng", "C. Công nghệ làm giả trí thông minh con người (AI)", "D. Thuật toán phân tích tự học (Machine learning algorithms)"],
+      "correct": "A"
+    },
+    {
+      "id": "s6-mc10",
+      "type": "mc",
+      "question": "Chính phủ điện tử (E-government) đề cập đến việc ____.",
+      "options": ["A. Chính phủ làm tiếp thị truyền thông trên mạng", "B. Việc ứng dụng hệ thống khoa học Công nghệ Thông tin phục vụ cho các hoạt động hành chính của Nhà nước đối với người dân và tổ chức", "C. Nhà nước làm mua sắm đi chợ online", "D. Mô hình giải trí điện tử số hoá"],
+      "correct": "B"
+    },
+    {
+      "id": "s6-mc11",
+      "type": "mc",
+      "question": "Chính phủ xã hội (Social government) sử dụng ____.",
+      "options": ["A. Phương tiện truyền thông mạng xã hội để nỗ lực tinh gọn, cung cấp các dịch vụ đa diện hoàn thiện hơn cho công dân, các tổ chức đoàn thể và cả chính những nhân viên Nhà nước", "B. Chỉ duy nhất các phương tiện báo giấy vật lý in ấn", "C. Thư vận chuyển qua phong bì thư truyền thống", "D. Các trạm phát sóng loa đài radio"],
+      "correct": "A"
+    },
+    {
+      "id": "s6-mc12",
+      "type": "mc",
+      "question": "Trò chơi hóa (Gamification) là quá trình ____.",
+      "options": ["A. Chơi game ở nơi công sở làm việc thay cho việc đi lo kiếm tiền", "B. Quá trình đem các yếu tố trò chơi và đưa chúng vào trong các mạng mạng lưới xã hội cũng như các hoạt động tương tác gắn kết kinh doanh", "C. Tiến trình khởi tạo, thiết kế lắp đặt và phân phối các loại hệ thống chơi game console", "D. Công nghệ mô phỏng tương tác thực tế ảo ảo"],
+      "correct": "B"
+    },
+    {
+      "id": "s6-mc13",
+      "type": "mc",
+      "question": "Trò chơi xã hội (Social game) mang lại ____.",
+      "options": ["A. Thuật ngữ để chỉ bất cứ loại hình nào trò chơi nào khi không kết nối mạng internet", "B. Một dạng cờ tướng/cờ tỷ phú (board game physical)", "C. Chỉ là tên 1 app phần mềm trò chơi lẻ loi gắn cài đơn thuần trên điện thoại di động thông minh", "D. Một video trò chơi có nhiều người chơi khác nhau cùng lúc thông qua hệ thống mạng internet trên các MXH hoặc môi trường 3D thế giới ảo giả định (virtual worlds)"],
+      "correct": "D"
+    },
+    {
+      "id": "s6-mc14",
+      "type": "mc",
+      "question": "Cho vay ngang hàng / cá nhân P2P lending (Peer-to-peer lending) đề cập đến việc ____.",
+      "options": ["A. Mô hình đi vay nợ từ các tập đoàn ngân hàng chính quy quy mô lớn", "B. Giao dịch cấp vốn để giải ngân thông qua thẻ tín dụng có tính năng vay thấu chi tài trợ bởi ngân hàng", "C. Nguồn tiền vay là các khoản viện trợ từ nhà nước (Government grants)", "D. Việc các cá nhân kết nối linh hoạt và trực tiếp tham gia cho nhau mượn tiền để giải quyết các nhu cầu vốn vay theo điều khoản thông qua duy nhất một nền tảng trên mạng trực tuyến"],
+      "correct": "D"
+    },
+    {
+      "id": "s6-mc15",
+      "type": "mc",
+      "question": "Đâu KHÔNG PHẢI là tính năng của Thế giới ảo (virtual worlds)?",
+      "options": ["A. Không gian giả lập Hình ảnh 3D (3D visualization)", "B. Các nhân vật đại diện (Avatars)", "C. Tính năng tương tác liên tục, đồng nhất và thời gian thực bởi nhiều người dùng khác nhau (Multi-user interaction)", "D. Không có bất kỳ góc nhìn 3D nào, nó chỉ hỗ trợ hiển thị 2D trên mặt phẳng bề mặt"],
+      "correct": "D"
+    },
+    {
+      "id": "s6-tf1",
+      "type": "tf",
+      "question": "Doanh nghiệp xã hội (Social business) được thiết kế và sinh ra nhằm mục đích tạo lập đạt được tất cả các yếu tố mang tên mục tiêu xã hội (đóng góp thay đổi đời sống cho cộng đồng).",
+      "correct": true
+    },
+    {
+      "id": "s6-tf2",
+      "type": "tf",
+      "question": "Hội chợ việc làm ảo (Virtual job fairs) là các loại chiến lược hướng đi mới nhằm tạo lập lợi thế tìm kiếm tuyển dụng được các ứng cử viên việc làm xịn nhất với khoản chi phí cắt bớt đi là nhiều nhất.",
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "session": 1,
+  "chapter": "Ch.1 §1.1",
+  "title": "Giới thiệu về Thương Mại Xã Hội",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s1-mc1",
+      "type": "mc",
+      "question": "Thuật ngữ \"Blog\" có nguồn gốc từ ____.",
+      "options": ["A. Nhật ký Internet (Internet log)", "B. Nhật ký số (Digital log)", "C. Nhật ký web (Web logging)", "D. Nhật ký trực tuyến (Online diary)"],
+      "correct": "C"
+    },
+    {
+      "id": "s1-mc2",
+      "type": "mc",
+      "question": "Điện toán xã hội (Social computing) đề cập đến cách tiếp cận dựa trên ____ để tham gia vào phương tiện truyền thông xã hội.",
+      "options": ["A. thông tin (information-based)", "B. công nghệ (technology-based)", "C. điện toán (computing-based)", "D. phần mềm (software-based)"],
+      "correct": "C"
+    },
+    {
+      "id": "s1-mc3",
+      "type": "mc",
+      "question": "Ban đầu được gọi là web tham gia (participative/participatory web), ____ là một thuật ngữ bao trùm.",
+      "options": ["A. Web 1.0", "B. Web 2.0", "C. Phương tiện truyền thông xã hội (Social media)", "D. Thương mại xã hội (Social commerce)"],
+      "correct": "B"
+    },
+    {
+      "id": "s1-mc4",
+      "type": "mc",
+      "question": "____ là một hệ thống cung cấp phương tiện để diễn ra các tương tác xã hội trực tuyến.",
+      "options": ["A. Điện toán xã hội (Social computing)", "B. Truyền thông xã hội (Social media)", "C. Web xã hội (The Social Web)", "D. Thương mại xã hội (Social commerce)"],
+      "correct": "C"
+    },
+    {
+      "id": "s1-mc5",
+      "type": "mc",
+      "question": "Thương mại xã hội (Social commerce) là các giao dịch thương mại điện tử được thực hiện thông qua ____ và/hoặc các mạng xã hội.",
+      "options": ["A. phương tiện kỹ thuật số (digital media)", "B. truyền thông xã hội (social media)", "C. phương tiện trực tuyến (online media)", "D. phương tiện không gian mạng (cyber media)"],
+      "correct": "B"
+    },
+    {
+      "id": "s1-tf1",
+      "type": "tf",
+      "question": "Cộng tác xã hội (Social collaboration) đề cập đến sự hợp tác của mọi người trong và giữa các cộng đồng được kích hoạt bởi các công cụ truyền thông xã hội.",
+      "correct": true
+    },
+    {
+      "id": "s1-tf2",
+      "type": "tf",
+      "question": "Blog là một trang web cá nhân dưới định dạng của một cuốn nhật ký trực tuyến (online journal).",
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "session": 9,
+  "chapter": "All Chapters",
+  "title": "Ôn tập Tổng kết — Toàn bộ Thương Mại Xã Hội",
+  "time_limit_minutes": 20,
+  "questions": [
+    {
+      "id": "s9-mc1",
+      "type": "mc",
+      "question": "Thương mại xã hội (Social commerce) là các giao dịch thương mại điện tử qua ____.",
+      "options": ["A. Bán buôn cổ điển theo điểm vật lý bán lẻ", "B. Phương tiện Truyền thông Xã hội và mạng không gian Xã Hội đa kênh", "C. Vô tuyến, phim điện ảnh", "D. Cuốn tạp chí hay Catalog nhãn hàng in ấn vật lý"],
+      "correct": "B"
+    },
+    {
+      "id": "s9-mc2",
+      "type": "mc",
+      "question": "Trong nền móng Marketing, Phễu mô hình lý thuyết (AISAS model) nâng tầng đột phá phân cực khác với sơ đồ AIDA truyền thống nhờ vào sự thêm vào thêm nhóm tính chất nào là the chốt? ____.",
+      "options": ["A. Tính năng cho việc Đi Chủ Động Lùng Xem Tra Cứu (Search) lại & rồi lan truyền Tự Sướng Kháo Với Bạn Bè Chia Sẻ (Share) lại sau đó", "B. Quảng Cáo Cưỡng Chú và dội Sale Cố Bán bằng được", "C. Tách Gộp đo lường Phễu Lọc Cắt Mảnh (Segment)", "D. Duy Bền mức chú ý khăng khít (Sustain)"],
+      "correct": "A"
+    },
+    {
+      "id": "s9-mc3",
+      "type": "mc",
+      "question": "Phương tiện truyền thông sở hữu (Owned media) miêu tả những thứ ____.",
+      "options": ["A. Do việc ta quẹt thẻ xì tiền thuê để lên ấn phẩm (Paid Ads)", "B. Các dòng phản hồi tạo rành ra bởi khách đến bình luận", "C. Bộ khối tài sản tất cả những Kênh phương thức thông tin / Trạm phát ngôn (Ví dụ Blog, tên miền Page) bị chính công ty đó độc chiếm, tạo và chi tiêu tuyệt đối cho quyền làm chủ (controlled by the company)", "D. Chiếc thuyền chuyên dụng chạy Viral tạo hiệu ứng đồn tiếng lừng xa"],
+      "correct": "C"
+    },
+    {
+      "id": "s9-mc4",
+      "type": "mc",
+      "question": "Kỹ thuật lọc cộng tác (Collaborative filtering) cốt lõi là việc một con robot cỗ máy tính thuật toán tinh hoa làm gì ____.",
+      "options": ["A. Tự chặn xóa spam phiền phức vô nghĩa", "B. Luôn luôn trích tự động kết ráp móc nối thói quen lưu lượng khẩu vị của các tay săn tìm hàng giống lân cận chung sở thích để ngầm từ đó tự Tiên đoán (predict) và bật đưa về một dòng Danh Mục Đề Xuất (Recommend products) mời mọc mua thêm", "C. Thao tác Phép Lọc tệp email nhắn gửi quảng bá", "D. Tuyệt diệt bài chê giả và đánh máy chửi thề (Fake reviews)"],
+      "correct": "B"
+    },
+    {
+      "id": "s9-mc5",
+      "type": "mc",
+      "question": "5 bậc đỉnh tháp tương quan gắn liền sự đo mức độ hâm nóng người tham gia cùng thương hệ (consumer engagement / 5Cs model) quy nạp bao nhiêu ____.",
+      "options": ["A. Khởi tạo Nội dung (Create), Trải Kết nối lưới kết bạn (Connect), Tiêu Thấu Nội dung (Consume), Thu thập giữ nhặt thông tin số lượng (Collect), Hợp Quân Thống (Collaborate)", "B. Cost, Customer, Convenience, Communication, Community", "C. Content, Context, Commerce, Collaboration, Conversion", "D. Channel, Campaign, Customer, Cost, Competition"],
+      "correct": "A"
+    },
+    {
+      "id": "s9-mc6",
+      "type": "mc",
+      "question": "Hệ tư tưởng SCRM bành trướng tiếp từ điểm khuyết của bộ sậu CRM kiểu cũ bằng việc chắp cho mình chiếc cánh ____.",
+      "options": ["A. Thêm chi phí và mớ người vào bộ phận đi Sale rảo bán hàng", "B. Tăng độ rộng hệ thống điện thoại bốc đầu nhánh tổng đài (Call center)", "C. Đi làm nhịp cầu kích dệt các môi tương tác đa tuyến (interactions), gióng lời đàm đàm thảo khơi mào lên sự rôm rả vô giới hạn khắp cả vạn sân chơi mạng xã hội mở (Social media engagement)", "D. Rải điểm bán lẻ tiệm sờ chạm mua ngay ra phố xa"],
+      "correct": "C"
+    },
+    {
+      "id": "s9-mc7",
+      "type": "mc",
+      "question": "Trò chơi hóa trong thế giới thương mại xã hội (Gamification in social commerce) làm vũ khí từ ____.",
+      "options": ["A. Loại hình đi rải Poster TV dán quảng cáo trên diện rộng", "B. Đưa nhồi các vi phân tinh chất linh hồn của trò chơi (sự cạnh tranh giành điểm số cao, huy hiệu, vạch level, mồi quà tặng) thành cơ cấu nhằm đốt lửa giựt khích để ngụ ý điều tiết đẩy mong mỏi được những loại hưng phấn trong tham gia mua sắm và chia sẻ dồn dập (increase engagement and behavior)", "C. Rải Voucher báo mạng và tờ rơi mua thẻ tích điểm ngoài đường (Print coupons)", "D. Sự ra rả loa phóng thanh trên sóng Radio"],
+      "correct": "B"
+    },
+    {
+      "id": "s9-mc8",
+      "type": "mc",
+      "question": "Cụm cụm từ chu trình Hiệu Suất Chiến Lược (Strategy-Performance Cycle) tóm tắt được cho ____.",
+      "options": ["A. Khối 1 việc đóng gói rồi bốc thuốc và định vị cho 1 bản thảo phác kế hoạch cứng nhắc một lần duy nhất mãi mãi (one-time planning)", "B. Là tiến trình không cùng không tận của bánh guồng không ngừng (iterative cycle): lên kế cấu (strategy), ốp trận triển khai (implementation), theo dõi để nghiệm chép hệ quả (assessment), rồi tái thiết tìm cải tiến sửa chữa nâng cao (improvement) vòng tròn lại", "C. Một xấp lịch ghi rõ những tháng cần đẩy Marketing", "D. Quá trình chọn thuê người nhân sự vô doanh nghiệp chuyên nghiệp (hiring process)"],
+      "correct": "B"
+    },
+    {
+      "id": "s9-mc9",
+      "type": "mc",
+      "question": "Nhân tố Tỷ số lợi nhuận dựa trên kinh phí đầu tư gieo mầm (ROI) ở vũ trụ Thương Mại Xã hội lại hóc búa để theo lường tính đo chính xác hơn CRM/TMĐT thông thường do vì lí trí cốt tủy ____.",
+      "options": ["A. Ai cũng xài phím và truy cập MXH Miễn Phí Không Mất Tiền, vô phương đo lường", "B. Sự vắng bóng bặt vô âm tín hoàn hảo của mọi công cụ đọc số đo chuẩn (no metrics available)", "C. Do những sợi dây kéo cộng hưởng lan dường xa mù và liên đới đa vệt không rõ đứt (indirect effects), chênh độ rơi pha (time lag) vô định sau khi đắp tiền xong, cũng như phải hứng độ pha trộn bị hòa lẫn từ vô số chiều yếu tố môi trường (influencing factors) lẫn kèm theo với đó mức sinh lãi cao vút của các món vô giá, danh tiếng bề chìm lớn và cực khó vật thể hóa đo bằng đơn giá tiền đô được ngay (large intangible benefits).", "D. Các công ty chả rỗi và làm ngơ nhác khâu rà ghi những phí tổn ngân sách vung đi bao nhiêu cả"],
+      "correct": "C"
+    },
+    {
+      "id": "s9-mc10",
+      "type": "mc",
+      "question": "Thủ nghệ bóp não tâm lý (Social engineering - hay tấn công bằng con đường Tương tác xã hội) về khía cạnh trong môi sinh bảo an không gian an ninh trực tuyến (cybersecurity) chủ điểm về ngón nghề ____.",
+      "options": ["A. Bộ môn làm cho kỹ sư thợ Code Xây cất thiết lập Cổng thông tin app cho mạng", "B. Những nhà kiến tạo thiết kế trang trí không gian trên mặt phẳng hệ mạng chia sẻ xã hội lớn", "C. Nhà viết mảng phát triển tiện ích xã hội hội sinh", "D. Nơi mà bọn tội phạm mạng lươn lẹo sẽ áp một sự dẫn dắt ảo thuật làm gãy sự nghi ngờ hòng thôi miên gạt gẫm não bộ người nhẹ dạ tin thật nghe theo (thay vì hack máy) để tự tay cống nạp toàn bộ khóa bảo mật hay số quỹ rút tựu chung (criminals using psychological manipulation)"],
+      "correct": "D"
+    },
+    {
+      "id": "s9-tf1",
+      "type": "tf",
+      "question": "Kỷ nguyên công nghệ mang hệ thức Web 2.0 đã khai phá ra cấu hình của một loại mạng xã hội mở với năng lực kích nổ và cho trỗi dậy những khối khổng lồ nội dung bởi chính các khách phiêu lãng cùng lặn nhào vô xào nấu sinh thêm (user-generated content) tạo dựng kết tinh nên những giao lưu vô hạn ở tầng xã hội sâu bên ngoài.",
+      "correct": true
+    },
+    {
+      "id": "s9-tf2",
+      "type": "tf",
+      "question": "Truyền thông kiếm được mang nhãn mác dán dính hữu danh (Earned media) lại thực chất cho phép đám các Cty Doanh Nghiệp Cổ phần chỉ bỏ rải cục cục vài cọc đô la tiền tỷ vô sắm thẳng hoặc thâu mua bao cả bảng trực tiếp như y thao tác nhấp quảng cáo ra click ra đơn hàng mà xong (can be purchased directly).",
+      "correct": false
+    },
+    {
+      "id": "s9-tf3",
+      "type": "tf",
+      "question": "Thẻ điểm cân bằng cho đánh giá mức sức khỏe mục tiêu dự án lớn (The Balanced Scorecard) lấy nhiệm trói, cân chỉnh rồi đem phiên các dòng mộng tưởng ở một Bản chiến thuật chung vĩ mô thành nguyên một danh mục rạch ròi 4 hướng rõ các thang đo quan trắc cụ thể cho từng mục qua kính ngắm của 4 điểm lân cận nhau theo các mặt sau: Bệ Phóng Tài lộc sổ quỹ (financial); Khuynh hưởng từ phía khách tiêu tiền (customer); Ngách quy trình xoay tua Nội tại tổ chức (internal process); Cùng độ đà đi lên, nạp kiến thức mới mài và móng phát triển nhân tố bền lâu (learning & growth).",
+      "correct": true
+    },
+    {
+      "id": "s9-tf4",
+      "type": "tf",
+      "question": "Phát kiến Tái thiết cấu trúc định chuẩn nghiệp vụ doanh nghiệp (Business Process Reengineering - BPR) hoàn toàn cũng y chan cho việc chỉ nặn bóp gọt đẽo thêm tí ti những lặt vặt (minor improvements) cho những dòng đời tiến trình hệ thủ tục có nằm n sẵn đó là đạt, chẳng có sự vứt đi thứ gì.",
+      "correct": false
+    },
+    {
+      "id": "s9-tf5",
+      "type": "tf",
+      "question": "Ngành hình Thái Kinh tế Thương mại Xã hội chật chội và tù túng bởi nó tuyệt nhiên bị giới nghiêm rào cấm không thế nào làm trong các khoản trao đổi B2C truyền thống nên tuyệt dối dập không hề vươn chân dính líu dính líu cho công cuộc giao lưu tổ chức bán B2B rộng, và cũng tuyệt vô phần cấm đi công cuộc ứng với bộ sinh thái Quản trị giao tiếp bên trong nội Cty mình (internal enterprise activities) hoặc áp cùng Chính Quyền Chính Phủ được.",
+      "correct": false
+    }
+  ]
+}

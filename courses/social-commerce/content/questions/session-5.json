@@ -1,0 +1,97 @@
+{
+  "session": 5,
+  "chapter": "Ch.2 §2.3–2.4",
+  "title": "Mua sắm Xã hội & Social CRM",
+  "time_limit_minutes": 12,
+  "questions": [
+    {
+      "id": "s5-mc1",
+      "type": "mc",
+      "question": "Mua sắm xã hội (Social Shopping) được định nghĩa là ____.",
+      "options": ["A. Mua sản phẩm chỉ từ quảng cáo trên mạng xã hội", "B. Thương mại điện tử không có tương tác xã hội", "C. Mua sỉ hàng hoá", "D. Việc sử dụng các công cụ truyền thông xã hội để mua sắm trực tuyến và chia sẻ kinh nghiệm mua sắm với bạn bè"],
+      "correct": "D"
+    },
+    {
+      "id": "s5-mc2",
+      "type": "mc",
+      "question": "Mua sắm cộng đồng (Communal Shopping) là một phương pháp trong đó người tiêu dùng ____.",
+      "options": ["A. Mua mọi thứ trực tuyến", "B. Chỉ sử dụng công cụ tìm kiếm", "C. Huy động cộng đồng, bạn bè và những người đáng tin cậy để xin lời khuyên xem nên mua gì", "D. Tránh phương tiện truyền thông xã hội khi mua sắm"],
+      "correct": "C"
+    },
+    {
+      "id": "s5-mc3",
+      "type": "mc",
+      "question": "Mua theo nhóm (Group buying) là một mô hình nơi ____.",
+      "options": ["A. Mọi người tự mình mua những món đồ xa xỉ", "B. Các công ty bán hàng cá nhân", "C. Chỉ các doanh nghiệp B2B mới có thể tham gia", "D. Một nhóm người cùng nhau mua một món hàng để được chiết khấu theo số lượng đáng kể"],
+      "correct": "D"
+    },
+    {
+      "id": "s5-mc4",
+      "type": "mc",
+      "question": "Thị trường xã hội (social marketplace) ____.",
+      "options": ["A. Sử dụng các công cụ kỹ thuật số và MXH để phục vụ cho việc mua, bán, tương tác, so sánh và thanh toán", "B. Chỉ có thể là một cửa hàng thực tế", "C. Không cho phép các bài đánh giá của người dùng", "D. Giống như tiếp thị qua email"],
+      "correct": "A"
+    },
+    {
+      "id": "s5-mc5",
+      "type": "mc",
+      "question": "Hàng hóa ảo (Virtual Goods) là ____.",
+      "options": ["A. Hàng hóa vật lý bán online qua các trang web", "B. Dịch vụ bán theo gói cước", "C. Nguyên vật liệu và dịch vụ đóng gói", "D. Hình ảnh hiển thị hoặc hàng hóa tưởng tượng có thể được mua bằng tiền thật hoặc tiền kỹ thuật số"],
+      "correct": "D"
+    },
+    {
+      "id": "s5-mc6",
+      "type": "mc",
+      "question": "CRM là viết tắt của ____.",
+      "options": ["A. Content Resource Management", "B. Creative Relationship Model", "C. Quản trị quan hệ khách hàng (Customer Relationship Management) — xây dựng mối liên kết bền vững, lâu dài", "D. Commerce Research Methodology"],
+      "correct": "C"
+    },
+    {
+      "id": "s5-mc7",
+      "type": "mc",
+      "question": "e-CRM (CRM 1.0) đề cập đến ____.",
+      "options": ["A. Việc phân phối các công cụ quản lý CRM dưới dạng thiết bị/phần mềm điện tử", "B. Tiếp thị qua mạng lưới truyền thông xã hội", "C. Chăm sóc khách hàng qua điện thoại di động", "D. Quản trị khách hàng bằng giấy tờ vật lý in ra"],
+      "correct": "A"
+    },
+    {
+      "id": "s5-mc8",
+      "type": "mc",
+      "question": "SCRM (Social CRM / CRM 2.0) là ____.",
+      "options": ["A. Sự thay thế hoàn toàn cho CRM cũ", "B. CRM được hỗ trợ bằng social media nhằm khích lệ khách hàng tham gia đàm thoại và chủ động tương tác với thương hiệu", "C. Quá trình Tự động hoá qua email điện tử", "D. Một thể loại quảng cáo hiển thị"],
+      "correct": "B"
+    },
+    {
+      "id": "s5-mc9",
+      "type": "mc",
+      "question": "Điểm chạm (touch point) là gì ____.",
+      "options": ["A. Bất kỳ điểm tiếp xúc hay tương tác nào tạo ra sự giao tiếp giữa khách hàng và thương hiệu", "B. Chỉ là Một hình thức quảng cáo bảng to", "C. Một phương thức quẹt thẻ ngân hàng", "D. Tên gọi Một nền tảng không gian mạng xã hội"],
+      "correct": "A"
+    },
+    {
+      "id": "s5-mc10",
+      "type": "mc",
+      "question": "Customer-touching applications (Các ứng dụng tương tác trực tiếp với khách lưới) là nơi mà khách hàng ____.",
+      "options": ["A. Gọi điện cho các nhân viên tư vấn", "B. Chủ động tương tác trực tiếp bằng phần mềm / bot ứng dụng mà không cần đi qua nhân viên", "C. Gửi email yêu cầu đến ban giám đốc", "D. Ghé thăm chuỗi các cửa hàng cung cấp vật lý trực tiếp"],
+      "correct": "B"
+    },
+    {
+      "id": "s5-mc11",
+      "type": "mc",
+      "question": "Chăm sóc khách hàng chủ động (Proactive customer service) ____.",
+      "options": ["A. Chỉ thụ động há miệng đợi khách hàng khiếu nại (complain) mới giải quyết", "B. Chỉ triển khai trong vòng vài giờ hành chính doanh nghiệp", "C. Gắn kết và giải quyết các nhu cầu của khách hàng trước khi các vấn đề này kịp bùng lên thành rắc rối", "D. Không yêu cầu bất kỳ một sự theo dõi quan sát nào"],
+      "correct": "C"
+    },
+    {
+      "id": "s5-tf1",
+      "type": "tf",
+      "question": "SCRM là nền tảng kế tục mở rộng nâng cao của CRM truyền thống, chứ KHÔNG phải là sự thay thế cho nó.",
+      "correct": true
+    },
+    {
+      "id": "s5-tf2",
+      "type": "tf",
+      "question": "Chăm sóc khách hàng phản ứng (Reactive customer service) giao tiếp và quan tâm khách hàng ngay cả từ việc vấn đề lỗi chưa xảy ra.",
+      "correct": false
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "session": 3,
+  "chapter": "Ch.1 §1.3",
+  "title": "Lý thuyết & Khái niệm hỗ trợ cho Thương Mại Xã Hội",
+  "time_limit_minutes": 12,
+  "questions": [
+    {
+      "id": "s3-mc1",
+      "type": "mc",
+      "question": "Mô hình AIDA mô tả ____.",
+      "options": ["A. Các bước trong tiếp thị truyền thông xã hội (social media marketing)", "B. Các mức độ gắn kết của người tiêu dùng", "C. Một tập hợp các sự kiện phổ biến xảy ra như một phản ứng đối với một quảng cáo", "D. Các chiến lược thương mại xã hội"],
+      "correct": "C"
+    },
+    {
+      "id": "s3-mc2",
+      "type": "mc",
+      "question": "Mô hình Dentsu Group (AISAS) phản ánh các hành động đặc thù của ____.",
+      "options": ["A. Thương mại xã hội (Social commerce)", "B. Quảng cáo truyền thống", "C. Chỉ riêng thương mại điện tử (E-commerce only)", "D. Báo in (Print media)"],
+      "correct": "A"
+    },
+    {
+      "id": "s3-mc3",
+      "type": "mc",
+      "question": "____ là người cố gắng thuyết phục những người khác trong trung tâm mua sắm mua sản phẩm.",
+      "options": ["A. Người khởi xướng (Initiator)", "B. Người có sức ảnh hưởng (Influencer)", "C. Người quyết định (Decider)", "D. Người mua (Buyer)"],
+      "correct": "B"
+    },
+    {
+      "id": "s3-mc4",
+      "type": "mc",
+      "question": "Cá nhân hóa (Personalization) đề cập đến ____.",
+      "options": ["A. Kết hợp các dịch vụ, sản phẩm và nội dung quảng cáo với các cá nhân dựa trên sở thích của họ", "B. Gửi email hàng loạt cho tất cả khách hàng", "C. Sử dụng mạng xã hội để chăm sóc khách hàng", "D. Tạo ra các chiến dịch tiếp thị chung chung"],
+      "correct": "A"
+    },
+    {
+      "id": "s3-mc5",
+      "type": "mc",
+      "question": "Cookies là ____.",
+      "options": ["A. Các công cụ theo dõi trên mạng xã hội", "B. Các nền tảng quảng cáo", "C. Các tệp nhỏ từ một trang web được lưu trên máy tính của người dùng để xác định họ trong những lần truy cập lại", "D. Các hệ thống cơ sở dữ liệu"],
+      "correct": "C"
+    },
+    {
+      "id": "s3-mc6",
+      "type": "mc",
+      "question": "Mục tiêu hành vi (Behavioral targeting) sử dụng ____ để thiết kế các quảng cáo hiệu quả hơn.",
+      "options": ["A. Chỉ nhân khẩu học của khách hàng", "B. Các bài đăng trên mạng xã hội", "C. Dữ liệu địa lý", "D. Hành vi duyệt web và thông tin cá nhân của người tiêu dùng"],
+      "correct": "D"
+    },
+    {
+      "id": "s3-mc7",
+      "type": "mc",
+      "question": "Tiếp thị truyền miệng (WoM / Word-of-Mouth) phụ thuộc vào ____.",
+      "options": ["A. Sự uy tín của giao tiếp giữa người với người", "B. Quảng cáo truyền hình", "C. Báo in", "D. Biển quảng cáo (Billboard)"],
+      "correct": "A"
+    },
+    {
+      "id": "s3-mc8",
+      "type": "mc",
+      "question": "Truyền miệng kỹ thuật số (Digital WOM) là ____.",
+      "options": ["A. Tiếp thị qua email", "B. Quảng cáo trả phí trên mạng xã hội", "C. Truyền miệng truyền thống", "D. Một quá trình lặp đi lặp lại của việc truyền thông điệp điện tử từ người này sang bạn bè rồi đến bạn bè của bạn bè"],
+      "correct": "D"
+    },
+    {
+      "id": "s3-mc9",
+      "type": "mc",
+      "question": "Tiếp thị lan truyền (Viral marketing) được thực hiện ____.",
+      "options": ["A. Thông qua các quảng cáo trên truyền hình", "B. Thông qua email, tin nhắn và chia sẻ chuyển tiếp trên mạng xã hội", "C. Chỉ thông qua quảng cáo trả phí", "D. Thông qua báo in"],
+      "correct": "B"
+    },
+    {
+      "id": "s3-mc10",
+      "type": "mc",
+      "question": "Tâm lý học xã hội (Social psychology) là môn học nghiên cứu về ____.",
+      "options": ["A. Cách tính cách, thái độ, và hành vi bị ảnh hưởng bởi những nhóm xã hội", "B. Lập trình máy tính cho mạng xã hội", "C. Các phương pháp nghiên cứu thị trường", "D. Hiệu quả của quảng cáo"],
+      "correct": "A"
+    },
+    {
+      "id": "s3-mc11",
+      "type": "mc",
+      "question": "Vốn xã hội (Social capital) đề cập đến ____.",
+      "options": ["A. Đầu tư tài chính vào mạng xã hội", "B. Ngân sách tiếp thị", "C. Chi phí tiếp thị trên mạng xã hội", "D. Giá trị được tạo ra bởi sự kết nối giữa các cá nhân trong một mạng xã hội"],
+      "correct": "D"
+    },
+    {
+      "id": "s3-mc12",
+      "type": "mc",
+      "question": "Sự hỗ trợ xã hội (Social support) đề cập đến ____.",
+      "options": ["A. Cảm nhận của một cá nhân về việc được quan tâm, được phản hồi và được giúp đỡ bởi nhóm xã hội", "B. Hỗ trợ tài chính từ các công ty truyền thông xã hội", "C. Chăm sóc khách hàng thông qua mạng xã hội", "D. Hỗ trợ kỹ thuật cho các nền tảng xã hội"],
+      "correct": "A"
+    },
+    {
+      "id": "s3-tf1",
+      "type": "tf",
+      "question": "Sự tuân thủ (Conformity) là việc thay đổi hành vi của một người để giống với những người khác trong nhóm hơn.",
+      "correct": true
+    }
+  ]
+}

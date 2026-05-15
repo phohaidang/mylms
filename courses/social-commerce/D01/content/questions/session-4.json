@@ -1,0 +1,125 @@
+{
+  "session": 4,
+  "chapter": "Ch.2 §2.1–2.2",
+  "title": "Tiếp thị Truyền thông MXH, Engagement & Metrics",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "s4-mc1",
+      "type": "mc",
+      "question": "Lắng nghe tập thể (Collective listening) bao gồm ____.",
+      "options": ["A. Theo dõi những cuộc trò chuyện cá nhân", "B. Nghiên cứu định lượng và định tính cộng với việc giám sát qua các bảng điều khiển trực tiếp (live dashboards)", "C. Gửi các bảng khảo sát qua email", "D. Chỉ phỏng vấn nhóm tập trung (focus group)"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc2",
+      "type": "mc",
+      "question": "Lắng nghe cá nhân (Individual listening) bao gồm ____.",
+      "options": ["A. Tham gia vào các cuộc trò chuyện trên mạng xã hội và theo dõi các cuộc thảo luận cá nhân", "B. Phân tích dữ liệu lớn (big data)", "C. Sử dụng dashboards", "D. Đọc các báo cáo thường niên"],
+      "correct": "A"
+    },
+    {
+      "id": "s4-mc3",
+      "type": "mc",
+      "question": "Nhắm mục tiêu vi mô (Microtargeting) đề cập đến ____.",
+      "options": ["A. Việc phát sóng quảng cáo tới một tập khán giả rộng lớn", "B. Chỉ nhắm mục tiêu người dùng trên di động", "C. Việc sử dụng phân tích dữ liệu mạng xã hội", "D. Các thông điệp tự động, chi phí thấp được gửi đến các thị trường quy mô hẹp và được nhắm mục tiêu một cách chính xác"],
+      "correct": "D"
+    },
+    {
+      "id": "s4-mc4",
+      "type": "mc",
+      "question": "Phương tiện trả phí (Paid media) đề cập đến ____.",
+      "options": ["A. Nội dung do người dùng tự tạo ra", "B. Trang web thuộc sở hữu của công ty", "C. Việc một thương hiệu trả tiền để tận dụng và hiển thị trên không gian mạng xã hội", "D. Phạm vi tiếp cận mạng xã hội tự nhiên (Organic reach)"],
+      "correct": "C"
+    },
+    {
+      "id": "s4-mc5",
+      "type": "mc",
+      "question": "Tiếp thị nội dung (Content marketing) đề cập đến ____.",
+      "options": ["A. Việc mua không gian quảng cáo", "B. Việc sử dụng những người có sức ảnh hưởng (influencers)", "C. Việc tạo ra và phân phối nội dung có giá trị, có tính liên quan và nhất quán để thu hút một nhóm đối tượng cụ thể", "D. Chỉ sử dụng bản tin email (Email newsletters)"],
+      "correct": "C"
+    },
+    {
+      "id": "s4-mc6",
+      "type": "mc",
+      "question": "Quảng cáo xã hội (Social Ad) là một loại quảng cáo mà ____.",
+      "options": ["A. Chỉ xuất hiện trên TV", "B. Sử dụng các ấn phẩm in", "C. Được gửi đi bằng email", "D. Kết hợp với các tương tác của người dùng như hình đại diện và tên của họ"],
+      "correct": "D"
+    },
+    {
+      "id": "s4-mc7",
+      "type": "mc",
+      "question": "Advergaming đề cập đến ____.",
+      "options": ["A. Sử dụng phân tích dữ liệu mạng xã hội", "B. Các trò chơi tích hợp thương hiệu hoặc sản phẩm của một công ty", "C. Các chiến dịch tiếp thị qua email", "D. Đánh giá của khách hàng"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc8",
+      "type": "mc",
+      "question": "Widgets là phần mềm ____.",
+      "options": ["A. Các nền tảng truyền thông xã hội", "B. Các công ty quảng cáo", "C. Các ứng dụng web cỡ nhỏ có thể chia sẻ và hiển thị nội dung khi được nhúng vào các tab, trang web", "D. File đính kèm email"],
+      "correct": "C"
+    },
+    {
+      "id": "s4-mc9",
+      "type": "mc",
+      "question": "Phương tiện truyền thông kiếm được (Earned media) là ____.",
+      "options": ["A. Quảng cáo đã trả phí", "B. Xuất hiện khi nội dung về thương hiệu được tự động chia sẻ và lan truyền bởi chính người tiêu dùng nói về nó", "C. Trang web chính thức của công ty", "D. Truyền thông nội bộ"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc10",
+      "type": "mc",
+      "question": "Tiếp thị lan truyền (Viral marketing) là một kỹ thuật ____.",
+      "options": ["A. Chỉ dùng duy nhất quảng cáo trên TV", "B. Tác động và khiến người dùng tự mình truyền lại các thông điệp tiếp thị cho người khác", "C. Đòi hỏi một ngân sách rất lớn", "D. Chỉ nhắm vào những người đăng ký email"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc11",
+      "type": "mc",
+      "question": "Danh tiếng (Reputation) đề cập đến ____.",
+      "options": ["A. Giá cổ phiếu của tập đoàn", "B. Mức độ thỏa mãn của nhân viên", "C. Những niềm tin hay nhận định chung mà xã hội đang có về một đối tượng", "D. Số lượng theo dõi trên mạng xã hội"],
+      "correct": "C"
+    },
+    {
+      "id": "s4-mc12",
+      "type": "mc",
+      "question": "Theo báo cáo của Qualman, chỉ ____ phần trăm người tiêu dùng là thực sự tin vào quảng cáo.",
+      "options": ["A. 50", "B. 14", "C. 30", "D. 75"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc13",
+      "type": "mc",
+      "question": "SEO là quá trình ____.",
+      "options": ["A. Mua các quảng cáo tài trợ", "B. Cải thiện mức hiển thị (visibility) tự nhiên của một thương hiệu trên các trang kết quả tìm kiếm", "C. Gửi các email lạnh (cold emails) cho khách hàng", "D. Khởi tạo tài khoản MXH"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc14",
+      "type": "mc",
+      "question": "Số liệu hiệu suất (performance metric) là ____.",
+      "options": ["A. Cuộc đánh giá kết quả nhân sự", "B. Một thước đo cụ thể dùng để đánh giá kết quả thực thi dựa trên các mục tiêu đã vạch ra (objectives)", "C. Một bài viết bài chia sẻ trên fanpage", "D. Một bản cáo bạch tài chính"],
+      "correct": "B"
+    },
+    {
+      "id": "s4-mc15",
+      "type": "mc",
+      "question": "Số liệu gắn kết (Engagement metrics) thường ____.",
+      "options": ["A. Bất di bất dịch và áp dụng cho mọi nơi", "B. Chỉ nói về duy nhất lượng followers", "C. Không có điểm dừng và phụ thuộc chặt chẽ vào mục tiêu cụ thể của từng chiến dịch cụ thể", "D. Không thể cân đo học đong đếm"],
+      "correct": "C"
+    },
+    {
+      "id": "s4-tf1",
+      "type": "tf",
+      "question": "Công cụ chia sẻ (Sharing tools) cho phép tích hợp các phần thảo luận xã hội vào trong giao diện trang web.",
+      "correct": false
+    },
+    {
+      "id": "s4-tf2",
+      "type": "tf",
+      "question": "SEO là quá trình cải thiện sự nhận biết (visibility) của công ty hay thương hiệu trên trang kết quả của các công cụ tìm kiếm.",
+      "correct": true
+    }
+  ]
+}
