@@ -6,7 +6,7 @@
   ],
   "functions": {
     "api/index.js": {
-      "includeFiles": "{content/**,course-config.json}"
+      "includeFiles": "{_sync/**,content/**,course-config.json}"
     }
   }
 }

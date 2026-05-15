@@ -6,6 +6,10 @@
   "scripts": {
     "dev:client": "npx vite core/client --port 5173",
     "build:client": "npx vite build core/client",
+    "sync": "node core/scripts/sync-deploy.js",
+    "sync:all": "node core/scripts/sync-deploy.js --all",
+    "sync:list": "node core/scripts/sync-deploy.js --list",
+    "predeploy": "node core/scripts/sync-deploy.js --all",
     "scaffold:course": "node core/scripts/scaffold-course.js",
     "scaffold:class": "node core/scripts/scaffold-class.js"
   },

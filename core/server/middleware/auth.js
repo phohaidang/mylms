@@ -1,13 +1,21 @@
 import jwt from 'jsonwebtoken';
 
 /**
+ * Generate JWT token for a user
+ */
+export function generateToken(user) {
+  return jwt.sign(
+    { id: user.student_id, email: user.email, full_name: user.full_name, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+}
+
+/**
  * JWT Authentication middleware
  * Extracts token from Authorization header, verifies, attaches user to req
  */
 export function authenticate(req, res, next) {
-  // CHO PHÉP TẤT CẢ CÁC YÊU CẦU LẤY DỮ LIỆU (GET) ĐI QUA
-  if (req.method === 'GET') return next();
-
   const authHeader = req.headers.authorization;
   
   if (!authHeader || !authHeader.startsWith('Bearer ')) {

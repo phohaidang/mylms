@@ -29,7 +29,8 @@ const router = Router();
 router.get('/chapters', authenticate, async (req, res) => {
   try {
     const chapters = [];
-    for (let i = 1; i <= 4; i++) {
+    const totalChapters = req.app.locals.courseConfig?.meta?.chapters || 9;
+    for (let i = 1; i <= totalChapters; i++) {
       const ch = loadChapter(i, req.app.locals.contentDir);
       if (!ch) continue;
       
