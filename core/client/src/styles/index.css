@@ -1767,6 +1767,39 @@ tbody tr:hover {
 
 .goal-check-icon {
   font-size: 1.2rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.goal-item-done .goal-check-icon {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+
+.goal-item:not(.goal-item-done):hover .goal-check-icon {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.goal-check-icon::after {
+  content: '✓';
+  font-weight: 900;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.goal-item-done .goal-check-icon::after {
+  opacity: 1;
 }
 
 .goal-item-num {
@@ -1774,8 +1807,8 @@ tbody tr:hover {
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-light);
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;

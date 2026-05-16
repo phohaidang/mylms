@@ -152,8 +152,8 @@ async function renderGoals(container) {
         <div class="goal-dash-items">
           ${displayItems.map((item, idx) => `
             <div class="goal-dash-item ${item.completed ? 'goal-dash-item-done' : ''}">
-              <span class="goal-dash-check">${item.completed ? '✅' : '⬜'}</span>
-              <span class="goal-dash-item-text">${item.text}</span>
+              <div class="goal-check-icon" style="width: 18px; height: 18px; border-width: 1px"></div>
+              <span class="goal-dash-item-text" style="padding-left: 0.5rem">${item.text}</span>
             </div>
           `).join('')}
           ${hasMore ? `<div style="font-size: 0.82rem; color: var(--text-muted); padding-left: 2rem; margin-top: 0.25rem">... và ${items.length - 4} mục tiêu khác</div>` : ''}

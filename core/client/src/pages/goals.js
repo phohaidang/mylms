@@ -78,7 +78,7 @@ export async function renderGoalsPage(app) {
           ${items.map((item, idx) => `
             <div class="goal-item ${item.completed ? 'goal-item-done' : ''}" data-id="${item.id}" style="cursor: pointer">
               <div class="goal-item-main" style="display: flex; align-items: center; gap: 0.75rem; flex: 1">
-                <div class="goal-check-icon">${item.completed ? '✅' : '⬜'}</div>
+                <div class="goal-check-icon"></div>
                 <span class="goal-item-num">${idx + 1}</span>
                 <span class="goal-item-text ${item.completed ? 'goal-text-done' : ''}">${item.text}</span>
               </div>
