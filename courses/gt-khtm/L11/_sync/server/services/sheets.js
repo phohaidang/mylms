@@ -9,7 +9,6 @@ import { google } from 'googleapis';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { Readable } from 'stream';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -54,19 +53,24 @@ let sheets = null;
 let drive = null;
 const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_ID;
 
-if (!IS_MOCK) {
-  const auth = new google.auth.GoogleAuth({
-    credentials: {
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY 
-        ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n').replace(/"/g, '') 
-        : undefined
-    },
-    scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
-  });
-  sheets = google.sheets({ version: 'v4', auth });
-  drive = google.drive({ version: 'v3', auth });
+try {
+  if (!IS_MOCK) {
+    const auth = new google.auth.GoogleAuth({
+      credentials: {
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY 
+          ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n').replace(/"/g, '') 
+          : undefined
+      },
+      scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
+    });
+    sheets = google.sheets({ version: 'v4', auth });
+    drive = google.drive({ version: 'v3', auth });
+  }
+} catch (err) {
+  console.error('❌ Google API Init Error:', err);
 }
+
 
 // ============ UNIFIED API ============
 
@@ -312,7 +316,7 @@ export async function createBackup() {
   if (IS_MOCK) return { message: 'Mock mode: no backup created' };
   
   try {
-    const timestamp = new Date().toLocaleString('vi-VN').replace(/[/:]/g, '-');
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
     const originalTitle = ss.data.properties.title;
     
