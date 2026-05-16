@@ -121,6 +121,15 @@ export async function findOne(sheetName, predicate) {
   return all.find(predicate);
 }
 
+/**
+ * Count rows matching a condition
+ */
+export async function count(sheetName, predicate) {
+  const all = await getAll(sheetName);
+  return all.filter(predicate).length;
+}
+
+
 async function ensureSheetExists(sheetName) {
   try {
     const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
