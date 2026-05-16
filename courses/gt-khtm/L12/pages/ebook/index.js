@@ -9,7 +9,7 @@ export async function renderEbookIndex(app) {
     app.innerHTML = `
       <div class="container page">
         <div class="page-header">
-          <h1 class="page-title">📖 eBook — Thương mại Xã hội (ITS717)</h1>
+          <h1 class="page-title">📖 eBook — ${data.course.name} (${data.course.code})</h1>
           <p class="page-subtitle">Học theo khung SCQA · Active Recall 3 cấp độ · Bloom's Taxonomy</p>
         </div>
 

@@ -29,7 +29,8 @@ const router = Router();
 router.get('/chapters', authenticate, async (req, res) => {
   try {
     const chapters = [];
-    const totalChapters = req.app.locals.courseConfig?.meta?.chapters || 9;
+    const course = req.app.locals.courseConfig?.meta || { name: 'LMS Hub', code: '' };
+    const totalChapters = course.chapters || 9;
     for (let i = 1; i <= totalChapters; i++) {
       const ch = loadChapter(i, req.app.locals.contentDir);
       if (!ch) continue;
@@ -59,7 +60,10 @@ router.get('/chapters', authenticate, async (req, res) => {
       });
     }
     
-    res.json({ chapters });
+    res.json({ 
+      course,
+      chapters 
+    });
   } catch (err) {
     console.error('eBook chapters error:', err);
     res.status(500).json({ error: 'Lỗi hệ thống' });
