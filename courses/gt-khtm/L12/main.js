@@ -69,8 +69,8 @@ function renderNavbar() {
       </div>
       <div class="navbar-bottom">
         <div class="navbar-inner" style="height: 40px">
-          <div class="navbar-tagline" style="font-size: 0.78rem; color: var(--text-muted); font-style: italic; opacity: 0.8">
-            Dạy bằng TÂM — Dẫn lối bằng TRI THỨC — Đồng hành bằng CÂU CHUYỆN THẬT
+          <div class="navbar-tagline" style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.3px">
+            Dạy bằng <span style="color: var(--accent)">TÂM</span> — Dẫn lối bằng <span style="color: var(--accent)">TRI THỨC</span> — Đồng hành bằng <span style="color: var(--accent)">CÂU CHUYỆN THẬT</span>
           </div>
           <div class="navbar-user">
             <span class="user-name">Đang đăng nhập: <strong>${user.full_name}</strong></span>
