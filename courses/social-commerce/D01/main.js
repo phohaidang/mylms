@@ -28,13 +28,15 @@ function renderNavbar() {
   if (user.must_change_password) {
     return `
       <nav class="navbar">
-        <div class="navbar-inner">
-          <div class="navbar-brand">
-            <div class="brand-icon">🎓</div>
-            <span>LMS Hub</span>
-          </div>
-          <div class="navbar-user">
-            <button class="btn-logout" id="btn-logout">Đăng xuất</button>
+        <div class="navbar-top">
+          <div class="navbar-inner">
+            <div class="navbar-brand">
+              <div class="brand-icon">🎓</div>
+              <span>LMS Hub</span>
+            </div>
+            <div class="navbar-user">
+              <button class="btn-logout" id="btn-logout">Đăng xuất</button>
+            </div>
           </div>
         </div>
       </nav>
@@ -42,29 +44,34 @@ function renderNavbar() {
   }
 
   const adminLinks = isAdmin() ? `
-    <a href="#/admin/dashboard" class="${location.hash.includes('admin') ? 'active' : ''}">🛠 Admin</a>
+    <li><a href="#/admin/dashboard" class="${location.hash.includes('admin') ? 'active' : ''}">🛠 Admin</a></li>
   ` : '';
   
   return `
     <nav class="navbar">
-      <div class="navbar-inner">
-        <div class="navbar-brand">
-          <div class="brand-icon">🎓</div>
-          <span>LMS Hub</span>
+      <div class="navbar-top">
+        <div class="navbar-inner">
+          <a href="#/dashboard" class="navbar-brand">
+            <div class="brand-icon">🎓</div>
+            <span>LMS Hub</span>
+          </a>
+          <ul class="navbar-nav">
+            <li><a href="#/dashboard" class="${location.hash === '#/dashboard' ? 'active' : ''}">📊 Dashboard</a></li>
+            <li><a href="#/course" class="${location.hash === '#/course' ? 'active' : ''}">📚 Buổi học</a></li>
+            <li><a href="#/ebook" class="${location.hash.startsWith('#/ebook') ? 'active' : ''}">📖 eBook</a></li>
+            <li><a href="#/teacher" class="${location.hash === '#/teacher' ? 'active' : ''}">👨‍🏫 Thầy Đăng</a></li>
+            <li><a href="#/board" class="${location.hash === '#/board' ? 'active' : ''}">🏆 Lớp học</a></li>
+            <li><a href="#/grades" class="${location.hash === '#/grades' ? 'active' : ''}">📋 Bảng điểm</a></li>
+            ${adminLinks}
+          </ul>
         </div>
-        <ul class="navbar-nav">
-          <li><a href="#/dashboard" class="${location.hash === '#/dashboard' ? 'active' : ''}">📊 Dashboard</a></li>
-          <li><a href="#/course" class="${location.hash === '#/course' ? 'active' : ''}">📚 Buổi học</a></li>
-          <li><a href="#/ebook" class="${location.hash.startsWith('#/ebook') ? 'active' : ''}">📖 eBook</a></li>
-          <li><a href="#/teacher" class="${location.hash === '#/teacher' ? 'active' : ''}">👨‍🏫 Thầy Đăng</a></li>
-          <li><a href="#/board" class="${location.hash === '#/board' ? 'active' : ''}">🏆 Lớp học</a></li>
-          <li><a href="#/grades" class="${location.hash === '#/grades' ? 'active' : ''}">📋 Bảng điểm</a></li>
-
-          <li>${adminLinks}</li>
-        </ul>
-        <div class="navbar-user">
-          <span class="user-name">${user.full_name}</span>
-          <button class="btn-logout" id="btn-logout">Đăng xuất</button>
+      </div>
+      <div class="navbar-bottom">
+        <div class="navbar-inner" style="justify-content: flex-end; height: 40px">
+          <div class="navbar-user">
+            <span class="user-name">Đang đăng nhập: <strong>${user.full_name}</strong></span>
+            <button class="btn-logout" id="btn-logout" style="padding: 0.2rem 0.6rem">Đăng xuất</button>
+          </div>
         </div>
       </div>
     </nav>

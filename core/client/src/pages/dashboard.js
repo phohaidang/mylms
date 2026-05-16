@@ -7,7 +7,7 @@ export async function renderDashboard(app) {
     <div class="container page">
       <div class="page-header">
         <h1 class="page-title">Xin chào, ${user.full_name}! 👋</h1>
-        <p class="page-subtitle">BAF737 — Giới thiệu Khoa học máy tính | ĐH Ngân Hàng TP.HCM</p>
+        <p class="page-subtitle" id="course-subtitle" style="opacity: 0.7">Đang tải thông tin lớp học...</p>
       </div>
 
       <div class="grid grid-4" id="stats">
@@ -55,10 +55,17 @@ export async function renderDashboard(app) {
 
   // Load stats
   try {
-    const [quizzes, grades] = await Promise.all([
+    const [quizzes, grades, courseData] = await Promise.all([
       api.get('/quizzes/my/attempts'),
-      api.get('/grades/me')
+      api.get('/grades/me'),
+      api.get('/courses/sessions')
     ]);
+
+    // Update course info
+    const subtitle = document.getElementById('course-subtitle');
+    if (subtitle && courseData) {
+      subtitle.innerText = `${courseData.course.code} — ${courseData.course.name} | ĐH Ngân Hàng TP.HCM`;
+    }
 
     const quizDone = quizzes.length;
     const avgScore = quizzes.length > 0

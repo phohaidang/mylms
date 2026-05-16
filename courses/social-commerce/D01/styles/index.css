@@ -155,7 +155,17 @@ a:hover { color: var(--accent-hover); }
   position: sticky;
   top: 0;
   z-index: 100;
+  padding: 0;
+}
+
+.navbar-top {
+  border-bottom: 1px solid var(--border);
   padding: 0 1.5rem;
+}
+
+.navbar-bottom {
+  padding: 0 1.5rem;
+  background: rgba(255,255,255,0.05);
 }
 
 .navbar-inner {
@@ -164,7 +174,8 @@ a:hover { color: var(--accent-hover); }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  min-height: 64px;
+  padding: 0.5rem 0;
 }
 
 .navbar-brand {
@@ -192,18 +203,20 @@ a:hover { color: var(--accent-hover); }
   display: flex;
   gap: 0.25rem;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .navbar-nav a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   color: var(--text-secondary);
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   transition: all var(--transition);
+  white-space: nowrap;
 }
 
 .navbar-nav a:hover,

@@ -55,10 +55,17 @@ export async function renderDashboard(app) {
 
   // Load stats
   try {
-    const [quizzes, grades] = await Promise.all([
+    const [quizzes, grades, courseData] = await Promise.all([
       api.get('/quizzes/my/attempts'),
-      api.get('/grades/me')
+      api.get('/grades/me'),
+      api.get('/courses/sessions')
     ]);
+
+    // Update course info
+    const subtitle = document.getElementById('course-subtitle');
+    if (subtitle && courseData) {
+      subtitle.innerText = `${courseData.course.code} — ${courseData.course.name} | ĐH Ngân Hàng TP.HCM`;
+    }
 
     const quizDone = quizzes.length;
     const avgScore = quizzes.length > 0
