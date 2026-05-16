@@ -121,6 +121,24 @@ export async function findOne(sheetName, predicate) {
   return all.find(predicate);
 }
 
+async function ensureSheetExists(sheetName) {
+  try {
+    const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
+    const sheetExists = ss.data.sheets.some(s => s.properties.title === sheetName);
+    if (!sheetExists) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId: SPREADSHEET_ID,
+        requestBody: {
+          requests: [{ addSheet: { properties: { title: sheetName } } }]
+        }
+      });
+      console.log(`📝 Auto-created sheet: ${sheetName}`);
+    }
+  } catch (err) {
+    console.error(`Error ensuring sheet ${sheetName} exists:`, err);
+  }
+}
+
 /**
  * Append a row to a sheet
  */
@@ -131,6 +149,8 @@ export async function append(sheetName, data) {
     saveMockDB();
     return data;
   }
+  
+  await ensureSheetExists(sheetName);
   
   const all = await getAll(sheetName);
   const headers = all.length > 0
@@ -176,6 +196,8 @@ export async function update(sheetName, predicate, newData) {
     }
     return null;
   }
+  
+  await ensureSheetExists(sheetName);
   
   // For Google Sheets: read all, find row index, update
   const res = await sheets.spreadsheets.values.get({
