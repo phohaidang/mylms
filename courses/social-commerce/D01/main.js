@@ -67,7 +67,10 @@ function renderNavbar() {
         </div>
       </div>
       <div class="navbar-bottom">
-        <div class="navbar-inner" style="justify-content: flex-end; height: 40px">
+        <div class="navbar-inner" style="height: 40px">
+          <div class="navbar-tagline" style="font-size: 0.78rem; color: var(--text-muted); font-style: italic; opacity: 0.8">
+            Dạy bằng TÂM — Dẫn lối bằng TRI THỨC — Đồng hành bằng CÂU CHUYỆN THẬT
+          </div>
           <div class="navbar-user">
             <span class="user-name">Đang đăng nhập: <strong>${user.full_name}</strong></span>
             <button class="btn-logout" id="btn-logout" style="padding: 0.2rem 0.6rem">Đăng xuất</button>

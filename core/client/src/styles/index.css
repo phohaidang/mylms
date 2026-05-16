@@ -178,6 +178,12 @@ a:hover { color: var(--accent-hover); }
   padding: 0.5rem 0;
 }
 
+@media (max-width: 600px) {
+  .navbar-tagline {
+    display: none;
+  }
+}
+
 .navbar-brand {
   display: flex;
   align-items: center;
