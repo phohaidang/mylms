@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 2 – Công cụ và Nền tảng cho Thương Mại Xã Hội</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5; --surface: #ffffff; --surface-alt: #f3efe9;
+    --ink: #1a1612; --ink-light: #5a5249; --ink-muted: #8a8279;
+    --accent: #c44b25; --accent-light: #fdf0ec; --accent-dark: #9a3a1c;
+    --teal: #1a7a6d; --teal-light: #e8f5f2;
+    --blue: #2c5aa0; --blue-light: #edf2fa;
+    --gold: #b8860b; --gold-light: #fdf8ec;
+    --border: #e5dfd6;
+    --shadow: 0 2px 12px rgba(26,22,18,0.06);
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Source Sans Pro', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; font-size: 16.5px; }
+
+  .hero { background: linear-gradient(135deg, #1a1612 0%, #2c2520 40%, #3d2e1e 100%); color: #fff; padding: 3.5rem 2rem 3rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; margin-bottom: 1.2rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.6rem; }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { font-size: 1.15rem; color: rgba(255,255,255,0.7); font-weight: 300; max-width: 620px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 1.8rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.12); }
+  .hero-meta-item { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+  .hero-meta-item strong { display: block; color: rgba(255,255,255,0.92); font-size: 1rem; font-weight: 600; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
+  h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; }
+  .section-desc { color: var(--ink-light); font-size: 1rem; margin-bottom: 2rem; max-width: 680px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem 2rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+  .card-accent { border-left: 4px solid var(--accent); }
+  .card-teal { border-left: 4px solid var(--teal); background: var(--teal-light); }
+  .card-blue { border-left: 4px solid var(--blue); background: var(--blue-light); }
+  .card-gold { border-left: 4px solid var(--gold); background: var(--gold-light); }
+
+  .scqa-flow { display: grid; gap: 0; margin: 1.5rem 0; }
+  .scqa-step { padding: 1.5rem 2rem; position: relative; border-left: 3px solid var(--border); margin-left: 1rem; }
+  .scqa-step::before { position: absolute; left: -3.6rem; top: 1.5rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #fff; }
+  .scqa-step.s { border-color: var(--teal); } .scqa-step.s::before { background: var(--teal); content: 'S'; }
+  .scqa-step.c { border-color: var(--accent); } .scqa-step.c::before { background: var(--accent); content: 'C'; }
+  .scqa-step.q { border-color: var(--blue); } .scqa-step.q::before { background: var(--blue); content: 'Q'; }
+  .scqa-step.a { border-color: var(--gold); } .scqa-step.a::before { background: var(--gold); content: 'A'; }
+  .scqa-step h4 { font-family: 'Source Sans Pro', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .scqa-step.s h4 { color: var(--teal); } .scqa-step.c h4 { color: var(--accent); } .scqa-step.q h4 { color: var(--blue); } .scqa-step.a h4 { color: var(--gold); }
+  .scqa-step p, .scqa-step ul { color: var(--ink-light); font-size: 0.98rem; line-height: 1.75; }
+  .scqa-step ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+  .scqa-step li { margin-bottom: 0.35rem; }
+
+  .timeline { position: relative; margin: 1.5rem 0; }
+  .timeline-item { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge { background: var(--surface-alt); border-radius: 6px; padding: 6px 12px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 500; color: var(--ink-light); white-space: nowrap; }
+  .time-badge.highlight { background: var(--accent-light); color: var(--accent-dark); }
+  .timeline-content h4 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .timeline-content p { font-size: 0.92rem; color: var(--ink-light); line-height: 1.6; }
+
+  .activity { background: var(--accent-light); border: 1px solid #f0d4c9; border-radius: var(--radius); padding: 1.5rem 1.8rem; margin: 1.2rem 0; }
+  .activity-label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .activity h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .activity p, .activity ul { font-size: 0.95rem; color: var(--ink-light); line-height: 1.7; }
+  .activity ul { padding-left: 1.2rem; }
+
+  .discussion { background: var(--teal-light); border: 1px solid #c4e0db; border-radius: var(--radius); padding: 1.5rem 1.8rem; margin: 1.2rem 0; }
+  .discussion-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.6rem; }
+
+  .case-study { background: var(--blue-light); border: 1px solid #c9d6ea; border-radius: var(--radius); padding: 1.5rem 1.8rem; margin: 1.2rem 0; }
+  .case-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+
+  .key-concept { display: flex; gap: 1rem; padding: 1rem 1.4rem; background: var(--surface-alt); border-radius: 8px; margin: 0.8rem 0; align-items: flex-start; }
+  .key-concept .kc-term { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 3px 10px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .key-concept .kc-def { font-size: 0.95rem; color: var(--ink-light); line-height: 1.6; }
+
+  .divider { height: 1px; background: var(--border); margin: 3rem 0; }
+  .footer-note { text-align: center; color: var(--ink-muted); font-size: 0.85rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+  @media print { body { font-size: 11pt; background: #fff; } .hero { background: #333 !important; } .card, .activity, .discussion, .case-study { break-inside: avoid; } }
+  @media (max-width: 640px) { .hero h1 { font-size: 1.8rem; } h2 { font-size: 1.4rem; } .container { padding: 1.5rem 1rem; } .card { padding: 1.3rem 1.2rem; } .timeline-item { grid-template-columns: 80px 1fr; gap: 1rem; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS717 — Chương 1 · Buổi 2/3</div>
+    <h1>Công cụ và Nền tảng cho <span>Thương Mại Xã Hội</span></h1>
+    <p class="hero-sub">Từ Blog đến TikTok Shop, từ Crowdsourcing đến Metaverse — bản đồ công cụ mà mọi doanh nghiệp cần nắm.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>4 tiết (200 phút)</strong>Thời lượng buổi học</div>
+      <div class="hero-meta-item"><strong>Mục 1.2</strong>Công cụ & Nền tảng SC</div>
+      <div class="hero-meta-item"><strong>CLO1, CLO2</strong>Chuẩn đầu ra</div>
+      <div class="hero-meta-item"><strong>Ch.2 Turban</strong>Giáo trình tham khảo</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════ MỤC TIÊU ═══════ -->
+<section>
+  <p class="section-label">Mục tiêu buổi học</p>
+  <h2>Sau buổi học, sinh viên có thể…</h2>
+  <div class="card" style="margin-top:1rem;">
+    <ol style="padding-left:1.3rem; color:var(--ink-light); line-height:2.2;">
+      <li><strong>Mô tả</strong> ba thành phần cơ bản của truyền thông xã hội.</li>
+      <li><strong>Liệt kê</strong> các công cụ SM chính (Blog, Microblog, Wiki, Podcast, RSS) và cách sử dụng trong SC.</li>
+      <li><strong>Phân biệt</strong> mạng xã hội (Social Network) và dịch vụ mạng xã hội (SNS).</li>
+      <li><strong>Mô tả</strong> thương mại xã hội di động (Mobile SC) và các đặc trưng riêng.</li>
+      <li><strong>Giải thích</strong> bản chất của crowdsourcing, crowdfunding và thế giới ảo trong SC.</li>
+      <li><strong>Vận dụng</strong> kiến thức để chọn công cụ/nền tảng phù hợp cho một tình huống kinh doanh cụ thể.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section>
+  <p class="section-label">Lộ trình buổi học</p>
+  <h2>200 phút — Dòng chảy hoạt động</h2>
+  <p class="section-desc">Tỷ lệ ≈ 35% GV dẫn dắt, 65% SV hoạt động & thảo luận. Bắt đầu từ bài tập về nhà (cái Biết) → dẫn sang kiến thức mới.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time-badge highlight">0'–25'</div>
+      <div class="timeline-content">
+        <h4>🔓 Phần 1: Ôn tập & Kết nối từ Buổi 1</h4>
+        <p>Nhắc lại chuỗi khái niệm. SV trình bày bài tập về nhà (nền tảng MXH + tính năng SC). GV kết nối sang nội dung mới.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-badge">25'–75'</div>
+      <div class="timeline-content">
+        <h4>🔧 Phần 2: Các công cụ truyền thông xã hội chính (SCQA #1)</h4>
+        <p>Blog, Microblog, Wiki, RSS, Podcast, chia sẻ nội dung. GV giảng + SV ghép đôi công cụ với ứng dụng SC.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-badge highlight">75'–90'</div>
+      <div class="timeline-content"><h4>☕ Giải lao 15 phút</h4><p></p></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-badge">90'–140'</div>
+      <div class="timeline-content">
+        <h4>🌐 Phần 3: Mạng xã hội, Mobile SC & Crowdsourcing (SCQA #2, #3)</h4>
+        <p>Social Network vs. SNS, năng lực SNS. Case Study Pinterest. Mobile SC đặc trưng. Crowdsourcing/Crowdfunding. Thế giới ảo.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-badge highlight">140'–155'</div>
+      <div class="timeline-content"><h4>☕ Giải lao 15 phút</h4><p></p></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-badge">155'–190'</div>
+      <div class="timeline-content">
+        <h4>🗺️ Phần 4: Hoạt động nhóm — "Bản đồ công cụ SC"</h4>
+        <p>Nhóm giải quyết tình huống DN thực tế: chọn công cụ/nền tảng phù hợp. Trình bày & phản biện chéo.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-badge">190'–200'</div>
+      <div class="timeline-content">
+        <h4>🔑 Phần 5: Tổng kết & Giao nhiệm vụ Buổi 3</h4>
+        <p>Tóm tắt bản đồ công cụ SC, giao bài đọc trước về lý thuyết hành vi người tiêu dùng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 1: ÔN TẬP ═══════ -->
+<section>
+  <p class="section-label">Phần 1 · 25 phút</p>
+  <h2>Ôn tập & Kết nối từ Buổi 1</h2>
+  <p class="section-desc">Bắt đầu từ "cái Biết" — sinh viên đã có bài tập về nhà. Đây là cầu nối tự nhiên sang nội dung mới.</p>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động ôn tập nhanh</div>
+    <h4>Warm-up: 3 câu hỏi flashback (5 phút)</h4>
+    <p>GV hỏi nhanh cả lớp, SV trả lời miệng hoặc giơ tay:</p>
+    <ul>
+      <li><em>"Social Commerce khác E-Commerce truyền thống ở điểm nào quan trọng nhất?"</em> → Yếu tố SOCIAL</li>
+      <li><em>"Ai nhớ được chuỗi 4 khái niệm nền tảng?"</em> → Social Computing → Social Web → Web 2.0 → Social Media</li>
+      <li><em>"Kể tên 1 lợi ích SC cho DN và 1 hạn chế?"</em> → WoM miễn phí / Khó đo ROI</li>
+    </ul>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Trình bày bài tập về nhà</div>
+    <h4>SV trình bày: Nền tảng MXH & tính năng thương mại (15 phút)</h4>
+    <p><strong>Nhắc lại bài tập:</strong> Mỗi SV đã chọn 1 nền tảng MXH yêu thích và liệt kê tất cả tính năng "thương mại".</p>
+    <ul>
+      <li>Gọi 3-4 SV lên trình bày ngắn (3 phút/người): nền tảng nào? tính năng SC nào?</li>
+      <li>Khuyến khích đa dạng: TikTok, Instagram, Facebook, YouTube, Zalo, LinkedIn…</li>
+      <li>Cả lớp nhận xét: <em>"Nền tảng nào có NHIỀU tính năng SC nhất? Tại sao?"</em></li>
+    </ul>
+    <p style="margin-top:0.8rem;"><strong>→ Kỳ vọng:</strong> SV sẽ phát hiện mỗi nền tảng có công cụ khác nhau (live, shop, marketplace, ads, stories…). Đây chính là đầu vào cho bài giảng hôm nay.</p>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 Chuyển tiếp</div>
+    <p>GV chốt: <em>"Các bạn vừa liệt kê rất nhiều tính năng — blog, livestream, marketplace, review, hashtag, ads… Nhưng tất cả những thứ đó thuộc về những LOẠI CÔNG CỤ nào? Hôm nay chúng ta sẽ hệ thống hóa toàn bộ bản đồ công cụ và nền tảng cho thương mại xã hội."</em></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 2: CÔNG CỤ SM — SCQA #1 ═══════ -->
+<section>
+  <p class="section-label">Phần 2 · 50 phút · SCQA #1</p>
+  <h2>Các công cụ truyền thông xã hội chính</h2>
+  <p class="section-desc">Từ Blog đến Podcast, từ Wiki đến RSS — mỗi công cụ có vai trò riêng trong hệ sinh thái SC.</p>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation — Tình huống</h4>
+      <p>Buổi 1 đã xác định Social Media gồm 3 thành phần: (1) Công cụ ứng dụng cho nội dung (text, image, audio, video), (2) Nền tảng phân phối (SNS), (3) Hoạt động xã hội (conversations, sharing, recommendations). SV cũng vừa trình bày nhiều tính năng cụ thể từ bài tập về nhà.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication — Vấn đề phát sinh</h4>
+      <p>Một DN muốn bắt đầu làm SC nhưng đứng trước <strong>hàng chục loại công cụ</strong>: nên viết blog hay quay TikTok? Nên dùng Twitter hay Podcast? Nên tạo Wiki hay chạy ads? Mỗi công cụ có đặc tính riêng, phù hợp mục đích khác nhau. <strong>Chọn sai = lãng phí ngân sách, không hiệu quả.</strong></p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question — Câu hỏi</h4>
+      <p><strong>Có bao nhiêu loại công cụ SM chính? Mỗi loại có đặc tính gì? Và khi nào nên dùng công cụ nào cho SC?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer — Câu trả lời</h4>
+      <p>Giáo trình Turban phân loại các công cụ SM chính thành 6 nhóm. GV sẽ giảng từng nhóm kèm ví dụ thực tế và ứng dụng SC.</p>
+    </div>
+  </div>
+
+  <!-- Khái niệm cốt lõi -->
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>6 nhóm công cụ truyền thông xã hội</h3>
+
+    <div class="key-concept">
+      <span class="kc-term">Blog</span>
+      <span class="kc-def"><strong>Web logging</strong> — nhật ký trực tuyến, nội dung dài, cho phép bình luận, tạo cộng đồng độc giả. <em>Ứng dụng SC:</em> review chi tiết sản phẩm, thought leadership, SEO content marketing. <em>VD:</em> WordPress, Medium, Substack.</span>
+    </div>
+    <div class="key-concept">
+      <span class="kc-term">Microblog</span>
+      <span class="kc-def">Tin nhắn ngắn, hình ảnh, video ngắn. Twitter/X (280 ký tự), Threads (Meta), Weibo. <em>Ứng dụng SC:</em> chăm sóc KH real-time, viral marketing, hashtag campaigns, flash sale announcements.</span>
+    </div>
+    <div class="key-concept">
+      <span class="kc-term">Wiki</span>
+      <span class="kc-def">Công cụ tạo tài liệu cộng tác — nhiều người cùng chỉnh sửa. <em>Ứng dụng SC:</em> knowledge base nội bộ DN, FAQ cộng đồng, product documentation. <em>VD:</em> Wikipedia, Wikia, Notion (wiki nội bộ).</span>
+    </div>
+    <div class="key-concept">
+      <span class="kc-term">RSS</span>
+      <span class="kc-def"><strong>Really Simple Syndication</strong> — phân phối nội dung cập nhật tự động đến người đăng ký. <em>Ứng dụng SC:</em> feed sản phẩm mới, blog updates, deal alerts, price tracking.</span>
+    </div>
+    <div class="key-concept">
+      <span class="kc-term">Podcast</span>
+      <span class="kc-def">Nội dung audio số, phân phối qua Internet. Đang bùng nổ: Spotify, Apple Podcasts. <em>Ứng dụng SC:</em> brand storytelling, thought leadership, sponsored content, affiliate marketing.</span>
+    </div>
+    <div class="key-concept">
+      <span class="kc-term">Chia sẻ nội dung</span>
+      <span class="kc-def">Photo sharing (Instagram, Pinterest), Video sharing (YouTube, TikTok). <strong>UGC (User-Generated Content)</strong> là nền tảng — nội dung do chính người dùng tạo. <em>Ứng dụng SC:</em> unboxing, review, tutorial → link mua hàng trực tiếp.</span>
+    </div>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động kiểm tra nhanh</div>
+    <h4>Ghép đôi: Công cụ ↔ Tình huống kinh doanh (7 phút — cặp đôi)</h4>
+    <p>GV chiếu 5 tình huống, SV thảo luận theo cặp và chọn công cụ phù hợp nhất:</p>
+    <ul>
+      <li>Cửa hàng mỹ phẩm muốn review chi tiết từng sản phẩm → <em>(Blog)</em></li>
+      <li>Hãng hàng không cần phản hồi khiếu nại khách hàng ngay lập tức → <em>(Microblog/Twitter)</em></li>
+      <li>Startup muốn xây dựng tài liệu FAQ cho sản phẩm mới → <em>(Wiki)</em></li>
+      <li>Brand thời trang muốn giới trẻ lan truyền hình ảnh sản phẩm → <em>(Chia sẻ ảnh — Instagram/TikTok)</em></li>
+      <li>Công ty SaaS muốn build community qua nội dung chuyên sâu → <em>(Podcast)</em></li>
+    </ul>
+    <p style="margin-top:0.8rem;"><strong>→ GV tổng kết:</strong> Không có công cụ "tốt nhất" — chỉ có công cụ "phù hợp nhất" cho mục tiêu cụ thể.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 3: MXH, MOBILE SC, CROWDSOURCING ═══════ -->
+<section>
+  <p class="section-label">Phần 3 · 50 phút · SCQA #2 & #3</p>
+  <h2>Mạng xã hội, Mobile SC & Crowdsourcing</h2>
+  <p class="section-desc">Ba lĩnh vực then chốt tạo nên hệ sinh thái nền tảng cho thương mại xã hội hiện đại.</p>
+
+  <!-- SCQA #2: Mạng xã hội -->
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation — Tình huống</h4>
+      <p>Mọi người đều nói "mạng xã hội" nhưng thực tế có sự phân biệt quan trọng giữa <strong>Social Network</strong> (mạng lưới quan hệ) và <strong>Social Network Services — SNS</strong> (nền tảng cung cấp dịch vụ). SV đã dùng Facebook, TikTok hàng ngày nhưng chưa phân tích chúng dưới góc nhìn hệ thống.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication — Vấn đề</h4>
+      <p>Không phải SNS nào cũng giống nhau. Facebook thiên về kết nối bạn bè, LinkedIn về chuyên nghiệp, TikTok về giải trí, Pinterest về cảm hứng mua sắm. Mỗi nền tảng có <strong>năng lực (capabilities)</strong> và <strong>đối tượng</strong> riêng. Doanh nghiệp cần hiểu sự khác biệt để chọn đúng nền tảng.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>Social Network và SNS khác nhau thế nào? Mỗi loại SNS có năng lực gì? Và Pinterest — một nền tảng "chia sẻ ảnh" — lại là case study SC thành công như thế nào?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>Câu trả lời qua phần giảng và case study bên dưới.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>Social Network vs. Social Network Services (SNS)</h3>
+    <div class="key-concept">
+      <span class="kc-term">Social Network</span>
+      <span class="kc-def">Cấu trúc mô tả mối quan hệ xã hội và dòng thông tin giữa các thành viên trong một cộng đồng. Đây là <strong>khái niệm trừu tượng</strong> — tồn tại cả offline lẫn online.</span>
+    </div>
+    <div class="key-concept">
+      <span class="kc-term">SNS</span>
+      <span class="kc-def"><strong>Social Network Services/Sites</strong> (Facebook, LinkedIn, TikTok…) — nền tảng công nghệ cung cấp không gian web miễn phí để người dùng xây dựng hồ sơ, kết nối, chia sẻ, và tương tác. Đây là <strong>công cụ cụ thể</strong>.</span>
+    </div>
+    <p style="color:var(--ink-light); margin-top:1rem; line-height:1.8;">
+      <strong>Năng lực chính của SNS:</strong> Tạo hồ sơ cá nhân/doanh nghiệp, vòng kết nối friends/followers, diễn đàn thảo luận, chia sẻ media (ảnh, video, document), wiki & blog tích hợp, IM & chat, đánh giá/bình luận sản phẩm, bỏ phiếu, newsletter, marketplace, shopping với lời khuyên từ bạn bè.
+    </p>
+    <p style="color:var(--ink-light); margin-top:0.8rem; line-height:1.8;">
+      <strong>Phân loại SNS:</strong> Leisure-oriented (Facebook, TikTok, Snapchat), Professional networking (LinkedIn, Xing), Media sharing (YouTube, Instagram, Pinterest), Virtual worlds (Second Life, Roblox), Enterprise social networks (Yammer, Slack, My Starbucks Idea).
+    </p>
+  </div>
+
+  <!-- CASE STUDY PINTEREST -->
+  <div class="case-study">
+    <div class="case-label">📋 Case Study — Pinterest: Nền tảng SC sáng tạo</div>
+    <h4>Pinterest — Từ "chia sẻ cảm hứng" thành kênh bán hàng</h4>
+    <p style="margin-bottom:1rem;">Pinterest là nền tảng chia sẻ hình ảnh dạng "board" chủ đề — người dùng "pin" sản phẩm, ý tưởng, cảm hứng. Điểm đặc biệt: <strong>tích hợp link mua hàng trực tiếp (buyable pins)</strong>, biến mọi hình ảnh thành cơ hội mua sắm. Đặc biệt mạnh trong thời trang, nội thất, ẩm thực, DIY.</p>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 Thảo luận nhóm (15 phút)</div>
+    <h4>Phân tích Pinterest & so sánh nền tảng</h4>
+    <ul style="padding-left:1.2rem; line-height:1.8;">
+      <li><strong>Nhóm 1-2:</strong> Pinterest khác gì Instagram? Nền tảng nào làm SC tốt hơn? Tại sao?</li>
+      <li><strong>Nhóm 3-4:</strong> Có nền tảng nào tại VN tương tự Pinterest không? (Lemon8, Xiaohongshu?) So sánh.</li>
+      <li><strong>Nhóm 5-6:</strong> Nếu bạn bán hàng handmade (trang sức, nến thơm), bạn chọn nền tảng nào? Giải thích.</li>
+    </ul>
+    <p style="margin-top:0.8rem;"><strong>→ GV tổng kết:</strong> Pinterest thành công vì biến "browsing" (lướt xem) thành "buying" (mua hàng) — đây là bản chất của SC: kết hợp tương tác xã hội với giao dịch thương mại.</p>
+  </div>
+
+  <!-- MOBILE SC -->
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>Thương mại Xã hội Di động (Mobile SC)</h3>
+    <div class="key-concept">
+      <span class="kc-term">Mobile SC</span>
+      <span class="kc-def">Sự kết hợp giữa Mạng xã hội + Thương mại điện tử + Thiết bị di động. Mobile social networking = mạng xã hội mà thành viên chat và kết nối bằng thiết bị di động.</span>
+    </div>
+    <p style="color:var(--ink-light); margin-top:1rem;"><strong>Đặc trưng riêng của Mobile SC (không có ở Desktop):</strong></p>
+    <ul style="padding-left:1.2rem; color:var(--ink-light); line-height:1.8; margin-top:0.5rem;">
+      <li><strong>Location-based services (LBS):</strong> deal theo vị trí, check-in, store finder</li>
+      <li><strong>Push notification:</strong> thông báo flash sale, deal cá nhân hóa</li>
+      <li><strong>One-tap purchase:</strong> mua hàng chỉ 1 chạm (Apple Pay, ZaloPay, MoMo)</li>
+      <li><strong>QR code / NFC:</strong> kết nối offline → online (scan tại cửa hàng → mua online)</li>
+      <li><strong>Camera tích hợp:</strong> scan barcode, AR try-on (thử quần áo ảo), livestream bán hàng</li>
+    </ul>
+    <p style="color:var(--ink-light); margin-top:1rem;"><strong>Ví dụ thực tế tại Việt Nam:</strong> TikTok Shop (xem video → mua ngay trong app), Zalo Shop (chat → chuyển khoản → giao hàng), Shopee Live (livestream → flash sale), GrabMart/Be/Gojek (đặt hàng theo vị trí).</p>
+  </div>
+
+  <!-- CROWDSOURCING -->
+  <div class="card" style="margin-top:1rem;">
+    <h3>Crowdsourcing & Crowdfunding</h3>
+    <div class="key-concept">
+      <span class="kc-term">Crowdsourcing</span>
+      <span class="kc-def">Outsource công việc, giải quyết vấn đề, hoặc thu thập ý tưởng từ đám đông (crowd) thay vì từ nội bộ. <strong>4 loại (Howe):</strong> Collective Intelligence (trí tuệ tập thể), Crowd Creation (sáng tạo), Crowd Voting (bỏ phiếu), Crowd Support & Funding (hỗ trợ/gọi vốn).</span>
+    </div>
+    <p style="color:var(--ink-light); margin-top:0.8rem;"><strong>Quy trình 8 bước:</strong> Xác định vấn đề → Chọn đám đông → Phát sóng nhiệm vụ → Thu hút tham gia → Thu thập UGC → Đánh giá chất lượng → Chấp nhận/từ chối → Bù đắp cho crowd.</p>
+    <div class="key-concept" style="margin-top:1rem;">
+      <span class="kc-term">Crowdfunding</span>
+      <span class="kc-def">Gọi vốn từ cộng đồng. <strong>3 loại:</strong> Equity funding (góp vốn nhận cổ phần — cho startup), Rewards (đặt trước sản phẩm — Kickstarter, Indiegogo), Donation (quyên góp từ thiện — GoFundMe).</span>
+    </div>
+  </div>
+
+  <!-- THẾ GIỚI ẢO -->
+  <div class="card" style="margin-top:1rem;">
+    <h3>Thế giới ảo (Virtual Worlds) & Nền tảng SC mới</h3>
+    <div class="key-concept">
+      <span class="kc-term">Virtual World</span>
+      <span class="kc-def">Cộng đồng trực tuyến trong môi trường 3D, người dùng tương tác qua avatar. Bao gồm 4 không gian: Social (giao tiếp), Transaction (mua bán), Entertainment (giải trí), Collaboration (hợp tác). VD cổ điển: Second Life. Hiện đại: Roblox, Decentraland.</span>
+    </div>
+    <p style="color:var(--ink-light); margin-top:0.8rem;"><strong>Xu hướng 2025-2026:</strong> Metaverse commerce (mua sắm trong không gian ảo), Virtual try-on qua AR/VR (thử quần áo, mỹ phẩm), NFT marketplace (hàng hóa ảo), Social commerce trong game (Roblox, Fortnite). → Ranh giới thực-ảo trong SC ngày càng mờ.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 4: HOẠT ĐỘNG NHÓM ═══════ -->
+<section>
+  <p class="section-label">Phần 4 · 35 phút</p>
+  <h2>Hoạt động nhóm: "Bản đồ công cụ SC"</h2>
+  <p class="section-desc">Sinh viên vận dụng toàn bộ kiến thức buổi hôm nay để giải quyết tình huống kinh doanh thực tế. Đây là highlight của buổi học.</p>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động nhóm chính (20 phút chuẩn bị + 15 phút trình bày)</div>
+    <h4>Tình huống: Chọn công cụ SC cho doanh nghiệp</h4>
+    <p>Chia lớp thành 3 nhóm lớn (hoặc 6 nhóm nhỏ). Mỗi nhóm nhận 1 tình huống:</p>
+    <ul>
+      <li><strong>Tình huống A — Cửa hàng thời trang online mới ra mắt:</strong> Có ngân sách hạn chế, target khách nữ 18-30 tuổi, sản phẩm là quần áo thời trang Hàn Quốc. Cần tạo nhận diện thương hiệu và bán hàng online.</li>
+      <li><strong>Tình huống B — Quán cà phê local muốn mở rộng:</strong> Đã có 2 chi nhánh ở TP.HCM, muốn tăng lượng khách đến quán và xây dựng cộng đồng trung thành. Ngân sách marketing trung bình.</li>
+      <li><strong>Tình huống C — Startup công nghệ cần gọi vốn:</strong> Đội ngũ 5 người, sản phẩm là app học tiếng Anh bằng AI. Cần vừa gọi vốn vừa tìm người dùng đầu tiên (early adopters).</li>
+    </ul>
+    <p style="margin-top:1rem;"><strong>Yêu cầu cho mỗi nhóm:</strong></p>
+    <ul>
+      <li>Chọn <strong>TỐI THIỂU 3 công cụ/nền tảng SC</strong> phù hợp với tình huống</li>
+      <li>Giải thích: <strong>TẠI SAO</strong> chọn công cụ đó? Dùng để làm gì cụ thể?</li>
+      <li>Xếp thứ tự ưu tiên: công cụ nào triển khai TRƯỚC?</li>
+      <li>Trình bày 5 phút/nhóm → Nhóm khác + GV phản biện</li>
+    </ul>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 GV tổng kết hoạt động nhóm</div>
+    <p><strong>Các điểm GV cần chốt sau khi nghe trình bày:</strong></p>
+    <ul style="padding-left:1.2rem; line-height:1.8;">
+      <li>Không có công thức chung — việc chọn công cụ phụ thuộc vào <strong>mục tiêu, ngân sách, đối tượng, ngành hàng</strong>.</li>
+      <li>Xu hướng hiện tại: đa kênh (omnichannel) — doanh nghiệp thường dùng <strong>nhiều công cụ kết hợp</strong> thay vì chỉ 1.</li>
+      <li>Bắt đầu nhỏ, đo lường, rồi mở rộng — đừng cố phủ sóng tất cả nền tảng cùng lúc.</li>
+      <li><strong>Chia sẻ kinh nghiệm cá nhân:</strong> GV kể 1-2 case thực tế từ kinh nghiệm tư vấn/nghiên cứu.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 5: TỔNG KẾT ═══════ -->
+<section>
+  <p class="section-label">Phần 5 · 10 phút</p>
+  <h2>Tổng kết & Giao nhiệm vụ</h2>
+
+  <div class="card card-accent" style="margin-top:1rem;">
+    <h3>Tóm tắt "Bản đồ công cụ SC" buổi hôm nay</h3>
+    <p style="color:var(--ink-light); line-height:1.8;">
+      Chúng ta đã đi qua toàn bộ hệ sinh thái công cụ và nền tảng cho TMXH: <strong>Công cụ SM</strong> (Blog, Microblog, Wiki, RSS, Podcast, Chia sẻ nội dung) → <strong>Nền tảng SNS</strong> (Facebook, LinkedIn, Instagram, TikTok, Pinterest — mỗi nền tảng có năng lực và đối tượng riêng) → <strong>Mobile SC</strong> (LBS, push notification, one-tap, livestream — xu hướng chủ đạo tại VN) → <strong>Crowdsourcing/Crowdfunding</strong> (huy động trí tuệ & vốn từ đám đông) → <strong>Virtual Worlds</strong> (Metaverse, AR/VR — tương lai của SC). Quan trọng nhất: <strong>không có công cụ nào là tốt nhất — chỉ có sự phù hợp với mục tiêu kinh doanh cụ thể.</strong>
+    </p>
+  </div>
+
+  <div class="card card-teal" style="margin-top:1rem;">
+    <h3>Giao nhiệm vụ cho Buổi 3</h3>
+    <ul style="padding-left:1.2rem; line-height:2; color:var(--ink-light);">
+      <li><strong>Bài đọc trước:</strong> Chương 3 giáo trình Turban — "Supporting Theories and Concepts for Social Commerce" (tập trung mục 3.1–3.5: hành vi người tiêu dùng, quyết định mua hàng, cá nhân hóa, WoM, engagement).</li>
+      <li><strong>Suy ngẫm:</strong> <em>"Tại sao bạn tin review của bạn bè hơn quảng cáo của doanh nghiệp?"</em> — Ghi lại 3 lý do cá nhân.</li>
+      <li><strong>Bài tập:</strong> Tìm 1 ví dụ viral marketing tại Việt Nam trong tuần qua (trên bất kỳ nền tảng nào). Mang đến lớp Buổi 3.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHỤ LỤC ═══════ -->
+<section>
+  <p class="section-label">Phụ lục</p>
+  <h2>Gợi ý cho Giảng viên</h2>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>🎯 Những điểm cần lưu ý khi dạy buổi này</h3>
+    <ul style="padding-left:1.2rem; line-height:2; color:var(--ink-light);">
+      <li><strong>Bắt đầu từ bài tập về nhà:</strong> Đây là "cái Biết" tuyệt vời — SV đã tự khám phá tính năng SC của nền tảng yêu thích. GV chỉ cần hệ thống hóa.</li>
+      <li><strong>Cập nhật ví dụ VN:</strong> Sách Turban dùng ví dụ quốc tế (Pinterest, Twitter, Second Life). GV nên thay/bổ sung bằng: TikTok Shop VN, Zalo Shop, Shopee Live, Lemon8. SV sẽ relate hơn nhiều.</li>
+      <li><strong>Blog/Wiki có thể xa lạ với Gen Z:</strong> SV quen TikTok/Instagram hơn Blog. GV nên giải thích rằng Blog vẫn rất quan trọng trong B2B và SEO, và Wiki là backbone của knowledge management.</li>
+      <li><strong>Crowdfunding nên có ví dụ VN:</strong> Comicola (crowdfunding truyện tranh VN), FundStart, hoặc các dự án trên Kickstarter do người VN tạo.</li>
+      <li><strong>Hoạt động nhóm cuối buổi là highlight:</strong> Để SV vận dụng — đánh giá xem họ có hiểu bài không. GV nên quan sát và ghi nhận nhóm nào chọn công cụ có logic tốt.</li>
+      <li><strong>Virtual Worlds / Metaverse:</strong> Có thể hơi "xa" với SV. GV nên dùng ví dụ gần gũi: Roblox (nhiều SV đã chơi), hoặc filter AR trên Instagram/TikTok.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📚 Tài liệu tham khảo bổ sung</h3>
+    <ul style="padding-left:1.2rem; line-height:2; color:var(--ink-light);">
+      <li>Turban, E. & Strauss, J. (2016). Social Commerce. Springer. — Ch.2: Tools and Platforms</li>
+      <li>Hutchins, J. (2023). Social Commerce & MarTech. — Ch.2</li>
+      <li>Báo cáo: "The State of Mobile Commerce in Vietnam" — Decision Lab / Q&Me</li>
+      <li>Howe, J. (2008). Crowdsourcing: Why the Power of the Crowd is Driving the Future of Business.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📊 Câu hỏi Testbank liên quan (để GV tham khảo)</h3>
+    <ul style="padding-left:1.2rem; line-height:1.8; color:var(--ink-light); font-size:0.92rem;">
+      <li>MC: "Blog" comes from ____ → Web logging (Đáp án: C)</li>
+      <li>MC: Microblogging definition → (Đáp án: A — Microblogging)</li>
+      <li>MC: Twitter is a ____ service → (Đáp án: A — Twitter)</li>
+      <li>MC: Wiki enables users to ____ → jointly create digital documents (Đáp án: C)</li>
+      <li>MC: Social network is a structure that describes ____ → (Đáp án: D — social network)</li>
+      <li>MC: Business-oriented social networks → (Đáp án: B)</li>
+      <li>MC: Crowdsourcing is ____ → platform for collective intelligence (Đáp án: D)</li>
+      <li>MC: Virtual world is ____ → site for online communities with avatars (Đáp án: A)</li>
+      <li>MC: Mobile social networking refers to ____ → (Đáp án: A)</li>
+      <li>T/F: "Social collaboration refers to people's collaboration within and between communities enabled by social media tools" → True</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p>ITS717 — Thương Mại Xã Hội | Chương 1 · Buổi 2/3 | Trường ĐH Ngân Hàng TP.HCM</p>
+  <p style="margin-top:0.3rem;">Soạn theo khung SCQA · Thiết kế: Discussion-based Learning</p>
+</footer>
+
+</div>
+</body>
+</html>

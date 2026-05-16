@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "code": "ITS340",
+    "name": "SEO - Tối ưu hóa công cụ tìm kiếm",
+    "total_sessions": 6,
+    "chapters": 4,
+    "university": "ĐH Ngân Hàng TP.HCM",
+    "textbook": "SEO Master Class — Giáo trình giảng viên"
+  },
+  "sessions": [
+    { "id": 1, "chapter": "Ch.1", "title": "Tổng quan về SEO", "topics": "SEO là gì?, Keyword Research, Search Engine Works", "clo": "CLO1", "textbook": "Giáo trình SEO", "duration": "5 tiết" },
+    { "id": 2, "chapter": "Ch.1", "title": "Kỹ thuật SEO On-page", "topics": "Title, Meta Tags, URL Structure, Content Optimization", "clo": "CLO1, CLO2", "textbook": "Giáo trình SEO", "duration": "5 tiết" },
+    { "id": 3, "chapter": "Ch.2", "title": "Technical SEO", "topics": "Sitemap, Robots.txt, Page Speed, Mobile-friendliness", "clo": "CLO2", "textbook": "Giáo trình SEO", "duration": "5 tiết" },
+    { "id": 4, "chapter": "Ch.2", "title": "Kỹ thuật SEO Off-page", "topics": "Link Building, Social Signals, Domain Authority", "clo": "CLO2, CLO3", "textbook": "Giáo trình SEO", "duration": "5 tiết" },
+    { "id": 5, "chapter": "Ch.3", "title": "SEO Copywriting & Content", "topics": "Writing for Search Engines, Semantic SEO, EEAT", "clo": "CLO3", "textbook": "Giáo trình SEO", "duration": "5 tiết" },
+    { "id": 6, "chapter": "Ch.4", "title": "Phân tích & Đo lường SEO", "topics": "Google Search Console, Google Analytics 4, Rank Tracking", "clo": "CLO1-3", "textbook": "Giáo trình SEO", "duration": "5 tiết" }
+  ]
+}

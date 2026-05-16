@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 8 – Triển khai Hệ thống TMXH: Bảo mật, Pháp lý, Đạo đức & Tương lai</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf8f5;--surface:#fff;--surface-alt:#f3efe9;--ink:#1a1612;--ink-light:#5a5249;--ink-muted:#8a8279;--accent:#c44b25;--accent-light:#fdf0ec;--accent-dark:#9a3a1c;--teal:#1a7a6d;--teal-light:#e8f5f2;--blue:#2c5aa0;--blue-light:#edf2fa;--gold:#b8860b;--gold-light:#fdf8ec;--border:#e5dfd6;--shadow:0 2px 12px rgba(26,22,18,.06);--radius:10px;--red:#c0392b;--red-light:#fdf2f2}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Source Sans Pro',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16.5px}.hero{background:linear-gradient(135deg,#1a1612 0%,#2c2520 40%,#3d2e1e 100%);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}.hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:1.2rem}.hero h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;line-height:1.2;margin-bottom:.6rem}.hero h1 span{color:var(--accent)}.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.7);font-weight:300;max-width:620px}.hero-meta{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}.hero-meta-item{font-size:.85rem;color:rgba(255,255,255,.55)}.hero-meta-item strong{display:block;color:rgba(255,255,255,.92);font-size:1rem;font-weight:600}.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.section-label{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:.4rem;line-height:1.3}h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem;line-height:1.4}.section-desc{color:var(--ink-light);font-size:1rem;margin-bottom:2rem;max-width:680px}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}.card-accent{border-left:4px solid var(--accent)}.card-teal{border-left:4px solid var(--teal);background:var(--teal-light)}.card-blue{border-left:4px solid var(--blue);background:var(--blue-light)}.card-gold{border-left:4px solid var(--gold);background:var(--gold-light)}.card-red{border-left:4px solid var(--red);background:var(--red-light)}.scqa-flow{display:grid;gap:0;margin:1.5rem 0}.scqa-step{padding:1.5rem 2rem;position:relative;border-left:3px solid var(--border);margin-left:1rem}.scqa-step::before{position:absolute;left:-3.6rem;top:1.5rem;width:2.2rem;height:2.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff}.scqa-step.s{border-color:var(--teal)}.scqa-step.s::before{background:var(--teal);content:'S'}.scqa-step.c{border-color:var(--accent)}.scqa-step.c::before{background:var(--accent);content:'C'}.scqa-step.q{border-color:var(--blue)}.scqa-step.q::before{background:var(--blue);content:'Q'}.scqa-step.a{border-color:var(--gold)}.scqa-step.a::before{background:var(--gold);content:'A'}.scqa-step h4{font-family:'Source Sans Pro',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}.scqa-step.s h4{color:var(--teal)}.scqa-step.c h4{color:var(--accent)}.scqa-step.q h4{color:var(--blue)}.scqa-step.a h4{color:var(--gold)}.scqa-step p,.scqa-step ul{color:var(--ink-light);font-size:.98rem;line-height:1.75}.scqa-step ul{padding-left:1.2rem;margin-top:.5rem}.scqa-step li{margin-bottom:.35rem}.timeline{position:relative;margin:1.5rem 0}.timeline-item{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--border);align-items:start}.timeline-item:last-child{border-bottom:none}.time-badge{background:var(--surface-alt);border-radius:6px;padding:6px 12px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--ink-light);white-space:nowrap}.time-badge.highlight{background:var(--accent-light);color:var(--accent-dark)}.timeline-content h4{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}.timeline-content p{font-size:.92rem;color:var(--ink-light);line-height:1.6}.activity{background:var(--accent-light);border:1px solid #f0d4c9;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.activity-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}.activity h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}.activity p,.activity ul{font-size:.95rem;color:var(--ink-light);line-height:1.7}.activity ul{padding-left:1.2rem}.discussion{background:var(--teal-light);border:1px solid #c4e0db;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.discussion-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}.case-study{background:var(--blue-light);border:1px solid #c9d6ea;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.case-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}.key-concept{display:flex;gap:1rem;padding:1rem 1.4rem;background:var(--surface-alt);border-radius:8px;margin:.8rem 0;align-items:flex-start}.key-concept .kc-term{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--accent);background:var(--accent-light);padding:3px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px}.key-concept .kc-def{font-size:.95rem;color:var(--ink-light);line-height:1.6}.divider{height:1px;background:var(--border);margin:3rem 0}.footer-note{text-align:center;color:var(--ink-muted);font-size:.85rem;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem}@media print{body{font-size:11pt;background:#fff}.hero{background:#333!important}.card,.activity,.discussion,.case-study{break-inside:avoid}}@media(max-width:640px){.hero h1{font-size:1.7rem}h2{font-size:1.4rem}.container{padding:1.5rem 1rem}.card{padding:1.3rem 1.2rem}.timeline-item{grid-template-columns:80px 1fr;gap:1rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS717 — Chương 4 · Buổi 8/9</div>
+    <h1>Triển khai TMXH: <span>Bảo mật, Pháp lý, Đạo đức & Tương lai</span></h1>
+    <p class="hero-sub">Mặt tối của SC — scam, phishing, fake review, cyberbullying, khủng hoảng truyền thông. Và tương lai: AI, chatbot, Watson, commerce không biên giới.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>5 tiết (250 phút)</strong>Giải lao 20 phút</div>
+      <div class="hero-meta-item"><strong>Mục 4.2</strong>Triển khai SC</div>
+      <div class="hero-meta-item"><strong>CLO3</strong>Chuẩn đầu ra</div>
+      <div class="hero-meta-item"><strong>Ch.11 Turban</strong>Giáo trình</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════ MỤC TIÊU ═══════ -->
+<section>
+  <p class="section-label">Mục tiêu buổi 8</p>
+  <h2>Sau buổi học, sinh viên có thể…</h2>
+  <div class="card" style="margin-top:1rem;">
+    <ol style="padding-left:1.3rem;color:var(--ink-light);line-height:2.2;">
+      <li><strong>Mô tả</strong> các vấn đề bảo mật và phòng chống gian lận trong SC (social engineering, phishing).</li>
+      <li><strong>Phân tích</strong> các vấn đề pháp lý, quyền riêng tư, cyberbullying, và đạo đức trong SC.</li>
+      <li><strong>Liệt kê</strong> các vấn đề về công nghệ (integration, development options) và nhân sự khi triển khai SC.</li>
+      <li><strong>Giải thích</strong> change management và business process reengineering trong bối cảnh chuyển đổi SC.</li>
+      <li><strong>Đánh giá</strong> các yếu tố thành công/thất bại khi triển khai SC cho DN vừa và nhỏ (SME).</li>
+      <li><strong>Dự báo</strong> xu hướng tương lai của SC (AI, chatbot, voice commerce, live commerce).</li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section>
+  <p class="section-label">Lộ trình buổi học</p>
+  <h2>250 phút (230' thực dạy + 20' giải lao)</h2>
+  <p class="section-desc">Buổi này là buổi cuối cùng có nội dung giảng dạy mới. Tỷ lệ ≈ 40% giảng, 60% hoạt động. Nhiều ví dụ thực tế về scam/khủng hoảng để tạo hứng thú.</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="time-badge highlight">0'–20'</div><div class="timeline-content"><h4>🔓 Phần 1: Khởi động — "Mặt tối của MXH"</h4><p>SV chia sẻ trải nghiệm scam/fake review/khủng hoảng MXH từ bài tập về nhà. GV dẫn vào Case Domino's.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">20'–80'</div><div class="timeline-content"><h4>🛡️ Phần 2: Bảo mật, Pháp lý, Đạo đức (SCQA #1)</h4><p>Security & Fraud (social engineering, phishing), Legal issues, Privacy, Cyberbullying, Ethics. Case Domino's.</p></div></div>
+    <div class="timeline-item"><div class="time-badge highlight">80'–100'</div><div class="timeline-content"><h4>☕ Giải lao 20 phút</h4><p></p></div></div>
+    <div class="timeline-item"><div class="time-badge">100'–160'</div><div class="timeline-content"><h4>⚙️ Phần 3: Công nghệ, Nhân sự & Tổ chức (SCQA #2)</h4><p>Technological issues, Employee issues, Change management, Business Process Reengineering, SMEs & Risk, Success/Failure factors.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">160'–215'</div><div class="timeline-content"><h4>🔮 Phần 4: Tương lai SC + Hoạt động nhóm</h4><p>AI, chatbot, voice commerce, live commerce, sustainable SC. Nhóm xây dựng "SC Policy" cho DN.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">215'–250'</div><div class="timeline-content"><h4>🎓 Phần 5: Tổng kết môn + Chuẩn bị Buổi 9</h4><p>Ôn tập toàn môn. Hướng dẫn chi tiết trình bày tiểu luận Buổi 9 + thi cuối kỳ.</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 1: KHỞI ĐỘNG ═══════ -->
+<section>
+  <p class="section-label">Phần 1 · 20 phút</p>
+  <h2>Khởi động: "Mặt tối của Mạng Xã hội"</h2>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Chia sẻ từ bài tập về nhà (15 phút)</div>
+    <h4>"Scam, fake review, khủng hoảng MXH — bạn đã gặp gì?"</h4>
+    <p>GV gọi 4-5 SV chia sẻ trải nghiệm (2-3 phút/người):</p>
+    <ul>
+      <li>Bạn hoặc người quen đã từng bị lừa khi mua hàng online chưa? Bằng cách nào?</li>
+      <li>Bạn đã từng mua phải hàng kém chất lượng vì tin review giả?</li>
+      <li>Bạn biết thương hiệu VN nào đã gặp khủng hoảng truyền thông trên MXH?</li>
+      <li>Bạn đã từng bị hoặc chứng kiến cyberbullying trên MXH?</li>
+    </ul>
+    <p style="margin-top:.8rem;">GV ghi lên bảng thành 3 cột: <strong>Scam/Fraud | Fake Content | Crisis</strong></p>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 Chuyển tiếp</div>
+    <p>GV chốt: <em>"7 buổi trước chúng ta đã học về sức mạnh của SC — cách nó tạo doanh thu, engagement, relationship. Hôm nay là buổi DUY NHẤT chúng ta nói về MẶT TỐI: rủi ro bảo mật, vấn đề pháp lý, đạo đức, và thách thức triển khai. Đây là những thứ mà một CMO/người làm SC chuyên nghiệp PHẢI HIỂU — không thể bỏ qua."</em></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 2: BẢO MẬT, PHÁP LÝ, ĐẠO ĐỨC — SCQA #1 ═══════ -->
+<section>
+  <p class="section-label">Phần 2 · 60 phút · SCQA #1</p>
+  <h2>Bảo mật, Pháp lý, Quyền riêng tư & Đạo đức</h2>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation</h4>
+      <p>Từ Buổi 1-7, SV đã học toàn bộ nội dung tích cực của SC: cơ hội, chiến lược, metrics. Nhưng thực tế — triển khai SC rất <strong>phức tạp</strong>, không phải cứ tạo fanpage là xong. Có cả tá rủi ro cần xử lý.</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication</h4>
+      <p>Nhiều DN VN triển khai SC xong thì gặp khủng hoảng: nhân viên post nội dung phản cảm, bị scam tài khoản fanpage, review giả tràn lan, bị kiện vì vi phạm quyền riêng tư KH, khủng hoảng truyền thông lan viral. <strong>Chỉ cần 1 sự cố cũng đủ phá hủy cả năm xây dựng thương hiệu.</strong> Và 94% DN không có chính sách SC rõ ràng.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>Những rủi ro bảo mật nào đe dọa DN khi triển khai SC? Làm sao phòng tránh social engineering và phishing? Các vấn đề pháp lý, quyền riêng tư, cyberbullying xử lý ra sao? Và đạo đức trong SC là gì?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>4 nhóm vấn đề chính: (1) Security & Fraud, (2) Legal & Privacy, (3) Cyberbullying & Harassment, (4) Ethics. Mỗi nhóm cần chính sách và biện pháp phòng ngừa cụ thể.</p>
+    </div>
+  </div>
+
+  <!-- SECURITY -->
+  <div class="card card-red" style="margin-top:1.5rem;">
+    <h3>🛡️ Bảo mật & Phòng chống gian lận</h3>
+    <div class="key-concept"><span class="kc-term">Social Engineering</span><span class="kc-def">Tội phạm dùng <strong>tâm lý học</strong> để thuyết phục nạn nhân tiết lộ thông tin cá nhân. Không cần hack — chỉ cần giả danh, tạo niềm tin. VD: giả danh admin Facebook nhắn "tài khoản của bạn sắp bị khóa, nhấn link xác minh".</span></div>
+    <div class="key-concept"><span class="kc-term">Phishing (Social Phishing)</span><span class="kc-def">Quy trình lừa đảo lấy thông tin bí mật (thẻ tín dụng, mật khẩu ngân hàng) từ người dùng. Công cụ: email giả, website giả, tin nhắn giả. VD: "Bạn trúng voucher Shopee 500k, click ngay" → dẫn đến site giả lấy info đăng nhập.</span></div>
+    <p style="color:var(--ink-light);margin-top:.8rem;line-height:1.8;"><strong>Các mối đe dọa bảo mật khác trong SC:</strong> chiếm tài khoản fanpage DN (hacking), malware phát tán qua link MXH, data leakage (rò rỉ dữ liệu chiến lược), fake accounts, bot attack, scam qua Messenger/Zalo.</p>
+    <p style="color:var(--ink-light);margin-top:.8rem;line-height:1.8;"><strong>Biện pháp phòng ngừa:</strong> 2FA cho tất cả tài khoản MXH, đào tạo nhân viên nhận biết phishing, policy chặt chẽ về mật khẩu, backup dữ liệu, giám sát thường xuyên.</p>
+  </div>
+
+  <!-- LEGAL -->
+  <div class="card" style="margin-top:1rem;">
+    <h3>⚖️ Vấn đề Pháp lý & Quyền riêng tư</h3>
+    <p style="color:var(--ink-light);margin-bottom:.8rem;"><strong>Các vấn đề pháp lý phổ biến trong SC:</strong></p>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:1.8;">
+      <li>Đăng nội dung không phù hợp/xúc phạm trên bulletin boards hoặc blogs của công ty</li>
+      <li>Phân biệt đối xử trong tuyển dụng qua MXH</li>
+      <li>Nhân viên "nói xấu" công ty trên blog cá nhân</li>
+      <li>Vi phạm bản quyền, sở hữu trí tuệ (nhạc, hình ảnh, video, nội dung)</li>
+      <li>Định phỉ báng (defamation), xúc phạm trên MXH</li>
+      <li>Sử dụng dữ liệu KH sai mục đích (vi phạm GDPR, PDPA VN)</li>
+    </ul>
+    <div class="key-concept" style="margin-top:1rem;"><span class="kc-term">Privacy</span><span class="kc-def"><strong>Quyền riêng tư</strong> — quyền được để yên, không bị xâm nhập vào đời sống cá nhân. Trong SC: DN thu thập data KH phải có sự đồng ý, minh bạch về cách dùng, cho phép KH xóa data (Right to be Forgotten).</span></div>
+  </div>
+
+  <!-- CYBERBULLYING & ETHICS -->
+  <div class="card" style="margin-top:1rem;">
+    <h3>💢 Cyberbullying & Đạo đức trong SC</h3>
+    <div class="key-concept"><span class="kc-term">Cyberbullying</span><span class="kc-def">Bắt nạt qua công nghệ điện tử. Bao gồm: comment ác ý, lan tin đồn sai, đe dọa, quấy rối liên tục trên MXH. Trong DN: nhân viên có thể là nạn nhân hoặc thủ phạm. DN cần có chính sách zero-tolerance.</span></div>
+    <p style="color:var(--ink-light);margin-top:1rem;"><strong>Các vấn đề đạo đức trong SC:</strong></p>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:1.8;">
+      <li><strong>Tính chính xác của đề xuất máy (algorithm)</strong> — recommendation engine có thiên lệch không?</li>
+      <li><strong>Đạo đức trong thiết kế website/app SC</strong> — dark patterns ép KH mua, khó hủy đăng ký</li>
+      <li><strong>Chất lượng UGC</strong> — fake review, review thuê, review giả</li>
+      <li><strong>Giá trị cá nhân</strong> — giá trị cá nhân của người làm SC là yếu tố chính trong đạo đức SC</li>
+    </ul>
+  </div>
+
+  <!-- CASE DOMINO'S -->
+  <div class="case-study">
+    <div class="case-label">📋 Case Study — Domino's Pizza: Nhân viên đăng video phản cảm lên YouTube</div>
+    <h4>Khủng hoảng truyền thông 2009 và cách xử lý</h4>
+    <p>Hai nhân viên Domino's quay video phản cảm về quy trình chế biến thức ăn, đăng YouTube → viral hàng triệu views trong vài giờ → khủng hoảng thương hiệu toàn cầu. Doanh số và uy tín sụt giảm nghiêm trọng.</p>
+    <p style="margin-top:.5rem;"><strong>Cách Domino's xử lý (được đánh giá "high marks"):</strong></p>
+    <ul style="padding-left:1.2rem;line-height:1.8;margin-top:.3rem;">
+      <li>CEO đích thân xin lỗi <strong>trên YouTube</strong> (cùng phương tiện với video phạm)</li>
+      <li>Sa thải ngay 2 nhân viên + khởi kiện</li>
+      <li>Mở rộng mạnh mẽ social media policy — quy định rõ ràng cho nhân viên</li>
+      <li>Transparency: chia sẻ cách cải thiện quy trình thực tế</li>
+    </ul>
+    <p style="margin-top:.5rem;"><em>→ Bài học: Khi khủng hoảng MXH xảy ra, phản hồi phải (1) NHANH, (2) ĐÚNG KÊNH, (3) MINH BẠCH, (4) CHÂN THÀNH. DN cần có sẵn <strong>crisis response plan</strong>.</em></p>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Thảo luận nhanh (10 phút)</div>
+    <h4>"Nếu bạn là CMO Domino's, bạn sẽ làm gì trong 24 giờ đầu?"</h4>
+    <p>Thảo luận cặp đôi → chia sẻ trước lớp. GV tổng kết nguyên tắc "24-hour rule" trong quản lý khủng hoảng MXH.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 3: CÔNG NGHỆ, NHÂN SỰ, TỔ CHỨC — SCQA #2 ═══════ -->
+<section>
+  <p class="section-label">Phần 3 · 60 phút · SCQA #2</p>
+  <h2>Công nghệ, Nhân sự, Tổ chức & SMEs</h2>
+
+  <div class="scqa-flow">
+    <div class="scqa-step s">
+      <h4>Situation</h4>
+      <p>Ngoài rủi ro bảo mật/pháp lý, DN còn gặp <strong>thách thức nội bộ</strong> khi triển khai SC: chọn công nghệ nào, tích hợp ra sao, nhân viên có chịu thay đổi không, SME có làm được như DN lớn không?</p>
+    </div>
+    <div class="scqa-step c">
+      <h4>Complication</h4>
+      <p>Triển khai SC không chỉ là "mua phần mềm" — nó đòi hỏi <strong>thay đổi cách tổ chức vận hành</strong>. Nhân viên phản đối thay đổi. Hệ thống cũ không tích hợp được với MXH. SME thiếu ngân sách và chuyên gia. Nhiều dự án SC <strong>thất bại</strong> không phải vì công nghệ mà vì con người.</p>
+    </div>
+    <div class="scqa-step q">
+      <h4>Question</h4>
+      <p><strong>Có những lựa chọn công nghệ nào? Làm sao vượt qua resistance từ nhân viên? Change management hoạt động ra sao? SME có nên làm SC không và làm như thế nào? Yếu tố nào quyết định thành công?</strong></p>
+    </div>
+    <div class="scqa-step a">
+      <h4>Answer</h4>
+      <p>4 lựa chọn phát triển SC + employee-related issues + change management + BPR + SME-specific strategies + Critical Success Factors.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>⚙️ Vấn đề Công nghệ: 4 Lựa chọn phát triển SC</h3>
+    <div class="key-concept"><span class="kc-term">Option 1</span><span class="kc-def"><strong>Thêm collaborative tools vào hệ thống hiện có</strong> — đơn giản nhất, chi phí thấp. VD: thêm chatbot Messenger vào website có sẵn.</span></div>
+    <div class="key-concept"><span class="kc-term">Option 2</span><span class="kc-def"><strong>Tích hợp dữ liệu EC với MXH</strong> — kết nối database KH với Facebook/Zalo. Phức tạp hơn nhưng hiệu quả.</span></div>
+    <div class="key-concept"><span class="kc-term">Option 3</span><span class="kc-def"><strong>Kết nối với 3rd-party SM modules</strong> — dùng plugin, API bên thứ 3 (Shopify + Facebook Shop). Nhanh, rẻ, dễ triển khai.</span></div>
+    <div class="key-concept"><span class="kc-term">Option 4</span><span class="kc-def"><strong>Dùng 3rd-party platforms</strong> — thuê nền tảng có sẵn (Salesforce Social Studio, Hootsuite). Chi phí cao nhưng chuyên nghiệp.</span></div>
+    <p style="color:var(--ink-light);margin-top:.8rem;"><strong>Lựa chọn phụ thuộc vào:</strong> loại hình DN, dòng sản phẩm, ngân sách, chức năng cần có.</p>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>👥 Vấn đề Nhân sự (Employee-Related Issues)</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:1.8;">
+      <li><strong>Chất lượng UGC:</strong> nhân viên tạo nội dung có đảm bảo chất lượng?</li>
+      <li><strong>Reluctance to participate:</strong> nhiều nhân viên ngại dùng MXH nội bộ, vẫn quen email</li>
+      <li><strong>Lãng phí thời gian:</strong> nhân viên lướt MXH cá nhân trong giờ làm</li>
+      <li><strong>Training:</strong> cần đào tạo nhân viên về SC tools và policy</li>
+      <li><strong>Data leakage:</strong> nhân viên vô tình hoặc cố ý tiết lộ thông tin DN trên MXH cá nhân</li>
+      <li><strong>Monitoring dilemma:</strong> có nên giám sát hoạt động MXH của nhân viên? Ranh giới với quyền riêng tư?</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>🔄 Change Management & Business Process Reengineering</h3>
+    <div class="key-concept"><span class="kc-term">Change Management</span><span class="kc-def">Phương pháp chuyển cá nhân, đội nhóm, tổ chức từ trạng thái hiện tại sang trạng thái mong muốn. Quản lý các vấn đề hành chính và hành vi liên quan đến thay đổi công việc, quan hệ, quy trình.</span></div>
+    <div class="key-concept"><span class="kc-term">BPR</span><span class="kc-def"><strong>Business Process Reengineering</strong> — thiết kế lại toàn diện quy trình DN. Không phải "cải tiến nhỏ" mà là "xây lại từ đầu" nhờ công nghệ SC.</span></div>
+    <p style="color:var(--ink-light);margin-top:.8rem;"><strong>3 tác động của SC lên tổ chức (Bloch et al.):</strong> (1) <em>Transforming organizations</em> — biến đổi tổ chức, (2) <em>Redefining organizations</em> — định nghĩa lại vai trò, (3) <em>Improving direct marketing</em> — cải thiện marketing trực tiếp.</p>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>🏪 SMEs & Quản lý Rủi ro</h3>
+    <p style="color:var(--ink-light);margin-bottom:.8rem;"><strong>DN vừa và nhỏ (SME) có lợi thế trong SC:</strong></p>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:1.8;">
+      <li>Linh hoạt, ra quyết định nhanh</li>
+      <li>Chi phí SC thấp (Facebook/TikTok gần như miễn phí bắt đầu)</li>
+      <li>Gần gũi với KH — dễ xây dựng community</li>
+      <li>Không bị ràng buộc bởi quy trình quan liêu</li>
+    </ul>
+    <p style="color:var(--ink-light);margin-top:.8rem;"><strong>Nhưng cũng gặp khó khăn:</strong> thiếu chuyên gia, ngân sách hạn chế, không có policy rõ ràng, dễ sụp đổ nếu gặp khủng hoảng.</p>
+    <div class="key-concept" style="margin-top:.8rem;"><span class="kc-term">CSF</span><span class="kc-def"><strong>Critical Success Factors</strong> — yếu tố thành công then chốt: (1) Top management support, (2) Clear strategy, (3) Skilled team, (4) Proper technology, (5) Continuous monitoring, (6) Customer focus.</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 4: TƯƠNG LAI SC + HOẠT ĐỘNG NHÓM ═══════ -->
+<section>
+  <p class="section-label">Phần 4 · 55 phút</p>
+  <h2>Tương lai SC + Hoạt động nhóm</h2>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>🔮 Tương lai của Social Commerce (2025-2030)</h3>
+    <div class="key-concept"><span class="kc-term">AI & Chatbot</span><span class="kc-def">Chatbot AI (ChatGPT, Gemini integration) thay thế customer service. Personalized recommendation thông minh hơn. VD: AI chatbot trên TikTok Shop tư vấn size quần áo.</span></div>
+    <div class="key-concept"><span class="kc-term">Voice Commerce</span><span class="kc-def">Mua hàng bằng giọng nói qua Siri, Alexa, Google Assistant. Tại VN: voice search trên Shopee, Zalo AI.</span></div>
+    <div class="key-concept"><span class="kc-term">Live Commerce 2.0</span><span class="kc-def">Livestream bán hàng kết hợp AI (auto-subtitle, tự động tạo highlight), AR try-on trong livestream, gamification realtime. Đã là chuẩn mực tại VN/TQ.</span></div>
+    <div class="key-concept"><span class="kc-term">Sustainable SC</span><span class="kc-def">Người tiêu dùng 2025+ quan tâm ESG (Environmental, Social, Governance). DN SC phải chứng minh tính bền vững, minh bạch về nguồn gốc sản phẩm.</span></div>
+    <div class="key-concept"><span class="kc-term">Social + AR/VR</span><span class="kc-def">Thử sản phẩm qua AR trước khi mua (mỹ phẩm, quần áo, nội thất). Metaverse commerce đang từ "hype" trở thành thực tế ở một số ngách.</span></div>
+    <div class="key-concept"><span class="kc-term">Creator Economy</span><span class="kc-def">KOC/influencer nhỏ (nano/micro-influencer) dần thay thế mega-influencer. Affiliate, livestream, UGC trở thành kênh bán hàng chính của SMEs.</span></div>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Hoạt động nhóm chính (25' chuẩn bị + 20' trình bày)</div>
+    <h4>Xây dựng "Social Commerce Policy" cho doanh nghiệp</h4>
+    <p>Mỗi nhóm nhận 1 tình huống và xây dựng <strong>bộ chính sách SC</strong> (1 trang):</p>
+    <ul>
+      <li><strong>Nhóm 1-2:</strong> Chuỗi nhà hàng VN 50 chi nhánh, 500 nhân viên, hoạt động mạnh trên Facebook + TikTok</li>
+      <li><strong>Nhóm 3-4:</strong> Ngân hàng số với 200 nhân viên, nhạy cảm về dữ liệu KH và quyền riêng tư</li>
+      <li><strong>Nhóm 5-6:</strong> SME thời trang online, team 15 người, bán trên TikTok Shop + Shopee</li>
+    </ul>
+    <p style="margin-top:1rem;"><strong>SC Policy cần có:</strong></p>
+    <ul>
+      <li><strong>Security:</strong> 2FA, policy mật khẩu, xử lý account hack</li>
+      <li><strong>Content:</strong> Guideline nhân viên được/không được đăng gì</li>
+      <li><strong>Privacy:</strong> Quy định bảo vệ dữ liệu KH</li>
+      <li><strong>Crisis Response:</strong> Quy trình 24 giờ khi khủng hoảng xảy ra (ai xử lý, nói gì, kênh nào)</li>
+      <li><strong>Employee Conduct:</strong> Guideline nhân viên đăng về công ty trên MXH cá nhân</li>
+      <li>Trình bày 5 phút/nhóm → phản biện chéo</li>
+    </ul>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 GV tổng kết hoạt động nhóm</div>
+    <ul style="padding-left:1.2rem;line-height:1.8;">
+      <li>Policy không cần dài — quan trọng là RÕ RÀNG và KHẢ THI</li>
+      <li>Crisis response plan PHẢI CÓ SẴN trước khi khủng hoảng xảy ra</li>
+      <li>Đào tạo nhân viên định kỳ quan trọng hơn viết policy đẹp</li>
+      <li>GV chia sẻ: case khủng hoảng thực tế VN mà GV biết (nếu có)</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 5: TỔNG KẾT MÔN + CHUẨN BỊ BUỔI 9 ═══════ -->
+<section>
+  <p class="section-label">Phần 5 · 35 phút</p>
+  <h2>Tổng kết môn học & Chuẩn bị Buổi 9</h2>
+
+  <div class="card card-accent" style="margin-top:1rem;">
+    <h3>🗺️ Bản đồ toàn môn ITS717 — Thương Mại Xã Hội</h3>
+    <p style="color:var(--ink-light);line-height:1.8;">
+      <strong>Chương 1 (Buổi 1-3):</strong> Cơ bản về SC — Social Computing, công cụ/nền tảng, lý thuyết hành vi NTD, AISAS, Social Influence.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;margin-top:.5rem;">
+      <strong>Chương 2 (Buổi 4-5):</strong> Marketing Communications — Owned/Paid/Earned Media, Engagement, Metrics, Reputation. Social Shopping + Social CRM.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;margin-top:.5rem;">
+      <strong>Chương 3 (Buổi 6):</strong> Social Enterprise + Ứng dụng SC sáng tạo — Gamification, Social Gov, B2B, P2P.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;margin-top:.5rem;">
+      <strong>Chương 4 (Buổi 7-8):</strong> Strategy & Performance Management + Implementation — Strategy Cycle, ROI, Analytics, Security, Ethics, Future of SC.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.8;margin-top:.8rem;">
+      <strong>Thông điệp cuối môn:</strong> SC không chỉ là "chạy quảng cáo Facebook". Nó là một <strong>cách tư duy mới</strong> về kinh doanh — nơi con người, công nghệ và giá trị xã hội giao thoa. Người làm SC chuyên nghiệp phải hiểu cả mặt sáng (chiến lược, engagement, ROI) lẫn mặt tối (bảo mật, đạo đức, khủng hoảng).
+    </p>
+  </div>
+
+  <div class="card card-gold" style="margin-top:1rem;">
+    <h3>📋 Chuẩn bị Buổi 9 — Trình bày tiểu luận + Ôn tập tổng kết</h3>
+    <p style="color:var(--ink-light);line-height:1.8;"><strong>Buổi 9 sẽ có 2 phần:</strong></p>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Phần 1 (khoảng 2.5 tiết):</strong> Các nhóm trình bày tiểu luận nhóm. Mỗi nhóm 10-12 phút + 3-5 phút Q&A. Rubric: Format 10% + Trình bày 10% + Nội dung 20% + Tính khả thi 20% + Q&A 20% + Tham gia lớp 20%.</li>
+      <li><strong>Phần 2 (khoảng 2 tiết):</strong> Ôn tập tổng kết cho thi cuối kỳ. Hình thức thi: trắc nghiệm khách quan, ~40 câu, 45-60 phút, phạm vi toàn bộ 4 chương.</li>
+    </ul>
+    <p style="color:var(--ink-light);margin-top:.8rem;"><strong>Yêu cầu chuẩn bị Buổi 9:</strong></p>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Nhóm:</strong> Hoàn thiện báo cáo tiểu luận, chuẩn bị slide trình bày, phân công vai trò, tập dượt trước.</li>
+      <li><strong>Cá nhân:</strong> Đọc lại toàn bộ giáo trình, ôn khái niệm cốt lõi qua Testbank (câu hỏi ôn tập đã cung cấp cuối mỗi buổi).</li>
+      <li><strong>Tất cả:</strong> Tham dự đầy đủ để nghe các nhóm trình bày và tham gia Q&A (có điểm).</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHỤ LỤC ═══════ -->
+<section>
+  <p class="section-label">Phụ lục</p>
+  <h2>Gợi ý cho Giảng viên</h2>
+  <div class="card" style="margin-top:1rem;">
+    <h3>🎯 Điểm cần lưu ý</h3>
+    <ul style="padding-left:1.2rem;line-height:2;color:var(--ink-light);">
+      <li><strong>Đây là buổi "mặt tối" duy nhất của môn:</strong> Dùng nhiều case thực tế để tránh khô khan. SV Gen Z rất quan tâm về scam, privacy, cyberbullying — họ đã trải nghiệm trực tiếp.</li>
+      <li><strong>Case Domino's có thể cũ (2009):</strong> GV nên bổ sung case VN gần đây — khủng hoảng TikTok của thương hiệu VN, scandal của KOL/KOC, v.v. SV sẽ relate hơn.</li>
+      <li><strong>Ví dụ VN về phishing:</strong> Tin nhắn giả ngân hàng, giả Shopee, giả Zalo Pay là case gần gũi — nhiều SV hoặc gia đình đã gặp.</li>
+      <li><strong>Tương lai SC không cần đi quá sâu:</strong> Chỉ cần giới thiệu xu hướng chính để SV có cái nhìn tổng quan. Nếu có thời gian, thảo luận: "Xu hướng nào sẽ tác động lớn nhất đến ngành của bạn trong 5 năm tới?"</li>
+      <li><strong>Hoạt động SC Policy rất thiết thực:</strong> Đây là output SV có thể mang vào CV/portfolio. Khuyến khích SV làm nghiêm túc.</li>
+      <li><strong>Dành thời gian cuối buổi cho ôn tập môn:</strong> Đây là buổi cuối có nội dung mới. SV cần nghe hướng dẫn rõ ràng cho Buổi 9 (cả tiểu luận và thi cuối kỳ).</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📊 Câu hỏi Testbank liên quan (Chương 11)</h3>
+    <ul style="padding-left:1.2rem;line-height:1.8;color:var(--ink-light);font-size:.92rem;">
+      <li>MC: Implementation → process of carrying out business plan (Đáp án: D)</li>
+      <li>MC: Social engineering → criminals use psychology to get info (Đáp án: B)</li>
+      <li>MC: Social phishing → fraudulent process of acquiring confidential info (Đáp án: C)</li>
+      <li>MC: Legal issues EXCEPT → Looking up individual's profile (Đáp án: D)</li>
+      <li>MC: Cyberbullying → bullying using electronic technology (Đáp án: B)</li>
+      <li>MC: Ethical issues EXCEPT → Asking individual to complete registration (Đáp án: A)</li>
+      <li>MC: Personal values → major factor in ethical SC (Đáp án: C)</li>
+      <li>MC: Business process reengineering → comprehensive redesign (Đáp án: B)</li>
+      <li>MC: Change management → structured approach to transitioning (Đáp án: A)</li>
+      <li>MC: Employee-related issues → quality of UGC, reluctance, time (Đáp án: D)</li>
+      <li>MC: Deployment strategy EXCEPT → Partner with organizations that pay fee (Đáp án: B)</li>
+      <li>MC: Drivers of SC EXCEPT → Customer service (Đáp án: C)</li>
+      <li>T/F: "Privacy is the right to be left alone" → True</li>
+      <li>T/F: "Change management is comprehensive redesign" → False (đó là BPR)</li>
+      <li>T/F: "Useful to have guidelines and policies for SC" → True</li>
+      <li>T/F: "SC deployment may involve potential risks" → True</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p>ITS717 — Thương Mại Xã Hội | Chương 4 · Buổi 8/9 (Buổi cuối có nội dung giảng mới) | Trường ĐH Ngân Hàng TP.HCM</p>
+  <p style="margin-top:.3rem;">Soạn theo khung SCQA · 5 tiết (250 phút)</p>
+</footer>
+
+</div>
+</body>
+</html>
