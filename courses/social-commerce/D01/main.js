@@ -16,6 +16,7 @@ import { renderAdminDashboard } from './pages/admin/dashboard.js';
 import { renderAdminGrades } from './pages/admin/grades.js';
 import { renderAdminEvidence } from './pages/admin/evidence.js';
 import { renderTeacher } from './pages/teacher.js';
+import { renderStudentBoard } from './pages/student-board.js';
 
 
 // ── Navbar Component ──
@@ -56,6 +57,7 @@ function renderNavbar() {
           <li><a href="#/course" class="${location.hash === '#/course' ? 'active' : ''}">📚 Buổi học</a></li>
           <li><a href="#/ebook" class="${location.hash.startsWith('#/ebook') ? 'active' : ''}">📖 eBook</a></li>
           <li><a href="#/teacher" class="${location.hash === '#/teacher' ? 'active' : ''}">👨‍🏫 Thầy Đăng</a></li>
+          <li><a href="#/board" class="${location.hash === '#/board' ? 'active' : ''}">🏆 Lớp học</a></li>
           <li><a href="#/grades" class="${location.hash === '#/grades' ? 'active' : ''}">📋 Bảng điểm</a></li>
 
           <li>${adminLinks}</li>
@@ -119,6 +121,7 @@ route('/quiz/:sessionId/result', requireAuth(withNavbar(renderQuizResult)));
 route('/exam/:examId', requireAuth(renderExam));
 route('/grades', requireAuth(withNavbar(renderGrades)));
 route('/teacher', requireAuth(withNavbar(renderTeacher)));
+route('/board', requireAuth(withNavbar(renderStudentBoard)));
 
 
 // Admin pages

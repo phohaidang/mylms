@@ -26,6 +26,7 @@ import gradeRoutes from './routes/grades.js';
 import evidenceRoutes from './routes/evidence.js';
 import feedbackRoutes from './routes/feedback.js';
 import goalsRoutes from './routes/goals.js';
+import boardRoutes from './routes/board.js';
 
 /**
  * Create and configure the Express app
@@ -79,6 +80,7 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
   app.use('/api/evidence', evidenceRoutes);
   app.use('/api/feedback', feedbackRoutes);
   app.use('/api/goals', goalsRoutes);
+  app.use('/api/board', boardRoutes);
 
   // Root route
   app.get('/', (req, res) => {
