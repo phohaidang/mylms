@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import db from '../services/sheets.js';
-import { authenticate, authorize } from '../middleware/auth.js';
+import { authenticate, adminOnly } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -8,7 +8,7 @@ const router = Router();
  * POST /api/admin/backup
  * Create a backup of the spreadsheet on Google Drive
  */
-router.post('/backup', authenticate, authorize(['admin']), async (req, res) => {
+router.post('/backup', authenticate, adminOnly, async (req, res) => {
   try {
     const result = await db.createBackup();
     res.json(result);
@@ -21,7 +21,7 @@ router.post('/backup', authenticate, authorize(['admin']), async (req, res) => {
  * GET /api/admin/export
  * Download all data as JSON
  */
-router.get('/export', authenticate, authorize(['admin']), async (req, res) => {
+router.get('/export', authenticate, adminOnly, async (req, res) => {
   try {
     const data = await db.exportAllData();
     const timestamp = new Date().toISOString().split('T')[0];
