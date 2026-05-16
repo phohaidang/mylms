@@ -76,12 +76,15 @@ export async function renderGoalsPage(app) {
         <div class="goal-checklist" id="goal-checklist">
           <h2 class="goal-checklist-title">📋 Danh sách mục tiêu</h2>
           ${items.map((item, idx) => `
-            <div class="goal-item ${item.completed ? 'goal-item-done' : ''}" data-id="${item.id}">
-              <button class="goal-check-btn" data-id="${item.id}" aria-label="Toggle">
-                <span class="goal-check-icon">${item.completed ? '✅' : '⬜'}</span>
+            <div class="goal-item ${item.completed ? 'goal-item-done' : ''}" data-id="${item.id}" style="cursor: pointer">
+              <div class="goal-item-main" style="display: flex; align-items: center; gap: 0.75rem; flex: 1">
+                <div class="goal-check-icon">${item.completed ? '✅' : '⬜'}</div>
+                <span class="goal-item-num">${idx + 1}</span>
+                <span class="goal-item-text ${item.completed ? 'goal-text-done' : ''}">${item.text}</span>
+              </div>
+              <button class="btn-delete-goal" data-id="${item.id}" title="Xóa mục tiêu" style="background: none; border: none; color: var(--danger); opacity: 0.4; cursor: pointer; padding: 0.5rem; transition: opacity 0.2s">
+                🗑️
               </button>
-              <span class="goal-item-num">${idx + 1}</span>
-              <span class="goal-item-text ${item.completed ? 'goal-text-done' : ''}">${item.text}</span>
             </div>
           `).join('')}
         </div>
@@ -98,41 +101,77 @@ export async function renderGoalsPage(app) {
       </div>
     `;
 
-    // Toggle item handler
-    app.querySelectorAll('.goal-check-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const itemId = btn.dataset.id;
-        btn.disabled = true;
+    // Toggle item handler (on the whole row)
+    app.querySelectorAll('.goal-item-main').forEach(el => {
+      el.addEventListener('click', async (e) => {
+        const itemEl = el.closest('.goal-item');
+        const itemId = itemEl.dataset.id;
+        
+        // Visual feedback
+        itemEl.style.opacity = '0.5';
+        itemEl.style.pointerEvents = 'none';
+        
         try {
-          const result = await api.put(`/goals/items/${itemId}/toggle`);
-          renderGoalsPage(app); // Reload to reflect changes
+          await api.put(`/goals/items/${itemId}/toggle`);
+          renderGoalsPage(app);
         } catch (err) {
           alert(err.message || 'Lỗi cập nhật');
+          itemEl.style.opacity = '1';
+          itemEl.style.pointerEvents = 'auto';
+        }
+      });
+    });
+
+    // Delete item handler
+    app.querySelectorAll('.btn-delete-goal').forEach(btn => {
+      btn.addEventListener('mouseover', () => btn.style.opacity = '1');
+      btn.addEventListener('mouseout', () => btn.style.opacity = '0.4');
+      
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const itemId = btn.dataset.id;
+        if (!confirm('Bạn có chắc chắn muốn xóa mục tiêu này?')) return;
+        
+        btn.disabled = true;
+        try {
+          await api.delete(`/goals/items/${itemId}`);
+          renderGoalsPage(app);
+        } catch (err) {
+          alert(err.message || 'Lỗi xóa mục tiêu');
           btn.disabled = false;
         }
       });
     });
 
     // Add new item handler
-    document.getElementById('add-goal-btn').addEventListener('click', async () => {
-      const input = document.getElementById('new-goal-input');
-      const text = input.value.trim();
+    const addBtn = document.getElementById('add-goal-btn');
+    const addInput = document.getElementById('new-goal-input');
+
+    addBtn.addEventListener('click', async () => {
+      const text = addInput.value.trim();
       if (!text || text.length < 3) {
         alert('Mục tiêu cần ít nhất 3 ký tự');
         return;
       }
+      
+      // Prevent multiple clicks
+      addBtn.disabled = true;
+      addBtn.innerText = 'Đang thêm...';
+      
       try {
         await api.post('/goals/items', { text });
         renderGoalsPage(app);
       } catch (err) {
         alert(err.message || 'Lỗi thêm mục tiêu');
+        addBtn.disabled = false;
+        addBtn.innerText = 'Thêm';
       }
     });
 
     // Enter key support
-    document.getElementById('new-goal-input').addEventListener('keydown', (e) => {
+    addInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        document.getElementById('add-goal-btn').click();
+        addBtn.click();
       }
     });
 

@@ -44,7 +44,7 @@ router.get('/my', authenticate, async (req, res) => {
     }
 
     // Get goal items
-    const items = await db.find('goal_items', i => i.student_id === req.user.student_id);
+    const items = await db.find('goal_items', i => i.student_id === req.user.student_id && i.deleted !== 'true');
     
     // Sort by order
     items.sort((a, b) => parseInt(a.order || 0) - parseInt(b.order || 0));
@@ -111,7 +111,7 @@ router.post('/', authenticate, async (req, res) => {
     // Remove old items for this student
     // (Since sheets don't support delete, we'll mark and recreate)
     // For simplicity: just create items if none exist yet
-    const existingItems = await db.find('goal_items', i => i.student_id === req.user.student_id);
+    const existingItems = await db.find('goal_items', i => i.student_id === req.user.student_id && i.deleted !== 'true');
     
     if (existingItems.length === 0) {
       for (let idx = 0; idx < parsedItems.length; idx++) {
@@ -148,7 +148,7 @@ router.post('/items', authenticate, async (req, res) => {
       return res.status(400).json({ error: 'Mục tiêu cần ít nhất 3 ký tự.' });
     }
 
-    const existingItems = await db.find('goal_items', i => i.student_id === req.user.student_id);
+    const existingItems = await db.find('goal_items', i => i.student_id === req.user.student_id && i.deleted !== 'true');
     const nextOrder = existingItems.length + 1;
     const now = new Date().toISOString();
 
@@ -205,7 +205,7 @@ router.put('/items/:id/toggle', authenticate, async (req, res) => {
     });
 
     // Recalculate progress
-    const allItems = await db.find('goal_items', i => i.student_id === req.user.student_id);
+    const allItems = await db.find('goal_items', i => i.student_id === req.user.student_id && i.deleted !== 'true');
     // Apply the toggle to current item in-memory for accurate count
     const completed = allItems.filter(i => {
       if (i.id === itemId) return newCompleted;
@@ -226,6 +226,44 @@ router.put('/items/:id/toggle', authenticate, async (req, res) => {
   } catch (err) {
     console.error('Toggle item error:', err);
     res.status(500).json({ error: 'Lỗi cập nhật' });
+  }
+});
+
+/**
+ * DELETE /api/goals/items/:id
+ * Remove a goal item
+ */
+router.delete('/items/:id', authenticate, async (req, res) => {
+  try {
+    const itemId = req.params.id;
+    
+    // We can't easily delete from sheets, so we'll just filter it out in GET
+    // Or we could have a 'deleted' flag. 
+    // Given the current architecture, 'update' to mark as deleted is safer.
+    // However, sheets.js doesn't have a direct 'remove' yet.
+    // Let's check if sheets.js supports deletion. 
+    // Looking at sheets.js, it doesn't have a 'remove' function.
+    // I will add a 'deleted' field and filter in GET.
+    
+    await db.update('goal_items', i => i.id === itemId && i.student_id === req.user.student_id, {
+      deleted: 'true',
+      updated_at: new Date().toISOString()
+    });
+
+    // Recalculate progress after deletion
+    const allItems = await db.find('goal_items', i => i.student_id === req.user.student_id && i.deleted !== 'true');
+    const completed = allItems.filter(i => i.completed === 'true' || i.completed === true).length;
+    const percent = allItems.length > 0 ? Math.round((completed / allItems.length) * 100) : 0;
+    
+    await db.update('course_goals', g => g.student_id === req.user.student_id, {
+      achievement_percent: percent,
+      updated_at: new Date().toISOString()
+    });
+
+    res.json({ message: 'Đã xóa mục tiêu!', achievement_percent: percent });
+  } catch (err) {
+    console.error('Delete item error:', err);
+    res.status(500).json({ error: 'Lỗi xóa mục tiêu' });
   }
 });
 
