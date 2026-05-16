@@ -1254,3 +1254,127 @@ tbody tr:hover {
     grid-template-columns: 1fr !important;
   }
 }
+/* ── Teacher Page ── */
+.teacher-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.teacher-image-col {
+  position: sticky;
+  top: 100px;
+}
+
+.teacher-portrait-wrap {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.teacher-portrait-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(10, 11, 15, 0.8));
+}
+
+.teacher-portrait {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.teacher-portrait-wrap:hover .teacher-portrait {
+  transform: scale(1.05);
+}
+
+.teacher-info-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.teacher-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.teacher-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.teacher-contact-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-input);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.teacher-philosophy-card {
+  margin-bottom: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.teacher-philosophy-card::before {
+  content: '"';
+  position: absolute;
+  top: -1rem;
+  right: 0.5rem;
+  font-size: 6rem;
+  font-family: serif;
+  color: var(--accent);
+  opacity: 0.05;
+}
+
+.philosophy-title {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.philosophy-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 992px) {
+  .teacher-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .teacher-image-col {
+    position: static;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

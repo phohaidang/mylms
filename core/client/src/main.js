@@ -15,6 +15,8 @@ import { renderChangePassword } from './pages/change-password.js';
 import { renderAdminDashboard } from './pages/admin/dashboard.js';
 import { renderAdminGrades } from './pages/admin/grades.js';
 import { renderAdminEvidence } from './pages/admin/evidence.js';
+import { renderTeacher } from './pages/teacher.js';
+
 
 // ── Navbar Component ──
 function renderNavbar() {
@@ -53,7 +55,9 @@ function renderNavbar() {
           <li><a href="#/dashboard" class="${location.hash === '#/dashboard' ? 'active' : ''}">📊 Dashboard</a></li>
           <li><a href="#/course" class="${location.hash === '#/course' ? 'active' : ''}">📚 Buổi học</a></li>
           <li><a href="#/ebook" class="${location.hash.startsWith('#/ebook') ? 'active' : ''}">📖 eBook</a></li>
+          <li><a href="#/teacher" class="${location.hash === '#/teacher' ? 'active' : ''}">👨‍🏫 Thầy Đăng</a></li>
           <li><a href="#/grades" class="${location.hash === '#/grades' ? 'active' : ''}">📋 Bảng điểm</a></li>
+
           <li>${adminLinks}</li>
         </ul>
         <div class="navbar-user">
@@ -114,6 +118,8 @@ route('/quiz/:sessionId', requireAuth(withNavbar(renderQuiz)));
 route('/quiz/:sessionId/result', requireAuth(withNavbar(renderQuizResult)));
 route('/exam/:examId', requireAuth(renderExam));
 route('/grades', requireAuth(withNavbar(renderGrades)));
+route('/teacher', requireAuth(withNavbar(renderTeacher)));
+
 
 // Admin pages
 route('/admin/dashboard', requireAuth(withNavbar(renderAdminDashboard)));
