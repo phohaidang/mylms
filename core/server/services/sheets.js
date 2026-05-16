@@ -186,16 +186,37 @@ export async function update(sheetName, predicate, newData) {
   const rows = res.data.values;
   if (!rows || rows.length < 2) return null;
   
-  const headers = rows[0];
+  const headers = rows[0].map(h => String(h || '').trim().toLowerCase());
+  
+  // Check if we need to add new columns
+  const newDataKeys = Object.keys(newData).map(k => k.toLowerCase());
+  const missingHeaders = newDataKeys.filter(k => !headers.includes(k));
+  
+  if (missingHeaders.length > 0) {
+    const updatedHeaders = [...rows[0], ...missingHeaders];
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: SPREADSHEET_ID,
+      range: `${sheetName}!A1`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [updatedHeaders] }
+    });
+    // Refresh headers for current operation
+    missingHeaders.forEach(h => headers.push(h));
+  }
+
   for (let i = 1; i < rows.length; i++) {
     const obj = {};
-    headers.forEach((h, j) => { obj[h] = rows[i][j] || ''; });
+    headers.forEach((h, j) => { 
+      if (h) obj[h] = rows[i][j] || ''; 
+    });
+    
     if (predicate(obj)) {
       const merged = { ...obj, ...newData };
-      const updatedRow = headers.map(h => {
+      const updatedRow = headers.map((h, j) => {
         const val = merged[h];
         return typeof val === 'object' ? JSON.stringify(val) : String(val ?? '');
       });
+      
       await sheets.spreadsheets.values.update({
         spreadsheetId: SPREADSHEET_ID,
         range: `${sheetName}!A${i + 1}:Z${i + 1}`,
