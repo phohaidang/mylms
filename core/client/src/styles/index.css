@@ -1549,3 +1549,254 @@ tbody tr:hover {
   }
 }
 
+/* ── Goals System ── */
+
+/* CTA Card (no goal yet) */
+.goal-cta-card {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  color: white;
+}
+
+.goal-cta-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.goal-cta-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+/* Dashboard Goal Summary Card */
+.goal-dashboard-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+}
+
+.goal-dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.goal-dash-count {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.goal-dash-percent {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.goal-dash-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-input);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.goal-dash-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.goal-dash-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.goal-dash-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  transition: all var(--transition);
+}
+
+.goal-dash-item-done {
+  opacity: 0.65;
+}
+
+.goal-dash-check {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.goal-dash-item-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.goal-dash-item-done .goal-dash-item-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Goals Detail Page */
+.goal-setup-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.goal-setup-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.goal-progress-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.goal-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.goal-progress-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.goal-progress-detail {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.goal-progress-percent {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.goal-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-input);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.goal-progress-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+
+.goal-complete-msg {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--success);
+  margin-top: 1rem;
+  animation: pulse 1.5s ease infinite;
+}
+
+.goal-checklist {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.goal-checklist-title {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  margin-bottom: 0.5rem;
+  transition: all var(--transition);
+  animation: boardCardIn 0.3s ease both;
+}
+
+.goal-item:hover {
+  background: var(--accent-light);
+}
+
+.goal-item-done {
+  opacity: 0.6;
+}
+
+.goal-check-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.2rem;
+  transition: transform var(--transition);
+}
+
+.goal-check-btn:hover {
+  transform: scale(1.2);
+}
+
+.goal-check-icon {
+  font-size: 1.2rem;
+}
+
+.goal-item-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.goal-item-text {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.goal-text-done {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.goal-add-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}

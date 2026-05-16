@@ -17,6 +17,7 @@ import { renderAdminGrades } from './pages/admin/grades.js';
 import { renderAdminEvidence } from './pages/admin/evidence.js';
 import { renderTeacher } from './pages/teacher.js';
 import { renderStudentBoard } from './pages/student-board.js';
+import { renderGoalsPage } from './pages/goals.js';
 
 
 // ── Navbar Component ──
@@ -132,6 +133,7 @@ route('/exam/:examId', requireAuth(renderExam));
 route('/grades', requireAuth(withNavbar(renderGrades)));
 route('/teacher', requireAuth(withNavbar(renderTeacher)));
 route('/board', requireAuth(withNavbar(renderStudentBoard)));
+route('/goals', requireAuth(withNavbar(renderGoalsPage)));
 
 
 // Admin pages
