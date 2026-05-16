@@ -296,7 +296,57 @@ export async function uploadToDrive(fileName, mimeType, buffer) {
   }
 }
 
-export default { getAll, find, findOne, append, update, count, uploadToDrive };
+/**
+ * Create a backup of the spreadsheet on Google Drive
+ */
+export async function createBackup() {
+  if (IS_MOCK) return { message: 'Mock mode: no backup created' };
+  
+  try {
+    const timestamp = new Date().toLocaleString('vi-VN').replace(/[/:]/g, '-');
+    const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
+    const originalTitle = ss.data.properties.title;
+    
+    const response = await drive.files.copy({
+      fileId: SPREADSHEET_ID,
+      requestBody: {
+        name: `[BACKUP] ${originalTitle} (${timestamp})`,
+      }
+    });
+    
+    return {
+      success: true,
+      backup_id: response.data.id,
+      name: response.data.name
+    };
+  } catch (err) {
+    console.error('Backup error:', err);
+    throw err;
+  }
+}
+
+/**
+ * Export all data from all known sheets as a single JSON object
+ */
+export async function exportAllData() {
+  if (IS_MOCK) return mockData;
+  
+  try {
+    const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
+    const sheetNames = ss.data.sheets.map(s => s.properties.title);
+    
+    const allData = {};
+    for (const name of sheetNames) {
+      allData[name] = await getAll(name);
+    }
+    return allData;
+  } catch (err) {
+    console.error('Export error:', err);
+    throw err;
+  }
+}
+
+export default { getAll, find, findOne, append, update, count, uploadToDrive, createBackup, exportAllData };
 
 if (IS_MOCK) {
   console.log('📋 Database: Mock mode (in-memory + file persist)');
