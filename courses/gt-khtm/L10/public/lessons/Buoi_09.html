@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 9 – Trình bày Tiểu luận Nhóm & Ôn tập Tổng kết</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf8f5;--surface:#fff;--surface-alt:#f3efe9;--ink:#1a1612;--ink-light:#5a5249;--ink-muted:#8a8279;--accent:#c44b25;--accent-light:#fdf0ec;--accent-dark:#9a3a1c;--teal:#1a7a6d;--teal-light:#e8f5f2;--blue:#2c5aa0;--blue-light:#edf2fa;--gold:#b8860b;--gold-light:#fdf8ec;--border:#e5dfd6;--shadow:0 2px 12px rgba(26,22,18,.06);--radius:10px;--red:#c0392b;--red-light:#fdf2f2}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Source Sans Pro',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16.5px}.hero{background:linear-gradient(135deg,#1a1612 0%,#2c2520 40%,#3d2e1e 100%);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}.hero-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:1.2rem}.hero h1{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;line-height:1.2;margin-bottom:.6rem}.hero h1 span{color:var(--accent)}.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.7);font-weight:300;max-width:620px}.hero-meta{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}.hero-meta-item{font-size:.85rem;color:rgba(255,255,255,.55)}.hero-meta-item strong{display:block;color:rgba(255,255,255,.92);font-size:1rem;font-weight:600}.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.section-label{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:.4rem;line-height:1.3}h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem;line-height:1.4}.section-desc{color:var(--ink-light);font-size:1rem;margin-bottom:2rem;max-width:680px}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}.card-accent{border-left:4px solid var(--accent)}.card-teal{border-left:4px solid var(--teal);background:var(--teal-light)}.card-blue{border-left:4px solid var(--blue);background:var(--blue-light)}.card-gold{border-left:4px solid var(--gold);background:var(--gold-light)}.card-red{border-left:4px solid var(--red);background:var(--red-light)}.timeline{position:relative;margin:1.5rem 0}.timeline-item{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--border);align-items:start}.timeline-item:last-child{border-bottom:none}.time-badge{background:var(--surface-alt);border-radius:6px;padding:6px 12px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--ink-light);white-space:nowrap}.time-badge.highlight{background:var(--accent-light);color:var(--accent-dark)}.time-badge.exam{background:var(--red-light);color:var(--red)}.timeline-content h4{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}.timeline-content p{font-size:.92rem;color:var(--ink-light);line-height:1.6}.activity{background:var(--accent-light);border:1px solid #f0d4c9;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.activity-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}.activity h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}.activity p,.activity ul{font-size:.95rem;color:var(--ink-light);line-height:1.7}.activity ul{padding-left:1.2rem}.discussion{background:var(--teal-light);border:1px solid #c4e0db;border-radius:var(--radius);padding:1.5rem 1.8rem;margin:1.2rem 0}.discussion-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}.key-concept{display:flex;gap:1rem;padding:1rem 1.4rem;background:var(--surface-alt);border-radius:8px;margin:.8rem 0;align-items:flex-start}.key-concept .kc-term{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:500;color:var(--accent);background:var(--accent-light);padding:3px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px}.key-concept .kc-def{font-size:.95rem;color:var(--ink-light);line-height:1.6}.divider{height:1px;background:var(--border);margin:3rem 0}.rubric-table,.review-table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.8rem}.rubric-table th,.review-table th{background:var(--ink);color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:.8rem;letter-spacing:.5px}.rubric-table td,.review-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}.review-table tr:nth-child(even){background:var(--surface-alt)}.footer-note{text-align:center;color:var(--ink-muted);font-size:.85rem;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem}@media print{body{font-size:11pt;background:#fff}.hero{background:#333!important}.card,.activity,.discussion{break-inside:avoid}}@media(max-width:640px){.hero h1{font-size:1.7rem}h2{font-size:1.4rem}.container{padding:1.5rem 1rem}.card{padding:1.3rem 1.2rem}.timeline-item{grid-template-columns:80px 1fr;gap:1rem}.rubric-table,.review-table{font-size:.78rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS717 — Buổi 9/9 · BUỔI CUỐI CÙNG</div>
+    <h1>Trình bày Tiểu luận Nhóm & <span>Ôn tập Tổng kết</span></h1>
+    <p class="hero-sub">Các nhóm thuyết trình ý tưởng kinh doanh SC + Ôn tập có hệ thống toàn bộ 4 chương cho kỳ thi cuối kỳ.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>5 tiết (250 phút)</strong>Giải lao 20 phút</div>
+      <div class="hero-meta-item"><strong>Buổi cuối</strong>Kết thúc môn học</div>
+      <div class="hero-meta-item"><strong>CLO1-3</strong>Đánh giá tổng hợp</div>
+      <div class="hero-meta-item"><strong>4 chương</strong>Ôn tập toàn bộ</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════ MỤC TIÊU ═══════ -->
+<section>
+  <p class="section-label">Mục tiêu buổi 9</p>
+  <h2>Sau buổi học, sinh viên có thể…</h2>
+  <div class="card" style="margin-top:1rem;">
+    <ol style="padding-left:1.3rem;color:var(--ink-light);line-height:2.2;">
+      <li><strong>Trình bày</strong> rõ ràng, thuyết phục ý tưởng/kế hoạch kinh doanh SC của nhóm trước lớp.</li>
+      <li><strong>Phản biện</strong> và trả lời câu hỏi chuyên môn về kế hoạch SC của nhóm mình và nhóm khác.</li>
+      <li><strong>Đánh giá</strong> khách quan các phương án SC của nhóm bạn dựa trên kiến thức đã học.</li>
+      <li><strong>Hệ thống hóa</strong> toàn bộ kiến thức 4 chương: khái niệm cốt lõi, mô hình, công cụ, chiến lược.</li>
+      <li><strong>Sẵn sàng</strong> cho kỳ thi cuối kỳ với tư duy rõ ràng về cấu trúc kiến thức.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section>
+  <p class="section-label">Lộ trình buổi học</p>
+  <h2>250 phút — Trình bày + Ôn tập</h2>
+  <p class="section-desc">Buổi cuối đặc biệt: ~2.5 tiết đầu cho trình bày nhóm (6 nhóm × ~15 phút), còn lại cho ôn tập tổng kết và hướng dẫn thi.</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="time-badge highlight">0'–10'</div><div class="timeline-content"><h4>🎬 Mở đầu: Ổn định & giới thiệu buổi</h4><p>GV giới thiệu thứ tự trình bày, rubric đánh giá, quy định Q&A. Chia form đánh giá chéo cho các nhóm.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">10'–110'</div><div class="timeline-content"><h4>🎤 Phần 1: Trình bày nhóm 1-4 (100 phút)</h4><p>Mỗi nhóm 15 phút: 10-12 phút trình bày + 3-5 phút Q&A. GV chấm điểm realtime theo rubric.</p></div></div>
+    <div class="timeline-item"><div class="time-badge highlight">110'–130'</div><div class="timeline-content"><h4>☕ Giải lao 20 phút</h4><p></p></div></div>
+    <div class="timeline-item"><div class="time-badge">130'–180'</div><div class="timeline-content"><h4>🎤 Phần 2: Trình bày nhóm 5-6 + Nhận xét chung (50 phút)</h4><p>2 nhóm cuối trình bày (30 phút) + GV nhận xét chung về tất cả các nhóm, các điểm mạnh/yếu phổ biến (20 phút).</p></div></div>
+    <div class="timeline-item"><div class="time-badge">180'–225'</div><div class="timeline-content"><h4>📚 Phần 3: Ôn tập tổng kết toàn môn (45 phút)</h4><p>GV hệ thống hóa kiến thức 4 chương qua "bản đồ tư duy" + làm một số câu trắc nghiệm mẫu.</p></div></div>
+    <div class="timeline-item"><div class="time-badge exam">225'–245'</div><div class="timeline-content"><h4>📝 Phần 4: Hướng dẫn thi cuối kỳ (20 phút)</h4><p>Cấu trúc đề thi, thời gian, phạm vi, tips làm bài. Giải đáp thắc mắc.</p></div></div>
+    <div class="timeline-item"><div class="time-badge">245'–250'</div><div class="timeline-content"><h4>🎓 Phần 5: Lời cảm ơn & kết thúc môn học</h4><p>GV cảm ơn lớp, chúc thi tốt, chia sẻ kỳ vọng sau môn học.</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 1: HƯỚNG DẪN TRÌNH BÀY ═══════ -->
+<section>
+  <p class="section-label">Phần 1 & 2 · 150 phút</p>
+  <h2>Trình bày Tiểu luận Nhóm</h2>
+
+  <div class="card card-gold">
+    <h3>📋 Hướng dẫn trình bày</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Thời gian:</strong> 10-12 phút trình bày + 3-5 phút Q&A = 15 phút/nhóm</li>
+      <li><strong>Số thành viên trình bày:</strong> Tất cả thành viên nhóm đều phải nói ít nhất 1 phần (phân công rõ)</li>
+      <li><strong>Slide:</strong> Tối đa 15 slide, thiết kế chuyên nghiệp, không đọc từ slide</li>
+      <li><strong>Phong cách:</strong> Như pitching trước nhà đầu tư — rõ ràng, thuyết phục, có dữ liệu cụ thể</li>
+      <li><strong>Q&A:</strong> GV và các nhóm khác đặt câu hỏi. Phải trả lời có cơ sở.</li>
+      <li><strong>Chấm điểm chéo:</strong> Mỗi SV nhận form đánh giá các nhóm khác (không đánh giá nhóm mình)</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>🎯 Cấu trúc bài trình bày đề xuất</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>1. Giới thiệu (1 phút):</strong> Tên nhóm, thành viên, ý tưởng kinh doanh ngắn gọn (1 câu)</li>
+      <li><strong>2. Vấn đề & Cơ hội (1-2 phút):</strong> Problem statement — tại sao có ý tưởng này? Thị trường ra sao?</li>
+      <li><strong>3. Giải pháp SC (2-3 phút):</strong> Mô hình kinh doanh cụ thể. Dùng công cụ/nền tảng nào?</li>
+      <li><strong>4. Chiến lược SC (2-3 phút):</strong> Target market, Owned/Paid/Earned strategy, engagement plan</li>
+      <li><strong>5. Metrics & ROI (1-2 phút):</strong> 3-5 KPIs cốt lõi, dự kiến ROI 12 tháng</li>
+      <li><strong>6. Thách thức & Rủi ro (1 phút):</strong> Security, pháp lý, đạo đức — cách phòng ngừa</li>
+      <li><strong>7. Kết luận (30 giây):</strong> Tóm gọn tại sao ý tưởng khả thi</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <h3>📊 Rubric đánh giá tiểu luận nhóm (100 điểm)</h3>
+    <table class="rubric-table">
+      <thead><tr><th>Tiêu chí</th><th style="width:80px;">Điểm</th><th>Xuất sắc (8.5-10)</th><th>Không đạt (<4)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hình thức báo cáo</strong><br><em>Format, structure</em></td><td>10%</td><td>Báo cáo chuyên nghiệp, đúng format, slide đẹp</td><td>Format lỗi, không có cấu trúc</td></tr>
+        <tr><td><strong>Kỹ năng trình bày</strong><br><em>Presentation skill</em></td><td>10%</td><td>Rõ ràng, tự tin, không đọc slide, đúng giờ</td><td>Đọc slide, quá giờ, thiếu chuẩn bị</td></tr>
+        <tr><td><strong>Nội dung chuyên môn</strong><br><em>Theory application</em></td><td>20%</td><td>Áp dụng đúng lý thuyết, thuật ngữ chính xác, thể hiện hiểu sâu</td><td>Sai lý thuyết, không dùng thuật ngữ</td></tr>
+        <tr><td><strong>Tính khả thi</strong><br><em>Feasibility</em></td><td>20%</td><td>Kế hoạch thực tế, ngân sách hợp lý, có thể triển khai được</td><td>Không khả thi, thiếu cơ sở</td></tr>
+        <tr><td><strong>Q&A</strong><br><em>Trả lời phản biện</em></td><td>20%</td><td>Trả lời có cơ sở, bảo vệ được quan điểm, thuyết phục</td><td>Không trả lời được, ấp úng</td></tr>
+        <tr><td><strong>Tham gia lớp</strong><br><em>Class participation</em></td><td>20%</td><td>Đặt câu hỏi chất lượng cho nhóm khác, tham gia thảo luận</td><td>Không tham gia, không đặt câu hỏi</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">💡 Ghi chú cho GV khi chấm</div>
+    <ul>
+      <li>Chấm điểm realtime ngay sau mỗi nhóm trình bày — tránh quên chi tiết</li>
+      <li>Note 2-3 điểm mạnh và 2-3 điểm cần cải thiện cho từng nhóm để feedback</li>
+      <li>Khuyến khích các nhóm khác đặt câu hỏi → tham gia lớp được tính điểm</li>
+      <li>Tổng kết cuối Phần 2: highlight 1-2 ý tưởng xuất sắc nhất, 1-2 điểm yếu phổ biến</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 3: ÔN TẬP TỔNG KẾT ═══════ -->
+<section>
+  <p class="section-label">Phần 3 · 45 phút</p>
+  <h2>Ôn tập Tổng kết toàn môn</h2>
+
+  <div class="card card-accent">
+    <h3>🗺️ Bản đồ kiến thức ITS717 — Tóm gọn 4 chương</h3>
+    <p style="color:var(--ink-light);line-height:1.8;">GV trình bày bản đồ tư duy tổng thể, kết nối các khái niệm giữa các chương để SV thấy được tính liên kết.</p>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📖 Chương 1: Tổng quan & Nền tảng Lý thuyết</h3>
+    <table class="review-table">
+      <thead><tr><th>Khái niệm cốt lõi</th><th>Ý nghĩa ngắn gọn</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Social Commerce (SC)</strong></td><td>TMĐT + MXH + tương tác xã hội → cho phép mua bán qua SNS</td></tr>
+        <tr><td><strong>Social Computing</strong></td><td>Nền tảng của SC — công nghệ hỗ trợ tương tác xã hội</td></tr>
+        <tr><td><strong>Web 2.0</strong></td><td>Read-write web — NTD tạo nội dung, không chỉ đọc</td></tr>
+        <tr><td><strong>SNS (Social Networking Sites)</strong></td><td>Facebook, Instagram, TikTok, LinkedIn... — nơi SC hoạt động</td></tr>
+        <tr><td><strong>Mobile SC</strong></td><td>SC trên thiết bị di động — xu hướng chủ đạo</td></tr>
+        <tr><td><strong>Crowdsourcing</strong></td><td>Dùng đám đông để giải quyết vấn đề, tạo ý tưởng</td></tr>
+        <tr><td><strong>AIDA vs AISAS</strong></td><td>AIDA: Attention-Interest-Desire-Action. AISAS (Dentsu): thêm Search + Share — đặc trưng SC</td></tr>
+        <tr><td><strong>5 vai trò mua hàng</strong></td><td>Initiator → Influencer → Decider → Buyer → User</td></tr>
+        <tr><td><strong>Personalization</strong></td><td>Cá nhân hóa SP/dịch vụ. Công cụ: cookies, behavioral targeting, collaborative filtering</td></tr>
+        <tr><td><strong>WoM / eWoM / Viral</strong></td><td>Word-of-mouth — 14% tin QC, đa số tin bạn bè</td></tr>
+        <tr><td><strong>Engagement 5Cs</strong></td><td>Consume → Connect → Collect → Create → Collaborate</td></tr>
+        <tr><td><strong>Social Influence</strong></td><td>Sức ảnh hưởng xã hội. Kèm: Conformity, Social Proof</td></tr>
+        <tr><td><strong>Social Capital</strong></td><td>Giá trị từ kết nối mạng xã hội — KOL có SC cao</td></tr>
+        <tr><td><strong>Social Support</strong></td><td>Cảm giác được quan tâm, hỗ trợ từ cộng đồng</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📖 Chương 2: Marketing, Shopping & CRM</h3>
+    <table class="review-table">
+      <thead><tr><th>Khái niệm cốt lõi</th><th>Ý nghĩa ngắn gọn</th></tr></thead>
+      <tbody>
+        <tr><td><strong>6 bước SM Promotion</strong></td><td>Target → Mục tiêu → Platform → Thực thi → Đo lường → Tinh chỉnh</td></tr>
+        <tr><td><strong>Collective vs Individual Listening</strong></td><td>Collective: dashboard, research. Individual: tham gia hội thoại</td></tr>
+        <tr><td><strong>Owned Media</strong></td><td>Kênh DN SỞ HỮU: website, fanpage, blog, kênh YouTube</td></tr>
+        <tr><td><strong>Paid Media</strong></td><td>DN TRẢ TIỀN: ads, sponsored posts, KOL paid</td></tr>
+        <tr><td><strong>Earned Media</strong></td><td>KH tạo ra: UGC, reviews, shares — MỤC TIÊU tối thượng</td></tr>
+        <tr><td><strong>Social Ads</strong></td><td>QC tích hợp user interactions (profile, name)</td></tr>
+        <tr><td><strong>Reputation Management</strong></td><td>Build → Maintain → Monitor → Repair</td></tr>
+        <tr><td><strong>SEO</strong></td><td>Cải thiện visibility trên search engine</td></tr>
+        <tr><td><strong>5 nhóm Metrics</strong></td><td>Awareness / Brand Health / Engagement / Action / Innovation</td></tr>
+        <tr><td><strong>Social Shopping</strong></td><td>Sales 2.0 — mua sắm + MXH + chia sẻ</td></tr>
+        <tr><td><strong>Mô hình SS</strong></td><td>Group Buying, Flash Sales, Communities, Marketplace, Virtual Goods</td></tr>
+        <tr><td><strong>Ratings & Reviews</strong></td><td>Customer/Expert/Sponsored/Video/Blogger reviews</td></tr>
+        <tr><td><strong>CRM → e-CRM → SCRM</strong></td><td>Truyền thống → Điện tử → MXH. SCRM = CRM 2.0</td></tr>
+        <tr><td><strong>4 loại ứng dụng CRM</strong></td><td>Customer-facing / Customer-touching / Intelligence / Networking</td></tr>
+        <tr><td><strong>Reactive vs Proactive</strong></td><td>Reactive: chờ KH phàn nàn. Proactive: can thiệp trước</td></tr>
+        <tr><td><strong>Touch Point</strong></td><td>Bất kỳ điểm tương tác nào giữa KH và thương hiệu</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📖 Chương 3: Social Enterprise & Ứng dụng SC</h3>
+    <table class="review-table">
+      <thead><tr><th>Khái niệm cốt lõi</th><th>Ý nghĩa ngắn gọn</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Social Enterprise</strong></td><td>Dùng MXH trong tổ chức (thương mại/phi lợi nhuận)</td></tr>
+        <tr><td><strong>Business Network</strong></td><td>Nhóm người có quan hệ kinh doanh chuyên nghiệp</td></tr>
+        <tr><td><strong>Enterprise SNS</strong></td><td>MXH nội bộ DN: Yammer, Slack, Teams, Lark</td></tr>
+        <tr><td><strong>LinkedIn & Tuyển dụng</strong></td><td>94% recruiters Mỹ dùng. Virtual job fairs.</td></tr>
+        <tr><td><strong>Knowledge Management</strong></td><td>Thu thập, lưu trữ, chia sẻ tri thức DN</td></tr>
+        <tr><td><strong>Social Collaboration</strong></td><td>Hợp tác qua wikis, blogs, forums, crowdsourcing nội bộ</td></tr>
+        <tr><td><strong>E-Government / Social Gov</strong></td><td>Chính phủ dùng MXH phục vụ công dân</td></tr>
+        <tr><td><strong>B2B Social</strong></td><td>Marketing B2B qua MXH. Virtual trade shows</td></tr>
+        <tr><td><strong>Social Entertainment</strong></td><td>Internet TV, Social TV, streaming + MXH</td></tr>
+        <tr><td><strong>Gamification</strong></td><td>Đưa game vào MXH/kinh doanh (Shopee Coins, Duolingo)</td></tr>
+        <tr><td><strong>Social Games</strong></td><td>Game multiplayer trên MXH/virtual worlds</td></tr>
+        <tr><td><strong>P2P</strong></td><td>Hoạt động cá nhân với nhau: lending, sharing economy</td></tr>
+        <tr><td><strong>Virtual Worlds</strong></td><td>Second Life — collaboration, transaction, entertainment spaces</td></tr>
+        <tr><td><strong>Crowdfunding</strong></td><td>Equity, Rewards, Contribution to a cause</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📖 Chương 4: Chiến lược, Hiệu quả & Triển khai</h3>
+    <table class="review-table">
+      <thead><tr><th>Khái niệm cốt lõi</th><th>Ý nghĩa ngắn gọn</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Strategy</strong></td><td>Khung định hướng đạt sứ mệnh và mục tiêu DN</td></tr>
+        <tr><td><strong>Strategic Planning 5 GĐ</strong></td><td>Initiation → Formulation → Implementation → Assessment → Improvement</td></tr>
+        <tr><td><strong>Strategy Map</strong></td><td>Biểu đồ trực quan mối quan hệ giữa các mục tiêu</td></tr>
+        <tr><td><strong>Justification</strong></td><td>Biện minh đầu tư SC — tại sao cần, lợi ích gì</td></tr>
+        <tr><td><strong>Cost-Benefit Analysis</strong></td><td>Tangible (hữu hình) + Intangible (vô hình)</td></tr>
+        <tr><td><strong>Hype Cycle (Gartner)</strong></td><td>5 GĐ: Trigger → Peak → Trough → Slope → Plateau. Đầu tư ở GĐ 4</td></tr>
+        <tr><td><strong>Market Research qua MXH</strong></td><td>Live chat, polling, chatting, conversational marketing, find expertise</td></tr>
+        <tr><td><strong>Web vs Social vs Sentiment Analytics</strong></td><td>Web: site data. Social: MXH. Sentiment: thái độ (positive/negative)</td></tr>
+        <tr><td><strong>KPI</strong></td><td>Key Performance Indicator — chỉ số then chốt định lượng</td></tr>
+        <tr><td><strong>Balanced Scorecard</strong></td><td>4 góc nhìn: Financial, Customer, Process, Learning</td></tr>
+        <tr><td><strong>Social Engineering</strong></td><td>Lừa bằng tâm lý học để lấy thông tin</td></tr>
+        <tr><td><strong>Phishing</strong></td><td>Lừa lấy thông tin bí mật qua email/site giả</td></tr>
+        <tr><td><strong>Privacy</strong></td><td>Quyền được để yên, không bị xâm nhập đời tư</td></tr>
+        <tr><td><strong>Cyberbullying</strong></td><td>Bắt nạt qua công nghệ điện tử</td></tr>
+        <tr><td><strong>Change Management</strong></td><td>Chuyển tổ chức từ trạng thái hiện tại → mong muốn</td></tr>
+        <tr><td><strong>BPR</strong></td><td>Business Process Reengineering — thiết kế LẠI toàn diện quy trình</td></tr>
+        <tr><td><strong>CSF</strong></td><td>Critical Success Factors — yếu tố thành công then chốt</td></tr>
+        <tr><td><strong>Tương lai SC</strong></td><td>AI, Voice, Live 2.0, Sustainable, AR/VR, Creator Economy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="activity">
+    <div class="activity-label">⚡ Mini-quiz ôn tập (10 phút)</div>
+    <h4>GV đặt 5-7 câu trắc nghiệm mẫu — lớp trả lời nhanh</h4>
+    <p>Ví dụ các câu hỏi nên hỏi để kiểm tra độ hiểu của lớp:</p>
+    <ul>
+      <li><strong>Câu 1:</strong> Mô hình nào thay thế "Desire" bằng "Search" và thêm "Share"? (<em>AISAS</em>)</li>
+      <li><strong>Câu 2:</strong> Khi KH chia sẻ video unboxing lên TikTok, đó là loại media gì? (<em>Earned Media - UGC</em>)</li>
+      <li><strong>Câu 3:</strong> Social Engineering khác Phishing ở điểm nào? (<em>Social Engineering dùng tâm lý; Phishing là quy trình lừa đảo cụ thể</em>)</li>
+      <li><strong>Câu 4:</strong> 5 giai đoạn của Strategic Planning là gì? (<em>Initiation → Formulation → Implementation → Assessment → Performance Improvement</em>)</li>
+      <li><strong>Câu 5:</strong> Gartner Hype Cycle — nên đầu tư ở giai đoạn nào? (<em>Slope of Enlightenment - giai đoạn 4</em>)</li>
+      <li><strong>Câu 6:</strong> Shopee Coins và Duolingo Streaks là ví dụ của khái niệm gì? (<em>Gamification</em>)</li>
+      <li><strong>Câu 7:</strong> Engagement 5Cs gồm những gì? (<em>Consume, Connect, Collect, Create, Collaborate</em>)</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 4: HƯỚNG DẪN THI CUỐI KỲ ═══════ -->
+<section>
+  <p class="section-label">Phần 4 · 20 phút</p>
+  <h2>Hướng dẫn Thi Cuối kỳ</h2>
+
+  <div class="card card-red" style="margin-top:1rem;">
+    <h3>📝 Cấu trúc đề thi cuối kỳ</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Hình thức:</strong> Trắc nghiệm khách quan (Multiple Choice + True/False)</li>
+      <li><strong>Số câu:</strong> Khoảng 40 câu</li>
+      <li><strong>Thời gian:</strong> 45-60 phút</li>
+      <li><strong>Phạm vi:</strong> Toàn bộ 4 chương (Ch.1-4, Buổi 1-8)</li>
+      <li><strong>Tỷ trọng:</strong> 50% điểm cuối môn</li>
+      <li><strong>Cơ cấu điểm môn:</strong> Kiểm tra quá trình 20% + Tiểu luận nhóm 30% + Thi cuối kỳ 50%</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📊 Phân bổ câu hỏi dự kiến theo chương</h3>
+    <table class="rubric-table">
+      <thead><tr><th>Chương</th><th style="width:80px;">Số câu</th><th>Chủ đề chính</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ch.1 - Cơ bản & Lý thuyết</strong></td><td>10-12</td><td>SC, SNS, crowdsourcing, AIDA/AISAS, personalization, WoM, engagement, social influence</td></tr>
+        <tr><td><strong>Ch.2 - Marketing, Shopping, CRM</strong></td><td>12-14</td><td>Owned/Paid/Earned, social ads, SEO, metrics, social shopping, group buying, CRM, SCRM, touch point, reactive/proactive</td></tr>
+        <tr><td><strong>Ch.3 - Social Enterprise & Ứng dụng</strong></td><td>6-8</td><td>Social enterprise, enterprise SNS, virtual worlds, gamification, P2P, crowdsourcing, social gov</td></tr>
+        <tr><td><strong>Ch.4 - Strategy & Implementation</strong></td><td>8-10</td><td>Strategy, hype cycle, market research, analytics, sentiment, KPI, security, phishing, ethics, change management</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card card-teal" style="margin-top:1rem;">
+    <h3>💡 Tips làm bài thi hiệu quả</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Đọc kỹ câu hỏi:</strong> Chú ý các từ khóa "EXCEPT", "NOT", "BEST", "MAJOR" — dễ nhầm lẫn</li>
+      <li><strong>Câu True/False:</strong> 1 từ sai có thể làm cả câu sai. Đọc chậm từng chữ.</li>
+      <li><strong>Định nghĩa cơ bản:</strong> Phải thuộc định nghĩa gốc (Social Engineering, Phishing, CRM, SCRM...) — thường có trong đề</li>
+      <li><strong>Phân biệt các khái niệm gần:</strong> AIDA vs AISAS, Owned vs Paid vs Earned, Web vs Social Analytics, Change Mgmt vs BPR, Reactive vs Proactive</li>
+      <li><strong>Câu ví dụ ứng dụng:</strong> Liên hệ với case VN đã học (Shopee Coins, TikTok Shop, Starbucks...)</li>
+      <li><strong>Không chắc:</strong> Loại trừ đáp án sai rõ ràng trước → tăng xác suất đúng</li>
+      <li><strong>Quản lý thời gian:</strong> 1-1.5 phút/câu. Câu khó bỏ qua, quay lại sau</li>
+      <li><strong>Kiểm tra lại:</strong> Dành 5 phút cuối để rà soát toàn bài</li>
+    </ul>
+  </div>
+
+  <div class="card card-gold" style="margin-top:1rem;">
+    <h3>⚠️ Các khái niệm thường nhầm lẫn nhất</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:1.9;">
+      <li><strong>Social Engineering vs Phishing:</strong> SE là dùng TÂM LÝ HỌC; Phishing là QUY TRÌNH LỪA ĐẢO cụ thể. SE bao gồm Phishing nhưng rộng hơn.</li>
+      <li><strong>Change Management vs BPR:</strong> CM là chuyển tổ chức sang trạng thái mới (quản lý thay đổi); BPR là thiết kế LẠI quy trình (xây lại).</li>
+      <li><strong>Reactive vs Proactive customer service:</strong> Reactive chờ KH phàn nàn; Proactive can thiệp TRƯỚC khi có vấn đề.</li>
+      <li><strong>Web Analytics vs Social Media Analytics vs Sentiment Analysis:</strong> Web: website data; Social: tương tác MXH; Sentiment: cảm xúc/thái độ.</li>
+      <li><strong>Social Enterprise vs Social Business:</strong> Enterprise = dùng MXH trong tổ chức; Business = tổ chức vì mục tiêu xã hội (thiện nguyện).</li>
+      <li><strong>Tangible vs Intangible benefits:</strong> Tangible dễ đo (doanh thu); Intangible khó đo (uy tín, loyalty).</li>
+      <li><strong>AIDA vs AISAS:</strong> AIDA có Desire + Action. AISAS thay Desire → Search, thêm Share.</li>
+      <li><strong>CRM vs e-CRM vs SCRM:</strong> CRM truyền thống (one-way); e-CRM (CRM 1.0, công cụ điện tử); SCRM (CRM 2.0, MXH + đối thoại).</li>
+    </ul>
+  </div>
+
+  <div class="discussion">
+    <div class="discussion-label">💬 Giải đáp thắc mắc</div>
+    <p>GV dành 5-10 phút cuối để SV đặt câu hỏi về thi hoặc về các khái niệm còn mơ hồ. Khuyến khích SV hỏi thẳng — đây là cơ hội cuối trước khi thi.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHẦN 5: LỜI CẢM ƠN ═══════ -->
+<section>
+  <p class="section-label">Phần 5 · 5 phút</p>
+  <h2>Lời cảm ơn & Kết thúc môn học</h2>
+
+  <div class="card card-accent">
+    <h3>🎓 Thông điệp cuối môn</h3>
+    <p style="color:var(--ink-light);line-height:1.9;">
+      Chúc mừng các bạn đã hoàn thành 9 buổi học môn <strong>Thương Mại Xã Hội (ITS717)</strong>!
+    </p>
+    <p style="color:var(--ink-light);line-height:1.9;margin-top:.8rem;">
+      Qua hơn 2.000 phút học tập, chúng ta đã cùng đi qua một hành trình từ <em>"Social Commerce là gì?"</em> đến <em>"Làm sao triển khai SC bền vững cho DN?"</em>. Các bạn đã không chỉ học về công cụ, lý thuyết, mà còn học về <strong>cách tư duy chiến lược</strong> trong môi trường kinh doanh số đầy biến động.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.9;margin-top:.8rem;">
+      Những kiến thức này sẽ có giá trị không chỉ trong bài thi, mà còn trong sự nghiệp của các bạn. Dù các bạn trở thành marketer, founder, nhà phân tích, hay làm bất cứ ngành gì — hiểu biết về SC sẽ giúp các bạn <strong>đọc vị được cách con người tương tác, tin tưởng, và ra quyết định trong thời đại số</strong>.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.9;margin-top:.8rem;">
+      Cảm ơn các bạn đã tham gia tích cực, đặt câu hỏi, thảo luận, và làm cho các buổi học trở nên sinh động. Cảm ơn các nhóm đã đầu tư vào tiểu luận và các buổi thuyết trình đầy sáng tạo.
+    </p>
+    <p style="color:var(--ink-light);line-height:1.9;margin-top:.8rem;font-style:italic;"><strong>Chúc các bạn làm bài thi cuối kỳ thật tốt và thành công trong sự nghiệp phía trước!</strong></p>
+  </div>
+
+  <div class="card card-blue" style="margin-top:1rem;">
+    <h3>📚 Tài liệu tham khảo thêm (sau khóa học)</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Sách:</strong> Turban et al. - "Social Commerce: Marketing, Technology and Management"</li>
+      <li><strong>Sách:</strong> Erik Qualman - "Socialnomics: How Social Media Transforms the Way We Live and Do Business"</li>
+      <li><strong>Website:</strong> socialmediatoday.com, socialmediaexaminer.com, hubspot.com/blog</li>
+      <li><strong>Báo cáo ngành VN:</strong> Vietnam Digital Report (We Are Social), Báo cáo Thương mại điện tử VN (iPrice, Cục TMĐT)</li>
+      <li><strong>Podcast:</strong> Marketing Over Coffee, Social Media Marketing Podcast</li>
+      <li><strong>YouTube:</strong> Neil Patel, Gary Vaynerchuk, HubSpot Academy</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHỤ LỤC ═══════ -->
+<section>
+  <p class="section-label">Phụ lục</p>
+  <h2>Gợi ý cho Giảng viên</h2>
+  <div class="card" style="margin-top:1rem;">
+    <h3>🎯 Điểm cần lưu ý</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:2;">
+      <li><strong>Buổi cuối nên có không khí đặc biệt:</strong> Đây là buổi gặp cuối — tạo không khí thân thiện, khuyến khích SV chia sẻ, không áp lực quá.</li>
+      <li><strong>Quản lý thời gian trình bày CHẶT CHẼ:</strong> 6 nhóm × 15 phút = 90 phút, nhưng thường kéo dài. GV cần bấm giờ nghiêm, dùng tín hiệu báo hết giờ.</li>
+      <li><strong>Form đánh giá chéo:</strong> Chuẩn bị sẵn form giấy hoặc Google Form. SV chấm các nhóm khác — tăng tính tham gia và công bằng.</li>
+      <li><strong>Feedback realtime:</strong> Sau mỗi nhóm, GV dành 1-2 phút feedback ngắn gọn — điểm mạnh/yếu chính. Đừng chỉ hỏi Q&A rồi qua nhóm khác.</li>
+      <li><strong>Ôn tập tổng kết không dài quá:</strong> 45 phút là đủ. Không cần đi sâu lại mọi thứ — tập trung hệ thống hóa và phân biệt các khái niệm dễ nhầm.</li>
+      <li><strong>Mini-quiz làm lớp sinh động:</strong> Dùng Kahoot/Mentimeter nếu có thể → SV hứng thú hơn so với GV đọc câu hỏi.</li>
+      <li><strong>Hướng dẫn thi rõ ràng:</strong> SV rất lo về thi cuối kỳ — GV cần nói rõ cấu trúc, phạm vi, tips. Tránh tạo stress không cần thiết.</li>
+      <li><strong>Lời cảm ơn cuối buổi chân thành:</strong> Tạo cảm xúc tích cực khi kết thúc môn — SV sẽ nhớ GV và môn học lâu hơn. Có thể chụp ảnh kỷ niệm lớp nếu lớp đồng ý.</li>
+      <li><strong>Chấm điểm tiểu luận công bằng:</strong> Sau buổi, GV tổng hợp điểm từ rubric + đánh giá chéo của SV. Công bố điểm trong 1 tuần.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h3>📋 Checklist chuẩn bị buổi 9 (cho GV)</h3>
+    <ul style="padding-left:1.3rem;color:var(--ink-light);line-height:1.9;font-size:.95rem;">
+      <li>☐ Chuẩn bị form rubric chấm điểm tiểu luận (6 bản × 1 bản backup)</li>
+      <li>☐ Chuẩn bị form đánh giá chéo cho SV (in sẵn hoặc link Google Form)</li>
+      <li>☐ Chuẩn bị bộ câu hỏi mini-quiz ôn tập (7-10 câu, in slide hoặc Kahoot)</li>
+      <li>☐ Chuẩn bị slide bản đồ tư duy 4 chương</li>
+      <li>☐ Chuẩn bị thông tin chi tiết về thi cuối kỳ (ngày giờ, phòng thi, quy định)</li>
+      <li>☐ Kiểm tra projector, âm thanh hoạt động tốt (nhóm trình bày cần)</li>
+      <li>☐ Chuẩn bị đồng hồ bấm giờ (hoặc timer trên phone)</li>
+      <li>☐ Thông báo trước cho các nhóm về thứ tự trình bày (để chuẩn bị)</li>
+      <li>☐ Chuẩn bị tâm lý kết thúc môn — lời cảm ơn chân thành</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p>ITS717 — Thương Mại Xã Hội | Buổi 9/9 · <strong>BUỔI CUỐI CÙNG</strong> | Trường ĐH Ngân Hàng TP.HCM</p>
+  <p style="margin-top:.3rem;">Trình bày tiểu luận + Ôn tập tổng kết · 5 tiết (250 phút) · Chúc các bạn thi tốt! 🎓</p>
+</footer>
+
+</div>
+</body>
+</html>
