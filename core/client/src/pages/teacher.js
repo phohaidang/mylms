@@ -3,7 +3,7 @@ export async function renderTeacher(app) {
     <div class="container page">
       <div class="page-header">
         <h1 class="page-title">Hiểu về Thầy 👨‍🏫</h1>
-        <p class="page-subtitle">Dạy bằng TÂM - Dẫn lối bằng TRI THỨC</p>
+        <p class="page-subtitle">Dạy bằng TÂM — Dẫn lối bằng TRI THỨC — Đồng hành bằng CÂU CHUYỆN THẬT</p>
       </div>
 
       <div class="teacher-grid">
@@ -39,7 +39,7 @@ export async function renderTeacher(app) {
           <div class="teacher-philosophy-card">
             <div class="philosophy-title">✨ Triết lý giáo dục</div>
             <p class="philosophy-text">
-              <strong>"Dạy bằng TÂM - Dẫn lối bằng TRI THỨC"</strong>. Đối với tôi, vai trò của một người thầy không chỉ dừng lại ở việc truyền thụ kiến thức, mà là dùng cái tâm của mình để khơi gợi niềm đam mê và dùng tri thức để định hướng tương lai cho sinh viên.
+              <strong>"Dạy bằng TÂM — Dẫn lối bằng TRI THỨC — Đồng hành bằng CÂU CHUYỆN THẬT"</strong>. Đối với tôi, vai trò của một người thầy không chỉ dừng lại ở việc truyền thụ kiến thức, mà là dùng cái tâm để khơi gợi niềm đam mê, dùng tri thức để định hướng tương lai, và dùng câu chuyện thật từ cuộc sống để đồng hành cùng sinh viên trên mỗi bước đi.
             </p>
           </div>
 
