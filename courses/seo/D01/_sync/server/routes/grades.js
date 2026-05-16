@@ -85,11 +85,7 @@ router.get('/admin/all', authenticate, adminOnly, async (req, res) => {
     
     res.json(grades);
   } catch (err) {
-    res.status(500).json({ 
-      error: 'Lỗi hệ thống', 
-      message: err.message, 
-      stack: err.stack?.split('\n').slice(0, 5) 
-    });
+    res.status(500).json({ error: 'Lỗi hệ thống' });
   }
 });
 

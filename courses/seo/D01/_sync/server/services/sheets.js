@@ -54,24 +54,19 @@ let sheets = null;
 let drive = null;
 const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_ID;
 
-try {
-  if (!IS_MOCK) {
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY 
-          ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n').replace(/"/g, '') 
-          : undefined
-      },
-      scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
-    });
-    sheets = google.sheets({ version: 'v4', auth });
-    drive = google.drive({ version: 'v3', auth });
-  }
-} catch (err) {
-  console.error('❌ Google API Init Error:', err);
+if (!IS_MOCK) {
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY 
+        ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n').replace(/"/g, '') 
+        : undefined
+    },
+    scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
+  });
+  sheets = google.sheets({ version: 'v4', auth });
+  drive = google.drive({ version: 'v3', auth });
 }
-
 
 // ============ UNIFIED API ============
 
@@ -79,7 +74,7 @@ try {
  * Get all rows from a sheet/table
  */
 export async function getAll(sheetName) {
-  if (IS_MOCK || !sheets) {
+  if (IS_MOCK) {
     return mockData[sheetName] || [];
   }
   
@@ -126,15 +121,6 @@ export async function findOne(sheetName, predicate) {
   return all.find(predicate);
 }
 
-/**
- * Count rows matching a condition
- */
-export async function count(sheetName, predicate) {
-  const all = await getAll(sheetName);
-  return all.filter(predicate).length;
-}
-
-
 async function ensureSheetExists(sheetName) {
   try {
     const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
@@ -157,7 +143,7 @@ async function ensureSheetExists(sheetName) {
  * Append a row to a sheet
  */
 export async function append(sheetName, data) {
-  if (IS_MOCK || !sheets) {
+  if (IS_MOCK) {
     if (!mockData[sheetName]) mockData[sheetName] = [];
     mockData[sheetName].push(data);
     saveMockDB();
@@ -200,7 +186,7 @@ export async function append(sheetName, data) {
  * Update a row matching a condition
  */
 export async function update(sheetName, predicate, newData) {
-  if (IS_MOCK || !sheets) {
+  if (IS_MOCK) {
     const arr = mockData[sheetName] || [];
     const idx = arr.findIndex(predicate);
     if (idx >= 0) {
@@ -310,57 +296,7 @@ export async function uploadToDrive(fileName, mimeType, buffer) {
   }
 }
 
-/**
- * Create a backup of the spreadsheet on Google Drive
- */
-export async function createBackup() {
-  if (IS_MOCK || !drive || !sheets) return { message: 'Mock mode or API Error: no backup created' };
-  
-  try {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
-    const originalTitle = ss.data.properties.title;
-    
-    const response = await drive.files.copy({
-      fileId: SPREADSHEET_ID,
-      requestBody: {
-        name: `[BACKUP] ${originalTitle} (${timestamp})`,
-      }
-    });
-    
-    return {
-      success: true,
-      backup_id: response.data.id,
-      name: response.data.name
-    };
-  } catch (err) {
-    console.error('Backup error:', err);
-    throw err;
-  }
-}
-
-/**
- * Export all data from all known sheets as a single JSON object
- */
-export async function exportAllData() {
-  if (IS_MOCK || !sheets) return mockData;
-  
-  try {
-    const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
-    const sheetNames = ss.data.sheets.map(s => s.properties.title);
-    
-    const allData = {};
-    for (const name of sheetNames) {
-      allData[name] = await getAll(name);
-    }
-    return allData;
-  } catch (err) {
-    console.error('Export error:', err);
-    throw err;
-  }
-}
-
-export default { getAll, find, findOne, append, update, count, uploadToDrive, createBackup, exportAllData };
+export default { getAll, find, findOne, append, update, count, uploadToDrive };
 
 if (IS_MOCK) {
   console.log('📋 Database: Mock mode (in-memory + file persist)');

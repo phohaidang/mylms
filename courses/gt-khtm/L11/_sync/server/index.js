@@ -27,7 +27,6 @@ import evidenceRoutes from './routes/evidence.js';
 import feedbackRoutes from './routes/feedback.js';
 import goalsRoutes from './routes/goals.js';
 import boardRoutes from './routes/board.js';
-import adminRoutes from './routes/admin.js';
 
 /**
  * Create and configure the Express app
@@ -82,7 +81,6 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
   app.use('/api/feedback', feedbackRoutes);
   app.use('/api/goals', goalsRoutes);
   app.use('/api/board', boardRoutes);
-  app.use('/api/admin', adminRoutes);
 
   // Root route
   app.get('/', (req, res) => {
@@ -135,16 +133,6 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
       `);
     });
   }
-
-  // Error handler
-  app.use((err, req, res, next) => {
-    console.error('LMS Server Error:', err);
-    res.status(500).json({
-      error: 'Internal Server Error',
-      message: err.message,
-      stack: err.stack?.split('\n').slice(0, 5)
-    });
-  });
 
   return app;
 }
