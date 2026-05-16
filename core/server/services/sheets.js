@@ -78,7 +78,7 @@ try {
  * Get all rows from a sheet/table
  */
 export async function getAll(sheetName) {
-  if (IS_MOCK) {
+  if (IS_MOCK || !sheets) {
     return mockData[sheetName] || [];
   }
   
@@ -156,7 +156,7 @@ async function ensureSheetExists(sheetName) {
  * Append a row to a sheet
  */
 export async function append(sheetName, data) {
-  if (IS_MOCK) {
+  if (IS_MOCK || !sheets) {
     if (!mockData[sheetName]) mockData[sheetName] = [];
     mockData[sheetName].push(data);
     saveMockDB();
@@ -199,7 +199,7 @@ export async function append(sheetName, data) {
  * Update a row matching a condition
  */
 export async function update(sheetName, predicate, newData) {
-  if (IS_MOCK) {
+  if (IS_MOCK || !sheets) {
     const arr = mockData[sheetName] || [];
     const idx = arr.findIndex(predicate);
     if (idx >= 0) {
@@ -313,7 +313,7 @@ export async function uploadToDrive(fileName, mimeType, buffer) {
  * Create a backup of the spreadsheet on Google Drive
  */
 export async function createBackup() {
-  if (IS_MOCK) return { message: 'Mock mode: no backup created' };
+  if (IS_MOCK || !drive || !sheets) return { message: 'Mock mode or API Error: no backup created' };
   
   try {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -342,7 +342,7 @@ export async function createBackup() {
  * Export all data from all known sheets as a single JSON object
  */
 export async function exportAllData() {
-  if (IS_MOCK) return mockData;
+  if (IS_MOCK || !sheets) return mockData;
   
   try {
     const ss = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
