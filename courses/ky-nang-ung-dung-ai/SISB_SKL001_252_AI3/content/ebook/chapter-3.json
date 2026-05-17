@@ -1,0 +1,148 @@
+{
+  "chapter": 3,
+  "title": "Trình bày với AI + Rủi ro & Đạo đức",
+  "sessions": [3],
+  "scqa": {
+    "situation": "Sau khi đã thu thập và phân tích tri thức thành công bằng AI, bước cuối cùng trong học tập và công việc luôn là diễn đạt và trình bày (Express). Các công cụ AI tạo slide như Gamma, Beautiful.ai và các trình tạo ảnh DALL-E, Imagen đang giúp việc trực quan hóa ý tưởng trở nên nhanh chóng hơn bao giờ hết.",
+    "complication": "Tuy nhiên, slide do AI tạo ra thường mang tính rập khuôn, thiếu bản sắc cá nhân và câu chuyện thực tế. Nguy hiểm hơn, việc phó mặc hoàn toàn cho AI mà không fact-check sẽ dẫn đến những hậu quả nghiêm trọng về liêm chính học thuật khi AI bịa đặt số liệu (hallucination), vi phạm bản quyền hoặc rò rỉ thông tin cá nhân của người dùng.",
+    "question": "Làm thế nào để kết hợp AI hiệu quả trong việc trình bày ý tưởng mà vẫn giữ vững liêm chính học thuật, phòng tránh các rủi ro bảo mật và duy trì tư duy phản biện độc lập?",
+    "answer": "Giải pháp là áp dụng quy trình trình bày 4 lớp nghiêm ngặt, tuân thủ nguyên tắc 'AI làm nháp, người làm thật'. Đồng thời, sinh viên phải nắm vững cách nhận diện và xử lý 5 rủi ro của AI, khai báo và trích dẫn sử dụng AI minh bạch theo chuẩn APA 7, và thực hiện vòng lặp Validate & Reflect thông qua 'Bộ Não Thứ 2' cá nhân."
+  },
+  "concepts": [
+    {
+      "id": "c3-presentation-layers",
+      "term": "Quy trình trình bày 4 lớp",
+      "definition": "Quy trình thiết kế bài trình bày chuyên nghiệp tích hợp AI chia làm 4 lớp độc lập: Lớp 1 - Xây dựng cấu trúc nội dung, Lớp 2 - Viết kịch bản chi tiết (script), Lớp 3 - Tạo slide trực quan bằng công cụ AI (Gamma, Tome), Lớp 4 - Thiết kế hình ảnh và đa phương tiện hỗ trợ.",
+      "key_points": [
+        "Lớp 1 & 2 tập trung vào tư duy và nội dung - đây là xương sống của bài nói",
+        "Lớp 3 dùng AI để tăng tốc dàn trang và bố cục nhưng con người phải tinh chỉnh chi tiết",
+        "Luôn giữ dấu ấn cá nhân, câu chuyện thực tế làm điểm nhấn độc bản"
+      ],
+      "case_study": {
+        "title": "Bẫy lười biếng thiết kế bằng Gamma.app",
+        "context": "Một sinh viên chỉ gõ tiêu đề môn học vào Gamma và nhấn 'Generate Slide' rồi mang file đó lên lớp thuyết trình trực tiếp.",
+        "analysis": "Slide thiết kế bằng AI rất generic (chung chung), màu sắc và cấu trúc rập khuôn, không hề có chiều sâu nghiên cứu. Khi giảng viên hỏi sâu về một số liệu trong slide, sinh viên ấp úng không trả lời được vì do AI tự sinh.",
+        "lesson_learned": "Slide AI chỉ là bản nháp khởi đầu (draft). Con người bắt buộc phải biên tập lại nội dung và nắm chắc logic lập luận để tạo nên bản hoàn thiện (final)."
+      },
+      "related_concepts": ["c3-five-ai-risks"]
+    },
+    {
+      "id": "c3-five-ai-risks",
+      "term": "5 rủi ro lớn của AI tạo sinh",
+      "definition": "Năm nguy cơ cốt lõi sinh viên bắt buộc phải nhận diện và phòng tránh khi làm việc với AI: (1) Hallucination (Tự tin bịa thông tin), (2) Bias (Định kiến dữ liệu), (3) Plagiarism (Đạo văn & bản quyền), (4) Privacy (Rò rỉ dữ liệu bảo mật), (5) Cognitive Offloading (Lệ thuộc nhận thức làm lười suy nghĩ).",
+      "key_points": [
+        "Hallucination: AI có thể bịa ra án lệ, điều luật hoặc tên tác giả khoa học cực kỳ thuyết phục",
+        "Privacy: Tuyệt đối không tải các dữ liệu cá nhân nhạy cảm, mật khẩu hoặc thông tin mật của doanh nghiệp lên các chatbot AI miễn phí",
+        "Cognitive Offloading: Dùng AI viết hộ quá nhiều sẽ làm suy giảm năng lực tư duy phản biện và khả năng viết lách độc lập"
+      ],
+      "case_study": {
+        "title": "Vụ án lệ giả của Luật sư Mỹ năm 2023",
+        "context": "Một luật sư kỳ cựu tại New York đã dùng ChatGPT để tìm kiếm án lệ phục vụ phiên tòa chống lại một hãng hàng không.",
+        "analysis": "ChatGPT đã bịa ra 6 án lệ không hề tồn tại trong lịch sử luật pháp Mỹ. Vị luật sư này tin tưởng hoàn toàn và nộp hồ sơ lên tòa án mà không kiểm chứng độc lập. Kết quả là bị tòa phát hiện, hủy tư cách bào chữa và phạt tiền nặng vì lừa dối tòa án.",
+        "lesson_learned": "Hallucination là cơ chế tự nhiên của mô hình xác suất. Bất kỳ thông tin quan trọng nào AI đưa ra đều phải được đối chiếu kiểm chứng với nguồn độc lập."
+      },
+      "related_concepts": ["c3-academic-ethics"]
+    },
+    {
+      "id": "c3-academic-ethics",
+      "term": "Liêm chính học thuật & Trích dẫn AI",
+      "definition": "Quy tắc đạo đức quy định các hành vi được phép và không được phép khi ứng dụng AI trong môi trường học thuật, kèm theo phương pháp khai báo sử dụng AI minh bạch theo các tiêu chuẩn quốc tế như APA 7 hoặc Chicago.",
+      "key_points": [
+        "Hành vi được phép: Dùng AI brainstorm ý tưởng, chỉnh sửa lỗi ngữ pháp, dịch thuật, giải thích khái niệm",
+        "Hành vi cấm: Để AI viết hộ toàn bộ bài tiểu luận, làm bài kiểm tra cá nhân, bịa đặt nguồn tài liệu",
+        "Khai báo: Phải nêu rõ trong phần Phụ lục hoặc chú thích bài viết về tên công cụ AI đã dùng, mục đích sử dụng, và các câu lệnh (prompts) chính đã tương tác"
+      ],
+      "case_study": null,
+      "related_concepts": ["c3-five-ai-risks", "c3-validate-reflect"]
+    },
+    {
+      "id": "c3-validate-reflect",
+      "term": "Quy trình Validate & Reflect",
+      "definition": "Vòng lặp quản trị tri thức cuối cùng trong Bộ Não Thứ 2 cá nhân, trong đó sinh viên kiểm chứng thông tin (Validate) dựa trên đối chiếu chéo các nguồn tin cậy, và phản tư (Reflect) lại bài học kinh nghiệm sử dụng AI của bản thân.",
+      "key_points": [
+        "Validate: Đối chiếu output AI với (1) giáo trình gốc, (2) cơ sở dữ liệu khoa học thực tế, và (3) ý kiến của các chuyên gia hoặc giảng viên",
+        "Reflect: Tự hỏi sau mỗi buổi học hoặc mỗi lần tương tác: AI đã giúp gì? Sai sót ở đâu? Giá trị thực thụ mình tự thêm vào bài viết là gì?",
+        "Tích lũy kết quả phản tư thành các Atomic notes lâu dài để nâng cao tư duy qua thời gian"
+      ],
+      "case_study": null,
+      "related_concepts": ["c3-presentation-layers"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận biết rủi ro & Đạo đức học thuật",
+      "description": "Trắc nghiệm tự động kiểm tra nhận thức về rủi ro bảo mật và đạo đức liêm chính.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        {
+          "id": "L1-c3-q1",
+          "type": "mc",
+          "concept_ref": "c3-five-ai-risks",
+          "question": "Hiện tượng AI tự tin đưa ra thông tin hoàn toàn sai lệch hoặc bịa đặt số liệu/nguồn tài liệu được gọi là gì?",
+          "options": [
+            "A. Cognitive Offloading.",
+            "B. AI Bias.",
+            "C. Hallucination (Ảo giác / Nói nhảm).",
+            "D. Plagiarism."
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c3-q2",
+          "type": "mc",
+          "concept_ref": "c3-academic-ethics",
+          "question": "Theo quy chuẩn liêm chính học thuật APA 7, hành vi nào sau đây là KHÔNG được phép?",
+          "options": [
+            "A. Sử dụng AI để kiểm tra lỗi chính tả và cấu trúc ngữ pháp tiếng Anh.",
+            "B. Yêu cầu AI dịch thuật một đoạn văn bản tiếng nước ngoài sang tiếng Việt để đọc hiểu.",
+            "C. Sử dụng AI viết toàn bộ bài luận cá nhân và nộp bài mà không khai báo.",
+            "D. Dùng AI brainstorm tìm kiếm các góc nhìn phân tích mới cho đề tài."
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c3-q3",
+          "type": "mc",
+          "concept_ref": "c3-validate-reflect",
+          "question": "Bước 'Validate' trong quản trị tri thức cá nhân có vai trò gì?",
+          "options": [
+            "A. Xác thực tài khoản AI để được nâng cấp lên bản trả phí.",
+            "B. Kiểm chứng chéo output của AI với giáo trình gốc và các nguồn tài liệu khoa học đáng tin cậy trước khi sử dụng.",
+            "C. Đánh giá xem AI có phản hồi nhanh hay chậm.",
+            "D. Sao lưu dữ liệu ghi chú lên đám mây tự động."
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích rủi ro thực tế",
+      "description": "Tự luận ngắn yêu cầu bạn phân tích các rủi ro bảo mật dữ liệu.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        {
+          "id": "L2-c3-q1",
+          "type": "essay",
+          "concept_ref": "c3-five-ai-risks",
+          "question": "Tại sao việc đưa dữ liệu khách hàng cá nhân hoặc các thông tin tài chính mật của doanh nghiệp lên các công cụ AI hội thoại công cộng (như ChatGPT, Claude bản miễn phí) lại là một hành vi vi phạm đạo đức nghề nghiệp và rủi ro bảo mật nghiêm trọng? Giải thích cơ chế rò rỉ dữ liệu.",
+          "rubric": "Câu trả lời đạt yêu cầu cần nêu rõ: (1) Cơ chế huấn luyện của AI: Các chatbot công cộng lưu trữ lịch sử chat của người dùng và mặc định sử dụng dữ liệu này để tiếp tục huấn luyện các phiên bản LLM trong tương lai. (2) Rủi ro bảo mật: Khi thông tin mật bị đưa vào tập dữ liệu huấn luyện, AI có thể vô tình trả về thông tin mật này dưới dạng câu trả lời cho những người dùng khác ở bên ngoài doanh nghiệp, dẫn tới rò rỉ dữ liệu nghiêm trọng, vi phạm điều khoản bảo mật và đạo đức nghề nghiệp.",
+          "max_words": 300
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Đánh giá tình huống đạo đức học thuật",
+      "description": "Bài tập phân tích tình huống thực tế về đạo đức và đề xuất giải pháp xử lý liêm chính.",
+      "bloom_level": "Evaluate / Create",
+      "questions": [
+        {
+          "id": "L3-c3-q1",
+          "type": "essay",
+          "question": "Bạn phát hiện một thành viên trong nhóm của mình đã dùng AI để viết toàn bộ nội dung phần thuyết trình của bạn ấy và nộp cho nhóm. Phần viết của bạn ấy chứa rất nhiều số liệu thống kê vô lý và một số nguồn tài liệu trông rất giả tạo. Đứng ở vai trò Nhóm trưởng (Leader), bạn sẽ xử lý tình huống này như thế nào để vừa đảm bảo chất lượng bài thuyết trình nhóm, vừa duy trì liêm chính học thuật và giúp thành viên đó hiểu ra vấn đề?",
+          "rubric": "Câu trả lời xuất sắc cần thể hiện tư duy Leader giải quyết vấn đề qua 3 khía cạnh: (1) Nhận diện rủi ro: Chỉ rõ cho thành viên đó thấy các lỗi số liệu vô lý và nguồn tài liệu giả do AI hallucination tạo ra, giải thích tác hại nghiêm trọng nếu mang lên nộp cho Giảng viên. (2) Hướng dẫn giải pháp học thuật: Yêu cầu thành viên đó áp dụng quy trình Validate, tự mình đi tìm kiếm nguồn tài liệu thật (báo cáo thực tế, sách giáo khoa) để thay thế và kiểm chứng các số liệu giả. (3) Thực thi liêm chính: Hướng dẫn viết lời khai báo sử dụng AI minh bạch ở cuối slide, ghi rõ phần nào AI phác thảo và phần nào thành viên đó đã tự tay kiểm chứng và biên tập lại.",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

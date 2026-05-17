@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KỊCH BẢN BUỔI 1 — AI & TƯ DUY: "BẠN LÀ LEADER, AI LÀ CỘNG SỰ"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pygments/2.15.1/default.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --toc-bg: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --text: #f1f5f9;
+                --card-bg: #1e293b;
+                --border: #334155;
+                --toc-bg: #1e293b;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 95%;
+            padding: 40px 20px;
+            margin-bottom: 100px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; margin-top: 0; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            background: rgba(79, 70, 229, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th { background: rgba(79, 70, 229, 0.05); }
+
+        tr:hover { background: rgba(79, 70, 229, 0.02); }
+
+        .toc {
+            background: var(--toc-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .toc ul { list-style: none; padding-left: 20px; }
+        .toc a { color: var(--text); opacity: 0.8; font-size: 0.9rem; }
+        .toc a:hover { opacity: 1; color: var(--primary); }
+
+        blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(79, 70, 229, 0.05);
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <div class="toc"><span class="toctitle">Mục lục</span><ul>
+<li><a href="#kich-ban-buoi-1-ai-tu-duy-ban-la-leader-ai-la-cong-su">KỊCH BẢN BUỔI 1 — AI &amp; TƯ DUY: "BẠN LÀ LEADER, AI LÀ CỘNG SỰ"</a><ul>
+<li><a href="#phan-a-tai-lieu-scqa-phat-cho-sinh-vien-truoc-buoi-hoc">PHẦN A — TÀI LIỆU SCQA PHÁT CHO SINH VIÊN TRƯỚC BUỔI HỌC</a><ul>
+<li><a href="#s-tinh-huong-ban-a-quen">S — Tình huống (bạn đã quen)</a></li>
+<li><a href="#c-mau-thuan-cai-ban-chua-nhan-ra">C — Mâu thuẫn (cái bạn chưa nhận ra)</a></li>
+<li><a href="#q-cau-hoi">Q — Câu hỏi</a></li>
+<li><a href="#a-khung-tra-loi-cua-buoi-1">A — Khung trả lời của buổi 1</a></li>
+</ul>
+</li>
+<li><a href="#phan-b-kich-ban-chi-tiet-5-tiet">PHẦN B — KỊCH BẢN CHI TIẾT 5 TIẾT</a><ul>
+<li><a href="#tiet-1-55-mo-man-ai-co-thuc-su-thong-minh-khong">TIẾT 1 (55') — "MỞ MÀN: AI CÓ THỰC SỰ THÔNG MINH KHÔNG?"</a><ul>
+<li><a href="#muc-tieu-tiet">Mục tiêu tiết</a></li>
+<li><a href="#cau-truc-thoi-gian">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-2-55-ai-lam-uoc-gi-ai-khong-lam-uoc-gi">TIẾT 2 (55') — "AI LÀM ĐƯỢC GÌ, AI KHÔNG LÀM ĐƯỢC GÌ"</a><ul>
+<li><a href="#cau-truc-thoi-gian_1">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_1">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-3-55-ban-la-leader-ai-la-cong-su-gioi-thieu-bo-nao-thu-2">TIẾT 3 (55') — "BẠN LÀ LEADER, AI LÀ CỘNG SỰ" + GIỚI THIỆU "BỘ NÃO THỨ 2"</a><ul>
+<li><a href="#cau-truc-thoi-gian_2">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_2">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-4-55-thuc-hanh-cung-1-cau-hoi-3-cach-hoi">TIẾT 4 (55') — THỰC HÀNH "CÙNG 1 CÂU HỎI, 3 CÁCH HỎI"</a><ul>
+<li><a href="#cau-truc-thoi-gian_3">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_3">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-5-55-phan-tu-atomic-note-au-tien-tong-ket">TIẾT 5 (55') — PHẢN TƯ + ATOMIC NOTE ĐẦU TIÊN + TỔNG KẾT</a><ul>
+<li><a href="#cau-truc-thoi-gian_4">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_4">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#phan-c-phu-luc">PHẦN C — PHỤ LỤC</a><ul>
+<li><a href="#c1-oan-phim-minh-phien-ban-oc-90-giay">C1. Đoạn phim "Minh" — phiên bản đọc 90 giây</a></li>
+<li><a href="#c2-bo-prompt-gay-hallucination-e-demo">C2. Bộ prompt gây hallucination để demo</a></li>
+<li><a href="#c3-cau-hoi-du-phong-neu-lop-im">C3. Câu hỏi dự phòng nếu lớp im</a></li>
+<li><a href="#c4-checklist-giang-vien-cuoi-buoi">C4. Checklist giảng viên cuối buổi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="kich-ban-buoi-1-ai-tu-duy-ban-la-leader-ai-la-cong-su">KỊCH BẢN BUỔI 1 — AI &amp; TƯ DUY: "BẠN LÀ LEADER, AI LÀ CỘNG SỰ"</h1>
+<blockquote>
+<p>5 tiết × 55 phút = 275 phút | CLO1, CLO5
+Câu hỏi cốt lõi của buổi: <strong>"Tại sao AI thông minh mà nhiều khi vẫn nói nhảm?"</strong></p>
+</blockquote>
+<hr />
+<h2 id="phan-a-tai-lieu-scqa-phat-cho-sinh-vien-truoc-buoi-hoc">PHẦN A — TÀI LIỆU SCQA PHÁT CHO SINH VIÊN TRƯỚC BUỔI HỌC</h2>
+<blockquote>
+<p><em>Tài liệu này được đăng lên LMS 3 ngày trước buổi 1. SV đọc trước, đến lớp không cần nghe lại lý thuyết — thay vào đó đi sâu thảo luận tình huống.</em></p>
+</blockquote>
+<h3 id="s-tinh-huong-ban-a-quen">S — Tình huống (bạn đã quen)</h3>
+<p>Bạn đang viết bài tiểu luận. Bạn mở ChatGPT, gõ "Viết tiểu luận về biến đổi khí hậu cho sinh viên năm 2". Trong 30 giây, AI trả về một bài 1200 chữ rành mạch, có mở-thân-kết, có ví dụ, có cả số liệu. Bạn đọc — thấy hay. Bạn copy, chỉnh sửa vài chỗ, nộp.</p>
+<p>Tuần sau, bạn được 6/10. Lời phê: <em>"Bài viết trơn tru nhưng không có quan điểm cá nhân. Số liệu trang 2 không có nguồn — em lấy ở đâu?"</em></p>
+<p>Bạn lúng túng. Bạn không biết số liệu đó AI lấy ở đâu. Bạn cũng không nhớ rõ mình đã <em>học</em> được gì từ bài viết đó.</p>
+<h3 id="c-mau-thuan-cai-ban-chua-nhan-ra">C — Mâu thuẫn (cái bạn chưa nhận ra)</h3>
+<p>Bạn nghĩ AI là "công cụ làm việc giúp bạn nhanh hơn". Đúng — nhưng chỉ một nửa sự thật.</p>
+<p>Nửa còn lại: AI <strong>không biết</strong> nó nói cái gì. AI đoán từ tiếp theo dựa trên xác suất. Nó có thể bịa ra một số liệu, một tên tác giả, một quyển sách — và nói chúng với giọng văn tự tin như nhà nghiên cứu thâm niên. Hiện tượng này có tên: <strong>hallucination</strong> (ảo giác AI).</p>
+<p>Càng nghiêm trọng hơn: nếu bạn dùng AI để <em>thay</em> việc tư duy — chứ không phải để <em>hỗ trợ</em> tư duy — thì sau 3 năm, bạn sẽ có một CV đẹp nhưng đầu óc rỗng. Hiệu ứng này có tên: <strong>cognitive offloading</strong> (lệ thuộc nhận thức).</p>
+<h3 id="q-cau-hoi">Q — Câu hỏi</h3>
+<blockquote>
+<p><em>Nếu AI không "biết" những gì nó nói, thì làm thế nào để bạn dùng AI mà KHÔNG bị nó dắt mũi?</em></p>
+<p><em>Và: nếu bạn dùng AI để làm thay quá nhiều việc, thì cái gì còn lại là "bạn"?</em></p>
+</blockquote>
+<h3 id="a-khung-tra-loi-cua-buoi-1">A — Khung trả lời của buổi 1</h3>
+<p>Buổi 1 sẽ trả lời 3 ý:</p>
+<ol>
+<li><strong>AI là gì thực ra:</strong> Không phải "trí tuệ" — là một mô hình xác suất đoán từ tiếp theo. Hiểu đúng cơ chế = không bị bất ngờ khi AI nói nhảm.</li>
+<li><strong>"Bạn là Leader, AI là Cộng sự":</strong> Người có tư duy rõ ràng dùng AI để khuếch đại. Người tư duy mơ hồ dùng AI để... che giấu sự mơ hồ. AI không thay được 3 việc: đặt câu hỏi đúng, đánh giá phản biện, ra quyết định.</li>
+<li><strong>"Bộ Não Thứ 2":</strong> Một phương pháp luận để bạn <em>vẫn là chính bạn</em> trong kỷ nguyên AI. Bạn ngoại hóa tri thức (capture) để não bộ tập trung vào sáng tạo. Buổi 1 là viên gạch đầu tiên.</li>
+</ol>
+<hr />
+<h2 id="phan-b-kich-ban-chi-tiet-5-tiet">PHẦN B — KỊCH BẢN CHI TIẾT 5 TIẾT</h2>
+<h3 id="tiet-1-55-mo-man-ai-co-thuc-su-thong-minh-khong">TIẾT 1 (55') — "MỞ MÀN: AI CÓ THỰC SỰ THÔNG MINH KHÔNG?"</h3>
+<h4 id="muc-tieu-tiet">Mục tiêu tiết</h4>
+<ul>
+<li>SV nhận diện được AI không "hiểu", chỉ "đoán xác suất".</li>
+<li>SV phân biệt được AI tạo sinh với công cụ tìm kiếm.</li>
+</ul>
+<h4 id="cau-truc-thoi-gian">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+<th>Ghi chú GV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–3</td>
+<td><strong>HOOK — Đoạn phim "Minh"</strong></td>
+<td>Đọc to/chiếu story Minh nộp bài 6/10 (xem Phụ lục C1)</td>
+</tr>
+<tr>
+<td>3–13</td>
+<td><strong>BIẾT — Khảo sát Mentimeter</strong></td>
+<td>"Bạn đã dùng AI cho việc gì trong tuần qua?" Mở word cloud</td>
+</tr>
+<tr>
+<td>13–23</td>
+<td><strong>BIẾT — Thử thách "AI nói nhảm"</strong></td>
+<td>Demo: hỏi AI một câu bịa, để SV phát hiện</td>
+</tr>
+<tr>
+<td>23–43</td>
+<td><strong>MỚI — Khái niệm xác suất</strong></td>
+<td>Slide ngắn + ẩn dụ "máy đoán từ"</td>
+</tr>
+<tr>
+<td>43–50</td>
+<td><strong>LÀM — So sánh AI vs Google</strong></td>
+<td>Cặp đôi: cùng 1 câu hỏi, AI cho gì, Google cho gì?</td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>CHỐT</strong></td>
+<td>Chốt: AI không tra cứu, AI sinh ra</td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–3] HOOK — Đoạn phim "Minh"</strong></p>
+<p>GV đọc to (hoặc chiếu slide trắng có vài chữ):</p>
+<blockquote>
+<p><em>"Tôi muốn kể các bạn nghe câu chuyện của Minh — một bạn sinh viên năm 2 ngành Marketing, giống các bạn. Tuần trước Minh nộp tiểu luận môn Nguyên lý Marketing. Minh dùng ChatGPT viết trong 30 phút. Bài được 6/10. Giảng viên gọi Minh lên và hỏi: 'Em viết hay AI viết?' Minh không trả lời được. Giảng viên hỏi tiếp: 'Số liệu trang 2 em lấy ở đâu?' Minh cũng không biết — vì đó là số AI đưa, Minh không kiểm tra.</em></p>
+<p><em>Câu chuyện của Minh sẽ xuất hiện ở cả 3 buổi học này. Hôm nay chúng ta giải quyết câu hỏi đầu tiên: vì sao AI thông minh đến vậy mà lại nói nhảm? Và Minh phải tư duy thế nào để không bị AI dắt mũi?"</em></p>
+</blockquote>
+<p><strong>[Phút 3–13] BIẾT — Khảo sát đầu vào</strong></p>
+<p>Mentimeter / Padlet với 2 câu hỏi nối tiếp:</p>
+<ol>
+<li><strong>Word cloud:</strong> "Một từ mô tả AI trong đầu bạn."</li>
+<li>Dự kiến xuất hiện: thông minh, nhanh, tiện, đáng tin, lười, bịa...</li>
+<li>
+<p>GV chỉ ra: có cả từ tích cực và tiêu cực — điều đó phản ánh thực tế.</p>
+</li>
+<li>
+<p><strong>Multiple choice:</strong> "Bạn dùng AI cho việc gì nhiều nhất?"</p>
+</li>
+<li>A. Tóm tắt tài liệu</li>
+<li>B. Viết bài (tiểu luận, email)</li>
+<li>C. Giải bài tập / lập trình</li>
+<li>D. Hỏi đáp linh tinh</li>
+<li>E. Khác</li>
+</ol>
+<p>GV ghi nhận tỷ lệ — sẽ dùng làm tham chiếu xuyên suốt buổi.</p>
+<blockquote>
+<p><strong>Lưu ý GV:</strong> Không bình luận tốt-xấu. Chỉ nói: <em>"Lát nữa các bạn sẽ thấy lựa chọn của mình ở phần nào của bài học."</em></p>
+</blockquote>
+<p><strong>[Phút 13–23] BIẾT — Demo "AI nói nhảm"</strong></p>
+<p>GV mở ChatGPT trên màn hình lớn. Hỏi một câu <strong>chắc chắn AI sẽ bịa</strong> (chuẩn bị sẵn 3 phương án, chọn 1):</p>
+<ul>
+<li><em>"Hãy giới thiệu cuốn sách 'Marketing trong kỷ nguyên hậu-AI' của tác giả Nguyễn Văn Tâm xuất bản năm 2023 ở NXB Trẻ."</em> (Tên hoàn toàn bịa)</li>
+<li><em>"Tóm tắt nghiên cứu của TS. Lê Hoàng Phong tại Đại học Bách khoa Hà Nội về hành vi mua sắm online của Gen Z miền Bắc Việt Nam năm 2024."</em></li>
+<li><em>"Cho tôi DOI của bài báo 'Generative AI in Vietnamese Higher Education' đăng trên Tạp chí Khoa học Giáo dục số 47 năm 2024."</em></li>
+</ul>
+<p>AI sẽ trả lời rất tự tin với nội dung <strong>hoàn toàn bịa</strong>. Sau khi AI trả lời:</p>
+<blockquote>
+<p><em>"Các bạn thấy gì? Nó tự tin không? Trông giống thật không? Bây giờ tôi sẽ làm điều mà tất cả các bạn nên làm — kiểm tra."</em></p>
+</blockquote>
+<p>GV mở Google, tìm — không có kết quả. Mở Google Scholar — không có. GV quay lại:</p>
+<blockquote>
+<p><em>"Đây là 'hallucination'. AI vừa bịa ra một thứ không tồn tại với giọng văn của một học giả. Câu hỏi: vì sao AI lại làm thế?"</em></p>
+</blockquote>
+<p>Mời 2–3 SV phát biểu (gọi ngẫu nhiên, không gọi người giơ tay sớm nhất).</p>
+<p><strong>[Phút 23–43] MỚI — Khái niệm xác suất</strong></p>
+<p>GV chốt bằng ẩn dụ:</p>
+<blockquote>
+<p><em>"Tưởng tượng các bạn chơi trò 'điền vào chỗ trống'. Tôi nói: 'Hôm nay trời rất...', các bạn đoán gì?"</em></p>
+<p>SV: "Đẹp", "Nắng", "Mát"...</p>
+<p><em>"Đúng. Nhưng có ai đoán 'cá heo' không? Không — vì 'cá heo' không xác suất xuất hiện sau 'Hôm nay trời rất'. Các bạn vừa làm chính xác cái mà AI làm: đoán từ tiếp theo dựa trên xác suất.</em></p>
+<p><em>AI tạo sinh — Large Language Model — là một cỗ máy đoán từ tiếp theo, được huấn luyện trên hàng tỷ trang văn bản. Nó KHÔNG hiểu nội dung. Nó CHỈ biết: sau cụm từ này, từ nào có xác suất cao nhất xuất hiện. Khi tôi hỏi về cuốn sách bịa, nó không 'nhớ' — nó 'đoán' rằng người viết câu này muốn nghe một câu trả lời mô tả sách, nên nó tạo ra mô tả nghe có vẻ hợp lý."</em></p>
+</blockquote>
+<p>Slide 1 (đơn giản):</p>
+<div class="highlight"><pre><span></span><code>AI không tra cứu thông tin.
+AI sinh ra văn bản nghe có-vẻ-đúng.
+</code></pre></div>
+
+<p>Slide 2 — Bản đồ công cụ AI 2025–2026 (chỉ liệt kê, không đi sâu):
+- Hội thoại đa năng: ChatGPT, Claude, Gemini, Copilot
+- Tìm kiếm có trích nguồn: Perplexity, ChatGPT Search, Gemini Deep Research
+- Nghiên cứu học thuật: Elicit, Consensus, Connected Papers
+- Tài liệu cá nhân: NotebookLM, Claude Projects</p>
+<blockquote>
+<p><em>"Hôm nay các bạn sẽ chạm vào nhóm 1. Buổi 2 chúng ta sẽ học cách dùng nhóm 2 và 3 đúng cách."</em></p>
+</blockquote>
+<p><strong>[Phút 43–50] LÀM — So sánh AI vs Google</strong></p>
+<p>Cặp đôi (2 SV/cặp). Mỗi cặp:
+1. Mở Google: gõ "Tác động của AI lên việc làm Việt Nam 2025". Đọc top 3 kết quả.
+2. Mở ChatGPT (hoặc Claude): hỏi cùng câu đó.
+3. Trả lời 2 câu hỏi trên giấy:
+   - Google cho cái gì AI không có?
+   - AI cho cái gì Google không có?</p>
+<p><strong>[Phút 50–55] CHỐT</strong></p>
+<p>Mời 1–2 cặp trả lời. GV chốt trên bảng:</p>
+<table>
+<thead>
+<tr>
+<th>Google</th>
+<th>AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đưa bạn đến nguồn (link)</td>
+<td>Tổng hợp nội dung sẵn</td>
+</tr>
+<tr>
+<td>Bạn tự đánh giá nguồn</td>
+<td>AI không cho biết nguồn</td>
+</tr>
+<tr>
+<td>Thông tin có thời gian rõ</td>
+<td>Có thể bịa</td>
+</tr>
+<tr>
+<td>Khó tổng hợp</td>
+<td>Tổng hợp giỏi</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>"Hai công cụ này KHÔNG thay thế nhau. Chúng bổ sung cho nhau. AI không phải Google phiên bản nâng cấp — nó là một loại công cụ khác hoàn toàn. Nghỉ giải lao 5 phút, tiết sau chúng ta xem AI giúp được gì trong việc học, và quan trọng hơn — AI KHÔNG giúp được gì."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-2-55-ai-lam-uoc-gi-ai-khong-lam-uoc-gi">TIẾT 2 (55') — "AI LÀM ĐƯỢC GÌ, AI KHÔNG LÀM ĐƯỢC GÌ"</h3>
+<h4 id="cau-truc-thoi-gian_1">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–3</td>
+<td><strong>HOOK</strong> — Câu chuyện thực: SV ngành Y dùng AI, AI bịa liều thuốc</td>
+</tr>
+<tr>
+<td>3–15</td>
+<td><strong>BIẾT</strong> — Cặp đôi: 3 việc bạn đang dùng AI tốt nhất / 3 việc thất vọng nhất</td>
+</tr>
+<tr>
+<td>15–35</td>
+<td><strong>MỚI</strong> — Demo đa ngành "AI làm được"</td>
+</tr>
+<tr>
+<td>35–50</td>
+<td><strong>LÀM</strong> — Thảo luận nhóm: AI có thay được giáo viên không?</td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_1">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–3] HOOK — Case Y khoa</strong></p>
+<blockquote>
+<p><em>"Một SV năm 3 ngành Dược ở một trường ĐH lớn ở TP.HCM kể với tôi: bạn ấy dùng ChatGPT làm case study lâm sàng cho môn Dược lý. AI đưa ra phác đồ điều trị với liều thuốc rất cụ thể. Bạn ấy nộp. Giảng viên xem xong gạch đỏ: liều đó nếu cho người thật, bệnh nhân có thể tử vong."</em></p>
+<p><em>"Câu hỏi: AI có nên dùng cho ngành Y không?"</em></p>
+</blockquote>
+<p>Cho SV 30 giây suy nghĩ. Không cần trả lời ngay — câu trả lời sẽ rõ sau tiết này.</p>
+<p><strong>[Phút 3–15] BIẾT — Cặp đôi</strong></p>
+<p>Mỗi SV viết ra giấy (5 phút):
+- 3 việc bạn ĐANG dùng AI tốt nhất
+- 3 việc bạn ĐÃ dùng AI và thấy thất vọng / sai</p>
+<p>Chia sẻ với bạn bên cạnh (5 phút).</p>
+<p>Mời 3 cặp chia sẻ trước lớp (5 phút). GV ghi lên bảng thành 2 cột.</p>
+<p><strong>[Phút 15–35] MỚI — Demo đa ngành "AI làm được"</strong></p>
+<p>GV demo (chuẩn bị sẵn prompt, không gõ tại chỗ):</p>
+<ol>
+<li>
+<p><strong>Kinh tế</strong> — Hỏi Claude: <em>"Tôi đang học Kinh tế vĩ mô. Giải thích cho tôi 'đường cong Phillips' bằng ẩn dụ đời sống thường ngày, dài 150 từ."</em> → Quan sát chất lượng giải thích.</p>
+</li>
+<li>
+<p><strong>Luật</strong> — Hỏi Claude: <em>"Tôi đọc điều 119 Bộ luật Dân sự 2015 mà không hiểu. Hãy giải thích như nói chuyện với người không học luật."</em> → Lưu ý: AI giải thích khái niệm thì tốt, nhưng đừng tin tuyệt đối điều luật cụ thể.</p>
+</li>
+<li>
+<p><strong>Y</strong> — Hỏi Claude: <em>"Giải thích cơ chế tác dụng của Paracetamol cho SV năm 2."</em> → Đối chiếu với SGK Dược lý sau.</p>
+</li>
+<li>
+<p><strong>Marketing</strong> — Hỏi Claude: <em>"Brainstorm 10 ý tưởng chiến dịch marketing cho một quán cà phê SV mới mở ở Hà Nội."</em> → Số lượng ý tưởng = mạnh; chất lượng = vẫn cần người chọn lọc.</p>
+</li>
+<li>
+<p><strong>Kỹ thuật</strong> — Hỏi Claude: <em>"Tôi đang thiết kế mạch điện có lỗi sau: [mô tả lỗi]. Đặt 5 câu hỏi phản biện giúp tôi tìm nguyên nhân."</em> → Kỹ thuật "AI làm phản biện thay vì làm hộ".</p>
+</li>
+</ol>
+<p>GV chốt slide:</p>
+<div class="highlight"><pre><span></span><code>AI LÀM TỐT:
+- Giải thích khái niệm
+- Tóm tắt và diễn đạt lại
+- Brainstorm số lượng lớn
+- Đặt câu hỏi phản biện
+- Kiểm tra ngữ pháp/logic
+- Soạn nháp đầu tiên
+
+AI LÀM TỆ:
+- Thông tin sau ngày cutoff
+- Tính toán phức tạp (trừ khi có code)
+- Sự kiện địa phương Việt Nam
+- Trích dẫn nguồn chính xác
+- Cảm xúc, đạo đức, quyết định cá nhân
+- Kiến thức chuyên sâu domain mới
+</code></pre></div>
+
+<p><strong>[Phút 35–50] LÀM — Thảo luận nhóm</strong></p>
+<p>Nhóm 4 SV. 15 phút. Câu hỏi:</p>
+<blockquote>
+<p><em>"AI có thể thay được giáo viên (giảng viên) không? Cụ thể: vai trò nào AI thay được, vai trò nào không?"</em></p>
+</blockquote>
+<p>Yêu cầu output: ghi ra giấy A4 chia 2 cột "Thay được / Không thay được". Mỗi cột tối thiểu 3 ý.</p>
+<p><strong>[Phút 50–55] CHỐT</strong></p>
+<p>Mời 2 nhóm chia sẻ. GV chốt:</p>
+<blockquote>
+<p><em>"AI thay được phần TRUYỀN ĐẠT THÔNG TIN. AI không thay được phần TẠO ĐỘNG LỰC, ĐÁNH GIÁ CÁ NHÂN HÓA, và truyền CẢM HỨNG. Đây là lý do trường học không chết — chỉ thay đổi vai trò. Tiết sau, chúng ta nói về vai trò của CHÍNH BẠN khi đối diện AI."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-3-55-ban-la-leader-ai-la-cong-su-gioi-thieu-bo-nao-thu-2">TIẾT 3 (55') — "BẠN LÀ LEADER, AI LÀ CỘNG SỰ" + GIỚI THIỆU "BỘ NÃO THỨ 2"</h3>
+<h4 id="cau-truc-thoi-gian_2">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>HOOK</strong> — Câu hỏi gây sốc về cognitive offloading</td>
+</tr>
+<tr>
+<td>5–25</td>
+<td><strong>MỚI</strong> — Tư duy "Leader–Cộng sự"</td>
+</tr>
+<tr>
+<td>25–35</td>
+<td><strong>LÀM</strong> — Cặp đôi: "Hệ thống ghi chú của bạn hiện tại?"</td>
+</tr>
+<tr>
+<td>35–50</td>
+<td><strong>MỚI</strong> — Giới thiệu PKM &amp; atomic note</td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_2">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–5] HOOK</strong></p>
+<blockquote>
+<p><em>"Tôi hỏi các bạn một câu hơi khó chịu. Hôm nay, không tra cứu, không dùng điện thoại — các bạn có nhớ mình đã học được gì trong tuần trước không? Không phải nhớ tên môn — nhớ một insight, một ý hiểu sâu? Giơ tay nếu có."</em></p>
+</blockquote>
+<p>Thường rất ít người giơ tay.</p>
+<blockquote>
+<p><em>"Đó là vấn đề. Các bạn đang học mỗi tuần 20–30 tiết, đọc hàng trăm trang. Nhưng cái gì còn lại trong đầu? Đây là hiệu ứng 'cognitive offloading' — khi bạn ngoại hóa quá nhiều (Google, AI, ghi chú không bao giờ đọc lại) thì não bạn dừng ghi nhớ và dừng kết nối. Nửa cuối buổi hôm nay là về cách giải quyết vấn đề này."</em></p>
+</blockquote>
+<p><strong>[Phút 5–25] MỚI — Tư duy "Leader–Cộng sự"</strong></p>
+<p>GV vẽ trên bảng hoặc slide:</p>
+<div class="highlight"><pre><span></span><code>Cách hiểu sai:                Cách hiểu đúng:
+AI ──► làm thay bạn         Bạn (Leader) ──► chỉ huy ──► AI (Cộng sự)
+                                  ▲                          │
+                                  └── đánh giá output ◄──────┘
+</code></pre></div>
+
+<p>Giảng (≤ 8 phút):</p>
+<blockquote>
+<p><em>"Hình dung AI như một thực tập sinh giỏi — thông minh, biết nhiều, làm việc 24/7, KHÔNG có kinh nghiệm và KHÔNG có trách nhiệm. Bạn là người leader. 3 việc Leader phải làm mà AI không thay được:</em></p>
+<p><em>1. ĐẶT CÂU HỎI ĐÚNG. Cộng sự giỏi vô dụng nếu bạn không biết hỏi cái gì.</em></p>
+<p><em>2. ĐÁNH GIÁ PHẢN BIỆN OUTPUT. Output AI là draft, không phải sản phẩm. Bạn phải kiểm tra, sửa, từ chối khi cần.</em></p>
+<p><em>3. RA QUYẾT ĐỊNH. Cộng sự cho gợi ý — Leader chọn và chịu trách nhiệm.</em></p>
+<p><em>Người tư duy rõ ràng dùng AI để khuếch đại sức mạnh của mình. Người tư duy mơ hồ dùng AI để... đẹp hơn cái mơ hồ của mình. AI không sửa tư duy bạn — AI khuếch đại tư duy bạn. Garbage in, garbage out."</em></p>
+</blockquote>
+<p>Tình huống thảo luận nhanh (cả lớp, 7 phút):</p>
+<blockquote>
+<p><em>"Có 2 SV cùng dùng ChatGPT viết bài tiểu luận. Cả hai cùng nộp. SV A được 9, SV B được 5. Cùng công cụ. Khác biệt ở đâu?"</em></p>
+</blockquote>
+<p>Để SV phát biểu. Câu trả lời mong đợi xoay quanh: SV A có tư duy trước, biết hỏi gì, biết sửa gì, biết kiểm tra; SV B copy-paste.</p>
+<p><strong>[Phút 25–35] LÀM — Cặp đôi: "Hệ thống ghi chú của bạn?"</strong></p>
+<p>Cặp đôi 10 phút. Mỗi SV mô tả với bạn bên cạnh:</p>
+<ul>
+<li>Bạn ghi chú trên đâu? (Vở, Google Docs, Notion, Notes điện thoại, không ghi gì...)</li>
+<li>6 tháng trước bạn đã ghi gì? Bạn có thể tìm lại không?</li>
+<li>Khi cần ôn thi, bạn dựa vào ghi chú hay đọc lại từ đầu?</li>
+</ul>
+<p>Sau đó GV mời 4–5 SV chia sẻ. Quan sát: phần lớn SV thừa nhận không có hệ thống.</p>
+<p><strong>[Phút 35–50] MỚI — PKM &amp; Atomic Note</strong></p>
+<p>GV giới thiệu (≤ 8 phút):</p>
+<blockquote>
+<p><em>"Tiago Forte — tác giả 'Building a Second Brain' — đặt vấn đề: bộ não con người tiến hóa để SÁNG TẠO và RA QUYẾT ĐỊNH, không phải để LƯU TRỮ. Khi bạn dùng não để lưu trữ, bạn lãng phí phần đẹp nhất của nó.</em></p>
+<p><em>Giải pháp: 'Bộ Não Thứ 2' — một hệ thống bên ngoài (digital hoặc giấy) ghi lại tri thức quan trọng, để não bộ tự do làm việc khác. Quy trình 4 bước:"</em></p>
+</blockquote>
+<p>Slide chính:</p>
+<div class="highlight"><pre><span></span><code>CAPTURE   — Bắt lại ý tưởng / insight ngay khi xuất hiện
+ORGANIZE  — Sắp xếp theo cách dễ tìm lại
+DISTILL   — Tinh chế: viết lại bằng từ ngữ của mình
+EXPRESS   — Diễn đạt thành sản phẩm mới
+</code></pre></div>
+
+<p>Khái niệm <strong>Atomic Note</strong> (Smart Notes — Sönke Ahrens):
+- 1 note = 1 ý duy nhất
+- Viết bằng ngôn ngữ của mình (không copy-paste)
+- Có tiêu đề rõ — đọc tiêu đề là biết nội dung
+- Có ngày tháng, có nguồn (nếu có)
+- Liên kết với note cũ (nếu liên quan)</p>
+<p><strong>Demo viết 1 atomic note trên màn hình</strong> (3 phút):</p>
+<div class="highlight"><pre><span></span><code>[2026-05-14] AI là máy đoán từ, không phải máy tra cứu
+
+AI tạo sinh hoạt động theo cơ chế: cho 1 chuỗi từ, đoán từ tiếp 
+theo có xác suất cao nhất. Vì vậy AI không &quot;biết&quot; nội dung — nó 
+tạo ra nội dung NGHE CÓ-VẺ-ĐÚNG. Hệ quả: AI có thể bịa thông tin
+(hallucination). Để dùng AI an toàn: luôn coi output là DRAFT, 
+luôn kiểm chứng dữ kiện cứng (số liệu, tên, trích dẫn).
+
+Liên quan: [chưa có note nào — sẽ kết nối ở buổi 2]
+Nguồn: Buổi 1 môn SISB_SKL_0001
+</code></pre></div>
+
+<blockquote>
+<p><em>"Đơn giản vậy thôi. Không cần Notion. Không cần Obsidian. Một file Google Docs, một sổ tay giấy — đều được. CÔNG CỤ KHÔNG QUAN TRỌNG. Phương pháp luận mới quan trọng."</em></p>
+</blockquote>
+<p><strong>[Phút 50–55] CHỐT</strong></p>
+<blockquote>
+<p><em>"Tiết sau các bạn sẽ thực hành ngay với AI. Tiết cuối hôm nay các bạn sẽ viết atomic note đầu tiên — viên gạch đầu tiên của 'Bộ Não Thứ 2' của mình. 5 phút nghỉ."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-4-55-thuc-hanh-cung-1-cau-hoi-3-cach-hoi">TIẾT 4 (55') — THỰC HÀNH "CÙNG 1 CÂU HỎI, 3 CÁCH HỎI"</h3>
+<h4 id="cau-truc-thoi-gian_3">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>HOOK + setup</strong> — Giới thiệu bài tập</td>
+</tr>
+<tr>
+<td>5–35</td>
+<td><strong>LÀM</strong> — SV thực hành 3 cách hỏi</td>
+</tr>
+<tr>
+<td>35–50</td>
+<td><strong>THẢO LUẬN nhóm</strong></td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_3">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–5] Setup</strong></p>
+<blockquote>
+<p><em>"Bài tập hôm nay sẽ trả lời câu hỏi: cùng một chủ đề, vì sao có người ra output 6 điểm, có người ra output 9 điểm? Câu trả lời nằm trong CÁCH HỎI."</em></p>
+</blockquote>
+<p>Chia nhóm 3 SV theo ngành (hoặc gần ngành). Mỗi nhóm chọn 1 chủ đề thuộc ngành mình. Ví dụ:</p>
+<ul>
+<li>Marketing: "Chiến lược marketing cho thương hiệu cà phê Việt"</li>
+<li>Luật: "Quyền sở hữu trí tuệ trong sáng tạo nội dung"</li>
+<li>Y/Dược: "Tác dụng phụ thường gặp của thuốc kháng sinh nhóm beta-lactam"</li>
+<li>Kỹ thuật: "Sự khác biệt giữa machine learning và deep learning"</li>
+<li>Kinh tế: "Tác động của lạm phát đến hành vi tiêu dùng"</li>
+</ul>
+<p><strong>[Phút 5–35] LÀM — 3 cách hỏi</strong></p>
+<p>Mỗi nhóm thực hành <strong>cùng 1 chủ đề</strong> với 3 cách hỏi:</p>
+<p><strong>Cách 1 (10 phút) — Mơ hồ.</strong> Gõ thẳng chủ đề như tìm Google.
+<em>Ví dụ:</em> "Marketing cà phê Việt"</p>
+<p>Ghi lại output. Đánh giá 1–10. Lý do.</p>
+<p><strong>Cách 2 (10 phút) — Có ngữ cảnh.</strong> Thêm ngữ cảnh người hỏi.
+<em>Ví dụ:</em> "Tôi là SV năm 2 ngành Marketing, đang viết tiểu luận về chiến lược marketing cho thương hiệu cà phê Việt. Giải thích cho tôi 3 hướng tiếp cận chính."</p>
+<p>Ghi lại output. Đánh giá 1–10.</p>
+<p><strong>Cách 3 (10 phút) — Vai trò + Ngữ cảnh + Yêu cầu cụ thể.</strong>
+<em>Ví dụ:</em> "Đóng vai giảng viên Đại học chuyên ngành Marketing với 15 năm kinh nghiệm. Tôi là SV năm 2, đang viết tiểu luận 2000 từ về chiến lược marketing thương hiệu cà phê Việt giai đoạn 2020–2025. Hãy đưa cho tôi 3 hướng tiếp cận chính, mỗi hướng kèm 1 case study thương hiệu Việt thực tế, dài tổng cộng 300 từ, văn phong học thuật nhưng dễ hiểu, kết thúc bằng 1 câu hỏi gợi mở để tôi tiếp tục nghiên cứu."</p>
+<p>Ghi lại output. Đánh giá 1–10.</p>
+<blockquote>
+<p><strong>Lưu ý GV:</strong> Đi vòng quanh lớp. Hỗ trợ nhóm bí ý. Khen nhanh khi thấy nhóm gõ prompt tốt — tạo áp lực tích cực cho cả lớp.</p>
+</blockquote>
+<p><strong>[Phút 35–50] Thảo luận nhóm</strong></p>
+<p>Trong nhóm 15 phút, trả lời 4 câu hỏi trên giấy:</p>
+<ol>
+<li>Output nào hữu ích nhất cho việc viết tiểu luận? Tại sao?</li>
+<li>Khác biệt CHỦ YẾU giữa cách 1 và cách 3 là gì? (Không phải "dài hơn" — sâu hơn)</li>
+<li>Có yếu tố nào trong cách 3 mà các nhóm khác chắc sẽ bỏ sót? Vì sao?</li>
+<li>Khi nào dùng cách 1 cũng ổn? (Có — không phải lúc nào cũng cần cách 3)</li>
+</ol>
+<p>Mời 2 nhóm chia sẻ (5 phút).</p>
+<p><strong>[Phút 50–55] CHỐT</strong></p>
+<p>GV viết bảng:</p>
+<div class="highlight"><pre><span></span><code>Tư duy rõ      ──►   Prompt rõ      ──►   Output tốt
+   Bạn (Leader)            Cộng cụ              Sản phẩm
+</code></pre></div>
+
+<blockquote>
+<p><em>"Bài học của tiết này: AI không cho bạn cái bạn muốn. AI cho bạn cái bạn HỎI. Khả năng hỏi đúng = năng lực mới của thế kỷ 21. Đây chính là điều mình sẽ học sâu hơn ở Buổi 2 — gọi là Prompt Engineering."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-5-55-phan-tu-atomic-note-au-tien-tong-ket">TIẾT 5 (55') — PHẢN TƯ + ATOMIC NOTE ĐẦU TIÊN + TỔNG KẾT</h3>
+<h4 id="cau-truc-thoi-gian_4">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>HOOK</strong> — Trở lại Minh</td>
+</tr>
+<tr>
+<td>5–25</td>
+<td><strong>LÀM</strong> — Viết atomic note đầu tiên</td>
+</tr>
+<tr>
+<td>25–40</td>
+<td><strong>CHIA SẺ + DISCUSS</strong> — "Lưu ở đâu, đặt tên gì?"</td>
+</tr>
+<tr>
+<td>40–50</td>
+<td><strong>TỔNG KẾT</strong> buổi 1 + giao về nhà</td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>NỘP + chuẩn bị buổi 2</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_4">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–5] HOOK</strong></p>
+<blockquote>
+<p><em>"Trở lại Minh. Sau buổi học hôm nay, Minh nên làm gì khác đi? Một câu trả lời ngắn — viết ra giấy, không nói."</em></p>
+</blockquote>
+<p>30 giây viết. Gọi 3 SV đọc.</p>
+<p>Câu trả lời mong đợi: Tư duy trước, hỏi đúng, kiểm chứng output, không copy-paste, ghi lại điều đã học...</p>
+<blockquote>
+<p><em>"Tốt. Nhưng tôi nói thật — 90% trong các bạn sẽ về nhà và quên buổi học này trong 3 tuần nữa. Đó là quy luật não bộ, không phải lỗi của các bạn. Cách duy nhất để chống lại điều đó là viết. Hôm nay chúng ta viết viên gạch đầu tiên."</em></p>
+</blockquote>
+<p><strong>[Phút 5–25] LÀM — Viết atomic note đầu tiên</strong></p>
+<p>GV chiếu template trên màn hình (cũng có trên LMS):</p>
+<div class="highlight"><pre><span></span><code><span class="k">[Ngày] — [Tiêu đề rõ ràng, một câu hoàn chỉnh, không viết tắt]</span>
+
+<span class="na">Nội dung (3–5 câu, bằng ngôn ngữ của mình)</span><span class="o">:</span>
+<span class="na">- Insight chính</span><span class="o">:</span>
+<span class="na">- Tại sao quan trọng (với mình)</span><span class="o">:</span>
+<span class="na">- Mình sẽ làm gì khác đi sau khi biết điều này</span><span class="o">:</span>
+
+<span class="na">Nguồn</span><span class="o">:</span><span class="w"> </span><span class="s">Buổi 1 môn SISB_SKL_0001 — [ngày]</span>
+<span class="na">Liên kết</span><span class="o">:</span><span class="w"> </span><span class="s">(chưa có)</span>
+</code></pre></div>
+
+<p>Đề bài: <em>"Viết về 1 ĐIỀU QUAN TRỌNG NHẤT bạn học hôm nay. Chỉ 1 thứ. 3–5 câu. Bằng ngôn ngữ của mình, không copy slide."</em></p>
+<p>20 phút. SV viết trên app ghi chú cá nhân hoặc giấy.</p>
+<p><strong>[Phút 25–40] Chia sẻ + Thảo luận "Lưu ở đâu?"</strong></p>
+<p>Mời 4–5 SV đọc atomic note trước lớp. GV không sửa nội dung — chỉ feedback về:
+- Tiêu đề có rõ không?
+- Có dùng ngôn ngữ của mình không?
+- Có khả năng tìm lại sau 6 tháng không?</p>
+<p>Thảo luận cả lớp 5 phút:
+- Bạn lưu vào đâu (Google Docs, Notion, Obsidian, Notes, giấy)?
+- Bạn sẽ đặt tên file/folder thế nào để 6 tháng sau tìm được?</p>
+<p>GV gợi ý:
+- File đơn giản nhất: <code>YYYY-MM-DD — Tiêu đề.md</code> hoặc lưu trong 1 folder duy nhất "Atomic Notes" + dùng search.
+- Folder cứng không quan trọng — tag và search quan trọng hơn (PARA của Tiago Forte hoặc đơn giản hơn).</p>
+<p><strong>[Phút 40–50] Tổng kết Buổi 1 + Giao về nhà</strong></p>
+<p>Bảng tổng kết (GV viết tay trên bảng — gây ấn tượng hơn slide):</p>
+<div class="highlight"><pre><span></span><code><span class="mf">3</span><span class="w"> </span><span class="n">ĐIỀU</span><span class="w"> </span><span class="n">QUAN</span><span class="w"> </span><span class="n">TRỌNG</span><span class="w"> </span><span class="n">NHẤT</span><span class="w"> </span><span class="n">BUỔI</span><span class="w"> </span><span class="mf">1</span>
+<span class="err">─────────────────────────────────────</span>
+<span class="mf">1.</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">là</span><span class="w"> </span><span class="n">MÁY</span><span class="w"> </span><span class="n">ĐOÁN</span><span class="w"> </span><span class="n">TỪ</span><span class="w"> </span><span class="n">XÁC</span><span class="w"> </span><span class="n">SUẤT</span>
+<span class="w">   </span><span class="err">──►</span><span class="w"> </span><span class="n">Hệ</span><span class="w"> </span><span class="n">quả</span><span class="p">:</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">bịa</span><span class="w"> </span><span class="n">được</span><span class="mf">.</span><span class="w"> </span><span class="n">Luôn</span><span class="w"> </span><span class="n">kiểm</span><span class="w"> </span><span class="n">chứng</span><span class="mf">.</span>
+
+<span class="mf">2.</span><span class="w"> </span><span class="n">BẠN</span><span class="w"> </span><span class="n">LÀ</span><span class="w"> </span><span class="n">LEADER</span><span class="p">,</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">LÀ</span><span class="w"> </span><span class="n">CỘNG</span><span class="w"> </span><span class="n">SỰ</span>
+<span class="w">   </span><span class="err">──►</span><span class="w"> </span><span class="n">Hệ</span><span class="w"> </span><span class="n">quả</span><span class="p">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="n">việc</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">không</span><span class="w"> </span><span class="n">thay</span><span class="w"> </span><span class="n">được</span><span class="w"> </span><span class="err">—</span><span class="w"> </span>
+<span class="w">       </span><span class="n">hỏi</span><span class="w"> </span><span class="n">đúng</span><span class="p">,</span><span class="w"> </span><span class="n">đánh</span><span class="w"> </span><span class="n">giá</span><span class="p">,</span><span class="w"> </span><span class="n">ra</span><span class="w"> </span><span class="n">quyết</span><span class="w"> </span><span class="n">định</span><span class="mf">.</span>
+
+<span class="mf">3.</span><span class="w"> </span><span class="n">BỘ</span><span class="w"> </span><span class="n">NÃO</span><span class="w"> </span><span class="n">THỨ</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="n">LÀ</span><span class="w"> </span><span class="n">CƠ</span><span class="w"> </span><span class="n">SỞ</span>
+<span class="w">   </span><span class="err">──►</span><span class="w"> </span><span class="n">Hệ</span><span class="w"> </span><span class="n">quả</span><span class="p">:</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">mạnh</span><span class="w"> </span><span class="n">đến</span><span class="w"> </span><span class="n">đâu</span><span class="w"> </span><span class="n">cũng</span><span class="w"> </span><span class="n">không</span><span class="w"> </span><span class="n">cứu</span><span class="w"> </span>
+<span class="w">       </span><span class="n">được</span><span class="w"> </span><span class="n">người</span><span class="w"> </span><span class="n">không</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">hệ</span><span class="w"> </span><span class="n">thống</span><span class="w"> </span><span class="n">tri</span><span class="w"> </span><span class="n">thức</span><span class="w"> </span>
+<span class="w">       </span><span class="n">riêng</span><span class="mf">.</span>
+</code></pre></div>
+
+<p><strong>Bài về nhà (giao và post LMS):</strong></p>
+<ol>
+<li>Áp dụng "3 cách hỏi" cho 2 môn học khác. Lưu lại prompt + output. Mang đến buổi 2.</li>
+<li>Viết ít nhất 2 atomic notes mới về điều học được tuần này (môn nào cũng được). Nộp link/screenshot qua LMS trước buổi 2.</li>
+<li>Đọc tài liệu SCQA cho buổi 2 (sẽ post sau buổi này).</li>
+</ol>
+<p><strong>[Phút 50–55] Nộp atomic note + Chuẩn bị</strong></p>
+<p>SV nộp atomic note đầu tiên qua LMS (link Google Doc hoặc ảnh chụp).</p>
+<blockquote>
+<p><em>"Buổi 2 chúng ta sẽ trả lời: cùng một câu hỏi, vì sao có người ra 9 điểm, có người ra 5? Câu trả lời là PROMPT ENGINEERING. Và chúng ta sẽ học cách dùng AI để LÀM NGHIÊN CỨU THẬT — không phải để bịa nguồn. Hẹn gặp các bạn tuần sau."</em></p>
+</blockquote>
+<hr />
+<h2 id="phan-c-phu-luc">PHẦN C — PHỤ LỤC</h2>
+<h3 id="c1-oan-phim-minh-phien-ban-oc-90-giay">C1. Đoạn phim "Minh" — phiên bản đọc 90 giây</h3>
+<blockquote>
+<p><em>"Minh là sinh viên năm 2 ngành Marketing tại một trường ĐH lớn ở Hà Nội. Minh thông minh, chăm học, và đặc biệt — Minh là người dùng AI rất nhiều. Ngày nào Minh cũng mở ChatGPT. Bài tập, email, tiểu luận — Minh dùng AI cho hết.</em></p>
+<p><em>Tuần trước, môn Nguyên lý Marketing yêu cầu nộp tiểu luận 1500 chữ. Đề bài: 'Phân tích chiến lược marketing của một thương hiệu Việt mà bạn yêu thích.' Minh chọn Highlands Coffee. Minh gõ ChatGPT, copy-paste, chỉnh sửa vài chỗ cho 'có vẻ tự nhiên', nộp.</em></p>
+<p><em>Sau 1 tuần, Minh nhận lại bài. 6/10. Lời phê: 'Bài viết trơn tru nhưng không có quan điểm cá nhân. Số liệu trang 2 ('Highlands chiếm 23% thị phần cà phê chuỗi Việt Nam năm 2023') không có nguồn — em lấy ở đâu?'</em></p>
+<p><em>Minh được gọi lên gặp giảng viên. Cô hỏi: 'Em viết hay AI viết?'. Minh ấp úng: 'Em... có dùng AI hỗ trợ ạ.' Cô hỏi tiếp: 'Số 23% em lấy ở đâu?'. Minh không trả lời được — vì đó là số AI đưa, Minh chưa từng kiểm tra.</em></p>
+<p><em>Câu chuyện của Minh — nói thật — không hiếm. Tôi đoán trong lớp này có ít nhất 30% các bạn đã ở vị trí của Minh ít nhất một lần. Vấn đề KHÔNG phải Minh dùng AI. Vấn đề là Minh dùng AI MÀ KHÔNG TƯ DUY. Buổi học hôm nay là về sự khác biệt giữa hai điều đó."</em></p>
+</blockquote>
+<h3 id="c2-bo-prompt-gay-hallucination-e-demo">C2. Bộ prompt gây hallucination để demo</h3>
+<p>GV chuẩn bị sẵn 1 trong các prompt sau (đã test trước, đảm bảo AI bịa):</p>
+<ol>
+<li><em>"Hãy giới thiệu cuốn sách 'Marketing trong kỷ nguyên hậu-AI' của tác giả Nguyễn Văn Tâm xuất bản năm 2023 ở NXB Trẻ. Tóm tắt 3 chương đầu."</em></li>
+<li><em>"Cho tôi DOI của bài báo 'Generative AI in Vietnamese Higher Education: A 2024 Survey' đăng trên Vietnam Journal of Educational Research."</em></li>
+<li><em>"Tóm tắt nghiên cứu của GS. Lê Hoàng Phong tại Đại học Bách khoa Hà Nội về hành vi mua sắm online của Gen Z miền Bắc Việt Nam đăng năm 2024 trên tạp chí Tâm lý học Việt Nam."</em></li>
+</ol>
+<blockquote>
+<p><strong>Lưu ý:</strong> Tên người và tựa sách trên là <strong>bịa</strong>. AI sẽ tạo ra mô tả nghe hợp lý → đó là hallucination. GV nên thử trước 1–2 ngày để đảm bảo prompt vẫn hoạt động (đôi khi AI mới có thể từ chối — nếu vậy đổi prompt).</p>
+</blockquote>
+<h3 id="c3-cau-hoi-du-phong-neu-lop-im">C3. Câu hỏi dự phòng nếu lớp im</h3>
+<p>Nếu lớp ít tương tác, GV có thể tung câu hỏi:</p>
+<ul>
+<li><em>"Trong các bạn ai đã từng nộp một bài hoàn toàn do AI viết và được điểm cao? (Không phải khai báo công khai — chỉ nghĩ trong đầu)"</em></li>
+<li><em>"Nếu sếp tương lai biết bạn dùng AI để viết CV xin việc, sếp có tuyển bạn không? Tại sao?"</em></li>
+<li><em>"Có sự khác nhau gì giữa người 'biết dùng AI' và người 'phụ thuộc AI'?"</em></li>
+</ul>
+<h3 id="c4-checklist-giang-vien-cuoi-buoi">C4. Checklist giảng viên cuối buổi</h3>
+<ul>
+<li>[ ] Tất cả SV đã nộp atomic note đầu tiên qua LMS?</li>
+<li>[ ] Bài về nhà đã rõ ràng, có deadline?</li>
+<li>[ ] Tài liệu SCQA cho buổi 2 đã post lên LMS?</li>
+<li>[ ] Slide buổi 1 đã upload?</li>
+<li>[ ] Có ghi nhận sự tham gia của 100% SV không? (Đánh dấu sổ chuyên cần)</li>
+<li>[ ] Có 1 SV nào ngồi im suốt 5 tiết không? — Nếu có, tiếp cận cá nhân ở buổi 2.</li>
+</ul>
+        </div>
+        <footer>
+            Generated by Second Brain MD-to-Web Converter Skill
+        </footer>
+    </div>
+</body>
+</html>

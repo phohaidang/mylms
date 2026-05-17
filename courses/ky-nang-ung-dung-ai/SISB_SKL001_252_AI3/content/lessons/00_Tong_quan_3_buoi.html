@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TỔNG QUAN KỊCH BẢN 3 BUỔI — SISB_SKL_0001</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pygments/2.15.1/default.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --toc-bg: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --text: #f1f5f9;
+                --card-bg: #1e293b;
+                --border: #334155;
+                --toc-bg: #1e293b;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 95%;
+            padding: 40px 20px;
+            margin-bottom: 100px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; margin-top: 0; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            background: rgba(79, 70, 229, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th { background: rgba(79, 70, 229, 0.05); }
+
+        tr:hover { background: rgba(79, 70, 229, 0.02); }
+
+        .toc {
+            background: var(--toc-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .toc ul { list-style: none; padding-left: 20px; }
+        .toc a { color: var(--text); opacity: 0.8; font-size: 0.9rem; }
+        .toc a:hover { opacity: 1; color: var(--primary); }
+
+        blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(79, 70, 229, 0.05);
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <div class="toc"><span class="toctitle">Mục lục</span><ul>
+<li><a href="#tong-quan-kich-ban-3-buoi-sisb_skl_0001">TỔNG QUAN KỊCH BẢN 3 BUỔI — SISB_SKL_0001</a><ul>
+<li><a href="#1-triet-ly-thiet-ke-kich-ban">1. TRIẾT LÝ THIẾT KẾ KỊCH BẢN</a></li>
+<li><a href="#2-thread-xuyen-suot-bo-nao-thu-2-gan-vao-tung-buoi">2. THREAD XUYÊN SUỐT — "BỘ NÃO THỨ 2" GẮN VÀO TỪNG BUỔI</a></li>
+<li><a href="#3-story-spine-nhan-vat-minh">3. STORY SPINE — NHÂN VẬT "MINH"</a><ul>
+<li><a href="#buoi-1-minh-nop-bai-va-bi-giang-vien-hoi-em-viet-hay-ai-viet">Buổi 1 — "Minh nộp bài và bị giảng viên hỏi: Em viết hay AI viết?"</a></li>
+<li><a href="#buoi-2-minh-uoc-giao-bai-seminar-va-phai-tim-tai-lieu-that">Buổi 2 — "Minh được giao bài seminar và phải tìm tài liệu thật"</a></li>
+<li><a href="#buoi-3-minh-trinh-bay-truoc-hoi-ong-va-bi-bat-loi-trich-dan-gia">Buổi 3 — "Minh trình bày trước hội đồng và bị bắt lỗi trích dẫn giả"</a></li>
+</ul>
+</li>
+<li><a href="#4-cau-truc-tai-lieu-scqa-dung-chung-cho-3-buoi">4. CẤU TRÚC TÀI LIỆU SCQA (DÙNG CHUNG CHO 3 BUỔI)</a></li>
+<li><a href="#5-cong-thuc-phan-phoi-thoi-gian-mot-tiet-55-phut">5. CÔNG THỨC PHÂN PHỐI THỜI GIAN MỘT TIẾT (55 phút)</a></li>
+<li><a href="#6-chuan-bi-cua-giang-vien-truoc-moi-buoi">6. CHUẨN BỊ CỦA GIẢNG VIÊN TRƯỚC MỖI BUỔI</a></li>
+<li><a href="#7-nhung-loi-thuong-gap-khi-giang-mon-nay-e-tranh">7. NHỮNG LỖI THƯỜNG GẶP KHI GIẢNG MÔN NÀY (ĐỂ TRÁNH)</a></li>
+<li><a href="#8-chi-dan-oc-3-file-kich-ban">8. CHỈ DẪN ĐỌC 3 FILE KỊCH BẢN</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="tong-quan-kich-ban-3-buoi-sisb_skl_0001">TỔNG QUAN KỊCH BẢN 3 BUỔI — SISB_SKL_0001</h1>
+<blockquote>
+<p><em>Kỹ năng sử dụng AI trong nghiên cứu, học tập</em>
+Phiên bản kịch bản giảng dạy — thiết kế theo nguyên tắc thảo luận-trọng tâm</p>
+</blockquote>
+<hr />
+<h2 id="1-triet-ly-thiet-ke-kich-ban">1. TRIẾT LÝ THIẾT KẾ KỊCH BẢN</h2>
+<p>Đề cương đặt ra triết lý <strong>Tư duy → Kỹ năng → Công cụ</strong> và yêu cầu <strong>Thực hành ≥ 60%</strong>. Kịch bản này hiện thực hóa triết lý đó bằng 5 nguyên tắc cụ thể:</p>
+<ol>
+<li><strong>Bắt đầu từ cái BIẾT của sinh viên.</strong> Mỗi tiết mở bằng câu hỏi khảo sát ngắn về trải nghiệm thực tế của SV trước khi đưa khái niệm mới. Không bao giờ giảng "định nghĩa" trước khi SV có chỗ "treo" định nghĩa đó vào.</li>
+<li><strong>Khái niệm cốt lõi → Tình huống → SV giải quyết → GV chốt.</strong> Mỗi đơn vị nội dung tuân theo trật tự này, không đảo ngược.</li>
+<li><strong>Thảo luận thay vì thuyết giảng.</strong> Tỷ lệ mục tiêu: GV nói ≤ 35% thời lượng, SV làm + thảo luận ≥ 65%. GV không có quyền nói liên tục quá 8 phút.</li>
+<li><strong>Một câu chuyện thống nhất.</strong> Xuyên suốt 3 buổi là nhân vật <strong>Minh — sinh viên năm 2 ngành Marketing</strong> — gặp khó khăn cụ thể ở từng buổi, để SV thấy được sự ứng dụng liền mạch. (Xem mục 3.)</li>
+<li><strong>Tài liệu điện tử theo cấu trúc SCQA.</strong> Mỗi buổi có 1 tài liệu phát cho SV soạn theo Situation → Complication → Question → Answer (xem mục 4).</li>
+</ol>
+<hr />
+<h2 id="2-thread-xuyen-suot-bo-nao-thu-2-gan-vao-tung-buoi">2. THREAD XUYÊN SUỐT — "BỘ NÃO THỨ 2" GẮN VÀO TỪNG BUỔI</h2>
+<table>
+<thead>
+<tr>
+<th>Buổi</th>
+<th>Câu hỏi cốt lõi</th>
+<th>Khái niệm nền</th>
+<th>Thao tác "Bộ Não Thứ 2"</th>
+<th>Tài liệu SCQA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><em>"Tại sao AI thông minh mà nhiều khi vẫn nói nhảm?"</em></td>
+<td>AI là xác suất, không phải tri thức</td>
+<td><strong>Capture</strong> — viết atomic note đầu tiên</td>
+<td>"Vì sao bạn dùng AI nhiều nhưng vẫn cảm thấy mơ hồ?"</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><em>"Cùng một câu hỏi, vì sao 2 người ra 2 kết quả khác nhau?"</em></td>
+<td>Prompt là giao diện tư duy; quy trình nghiên cứu 4 bước</td>
+<td><strong>Organize + Create</strong> — kết nối note, sản xuất tri thức</td>
+<td>"Vì sao Google tốt cho thông tin nhưng tệ cho hiểu biết?"</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><em>"AI nói dối bạn lúc nào — và làm sao bạn biết?"</em></td>
+<td>Rủi ro, đạo đức, fact-check</td>
+<td><strong>Validate + Reflect</strong> — đối chiếu, phản tư</td>
+<td>"Vì sao SV giỏi vẫn có thể nộp bài sai vì tin AI?"</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-story-spine-nhan-vat-minh">3. STORY SPINE — NHÂN VẬT "MINH"</h2>
+<p>Để 3 buổi liền mạch, mỗi buổi mở đầu bằng một "đoạn phim" 2 phút về <strong>Minh — SV năm 2 Marketing</strong>. Minh đại diện cho SV trung bình: dùng AI nhiều, nhưng không có hệ thống. Mỗi buổi Minh gặp một khúc mắc, và bài học chính là cách Minh (và lớp) giải quyết khúc mắc đó.</p>
+<h3 id="buoi-1-minh-nop-bai-va-bi-giang-vien-hoi-em-viet-hay-ai-viet">Buổi 1 — "Minh nộp bài và bị giảng viên hỏi: Em viết hay AI viết?"</h3>
+<p>Minh dùng ChatGPT viết tiểu luận môn Nguyên lý Marketing. Bài được 6/10. Giảng viên gọi lên hỏi: "Em hiểu cái em viết không?" Minh ấp úng. Vấn đề không phải AI tốt hay xấu — vấn đề là Minh không tư duy trước khi dùng AI. <strong>Buổi 1 trả lời: Tư duy đúng về AI là gì?</strong></p>
+<h3 id="buoi-2-minh-uoc-giao-bai-seminar-va-phai-tim-tai-lieu-that">Buổi 2 — "Minh được giao bài seminar và phải tìm tài liệu thật"</h3>
+<p>Minh phải làm seminar về "Hành vi tiêu dùng Gen Z Việt Nam". Lần này không được copy AI. Minh thử Perplexity tìm nguồn — ra 5 nguồn, có 2 nguồn AI bịa. Minh chưa biết quy trình. <strong>Buổi 2 trả lời: Quy trình nghiên cứu với AI như thế nào?</strong></p>
+<h3 id="buoi-3-minh-trinh-bay-truoc-hoi-ong-va-bi-bat-loi-trich-dan-gia">Buổi 3 — "Minh trình bày trước hội đồng và bị bắt lỗi trích dẫn giả"</h3>
+<p>Minh dùng AI tạo slide đẹp, có vẻ chuyên nghiệp. Đến phần Q&amp;A, một bạn hỏi: "Số liệu 78% Gen Z mua online em lấy từ đâu?" Minh không trả lời được — đó là số AI bịa. <strong>Buổi 3 trả lời: Rủi ro và đạo đức khi dùng AI là gì, và làm chủ thế nào?</strong></p>
+<blockquote>
+<p><strong>Gợi ý GV:</strong> Có thể thay Minh bằng tên SV thực trong lớp, hoặc đổi ngành Marketing thành ngành phổ biến nhất của lớp đang dạy.</p>
+</blockquote>
+<hr />
+<h2 id="4-cau-truc-tai-lieu-scqa-dung-chung-cho-3-buoi">4. CẤU TRÚC TÀI LIỆU SCQA (DÙNG CHUNG CHO 3 BUỔI)</h2>
+<p>Mỗi buổi có 1 tài liệu điện tử 2–3 trang phát cho SV trước buổi học (qua LMS). Cấu trúc:</p>
+<div class="highlight"><pre><span></span><code>S — SITUATION (Bối cảnh đã quen thuộc)
+  Mô tả tình huống SV đang gặp HÀNG NGÀY mà SV đã thấy bình thường.
+  Mục tiêu: SV gật đầu &quot;đúng, mình cũng vậy&quot;.
+
+C — COMPLICATION (Mâu thuẫn ẩn)
+  Chỉ ra điều mà SV chưa nhận ra: vấn đề ẩn dưới tình huống quen thuộc đó.
+  Mục tiêu: SV cảm thấy &quot;ơ, hóa ra mình đã sai/thiếu chỗ này&quot;.
+
+Q — QUESTION (Câu hỏi mở)
+  Đặt câu hỏi gắn với buổi học: nếu giải được câu này, SV sẽ làm chủ tình huống.
+  Mục tiêu: SV tự đặt câu hỏi cho mình, không phải bị GV &quot;dạy&quot;.
+
+A — ANSWER (Khung trả lời + kỹ năng)
+  Cung cấp khung trả lời của buổi học (3–5 ý chính + công cụ/kỹ thuật).
+  Mục tiêu: SV có &quot;bản đồ&quot; rõ ràng để theo buổi học, đồng thời để lại &quot;khoảng trống&quot;
+  để buổi học lấp đầy bằng thảo luận.
+</code></pre></div>
+
+<p>Tài liệu SCQA không thay slide — nó là <strong>prep work</strong> cho SV trước buổi học. SV đọc trước, đến lớp đi sâu thảo luận.</p>
+<hr />
+<h2 id="5-cong-thuc-phan-phoi-thoi-gian-mot-tiet-55-phut">5. CÔNG THỨC PHÂN PHỐI THỜI GIAN MỘT TIẾT (55 phút)</h2>
+<div class="highlight"><pre><span></span><code>[03&#39;] HOOK    — Câu hỏi/Đoạn phim Minh / Khảo sát chớp nhoáng
+[10&#39;] BIẾT     — Khai thác cái SV đã biết (Mentimeter / cặp đôi / phát biểu)
+[15&#39;] MỚI      — GV chốt khái niệm cốt lõi (slide ngắn / demo trực tiếp)
+[20&#39;] LÀM     — SV thực hành / thảo luận / giải tình huống
+[07&#39;] CHỐT    — GV chốt + 2–3 SV chia sẻ + chuyển tiết
+</code></pre></div>
+
+<p><strong>Ngoại lệ:</strong>
+- Tiết có thực hành dài (mini-research, mini-project): rút HOOK + BIẾT xuống còn 5 phút, dồn 35–40 phút cho LÀM.
+- Tiết tổng kết &amp; phản tư: rút LÀM xuống, dồn cho phản tư cá nhân + chia sẻ lớp.</p>
+<hr />
+<h2 id="6-chuan-bi-cua-giang-vien-truoc-moi-buoi">6. CHUẨN BỊ CỦA GIẢNG VIÊN TRƯỚC MỖI BUỔI</h2>
+<table>
+<thead>
+<tr>
+<th>Hạng mục</th>
+<th>Buổi 1</th>
+<th>Buổi 2</th>
+<th>Buổi 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tài liệu SCQA đăng LMS trước</td>
+<td>3 ngày</td>
+<td>3 ngày</td>
+<td>3 ngày</td>
+</tr>
+<tr>
+<td>Slide (tối đa)</td>
+<td>15 slide</td>
+<td>18 slide</td>
+<td>20 slide</td>
+</tr>
+<tr>
+<td>Demo trực tiếp chuẩn bị</td>
+<td>ChatGPT/Claude/Gemini đã đăng nhập, 1 tài khoản Perplexity</td>
+<td>Perplexity, NotebookLM, 1 PDF mẫu</td>
+<td>Gamma, 1 case hallucination chuẩn bị sẵn</td>
+</tr>
+<tr>
+<td>Padlet / Mentimeter / Slido</td>
+<td>Có (khảo sát đầu vào)</td>
+<td>Có (khảo sát giữa)</td>
+<td>Có (vote tình huống đạo đức)</td>
+</tr>
+<tr>
+<td>Bút và giấy A4</td>
+<td>Có (cho SV viết atomic note)</td>
+<td>Có</td>
+<td>Có</td>
+</tr>
+<tr>
+<td>Ngân hàng câu hỏi giữa kỳ</td>
+<td>—</td>
+<td>Sẵn 20 câu</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Rubric mini-project in sẵn</td>
+<td>—</td>
+<td>Phát rubric ở tiết 10</td>
+<td>Mang theo bản in</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-nhung-loi-thuong-gap-khi-giang-mon-nay-e-tranh">7. NHỮNG LỖI THƯỜNG GẶP KHI GIẢNG MÔN NÀY (ĐỂ TRÁNH)</h2>
+<ol>
+<li><strong>Biến môn học thành "hướng dẫn bấm nút".</strong> Triệu chứng: dành quá nhiều thời gian show từng nút ChatGPT. Phòng tránh: luôn quay về câu hỏi "tư duy đằng sau là gì?"</li>
+<li><strong>Demo AI quá nhiều, SV không tự làm.</strong> Phòng tránh: GV demo tối đa 2 lần/tiết, mỗi lần ≤ 5 phút.</li>
+<li><strong>Bỏ qua phản tư.</strong> Phòng tránh: kiên quyết dành 25 phút cuối Buổi 1 và 2, 55 phút cuối Buổi 3 cho phản tư + chia sẻ.</li>
+<li><strong>Không kiểm chứng output AI trong demo.</strong> Phòng tránh: chuẩn bị 1 case hallucination thật của AI để show — gây ấn tượng mạnh hơn 1000 slide cảnh báo.</li>
+<li><strong>Để SV giỏi áp đảo thảo luận.</strong> Phòng tránh: dùng kỹ thuật "think-pair-share" và rút thăm ngẫu nhiên khi gọi phát biểu.</li>
+</ol>
+<hr />
+<h2 id="8-chi-dan-oc-3-file-kich-ban">8. CHỈ DẪN ĐỌC 3 FILE KỊCH BẢN</h2>
+<ul>
+<li><code>01_buoi_1_kich_ban.md</code> — Buổi 1: AI &amp; Tư duy. Trọng tâm: tư duy về AI và mở đầu PKM.</li>
+<li><code>02_buoi_2_kich_ban.md</code> — Buổi 2: Prompt &amp; Nghiên cứu. Trọng tâm: kỹ năng prompt + quy trình nghiên cứu + kiểm tra giữa kỳ.</li>
+<li><code>03_buoi_3_kich_ban.md</code> — Buổi 3: Trình bày + Rủi ro + Đạo đức + Mini-project.</li>
+</ul>
+<p>Mỗi file gồm: (i) Tài liệu SCQA, (ii) Kịch bản chi tiết 5 tiết, (iii) Phụ lục case/tình huống.</p>
+        </div>
+        <footer>
+            Generated by Second Brain MD-to-Web Converter Skill
+        </footer>
+    </div>
+</body>
+</html>

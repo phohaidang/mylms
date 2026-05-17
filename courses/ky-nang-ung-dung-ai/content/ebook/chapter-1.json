@@ -1,0 +1,148 @@
+{
+  "chapter": 1,
+  "title": "AI & Tư duy: Bạn là Leader, AI là Cộng sự",
+  "sessions": [1],
+  "scqa": {
+    "situation": "Trong kỷ nguyên số phát triển vượt bậc, sự xuất hiện của các Trí tuệ nhân tạo (AI) tạo sinh như ChatGPT, Claude, Gemini đã mở ra những cơ hội học tập chưa từng có. Bất kỳ sinh viên nào cũng có thể tiếp cận lượng tri thức khổng lồ của nhân loại chỉ bằng vài dòng lệnh chat.",
+    "complication": "Tuy nhiên, hầu hết người dùng chỉ sử dụng AI ở mức 'hỏi gì đáp nấy' sơ sài, dẫn đến nhận về các câu trả lời chung chung hoặc tệ hơn là tin vào những thông tin sai lệch do AI tự bịa ra (hallucination). Việc lạm dụng AI quá mức mà không có sự kiểm chứng đang làm giảm khả năng tư duy độc lập và kỹ năng viết lách của sinh viên.",
+    "question": "Làm thế nào để sinh viên làm chủ được AI, biến AI thành trợ lý đắc lực phục vụ cho nghiên cứu và học tập hiệu quả, thay vì bị động phụ thuộc và để AI làm teo đi bộ não của chính mình?",
+    "answer": "Giải pháp nằm ở triết lý 'Tư duy → Kỹ năng → Công cụ' và mô hình tương tác 'Leader - Cộng sự'. Sinh viên cần hiểu rõ bản chất xác suất của LLM, làm chủ tư duy đặt vấn đề, đồng thời thiết lập hệ thống tổ chức tri thức cá nhân 'Bộ Não Thứ 2' (Second Brain) để ngoại hóa, lưu trữ và kết nối tri thức bền vững."
+  },
+  "concepts": [
+    {
+      "id": "c1-generative-ai",
+      "term": "Generative AI (Trí tuệ nhân tạo tạo sinh)",
+      "definition": "Một nhánh của trí tuệ nhân tạo tập trung vào việc học các mô hình dữ liệu hiện có để tạo ra nội dung mới như văn bản, hình ảnh, mã nguồn hoặc âm thanh.",
+      "key_points": [
+        "Hoạt động dựa trên các Mô hình ngôn ngữ lớn (LLM)",
+        "Đầu ra được tạo lập bằng thuật toán dự đoán xác suất của các từ tiếp theo",
+        "Khác biệt hoàn toàn so với công cụ tìm kiếm (Google chỉ dẫn nguồn, AI tự tạo lập nội dung mới)"
+      ],
+      "case_study": {
+        "title": "Sự bùng nổ của ChatGPT",
+        "context": "Từ một mô hình thử nghiệm ra mắt vào cuối năm 2022, ChatGPT đã đạt mốc 100 triệu người dùng chỉ sau 2 tháng, tạo ra cuộc cách mạng công nghệ lớn nhất thập kỷ.",
+        "analysis": "ChatGPT hoạt động bằng cách phân tích ngữ cảnh của câu hỏi (prompt) và tính toán từ nào có xác suất xuất hiện cao nhất tiếp theo dựa trên hàng tỷ tham số ngôn ngữ.",
+        "lesson_learned": "AI tạo sinh không thực sự 'hiểu' hay 'biết tuốt' như con người, mà nó chỉ là một cỗ máy tính toán phân phối xác suất ngôn ngữ cực kỳ tinh vi."
+      },
+      "related_concepts": ["c1-llm-probability", "c1-search-vs-ai"]
+    },
+    {
+      "id": "c1-llm-probability",
+      "term": "Cơ chế xác suất LLM",
+      "definition": "Nguyên lý vận hành cốt lõi của Mô hình ngôn ngữ lớn (Large Language Model), trong đó các từ tiếp theo được sinh ra dựa trên việc tính xác suất phân phối thống kê từ tập dữ liệu huấn luyện khổng lồ.",
+      "key_points": [
+        "Không sở hữu ý thức, cảm xúc hay tư duy thực sự",
+        "Dễ dẫn tới hiện tượng tự tin nói nhảm (Hallucination) khi dữ liệu thiếu hụt",
+        "Chất lượng đầu ra phụ thuộc hoàn toàn vào độ rõ ràng của prompt đầu vào"
+      ],
+      "case_study": null,
+      "related_concepts": ["c1-generative-ai"]
+    },
+    {
+      "id": "c1-leader-co-worker",
+      "term": "Tư duy Leader - Cộng sự",
+      "definition": "Tư duy định vị người dùng đóng vai trò là Người lãnh đạo (Leader) nắm giữ mục tiêu và ra quyết định, còn AI đóng vai trò là Trợ lý / Người cộng sự (Cộng sự) thực hiện việc phác thảo ý tưởng và triển khai chi tiết.",
+      "key_points": [
+        "Leader phải có tư duy rõ ràng để ra chỉ thị (prompt) sắc bén và có chiều sâu",
+        "Leader chịu trách nhiệm cuối cùng về tính chính xác, trung thực và đạo đức của sản phẩm",
+        "Áp dụng nguyên tắc: AI làm draft (bản nháp), con người làm final (bản hoàn thiện)"
+      ],
+      "case_study": {
+        "title": "Sai lầm của việc phó mặc cho AI",
+        "context": "Nhiều sinh viên copy toàn bộ đề tài tiểu luận nộp cho AI làm hộ, sau đó copy nguyên văn kết quả nộp bài cho Giảng viên mà không đọc lại.",
+        "analysis": "Bài viết của AI thường chung chung, thiếu lập luận thực tế và chứa các lỗi ngớ ngẩn do bịa số liệu. Giảng viên dễ dàng phát hiện bằng mắt thường hoặc các công cụ quét AI detector.",
+        "lesson_learned": "Khi bạn để AI làm Leader, chất lượng bài viết của bạn sẽ hạ xuống bằng mức trung bình của dữ liệu trên internet. Chỉ khi bạn làm Leader định hướng, bài viết mới có chiều sâu."
+      },
+      "related_concepts": ["c1-second-brain"]
+    },
+    {
+      "id": "c1-second-brain",
+      "term": "Bộ Não Thứ 2 (Second Brain)",
+      "definition": "Hệ thống quản trị tri thức cá nhân (Personal Knowledge Management - PKM) giúp ngoại hóa thông tin và ghi chú số vào các ứng dụng để giảm tải cho não bộ, giúp bộ não tập trung vào nhiệm vụ quan trọng hơn là sáng tạo và tư duy.",
+      "key_points": [
+        "Sử dụng phương pháp luận CODE: Capture (Thu nạp) -> Organize (Tổ chức) -> Distill (Tinh chế) -> Express (Diễn đạt)",
+        "Đơn vị cấu thành cơ bản là Ghi chú nguyên tử (Atomic Note) - một ghi chú chỉ chứa duy nhất một ý chính và liên kết nguồn",
+        "Giúp sinh viên tích lũy và làm giàu vốn kiến thức cá nhân ổn định trong thời đại thông tin quá tải"
+      ],
+      "case_study": null,
+      "related_concepts": ["c1-leader-co-worker"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận biết & Thấu hiểu cơ chế",
+      "description": "Trắc nghiệm tự động kiểm tra mức độ hiểu của bạn về bản chất AI tạo sinh.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        {
+          "id": "L1-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-generative-ai",
+          "question": "Mô hình ngôn ngữ lớn (LLM) hoạt động dựa trên cơ chế cốt lõi nào dưới đây?",
+          "options": [
+            "A. Truy vấn trực tiếp cơ sở dữ liệu để tìm câu trả lời chính xác 100%.",
+            "B. Tính toán xác suất để dự đoán từ tiếp theo phù hợp nhất trong ngữ cảnh.",
+            "C. Quét internet thời gian thực để tìm kiếm và copy thông tin.",
+            "D. Sử dụng cảm xúc nhân tạo để suy luận và đưa ra quyết định."
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-leader-co-worker",
+          "question": "Theo triết lý 'Bạn là Leader, AI là Cộng sự', khẳng định nào sau đây là ĐÚNG?",
+          "options": [
+            "A. AI chịu trách nhiệm pháp lý và đạo đức cho bài viết cuối cùng.",
+            "B. AI làm bản nháp (draft), con người đóng vai trò duyệt và hoàn thiện bản cuối (final).",
+            "C. Người dùng chỉ cần copy y nguyên kết quả của AI vì AI luôn viết tốt hơn con người.",
+            "D. Con người chỉ làm việc chân tay, còn AI đảm nhận toàn bộ việc tư duy và định hướng."
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-second-brain",
+          "question": "Viên gạch đầu tiên để xây dựng 'Bộ Não Thứ 2' (Second Brain) là gì?",
+          "options": [
+            "A. Các ghi chú nguyên tử (Atomic notes) chứa một ý chính duy nhất kèm nguồn dẫn rõ ràng.",
+            "B. Thư mục lưu trữ hàng trăm file PDF tài liệu chưa bao giờ đọc.",
+            "C. Một ứng dụng ghi chú đắt tiền có nhiều tính năng tự động.",
+            "D. Tài khoản ChatGPT Plus trả phí hàng tháng."
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích quy trình",
+      "description": "Tự luận ngắn yêu cầu bạn phân tích sự khác biệt trong tư duy tương tác.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        {
+          "id": "L2-c1-q1",
+          "type": "essay",
+          "concept_ref": "c1-llm-probability",
+          "question": "Tại sao việc đặt câu hỏi mơ hồ (ví dụ: 'Hãy làm cho tôi một bài tiểu luận về kinh tế Việt Nam') thường dẫn đến kết quả kém chất lượng hoặc chứa nhiều thông tin sai lệch (hallucination)? Giải thích dựa trên cơ chế xác suất LLM.",
+          "rubric": "Câu trả lời đạt yêu cầu cần nêu bật được các ý: (1) LLM hoạt động dựa trên xác suất đoán từ tiếp theo. Khi prompt quá rộng/mơ hồ, không gian xác suất sẽ bị phân tán, dẫn đến các từ được chọn mang tính chất chung chung, nông cạn. (2) Thiếu ngữ cảnh cụ thể buộc AI phải tự lấp đầy khoảng trống bằng các dữ liệu có xác suất liên kết ngôn ngữ cao nhất, từ đó dễ nảy sinh hiện tượng tự tin bịa đặt thông tin (hallucination).",
+          "max_words": 300
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tiễn",
+      "description": "Bài tập tình huống thực hành áp dụng tư duy thiết lập quy trình học tập.",
+      "bloom_level": "Apply / Create",
+      "questions": [
+        {
+          "id": "L3-c1-q1",
+          "type": "essay",
+          "question": "Giả sử bạn cần chuẩn bị cho một bài thuyết trình nhóm môn Kinh tế học vi mô vào tuần tới. Hãy thiết lập một quy trình 4 bước cụ thể kết hợp giữa tư duy 'Leader - Cộng sự' và phương pháp 'Bộ Não Thứ 2' (CODE) để chuẩn bị bài thuyết trình này. Chỉ rõ bước nào bạn tự làm và bước nào bạn dùng AI hỗ trợ.",
+          "rubric": "Câu trả lời xuất sắc cần nêu rõ quy trình: (1) Capture: Sinh viên chủ động đọc tài liệu môn học, tự ghi nhận các khái niệm cốt lõi (Cái Biết) thành atomic notes. (2) Organize: Tổ chức các ghi chú này liên kết với chủ đề thuyết trình. (3) Distill: Dùng AI làm cộng sự hỗ trợ brainstorm cấu trúc outline bài thuyết trình và viết nháp script dựa trên ghi chú ban đầu (AI làm draft). (4) Express (Create/Validate): Con người biên tập lại slide, kiểm chứng số liệu AI cung cấp với thực tế giáo trình để ra bản final chính xác nhất.",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

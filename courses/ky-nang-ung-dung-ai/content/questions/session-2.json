@@ -1,0 +1,87 @@
+{
+  "session": 2,
+  "chapter": "Buổi 2",
+  "title": "Prompt Engineering & Nghiên cứu khoa học với AI",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s2-mc1",
+      "type": "mc",
+      "question": "Trong khung prompt nền tảng CRISP, các chữ cái viết tắt đại diện cho những thành phần nào?",
+      "options": [
+        "A. Context (Ngữ cảnh) - Role (Vai trò) - Input (Đầu vào) - Specifics (Yêu cầu cụ thể) - Performance criteria (Tiêu chí đánh giá)",
+        "B. Creativity (Sáng tạo) - Rules (Quy tắc) - Information (Thông tin) - Style (Phong cách) - Purpose (Mục tiêu)",
+        "C. Clear (Rõ ràng) - Rapid (Nhanh chóng) - Iterative (Lặp lại) - Simple (Đơn giản) - Professional (Chuyên nghiệp)",
+        "D. Content (Nội dung) - Research (Nghiên cứu) - Insight (Hiểu biết) - Structure (Cấu trúc) - Presentation (Trình bày)"
+      ],
+      "correct": "A",
+      "explanation": "CRISP là khung prompt tiêu chuẩn và hiệu quả bậc nhất: C - Context (bối cảnh), R - Role (vai trò đóng vai chuyên gia), I - Input (dữ liệu truyền vào), S - Specifics (yêu cầu chi tiết về định dạng/độ dài), P - Performance criteria (tiêu chí đánh giá sản phẩm dành cho ai)."
+    },
+    {
+      "id": "s2-mc2",
+      "type": "mc",
+      "question": "Kỹ thuật prompt 'Chain-of-Thought' (CoT - Chuỗi suy nghĩ) hoạt động theo nguyên lý nào?",
+      "options": [
+        "A. Ép AI phải trả lời thật nhanh bằng cách bỏ qua các bước giải thích phức tạp.",
+        "B. Cung cấp cho AI các ví dụ mẫu (few-shot) trước khi đưa ra câu hỏi chính.",
+        "C. Yêu cầu AI 'hãy suy nghĩ từng bước' (think step-by-step) để phân tích các lập luận logic trước khi đưa ra kết luận cuối cùng.",
+        "D. Sử dụng các từ khóa phủ định để cấm AI không được nhắc đến một số chủ đề nhất định."
+      ],
+      "correct": "C",
+      "explanation": "Chain-of-Thought (CoT) hướng dẫn LLM phân rã các bài toán phức tạp (logic, toán học, phân tích hợp đồng/tài chính) thành từng bước suy luận nhỏ trước khi đưa ra kết quả, giúp giảm thiểu đáng kể lỗi sai và ảo giác."
+    },
+    {
+      "id": "s2-mc3",
+      "type": "mc",
+      "question": "Khi nghiên cứu khoa học, công cụ nào sau đây phù hợp nhất để tìm kiếm các bài báo khoa học thực tế, có nguồn trích dẫn rõ ràng (DOI/Citation) thay vì bịa nguồn?",
+      "options": [
+        "A. ChatGPT bản miễn phí không kết nối mạng.",
+        "B. Perplexity AI hoặc các công cụ học thuật chuyên dụng như Elicit, Consensus.",
+        "C. Các công cụ tạo slide tự động như Gamma hay Beautiful.ai.",
+        "D. Google Docs kết hợp với lưu trữ đám mây Drive."
+      ],
+      "correct": "B",
+      "explanation": "Perplexity, Elicit, Consensus là các công cụ tìm kiếm tri thức có trích dẫn trực tiếp nguồn thực từ Internet hoặc cơ sở dữ liệu học thuật (như Semantic Scholar), giúp loại bỏ rủi ro AI bịa nguồn giả."
+    },
+    {
+      "id": "s2-mc4",
+      "type": "mc",
+      "question": "Cách ứng dụng NotebookLM (Google) hiệu quả nhất trong quy trình nghiên cứu khoa học là gì?",
+      "options": [
+        "A. Để AI tự động viết toàn bộ bài nghiên cứu từ đầu đến cuối không cần can thiệp.",
+        "B. Tải các bài báo/tài liệu PDF uy tín đã tìm được lên NotebookLM để tạo môi trường hỏi đáp an toàn chỉ dựa trên tài liệu đó.",
+        "C. Dùng NotebookLM để kiểm tra lỗi chính tả của các email xin học bổng.",
+        "D. Dùng NotebookLM để tìm kiếm các bài viết mới nhất trên mạng xã hội."
+      ],
+      "correct": "B",
+      "explanation": "NotebookLM cho phép người dùng upload tài liệu cá nhân (PDF, Docs) và giới hạn câu trả lời của AI TRONG PHẠM VI các tài liệu đó, giúp người dùng nghiên cứu sâu dữ liệu thực tế mà không lo bị hallucination."
+    },
+    {
+      "id": "s2-tf1",
+      "type": "tf",
+      "question": "Few-shot prompting là kỹ thuật đưa ra một hoặc một vài ví dụ cụ thể về định dạng và phong cách mong muốn trước khi yêu cầu AI thực hiện tác vụ chính.",
+      "correct": "A",
+      "explanation": "Đúng. Cung cấp ví dụ mẫu (few-shot) là cách tốt nhất để dạy AI hiểu rõ cấu trúc, văn phong và khuôn mẫu đầu ra mong muốn mà không cần giải thích bằng lý thuyết dài dòng."
+    },
+    {
+      "id": "s2-tf2",
+      "type": "tf",
+      "question": "Trong quy trình nghiên cứu 4 bước với AI, việc copy-paste trực tiếp toàn bộ output đầu tiên của AI vào báo cáo là hành vi nghiên cứu thông minh và có hệ thống.",
+      "correct": "B",
+      "explanation": "Sai. Output đầu tiên của AI chỉ là bản nháp thô (draft). Quy trình nghiên cứu chuẩn yêu cầu ta phải chắt lọc tinh túy bằng từ ngữ của mình (distill), ghi nhận nguồn thật, và kết nối với tri thức sẵn có (organize)."
+    }
+  ],
+  "discussion_questions": [
+    {
+      "id": "s2-essay1",
+      "type": "essay",
+      "question": "Hãy viết lại một prompt mơ hồ dạng: 'Tóm tắt cho tôi về hành vi mua sắm trực tuyến của giới trẻ' thành một prompt chuyên nghiệp áp dụng đầy đủ khung CRISP. Nêu rõ bối cảnh (C), vai trò (R), đầu vào (I - giả định), yêu cầu cụ thể (S) và tiêu chí đánh giá (P) trong prompt mới của bạn.",
+      "sample_answer": "Ví dụ prompt CRISP đạt yêu cầu:\n- C (Context): Tôi đang làm tiểu luận môn Hành vi người tiêu dùng.\n- R (Role): Đóng vai chuyên gia nghiên cứu thị trường.\n- I (Input): Tóm tắt dựa trên các báo cáo thương mại điện tử Việt Nam 2024-2025.\n- S (Specifics): Liệt kê 3 xu hướng lớn nhất của Gen Z, độ dài dưới 300 từ, định dạng Markdown gạch đầu dòng.\n- P (Performance): Dành cho đối tượng độc giả là giảng viên và sinh viên kinh tế đọc.",
+      "rubric": {
+        "excellent": "Áp dụng đầy đủ và chính xác cả 5 chữ cái trong khung CRISP, prompt mạch lạc, có tính thực tiễn cao.",
+        "acceptable": "Áp dụng được hầu hết các thành phần của CRISP nhưng định dạng hoặc yêu cầu cụ thể còn hơi chung chung.",
+        "insufficient": "Prompt mới vẫn mơ hồ, thiếu hầu hết các yếu tố CRISP."
+      }
+    }
+  ]
+}

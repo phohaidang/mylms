@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "code": "SISB_SKL_0001",
+    "name": "Kỹ năng sử dụng AI trong nghiên cứu, học tập",
+    "total_sessions": 3,
+    "chapters": 3,
+    "university": "ĐH Ngân Hàng TP.HCM",
+    "textbook": "Co-Intelligence: Living and Working with AI — Ethan Mollick"
+  },
+  "sessions": [
+    {
+      "id": 1,
+      "chapter": "Buổi 1",
+      "title": "AI & Tư duy: Bạn là Leader, AI là Cộng sự",
+      "topics": "Cơ chế xác suất LLM, Phân biệt AI vs Search Engine, Giới hạn AI, Tư duy Leader - Cộng sự, Giới thiệu Bộ não thứ 2 (Second Brain), Thực hành viết Atomic Note đầu tiên",
+      "clo": "CLO1, CLO5",
+      "textbook": "Co-Intelligence (Ethan Mollick) & Building a Second Brain (Tiago Forte)",
+      "duration": "5 tiết (275 phút)"
+    },
+    {
+      "id": 2,
+      "chapter": "Buổi 2",
+      "title": "Prompt Engineering & Nghiên cứu khoa học với AI",
+      "topics": "Khung prompt CRISP, Kỹ thuật prompt nâng cao (CoT, Few-shot, Iterative), Công cụ nghiên cứu chuyên sâu (Perplexity, Elicit, NotebookLM), Quy trình nghiên cứu 4 bước với AI, Sắp xếp tri thức cá nhân (Capture-Organize-Create)",
+      "clo": "CLO2, CLO3, CLO5",
+      "textbook": "Co-Intelligence (Ethan Mollick) & PARA Method (Tiago Forte)",
+      "duration": "5 tiết (275 phút)",
+      "hasExam": true,
+      "examId": "midterm-1"
+    },
+    {
+      "id": 3,
+      "chapter": "Buổi 3",
+      "title": "Trình bày với AI + Rủi ro & Đạo đức",
+      "topics": "Quy trình 4 lớp làm slide/presentation với AI, 5 rủi ro lớn (Hallucination, Bias, Privacy, Plagiarism, Cognitive dependency), Đạo đức trong học thuật và Liêm chính học thuật, Validate & Reflect, Trình bày mini-project",
+      "clo": "CLO3, CLO4, CLO5",
+      "textbook": "Co-Intelligence (Ethan Mollick) & UNESCO Guidance for Generative AI in Education",
+      "duration": "5 tiết (275 phút)"
+    }
+  ]
+}

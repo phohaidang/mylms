@@ -1,0 +1,87 @@
+{
+  "session": 1,
+  "chapter": "Buổi 1",
+  "title": "AI & Tư duy: Bạn là Leader, AI là Cộng sự",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s1-mc1",
+      "type": "mc",
+      "question": "Bản chất cốt lõi của các Mô hình Ngôn ngữ Lớn (LLM) hiện nay là gì?",
+      "options": [
+        "A. Một cơ sở dữ liệu khổng lồ chứa mọi kiến thức chính xác của nhân loại.",
+        "B. Một hệ thống logic có khả năng suy luận và hiểu sâu sắc ý nghĩa câu chữ.",
+        "C. Một cỗ máy dự đoán từ tiếp theo dựa trên xác suất thống kê từ dữ liệu huấn luyện.",
+        "D. Một phần mềm tìm kiếm thông tin theo thời gian thực hoạt động nâng cao."
+      ],
+      "correct": "C",
+      "explanation": "LLM hoạt động dựa trên cơ chế dự đoán từ tiếp theo (next-token prediction) có xác suất xuất hiện cao nhất dựa trên hàng tỷ văn bản đã học. Chúng không thực sự 'hiểu' hay 'tra cứu' dữ liệu thực tế tại thời điểm trả lời."
+    },
+    {
+      "id": "s1-mc2",
+      "type": "mc",
+      "question": "Thuật ngữ 'Hallucination' (Ảo giác AI) dùng để mô tả hiện tượng nào sau đây?",
+      "options": [
+        "A. AI từ chối trả lời do vi phạm các tiêu chuẩn đạo đức hoặc quy định bảo mật.",
+        "B. AI tự tin tạo ra các thông tin sai lệch, không có thật (bịa nguồn, số liệu giả) nhưng hành văn rất thuyết phục.",
+        "C. AI bị đứng máy hoặc phản hồi cực kỳ chậm do quá tải máy chủ xử lý.",
+        "D. AI chỉ trả về các đường link tìm kiếm bị lỗi hoặc không còn hoạt động."
+      ],
+      "correct": "B",
+      "explanation": "Hallucination là khi AI tạo ra thông tin hoàn toàn sai lệch hoặc không tồn tại (như bịa tên sách, số liệu, án lệ) nhưng lại trình bày một cách vô cùng tự tin và trôi chảy, khiến người dùng dễ bị lừa nếu không kiểm chứng độc lập."
+    },
+    {
+      "id": "s1-mc3",
+      "type": "mc",
+      "question": "Theo triết lý 'Bạn là Leader, AI là Cộng sự', việc nào sau đây thuộc vai trò không thể thay thế của con người?",
+      "options": [
+        "A. Tóm tắt một bài báo khoa học dài 50 trang thành 300 từ ngắn gọn.",
+        "B. Brainstorm 50 ý tưởng truyền thông xã hội cho một sản phẩm mới.",
+        "C. Đặt câu hỏi đúng ngữ cảnh, đánh giá phản biện kết quả và ra quyết định cuối cùng.",
+        "D. Định dạng lại bảng dữ liệu thô thành tài liệu Markdown chuyên nghiệp."
+      ],
+      "correct": "C",
+      "explanation": "AI là trợ lý (cộng sự) xuất sắc trong việc tổng hợp, tạo bản thảo thô và brainstorm nhanh. Tuy nhiên, chỉ có con người (Leader) mới có khả năng định hướng (đặt câu hỏi đúng), kiểm chứng chất lượng (phản biện) và chịu trách nhiệm đưa ra quyết định."
+    },
+    {
+      "id": "s1-mc4",
+      "type": "mc",
+      "question": "Trong phương pháp luận 'Bộ Não Thứ 2' (Second Brain) của Tiago Forte, bước 'Capture' (Thu nạp) có nghĩa là gì?",
+      "options": [
+        "A. Copy và dán toàn bộ câu trả lời của AI vào một thư mục lưu trữ lớn.",
+        "B. Bắt lấy và lưu giữ những ý tưởng, thông tin hay insight giá trị bằng từ ngữ của chính mình.",
+        "C. Đăng tải trực tiếp toàn bộ tài liệu học tập lên mạng xã hội cá nhân.",
+        "D. Chụp ảnh màn hình các bài học để lưu trữ vào thư viện ảnh điện thoại."
+      ],
+      "correct": "B",
+      "explanation": "Capture trong PKM/Second Brain là chủ động bắt lấy và ghi chép lại các tri thức, ý tưởng hay bài học quan trọng bằng ngôn ngữ của chính mình (như viết Atomic Note) để giải phóng bộ nhớ cho não bộ tập trung vào sáng tạo."
+    },
+    {
+      "id": "s1-tf1",
+      "type": "tf",
+      "question": "Hiệu ứng 'Cognitive offloading' xảy ra khi chúng ta quá lệ thuộc vào AI để suy nghĩ thay cho mình, dẫn đến suy giảm năng lực tự duy phản biện và sáng tạo.",
+      "correct": "A",
+      "explanation": "Đúng. Khi để AI làm thay hoàn toàn việc tư duy (cognitive offloading), não bộ sẽ lười suy luận, phân tích và mất đi khả năng tự kết nối tri thức, dẫn đến tình trạng lệ thuộc nhận thức sâu sắc."
+    },
+    {
+      "id": "s1-tf2",
+      "type": "tf",
+      "question": "AI có thể thay thế hoàn toàn vai trò truyền cảm hứng, tạo động lực và đánh giá cá nhân hóa của người thầy trong giáo dục.",
+      "correct": "B",
+      "explanation": "Sai. AI có thể thay thế phần truyền đạt thông tin lý thuyết thô rất tốt, nhưng khía cạnh con người như tạo động lực, đồng cảm, dạy bằng câu chuyện thật và truyền cảm hứng học tập là thứ AI hoàn toàn không có."
+    }
+  ],
+  "discussion_questions": [
+    {
+      "id": "s1-essay1",
+      "type": "essay",
+      "question": "Hãy kể lại một trải nghiệm thực tế bạn từng dùng AI (ChatGPT, Claude...) mà kết quả trả về bị sai lệch hoặc không đạt yêu cầu. Phân tích nguyên nhân: (1) lỗi nằm ở prompt chưa tối ưu (thiếu bối cảnh/vai trò) hay (2) do giới hạn của mô hình (ảo giác/hallucination)? Bạn đã/sẽ làm gì để khắc phục?",
+      "sample_answer": "Học viên cần mô tả cụ thể tình huống thực tế (ví dụ: nhờ AI viết tiểu luận, làm bài tập logic, giải toán). Phân tích đúng 2 nguyên nhân cốt lõi: prompt quá mơ hồ (Rác vào rác ra) hoặc AI bịa số liệu/nguồn do cơ chế xác suất. Giải pháp: Áp dụng prompt nâng cao (CRISP) hoặc fact-check chéo bằng Google/Google Scholar.",
+      "rubric": {
+        "excellent": "Mô tả trải nghiệm sinh động + phân tích chính xác nguyên nhân dựa trên bài học + đưa ra giải pháp rõ ràng, khả thi.",
+        "acceptable": "Mô tả được tình huống + phân tích được nguyên nhân cơ bản nhưng giải pháp còn chung chung.",
+        "insufficient": "Bài viết quá sơ sài, không chỉ ra được nguyên nhân cốt lõi và không có giải pháp sửa đổi."
+      }
+    }
+  ]
+}

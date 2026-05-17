@@ -1,0 +1,87 @@
+{
+  "session": 3,
+  "chapter": "Buổi 3",
+  "title": "Trình bày với AI + Rủi ro & Đạo đức",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s3-mc1",
+      "type": "mc",
+      "question": "Quy trình thiết kế bài thuyết trình 4 lớp bằng AI tuân theo trình tự khoa học nào?",
+      "options": [
+        "A. Tạo hình ảnh trước -> Viết slide -> Tạo dàn ý -> Chuẩn bị script thuyết trình.",
+        "B. Lớp 1: Cấu trúc nội dung -> Lớp 2: Viết script -> Lớp 3: Slide trực quan -> Lớp 4: Visual & Media.",
+        "C. Chọn công cụ slide AI -> Nhờ AI tạo slide ngẫu nhiên -> Thay ảnh -> Đọc trực tiếp trên lớp.",
+        "D. Nhờ AI viết script dài -> Đưa toàn bộ chữ lên slide -> Thêm hiệu ứng động -> Thuyết trình."
+      ],
+      "correct": "B",
+      "explanation": "Quy trình thiết kế 4 lớp đi từ cốt lõi nội dung ra ngoài: Tạo cấu trúc (outline) trước để đảm bảo mạch lập luận chặt chẽ, viết script để định hình lời nói, sau đó mới dùng công cụ thiết kế slide và cuối cùng là thêm hình ảnh/media minh họa."
+    },
+    {
+      "id": "s3-mc2",
+      "type": "mc",
+      "question": "Khi đưa dữ liệu khách hàng, mật khẩu, hoặc thông tin cá nhân lên các công cụ AI công cộng mà không tắt tính năng lưu lịch sử, bạn đang đối mặt với rủi ro bảo mật nào?",
+      "options": [
+        "A. Ảo giác AI (Hallucination) — AI tự tin nói sai sự thật.",
+        "B. Định kiến văn hóa (Bias) — AI phân biệt đối xử.",
+        "C. Rò rỉ dữ liệu cá nhân (Privacy & Data leakage) — thông tin bị lưu lại để huấn luyện mô hình hoặc lộ ra ngoài.",
+        "D. Lệ thuộc nhận thức (Cognitive offloading) — lười suy nghĩ."
+      ],
+      "correct": "C",
+      "explanation": "Các công cụ AI công cộng mặc định sẽ lưu lịch sử hội thoại và sử dụng chúng để tiếp tục huấn luyện mô hình. Việc đưa dữ liệu nhạy cảm lên đó sẽ làm tăng nguy cơ rò rỉ dữ liệu và vi phạm chính sách bảo mật thông tin cá nhân."
+    },
+    {
+      "id": "s3-mc3",
+      "type": "mc",
+      "question": "Thế nào là hành vi sử dụng AI có đạo đức và trách nhiệm trong liêm chính học thuật?",
+      "options": [
+        "A. Khai báo rõ ràng công cụ AI đã sử dụng, mục đích và phạm vi hỗ trợ trong phần phụ lục hoặc trích dẫn của bài học thuật.",
+        "B. Sử dụng các công cụ bypass (lách luật) để phần mềm check AI không phát hiện ra bài do AI viết.",
+        "C. Khẳng định 100% tự viết dù thực tế copy nguyên xi bài viết từ ChatGPT.",
+        "D. Không bao giờ sử dụng bất kỳ công cụ AI nào, dù chỉ là để sửa lỗi chính tả hay brainstorm ý tưởng."
+      ],
+      "correct": "A",
+      "explanation": "Liêm chính học thuật không cấm sử dụng AI để hỗ trợ học tập, nhưng đòi hỏi sự trung thực. Người học cần khai báo minh bạch vai trò của AI (ví dụ: dùng để sửa ngữ pháp, brainstorm cấu trúc) và kiểm chứng 100% dữ liệu cứng do AI đưa ra."
+    },
+    {
+      "id": "s3-mc4",
+      "type": "mc",
+      "question": "Để thực hiện thao tác 'Validate' (Kiểm chứng chéo) trước khi tin vào kết quả của AI, bạn nên đối chiếu nó với những nguồn nào?",
+      "options": [
+        "A. Hỏi lại chính con AI đó xem nó có chắc chắn với câu trả lời vừa rồi hay không.",
+        "B. Đối chiếu với tri thức sẵn có trong Second Brain, nguồn uy tín bên ngoài (báo cáo, sách, scholar), và ý kiến của chuyên gia hoặc giảng viên.",
+        "C. Đăng câu hỏi lên các hội nhóm mạng xã hội để mọi người cùng thảo luận bình chọn.",
+        "D. Chỉ tin tưởng tuyệt đối vào kết quả đầu tiên mà AI đưa ra để tiết kiệm thời gian."
+      ],
+      "correct": "B",
+      "explanation": "Kiểm chứng chéo (Validate) là bước bắt buộc để phòng tránh ảo giác AI. Việc đối chiếu chéo giữa bộ não thứ 2 (tri thức đã xác minh), tài liệu uy tín bên ngoài và giảng viên chuyên ngành sẽ giúp bạn làm chủ thông tin."
+    },
+    {
+      "id": "s3-tf1",
+      "type": "tf",
+      "question": "Quy tắc 'AI làm draft, người làm final' có nghĩa là chúng ta có thể dùng AI để tạo bản thảo đầu tiên nhanh chóng, nhưng con người bắt buộc phải chỉnh sửa, thổi câu chuyện cá nhân và chịu trách nhiệm cho sản phẩm cuối cùng.",
+      "correct": "A",
+      "explanation": "Đúng. AI rất mạnh trong việc tạo ra sản phẩm thô trung bình, nhưng chỉ có sự đầu tư tư duy, cảm xúc và kinh nghiệm thực tiễn của con người mới biến nó thành sản phẩm xuất sắc và mang đậm bản sắc cá nhân."
+    },
+    {
+      "id": "s3-tf2",
+      "type": "tf",
+      "question": "Hiện tượng 'Bias' (Định kiến) trong AI xảy ra do dữ liệu dùng để huấn luyện mô hình chứa sẵn các định kiến xã hội của con người.",
+      "correct": "A",
+      "explanation": "Đúng. AI học từ dữ liệu lịch sử do con người tạo ra. Nếu dữ liệu đó thiên vị hoặc phiến diện (ví dụ: khi vẽ hình ảnh bác sĩ hầu hết là nam giới phương Tây), AI sẽ tái hiện và khuếch đại các định kiến đó trong output."
+    }
+  ],
+  "discussion_questions": [
+    {
+      "id": "s3-essay1",
+      "type": "essay",
+      "question": "Nếu trường đại học của bạn áp dụng quy định cấm hoàn toàn sinh viên sử dụng AI trong làm bài tập lớn, bạn có đồng ý không? Dưới góc nhìn 'Đạo đức và Trách nhiệm', hãy đề xuất một bộ quy chế sử dụng AI trung đạo, cân bằng giữa việc nâng cao hiệu suất học tập và bảo vệ liêm chính học thuật.",
+      "sample_answer": "Học viên cần thể hiện tư duy đa chiều: Cấm hoàn toàn là cực đoan, không khả thi trong kỷ nguyên số và làm giảm năng lực cạnh tranh của SV. Tuy nhiên, thả nổi sẽ giết chết tư duy phản biện. Đề xuất giải pháp Trung Đạo: Cho phép sử dụng AI trong các hoạt động bổ trợ (brainstorm, giải thích, sửa lỗi) nhưng bắt buộc tự viết sản phẩm cuối, cấm copy-paste, và yêu cầu khai báo minh bạch phương pháp sử dụng AI (AI Citation/Declaration).",
+      "rubric": {
+        "excellent": "Lập luận sắc bén, thể hiện rõ triết lý Trung Đạo, đề xuất được bộ quy chế thực tế, cân bằng và minh bạch.",
+        "acceptable": "Nêu được quan điểm cá nhân, có đề xuất giải pháp nhưng tính thực tiễn chưa cao hoặc lập luận còn phiến diện.",
+        "insufficient": "Bài viết sơ sài, đồng ý hoặc phản đối cực đoan không có giải pháp đề xuất."
+      }
+    }
+  ]
+}

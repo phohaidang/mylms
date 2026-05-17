@@ -1,0 +1,147 @@
+{
+  "chapter": 2,
+  "title": "Prompt Engineering & Nghiên cứu khoa học với AI",
+  "sessions": [2],
+  "scqa": {
+    "situation": "Prompt Engineering đã nhanh chóng trở thành một kỹ năng làm việc cốt lõi trong thế kỷ 21. Những người biết cách trò chuyện và ra lệnh cho AI có khả năng nhân bản năng suất làm việc gấp nhiều lần, dễ dàng vượt trội hơn những người chỉ biết hỏi AI những câu đơn giản.",
+    "complication": "Tuy nhiên, phần lớn sinh viên chỉ hỏi AI theo bản năng và nhận về các kết quả nông cạn, không thể sử dụng trực tiếp trong học thuật. Nghiêm trọng hơn, nhiều bạn nhầm tưởng AI là một công cụ tìm kiếm và tin tưởng tuyệt đối vào các trích dẫn tài liệu học thuật giả mạo do AI tạo ra.",
+    "question": "Làm thế nào để viết được các prompt chuyên sâu giúp AI trả lời chính xác, và ứng dụng AI như thế nào vào quy trình nghiên cứu khoa học có hệ thống mà không vi phạm tính chính xác học thuật?",
+    "answer": "Giải pháp là làm chủ khung prompt nền tảng CRISP cùng các kỹ thuật nâng cao như Chain-of-Thought và Few-shot prompting. Đồng thời, sinh viên cần tuân thủ quy trình nghiên cứu 4 bước nghiêm ngặt: định hình câu hỏi với AI hội thoại, tìm nguồn thật bằng Perplexity/Elicit/Consensus, đọc hiểu chuyên sâu bằng NotebookLM, và ghi nhận tri thức bằng các ghi chú nguyên tử tự tinh chế."
+  },
+  "concepts": [
+    {
+      "id": "c2-crisp-framework",
+      "term": "Khung Prompt CRISP",
+      "definition": "Một công thức thiết kế prompt hệ thống và toàn diện giúp tối ưu hóa câu trả lời của AI bằng cách định nghĩa rõ ràng 5 yếu tố: Context (Bối cảnh), Role (Vai trò), Input (Dữ liệu đầu vào), Specifics (Yêu cầu cụ thể), và Performance criteria (Tiêu chí đánh giá).",
+      "key_points": [
+        "Context: Cung cấp thông tin nền, đối tượng người đọc và mục tiêu hướng tới",
+        "Role: Chỉ định vai trò chuyên gia cụ thể mà AI cần đóng vai (ví dụ: Nhà kinh tế học, Giảng viên)",
+        "Specifics: Chỉ rõ định dạng đầu ra (ví dụ: dạng bảng, độ dài 200 từ, phong cách trang trọng)"
+      ],
+      "case_study": {
+        "title": "So sánh trước và sau CRISP",
+        "context": "Một sinh viên muốn tóm tắt một chương sách khó về Lạm phát kinh tế.",
+        "analysis": "Prompt không CRISP: 'Hãy tóm tắt lạm phát'. Kết quả là 3 dòng định nghĩa trong SGK cực kỳ sơ sài. Prompt có CRISP: 'Đóng vai giảng viên Kinh tế vĩ mô (Role), hãy tóm tắt chương sách sau (Input) cho sinh viên năm nhất dễ hiểu (Context). Định dạng thành 3 ý lớn kèm ví dụ thực tế tại Việt Nam (Specifics), văn phong dễ hiểu và trực quan (Performance).' Kết quả nhận về một bài viết giảng giải sinh động, có cấu trúc tuyệt vời.",
+        "lesson_learned": "Chất lượng câu chỉ bảo (prompt) quyết định trực tiếp tới giá trị của tri thức nhận về."
+      },
+      "related_concepts": ["c2-advanced-prompting"]
+    },
+    {
+      "id": "c2-advanced-prompting",
+      "term": "Các kỹ thuật Prompt nâng cao",
+      "definition": "Các phương pháp tương tác chuyên sâu với mô hình ngôn ngữ lớn nhằm kích hoạt khả năng suy luận logic và kiểm soát định dạng đầu ra chính xác.",
+      "key_points": [
+        "Chain-of-Thought (CoT): Sử dụng câu lệnh phụ 'Hãy suy nghĩ từng bước' để ép AI giải thích logic trước khi đưa ra kết luận",
+        "Few-shot prompting: Đưa ra 2-3 ví dụ mẫu chuẩn trước khi yêu cầu AI thực hiện công việc",
+        "Iterative refinement: Quá trình tinh chỉnh câu trả lời qua nhiều lượt hội thoại liên tiếp thay vì chỉ dùng một prompt duy nhất"
+      ],
+      "case_study": null,
+      "related_concepts": ["c2-crisp-framework"]
+    },
+    {
+      "id": "c2-research-tools",
+      "term": "Công cụ nghiên cứu học thuật bằng AI",
+      "definition": "Các ứng dụng AI chuyên biệt được thiết kế để tìm kiếm, trích dẫn và tổng hợp thông tin từ các nguồn cơ sở dữ liệu bài báo khoa học thực tế, có kiểm chứng (DOI, Citation).",
+      "key_points": [
+        "Khác với AI hội thoại thông thường, các công cụ này KHÔNG tự bịa nguồn mà tìm kiếm trên cơ sở dữ liệu học thuật thực tế",
+        "Các công cụ tiêu biểu: Perplexity (tìm kiếm nhanh trích nguồn), Elicit/Consensus (tìm bằng chứng thực nghiệm từ paper khoa học), NotebookLM (tổng hợp tài liệu cá nhân)"
+      ],
+      "case_study": {
+        "title": "Nghiên cứu có hệ thống bằng NotebookLM",
+        "context": "Sinh viên cần viết tổng quan tài liệu (Literature Review) từ 5 file PDF nghiên cứu khoa học nặng tính học thuật.",
+        "analysis": "Sinh viên tải 5 file PDF này lên Google NotebookLM. Hệ thống tự động tạo mục lục khái niệm và cho phép sinh viên chat trực tiếp chỉ trong phạm vi 5 file này, loại bỏ hoàn toàn khả năng AI tự bịa thông tin từ bên ngoài.",
+        "lesson_learned": "NotebookLM đóng vai trò là một người cộng sự đọc sách hộ, giúp sinh viên tiết kiệm thời gian trích xuất thông tin mà vẫn đảm bảo tính chính xác học thuật của nguồn tài liệu gốc."
+      },
+      "related_concepts": ["c2-four-step-research"]
+    },
+    {
+      "id": "c2-four-step-research",
+      "term": "Quy trình nghiên cứu 4 bước với AI",
+      "definition": "Quy trình làm việc khoa học tích hợp AI bao gồm: (1) Brainstorm câu hỏi nghiên cứu, (2) Tìm kiếm nguồn lực học thuật thực tế, (3) Đọc sâu và tổng hợp tài liệu bằng AI, (4) Tinh chế tri thức vào Bộ Não Thứ 2 cá nhân.",
+      "key_points": [
+        "Không bao giờ để AI viết hộ bài nghiên cứu từ A đến Z",
+        "Dùng AI như một công cụ phản biện và làm sáng tỏ tư duy",
+        "Mỗi insight thu được phải được tự tay người học viết lại dưới dạng Atomic note để chuyển hóa thành tri thức thực thụ của bản thân"
+      ],
+      "case_study": null,
+      "related_concepts": ["c2-research-tools"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận diện kỹ thuật Prompt & Công cụ",
+      "description": "Trắc nghiệm tự động kiểm tra khả năng phân biệt kỹ thuật và công cụ nghiên cứu.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        {
+          "id": "L1-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-crisp-framework",
+          "question": "Chữ 'R' trong khung prompt CRISP đại diện cho yếu tố nào?",
+          "options": [
+            "A. Reason (Lý do cần hỏi AI).",
+            "B. Role (Vai trò chuyên gia mà AI cần đóng vai).",
+            "C. Result (Định dạng kết quả đầu ra).",
+            "D. Review (Tiêu chí đánh giá bài viết)."
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-advanced-prompting",
+          "question": "Kỹ thuật 'Few-shot prompting' được hiểu là gì?",
+          "options": [
+            "A. Đưa ra các câu hỏi cực kỳ ngắn gọn để AI phản hồi nhanh nhất.",
+            "B. Cung cấp một vài ví dụ mẫu có định dạng chuẩn trước khi yêu cầu AI thực hiện.",
+            "C. Hỏi đi hỏi lại cùng một câu hỏi cho đến khi AI trả lời đúng.",
+            "D. Giới hạn số lượng từ mà AI được phép trả lời."
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-research-tools",
+          "question": "Công cụ AI nào sau đây chuyên dùng để tải tài liệu cá nhân lên và hỏi đáp trực tiếp, an toàn trong phạm vi tài liệu đó?",
+          "options": [
+            "A. Midjourney.",
+            "B. Google NotebookLM.",
+            "C. ChatGPT Search.",
+            "D. Gamma.app."
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Giải thích kỹ thuật",
+      "description": "Tự luận ngắn yêu cầu bạn phân tích cơ chế kích hoạt tư duy logic của AI.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        {
+          "id": "L2-c2-q1",
+          "type": "essay",
+          "concept_ref": "c2-advanced-prompting",
+          "question": "Tại sao việc thêm câu lệnh 'Hãy suy nghĩ từng bước một' (Chain-of-Thought) lại giúp các mô hình ngôn ngữ lớn (LLM) trả lời chính xác hơn rất nhiều trong các bài toán đòi hỏi tính logic hoặc phân tích tình huống phức tạp?",
+          "rubric": "Câu trả lời đạt yêu cầu cần nêu rõ: (1) Bản chất LLM sinh từ theo xác suất. Nếu yêu cầu kết quả ngay, AI sẽ chọn từ có xác suất cao nhất kế tiếp mà không qua quá trình kiểm chứng logic trung gian. (2) Chain-of-Thought ép AI phải phân rã vấn đề lớn thành các bước lập luận nhỏ hơn, viết ra các bước lập luận đó trước. Việc viết ra các lập luận trung gian này tạo lập nên ngữ cảnh chặt chẽ giúp kết quả cuối cùng (được sinh sau cùng) đạt độ chính xác logic cao hơn.",
+          "max_words": 300
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tiễn nghiên cứu",
+      "description": "Bài tập tình huống thực hành lập prompt theo khung CRISP cho nghiên cứu thực tế.",
+      "bloom_level": "Apply / Create",
+      "questions": [
+        {
+          "id": "L3-c2-q1",
+          "type": "essay",
+          "question": "Giả sử bạn đang thực hiện nghiên cứu đề tài 'Giải pháp hạn chế lãng phí thực phẩm trong các căn tin trường Đại học tại Việt Nam'. Hãy viết một prompt hoàn chỉnh theo khung CRISP gửi cho AI để hỗ trợ bạn lập dàn ý chi tiết cho đề tài này.",
+          "rubric": "Prompt xuất sắc cần chứa đủ 5 yếu tố của CRISP: (1) Context: Nêu rõ nghiên cứu về lãng phí thực phẩm tại các trường ĐH Việt Nam cho đối tượng SV đọc. (2) Role: Chỉ định AI đóng vai 'Chuyên gia nghiên cứu môi trường và phát triển bền vững'. (3) Input: (Nêu tài liệu giả định nếu có hoặc không cần nếu brainstorm). (4) Specifics: Yêu cầu dàn ý gồm 3 chương cụ thể, định dạng rõ ràng các đầu mục lớn nhỏ, dài không quá 500 từ. (5) Performance: Văn phong học thuật nghiêm túc, đề xuất các giải pháp khả thi với bối cảnh tài chính của sinh viên Việt Nam.",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}
