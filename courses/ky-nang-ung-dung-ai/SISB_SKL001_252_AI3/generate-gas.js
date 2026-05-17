@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
+import bcrypt from 'bcryptjs';
 
 // Hàm giải mã HTML Entities (ví dụ: &#224; -> à, &#234; -> ê)
 function decodeEntities(str) {
@@ -9,7 +10,6 @@ function decodeEntities(str) {
 const content = readFileSync('d:/SISB_SKL001_252_AI3.md', 'utf-8');
 
 // Regex khớp với từng dòng sinh viên trong bảng
-// Cấu trúc dòng: <td>STT</td><td class="studyprogram_normal_dl">Mã SV</td><td>Lớp SV</td><td>Họ lót</td><td>Tên</td><td>Ngày sinh</td>
 const rowRegex = /<tr>\s*<td[^>]*>(\d+)<\/td>\s*<td[^>]*class="studyprogram_normal_dl">(\d+)<\/td>\s*<td[^>]*>([^<]*)<\/td>\s*<td>([^<]*)<\/td>\s*<td>([^<]*)<\/td>/g;
 
 const students = [];
@@ -22,12 +22,15 @@ while ((match = rowRegex.exec(content)) !== null) {
   const ten = decodeEntities(match[5]);
   const fullName = `${hoLot} ${ten}`.replace(/\s+/g, ' ').trim();
   
-  students.push({ stt, id, className, name: fullName });
+  // Tạo hash mật khẩu riêng biệt cho từng sinh viên dùng chính MSSV làm mật khẩu
+  const salt = bcrypt.genSaltSync(10);
+  const passwordHash = bcrypt.hashSync(id, salt);
+  
+  students.push({ stt, id, className, name: fullName, passwordHash });
 }
 
-// Hash mật khẩu mặc định cho sinh viên và admin
-const studentHash = '$2a$10$tymz1/JH8mnkeOK1ZEAORuJJlCvsZCzlHKtMqXqNvMz/nXPVKYU1S';
-const adminHash = '$2a$10$swofHPBwGxh7KS3Xx799AezkwjtZGgPsiI3CV7Td1fRnmumxg46W6';
+// Hash mật khẩu mặc định cho admin
+const adminHash = bcrypt.hashSync('admin2026', bcrypt.genSaltSync(10));
 const now = new Date().toISOString();
 
 const gasScript = `/**
@@ -49,7 +52,7 @@ function importStudents() {
   
   const data = [
     ["admin", "dangph@hub.edu.vn", "ThS. Phó Hải Đăng", "${adminHash}", "admin", "false", "${now}"],
-    ${students.map(s => `["${s.id}", "${s.id}@st.hub.edu.vn", "${s.name}", "${studentHash}", "student", "true", "${now}"]`).join(',\n    ')}
+    ${students.map(s => `["${s.id}", "${s.id}@st.hub.edu.vn", "${s.name}", "${s.passwordHash}", "student", "true", "${now}"]`).join(',\n    ')}
   ];
   
   sheet.clear();
