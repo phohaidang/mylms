@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KỊCH BẢN BUỔI 2 — PROMPT ENGINEERING & NGHIÊN CỨU KHOA HỌC VỚI AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pygments/2.15.1/default.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --toc-bg: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --text: #f1f5f9;
+                --card-bg: #1e293b;
+                --border: #334155;
+                --toc-bg: #1e293b;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 95%;
+            padding: 40px 20px;
+            margin-bottom: 100px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; margin-top: 0; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            background: rgba(79, 70, 229, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th { background: rgba(79, 70, 229, 0.05); }
+
+        tr:hover { background: rgba(79, 70, 229, 0.02); }
+
+        .toc {
+            background: var(--toc-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .toc ul { list-style: none; padding-left: 20px; }
+        .toc a { color: var(--text); opacity: 0.8; font-size: 0.9rem; }
+        .toc a:hover { opacity: 1; color: var(--primary); }
+
+        blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(79, 70, 229, 0.05);
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <div class="toc"><span class="toctitle">Mục lục</span><ul>
+<li><a href="#kich-ban-buoi-2-prompt-engineering-nghien-cuu-khoa-hoc-voi-ai">KỊCH BẢN BUỔI 2 — PROMPT ENGINEERING &amp; NGHIÊN CỨU KHOA HỌC VỚI AI</a><ul>
+<li><a href="#phan-a-tai-lieu-scqa-phat-cho-sinh-vien-truoc-buoi-hoc">PHẦN A — TÀI LIỆU SCQA PHÁT CHO SINH VIÊN TRƯỚC BUỔI HỌC</a><ul>
+<li><a href="#s-tinh-huong-ban-a-quen">S — Tình huống (bạn đã quen)</a></li>
+<li><a href="#c-mau-thuan-cai-ban-chua-nhan-ra">C — Mâu thuẫn (cái bạn chưa nhận ra)</a></li>
+<li><a href="#q-cau-hoi">Q — Câu hỏi</a></li>
+<li><a href="#a-khung-tra-loi-cua-buoi-2">A — Khung trả lời của buổi 2</a></li>
+</ul>
+</li>
+<li><a href="#phan-b-kich-ban-chi-tiet-5-tiet">PHẦN B — KỊCH BẢN CHI TIẾT 5 TIẾT</a><ul>
+<li><a href="#tiet-6-55-crisp-cong-thuc-prompt-nen-tang">TIẾT 6 (55') — CRISP: CÔNG THỨC PROMPT NỀN TẢNG</a><ul>
+<li><a href="#muc-tieu-tiet">Mục tiêu tiết</a></li>
+<li><a href="#cau-truc-thoi-gian">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-7-55-5-ky-thuat-prompt-nang-cao">TIẾT 7 (55') — 5 KỸ THUẬT PROMPT NÂNG CAO</a><ul>
+<li><a href="#muc-tieu-tiet_1">Mục tiêu tiết</a></li>
+<li><a href="#cau-truc-thoi-gian_1">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_1">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-8-55-quy-trinh-nghien-cuu-4-buoc-voi-ai">TIẾT 8 (55') — QUY TRÌNH NGHIÊN CỨU 4 BƯỚC VỚI AI</a><ul>
+<li><a href="#muc-tieu-tiet_2">Mục tiêu tiết</a></li>
+<li><a href="#cau-truc-thoi-gian_2">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_2">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-9-55-thuc-hanh-mini-research">TIẾT 9 (55') — THỰC HÀNH MINI-RESEARCH</a><ul>
+<li><a href="#muc-tieu-tiet_3">Mục tiêu tiết</a></li>
+<li><a href="#cau-truc-thoi-gian_3">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_3">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+<li><a href="#tiet-10-55-kiem-tra-giua-ky-giao-mini-project">TIẾT 10 (55') — KIỂM TRA GIỮA KỲ + GIAO MINI-PROJECT</a><ul>
+<li><a href="#cau-truc-thoi-gian_4">Cấu trúc thời gian</a></li>
+<li><a href="#kich-ban-chi-tiet_4">Kịch bản chi tiết</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#phan-c-phu-luc">PHẦN C — PHỤ LỤC</a><ul>
+<li><a href="#c1-danh-sach-3-prompt-rac-cho-hoat-ong-tiet-6">C1. Danh sách 3 prompt rác cho hoạt động Tiết 6</a></li>
+<li><a href="#c2-bo-20-cau-trac-nghiem-giua-ky-cau-truc-e">C2. Bộ 20 câu trắc nghiệm giữa kỳ — Cấu trúc đề</a></li>
+<li><a href="#c3-checklist-giang-vien-cuoi-buoi-2">C3. Checklist giảng viên cuối Buổi 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="kich-ban-buoi-2-prompt-engineering-nghien-cuu-khoa-hoc-voi-ai">KỊCH BẢN BUỔI 2 — PROMPT ENGINEERING &amp; NGHIÊN CỨU KHOA HỌC VỚI AI</h1>
+<blockquote>
+<p>5 tiết × 55 phút = 275 phút | CLO2, CLO3, CLO5 + Kiểm tra giữa kỳ
+Câu hỏi cốt lõi của buổi: <strong>"Cùng một câu hỏi, vì sao 2 người ra 2 kết quả khác nhau?"</strong></p>
+</blockquote>
+<hr />
+<h2 id="phan-a-tai-lieu-scqa-phat-cho-sinh-vien-truoc-buoi-hoc">PHẦN A — TÀI LIỆU SCQA PHÁT CHO SINH VIÊN TRƯỚC BUỔI HỌC</h2>
+<h3 id="s-tinh-huong-ban-a-quen">S — Tình huống (bạn đã quen)</h3>
+<p>Bạn được giao bài seminar về một chủ đề bạn chưa biết nhiều. Phản xạ đầu tiên: mở Google. Gõ vài keyword. Click 3–4 link đầu. Đọc. Hơi hiểu. Mở thêm 2 link nữa. Tab nhiều quá. Đóng máy. Mai làm.</p>
+<p>Hôm sau, bạn quay lại. Đọc lại cũng những trang đó. Không nhớ hôm qua đã đọc đến đâu. Cuối cùng bạn quyết định: "Thôi, cứ viết theo ý mình, chèn vài câu hay hay vào."</p>
+<p>Bài nộp được 6.5. Bạn không cảm thấy mình HIỂU chủ đề đó. Bạn chỉ "viết qua được" nó.</p>
+<h3 id="c-mau-thuan-cai-ban-chua-nhan-ra">C — Mâu thuẫn (cái bạn chưa nhận ra)</h3>
+<p>Google được thiết kế để cho bạn <strong>thông tin</strong>. Nó KHÔNG được thiết kế để xây cho bạn <strong>hiểu biết</strong>.</p>
+<p>Hiểu biết = thông tin × tổ chức × kết nối × phản tư. Google làm tốt phần 1. Phần 2–4 là việc của bạn. Trước đây không có công cụ giúp — chỉ có não bạn. Bây giờ có AI — nhưng AI cũng KHÔNG tự động làm phần 2–4 cho bạn. Nó chỉ làm khi bạn biết <strong>hỏi đúng</strong> và biết <strong>quy trình đúng</strong>.</p>
+<p>Đáng tiếc: 90% người dùng AI vẫn dùng theo kiểu "Google nâng cấp" — gõ vài chữ, lấy kết quả, kết thúc. Họ bỏ lỡ 90% sức mạnh thực sự.</p>
+<h3 id="q-cau-hoi">Q — Câu hỏi</h3>
+<blockquote>
+<p><em>Có "công thức" nào để biến một câu hỏi mơ hồ thành prompt cho ra output 9 điểm không?</em></p>
+<p><em>Và: có "quy trình" nào để biến AI thành trợ lý nghiên cứu thực sự — chứ không phải máy tóm tắt nhanh — không?</em></p>
+</blockquote>
+<h3 id="a-khung-tra-loi-cua-buoi-2">A — Khung trả lời của buổi 2</h3>
+<p>Buổi 2 sẽ trả lời 3 ý:</p>
+<ol>
+<li><strong>Khung CRISP</strong> — Công thức prompt nền tảng. 5 yếu tố. Áp dụng cho 80% tình huống học tập.</li>
+<li><strong>5 kỹ thuật nâng cao</strong> — Chain-of-Thought, Role-based, Few-shot, Iterative refinement, Negative prompt. Dùng khi CRISP chưa đủ.</li>
+<li><strong>Quy trình nghiên cứu 4 bước</strong> — Định hình câu hỏi → Tìm tài liệu → Đọc và tổng hợp → Tổ chức tri thức. AI hỗ trợ ở từng bước, nhưng <em>Bạn vẫn là Leader</em>.</li>
+</ol>
+<p>Buổi 2 kết thúc bằng kiểm tra giữa kỳ (20%) và giao mini-project cho buổi 3.</p>
+<hr />
+<h2 id="phan-b-kich-ban-chi-tiet-5-tiet">PHẦN B — KỊCH BẢN CHI TIẾT 5 TIẾT</h2>
+<h3 id="tiet-6-55-crisp-cong-thuc-prompt-nen-tang">TIẾT 6 (55') — CRISP: CÔNG THỨC PROMPT NỀN TẢNG</h3>
+<h4 id="muc-tieu-tiet">Mục tiêu tiết</h4>
+<ul>
+<li>SV nhớ và áp dụng được 5 thành tố CRISP.</li>
+<li>SV nhận ra: chất lượng prompt = chất lượng tư duy.</li>
+</ul>
+<h4 id="cau-truc-thoi-gian">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>HOOK</strong> — Trở lại Minh ở khúc mắc seminar</td>
+</tr>
+<tr>
+<td>5–15</td>
+<td><strong>BIẾT</strong> — Ôn buổi 1 + chia sẻ bài về nhà</td>
+</tr>
+<tr>
+<td>15–35</td>
+<td><strong>MỚI</strong> — CRISP 5 thành tố</td>
+</tr>
+<tr>
+<td>35–48</td>
+<td><strong>LÀM</strong> — Cặp đôi "Sửa prompt rác"</td>
+</tr>
+<tr>
+<td>48–55</td>
+<td><strong>CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–5] HOOK — Minh đoạn 2</strong></p>
+<blockquote>
+<p><em>"Tuần trước Minh nộp tiểu luận và bị 6 điểm. Tuần này Minh được giao một việc khó hơn — làm seminar 15 phút trước lớp về 'Hành vi tiêu dùng Gen Z Việt Nam'. Lần này có quy định: không được copy AI. Minh phải làm thật.</em></p>
+<p><em>Minh mở ChatGPT, gõ: 'Hành vi tiêu dùng Gen Z Việt Nam'. AI trả về một bài 800 chữ chung chung — toàn ý chung chung kiểu 'Gen Z thích mua online', 'Gen Z quan tâm thương hiệu'. Minh đọc xong cảm thấy... vô vị. Không có gì mới. Không có gì làm seminar nổi bật được.</em></p>
+<p><em>Vấn đề ở đâu? Không phải AI dở. Vấn đề là Minh hỏi dở. Buổi học hôm nay là về cách hỏi AI để ra cái mà 95% sinh viên khác KHÔNG ra được."</em></p>
+</blockquote>
+<p><strong>[Phút 5–15] BIẾT — Chia sẻ bài về nhà</strong></p>
+<p>GV mời 2–3 SV chia sẻ bài về nhà (3 cách hỏi cho 2 môn học khác).</p>
+<p>Yêu cầu chia sẻ:
+- Chủ đề là gì?
+- Cách hỏi nào ra output tốt nhất?
+- Phát hiện gì bất ngờ?</p>
+<p>GV ghi nhanh trên bảng các "yếu tố làm prompt tốt" mà SV phát hiện được. Thường sẽ ra:
+- Có vai trò AI đóng
+- Có ngữ cảnh người hỏi
+- Có yêu cầu cụ thể (dài bao nhiêu, định dạng nào)
+- Có ví dụ
+- Có đối tượng đọc</p>
+<blockquote>
+<p><em>"Các bạn vừa tự tìm ra phân nửa CRISP rồi. Bây giờ tôi đặt tên cho cái các bạn đã biết, và thêm 2 thành tố nữa."</em></p>
+</blockquote>
+<p><strong>[Phút 15–35] MỚI — CRISP</strong></p>
+<p>GV trình bày slide 1 — chỉ liệt kê (≤ 7 phút):</p>
+<div class="highlight"><pre><span></span><code>CRISP — KHUNG PROMPT NỀN TẢNG
+
+C ontext        — Bối cảnh: tôi là ai, đang ở đâu, mục đích gì
+R ole           — Vai trò: AI đóng vai gì để trả lời tốt nhất
+I nput          — Input: dữ liệu cụ thể tôi đưa vào (nếu có)
+S pecifics      — Yêu cầu cụ thể: định dạng, độ dài, phong cách
+P erformance    — Tiêu chí: ai đọc, dùng để làm gì, đạt chuẩn nào
+   criteria
+</code></pre></div>
+
+<p><strong>Demo "Trước CRISP — Sau CRISP" (12 phút):</strong></p>
+<p>Trước CRISP (gõ trên màn hình):</p>
+<div class="highlight"><pre><span></span><code>Viết email xin học bổng đại học.
+</code></pre></div>
+
+<p>Output: chung chung, generic.</p>
+<p>Sau CRISP (gõ trên màn hình):</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="n">Context</span><span class="o">]</span><span class="w">   </span><span class="n">Tôi</span><span class="w"> </span><span class="n">là</span><span class="w"> </span><span class="n">SV</span><span class="w"> </span><span class="n">năm</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">ngành</span><span class="w"> </span><span class="n">Marketing</span><span class="w"> </span><span class="n">tại</span><span class="w"> </span><span class="n">ĐH</span><span class="w"> </span><span class="n">Kinh</span><span class="w"> </span><span class="n">tế</span><span class="w"> </span><span class="n">TP</span><span class="p">.</span><span class="n">HCM</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">GPA</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="n">hoạt</span><span class="w"> </span><span class="n">động</span><span class="w"> </span><span class="n">tình</span><span class="w"> </span><span class="n">nguyện</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">năm</span><span class="p">,</span><span class="w"> </span><span class="n">dự</span><span class="w"> </span><span class="n">định</span><span class="w"> </span><span class="n">xin</span><span class="w"> </span><span class="n">học</span><span class="w"> </span>
+<span class="w">            </span><span class="n">bổng</span><span class="w"> </span><span class="n">trao</span><span class="w"> </span><span class="n">đổi</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="n">tháng</span><span class="w"> </span><span class="n">tại</span><span class="w"> </span><span class="n">ĐH</span><span class="w"> </span><span class="n">Quốc</span><span class="w"> </span><span class="n">gia</span><span class="w"> </span><span class="n">Singapore</span><span class="w"> </span><span class="p">(</span><span class="n">NUS</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="n">cho</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">kỳ</span><span class="w"> </span><span class="n">Spring</span><span class="w"> </span><span class="mf">2027.</span>
+<span class="o">[</span><span class="n">Role</span><span class="o">]</span><span class="w">      </span><span class="n">Đóng</span><span class="w"> </span><span class="n">vai</span><span class="w"> </span><span class="n">chuyên</span><span class="w"> </span><span class="n">gia</span><span class="w"> </span><span class="n">tư</span><span class="w"> </span><span class="n">vấn</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">đã</span><span class="w"> </span><span class="n">làm</span><span class="w"> </span><span class="n">việc</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">năm</span><span class="w"> </span>
+<span class="w">            </span><span class="n">với</span><span class="w"> </span><span class="n">SV</span><span class="w"> </span><span class="n">Việt</span><span class="w"> </span><span class="n">Nam</span><span class="w"> </span><span class="n">xin</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">bổng</span><span class="w"> </span><span class="n">Đông</span><span class="w"> </span><span class="n">Nam</span><span class="w"> </span><span class="n">Á</span><span class="p">.</span>
+<span class="o">[</span><span class="n">Input</span><span class="o">]</span><span class="w">     </span><span class="n">Tiêu</span><span class="w"> </span><span class="n">chí</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">bổng</span><span class="w"> </span><span class="n">NUS</span><span class="w"> </span><span class="n">Exchange</span><span class="w"> </span><span class="n">yêu</span><span class="w"> </span><span class="nl">cầu</span><span class="p">:</span><span class="w"> </span><span class="n">GPA</span><span class="w"> </span><span class="err">≥</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">chứng</span><span class="w"> </span><span class="n">minh</span><span class="w"> </span><span class="n">ý</span><span class="w"> </span><span class="n">chí</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">thuật</span><span class="p">,</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="n">kết</span><span class="w"> </span><span class="n">quay</span><span class="w"> </span><span class="n">về</span><span class="w"> </span><span class="n">đóng</span><span class="w"> </span><span class="n">góp</span><span class="w"> </span>
+<span class="w">            </span><span class="n">cho</span><span class="w"> </span><span class="n">Việt</span><span class="w"> </span><span class="n">Nam</span><span class="p">.</span>
+<span class="o">[</span><span class="n">Specifics</span><span class="o">]</span><span class="w"> </span><span class="n">Viết</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="mi">250</span><span class="w"> </span><span class="n">từ</span><span class="w"> </span><span class="n">gửi</span><span class="w"> </span><span class="n">văn</span><span class="w"> </span><span class="n">phòng</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">bổng</span><span class="w"> </span><span class="n">của</span><span class="w"> </span><span class="n">trường</span><span class="w"> </span><span class="n">tôi</span><span class="p">.</span>
+<span class="w">            </span><span class="n">Văn</span><span class="w"> </span><span class="n">phong</span><span class="w"> </span><span class="n">trang</span><span class="w"> </span><span class="n">trọng</span><span class="w"> </span><span class="n">nhưng</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">cá</span><span class="w"> </span><span class="n">tính</span><span class="p">.</span><span class="w"> </span><span class="n">Mở</span><span class="w"> </span><span class="n">đầu</span><span class="w"> </span><span class="n">KHÔNG</span><span class="w"> </span>
+<span class="w">            </span><span class="n">dùng</span><span class="w"> </span><span class="ss">&quot;Tôi viết email này để...&quot;</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">tìm</span><span class="w"> </span><span class="n">cách</span><span class="w"> </span><span class="n">mở</span><span class="w"> </span><span class="n">khác</span><span class="p">.</span>
+<span class="o">[</span><span class="n">Perf.</span><span class="o">]</span><span class="w">     </span><span class="n">Email</span><span class="w"> </span><span class="n">này</span><span class="w"> </span><span class="n">sẽ</span><span class="w"> </span><span class="n">được</span><span class="w"> </span><span class="n">giảng</span><span class="w"> </span><span class="n">viên</span><span class="w"> </span><span class="n">cố</span><span class="w"> </span><span class="n">vấn</span><span class="w"> </span><span class="n">đọc</span><span class="w"> </span><span class="n">và</span><span class="w"> </span><span class="n">quyết</span><span class="w"> </span><span class="n">định</span><span class="w"> </span>
+<span class="w">            </span><span class="n">có</span><span class="w"> </span><span class="n">giới</span><span class="w"> </span><span class="n">thiệu</span><span class="w"> </span><span class="n">tôi</span><span class="w"> </span><span class="n">không</span><span class="p">.</span><span class="w"> </span><span class="n">Phải</span><span class="w"> </span><span class="n">làm</span><span class="w"> </span><span class="n">bật</span><span class="w"> </span><span class="n">được</span><span class="w"> </span><span class="n">DIFFERENTIATOR</span><span class="w"> </span>
+<span class="w">            </span><span class="n">của</span><span class="w"> </span><span class="n">tôi</span><span class="w"> </span><span class="n">vs</span><span class="w"> </span><span class="n">các</span><span class="w"> </span><span class="n">ứng</span><span class="w"> </span><span class="n">viên</span><span class="w"> </span><span class="n">khác</span><span class="p">.</span>
+</code></pre></div>
+
+<p>Output: cụ thể, có hồn, dùng được ngay.</p>
+<blockquote>
+<p><em>"Các bạn so sánh hai output. Khác nhau ở đâu? Không phải vì AI thông minh hơn. Là vì TÔI thông minh hơn trong cách hỏi. CRISP buộc tôi phải suy nghĩ trước — và đó chính là 80% công việc viết một email tốt."</em></p>
+</blockquote>
+<p>GV chốt slide 2:</p>
+<div class="highlight"><pre><span></span><code>CRISP không phải là &quot;thủ thuật&quot; để lừa AI.
+CRISP là KỶ LUẬT TƯ DUY trước khi giao việc.
+
+Người leader giỏi giao việc rõ ràng.
+CRISP = ngôn ngữ giao việc với cộng sự AI.
+</code></pre></div>
+
+<p><strong>[Phút 35–48] LÀM — Cặp đôi "Sửa prompt rác"</strong></p>
+<p>GV phát giấy với 3 prompt rác. Cặp đôi 12 phút, sửa lại theo CRISP.</p>
+<p><strong>Prompt rác 1:</strong> <em>"Tóm tắt bài này"</em>
+(SV tự chọn 1 bài đang học)</p>
+<p><strong>Prompt rác 2:</strong> <em>"Cho ý tưởng kinh doanh hay"</em></p>
+<p><strong>Prompt rác 3:</strong> <em>"Giải thích chủ nghĩa Mác-Lênin"</em></p>
+<p>Mỗi cặp chọn 1 trong 3 prompt, viết lại theo CRISP. Test trên AI, ghi nhận output.</p>
+<p>Cuối tiết mời 2 cặp chia sẻ trước-sau.</p>
+<p><strong>[Phút 48–55] CHỐT</strong></p>
+<p>GV chốt 3 ý:
+1. CRISP là khung mặc định cho 80% tình huống học tập.
+2. Càng nhiều thông tin <strong>bạn</strong> đưa vào, AI càng có "nguyên liệu" để cá nhân hóa.
+3. Viết prompt 3 phút có thể tiết kiệm 1 giờ chỉnh sửa output sau đó.</p>
+<blockquote>
+<p><em>"Tiết sau: 5 kỹ thuật nâng cao khi CRISP chưa đủ. 5 phút nghỉ."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-7-55-5-ky-thuat-prompt-nang-cao">TIẾT 7 (55') — 5 KỸ THUẬT PROMPT NÂNG CAO</h3>
+<h4 id="muc-tieu-tiet_1">Mục tiêu tiết</h4>
+<ul>
+<li>SV nhận diện được tình huống nào dùng kỹ thuật nào.</li>
+<li>SV thực hành ít nhất 2/5 kỹ thuật.</li>
+</ul>
+<h4 id="cau-truc-thoi-gian_1">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–3</td>
+<td><strong>HOOK</strong> — "CRISP có đủ không?"</td>
+</tr>
+<tr>
+<td>3–35</td>
+<td><strong>MỚI</strong> — 5 kỹ thuật + demo</td>
+</tr>
+<tr>
+<td>35–50</td>
+<td><strong>LÀM</strong> — Mỗi cặp chọn 2 kỹ thuật thử</td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_1">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–3] HOOK</strong></p>
+<blockquote>
+<p><em>"CRISP là cơ bản. Nhưng có những tình huống CRISP không đủ. Ví dụ: bạn muốn AI giải một bài toán logic phức tạp — chỉ đưa context không đủ, AI vẫn ra sai. Hoặc bạn muốn AI viết theo một format rất cụ thể — yêu cầu bằng lời không đủ. Tiết này: 5 'vũ khí' nâng cao."</em></p>
+</blockquote>
+<p><strong>[Phút 3–35] MỚI — 5 kỹ thuật</strong></p>
+<p>Mỗi kỹ thuật: <strong>6 phút giảng + demo nhanh</strong>. Tổng 30 phút + 2 phút chuyển.</p>
+<p><strong>Kỹ thuật 1 — Chain-of-Thought (CoT) — "Hãy suy nghĩ từng bước"</strong></p>
+<p>Thêm câu "Hãy suy nghĩ từng bước trước khi trả lời" vào cuối prompt. Đặc biệt mạnh với:
+- Bài toán logic
+- Phân tích case study
+- Ra quyết định nhiều biến</p>
+<p><em>Demo:</em> Hỏi AI giải một bài toán phức tạp 2 cách — không CoT (sai) vs có CoT (đúng).</p>
+<p>Ví dụ bài toán: <em>"Một quán cà phê doanh thu tháng 1 là 100 triệu, lợi nhuận biên 30%. Tháng 2 doanh thu tăng 15%, chi phí cố định không đổi, chi phí biến đổi tăng 10%. Lợi nhuận tháng 2 là bao nhiêu? Hãy suy nghĩ từng bước."</em></p>
+<p><strong>Kỹ thuật 2 — Role-based / Persona prompting</strong></p>
+<p>Đóng vai chuyên gia cụ thể. Khác với "R" trong CRISP ở chỗ: chuyên sâu hơn, có hồi đáp tính cách.</p>
+<p><em>Demo:</em> So sánh:
+- Prompt 1: "Phân tích báo cáo tài chính này"
+- Prompt 2: "Đóng vai CFO của một công ty niêm yết với 15 năm kinh nghiệm, hãy phân tích báo cáo tài chính này từ góc nhìn nhà đầu tư dài hạn. Chỉ ra 3 dấu hiệu cảnh báo và 3 dấu hiệu tích cực."</p>
+<p><strong>Kỹ thuật 3 — Few-shot prompting</strong></p>
+<p>Đưa 2–3 ví dụ MẪU trước khi yêu cầu. Dùng khi cần:
+- Format cụ thể (bảng, JSON, markdown)
+- Phong cách viết đặc biệt
+- Phân loại theo tiêu chí khó mô tả</p>
+<p><em>Demo:</em> Yêu cầu AI viết review phim theo phong cách cụ thể:</p>
+<div class="highlight"><pre><span></span><code>Tôi muốn bạn viết review phim theo mẫu sau:
+
+Ví dụ 1:
+&quot;Inception&quot; (Christopher Nolan, 2010) — Một mê cung mà 
+càng đi sâu bạn càng nghi ngờ chính mình. 8.5/10.
+
+Ví dụ 2:
+&quot;Parasite&quot; (Bong Joon-ho, 2019) — Hài đen biến thành bi 
+kịch trong một ngôi nhà có hai tầng đối lập. 9/10.
+
+Bây giờ viết review cho phim &quot;Bố già&quot; (Trấn Thành, 2021):
+</code></pre></div>
+
+<p><strong>Kỹ thuật 4 — Iterative refinement</strong></p>
+<p>Đừng kỳ vọng prompt đầu tiên hoàn hảo. Tinh chỉnh qua 3–5 lượt:
+- Lượt 1: prompt ban đầu
+- Lượt 2: "Phần X chưa rõ — hãy mở rộng và đưa ví dụ"
+- Lượt 3: "Quá dài — rút xuống 1 đoạn"
+- Lượt 4: "Đổi giọng văn sang [phong cách]"
+- Lượt 5: "Có lỗi logic ở câu Y — hãy sửa và giải thích"</p>
+<p><em>Demo:</em> Cải tiến một đoạn văn 4 lần liên tiếp trên màn hình.</p>
+<blockquote>
+<p><em>"Đây là kỹ thuật quan trọng nhất trong 5 kỹ thuật. Vì sao? Vì 95% người mới dùng AI dừng ở lượt 1. Một prompt tốt thật ra là 3–5 lượt trò chuyện."</em></p>
+</blockquote>
+<p><strong>Kỹ thuật 5 — Negative prompt</strong></p>
+<p>Chỉ rõ điều <strong>KHÔNG</strong> muốn. Đặc biệt hữu ích khi AI có xu hướng:
+- Quá dài dòng → "Không quá 200 từ"
+- Quá generic → "Không dùng các cụm như 'trong thời đại 4.0', 'một cách hiệu quả'"
+- Quá AI-ese → "Không bắt đầu câu bằng 'Tuyệt vời!'"
+- Quá hedge → "Không dùng 'có thể', 'tùy thuộc' nếu thực sự biết"</p>
+<p><em>Demo:</em> Show 1 đoạn văn AI viết tự nhiên (đầy "trong thời đại số ngày nay", "một cách toàn diện"), sau đó thêm negative prompt → show đoạn văn sạch hơn.</p>
+<p><strong>Tổng kết slide:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tình huống</th>
+<th>Kỹ thuật</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logic/Tính toán</td>
+<td>Chain-of-Thought</td>
+</tr>
+<tr>
+<td>Chuyên môn sâu</td>
+<td>Role-based</td>
+</tr>
+<tr>
+<td>Format cụ thể</td>
+<td>Few-shot</td>
+</tr>
+<tr>
+<td>Output chưa đạt</td>
+<td>Iterative</td>
+</tr>
+<tr>
+<td>Loại bỏ "AI-ese"</td>
+<td>Negative</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[Phút 35–50] LÀM — Mỗi cặp chọn 2 kỹ thuật thử</strong></p>
+<p>Cặp đôi 15 phút. Mỗi cặp:
+1. Chọn 1 chủ đề học tập đang quan tâm.
+2. Chọn 2/5 kỹ thuật bất kỳ.
+3. Test trên AI. Ghi prompt + output.</p>
+<p><strong>[Phút 50–55] CHỐT</strong></p>
+<p>Mời 2 cặp chia sẻ phát hiện.</p>
+<blockquote>
+<p><em>"Tiết 7 xong các bạn có 5 vũ khí mới. Tiết 8 chúng ta dùng các vũ khí này vào việc thật — NGHIÊN CỨU KHOA HỌC. Đây là phần quan trọng nhất của buổi 2."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-8-55-quy-trinh-nghien-cuu-4-buoc-voi-ai">TIẾT 8 (55') — QUY TRÌNH NGHIÊN CỨU 4 BƯỚC VỚI AI</h3>
+<h4 id="muc-tieu-tiet_2">Mục tiêu tiết</h4>
+<ul>
+<li>SV phân biệt được AI hội thoại, AI tìm kiếm có nguồn, AI nghiên cứu học thuật.</li>
+<li>SV nắm được quy trình 4 bước.</li>
+</ul>
+<h4 id="cau-truc-thoi-gian_2">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–3</td>
+<td><strong>HOOK</strong> — Trở lại Minh tìm tài liệu</td>
+</tr>
+<tr>
+<td>3–15</td>
+<td><strong>MỚI</strong> — Bản đồ công cụ nghiên cứu</td>
+</tr>
+<tr>
+<td>15–48</td>
+<td><strong>MỚI + DEMO</strong> — 4 bước quy trình</td>
+</tr>
+<tr>
+<td>48–55</td>
+<td><strong>CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_2">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–3] HOOK — Minh đoạn 3</strong></p>
+<blockquote>
+<p><em>"Quay lại Minh. Minh đã học CRISP, đã biết 5 kỹ thuật nâng cao. Minh ngồi vào bàn làm seminar 'Hành vi tiêu dùng Gen Z Việt Nam'. Lần này Minh viết prompt rất kỹ. AI cho ra một bài rất hay. Có cả số liệu. Có cả trích dẫn 'Theo nghiên cứu của Kantar 2024...'</em></p>
+<p><em>Minh vui mừng nộp. Đến lúc trình bày, một bạn hỏi: 'Cậu lấy số 73% Gen Z mua online từ đâu? Tôi không tìm thấy báo cáo Kantar 2024 nào nói thế.' Minh ấp úng. Tra cứu sau buổi — không có báo cáo đó. AI bịa.</em></p>
+<p><em>CRISP và 5 kỹ thuật không cứu Minh khỏi bịa nguồn. Vì hội thoại AI KHÔNG được thiết kế để tra cứu nguồn — nó được thiết kế để TẠO RA văn bản nghe-hợp-lý. Đây là lý do tiết này tồn tại."</em></p>
+</blockquote>
+<p><strong>[Phút 3–15] MỚI — Bản đồ công cụ nghiên cứu</strong></p>
+<p>GV slide:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">4</span><span class="w"> </span><span class="n">NHÓM</span><span class="w"> </span><span class="n">CÔNG</span><span class="w"> </span><span class="n">CỤ</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">CHO</span><span class="w"> </span><span class="n">NGHIÊN</span><span class="w"> </span><span class="n">CỨU</span>
+
+<span class="mf">1.</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">HỘI</span><span class="w"> </span><span class="n">THOẠI</span><span class="w"> </span><span class="err">Đ</span><span class="n">A</span><span class="w"> </span><span class="n">DỤNG</span>
+<span class="w">   </span><span class="n">ChatGPT</span><span class="p">,</span><span class="w"> </span><span class="n">Claude</span><span class="p">,</span><span class="w"> </span><span class="n">Gemini</span><span class="p">,</span><span class="w"> </span><span class="n">Copilot</span>
+<span class="w">   </span><span class="err">✅</span><span class="w"> </span><span class="n">Brainstorm</span><span class="p">,</span><span class="w"> </span><span class="n">giải</span><span class="w"> </span><span class="n">thích</span><span class="p">,</span><span class="w"> </span><span class="n">tổng</span><span class="w"> </span><span class="n">hợp</span><span class="p">,</span><span class="w"> </span><span class="n">viết</span><span class="w"> </span><span class="n">nháp</span>
+<span class="w">   </span><span class="err">❌</span><span class="w"> </span><span class="n">KHÔNG</span><span class="w"> </span><span class="n">dùng</span><span class="w"> </span><span class="err">để</span><span class="w"> </span><span class="n">tìm</span><span class="o">/</span><span class="n">trích</span><span class="w"> </span><span class="n">nguồn</span><span class="w"> </span><span class="p">(</span><span class="n">sẽ</span><span class="w"> </span><span class="n">bịa</span><span class="p">)</span>
+
+<span class="mf">2.</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">TÌM</span><span class="w"> </span><span class="n">KIẾM</span><span class="w"> </span><span class="n">CÓ</span><span class="w"> </span><span class="n">TRÍCH</span><span class="w"> </span><span class="n">NGUỒN</span>
+<span class="w">   </span><span class="n">Perplexity</span><span class="p">,</span><span class="w"> </span><span class="n">ChatGPT</span><span class="w"> </span><span class="n">Search</span><span class="p">,</span><span class="w"> </span><span class="n">Gemini</span><span class="w"> </span><span class="n">Deep</span><span class="w"> </span><span class="n">Research</span><span class="p">,</span>
+<span class="w">   </span><span class="n">Claude</span><span class="w"> </span><span class="p">(</span><span class="n">chế</span><span class="w"> </span><span class="err">độ</span><span class="w"> </span><span class="n">search</span><span class="p">)</span>
+<span class="w">   </span><span class="err">✅</span><span class="w"> </span><span class="n">Tìm</span><span class="w"> </span><span class="n">thông</span><span class="w"> </span><span class="n">tin</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">kèm</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="n">nguồn</span>
+<span class="w">   </span><span class="err">❌</span><span class="w"> </span><span class="n">Vẫn</span><span class="w"> </span><span class="n">cần</span><span class="w"> </span><span class="n">kiểm</span><span class="w"> </span><span class="n">tra</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">thật</span><span class="w"> </span><span class="n">và</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">liên</span><span class="w"> </span><span class="n">quan</span><span class="w"> </span><span class="n">không</span>
+
+<span class="mf">3.</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">NGHIÊN</span><span class="w"> </span><span class="n">CỨU</span><span class="w"> </span><span class="n">HỌC</span><span class="w"> </span><span class="n">THUẬT</span>
+<span class="w">   </span><span class="n">Elicit</span><span class="p">,</span><span class="w"> </span><span class="n">Consensus</span><span class="p">,</span><span class="w"> </span><span class="n">Scite</span><span class="p">,</span><span class="w"> </span><span class="n">Connected</span><span class="w"> </span><span class="n">Papers</span><span class="p">,</span>
+<span class="w">   </span><span class="n">Semantic</span><span class="w"> </span><span class="n">Scholar</span>
+<span class="w">   </span><span class="err">✅</span><span class="w"> </span><span class="n">Tìm</span><span class="w"> </span><span class="n">paper</span><span class="w"> </span><span class="n">khoa</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">thật</span><span class="p">,</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">DOI</span><span class="p">,</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">abstract</span>
+<span class="w">   </span><span class="err">❌</span><span class="w"> </span><span class="n">Phần</span><span class="w"> </span><span class="n">lớn</span><span class="w"> </span><span class="n">paper</span><span class="w"> </span><span class="n">là</span><span class="w"> </span><span class="n">tiếng</span><span class="w"> </span><span class="n">Anh</span><span class="p">;</span><span class="w"> </span><span class="n">chưa</span><span class="w"> </span><span class="n">có</span><span class="w"> </span><span class="n">công</span><span class="w"> </span><span class="n">cụ</span>
+<span class="w">       </span><span class="n">tương</span><span class="w"> </span><span class="err">đươ</span><span class="n">ng</span><span class="w"> </span><span class="n">cho</span><span class="w"> </span><span class="n">tài</span><span class="w"> </span><span class="n">liệu</span><span class="w"> </span><span class="n">tiếng</span><span class="w"> </span><span class="n">Việt</span>
+
+<span class="mf">4.</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">TỔNG</span><span class="w"> </span><span class="n">HỢP</span><span class="w"> </span><span class="n">TÀI</span><span class="w"> </span><span class="n">LIỆU</span><span class="w"> </span><span class="n">CÁ</span><span class="w"> </span><span class="n">NHÂN</span>
+<span class="w">   </span><span class="n">NotebookLM</span><span class="w"> </span><span class="p">(</span><span class="n">Google</span><span class="p">),</span><span class="w"> </span><span class="n">Claude</span><span class="w"> </span><span class="n">Projects</span><span class="p">,</span>
+<span class="w">   </span><span class="n">ChatGPT</span><span class="w"> </span><span class="n">Custom</span><span class="w"> </span><span class="n">GPTs</span>
+<span class="w">   </span><span class="err">✅</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="n">PDF</span><span class="o">/</span><span class="n">tài</span><span class="w"> </span><span class="n">liệu</span><span class="p">,</span><span class="w"> </span><span class="n">hỏi</span><span class="w"> </span><span class="err">đá</span><span class="n">p</span><span class="w"> </span><span class="n">với</span><span class="w"> </span><span class="n">CHÍNH</span><span class="w"> </span><span class="n">tài</span><span class="w"> </span><span class="n">liệu</span>
+<span class="w">       </span><span class="p">(</span><span class="n">không</span><span class="w"> </span><span class="n">bịa</span><span class="w"> </span><span class="err">đượ</span><span class="n">c</span><span class="w"> </span><span class="n">vì</span><span class="w"> </span><span class="n">bị</span><span class="w"> </span><span class="n">ràng</span><span class="w"> </span><span class="n">buộc</span><span class="w"> </span><span class="n">trong</span><span class="w"> </span><span class="n">tài</span><span class="w"> </span><span class="n">liệu</span><span class="p">)</span>
+<span class="w">   </span><span class="err">❌</span><span class="w"> </span><span class="n">Không</span><span class="w"> </span><span class="n">thay</span><span class="w"> </span><span class="n">thế</span><span class="w"> </span><span class="n">việc</span><span class="w"> </span><span class="err">đọ</span><span class="n">c</span><span class="w"> </span><span class="n">kỹ</span>
+</code></pre></div>
+
+<blockquote>
+<p><em>"Sai lầm phổ biến nhất khi nghiên cứu với AI: chỉ dùng nhóm 1, không biết nhóm 2–3–4 tồn tại. Tiếp theo: quy trình kết hợp cả 4 nhóm."</em></p>
+</blockquote>
+<p><strong>[Phút 15–48] MỚI + DEMO — Quy trình 4 bước</strong></p>
+<p>GV demo trên 1 chủ đề cụ thể — chọn: <strong>"Tác động của AI đến thị trường lao động Việt Nam"</strong> (chủ đề liên ngành, dễ liên hệ).</p>
+<p><strong>BƯỚC 1 — Định hình câu hỏi (7 phút)</strong></p>
+<p>Dùng AI <strong>hội thoại</strong> (Claude/ChatGPT) để brainstorm và tinh chỉnh research question.</p>
+<p>Prompt mẫu:</p>
+<div class="highlight"><pre><span></span><code>Tôi đang chuẩn bị tiểu luận về tác động của AI đến thị trường 
+lao động Việt Nam. Tôi chưa biết góc tiếp cận nào sẽ thú vị 
+và khả thi.
+
+Đóng vai giảng viên hướng dẫn khoa học. Hãy đề xuất 5 research 
+question khác nhau về chủ đề này, mỗi câu kèm:
+- Mức độ khó tìm dữ liệu (dễ/vừa/khó)
+- Đối tượng có thể phỏng vấn ở Việt Nam
+- Một rủi ro lớn nhất khi nghiên cứu hướng này
+
+Sau đó giúp tôi chọn 1 câu phù hợp với SV năm 2, làm trong 4 tuần.
+</code></pre></div>
+
+<p>Output: 5 RQ + đánh giá. Chọn 1 RQ làm việc tiếp.</p>
+<p><strong>BƯỚC 2 — Tìm tài liệu thật (12 phút)</strong></p>
+<p>Dùng <strong>Perplexity</strong> và <strong>Elicit/Consensus</strong>.</p>
+<p>Demo Perplexity:
+- Gõ: <em>"Impact of generative AI on white-collar jobs in Vietnam 2024 2025"</em>
+- Quan sát: Perplexity đưa ra trả lời kèm SỐ trích dẫn → click vào → đọc nguồn gốc.
+- Phát hiện: có 1 nguồn là blog cá nhân (cẩn trọng), 2 nguồn là báo cáo của tổ chức (tin được hơn).</p>
+<blockquote>
+<p><em>"Perplexity tốt hơn ChatGPT cho việc tìm nguồn — nhưng KHÔNG có nghĩa nó không sai. Nó có thể hiểu sai nội dung nguồn. Bạn vẫn phải đọc nguồn gốc."</em></p>
+</blockquote>
+<p>Demo Elicit/Consensus (nếu có account; nếu không thì giới thiệu bằng screenshot):
+- Gõ research question bằng tiếng Anh
+- Elicit trả về danh sách paper thật có DOI
+- Click vào paper → đọc abstract</p>
+<blockquote>
+<p><em>"Lưu ý quan trọng: AI tìm kiếm có nguồn cũng có thể trích sai. Quy tắc: luôn ĐỌC nguồn gốc, không trích từ AI."</em></p>
+</blockquote>
+<p><strong>BƯỚC 3 — Đọc và tổng hợp (8 phút)</strong></p>
+<p>Đây là bước nhiều SV bỏ qua — và là bước AI giúp được nhiều nhất nếu dùng đúng.</p>
+<p>Demo NotebookLM:
+- Upload 2–3 PDF (báo cáo World Bank, paper khoa học)
+- Hỏi: <em>"Three sources I uploaded — what are the common themes about AI's impact on jobs?"</em>
+- NotebookLM trả lời + chỉ rõ trích từ trang nào của tài liệu nào
+- Quan trọng: NotebookLM KHÔNG bịa được — vì nó chỉ trả lời từ tài liệu bạn upload</p>
+<blockquote>
+<p><em>"Đây là vàng cho SV. Bạn có 5 paper khó đọc, NotebookLM giúp bạn hỏi đáp với 5 paper đó như nói chuyện với tác giả. KHÔNG phải để AI viết hộ tiểu luận — để AI giúp bạn HIỂU nhanh hơn."</em></p>
+</blockquote>
+<p><strong>BƯỚC 4 — Tổ chức tri thức (6 phút)</strong></p>
+<p>Sau khi đọc hiểu, viết atomic notes — không phải copy output AI.</p>
+<p>Demo template atomic note cho research:</p>
+<div class="highlight"><pre><span></span><code>[2026-05-21] AI thay thế công việc cấp đầu vào nhanh hơn cấp 
+              cao ở Việt Nam
+
+INSIGHT: Báo cáo McKinsey 2024 + bài Forbes 2025 cùng chỉ ra: 
+ở Việt Nam, AI đang thay thế nhiều nhất các công việc cấp đầu 
+vào (junior copywriter, customer service, junior dev) chứ KHÔNG 
+phải các vị trí lãnh đạo. Tốc độ ở Việt Nam chậm hơn Mỹ ~2-3 năm.
+
+TẠI SAO QUAN TRỌNG (với mình, SV năm 2 Marketing):
+Mình sẽ tốt nghiệp năm 2028. Lúc đó vị trí junior copywriter 
+có thể không còn nhiều. Mình cần phát triển skill ở tầng cao 
+hơn — chiến lược, sáng tạo concept, hiểu khách hàng — chứ không 
+phải kỹ năng viết bài đơn thuần.
+
+NGUỒN:
+- McKinsey Global Institute 2024, &quot;Generative AI and the Future 
+  of Work in Southeast Asia&quot;, trang 23-25
+- Forbes Vietnam 2025-03-15, &quot;AI và tương lai nhân lực marketing&quot;
+
+LIÊN KẾT:
+- Note &quot;AI là máy đoán từ&quot; (Buổi 1) — Hệ quả: junior copywriter 
+  dễ bị thay vì là công việc lặp pattern
+- Cần đọc thêm: báo cáo ManpowerGroup 2024 về Việt Nam
+</code></pre></div>
+
+<p><strong>Slide tổng kết:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">QUY</span><span class="w"> </span><span class="n">TRÌNH</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">BƯỚC</span><span class="w"> </span><span class="n">NGHIÊN</span><span class="w"> </span><span class="n">CỨU</span><span class="w"> </span><span class="n">VỚI</span><span class="w"> </span><span class="n">AI</span>
+<span class="err">──────────────────────────────────────────</span>
+<span class="mf">1.</span><span class="w"> </span><span class="n">ĐỊNH</span><span class="w"> </span><span class="n">HÌNH</span><span class="w"> </span><span class="n">CÂU</span><span class="w"> </span><span class="n">HỎI</span><span class="w">    </span><span class="p">[</span><span class="n">AI</span><span class="w"> </span><span class="n">hội</span><span class="w"> </span><span class="n">thoại</span><span class="p">]</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Brainstorm</span><span class="w"> </span><span class="n">RQ</span><span class="p">,</span><span class="w"> </span><span class="n">tinh</span><span class="w"> </span><span class="n">chỉnh</span><span class="w"> </span><span class="n">phạm</span><span class="w"> </span><span class="n">vi</span>
+
+<span class="mf">2.</span><span class="w"> </span><span class="n">TÌM</span><span class="w"> </span><span class="n">TÀI</span><span class="w"> </span><span class="n">LIỆU</span><span class="w">         </span><span class="p">[</span><span class="n">AI</span><span class="w"> </span><span class="n">tìm</span><span class="w"> </span><span class="n">kiếm</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">học</span><span class="w"> </span><span class="n">thuật</span><span class="p">]</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Perplexity</span><span class="p">,</span><span class="w"> </span><span class="n">Elicit</span><span class="p">,</span><span class="w"> </span><span class="n">Consensus</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">BẮT</span><span class="w"> </span><span class="n">BUỘC</span><span class="w"> </span><span class="n">kiểm</span><span class="w"> </span><span class="n">chứng</span><span class="w"> </span><span class="n">nguồn</span><span class="w"> </span><span class="n">gốc</span>
+
+<span class="mf">3.</span><span class="w"> </span><span class="n">ĐỌC</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TỔNG</span><span class="w"> </span><span class="n">HỢP</span><span class="w">       </span><span class="p">[</span><span class="n">AI</span><span class="w"> </span><span class="n">tài</span><span class="w"> </span><span class="n">liệu</span><span class="w"> </span><span class="n">cá</span><span class="w"> </span><span class="n">nhân</span><span class="p">]</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">NotebookLM</span><span class="p">,</span><span class="w"> </span><span class="n">Claude</span><span class="w"> </span><span class="n">Projects</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Hỏi</span><span class="w"> </span><span class="n">đáp</span><span class="w"> </span><span class="n">với</span><span class="w"> </span><span class="n">chính</span><span class="w"> </span><span class="n">tài</span><span class="w"> </span><span class="n">liệu</span>
+
+<span class="mf">4.</span><span class="w"> </span><span class="n">TỔ</span><span class="w"> </span><span class="n">CHỨC</span><span class="w"> </span><span class="n">TRI</span><span class="w"> </span><span class="n">THỨC</span><span class="w">     </span><span class="p">[</span><span class="n">Atomic</span><span class="w"> </span><span class="n">notes</span><span class="p">]</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Viết</span><span class="w"> </span><span class="n">bằng</span><span class="w"> </span><span class="n">ngôn</span><span class="w"> </span><span class="n">ngữ</span><span class="w"> </span><span class="n">của</span><span class="w"> </span><span class="n">mình</span>
+<span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Liên</span><span class="w"> </span><span class="n">kết</span><span class="w"> </span><span class="n">với</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="n">cũ</span>
+</code></pre></div>
+
+<p><strong>[Phút 48–55] CHỐT</strong></p>
+<blockquote>
+<p><em>"Hôm nay các bạn có cái mà Minh chưa có — một quy trình. Tiết sau, các bạn THỬ. 40 phút mini-research thật, ngay tại lớp. Sau đó tiết cuối thi giữa kỳ. 5 phút nghỉ."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-9-55-thuc-hanh-mini-research">TIẾT 9 (55') — THỰC HÀNH MINI-RESEARCH</h3>
+<h4 id="muc-tieu-tiet_3">Mục tiêu tiết</h4>
+<ul>
+<li>SV trải nghiệm được toàn bộ quy trình 4 bước trong 40 phút.</li>
+<li>SV nhận ra: phải kiểm chứng nguồn, không thể tin AI 100%.</li>
+</ul>
+<h4 id="cau-truc-thoi-gian_3">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>HOOK + Setup</strong></td>
+</tr>
+<tr>
+<td>5–10</td>
+<td><strong>Thread Bộ Não 2</strong> — Capture → Organize → Create</td>
+</tr>
+<tr>
+<td>10–50</td>
+<td><strong>LÀM</strong> — Mini-research cá nhân</td>
+</tr>
+<tr>
+<td>50–55</td>
+<td><strong>CHIA SẺ + CHỐT</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_3">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–5] HOOK + Setup</strong></p>
+<blockquote>
+<p><em>"40 phút tới: mỗi bạn là một nhà nghiên cứu thật. Câu hỏi cá nhân của bạn — không phải của tôi. Đề bài rất đơn giản."</em></p>
+</blockquote>
+<p>Đề bài (chiếu trên màn hình + post LMS):</p>
+<div class="highlight"><pre><span></span><code>MINI-RESEARCH 40 PHÚT
+──────────────────────
+
+1. Chọn 1 câu hỏi nghiên cứu thuộc ngành/môn em đang học
+   (gợi ý: lấy từ 1 vấn đề gặp trong môn học hiện tại)
+
+2. Thực hiện 4 bước:
+   ── BƯỚC 1 (5 phút): Dùng AI hội thoại tinh chỉnh RQ
+   ── BƯỚC 2 (15 phút): Dùng Perplexity (hoặc Gemini Deep 
+                         Research) tìm 3 nguồn liên quan
+   ── BƯỚC 3 (10 phút): Dùng AI tổng hợp 3 ý chính
+   ── BƯỚC 4 (10 phút): Viết 2-3 atomic notes
+
+3. KIỂM TRA: 1 trong 3 nguồn em có chắc là THẬT không?
+   → Mở Google Scholar / Google tìm tên nguồn — có ra
+     không? Nội dung có khớp không?
+</code></pre></div>
+
+<p><strong>[Phút 5–10] Thread "Bộ Não Thứ 2" ngắn</strong></p>
+<p>GV nhắc nhanh (≤ 5 phút) — đây là tiết thực hành, không giảng dài:</p>
+<blockquote>
+<p><em>"Buổi 1 các bạn học CAPTURE — viên gạch đầu tiên. Hôm nay các bạn thực hành thêm 2 thao tác:</em></p>
+<p><em>ORGANIZE = đặt tên atomic note RÕ để 6 tháng nữa tìm lại được. Liên kết với note cũ.</em></p>
+<p><em>CREATE = từ tri thức đã có, TẠO RA sản phẩm mới. Sản phẩm hôm nay = 2-3 atomic notes mới + 1 RQ đã tinh chỉnh.</em></p>
+<p><em>Đây không phải bài về thu thập thông tin. Đây là bài về XÂY HIỂU BIẾT."</em></p>
+</blockquote>
+<p><strong>[Phút 10–50] LÀM — Mini-research</strong></p>
+<p>40 phút SV làm việc cá nhân trên thiết bị. GV đi vòng quanh hỗ trợ.</p>
+<p><strong>Vai trò GV trong 40 phút này:</strong>
+- Không trả lời câu hỏi nội dung chuyên môn — chỉ hỗ trợ kỹ thuật prompt/công cụ.
+- Khi thấy SV đi sai (ví dụ: gõ RQ thẳng vào ChatGPT không tinh chỉnh) → gợi nhắc nhẹ, không sửa hộ.
+- Khi thấy SV gặp hallucination → mời SV chỉ cho bạn bên cạnh xem. Đây là teachable moment cực mạnh.
+- Ghi nhận 2–3 case hay nhất / lỗi điển hình nhất để chia sẻ tiết sau.</p>
+<p><strong>Checklist treo trên bảng / chiếu:</strong>
+- [ ] Đã tinh chỉnh RQ chưa? Có RÕ và HẸP đủ chưa?
+- [ ] 3 nguồn tìm được — đã click vào nguồn gốc đọc chưa?
+- [ ] Có nguồn nào nghi ngờ là AI bịa không?
+- [ ] Atomic note viết bằng từ ngữ MÌNH hay copy từ AI?
+- [ ] Có liên kết được với note buổi 1 không?</p>
+<p><strong>[Phút 50–55] Chia sẻ + Chốt</strong></p>
+<p>Mời 2 SV chia sẻ:
+- 1 SV chia sẻ atomic note hay nhất (GV chọn lúc đi vòng)
+- 1 SV chia sẻ trải nghiệm phát hiện hallucination (nếu có)</p>
+<p>GV chốt:</p>
+<blockquote>
+<p><em>"3 điều tôi quan sát được trong 40 phút vừa rồi:</em></p>
+<p><em>1. Có bạn tinh chỉnh RQ rất kỹ — atomic note ra rõ ràng. Có bạn skip bước 1 — và 30 phút sau quay lại loay hoay không biết hỏi gì tiếp.</em></p>
+<p><em>2. Hallucination XẢY RA THẬT — có ít nhất 3 bạn phát hiện AI bịa nguồn ngay trong tiết này. Đây là lý do quy tắc 'kiểm chứng nguồn' không phải lời nhắc — nó là kỷ luật bắt buộc.</em></p>
+<p><em>3. Atomic note tốt khó hơn các bạn nghĩ. Phần lớn atomic notes hôm nay vẫn quá giống output AI. Quy tắc: nếu bạn không thể giải thích note đó bằng miệng cho bạn bên cạnh nghe — note đó CHƯA phải atomic note.</em></p>
+<p><em>Tiết cuối: thi giữa kỳ + giao mini-project. 5 phút nghỉ."</em></p>
+</blockquote>
+<hr />
+<h3 id="tiet-10-55-kiem-tra-giua-ky-giao-mini-project">TIẾT 10 (55') — KIỂM TRA GIỮA KỲ + GIAO MINI-PROJECT</h3>
+<h4 id="cau-truc-thoi-gian_4">Cấu trúc thời gian</h4>
+<table>
+<thead>
+<tr>
+<th>Phút</th>
+<th>Hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>Chuẩn bị thi</strong></td>
+</tr>
+<tr>
+<td>5–45</td>
+<td><strong>THI GIỮA KỲ</strong> — 20 câu, 30 phút làm + buffer</td>
+</tr>
+<tr>
+<td>45–55</td>
+<td><strong>GIAO MINI-PROJECT + chuẩn bị buổi 3</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="kich-ban-chi-tiet_4">Kịch bản chi tiết</h4>
+<p><strong>[Phút 0–5] Chuẩn bị thi</strong></p>
+<blockquote>
+<p><em>"Bài kiểm tra giữa kỳ chiếm 20% điểm môn. 20 câu trắc nghiệm, 30 phút. Nội dung Buổi 1 + Buổi 2. Không tài liệu, không AI, không điện thoại. Đề trên LMS, sẽ mở lúc tôi nói. Sau khi nộp các bạn ngồi đợi tôi giao mini-project."</em></p>
+</blockquote>
+<p>Kiểm tra nhanh:
+- Tất cả SV đăng nhập LMS được chưa?
+- Mạng ổn không?</p>
+<p><strong>[Phút 5–45] THI</strong></p>
+<p>30 phút làm bài + 10 phút buffer (nộp, kiểm tra, vào điểm tự động trên LMS nếu có).</p>
+<p><strong>Cấu trúc đề tham khảo (xem Phụ lục B2):</strong>
+- 50% Hiểu (Bloom 2): 10 câu
+- 35% Vận dụng (Bloom 3): 7 câu
+- 15% Phân tích (Bloom 4): 3 câu</p>
+<p>Nội dung phân bổ:
+- AI là gì, cơ chế xác suất, hallucination: 4 câu
+- Phân biệt AI vs Google, bản đồ công cụ: 3 câu
+- CRISP và 5 kỹ thuật prompt: 6 câu
+- Quy trình 4 bước nghiên cứu: 4 câu
+- "Bộ Não Thứ 2" + atomic note: 3 câu</p>
+<p><strong>[Phút 45–55] GIAO MINI-PROJECT</strong></p>
+<p>Sau khi tất cả SV nộp bài, GV giao mini-project cho buổi 3.</p>
+<p><strong>ĐỀ MINI-PROJECT (in sẵn phát, đồng thời post LMS):</strong></p>
+<div class="highlight"><pre><span></span><code>MINI-PROJECT — BÀI TRÌNH BÀY 5 PHÚT
+────────────────────────────────────────────────
+
+QUY MÔ:
+- Cá nhân hoặc nhóm 2-3 SV (chọn được)
+- Trình bày tại buổi 3, 5 phút trình bày + 2 phút Q&amp;A
+
+CHỦ ĐỀ:
+- Tự chọn, gắn với ngành/môn học của mình
+- Một vấn đề CỤ THỂ, không bao quát chung chung
+
+YÊU CẦU BẮT BUỘC:
+1. Áp dụng tối thiểu 2 kỹ thuật prompt (chỉ rõ là kỹ thuật gì)
+2. Có ít nhất 3 atomic notes làm bằng chứng quy trình
+3. Có ít nhất 2 nguồn TÀI LIỆU THẬT, đã kiểm chứng
+4. KHAI BÁO MINH BẠCH: AI đã làm gì, em đã làm gì
+5. Có 1 insight cá nhân — điều mà chỉ EM phát hiện, không 
+   phải AI nói ra
+
+CÔNG CỤ ĐƯỢC PHÉP:
+- Bất kỳ AI hội thoại nào (ChatGPT, Claude, Gemini, Copilot)
+- AI tìm kiếm có nguồn (Perplexity, Gemini Deep Research)
+- AI tổng hợp tài liệu (NotebookLM)
+- Slide AI (Gamma, Beautiful.ai, Tome — sẽ demo buổi 3)
+
+ĐÁNH GIÁ THEO RUBRIC 4 TIÊU CHÍ (mỗi tiêu chí 5đ):
+- Chất lượng nội dung (chính xác, có nguồn)
+- Cách dùng AI (đúng kỹ thuật, có dấu ấn cá nhân)
+- Trình bày (rõ ràng, hấp dẫn)
+- Đạo đức (khai báo AI minh bạch, không đạo văn)
+
+NỘP TRƯỚC BUỔI 3:
+- Slide (PDF) + Atomic notes (Google Docs/Markdown) qua LMS
+- Hạn: 23:59 ngày trước buổi 3
+</code></pre></div>
+
+<p><strong>Chuẩn bị buổi 3:</strong></p>
+<blockquote>
+<p><em>"Buổi 3 chúng ta sẽ xem ai sẽ là 'Minh phiên bản 2.0' — biết dùng AI mà KHÔNG bị AI dắt. Đồng thời nói về rủi ro và đạo đức — phần khó nhất của môn học này. Hẹn gặp tuần sau."</em></p>
+</blockquote>
+<hr />
+<h2 id="phan-c-phu-luc">PHẦN C — PHỤ LỤC</h2>
+<h3 id="c1-danh-sach-3-prompt-rac-cho-hoat-ong-tiet-6">C1. Danh sách 3 prompt rác cho hoạt động Tiết 6</h3>
+<p>Phát giấy hoặc chiếu, SV chọn 1 trong 3:</p>
+<ol>
+<li><em>"Tóm tắt bài này"</em> (kèm 1 đoạn văn 500 từ mà GV chuẩn bị sẵn — chủ đề liên ngành)</li>
+<li><em>"Cho ý tưởng kinh doanh hay cho sinh viên"</em></li>
+<li><em>"Giải thích chủ nghĩa Mác-Lênin cho người mới"</em></li>
+</ol>
+<h3 id="c2-bo-20-cau-trac-nghiem-giua-ky-cau-truc-e">C2. Bộ 20 câu trắc nghiệm giữa kỳ — Cấu trúc đề</h3>
+<blockquote>
+<p><em>Đây là </em><em>cấu trúc</em><em> đề và </em><em>mẫu câu</em><em> — đề thật cần được biên soạn riêng theo ngân hàng câu hỏi của khoa.</em></p>
+</blockquote>
+<p><strong>Phần A — Hiểu khái niệm (10 câu, Bloom 2)</strong></p>
+<p>Mẫu câu 1: <em>"AI tạo sinh (Generative AI) tạo ra văn bản dựa trên cơ chế nào?"</em>
+- A. Tra cứu từ cơ sở dữ liệu thông tin lớn
+- B. <strong>Dự đoán từ tiếp theo dựa trên xác suất</strong> ✓
+- C. Suy luận logic từ các quy tắc được lập trình sẵn
+- D. Hiểu ngữ nghĩa và tra cứu kiến thức nội tại</p>
+<p>Mẫu câu 2: <em>"Hiện tượng 'hallucination' trong AI tạo sinh là gì?"</em>
+- A. AI từ chối trả lời câu hỏi
+- B. AI trả lời chậm khi câu hỏi phức tạp
+- C. <strong>AI tạo ra thông tin sai nhưng trình bày tự tin</strong> ✓
+- D. AI lặp lại nội dung từ một nguồn duy nhất</p>
+<p>Mẫu câu 3: <em>"Trong khung CRISP, chữ 'P' đại diện cho gì?"</em>
+- A. Prompt
+- B. Process
+- C. <strong>Performance criteria</strong> ✓
+- D. Personalization</p>
+<p>(Tiếp tục 7 câu nữa theo mô tả ở phần F.3 đề cương)</p>
+<p><strong>Phần B — Vận dụng (7 câu, Bloom 3)</strong></p>
+<p>Mẫu câu 11: <em>"Bạn cần AI giải một bài toán tài chính phức tạp với nhiều bước. Kỹ thuật prompt nào phù hợp nhất?"</em>
+- A. Few-shot prompting
+- B. <strong>Chain-of-Thought prompting</strong> ✓
+- C. Role-based prompting
+- D. Negative prompting</p>
+<p>Mẫu câu 12: <em>"Bạn muốn AI viết review phim theo một phong cách rất riêng. Kỹ thuật nào phù hợp nhất?"</em>
+- A. Chain-of-Thought
+- B. Negative prompt
+- C. <strong>Few-shot prompting</strong> ✓
+- D. Iterative refinement</p>
+<p>(Tiếp tục 5 câu nữa)</p>
+<p><strong>Phần C — Phân tích (3 câu, Bloom 4)</strong></p>
+<p>Mẫu câu 18: <em>"Sinh viên A dùng ChatGPT để tìm 5 bài báo về AI trong giáo dục. AI trả về 5 tựa bài với tên tác giả và năm xuất bản. SV A copy vào tiểu luận làm trích dẫn. Đánh giá hành động của SV A?"</em>
+- A. Đúng quy trình, vì ChatGPT là công cụ đáng tin cậy
+- B. <strong>Sai quy trình, vì ChatGPT có thể bịa nguồn — cần dùng Perplexity/Elicit và kiểm chứng</strong> ✓
+- C. Sai vì chỉ nên dùng Google
+- D. Đúng nếu kèm ghi chú "Theo ChatGPT"</p>
+<p>(Tiếp tục 2 câu nữa)</p>
+<h3 id="c3-checklist-giang-vien-cuoi-buoi-2">C3. Checklist giảng viên cuối Buổi 2</h3>
+<ul>
+<li>[ ] Tất cả SV đã làm bài thi giữa kỳ?</li>
+<li>[ ] Có SV nào vắng không có lý do → cần xử lý theo quy chế?</li>
+<li>[ ] Mini-project đã giao rõ, deadline rõ, post LMS rồi?</li>
+<li>[ ] Atomic notes của SV từ buổi 1 đã nhận đủ chưa?</li>
+<li>[ ] Tài liệu SCQA buổi 3 đã post LMS chưa?</li>
+<li>[ ] 2–3 case hay/lỗi từ mini-research tiết 9 đã ghi lại để dùng ở buổi 3?</li>
+</ul>
+        </div>
+        <footer>
+            Generated by Second Brain MD-to-Web Converter Skill
+        </footer>
+    </div>
+</body>
+</html>
