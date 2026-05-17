@@ -69,6 +69,7 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
   const cDir = app.locals.contentDir;
   app.use('/lessons', express.static(join(cDir, 'lessons')));
   app.use('/slides', express.static(join(cDir, 'slides')));
+  app.use('/images', express.static(join(cDir, 'images')));
 
   // API Routes
   app.use('/api/auth', authRoutes);

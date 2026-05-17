@@ -14,7 +14,10 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:3010'
+      '/api': 'http://localhost:3003',
+      '/lessons': 'http://localhost:3003',
+      '/slides': 'http://localhost:3003',
+      '/images': 'http://localhost:3003'
     }
   }
 });
