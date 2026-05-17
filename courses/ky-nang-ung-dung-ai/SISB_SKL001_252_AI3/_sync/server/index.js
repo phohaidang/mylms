@@ -111,11 +111,20 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
   });
 
   // Serve frontend in production
+  // IMPORTANT: Do NOT catch-all for /lessons, /slides, /images — those are
+  // served as static files from content/. If they 404, they should genuinely
+  // 404 instead of returning index.html (which causes iframe nesting).
   if (process.env.NODE_ENV === 'production') {
     const distDir = join(classDir, 'dist');
     if (existsSync(distDir)) {
       app.use(express.static(distDir));
-      app.get('*', (req, res) => {
+      app.get('*', (req, res, next) => {
+        // Skip SPA catch-all for static content paths
+        if (req.path.startsWith('/lessons/') || 
+            req.path.startsWith('/slides/') || 
+            req.path.startsWith('/images/')) {
+          return res.status(404).send('File not found');
+        }
         res.sendFile(join(distDir, 'index.html'));
       });
     }
