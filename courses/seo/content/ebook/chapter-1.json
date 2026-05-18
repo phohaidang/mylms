@@ -1,80 +1,97 @@
 {
   "chapter": 1,
-  "title": "Tổng quan về SEO & Cơ chế Search Engine",
+  "title": "SEO trong kỷ nguyên AI",
   "sessions": [1],
   "scqa": {
-    "situation": "Trong kỷ nguyên số, Google xử lý hàng tỷ lượt tìm kiếm mỗi ngày. Doanh nghiệp nào xuất hiện ở trang đầu sẽ chiếm lĩnh 90% lưu lượng khách hàng. Tuy nhiên, thuật toán của Google vô cùng phức tạp và thay đổi liên tục.",
-    "complication": "Hầu hết các website mới đều 'vô hình' trên Google. Việc chỉ xây dựng website là chưa đủ, nếu không được tối ưu, bạn sẽ lãng phí nguồn lực và mất khách hàng vào tay đối thủ.",
-    "question": "Làm thế nào để website xuất hiện ở vị trí cao trên kết quả tìm kiếm? SEO vận hành dựa trên những nguyên lý cốt lõi nào?",
-    "answer": "SEO (Search Engine Optimization) là quá trình tối ưu hóa website dựa trên 3 trụ cột: Technical (Kỹ thuật), Content (Nội dung) và Authority (Uy tín). Hiểu được cơ chế Crawling, Indexing và Ranking là bước đầu tiên để thành công."
+    "situation": "Trong quá khứ, người dùng quen thuộc với việc tìm kiếm trên Google và nhận về '10 blue links' (10 đường link xanh). Các doanh nghiệp như Hạt Mộc Coffee được dạy rằng SEO (Search Engine Optimization) là cách để website leo lên Top 1 Google để nhận được lượt click (truy cập).",
+    "complication": "Tuy nhiên, trong kỷ nguyên AI 2026, hơn 65% lượt tìm kiếm kết thúc mà không có bất kỳ cú click nào (Zero-click search) vì AI Overview đã trả lời trực tiếp trên giao diện. Hàng trăm triệu người dùng chuyển sang hỏi ChatGPT, Gemini hay Perplexity thay vì Google. Nếu Hạt Mộc chỉ tối ưu cho Google kiểu cũ, họ có thể lên Top 1 nhưng vẫn vô hình trong mắt AI, dẫn đến mất trắng khách hàng.",
+    "question": "Vậy khái niệm 'bộ máy tìm kiếm' có còn đúng? Doanh nghiệp phải tối ưu hóa những gì để cả Google lẫn các AI Engines (ChatGPT, Perplexity) đều 'thấy' và giới thiệu thương hiệu của họ?",
+    "answer": "Bộ máy tìm kiếm (Search Engine) đang tiến hóa thành Bộ máy trả lời (Answer Engine). SEO truyền thống không chết nhưng đã mở rộng thành SEO + GEO (Generative Engine Optimization). Nếu SEO nhắm đến Ranking (thứ hạng) để lấy Click, thì GEO nhắm đến Citation Rate (tỷ lệ được trích dẫn) để lấy Brand Visibility. Chìa khóa chung để chinh phục cả hai chính là tiêu chuẩn E-E-A-T và nội dung hữu ích (Helpful Content) từ trải nghiệm thật."
   },
   "concepts": [
     {
-      "id": "c1-search-engine",
-      "term": "Search Engine (Công cụ tìm kiếm)",
-      "definition": "Một hệ thống phần mềm được thiết kế để tìm kiếm thông tin trên World Wide Web.",
+      "id": "c1-search-to-answer",
+      "term": "Sự dịch chuyển từ Search Engine sang Answer Engine",
+      "definition": "Quá trình chuyển đổi của các công cụ tìm kiếm từ việc cung cấp danh sách liên kết web (10 blue links) sang việc trực tiếp tổng hợp và trả lời câu hỏi của người dùng ngay trên trang kết quả bằng AI.",
       "key_points": [
-        "Google chiếm hơn 90% thị phần toàn cầu",
-        "Mục tiêu: Trả về kết quả hữu ích và liên quan nhất cho người dùng",
-        "Sử dụng các bot (spider) để thu thập dữ liệu"
+        "No-click search (Zero-click): Người dùng đọc câu trả lời do AI tạo ra (AI Overview) và thoát mà không click vào website nào.",
+        "Sự trỗi dậy của LLMs: ChatGPT, Gemini, Perplexity đang thay thế thói quen tìm kiếm thông tin phức tạp.",
+        "Mô hình Crawl - Index - Rank của Google được bổ sung thêm bước Synthesis (Tổng hợp bằng AI)."
       ],
       "case_study": {
-        "title": "Sự thống trị của Google",
-        "context": "Từ một dự án nghiên cứu tại Stanford, Google đã trở thành cổng thông tin lớn nhất thế giới nhờ thuật toán PageRank.",
-        "analysis": "PageRank đánh giá tầm quan trọng của trang web dựa trên số lượng và chất lượng các liên kết trỏ về nó.",
-        "lesson_learned": "SEO không chỉ là kỹ thuật, đó là việc xây dựng giá trị và uy tín."
+        "title": "Sự vô hình của Hạt Mộc",
+        "context": "Khi hỏi ChatGPT 'Gợi ý quán cà phê specialty yên tĩnh tại Quận 3', AI kể tên 5 quán lớn nhưng không có Hạt Mộc, dù Hạt Mộc có website.",
+        "analysis": "AI không tìm thấy đủ dữ kiện (Fact), đánh giá (Reviews) hoặc các thảo luận về Hạt Mộc trên các nguồn mà AI được huấn luyện.",
+        "lesson_learned": "Xuất hiện trên website riêng là chưa đủ, doanh nghiệp phải xuất hiện trong 'bộ nhớ' của AI."
       },
-      "related_concepts": ["c1-crawling", "c1-indexing"]
+      "related_concepts": ["c1-seo-geo-sem"]
     },
     {
-      "id": "c1-crawling",
-      "term": "Crawling (Thu thập dữ liệu)",
-      "definition": "Quá trình Search Engine gửi các đội quân robot (Googlebot) đi khám phá các nội dung mới và cập nhật trên web.",
+      "id": "c1-seo-geo-sem",
+      "term": "SEO, SEM và GEO",
+      "definition": "3 phương thức cốt lõi để gia tăng sự hiện diện trên các công cụ tìm kiếm và AI.",
       "key_points": [
-        "Bot đi theo các liên kết (links) từ trang này sang trang khác",
-        "File robots.txt hướng dẫn bot phần nào được phép vào",
-        "Sitemap giúp bot tìm thấy tất cả các trang quan trọng"
+        "SEO (Search Engine Optimization): Tối ưu hóa tự nhiên để đạt vị trí cao trên kết quả tìm kiếm. Mục tiêu: Nhận Click.",
+        "SEM (Search Engine Marketing): Bao gồm SEO và quảng cáo trả phí (Paid Search / Google Ads). SEM rộng hơn SEO.",
+        "GEO (Generative Engine Optimization): Tối ưu hóa để được các công cụ AI (ChatGPT, Perplexity, AI Overview) ưu tiên trích dẫn làm nguồn tham khảo. Mục tiêu: Nhận Citation (Trích dẫn)."
       ],
       "case_study": null,
-      "related_concepts": ["c1-indexing", "c1-ranking"]
+      "related_concepts": ["c1-ai-visibility"]
     },
     {
-      "id": "c1-indexing",
-      "term": "Indexing (Lập chỉ mục)",
-      "definition": "Quá trình lưu trữ và sắp xếp nội dung tìm thấy trong Crawling vào một cơ sở dữ liệu khổng lồ (Cafféine).",
+      "id": "c1-eeat",
+      "term": "Tiêu chuẩn E-E-A-T & Helpful Content",
+      "definition": "Khung tiêu chuẩn đánh giá chất lượng nội dung của Google, viết tắt của Experience (Trải nghiệm), Expertise (Chuyên môn), Authoritativeness (Thẩm quyền), và Trustworthiness (Độ tin cậy).",
       "key_points": [
-        "Nếu không được Index, trang web sẽ không bao giờ xuất hiện trên kết quả tìm kiếm",
-        "Thẻ meta noindex có thể ngăn chặn việc lập chỉ mục",
-        "Nội dung trùng lặp có thể bị Google bỏ qua"
+        "Experience (Chữ E mới): Yêu cầu người viết phải có trải nghiệm thực tế với sản phẩm/dịch vụ (ví dụ: đã uống thử, đã đi du lịch đến nơi đó).",
+        "Helpful Content: Thuật toán trừng phạt các nội dung viết ra chỉ để 'chiều lòng' công cụ tìm kiếm mà không mang lại giá trị thực cho người đọc.",
+        "Đây là tấm khiên vững chắc nhất để website không bị phạt bởi các đợt cập nhật thuật toán."
+      ],
+      "case_study": {
+        "title": "Cái bẫy 'Content xào nấu'",
+        "context": "Một website chuyên copy các bài đánh giá 'Top 10 quán cà phê' từ báo chí để gom thành bài của mình.",
+        "analysis": "Sau đợt cập nhật Helpful Content, website này mất 80% traffic vì Google nhận diện nội dung thiếu 'Experience' - tác giả chưa từng đặt chân đến các quán này.",
+        "lesson_learned": "Nội dung chất lượng phải đến từ trải nghiệm thật."
+      },
+      "related_concepts": ["c1-search-to-answer"]
+    },
+    {
+      "id": "c1-ai-visibility",
+      "term": "AI Visibility Audit (Kiểm toán mức độ hiện diện trên AI)",
+      "definition": "Quy trình kiểm tra xem một thương hiệu có xuất hiện trong các câu trả lời của AI Generative Engines khi người dùng truy vấn các từ khóa liên quan đến ngành hàng hay không.",
+      "key_points": [
+        "Đây là bước đầu tiên (Baseline) của mọi chiến dịch GEO.",
+        "Được thực hiện bằng cách đặt các câu hỏi (Prompts) thực tế cho nhiều nền tảng (ChatGPT, Gemini, Perplexity) và ghi nhận kết quả.",
+        "Phân tích lý do tại sao đối thủ được AI trích dẫn (cite) mà mình thì không."
       ],
       "case_study": null,
-      "related_concepts": ["c1-crawling", "c1-ranking"]
+      "related_concepts": ["c1-seo-geo-sem"]
     }
   ],
   "tests": {
     "level_1": {
-      "name": "🎯 Level 1: Nắm rõ khái niệm SEO",
-      "description": "Trắc nghiệm kiểm tra kiến thức nền tảng về Search Engine.",
+      "name": "🎯 Level 1: Định hình kỷ nguyên mới",
+      "description": "Trắc nghiệm nhận diện các khái niệm SEO, GEO và E-E-A-T.",
       "bloom_level": "Remember / Understand",
       "questions": [
-        { "id": "L1-c1-q1", "type": "mc", "concept_ref": "c1-search-engine", "question": "Quy trình làm việc của Google diễn ra theo thứ tự nào?", "options": ["A. Ranking -> Indexing -> Crawling", "B. Crawling -> Indexing -> Ranking", "C. Indexing -> Crawling -> Ranking", "D. Ranking -> Crawling -> Indexing"], "correct": "B" },
-        { "id": "L1-c1-q2", "type": "mc", "concept_ref": "c1-crawling", "question": "File nào dùng để hướng dẫn Googlebot những trang nào KHÔNG được phép thu thập dữ liệu?", "options": ["A. sitemap.xml", "B. index.html", "C. robots.txt", "D. .htaccess"], "correct": "C" }
+        { "id": "L1-c1-q1", "type": "mc", "concept_ref": "c1-seo-geo-sem", "question": "Sự khác biệt cốt lõi nhất giữa mục tiêu của SEO truyền thống và GEO là gì?", "options": ["A. SEO nhắm đến Click, GEO nhắm đến Citation (Trích dẫn)", "B. SEO miễn phí, GEO phải trả phí", "C. SEO dùng cho Google, GEO dùng cho Facebook", "D. SEO cần viết bài dài, GEO chỉ cần hình ảnh"], "correct": "A" },
+        { "id": "L1-c1-q2", "type": "mc", "concept_ref": "c1-eeat", "question": "Chữ 'E' được bổ sung vào tiêu chuẩn E-E-A-T của Google vào năm 2022 đại diện cho tiêu chí nào, nhằm chống lại các nội dung do AI tự tạo kém chất lượng?", "options": ["A. Effectiveness (Tính hiệu quả)", "B. Experience (Trải nghiệm thực tế)", "C. Emotion (Cảm xúc)", "D. Enterprise (Quy mô doanh nghiệp)"], "correct": "B" }
       ]
     },
     "level_2": {
-      "name": "📝 Level 2: Giải thích cơ chế",
-      "description": "Tự luận ngắn giải thích quy trình vận hành của Google.",
+      "name": "📝 Level 2: Phân tích hành vi",
+      "description": "Hiểu rõ sự tác động của AI đến hành vi tìm kiếm.",
       "bloom_level": "Understand / Analyze",
       "questions": [
-        { "id": "L2-c1-q1", "type": "essay", "concept_ref": "c1-indexing", "question": "Tại sao một trang web đã được xuất bản nhưng tìm kiếm trên Google lại không thấy? Hãy giải thích dựa trên quy trình Crawling và Indexing.", "rubric": "Cần nêu: (1) Bot chưa tìm thấy link dẫn đến trang, (2) File robots.txt chặn bot, (3) Lỗi kỹ thuật khiến Google không thể index.", "max_words": 300 }
+        { "id": "L2-c1-q1", "type": "essay", "concept_ref": "c1-search-to-answer", "question": "Hiện tượng 'No-click search' (Tìm kiếm không click) là gì? Lấy một ví dụ thực tế và giải thích tại sao hiện tượng này lại gây thách thức cho các chuyên gia SEO.", "rubric": "Cần nêu: (1) No-click search là khi người dùng tìm được ngay câu trả lời trên giao diện tìm kiếm (thường do AI Overview hoặc Featured Snippet cung cấp) mà không cần nhấp vào website nào. (2) Thách thức: Website có thể được xếp hạng cao nhưng không nhận được Traffic (lưu lượng truy cập), dẫn đến giảm tỷ lệ chuyển đổi trực tiếp trên web.", "max_words": 200 }
       ]
     },
     "level_3": {
-      "name": "🚀 Level 3: Vận dụng",
-      "description": "Ứng dụng kiến thức để giải quyết vấn đề thực tế.",
+      "name": "🚀 Level 3: Đánh giá thực trạng",
+      "description": "Ứng dụng kỹ năng Audit AI Visibility.",
       "bloom_level": "Apply / Create",
       "questions": [
-        { "id": "L3-c1-q1", "type": "essay", "question": "Bạn vừa ra mắt một website bán hàng mới. Hãy lập danh sách 3 việc cần làm ngay để đảm bảo Google có thể tìm thấy và lập chỉ mục website của bạn nhanh nhất.", "rubric": "Cần: (1) Khai báo với Google Search Console, (2) Tạo và nộp Sitemap, (3) Kiểm tra file robots.txt.", "max_words": 400 }
+        { "id": "L3-c1-q1", "type": "essay", "concept_ref": "c1-ai-visibility", "question": "Giả sử bạn là tư vấn viên GEO cho một quán ăn địa phương. Hãy thiết kế 3 câu lệnh (Prompt) bạn sẽ dùng trên ChatGPT và Perplexity để tiến hành 'AI Visibility Audit' cho quán ăn này, đồng thời giải thích mục đích của từng Prompt.", "rubric": "Cần nêu 3 prompt có tính đa dạng (Ví dụ: 1 prompt tìm kiếm địa phương 'quán ăn ngon ở khu vực...', 1 prompt so sánh 'quán A và quán B quán nào hợp gia đình hơn', 1 prompt hỏi lời khuyên 'đề xuất thực đơn...'). Cần giải thích rõ mỗi prompt kiểm tra khía cạnh nhận diện nào của AI đối với thương hiệu.", "max_words": 300 }
       ]
     }
   }
