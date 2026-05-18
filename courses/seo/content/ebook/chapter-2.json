@@ -1,13 +1,91 @@
 {
   "chapter": 2,
-  "title": "Chương 2: Nội dung đang cập nhật...",
-  "sessions": [],
+  "title": "Nghiên cứu từ khoá & Search Intent",
+  "sessions": [2, 3],
   "scqa": {
-    "situation": "Nội dung này đang được biên soạn cho môn SEO.",
-    "complication": "Vui lòng quay lại sau.",
-    "question": "",
-    "answer": ""
+    "situation": "Trong Marketing truyền thống, sinh viên thường định nghĩa khách hàng bằng Persona tĩnh như 'Linh, 28 tuổi, thu nhập 15 triệu'. Tuy nhiên, Persona kiểu CV này không đủ cho SEO/GEO, vì trong một ngày, Linh có thể tạo ra 5-7 truy vấn tìm kiếm với ý định hoàn toàn khác nhau.",
+    "complication": "Nếu chỉ tập trung vào các từ khóa ngắn có lượng tìm kiếm (volume) cao, doanh nghiệp nhỏ (như Hạt Mộc) sẽ dễ thất bại vì cạnh tranh quá khốc liệt. Đồng thời, việc thiếu chú trọng vào các từ khóa đuôi dài (long-tail) và câu hỏi đàm thoại (prompt) khiến doanh nghiệp bỏ qua mỏ vàng cho tỷ lệ chuyển đổi và cơ hội được AI (ChatGPT) trích dẫn.",
+    "question": "Làm thế nào để chuyển đổi từ một Persona tĩnh sang ma trận ý định (Intent) động, từ đó xây dựng một danh sách từ khóa/prompt đầy đủ, tối ưu và khả thi với ngân sách của doanh nghiệp nhỏ?",
+    "answer": "Chúng ta kết hợp mô hình Persona với Customer Journey (STDC - See, Think, Do, Care) và phân tích Search Intent (4 loại cổ điển + Local + Prompt). Cùng với quy trình 5 bước nghiên cứu từ khóa (sử dụng free tools và AI Prompt Mining), doanh nghiệp có thể tìm ra những từ khóa đuôi dài vàng, tránh cạnh tranh trực diện với các đối thủ lớn."
   },
-  "concepts": [],
-  "tests": {}
+  "concepts": [
+    {
+      "id": "c2-search-intent",
+      "term": "Search Intent (Ý định tìm kiếm)",
+      "definition": "Lý do và mục đích sâu xa đằng sau mỗi truy vấn của người dùng trên công cụ tìm kiếm.",
+      "key_points": [
+        "Có 4 loại cổ điển: Informational (Tìm hiểu), Navigational (Tìm thương hiệu), Commercial (Cân nhắc), Transactional (Giao dịch).",
+        "Bổ sung Local Intent: Yếu tố định vị vị trí cực kỳ quan trọng cho B2C/Local business (vd: 'gần đây', 'Quận 3').",
+        "Cùng một từ khóa (keyword) có thể chứa nhiều Intent khác nhau, việc xác định đúng Intent quyết định loại content sẽ sản xuất."
+      ],
+      "case_study": {
+        "title": "Nhiều Intent sau một từ khóa",
+        "context": "Một khách hàng gõ từ khóa 'V60'. Google và AI không thể biết chính xác họ muốn tìm hiểu cách pha (Informational), muốn mua phễu V60 (Transactional), hay so sánh với Aeropress (Commercial).",
+        "analysis": "Tùy thuộc vào thiết bị và hành vi trước đó, kết quả trả về sẽ khác nhau. Content tốt phải nhắm trúng một Intent cụ thể, ví dụ 'Cách pha V60 cho người mới'.",
+        "lesson_learned": "Thấu hiểu Intent quan trọng hơn số lượng từ khóa."
+      },
+      "related_concepts": ["c2-prompt-intent", "c2-long-tail"]
+    },
+    {
+      "id": "c2-prompt-intent",
+      "term": "Prompt Intent (Ý định Prompt)",
+      "definition": "Ý định và cấu trúc truy vấn khi người dùng nói chuyện với AI Generative Engines (ChatGPT, Claude, v.v.).",
+      "key_points": [
+        "Đặc tính đàm thoại (Conversational): Câu dài, đầy đủ ngữ pháp thay vì chỉ gõ 2-3 từ rời rạc.",
+        "Giàu ngữ cảnh (Context-rich): Chứa thông tin tình huống cá nhân, sở thích, ràng buộc ngân sách.",
+        "Hướng tới tổng hợp (Synthesis-seeking): Mong muốn nhận được lời khuyên, tổng hợp, thay vì chỉ là một danh sách liệt kê thông tin."
+      ],
+      "case_study": {
+        "title": "Keyword Search vs. AI Prompt",
+        "context": "Cùng một nhu cầu, người dùng gõ Google: 'v60 vs aeropress' (3 từ). Nhưng khi hỏi ChatGPT: 'Mình muốn mua dụng cụ pha cà phê tại nhà, ngân sách 1.5 triệu, thích cà phê đậm hơn chua. V60 hay Aeropress phù hợp hơn?' (40+ từ).",
+        "analysis": "AI cần một bài viết (content) có khả năng giải đáp các tình huống cụ thể (so sánh hương vị, giá cả) để tổng hợp ra câu trả lời.",
+        "lesson_learned": "Phải viết bài chuẩn bị sẵn câu trả lời cho các tình huống chi tiết để AI trích dẫn."
+      },
+      "related_concepts": ["c2-search-intent"]
+    },
+    {
+      "id": "c2-long-tail",
+      "term": "Long-tail Keywords (Từ khóa đuôi dài)",
+      "definition": "Những cụm từ tìm kiếm cụ thể (thường từ 4 từ trở lên), có lượng truy vấn thấp nhưng tỷ lệ chuyển đổi cao và ít bị cạnh tranh.",
+      "key_points": [
+        "Đường cong Long-tail: Tổng lượng tìm kiếm của phần đuôi thường lớn hơn nhiều so với các từ khóa Head (đầu).",
+        "Mang ý định (Intent) rất rõ ràng, thường kèm tính từ chỉ địa lý (local) hoặc chi tiết kỹ thuật.",
+        "Là chiến trường phù hợp nhất cho các doanh nghiệp vừa và nhỏ."
+      ],
+      "case_study": {
+        "title": "Mỏ vàng cho Hạt Mộc Coffee",
+        "context": "Từ khóa 'cà phê' (head term) có độ cạnh tranh khốc liệt, Hạt Mộc không thể rank top. Nhưng cụm 'quán cà phê specialty pha thủ công có wifi quận 3' lại là cơ hội lớn.",
+        "analysis": "Khách tìm cụm dài này có tỷ lệ đến quán rất cao vì đúng nhu cầu cụ thể.",
+        "lesson_learned": "Tránh đánh đầu, hãy đánh đuôi dài để tích lũy chiến thắng."
+      },
+      "related_concepts": ["c2-search-intent"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nắm vững Intent và Phân loại",
+      "description": "Câu hỏi kiểm tra kiến thức về các loại từ khóa và ý định tìm kiếm.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        { "id": "L1-c2-q1", "type": "mc", "concept_ref": "c2-search-intent", "question": "Khi khách hàng tìm kiếm 'top quán cà phê specialty quận 3', truy vấn này thuộc loại Search Intent nào?", "options": ["A. Informational", "B. Navigational", "C. Commercial", "D. Transactional"], "correct": "C" },
+        { "id": "L1-c2-q2", "type": "mc", "concept_ref": "c2-long-tail", "question": "Đặc điểm nào dưới đây mô tả ĐÚNG NHẤT về từ khóa đuôi dài (Long-tail keywords)?", "options": ["A. Lượng tìm kiếm cực kỳ cao", "B. Thường chỉ bao gồm 1-2 từ", "C. Độ cạnh tranh thấp và ý định rõ ràng", "D. Không có giá trị thương mại"], "correct": "C" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích Kịch bản",
+      "description": "Đọc hiểu kịch bản và dự đoán hành vi Prompt Intent trên nền tảng AI.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        { "id": "L2-c2-q1", "type": "essay", "concept_ref": "c2-prompt-intent", "question": "Tại sao các Prompt trên ChatGPT thường dài và phức tạp hơn so với các truy vấn trên Google Search? Nội dung (Content) cần đáp ứng yếu tố gì để AI ưu tiên trích dẫn?", "rubric": "Cần nêu: (1) Prompt chứa Context-rich (ngữ cảnh, sở thích), (2) Trạng thái đàm thoại (Conversational). Content cần chứa cấu trúc so sánh, tổng hợp hoặc lời khuyên trực tiếp cho các tình huống cá nhân.", "max_words": 200 }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Thiết kế Ma trận",
+      "description": "Vận dụng công thức Persona x Journey x Intent để lập danh sách từ khóa.",
+      "bloom_level": "Apply / Create",
+      "questions": [
+        { "id": "L3-c2-q1", "type": "essay", "question": "Hãy chọn một doanh nghiệp F&B mà bạn biết. Đề xuất 2 từ khóa cho giai đoạn SEE (Informational) và 2 từ khóa cho giai đoạn DO (Transactional/Local) nhắm đến một Persona là dân văn phòng.", "rubric": "Cần nêu: Đủ 2 từ khoá SEE (ví dụ: cách pha cà phê, các loại hạt cà phê), 2 từ khoá DO (ví dụ: quán cà phê yên tĩnh gần đây, mua hạt arabica cầu đất). Các từ khóa cần phù hợp với dân văn phòng.", "max_words": 400 }
+      ]
+    }
+  }
 }

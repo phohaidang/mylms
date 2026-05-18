@@ -1,13 +1,86 @@
 {
   "chapter": 4,
-  "title": "Chương 4: Nội dung đang cập nhật...",
-  "sessions": [],
+  "title": "Thuật toán Google & Chiến lược Off-Page Authority",
+  "sessions": [6],
   "scqa": {
-    "situation": "Nội dung này đang được biên soạn cho môn SEO.",
-    "complication": "Vui lòng quay lại sau.",
-    "question": "",
-    "answer": ""
+    "situation": "Từ bài học trước, nội dung trang đích (On-Page) đã được tối ưu. Tuy nhiên, sinh viên thường coi thuật toán của Google là một 'hộp đen' khó đoán và có quan niệm cũ rằng chỉ cần spam tạo hàng ngàn backlink (liên kết trả về từ trang khác) là sẽ leo top.",
+    "complication": "Thực tế, hệ thống thuật toán của Google liên tục tiến hóa (từ Panda, Penguin đến Helpful Content và E-E-A-T) để trừng phạt những trang có nội dung mỏng, spam link và thao túng từ khóa. Đặc biệt, trong kỷ nguyên SGE (Google AI Overview), hệ thống AI không chỉ dựa vào link mà ưu tiên cao các dấu hiệu tín nhiệm từ thương hiệu (Brand Mentions) trên các cộng đồng (như Reddit, Quora). Doanh nghiệp nhỏ sẽ thất bại nếu dùng ngân sách ít ỏi để đua backlink với các ông lớn.",
+    "question": "Làm thế nào một doanh nghiệp nhỏ (Local Business) có thể xây dựng độ uy tín (Off-Page Authority) an toàn, không vi phạm thuật toán và tăng cường cơ hội xuất hiện trong các AI Overview?",
+    "answer": "Cần nắm vững logic thưởng/phạt của hệ thống thuật toán cốt lõi. Thay vì spam link, chiến lược Off-Page hiện đại tập trung vào Digital PR (Earned media), đánh giá địa phương (Local reviews) và tích cực gieo mầm (Seeding) brand mentions tự nhiên trên các cộng đồng. Cuối cùng, kết nối toàn bộ hệ thống bằng một bảng kế hoạch đo lường SEO + GEO với các KPIs rõ ràng."
   },
-  "concepts": [],
-  "tests": {}
+  "concepts": [
+    {
+      "id": "c4-google-algorithms",
+      "term": "Hệ thống thuật toán Google (Google Algorithms)",
+      "definition": "Tập hợp các quy tắc và mô hình học máy phức tạp mà Google sử dụng để đánh giá, sàng lọc và xếp hạng kết quả tìm kiếm.",
+      "key_points": [
+        "Thuật toán cổ điển (Panda phạt content rác/mỏng, Penguin phạt link spam).",
+        "Thuật toán ngữ nghĩa (Hummingbird, BERT, MUM) giúp Google hiểu cấu trúc câu, từ đồng nghĩa và đa phương tiện.",
+        "Tiêu chuẩn E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) là kim chỉ nam đánh giá độ uy tín, nhấn mạnh 'Trải nghiệm thật' của tác giả."
+      ],
+      "case_study": {
+        "title": "Bản cập nhật Helpful Content",
+        "context": "Nhiều trang web sao chép thông tin 'Top 10 quán cà phê quận 3' từ các trang đánh giá khác để câu traffic.",
+        "analysis": "Google Helpful Content Update đã giáng đòn trừng phạt nặng nề, làm tụt hạng hàng loạt website vì nội dung viết ra chỉ nhằm mục đích SEO thay vì cung cấp giá trị cho con người.",
+        "lesson_learned": "Trải nghiệm thật và tính hữu ích là yếu tố chống lại các án phạt của thuật toán."
+      },
+      "related_concepts": ["c4-off-page-authority"]
+    },
+    {
+      "id": "c4-off-page-authority",
+      "term": "Độ uy tín Off-Page (Off-Page Authority)",
+      "definition": "Tổng hợp các tín hiệu đánh giá uy tín của một website dựa trên tương tác và sự công nhận từ bên ngoài trang web đó.",
+      "key_points": [
+        "Backlink: Chất lượng và sự liên quan (Relevance) của website liên kết đến quan trọng hơn số lượng.",
+        "Brand Mentions (Đề cập thương hiệu): Việc thương hiệu được nhắc tên tự nhiên trên báo chí, Reddit, Quora (ngay cả khi không có link) là một tín hiệu xếp hạng cực mạnh cho AI Engines.",
+        "Local Reviews: Các đánh giá chất lượng trên Google Business Profile tác động trực tiếp đến SEO Local."
+      ],
+      "case_study": {
+        "title": "Chiến lược Off-Page du kích",
+        "context": "Hạt Mộc Coffee không có ngân sách 20 triệu/tháng để mua backlink báo chí như chuỗi lớn.",
+        "analysis": "Thay vào đó, chủ quán tập trung viết bài chia sẻ kiến thức trên Reddit/nhóm Facebook chuyên ngành cà phê và xin đánh giá 5 sao từ khách hàng quen. Kết quả, tên quán được AI (ChatGPT, Perplexity) liên tục trích dẫn khi hỏi về Specialty Coffee ở Sài Gòn.",
+        "lesson_learned": "Brand Mentions và đánh giá thật là vốn quý nhất của local business."
+      },
+      "related_concepts": ["c4-geo-metrics"]
+    },
+    {
+      "id": "c4-geo-metrics",
+      "term": "Chỉ số đo lường SEO + GEO",
+      "definition": "Các chỉ báo hiệu suất chính (KPIs) được sử dụng để theo dõi thành công của chiến dịch kết hợp tối ưu tìm kiếm truyền thống và Generative Engines.",
+      "key_points": [
+        "Chỉ số truyền thống: Organic Traffic, CTR, Ranking Keywords.",
+        "Chỉ số GEO: AI Citation Rate (Tỷ lệ được trích dẫn trên các AI bot), AI Overview Impressions.",
+        "Branded Search: Sự tăng trưởng lượt người dùng chủ động gõ tìm kiếm trực tiếp tên thương hiệu."
+      ],
+      "case_study": null,
+      "related_concepts": ["c4-off-page-authority"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Lịch sử thuật toán",
+      "description": "Nhận diện đặc trưng của các bản cập nhật cốt lõi.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        { "id": "L1-c4-q1", "type": "mc", "concept_ref": "c4-google-algorithms", "question": "Thuật toán Google Penguin (2012) được sinh ra chủ yếu để trừng phạt hành vi nào sau đây?", "options": ["A. Mua bán backlink và spam link mạng lưới (PBN)", "B. Nội dung mỏng và copy từ trang khác", "C. Tốc độ tải trang chậm", "D. Thiếu thẻ Meta Description"], "correct": "A" },
+        { "id": "L1-c4-q2", "type": "mc", "concept_ref": "c4-google-algorithms", "question": "Chữ 'E' đầu tiên trong hệ thống tiêu chuẩn E-E-A-T của Google đại diện cho tiêu chí gì?", "options": ["A. Efficiency (Hiệu suất)", "B. Experience (Trải nghiệm thực tế)", "C. Evolution (Sự tiến hóa)", "D. Enterprise (Doanh nghiệp)"], "correct": "B" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích Off-Page",
+      "description": "Giải thích vai trò của các yếu tố ngoài trang đối với AI.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        { "id": "L2-c4-q1", "type": "essay", "concept_ref": "c4-off-page-authority", "question": "Tại sao Brand Mentions (đề cập tên thương hiệu) trên các cộng đồng như Reddit hoặc Quora lại đặc biệt quan trọng đối với khả năng xuất hiện trên AI Overview, ngay cả khi nó không đi kèm một Backlink (liên kết)?", "rubric": "Cần nêu: Các mô hình ngôn ngữ lớn (LLMs) học dữ liệu từ các cuộc trò chuyện tự nhiên trên Reddit/Quora. Việc thương hiệu được cộng đồng liên tục thảo luận tích cực tạo ra sự xác thực (credibility signal) mạnh mẽ, khiến AI tin rằng đây là thực thể có thực, chất lượng và ưu tiên trích dẫn làm nguồn.", "max_words": 200 }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Thiết lập đo lường",
+      "description": "Lập kế hoạch theo dõi và đo lường tích hợp.",
+      "bloom_level": "Apply / Create",
+      "questions": [
+        { "id": "L3-c4-q1", "type": "essay", "concept_ref": "c4-geo-metrics", "question": "Là một chuyên viên SEO của doanh nghiệp Local, bạn hãy nêu 3 KPI quan trọng nhất để đo lường thành công của một chiến dịch GEO (Generative Engine Optimization) sau 6 tháng thực hiện.", "rubric": "Cần nêu 3 trong các ý sau: (1) AI Citation Rate, (2) AI Overview Impressions trên Google Search Console, (3) Lượt tăng trưởng Branded Search, (4) Sự gia tăng lượng Brand Mentions thảo luận trên các nền tảng.", "max_words": 300 }
+      ]
+    }
+  }
 }

@@ -1,13 +1,91 @@
 {
   "chapter": 3,
-  "title": "Chương 3: Nội dung đang cập nhật...",
-  "sessions": [],
+  "title": "Cấu trúc Topic Cluster & Kỹ thuật On-Page SEO",
+  "sessions": [4, 5],
   "scqa": {
-    "situation": "Nội dung này đang được biên soạn cho môn SEO.",
-    "complication": "Vui lòng quay lại sau.",
-    "question": "",
-    "answer": ""
+    "situation": "Từ danh sách 80+ từ khóa đuôi dài và prompt đã phân tích, doanh nghiệp có thể viết ra 80 bài viết riêng lẻ. Sinh viên cũng đã quen thuộc với việc viết caption trên mạng xã hội dựa trên cảm xúc, hoặc biết cách cài thẻ tiêu đề cơ bản trên HTML/WordPress.",
+    "complication": "Tuy nhiên, viết 80 bài rời rạc trên website sẽ thất bại trên SERP vì thiếu cấu trúc tổng thể và chúng sẽ tự cạnh tranh lẫn nhau (Cannibalization). Đồng thời, content viết theo kiểu mạng xã hội (tập trung nuôi cảm xúc, đoạn dài dòng) lại rất khó để các AI engine đọc, trích xuất (chunking) và sử dụng làm nguồn trích dẫn (cite).",
+    "question": "Làm thế nào để kết nối các chủ đề rời rạc thành một mạng lưới vững chắc để tăng Topical Authority, đồng thời đảm bảo mỗi trang đích được tối ưu hóa cả về mặt kỹ thuật cho bot tìm kiếm và thân thiện với các AI Overview?",
+    "answer": "Giải pháp là xây dựng mô hình Pillar - Topic Cluster để nhóm nội dung thành cấu trúc có tính trung tâm (Pillar page) và các trang vệ tinh (Cluster pages). Mỗi trang Cluster sẽ được tối ưu On-Page toàn diện thông qua 9 thẻ HTML cốt lõi, 5 quy tắc tối ưu trang đích và 5 nguyên tắc GEO-friendly (như Fact density, Chunkable paragraphs) cùng với Schema Markup."
   },
-  "concepts": [],
-  "tests": {}
+  "concepts": [
+    {
+      "id": "c3-pillar-cluster",
+      "term": "Mô hình Pillar - Topic Cluster",
+      "definition": "Một chiến lược tổ chức nội dung nhóm các trang (Cluster) xoay quanh một trang nền tảng (Pillar) bao quát toàn bộ một chủ đề lớn, thông qua việc liên kết chéo (Internal link).",
+      "key_points": [
+        "Pillar Page: Dài, bao quát, tổng quan chủ đề lớn (Vd: 'Hướng dẫn toàn diện về specialty coffee').",
+        "Cluster Pages: Chi tiết, đào sâu vào một mảng nhỏ, luôn chứa internal link trỏ về Pillar (Vd: 'Cách pha V60', 'Lịch sử hạt Cầu Đất').",
+        "Giúp tạo Topical Authority mạnh mẽ, tránh hiện tượng ăn thịt từ khóa (Cannibalization)."
+      ],
+      "case_study": {
+        "title": "Topic Cluster cho Hạt Mộc",
+        "context": "Thay vì viết 20 bài blog hỗn độn về cà phê, Hạt Mộc viết 1 bài Pillar trung tâm về 'Cà phê Specialty cho người mới', và tạo 10 bài Cluster (hướng dẫn pha chế, chọn hạt...) liên kết thẳng về bài Pillar.",
+        "analysis": "Cấu trúc này vẽ nên một lưới thông tin rõ ràng cho crawler và AI, chứng tỏ website là một chuyên gia (Authority) thực sự trong lĩnh vực.",
+        "lesson_learned": "Cấu trúc tổ chức thông tin quan trọng không kém chất lượng văn bản."
+      },
+      "related_concepts": ["c3-geo-content"]
+    },
+    {
+      "id": "c3-on-page-elements",
+      "term": "Các yếu tố On-Page (On-Page Elements)",
+      "definition": "Các tập hợp thẻ HTML và tín hiệu kỹ thuật trực tiếp trên trang để giúp công cụ tìm kiếm và AI đánh giá ngữ nghĩa và độ liên quan của bài viết.",
+      "key_points": [
+        "Title Tag và Meta Description: Yếu tố quyết định CTR (tỷ lệ click), cần chứa core keyword.",
+        "Heading (H1, H2, H3): Khung xương bài viết. Chỉ có một H1 duy nhất chứa keyword cốt lõi.",
+        "URL, Alt Text (mô tả hình ảnh), và Schema Markup (đoạn mã JSON-LD cung cấp ngữ cảnh)."
+      ],
+      "case_study": {
+        "title": "Tối ưu trang đích sản phẩm",
+        "context": "Một trang bán hạt cà phê Cầu Đất của Hạt Mộc có title 'Hạt cà phê', không H1, mô tả chung chung.",
+        "analysis": "Sau tối ưu: Title 'Hạt Cà Phê Specialty Cầu Đất – Hạt Mộc Coffee', H1 đúng trọng tâm, chèn LocalBusiness và Product Schema để có được Rich Results trên Google.",
+        "lesson_learned": "Nội dung tốt phải đi kèm với định dạng kỹ thuật chuẩn xác."
+      },
+      "related_concepts": ["c3-pillar-cluster", "c3-geo-content"]
+    },
+    {
+      "id": "c3-geo-content",
+      "term": "GEO-friendly Content",
+      "definition": "Cách định dạng và viết nội dung tối ưu cho Generative Engine Optimization (Các công cụ tìm kiếm AI như ChatGPT, Perplexity, Google SGE).",
+      "key_points": [
+        "Direct Answer: Đưa câu trả lời trực tiếp trong 40-60 từ đầu tiên.",
+        "Chunkable Paragraphs: Mỗi đoạn văn phải đứng độc lập có nghĩa, không phụ thuộc đại từ chỉ định mập mờ, để AI dễ trích xuất (chunking).",
+        "Fact Density: Mật độ dữ kiện cao (con số, tỷ lệ, trích dẫn) sau mỗi 150-200 từ, tăng xác suất được AI trích dẫn lên 2-3 lần."
+      ],
+      "case_study": {
+        "title": "Viết lại theo nguyên tắc Fact Density",
+        "context": "Đoạn gốc: 'Gần đây cà phê Cầu Đất rất nổi tiếng vì trồng ở trên cao.' Đoạn này quá chung chung, AI không tin tưởng.",
+        "analysis": "Đoạn GEO: 'Cà phê Arabica Cầu Đất (Đà Lạt) được trồng ở độ cao 1.500m so với mực nước biển, có hương vị chua thanh (acidity) đặc trưng.' Đoạn GEO chứa thông tin đặc tả cụ thể, AI sẽ ưu tiên trích dẫn làm nguồn.",
+        "lesson_learned": "Viết cho AI là viết cho sự rõ ràng, cấu trúc và dày đặc dữ kiện."
+      },
+      "related_concepts": ["c3-on-page-elements"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Định nghĩa cấu trúc On-Page",
+      "description": "Các câu hỏi nhận diện chức năng của cấu trúc HTML.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        { "id": "L1-c3-q1", "type": "mc", "concept_ref": "c3-on-page-elements", "question": "Thẻ HTML nào sau đây định nghĩa tiêu đề chính của một trang web và chỉ nên xuất hiện một lần duy nhất?", "options": ["A. <title>", "B. <h1>", "C. <meta>", "D. <h2>"], "correct": "B" },
+        { "id": "L1-c3-q2", "type": "mc", "concept_ref": "c3-pillar-cluster", "question": "Yếu tố nào liên kết các trang Cluster vệ tinh về lại trang Pillar trung tâm?", "options": ["A. URL redirection", "B. Schema markup", "C. Internal link", "D. External link"], "correct": "C" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích kỹ thuật nội dung",
+      "description": "Hiểu logic của tối ưu hóa cho AI.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        { "id": "L2-c3-q1", "type": "essay", "concept_ref": "c3-geo-content", "question": "Giải thích vì sao khái niệm 'Chunkable paragraphs' (đoạn văn độc lập ngữ nghĩa) lại quan trọng trong việc tối ưu hóa cho AI Engines (GEO)?", "rubric": "Cần nêu: AI xử lý và phân chia (chunk) nội dung thành các vector độc lập. Nếu đoạn văn dùng các đại từ chỉ định phụ thuộc (vd: 'như đã nói ở trên', 'phương pháp này'), khi AI trích xuất rời rạc sẽ mất hoàn toàn ngữ cảnh, dẫn đến việc bỏ qua hoặc cung cấp câu trả lời sai.", "max_words": 200 }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Tối ưu trang đích thực tế",
+      "description": "Vận dụng viết lại văn bản theo chuẩn SEO/GEO.",
+      "bloom_level": "Apply / Create",
+      "questions": [
+        { "id": "L3-c3-q1", "type": "essay", "concept_ref": "c3-geo-content", "question": "Hãy viết lại đoạn văn sau để đáp ứng nguyên tắc GEO (Direct Answer và Fact Density): 'Quán chúng tôi có phục vụ cà phê pha máy khá ngon. Máy pha được nhập từ Ý về, chất lượng đảm bảo. Rất nhiều khách thích.'", "rubric": "Cần nêu: Đưa ra thông tin chính xác ngay từ đầu, bổ sung con số (vd: Máy pha Espresso La Marzocco nhập khẩu từ Ý, phục vụ 200 ly/ngày, hương vị đậm đà chuẩn 9-bar pressure).", "max_words": 300 }
+      ]
+    }
+  }
 }
