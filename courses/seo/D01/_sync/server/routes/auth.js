@@ -53,7 +53,10 @@ router.post('/login', async (req, res) => {
     }
 
     // 2. If not admin, find student in DB
-    const user = await db.findOne('students', s => s.email === email);
+    const normalizeEmail = e => e ? e.toString().trim().toLowerCase().replace(/^0+/, '') : '';
+    const targetEmailNormalized = normalizeEmail(email);
+
+    const user = await db.findOne('students', s => normalizeEmail(s.email) === targetEmailNormalized);
     if (!user) {
       return res.status(401).json({ error: 'Email hoặc mật khẩu không đúng' });
     }
@@ -65,7 +68,7 @@ router.post('/login', async (req, res) => {
     }
     
     // Update last login
-    await db.update('students', s => s.email === email, {
+    await db.update('students', s => normalizeEmail(s.email) === targetEmailNormalized, {
       last_login: new Date().toISOString()
     });
     
@@ -180,11 +183,14 @@ router.post('/reset-password', async (req, res) => {
     }
 
     const normalize = id => id ? id.toString().trim().replace(/^0+/, '') : '';
+    const normalizeEmail = e => e ? e.toString().trim().toLowerCase().replace(/^0+/, '') : '';
+    
     const targetNormalized = normalize(student_id);
+    const targetEmailNormalized = normalizeEmail(email);
 
     // Find student matching BOTH email and student_id (ignoring leading zeros)
     const user = await db.findOne('students', s => 
-      s.email?.trim().toLowerCase() === email.trim().toLowerCase() && 
+      normalizeEmail(s.email) === targetEmailNormalized && 
       normalize(s.student_id) === targetNormalized
     );
 
