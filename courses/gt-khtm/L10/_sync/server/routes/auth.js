@@ -167,4 +167,42 @@ router.get('/me', authenticate, async (req, res) => {
   }
 });
 
+/**
+ * POST /api/auth/reset-password
+ * Reset password to student_id (MSSV) — requires email + student_id for verification
+ */
+router.post('/reset-password', async (req, res) => {
+  try {
+    const { email, student_id } = req.body;
+    
+    if (!email || !student_id) {
+      return res.status(400).json({ error: 'Vui lòng nhập đầy đủ Email và MSSV' });
+    }
+
+    // Find student matching BOTH email and student_id
+    const user = await db.findOne('students', s => 
+      s.email === email && s.student_id === student_id
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: 'Không tìm thấy tài khoản. Hãy kiểm tra lại Email và MSSV.' });
+    }
+
+    // Reset password to student_id (MSSV)
+    const password_hash = await bcrypt.hash(student_id, 10);
+
+    await db.update('students', s => s.student_id === student_id, {
+      password_hash,
+      must_change_password: 'true'
+    });
+
+    res.json({ 
+      message: `Mật khẩu đã được reset về MSSV của bạn. Vui lòng đăng nhập và đổi mật khẩu mới.`
+    });
+  } catch (err) {
+    console.error('Reset password error:', err);
+    res.status(500).json({ error: 'Lỗi hệ thống. Vui lòng thử lại.' });
+  }
+});
+
 export default router;
