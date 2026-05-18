@@ -179,19 +179,24 @@ router.post('/reset-password', async (req, res) => {
       return res.status(400).json({ error: 'Vui lòng nhập đầy đủ Email và MSSV' });
     }
 
-    // Find student matching BOTH email and student_id
+    const normalize = id => id ? id.toString().trim().replace(/^0+/, '') : '';
+    const targetNormalized = normalize(student_id);
+
+    // Find student matching BOTH email and student_id (ignoring leading zeros)
     const user = await db.findOne('students', s => 
-      s.email === email && s.student_id === student_id
+      s.email?.trim().toLowerCase() === email.trim().toLowerCase() && 
+      normalize(s.student_id) === targetNormalized
     );
 
     if (!user) {
       return res.status(404).json({ error: 'Không tìm thấy tài khoản. Hãy kiểm tra lại Email và MSSV.' });
     }
 
-    // Reset password to student_id (MSSV)
-    const password_hash = await bcrypt.hash(student_id, 10);
+    // Reset password to student_id (MSSV) as entered by the student
+    const password_hash = await bcrypt.hash(student_id.trim(), 10);
 
-    await db.update('students', s => s.student_id === student_id, {
+    // Update using normalized ID to ensure we find the row in the sheet
+    await db.update('students', s => normalize(s.student_id) === targetNormalized, {
       password_hash,
       must_change_password: 'true'
     });
