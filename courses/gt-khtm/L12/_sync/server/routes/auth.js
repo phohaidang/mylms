@@ -62,7 +62,8 @@ router.post('/login', async (req, res) => {
     }
     
     // Verify password
-    const valid = await bcrypt.compare(password, user.password_hash);
+    const storedHash = user.password_hash || user.password;
+    const valid = await bcrypt.compare(password, storedHash);
     if (!valid) {
       return res.status(401).json({ error: 'Email hoặc mật khẩu không đúng' });
     }
@@ -124,7 +125,8 @@ router.post('/change-password', authenticate, async (req, res) => {
     }
     
     // Verify current password
-    const valid = await bcrypt.compare(currentPassword, user.password_hash);
+    const storedHash = user.password_hash || user.password;
+    const valid = await bcrypt.compare(currentPassword, storedHash);
     if (!valid) {
       return res.status(401).json({ error: 'Mật khẩu hiện tại không đúng' });
     }
