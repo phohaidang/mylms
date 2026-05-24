@@ -10,7 +10,16 @@ export async function renderLesson(app, { id }) {
   const chapterMatch = session.chapter.match(/Ch\.(\d+)/i);
   const chapterId = chapterMatch ? parseInt(chapterMatch[1]) : 1;
   const isStudent = user.role !== 'admin';
-    let ebookConceptsHTML = '';
+
+  let hasJournal = false;
+  if (isStudent) {
+    try {
+      const journalCheck = await api.get(`/journal/my/${id}`);
+      hasJournal = !!journalCheck;
+    } catch {}
+  }
+
+  let ebookConceptsHTML = '';
   if (isStudent) {
     try {
       const allChapters = await api.get('/ebook/chapters');
@@ -161,6 +170,23 @@ export async function renderLesson(app, { id }) {
             </div>
          </div>
          ` : ''}
+
+         <!-- Active Recall Reflection Journal Section -->
+         <div class="card" style="margin: 2.5rem 0 2rem; background: linear-gradient(135deg, rgba(108,99,255,0.06), rgba(59,130,246,0.04)); border: 1px solid rgba(108,99,255,0.2)">
+           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem">
+             <div>
+               <h3 style="margin:0 0 0.25rem; display:flex; align-items:center; gap:0.5rem">
+                 📓 ${hasJournal ? 'Nhật ký học tập (Đã hoàn thành)' : 'Nhật ký học tập (Active Recall)'}
+               </h3>
+               <p style="color:var(--text-secondary); font-size:0.88rem; margin:0">
+                 ${hasJournal ? 'Bạn đã gửi nhật ký học tập cho buổi này. Bạn có thể xem hoặc chỉnh sửa lại.' : 'Hãy dành 5 phút viết lại những kiến thức đọng lại trong đầu bạn để khắc sâu trí nhớ nhé!'}
+               </p>
+             </div>
+             <a href="#/journal/write/${id}" class="btn ${hasJournal ? 'btn-secondary' : 'btn-primary'}">
+               ${hasJournal ? '✏️ Xem & Sửa Nhật ký' : '📝 Viết Nhật ký ngay'}
+             </a>
+           </div>
+         </div>
 
          <!-- Anonymous Feedback Section -->
          <div id="feedback-section" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border)">

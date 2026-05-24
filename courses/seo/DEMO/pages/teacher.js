@@ -85,6 +85,7 @@ export async function renderTeacher(app) {
     if (currentFormatIndex < formats.length) {
       img.src = `/images/teacher.${formats[currentFormatIndex]}`;
     } else {
+      // Fallback to avatar if all formats fail
       img.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=teacher';
       img.onerror = null;
     }

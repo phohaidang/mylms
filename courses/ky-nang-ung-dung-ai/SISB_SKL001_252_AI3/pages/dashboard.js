@@ -23,17 +23,23 @@ export async function renderDashboard(app) {
 
       <div style="margin-top: 2rem">
         <h2 style="margin-bottom: 1rem">🚀 Truy cập nhanh</h2>
-        <div class="grid grid-3">
+        <div class="grid grid-4">
           <a href="#/course" class="card" style="text-decoration:none">
             <h3>📚 Buổi học</h3>
             <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem">
-              Xem giáo án, slide 6 buổi học
+              Xem giáo án, slide buổi học
             </p>
           </a>
           <a href="#/ebook" class="card" style="text-decoration:none">
             <h3>📖 eBook</h3>
             <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem">
               Ôn tập theo SCQA + 3-Level Test
+            </p>
+          </a>
+          <a href="#/journal" class="card" style="text-decoration:none">
+            <h3>📓 Nhật ký</h3>
+            <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem">
+              Phản tư Active Recall, theo dõi tiến độ
             </p>
           </a>
           <a href="#/grades" class="card" style="text-decoration:none">
@@ -55,10 +61,11 @@ export async function renderDashboard(app) {
 
   // Load stats
   try {
-    const [quizzes, grades, courseData] = await Promise.all([
+    const [quizzes, grades, courseData, journals] = await Promise.all([
       api.get('/quizzes/my/attempts'),
       api.get('/grades/me'),
-      api.get('/courses/sessions')
+      api.get('/courses/sessions'),
+      api.get('/journal/my').catch(() => [])
     ]);
 
     // Update course info
@@ -67,16 +74,17 @@ export async function renderDashboard(app) {
       subtitle.innerText = `${courseData.course.code} — ${courseData.course.name} | ĐH Ngân Hàng TP.HCM`;
     }
 
+    const totalSessions = courseData ? courseData.course.total_sessions : 9;
     const quizDone = quizzes.length;
     const avgScore = quizzes.length > 0
       ? (quizzes.reduce((s, q) => s + q.score, 0) / quizzes.length).toFixed(1)
       : '—';
-    const examsDone = grades.exams?.length || 0;
+    const journalDone = journals.length;
     const totalScore = grades.manual?.total_score ?? '—';
 
     document.getElementById('stats').innerHTML = `
       <div class="stat-card">
-        <div class="stat-value">${quizDone}/6</div>
+        <div class="stat-value">${quizDone}/${totalSessions}</div>
         <div class="stat-label">Quiz đã làm</div>
       </div>
       <div class="stat-card">
@@ -84,8 +92,8 @@ export async function renderDashboard(app) {
         <div class="stat-label">Điểm TB Quiz</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">${examsDone}</div>
-        <div class="stat-label">Bài kiểm tra</div>
+        <div class="stat-value">${journalDone}/${totalSessions}</div>
+        <div class="stat-label">Nhật ký đã viết</div>
       </div>
       <div class="stat-card">
         <div class="stat-value">${totalScore}</div>
@@ -95,7 +103,7 @@ export async function renderDashboard(app) {
   } catch (err) {
     document.getElementById('stats').innerHTML = `
       <div class="alert alert-warning" style="grid-column: 1/-1">
-        Tạm thời không thể tải thống kê. Hãy bắt đầu làm quiz!
+        Tạm thời không thể tải thống kê. Hãy bắt đầu làm quiz và viết nhật ký!
       </div>
     `;
   }

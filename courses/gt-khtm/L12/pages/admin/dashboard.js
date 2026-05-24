@@ -31,19 +31,8 @@ export async function renderAdminDashboard(app) {
 
       <div style="display:flex;gap:1rem;margin-bottom:1.5rem">
         <a href="#/admin/grades" class="btn btn-primary">📋 Quản lý điểm</a>
+        <a href="#/admin/journal" class="btn btn-secondary" style="border-color:var(--accent); color:var(--text-primary); background:rgba(108,99,255,0.05)">📓 Giám sát Nhật ký</a>
         <a href="#/admin/evidence" class="btn btn-secondary">📦 Xuất minh chứng</a>
-      </div>
-
-      <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--accent)">
-        <h3 style="margin-bottom: 0.5rem">💾 Quản lý cơ sở dữ liệu</h3>
-        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.2rem">
-          Sao lưu Google Sheet sang Drive hoặc tải xuống toàn bộ dữ liệu dưới dạng JSON.
-        </p>
-        <div style="display:flex;gap:1rem">
-          <button id="btn-backup" class="btn btn-secondary" style="font-size: 0.9rem">🚀 Sao lưu lên Drive</button>
-          <button id="btn-export" class="btn btn-secondary" style="font-size: 0.9rem">📥 Tải JSON</button>
-        </div>
-        <div id="backup-status" style="margin-top:0.8rem; font-size:0.85rem; font-weight: 500"></div>
       </div>
 
       <h2 style="margin: 2rem 0 1rem">📊 Danh sách sinh viên</h2>
@@ -75,45 +64,6 @@ export async function renderAdminDashboard(app) {
 
   // Load goals
   renderAdminGoals(document.getElementById('admin-goals-section'));
-
-  // Event Listeners
-  const btnBackup = document.getElementById('btn-backup');
-  const btnExport = document.getElementById('btn-export');
-  const statusDiv = document.getElementById('backup-status');
-
-  btnBackup?.addEventListener('click', async () => {
-    btnBackup.disabled = true;
-    statusDiv.innerHTML = '<span style="color:var(--accent)">⏳ Đang tạo bản sao lưu...</span>';
-    try {
-      const res = await api.post('/admin/backup');
-      statusDiv.innerHTML = `<span style="color:var(--success)">✅ Thành công: ${res.name}</span>`;
-    } catch (err) {
-      statusDiv.innerHTML = '<span style="color:var(--danger)">❌ Lỗi: Không thể tạo bản sao lưu.</span>';
-    } finally {
-      btnBackup.disabled = false;
-    }
-  });
-
-  btnExport?.addEventListener('click', async () => {
-    btnExport.disabled = true;
-    statusDiv.innerHTML = '<span style="color:var(--accent)">⏳ Đang chuẩn bị dữ liệu...</span>';
-    try {
-      const data = await api.get('/admin/export');
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `lms_backup_${new Date().toISOString().split('T')[0]}.json`;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      statusDiv.innerHTML = '<span style="color:var(--success)">✅ Đã tải xuống file JSON.</span>';
-    } catch (err) {
-      statusDiv.innerHTML = '<span style="color:var(--danger)">❌ Lỗi: Không thể xuất dữ liệu.</span>';
-    } finally {
-      btnExport.disabled = false;
-    }
-  });
 }
 
 async function renderAdminGoals(container) {

@@ -24,6 +24,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const CORE_SERVER = join(ROOT, 'core', 'server');
+const CORE_CLIENT_SRC = join(ROOT, 'core', 'client', 'src');
 const COURSES_DIR = join(ROOT, 'courses');
 
 // Files/dirs that indicate a class directory (not a course-level dir)
@@ -92,6 +93,14 @@ function syncClass(courseName, className) {
   // 1. Sync core/server/ → class/_sync/server/
   const syncServerDest = join(classDir, '_sync', 'server');
   syncDir(CORE_SERVER, syncServerDest, 'core/server');
+  
+  // 1.5. Sync core/client/src/ → class/
+  console.log(`  🌐 Syncing core/client/src...`);
+  syncDir(join(CORE_CLIENT_SRC, 'pages'), join(classDir, 'pages'), 'client/pages');
+  syncDir(join(CORE_CLIENT_SRC, 'styles'), join(classDir, 'styles'), 'client/styles');
+  syncFile(join(CORE_CLIENT_SRC, 'main.js'), join(classDir, 'main.js'), 'client/main.js');
+  syncFile(join(CORE_CLIENT_SRC, 'router.js'), join(classDir, 'router.js'), 'client/router.js');
+  syncFile(join(CORE_CLIENT_SRC, 'api.js'), join(classDir, 'api.js'), 'client/api.js');
   
   // 2. Sync course content/ → class/content/
   const courseContent = join(courseDir, 'content');

@@ -9,7 +9,7 @@ export async function renderGrades(app) {
     <div class="container page">
       <div class="page-header">
         <h1 class="page-title">📋 Bảng điểm cá nhân</h1>
-        <p class="page-subtitle" id="course-subtitle-grades">Thương mại Xã hội — ITS717</p>
+        <p class="page-subtitle">BAF737 — Giới thiệu Khoa học máy tính</p>
       </div>
 
       <!-- Quiz Scores -->

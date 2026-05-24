@@ -18,6 +18,9 @@ import { renderAdminEvidence } from './pages/admin/evidence.js';
 import { renderTeacher } from './pages/teacher.js';
 import { renderStudentBoard } from './pages/student-board.js';
 import { renderGoalsPage } from './pages/goals.js';
+import { renderJournal } from './pages/journal.js';
+import { renderJournalWrite } from './pages/journal-write.js';
+import { renderAdminJournal } from './pages/admin/journal.js';
 
 
 // ── Navbar Component ──
@@ -60,6 +63,7 @@ function renderNavbar() {
             <li><a href="#/dashboard" class="${location.hash === '#/dashboard' ? 'active' : ''}">📊 Dashboard</a></li>
             <li><a href="#/course" class="${location.hash === '#/course' ? 'active' : ''}">📚 Buổi học</a></li>
             <li><a href="#/ebook" class="${location.hash.startsWith('#/ebook') ? 'active' : ''}">📖 eBook</a></li>
+            <li><a href="#/journal" class="${location.hash.startsWith('#/journal') ? 'active' : ''}">📓 Nhật ký</a></li>
             <li><a href="#/teacher" class="${location.hash === '#/teacher' ? 'active' : ''}">👨‍🏫 Thầy Đăng</a></li>
             <li><a href="#/board" class="${location.hash === '#/board' ? 'active' : ''}">🏆 Lớp học</a></li>
             <li><a href="#/grades" class="${location.hash === '#/grades' ? 'active' : ''}">📋 Bảng điểm</a></li>
@@ -134,12 +138,15 @@ route('/grades', requireAuth(withNavbar(renderGrades)));
 route('/teacher', requireAuth(withNavbar(renderTeacher)));
 route('/board', requireAuth(withNavbar(renderStudentBoard)));
 route('/goals', requireAuth(withNavbar(renderGoalsPage)));
+route('/journal', requireAuth(withNavbar(renderJournal)));
+route('/journal/write/:sessionId', requireAuth(withNavbar(renderJournalWrite)));
 
 
 // Admin pages
 route('/admin/dashboard', requireAuth(withNavbar(renderAdminDashboard)));
 route('/admin/grades', requireAuth(withNavbar(renderAdminGrades)));
 route('/admin/evidence', requireAuth(withNavbar(renderAdminEvidence)));
+route('/admin/journal', requireAuth(withNavbar(renderAdminJournal)));
 
 // ── Start ──
 startRouter();

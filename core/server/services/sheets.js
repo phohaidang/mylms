@@ -33,7 +33,8 @@ let mockData = {
   ebook_progress: [],
   course_config: [],
   session_feedback: [],
-  attendance_log: []
+  attendance_log: [],
+  session_journals: []
 };
 
 if (IS_MOCK && existsSync(MOCK_DB_PATH)) {

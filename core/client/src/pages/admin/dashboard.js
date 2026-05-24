@@ -31,6 +31,7 @@ export async function renderAdminDashboard(app) {
 
       <div style="display:flex;gap:1rem;margin-bottom:1.5rem">
         <a href="#/admin/grades" class="btn btn-primary">📋 Quản lý điểm</a>
+        <a href="#/admin/journal" class="btn btn-secondary" style="border-color:var(--accent); color:var(--text-primary); background:rgba(108,99,255,0.05)">📓 Giám sát Nhật ký</a>
         <a href="#/admin/evidence" class="btn btn-secondary">📦 Xuất minh chứng</a>
       </div>
 

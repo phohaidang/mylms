@@ -20,5 +20,10 @@ Thumbs.db
 # Data (local mock)
 data/_mock_db.json
 
-# Temp files
+# Temp files / Keys (secrets!)
 _tmp_key.json
+**/*_tmp_key*.json
+**/_tmp_*.json
+*.log
+*.tmp
+
