@@ -7,6 +7,13 @@ import { authenticate } from '../middleware/auth.js';
 
 const router = Router();
 
+const checkMustChangePassword = (val) => {
+  if (val === undefined || val === null) return false;
+  const s = String(val).trim().toLowerCase();
+  return s === 'true' || s === '1';
+};
+
+
 /**
  * POST /api/auth/register
  * Register a new student account (DISABLED)
@@ -93,7 +100,7 @@ router.post('/login', async (req, res) => {
         email: user.email,
         full_name: user.full_name,
         role: user.role,
-        must_change_password: !!user.must_change_password
+        must_change_password: checkMustChangePassword(user.must_change_password)
       }
     });
     
@@ -163,7 +170,7 @@ router.get('/me', authenticate, async (req, res) => {
       email: user.email,
       full_name: user.full_name,
       role: user.role,
-      must_change_password: !!user.must_change_password,
+      must_change_password: checkMustChangePassword(user.must_change_password),
       created_at: user.created_at,
       last_login: user.last_login
     });
