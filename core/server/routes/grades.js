@@ -26,12 +26,23 @@ router.get('/me', authenticate, async (req, res) => {
       g => g.student_id === req.user.student_id
     );
     
+    // Nhóm các lần làm quiz theo buổi học và chỉ chọn điểm số cao nhất (Best Score)
+    const bestQuizzesMap = {};
+    for (const a of quizAttempts) {
+      const session = parseInt(a.session_number);
+      const score = parseFloat(a.score || 0);
+      if (bestQuizzesMap[session] === undefined || score > bestQuizzesMap[session].score) {
+        bestQuizzesMap[session] = {
+          session,
+          score,
+          submitted_at: a.submitted_at
+        };
+      }
+    }
+    const quizzes = Object.values(bestQuizzesMap);
+    
     res.json({
-      quizzes: quizAttempts.map(a => ({
-        session: parseInt(a.session_number),
-        score: parseFloat(a.score),
-        submitted_at: a.submitted_at
-      })),
+      quizzes,
       exams: examAttempts.map(a => ({
         exam_id: a.exam_id,
         score: parseFloat(a.score),
@@ -68,8 +79,18 @@ router.get('/admin/all', authenticate, adminOnly, async (req, res) => {
         const studentExams = examAttempts.filter(a => a.student_id === s.student_id);
         const manual = manualGrades.find(g => g.student_id === s.student_id);
         
-        const avgQuiz = studentQuizzes.length > 0
-          ? studentQuizzes.reduce((sum, a) => sum + parseFloat(a.score), 0) / studentQuizzes.length
+        // Nhóm theo buổi học và lấy điểm cao nhất của từng buổi học
+        const bestScores = {};
+        for (const a of studentQuizzes) {
+          const sess = a.session_number;
+          const score = parseFloat(a.score || 0);
+          if (bestScores[sess] === undefined || score > bestScores[sess]) {
+            bestScores[sess] = score;
+          }
+        }
+        const bestScoresArr = Object.values(bestScores);
+        const avgQuiz = bestScoresArr.length > 0
+          ? bestScoresArr.reduce((sum, s) => sum + s, 0) / bestScoresArr.length
           : null;
         
         return {
@@ -77,7 +98,7 @@ router.get('/admin/all', authenticate, adminOnly, async (req, res) => {
           full_name: s.full_name,
           email: s.email,
           quiz_avg: avgQuiz ? Math.round(avgQuiz * 100) / 100 : null,
-          quiz_count: studentQuizzes.length,
+          quiz_count: bestScoresArr.length,
           exams: studentExams.map(e => ({ exam_id: e.exam_id, score: parseFloat(e.score) })),
           manual: manual || null
         };

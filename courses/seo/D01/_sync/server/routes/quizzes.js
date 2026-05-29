@@ -43,20 +43,15 @@ router.get('/:sessionId', authenticate, async (req, res) => {
       return res.status(404).json({ error: 'Chưa có quiz cho buổi học này' });
     }
     
-    // Check if already attempted
-    const existing = await db.findOne('quiz_attempts',
+    // Check attempts limit (max 5)
+    const attempts = await db.find('quiz_attempts',
       a => a.student_id === req.user.student_id && parseInt(a.session_number) === sessionId
     );
     
-    if (existing) {
+    if (attempts.length >= 5) {
       return res.status(409).json({
-        error: 'Bạn đã làm quiz này rồi',
-        attempt: {
-          score: existing.score,
-          total_questions: existing.total_questions,
-          correct_count: existing.correct_count,
-          submitted_at: existing.submitted_at
-        }
+        error: 'Bạn đã làm quiz này tối đa 5 lần rồi',
+        attempt_count: attempts.length
       });
     }
     
@@ -81,6 +76,7 @@ router.get('/:sessionId', authenticate, async (req, res) => {
       title: bank.title,
       time_limit_minutes: bank.time_limit_minutes || 10,
       total_questions: questions.length,
+      attempt_number: attempts.length + 1,
       questions
     });
   } catch (err) {
@@ -102,12 +98,12 @@ router.post('/:sessionId/submit', authenticate, async (req, res) => {
       return res.status(400).json({ error: 'Vui lòng gửi câu trả lời' });
     }
     
-    // Check duplicate
-    const existing = await db.findOne('quiz_attempts',
+    // Check attempts limit (max 5)
+    const attempts = await db.find('quiz_attempts',
       a => a.student_id === req.user.student_id && parseInt(a.session_number) === sessionId
     );
-    if (existing) {
-      return res.status(409).json({ error: 'Bạn đã làm quiz này rồi' });
+    if (attempts.length >= 5) {
+      return res.status(409).json({ error: 'Bạn đã làm quiz này tối đa 5 lần rồi' });
     }
     
     // Load answer key (server-side only)
@@ -153,7 +149,8 @@ router.post('/:sessionId/submit', authenticate, async (req, res) => {
       score,
       total_questions: totalQuestions,
       correct_count: correctCount,
-      submitted_at: attempt.submitted_at
+      submitted_at: attempt.submitted_at,
+      attempt_number: attempts.length + 1
     });
   } catch (err) {
     console.error('Quiz submit error:', err);
@@ -179,6 +176,59 @@ router.get('/my/attempts', authenticate, async (req, res) => {
       submitted_at: a.submitted_at
     })));
   } catch (err) {
+    res.status(500).json({ error: 'Lỗi hệ thống' });
+  }
+});
+
+/**
+ * GET /api/quizzes/:sessionId/results
+ * Get all attempts of current student for a session
+ * If student has reached 5 attempts, also reveal the question bank with correct answers and explanations
+ */
+router.get('/:sessionId/results', authenticate, async (req, res) => {
+  try {
+    const sessionId = parseInt(req.params.sessionId);
+    const attempts = await db.find('quiz_attempts',
+      a => a.student_id === req.user.student_id && parseInt(a.session_number) === sessionId
+    );
+    
+    // Sắp xếp các lần làm bài tăng dần theo thời gian nộp
+    attempts.sort((a, b) => new Date(a.submitted_at) - new Date(b.submitted_at));
+    
+    const attemptCount = attempts.length;
+    const revealAnswers = attemptCount >= 5;
+    
+    const response = {
+      session: sessionId,
+      attempt_count: attemptCount,
+      reveal_answers: revealAnswers,
+      attempts: attempts.map((a, idx) => ({
+        attempt_number: idx + 1,
+        score: parseFloat(a.score),
+        total_questions: parseInt(a.total_questions),
+        correct_count: parseInt(a.correct_count),
+        submitted_at: a.submitted_at,
+        answers: JSON.parse(a.answers_json || '[]')
+      }))
+    };
+    
+    if (revealAnswers) {
+      const bank = loadQuestions(sessionId, req.app.locals.contentDir);
+      if (bank) {
+        response.questions = bank.questions.map(q => ({
+          id: q.id,
+          type: q.type,
+          question: q.question,
+          options: q.options || null,
+          correct: q.correct,
+          explanation: q.explanation || ''
+        }));
+      }
+    }
+    
+    res.json(response);
+  } catch (err) {
+    console.error('Get results error:', err);
     res.status(500).json({ error: 'Lỗi hệ thống' });
   }
 });

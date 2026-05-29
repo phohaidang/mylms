@@ -26,11 +26,20 @@ router.get('/students', authenticate, async (req, res) => {
         // Goal
         const goal = goals.find(g => g.student_id === s.student_id);
         
-        // Quiz stats
+        // Quiz stats: group attempts by session and select the highest score for each session
         const studentQuizzes = quizAttempts.filter(a => a.student_id === s.student_id);
-        const quizCount = studentQuizzes.length;
+        const bestScores = {};
+        for (const a of studentQuizzes) {
+          const sess = a.session_number;
+          const score = parseFloat(a.score || 0);
+          if (bestScores[sess] === undefined || score > bestScores[sess]) {
+            bestScores[sess] = score;
+          }
+        }
+        const bestScoresArr = Object.values(bestScores);
+        const quizCount = bestScoresArr.length;
         const quizAvg = quizCount > 0
-          ? Math.round(studentQuizzes.reduce((sum, a) => sum + parseFloat(a.score || 0), 0) / quizCount * 10) / 10
+          ? Math.round(bestScoresArr.reduce((sum, scoreVal) => sum + scoreVal, 0) / quizCount * 10) / 10
           : null;
         
         // Exam stats
