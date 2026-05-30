@@ -93,7 +93,9 @@ export async function renderQuizResult(app, { sessionId }) {
               if (q.type === 'mc') {
                 isUserCorrect = userSelected === q.correct;
               } else if (q.type === 'tf') {
-                isUserCorrect = userSelected === q.correct;
+                const normSelected = (userSelected === true || userSelected === 'true' || userSelected === 'A');
+                const normCorrect = (q.correct === true || q.correct === 'true' || q.correct === 'A');
+                isUserCorrect = normSelected === normCorrect;
               }
 
               return `
@@ -145,8 +147,8 @@ export async function renderQuizResult(app, { sessionId }) {
                     <div style="display:flex;gap:0.75rem">
                       <!-- Đúng (True) Option -->
                       ${(() => {
-                        const isTrueCorrect = q.correct === true;
-                        const isTrueSelected = userSelected === true;
+                        const isTrueCorrect = (q.correct === true || q.correct === 'true' || q.correct === 'A');
+                        const isTrueSelected = (userSelected === true || userSelected === 'true' || userSelected === 'A');
                         
                         let optionStyle = 'flex:1;justify-content:center;cursor:default;';
                         let badgeHTML = '';
@@ -173,8 +175,8 @@ export async function renderQuizResult(app, { sessionId }) {
                       
                       <!-- Sai (False) Option -->
                       ${(() => {
-                        const isFalseCorrect = q.correct === false;
-                        const isFalseSelected = userSelected === false;
+                        const isFalseCorrect = (q.correct === false || q.correct === 'false' || q.correct === 'B');
+                        const isFalseSelected = (userSelected === false || userSelected === 'false' || userSelected === 'B');
                         
                         let optionStyle = 'flex:1;justify-content:center;cursor:default;';
                         let badgeHTML = '';

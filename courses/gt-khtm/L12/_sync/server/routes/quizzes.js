@@ -122,8 +122,12 @@ router.post('/:sessionId/submit', authenticate, async (req, res) => {
       
       if (question.type === 'mc' && ans.selected === question.correct) {
         correctCount++;
-      } else if (question.type === 'tf' && ans.selected === question.correct) {
-        correctCount++;
+      } else if (question.type === 'tf') {
+        const normSelected = (ans.selected === true || ans.selected === 'true' || ans.selected === 'A');
+        const normCorrect = (question.correct === true || question.correct === 'true' || question.correct === 'A');
+        if (normSelected === normCorrect) {
+          correctCount++;
+        }
       }
     }
     
@@ -257,9 +261,18 @@ router.get('/admin/statistics', authenticate, adminOnly, async (req, res) => {
       for (const ans of answers) {
          const q = bank.questions.find(x => x.id === ans.question_id);
          if (!q) continue;
-         if (ans.selected !== q.correct) {
-            missedCounts[sessionId][ans.question_id] = (missedCounts[sessionId][ans.question_id] || 0) + 1;
-         }
+          let isCorrect = false;
+          if (q.type === 'mc') {
+             isCorrect = ans.selected === q.correct;
+          } else if (q.type === 'tf') {
+             const normSelected = (ans.selected === true || ans.selected === 'true' || ans.selected === 'A');
+             const normCorrect = (q.correct === true || q.correct === 'true' || q.correct === 'A');
+             isCorrect = normSelected === normCorrect;
+          }
+          
+          if (!isCorrect) {
+             missedCounts[sessionId][ans.question_id] = (missedCounts[sessionId][ans.question_id] || 0) + 1;
+          }
       }
     }
     
@@ -349,16 +362,18 @@ router.get('/admin/export-overview', async (req, res) => {
            } else if (q.type === 'tf') {
                const trueText = `A. Đúng`;
                const falseText = `B. Sai`;
-               docChildren.push(
-                 new Paragraph({
-                   children: [new TextRun({ text: trueText, bold: q.correct==='A', color: q.correct==='A'?'1d4ed8':'000000' })],
-                   indent: { left: 720 }
-                 }),
-                 new Paragraph({
-                   children: [new TextRun({ text: falseText, bold: q.correct==='B', color: q.correct==='B'?'1d4ed8':'000000' })],
-                   indent: { left: 720 }
-                 })
-               );
+                const isTrue = q.correct === 'A' || q.correct === true || q.correct === 'true';
+                const isFalse = q.correct === 'B' || q.correct === false || q.correct === 'false';
+                docChildren.push(
+                  new Paragraph({
+                    children: [new TextRun({ text: trueText, bold: isTrue, color: isTrue ? '1d4ed8' : '000000' })],
+                    indent: { left: 720 }
+                  }),
+                  new Paragraph({
+                    children: [new TextRun({ text: falseText, bold: isFalse, color: isFalse ? '1d4ed8' : '000000' })],
+                    indent: { left: 720 }
+                  })
+                );
            }
            
            const explanation = q.explanation || "Chưa cập nhật giải thích.";
