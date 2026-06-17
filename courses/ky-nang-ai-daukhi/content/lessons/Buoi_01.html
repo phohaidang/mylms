@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi Sáng — Kỹ Năng AI Cho Chuyên Viên Văn Phòng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --paper: #F7F2E7;
+    --paper-shade: #EFE8D6;
+    --ink: #1B1714;
+    --ink-soft: #4A413A;
+    --rule: #C8BCA3;
+    --oxblood: #7A1F1F;
+    --oxblood-soft: #9B3838;
+    --gold: #B8893A;
+    --gold-soft: #D4A85F;
+    --green: #2F4A36;
+    --warm-gray: #8B7E6F;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
+    background-image: 
+        radial-gradient(ellipse at top left, rgba(184,137,58,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(122,31,31,0.03) 0%, transparent 50%);
+    min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.frame {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 60px 48px 120px;
+    position: relative;
+}
+
+@media (max-width: 720px) {
+    .frame { padding: 40px 24px 80px; }
+    body { font-size: 16px; }
+}
+
+/* ===== Hero / Cover ===== */
+.cover {
+    position: relative;
+    margin-bottom: 80px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+}
+
+.cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.cover-meta-left { line-height: 1.9; }
+.cover-meta-right { text-align: right; line-height: 1.9; }
+
+.cover-meta strong {
+    color: var(--oxblood);
+    font-weight: 600;
+}
+
+.session-roman {
+    font-family: 'Cormorant Garamond', 'Garamond', serif;
+    font-size: 220px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 0.9;
+    color: var(--gold);
+    margin-bottom: 0;
+    letter-spacing: -0.04em;
+    opacity: 0.9;
+}
+
+.session-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 16px;
+}
+
+.session-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 24px 0 32px;
+    letter-spacing: -0.02em;
+    max-width: 720px;
+}
+
+@media (max-width: 720px) {
+    .session-roman { font-size: 140px; }
+    .session-title { font-size: 36px; }
+}
+
+.session-subtitle {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 640px;
+    margin-bottom: 40px;
+}
+
+.cover-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+}
+
+.cover-stat { text-align: left; }
+
+.cover-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--oxblood);
+    line-height: 1;
+}
+
+.cover-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+    .cover-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== Section ===== */
+section {
+    margin-bottom: 72px;
+    scroll-margin-top: 40px;
+}
+
+.section-num {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.section-num::before {
+    content: "§ ";
+    color: var(--oxblood);
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+}
+
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--oxblood);
+    margin-top: 40px;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    text-transform: none;
+}
+
+h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-top: 24px;
+    margin-bottom: 10px;
+}
+
+p { margin-bottom: 18px; max-width: 720px; }
+
+p.lede {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 28px;
+}
+
+p.lede::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    margin-right: 8px;
+    margin-top: 4px;
+    color: var(--oxblood);
+    font-style: normal;
+    font-weight: 500;
+}
+
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 28px;
+    max-width: 720px;
+}
+
+li { margin-bottom: 8px; padding-left: 6px; }
+
+ul li::marker { color: var(--gold); }
+ol li::marker { color: var(--oxblood); font-weight: 600; }
+
+strong { color: var(--ink); font-weight: 700; }
+em { color: var(--ink-soft); }
+
+/* ===== Blockquote / Instructor speech ===== */
+blockquote {
+    margin: 28px 0;
+    padding: 0 0 0 28px;
+    border-left: 3px solid var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 720px;
+}
+
+blockquote p { 
+    font-family: inherit; 
+    font-size: inherit; 
+    line-height: inherit;
+    margin-bottom: 12px;
+}
+
+blockquote p:last-child { margin-bottom: 0; }
+
+blockquote::before {
+    content: "❝";
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--oxblood);
+    margin-right: 8px;
+    font-size: 28px;
+    line-height: 0;
+    vertical-align: -8px;
+}
+
+blockquote ul, blockquote ol {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 1.6;
+}
+
+/* ===== Callout / Notes ===== */
+.callout {
+    background: var(--paper-shade);
+    border-radius: 2px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-left: 3px solid var(--gold);
+}
+
+.callout-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.callout p { margin-bottom: 8px; font-size: 15.5px; }
+.callout p:last-child { margin-bottom: 0; }
+
+.callout.note {
+    border-left-color: var(--green);
+}
+.callout.note .callout-label { color: var(--green); }
+
+.callout.instructor {
+    border-left-color: var(--oxblood);
+    background: rgba(122, 31, 31, 0.04);
+}
+.callout.instructor .callout-label { color: var(--oxblood); }
+
+/* ===== Stage direction ===== */
+.stage-direction {
+    font-style: italic;
+    color: var(--warm-gray);
+    margin: 16px 0;
+    font-size: 15px;
+    padding-left: 28px;
+}
+
+/* ===== Tables ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+table thead {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+}
+
+table th {
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    vertical-align: bottom;
+}
+
+table tbody tr {
+    border-bottom: 1px solid var(--rule);
+}
+
+table tbody tr:last-child {
+    border-bottom: 2px solid var(--ink);
+}
+
+table td {
+    padding: 14px;
+    vertical-align: top;
+    color: var(--ink);
+}
+
+table td:first-child {
+    font-weight: 600;
+    color: var(--oxblood);
+    white-space: nowrap;
+}
+
+/* ===== Code / Pre blocks ===== */
+pre {
+    background: var(--ink);
+    color: var(--gold-soft);
+    padding: 28px 32px;
+    margin: 24px 0;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9em;
+    background: var(--paper-shade);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--oxblood);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* ===== Concept / Key idea ===== */
+.concept {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 24px 0;
+    margin: 28px 0;
+    text-align: center;
+}
+
+.concept-formula {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.3;
+}
+
+.concept-formula .accent { color: var(--oxblood); font-weight: 600; }
+.concept-formula .gold { color: var(--gold); font-weight: 600; }
+
+/* ===== Divider ===== */
+.divider {
+    text-align: center;
+    margin: 64px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+}
+
+.divider-thin {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 48px 0;
+}
+
+/* ===== Checklist ===== */
+.checklist {
+    list-style: none;
+    padding-left: 0;
+    max-width: 720px;
+}
+
+.checklist li {
+    padding: 8px 0 8px 32px;
+    position: relative;
+    border-bottom: 1px dashed var(--rule);
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--oxblood);
+    font-size: 18px;
+}
+
+/* ===== Nav pills ===== */
+.nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 32px 0;
+}
+
+.nav-pill {
+    padding: 8px 14px;
+    background: var(--paper-shade);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-radius: 1px;
+}
+
+.nav-pill:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+}
+
+/* ===== Tag ===== */
+.tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--paper-shade);
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+.tag.gold { border-color: var(--gold-soft); color: var(--oxblood); background: rgba(184,137,58,0.08); }
+
+/* ===== Footer ===== */
+footer {
+    margin-top: 100px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--warm-gray);
+    text-align: center;
+    line-height: 1.8;
+}
+
+footer .ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* ===== Print ===== */
+@media print {
+    body { 
+        background: white; 
+        font-size: 12pt;
+        background-image: none;
+    }
+    .frame { padding: 0; max-width: 100%; }
+    .session-roman { font-size: 100pt; }
+    .session-title { font-size: 24pt; }
+    h2 { font-size: 18pt; }
+    h3 { font-size: 14pt; }
+    section { break-inside: avoid-page; }
+    pre { break-inside: avoid; }
+    .callout { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="frame">
+
+<!-- ═══════════════════════════ COVER ═══════════════════════════ -->
+<header class="cover">
+    <div class="cover-meta">
+        <div class="cover-meta-left">
+            Kỹ Năng Ứng Dụng AI · Chuyên viên văn phòng<br>
+            Tập đoàn Dầu khí<br>
+            <strong>Kịch bản giảng dạy</strong> · 2026
+        </div>
+        <div class="cover-meta-right">
+            Buổi Sáng<br>
+            8:30 – 11:30
+        </div>
+    </div>
+
+    <div class="session-label">Kịch bản buổi sáng</div>
+    <div class="session-roman">I</div>
+    <h1 class="session-title">Kỹ Năng AI Cho Chuyên Viên Văn Phòng</h1>
+    <p class="session-subtitle">Buổi Sáng — Chia sẻ, đồng cảm, đồng hành. Từ niềm tin đến kỹ năng thực chiến với AI tạo sinh.</p>
+
+    <div class="cover-stats">
+        <div class="cover-stat">
+            <div class="cover-stat-value">3h</div>
+            <div class="cover-stat-label">Thời lượng</div>
+        </div>
+        <div class="cover-stat">
+            <div class="cover-stat-value">60–70%</div>
+            <div class="cover-stat-label">Demo</div>
+        </div>
+        <div class="cover-stat">
+            <div class="cover-stat-value">20–30%</div>
+            <div class="cover-stat-label">Thực hành</div>
+        </div>
+        <div class="cover-stat">
+            <div class="cover-stat-value">10%</div>
+            <div class="cover-stat-label">Lý thuyết</div>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════ NAV PILLS ═══════════════════════════ -->
+<nav class="nav-pills">
+    <a class="nav-pill" href="#triet-ly">Triết lý thiết kế</a>
+    <a class="nav-pill" href="#timeline">Timeline</a>
+    <a class="nav-pill" href="#pha-bang">Phá băng</a>
+    <a class="nav-pill" href="#cau-chuyen">Câu chuyện của Đăng</a>
+    <a class="nav-pill" href="#muc-tieu">Thu thập mục tiêu</a>
+    <a class="nav-pill" href="#nen-tang">Nền tảng AI</a>
+    <a class="nav-pill" href="#mt1">Mục tiêu 1: Email</a>
+    <a class="nav-pill" href="#crisp">CRISP</a>
+    <a class="nav-pill" href="#demo">Demo</a>
+    <a class="nav-pill" href="#thuc-hanh">Thực hành</a>
+    <a class="nav-pill" href="#wrap-up">Wrap-up</a>
+</nav>
+
+
+<!-- ═══════════════════════════ PHẦN 0 ═══════════════════════════ -->
+<section id="triet-ly">
+    <span class="section-num">Phần 0</span>
+    <h2>Triết lý thiết kế</h2>
+    <p><em>(Đọc trước khi giảng)</em></p>
+
+    <p>Ba nguyên tắc thiết kế xuyên suốt buổi học:</p>
+
+    <ol>
+        <li><strong>Niềm tin trước, kiến thức sau.</strong> Chuyên viên đi làm đã nghe quá nhiều khóa học. Họ phòng thủ. Họ ngồi đó nghĩ "lại một buổi đào tạo nữa". Câu chuyện cá nhân là chìa khóa — khi họ thấy bạn cũng từng loay hoay giống họ, bức tường phòng thủ tự hạ.</li>
+        <li><strong>Mục tiêu của HỌ, không phải giáo án của bạn.</strong> Ghi mục tiêu họ nói lên bảng (dùng note-dán), giải quyết từng cái. Khi họ thấy nội dung buổi học là câu trả lời cho chính câu hỏi của họ, sự chú ý tăng gấp bội.</li>
+        <li><strong>Quy trình lặp 3 bước:</strong> Bản chất (lý thuyết ngắn) → Framework (cách dùng) → Demo + Case study. Lặp cho mỗi mục tiêu. Không bao giờ lý thuyết quá 5 phút liên tục.</li>
+    </ol>
+
+    <div class="concept">
+        <div class="concept-formula">
+            <span class="accent">Nguyên tắc vàng:</span> "Bạn là <span class="gold">Leader</span>, AI là <span class="gold">Cộng sự</span>."
+        </div>
+    </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+
+<!-- ═══════════════════════════ TIMELINE ═══════════════════════════ -->
+<section id="timeline">
+    <span class="section-num">Timeline</span>
+    <h2>Timeline buổi sáng</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Thời gian</th>
+                <th>Nội dung</th>
+                <th>Mục đích</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>8:30 – 8:35</td>
+                <td>Phá băng</td>
+                <td>Hạ phòng thủ</td>
+            </tr>
+            <tr>
+                <td>8:35 – 8:51</td>
+                <td>Câu chuyện của Đăng (4 nhịp, ~16')</td>
+                <td>Xây niềm tin</td>
+            </tr>
+            <tr>
+                <td>8:51 – 9:03</td>
+                <td>Thu thập mục tiêu (note-dán + cluster)</td>
+                <td>Hợp đồng tâm lý</td>
+            </tr>
+            <tr>
+                <td>9:03 – 9:05</td>
+                <td>Chốt lộ trình</td>
+                <td>Bản đồ cả ngày</td>
+            </tr>
+            <tr>
+                <td>9:05 – 9:25</td>
+                <td>Nền tảng: AI tạo sinh là gì</td>
+                <td>Nền lý thuyết tối thiểu</td>
+            </tr>
+            <tr>
+                <td>9:25 – 9:35</td>
+                <td>☕ Giải lao</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9:35 – 9:40</td>
+                <td>Bản chất: vì sao email là sở trường AI</td>
+                <td>Mở Mục tiêu 1</td>
+            </tr>
+            <tr>
+                <td>9:40 – 9:55</td>
+                <td>CRISP framework</td>
+                <td>Công cụ tư duy</td>
+            </tr>
+            <tr>
+                <td>9:55 – 10:25</td>
+                <td>Demo Claude + so sánh ChatGPT / Gemini</td>
+                <td>Thấy tận mắt + xóa nỗi lo</td>
+            </tr>
+            <tr>
+                <td>10:25 – 10:45</td>
+                <td>Thực hành prompt trên giấy</td>
+                <td>Tự làm được</td>
+            </tr>
+            <tr>
+                <td>10:45 – 11:00</td>
+                <td>Chia sẻ kết quả + Bản đồ công cụ AI</td>
+                <td>Củng cố + tổng quan</td>
+            </tr>
+            <tr>
+                <td>11:00 – 11:15</td>
+                <td>Kỹ thuật Iterative + Negative prompt</td>
+                <td>Nâng cao thực tế</td>
+            </tr>
+            <tr>
+                <td>11:15 – 11:30</td>
+                <td>Wrap-up sáng + Preview chiều</td>
+                <td>Tóm tắt</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+
+<!-- ═══════════════════════════ KỊCH BẢN CHI TIẾT ═══════════════════════════ -->
+<section>
+    <span class="section-num">Kịch bản</span>
+    <h2>Kịch bản chi tiết</h2>
+</section>
+
+
+<!-- ═══════════════════════════ PHÁ BĂNG ═══════════════════════════ -->
+<section id="pha-bang">
+    <span class="section-num">8:30 – 8:35</span>
+    <h2>Phá băng</h2>
+
+    <p><strong>Mục đích:</strong> Không dạy gì. Chỉ để họ cười, thở ra, hạ phòng thủ. Năm phút này quyết định năng lượng cả buổi sáng.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Chào quý anh/chị. Trước khi mình bắt đầu, cho Đăng hỏi một câu rất thật: tối qua, có anh chị nào mang việc về nhà không? Email chưa trả lời, báo cáo còn dang dở… Giơ tay Đăng xem nào."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Vài người giơ tay, cười. Bạn cũng giơ tay theo.)</p>
+
+    <blockquote>
+        <p>"Cảm ơn quý anh/chị đã thành thật. Đăng cũng vậy. Và câu chuyện hôm nay bắt đầu chính từ những buổi tối như thế."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Đừng kéo dài. Câu hỏi phá băng chỉ là cánh cửa, không phải căn phòng. Nếu phòng vẫn im, bạn tự kể luôn: "Đăng tối qua còn ngồi sửa slide tới 11 giờ đêm đấy ạ." Mục đích là phá sự im lặng ban đầu, không phải ép mọi người tương tác.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ CÂU CHUYỆN CỦA ĐĂNG ═══════════════════════════ -->
+<section id="cau-chuyen">
+    <span class="section-num">8:35 – 8:51</span>
+    <h2>Câu chuyện của Đăng <em style="font-size: 0.6em; color: var(--warm-gray);">(4 nhịp, ~16 phút)</em></h2>
+
+    <p><strong>Mục đích:</strong> Xây niềm tin bằng câu chuyện thật. 3 tầng escalation cảm xúc: <strong>Công việc → Gia đình → Nội tâm</strong>. Mỗi tầng đi sâu hơn, chạm vào lớp phòng thủ kế tiếp.</p>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Đây là phần quan trọng nhất buổi sáng. Nếu phần này thành công, phần còn lại sẽ nhẹ nhàng. Hãy kể như đang ngồi cà phê với đồng nghiệp, không phải đang thuyết trình.</p>
+    </div>
+
+    <!-- Nhịp 1 -->
+    <h3>Nhịp 1 — "Đăng từng ở đúng vị trí đó" <em style="font-size: 0.65em;">(~3 phút)</em></h3>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Cách đây không lâu, Đăng quay lại giảng đường sau 6 tháng nghiên cứu. Và Đăng nhận ra mọi thứ đã thay đổi — nội dung cũ lỗi thời, AI tiến quá nhanh, giữ bài giảng cũ là có lỗi với sinh viên."</p>
+        <p>"Trước mặt Đăng: 6 lớp trong 1 tuần. 4 môn khác nhau. Mỗi lớp cần hệ thống học tập riêng. Ở nhà: 3 đứa con, 3 trường khác nhau, phải có mặt 7 giờ sáng. Vợ vừa phẫu thuật xong."</p>
+        <p>"Bất kỳ ai ở vị trí Đăng lúc đó đều nghĩ: không thể nào kịp. Có anh chị nào đang cảm thấy công việc nhiều hơn thời gian mình có không ạ?"</p>
+    </blockquote>
+
+    <p class="stage-direction">(Dừng. Để họ gật. Không vội.)</p>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Câu hỏi cuối là câu hỏi tu từ — bạn không cần ai trả lời to. Chỉ cần thấy vài cái gật đầu là đủ. Cái gật đầu đó = "tôi hiểu anh, vì tôi cũng vậy". Đó là nền tảng niềm tin.</p>
+    </div>
+
+    <hr class="divider-thin">
+
+    <!-- Nhịp 2 -->
+    <h3>Nhịp 2 — "Đăng cũng từng dùng AI sai" <em style="font-size: 0.65em;">(~3 phút)</em> ⭐</h3>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Đăng cũng từng thử AI. Mở ChatGPT, gõ 'viết giúp cái email', 'tóm tắt cái báo cáo này'. Kết quả: chung chung, sáo rỗng, đọc là biết máy viết. Phải sửa gần hết. Đăng từng nghĩ: chắc AI bị thổi phồng thôi."</p>
+        <p>"Có anh chị nào ở đây từng thử rồi cũng thất vọng giống Đăng không?"</p>
+    </blockquote>
+
+    <p class="stage-direction">(Nhiều người gật — khoảnh khắc này họ thấy Đăng = họ. Đây là điểm chuyển.)</p>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Nhịp 2 này rất quan trọng vì nó phá luôn rào cản "ông giảng viên biết hết, tôi không biết gì". Khi bạn thừa nhận mình từng dùng sai, họ yên tâm rằng buổi học này không phải để phán xét trình độ ai.</p>
+    </div>
+
+    <hr class="divider-thin">
+
+    <!-- Nhịp 3 -->
+    <h3>Nhịp 3 — Bước ngoặt <em style="font-size: 0.65em;">(~8 phút)</em> ⭐⭐ — Ba tầng cảm xúc</h3>
+
+    <!-- 3a -->
+    <h5>3a — Công việc (lý trí, ~3 phút)</h5>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Bước ngoặt không phải Đăng tìm AI xịn hơn. Mà Đăng học cách LÀM VIỆC CÙNG nó. Đăng bắt đầu xây dựng cho mình một hệ thống — Đăng hay gọi vui là 'kho tri thức cá nhân'. Mỗi ngày ghi lại một insight, một kinh nghiệm, một cách nghĩ. Dần dần, AI hiểu bối cảnh của Đăng ngày càng rõ."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Mở Obsidian, show nhanh 30 giây — graph view hoặc folder structure.)</p>
+
+    <blockquote>
+        <p>"Đây là kho tri thức Đăng xây suốt mấy tháng qua. Mỗi ngày thêm một mẩu. Khi AI đọc hết những thứ này, nó trở thành một cộng sự hiểu Đăng."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Đóng Obsidian ngay. KHÔNG giải thích thêm về cách dùng Obsidian. Đây chỉ là "flash" — gieo hạt giống tò mò.)</p>
+
+    <blockquote>
+        <p>"Và rồi tuần đầu quay lại dạy — 6 lớp, 4 môn — Đăng xây 6 hệ thống học tập riêng cho 6 lớp trong 1 tuần. Việc mà bình thường cần cả đội lập trình nhiều tuần. Kịch bản bài giảng, slide, học liệu — tất cả hoàn thành trước ngày lên lớp. Sinh viên phản hồi tích cực nhất trong suốt sự nghiệp. Lớp Kỹ năng AI đạt 100% sinh viên trên 7.5 điểm."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Đoạn Obsidian chỉ flash 30 giây — đủ để họ "ồ" nhưng không đủ để họ hỏi chi tiết. Nếu ai hỏi, nói: "Đăng sẽ quay lại cái này chiều nay." Giữ momentum câu chuyện.</p>
+    </div>
+
+    <hr class="divider-thin">
+
+    <!-- 3b -->
+    <h5>3b — Gia đình (tim, ~1.5 phút)</h5>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Nhưng AI không chỉ giúp Đăng trong công việc. Nó giúp Đăng ở nơi quan trọng hơn: gia đình."</p>
+        <p>"Con trai Đăng — giữa kỳ năm lớp 3: Tiếng Việt 5 điểm, Toán 3 điểm. Cả nhà hoảng. Nhưng thay vì hoảng theo, Đăng mở kho tri thức cá nhân, kể hết cho nó nghe, nhờ nó giúp phân tích. Và nó giúp Đăng nhận ra: con không mất căn bản — con thiếu cẩn trọng. Hai vấn đề khác nhau hoàn toàn, cách giải quyết khác nhau hoàn toàn."</p>
+        <p>"Đăng xây một ứng dụng nhỏ để hai cha con cùng luyện chữ mỗi ngày. Không phải ba dạy con — vì chữ ba cũng xấu — mà ba ngồi cạnh con, cùng tập, cùng nộp bài, cùng nhận chấm."</p>
+        <p>"Cuối kỳ: Tiếng Việt 8, Toán 9. Thầy gọi tên con trước cả lớp — vì sự tiến bộ 'quá khó tin'. Và con tự chạy về nói: 'Ba ơi, con đã làm được!'"</p>
+    </blockquote>
+
+    <p class="stage-direction">(Dừng 2 giây. Để cảm xúc lắng. Không vội nói tiếp.)</p>
+
+    <blockquote>
+        <p>"AI không viết lá thư tay cho con Đăng. AI không ngồi cạnh con tập viết. Nhưng AI giúp Đăng nhìn đúng vấn đề, tìm đúng cách, và có thời gian để HIỆN DIỆN bên con."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Đoạn Ben ngắn gọn, cảm xúc, dừng đúng lúc. KHÔNG giải thích chi tiết ứng dụng luyện chữ. Câu kết "HIỆN DIỆN bên con" là câu neo — để họ tự chiếu vào gia đình mình.</p>
+    </div>
+
+    <hr class="divider-thin">
+
+    <!-- 3c -->
+    <h5>3c — Nội tâm (tâm hồn, ~3 phút)</h5>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Và còn một tầng nữa, sâu hơn."</p>
+        <p>"Có một lần Đăng đọc feedback sinh viên. 13 bạn viết, đa số tích cực. Nhưng 4 bạn phàn nàn. Và trong Đăng lập tức bật lên suy nghĩ: 'Mình đã cố hết sức mà vẫn bị chê? Chắc mấy bạn này chưa chủ động!' Đăng lên kế hoạch buổi sau sẽ 'hỏi lại' mấy bạn đó bằng mấy câu hỏi gai góc."</p>
+        <p>"Nghe quen không ạ? Cái suy nghĩ 'tôi đã cố hết sức mà vẫn bị hiểu sai' — ai cũng gặp, trong công việc, trong gia đình."</p>
+        <p>"May mà tối đó, Đăng mở kho tri thức cá nhân ra, kể hết cho AI nghe, nhờ nó soi chiếu. Và nó hỏi Đăng một câu rất nhẹ: 'Anh đang phản ứng từ lòng yêu thương muốn sinh viên phát triển, hay từ ego bị tổn thương vì cho rằng mình đã cho 80% mà không được nhìn nhận?'"</p>
+        <p>"Đăng dừng lại. Và thừa nhận: đúng rồi, ego đang bật."</p>
+        <p>"Sáng hôm sau Đăng vào lớp bằng lòng bao dung thay vì chất vấn. Cùng bài học, nhưng khác năng lượng. Kết quả: có bạn tự nhận ra 'do em chưa chủ động' — không phải vì bị xấu hổ, mà vì cảm thấy an toàn. Bài viết đó Đăng chia sẻ lên mạng, được chính thầy Nguyễn Hữu Long — người đặt câu hỏi 'AI có thay thế giảng viên?' — comment khen là một bài rất hay."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Dừng 2 giây. Hít thở nhẹ.)</p>
+
+    <blockquote>
+        <p>"AI cho bạn output. Nhưng BẠN mới cho công việc sự chuyên nghiệp, sự tinh tế, sự thấu hiểu mà không máy nào thay được."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Câu kết của tầng 3c là câu neo mạnh nhất buổi sáng. Nói chậm, nhấn từ "BẠN". Đây là thông điệp giải tỏa nỗi sợ "AI thay thế mình" mà không cần nói thẳng ra.</p>
+    </div>
+
+    <hr class="divider-thin">
+
+    <!-- Nhịp 4 -->
+    <h3>Nhịp 4 — Cây cầu <em style="font-size: 0.65em;">(~1 phút)</em></h3>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Đăng kể chuyện này không phải vì Đăng giỏi. Mà vì 6 tháng mò mẫm đó, Đăng muốn rút ngắn xuống còn 1 ngày — cho quý anh/chị."</p>
+        <p>"Nhưng trước khi Đăng chia sẻ bất cứ điều gì, Đăng muốn nghe quý anh/chị trước."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Câu "Đăng muốn nghe quý anh/chị trước" là câu chuyển giao quyền lực — từ "Đăng nói" sang "quý anh/chị nói". Dừng ở đây, cầm tập note-dán lên, bắt đầu phát.</p>
+    </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+
+<!-- ═══════════════════════════ THU THẬP MỤC TIÊU ═══════════════════════════ -->
+<section id="muc-tieu">
+    <span class="section-num">8:51 – 9:03</span>
+    <h2>Thu thập mục tiêu <em style="font-size: 0.55em; color: var(--warm-gray);">(note-dán + cluster)</em></h2>
+
+    <p><strong>Mục đích:</strong> Lập "hợp đồng tâm lý". 100% tham gia. Visual impact — họ thấy mục tiêu của mình trên bảng, nghĩa là buổi học này dành cho họ.</p>
+
+    <h4>Cách làm:</h4>
+
+    <ol>
+        <li>Phát mỗi người <strong>2 tờ giấy note</strong> (2 màu khác nhau nếu có)</li>
+        <li><strong>Câu hỏi 1</strong> (tờ 1 — ví dụ màu vàng):
+            <blockquote><p>"MỘT VIỆC CỤ THỂ trong công việc mà anh/chị muốn AI giúp."</p></blockquote>
+        </li>
+        <li><strong>Câu hỏi 2</strong> (tờ 2 — ví dụ màu xanh):
+            <blockquote><p>"MỘT NỖI LO lớn nhất khiến anh/chị chưa dùng AI hiệu quả."</p></blockquote>
+        </li>
+        <li><strong>2 phút viết</strong> → mỗi người tự dán lên bảng</li>
+        <li>Đăng nhóm nhanh thành <strong>3 cluster</strong> (đã chuẩn bị sẵn trong đầu — xem bên dưới)</li>
+        <li><strong>Đọc to 2-3 cái hay nhất</strong>, hỏi tác giả thêm chi tiết</li>
+    </ol>
+
+    <h4>Bảng mục tiêu (vẽ sẵn trên bảng trước khi buổi học bắt đầu):</h4>
+
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║              BẢNG MỤC TIÊU HÔM NAY                          ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  □ 1. Viết email / báo cáo / văn bản nhanh + đúng giọng      ║
+║                                                               ║
+║  □ 2. Tra cứu nội quy, quy trình, hợp đồng — không sợ       ║
+║       AI bịa                                                  ║
+║                                                               ║
+║  □ 3. Dùng AI mà KHÔNG rò rỉ dữ liệu công ty                ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝</code></pre>
+
+    <div class="callout">
+        <div class="callout-label">🧠 Mẹo tâm lý</div>
+        <p>Để khoảng trống □ bên cạnh mỗi mục. Cuối ngày đánh dấu ✓ trước mặt cả lớp. Cảm giác hoàn thành rất mạnh — họ ra về với ấn tượng "hôm nay học được thật".</p>
+    </div>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Dù note-dán viết gì, bạn đều gom về 3 cluster trên. Đa số mục tiêu của chuyên viên văn phòng sẽ rơi vào 3 nhóm này. Nếu có mục tiêu ngoài 3 nhóm (ví dụ: "dùng AI vẽ hình", "AI viết code"), ghi riêng sang bên, hẹn trả lời cuối buổi chiều hoặc sau giờ học.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ CHỐT LỘ TRÌNH ═══════════════════════════ -->
+<section>
+    <span class="section-num">9:03 – 9:05</span>
+    <h2>Chốt lộ trình</h2>
+
+    <p><strong>Mục đích:</strong> Cho họ thấy bản đồ cả ngày — biết mình đang đi đâu thì yên tâm hơn.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Tốt. Hôm nay mình sẽ đi đúng 3 cái này. Mỗi cái Đăng sẽ làm giống nhau: nói một chút về BẢN CHẤT để quý anh/chị hiểu vì sao, rồi chỉ CÁCH DÙNG cho hiệu quả, rồi DEMO ngay tại chỗ. Xong cái này mới qua cái kia. Cuối ngày, ta quay lại cái bảng này và tích từng cái một. Được không ạ?"</p>
+    </blockquote>
+
+    <p class="stage-direction">(Chờ phản hồi. Thường sẽ có vài tiếng "Được". Đó là cam kết tâm lý.)</p>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>2 phút thôi. Chỉ cần họ gật là chuyển. Không giải thích chi tiết từng mục ở đây — để cho tò mò.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ NỀN TẢNG AI ═══════════════════════════ -->
+<section id="nen-tang">
+    <span class="section-num">9:05 – 9:25</span>
+    <h2>Nền tảng chung: AI tạo sinh là gì</h2>
+
+    <p><strong>Mục đích:</strong> Nền lý thuyết tối thiểu cho CẢ 3 mục tiêu. Chỉ cần hiểu 1 điều duy nhất: <strong>AI đoán chữ theo xác suất, nó không "biết" — nên nó có thể bịa, và chất lượng phụ thuộc vào cách mình hỏi.</strong></p>
+
+    <h4>Lời dẫn gợi ý (ẩn dụ, không thuật ngữ):</h4>
+
+    <blockquote>
+        <p>"Trước khi vào việc, Đăng cần quý anh/chị hiểu đúng một điều về AI, vì hiểu sai cái này là dùng sai tất cả."</p>
+        <p>"AI tạo sinh — như ChatGPT, Claude, Gemini — về bản chất giống một người đoán chữ cực giỏi. Đăng nói 'Hôm nay trời rất…', quý anh/chị đoán từ gì tiếp theo?"</p>
+    </blockquote>
+
+    <p class="stage-direction">(Chờ vài câu trả lời: "đẹp", "nắng", "nóng"…)</p>
+
+    <blockquote>
+        <p>"Đúng không? AI làm y hệt vậy, chỉ là nó được học từ hàng tỷ trang chữ nên đoán rất mượt."</p>
+        <p>"Điều này dẫn tới HAI hệ quả cực quan trọng:"</p>
+        <p>"<strong>Một</strong> — AI KHÔNG tra cứu, nó ĐOÁN. Nên đôi khi nó đoán ra thứ nghe rất hợp lý nhưng hoàn toàn sai. Người ta gọi là 'ảo giác' — hallucination. Nó có thể bịa ra một con số, một điều luật, nói chắc như đúng rồi."</p>
+    </blockquote>
+
+    <hr class="divider-thin">
+
+    <h3>Demo hallucination <em style="font-size: 0.65em;">(3 phút)</em></h3>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Chuẩn bị sẵn một câu hỏi mồi về quy chuẩn kỹ thuật dầu khí cụ thể. Ví dụ: hỏi AI về "Quy chuẩn QCVN 78:2023 về an toàn giàn khoan tự nâng ngoài khơi Việt Nam" (mã bịa). Hoặc hỏi về một cuốn sách kỹ thuật dầu khí không tồn tại.</p>
+    </div>
+
+    <ul>
+        <li>Gõ câu hỏi lên Claude hoặc ChatGPT</li>
+        <li>AI trả lời rất tự tin, chi tiết, có cả số điều, số khoản</li>
+        <li>Mở Google, search → không tồn tại</li>
+    </ul>
+
+    <h4>Lời dẫn sau demo:</h4>
+
+    <blockquote>
+        <p>"Thấy chưa ạ? Nó nói rất tự tin, nhưng hoàn toàn bịa. Nếu quý anh/chị đưa con số này vào báo cáo gửi sếp…"</p>
+    </blockquote>
+
+    <p class="stage-direction">(Dừng. Để họ tự suy nghĩ hậu quả. Không cần nói ra.)</p>
+
+    <hr class="divider-thin">
+
+    <h4>Lời dẫn tiếp — Hệ quả thứ hai:</h4>
+
+    <blockquote>
+        <p>"<strong>Hai</strong> — vì nó làm việc với cái MÌNH ĐƯA cho nó, nên: đưa input mơ hồ, nhận kết quả mơ hồ. Đưa input rõ ràng, đầy đủ, nhận kết quả chất lượng. 'Rác vào, rác ra'. Đây chính là lý do hồi xưa Đăng dùng AI thấy dở — vì hỏi quá hời hợt."</p>
+        <p>"Cho nên cả ngày hôm nay, thứ Đăng chia sẻ KHÔNG phải là 'bấm nút AI'. Mà là cách TƯ DUY khi giao việc cho AI. Vì quý anh/chị mới là người chỉ huy. AI chỉ là một cộng sự rất giỏi nhưng không có trách nhiệm — mình phải kiểm tra lại nó."</p>
+    </blockquote>
+
+    <h4>Hình vẽ tay trên bảng:</h4>
+
+<pre><code>    MÌNH (người chỉ huy)  ───giao việc rõ───►  AI (cộng sự giỏi, hay đoán)
+         ▲                                              │
+         │                                              │
+         └──────────── kiểm tra, duyệt lại ◄───────────┘</code></pre>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>TỐI ĐA 20 phút cho toàn bộ phần này. Đừng biến thành bài giảng machine learning. Không nói về neural network, training data, transformer. Chỉ cần 2 hệ quả: (1) nó có thể bịa, (2) chất lượng phụ thuộc cách hỏi. Xong.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ GIẢI LAO ═══════════════════════════ -->
+<section>
+    <span class="section-num">9:25 – 9:35</span>
+    <h2>☕ Giải lao</h2>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Trong lúc giải lao, kiểm tra thiết bị demo (Claude, ChatGPT, Gemini đều đăng nhập sẵn). Chuẩn bị prompt CRISP mẫu sẵn trong notepad để tránh gõ sai lúc demo. Uống nước, hít thở — phần sau là phần dày nhất buổi sáng.</p>
+    </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+
+<!-- ═══════════════════════════ MỤC TIÊU 1 ═══════════════════════════ -->
+<section id="mt1">
+    <span class="section-num">Mục tiêu 1</span>
+    <h2>Viết email / Văn bản nhanh + Đúng giọng</h2>
+
+    <p>Quy trình 3 bước: <strong>Bản chất</strong> (5') → <strong>CRISP</strong> (15') → <strong>Demo Claude + so sánh + Thực hành</strong> (30' + 20' + 15')</p>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ BẢN CHẤT EMAIL ═══════════════════════════ -->
+<section>
+    <span class="section-num">9:35 – 9:40</span>
+    <h2>Bản chất — Vì sao email là sở trường AI</h2>
+
+    <p><strong>Mục đích:</strong> Mở Mục tiêu 1 bằng lý thuyết siêu ngắn — giải thích VÌ SAO trước khi dạy CÁCH LÀM.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Bắt đầu với cái dễ nhất mà cũng hiệu quả ngay: viết email và văn bản."</p>
+        <p>"Nhớ lúc nãy Đăng nói AI là 'máy đoán chữ' không? Viết email chính là việc nó giỏi nhất — vì viết email bản chất là sắp xếp câu chữ cho trôi chảy, lịch sự, đúng văn phong. Đó đúng là sở trường."</p>
+        <p>"Nhưng — đây là chỗ 90% người dùng sai — họ gõ 'viết giúp email xin nghỉ phép' rồi nhận về cái email chung chung, vô hồn, phải sửa gần hết. Vì sao? Vì đưa input quá nghèo. Giờ Đăng chỉ quý anh/chị một công thức để email ra đúng ý ngay từ lần đầu."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>5 phút là tối đa. Chỉ cần họ hiểu: email = sở trường AI, nhưng phải hỏi đúng cách. Rồi chuyển luôn sang CRISP.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ CRISP ═══════════════════════════ -->
+<section id="crisp">
+    <span class="section-num">9:40 – 9:55</span>
+    <h2>Công thức CRISP</h2>
+
+    <p><strong>Mục đích:</strong> MỘT công thức dễ nhớ để cấu trúc mọi yêu cầu gửi AI. Không học thuộc — hiểu logic. Dùng được cho email, báo cáo, thư mời thầu, tóm tắt, và mọi loại văn bản khác.</p>
+
+    <h4>Vẽ trên bảng (hoặc chiếu slide):</h4>
+
+<pre><code>╔══════════════════════════════════════════════════════════════╗
+║          CRISP — Công thức giao việc cho AI                  ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  C – Context      (Bối cảnh):   Tôi là ai, đang ở tình     ║
+║                                  huống nào                   ║
+║                                                              ║
+║  R – Role         (Vai trò):    AI đóng vai gì để trả lời   ║
+║                                  tốt nhất                    ║
+║                                                              ║
+║  I – Input        (Dữ liệu):   Thông tin cụ thể tôi đưa    ║
+║                                  vào                         ║
+║                                                              ║
+║  S – Specifics    (Yêu cầu):   Độ dài, định dạng, văn      ║
+║                                  phong                       ║
+║                                                              ║
+║  P – Performance  (Tiêu chí):  Ai đọc, để làm gì, đạt      ║
+║                                  chuẩn nào                   ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝</code></pre>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Quý anh/chị không cần học thuộc. Chỉ cần nhớ logic: trước khi nhờ ai làm việc gì, mình nói cho người ta đủ thông tin. Giao việc cho AI cũng y như giao việc cho một nhân viên mới: càng rõ, kết quả càng đúng."</p>
+        <p>"Ví dụ, thay vì nói 'viết email xin gia hạn báo cáo', mình nói đầy đủ:"</p>
+    </blockquote>
+
+    <ul>
+        <li><strong>BỐI CẢNH (C):</strong> Đăng là chuyên viên phòng kế hoạch, 5 năm kinh nghiệm</li>
+        <li><strong>VAI TRÒ (R):</strong> Đóng vai người viết email công sở chuyên nghiệp trong ngành dầu khí</li>
+        <li><strong>DỮ LIỆU (I):</strong> Email gửi trưởng phòng, xin gia hạn báo cáo sản lượng quý thêm 2 ngày vì đang chờ số liệu từ đơn vị khác</li>
+        <li><strong>YÊU CẦU (S):</strong> Khoảng 120 chữ, lịch sự, không vòng vo</li>
+        <li><strong>TIÊU CHÍ (P):</strong> Giọng trang trọng nhưng không cứng nhắc vì sếp khá thân thiện</li>
+    </ul>
+
+    <blockquote>
+        <p>"Thấy không ạ — chỉ cần nói rõ như vậy, AI sẽ ra đúng cái email mình cần."</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Khi nói ví dụ CRISP, đừng đọc từ slide — hãy "xây" từng dòng trên bảng, vừa viết vừa giải thích. Để họ thấy quá trình tư duy, không chỉ thấy sản phẩm. Nếu có thời gian, hỏi cả lớp: "Theo quý anh/chị, bối cảnh nên ghi gì?" rồi tự bổ sung — tạo cảm giác cùng xây.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ DEMO TRỰC TIẾP ═══════════════════════════ -->
+<section id="demo">
+    <span class="section-num">9:55 – 10:25</span>
+    <h2>Demo trực tiếp trên Claude + So sánh công cụ</h2>
+
+    <p><strong>Mục đích kép:</strong> (a) Cho thấy CRISP biến output từ dở thành tốt; (b) xóa nỗi lo "nhiều công cụ quá, biết chọn cái nào".</p>
+
+    <hr class="divider-thin">
+
+    <!-- Bước 1 -->
+    <h3>Bước 1 — Cho thấy cái SAI trước <em style="font-size: 0.65em;">(2 phút)</em></h3>
+
+    <p>Gõ prompt nghèo trên Claude:</p>
+
+<pre><code>Viết email xin gia hạn báo cáo</code></pre>
+
+    <p>Đọc to kết quả chung chung cho cả lớp nghe.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Đấy, đây là cái Đăng nhận được hồi xưa. Dùng tạm được, nhưng vô hồn, không đúng ngữ cảnh. Ai gửi cái này đi cũng biết là máy viết."</p>
+    </blockquote>
+
+    <hr class="divider-thin">
+
+    <!-- Bước 2 -->
+    <h3>Bước 2 — Áp CRISP, cho thấy cái ĐÚNG <em style="font-size: 0.65em;">(3 phút)</em></h3>
+
+    <p>Gõ prompt đầy đủ CRISP (dùng đúng ví dụ đã viết trên bảng). Đọc to kết quả.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Quý anh/chị thấy khác biệt chứ? Cùng một AI, chỉ khác cách hỏi. Cái này gửi được luôn, chỉ cần kiểm tra lại thông tin rồi bấm send."</p>
+    </blockquote>
+
+    <hr class="divider-thin">
+
+    <!-- Bước 3 -->
+    <h3>Bước 3 — Iterative: chỉnh thêm <em style="font-size: 0.65em;">(3 phút)</em></h3>
+
+    <p>Tiếp tục trong cùng cuộc hội thoại, gõ:</p>
+
+<pre><code>Rút ngắn còn 80 chữ và thêm câu cảm ơn sự thông cảm</code></pre>
+
+    <p>Rồi tiếp:</p>
+
+<pre><code>Đổi giọng trang trọng hơn vì email này CC cho Giám đốc</code></pre>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Không vừa ý thì cứ nói chuyện tiếp với nó, sửa dần. Đây gọi là tinh chỉnh từng bước — iterative prompting — kỹ thuật quan trọng nhất, Đăng dùng hàng ngày. Không cần hoàn hảo ngay lần đầu, sửa dần cho đến khi vừa ý."</p>
+    </blockquote>
+
+    <hr class="divider-thin">
+
+    <!-- Bước 4 -->
+    <h3>Bước 4 — Xóa nỗi lo nhiều công cụ <em style="font-size: 0.65em;">(10 phút)</em> ⭐</h3>
+
+    <p>Mở <strong>ChatGPT</strong> và <strong>Gemini</strong> trên 2 tab khác, dán CÙNG prompt CRISP vào cả hai.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Nhiều anh chị lo: trời ơi nhiều AI quá, ChatGPT, Claude, Gemini, biết dùng cái nào?"</p>
+    </blockquote>
+
+    <p>Cho cả 3 kết quả hiện lên cạnh nhau (nếu được). Đọc nhanh từng cái.</p>
+
+    <blockquote>
+        <p>"Thấy không ạ? Cùng một cách hỏi, ba công cụ ra kết quả na ná nhau. Có khác một chút về văn phong, nhưng chất lượng tương đương."</p>
+        <p>"Cho nên quý anh/chị ĐỪNG lo chọn công cụ. Kỹ năng quan trọng nhất là CÁCH HỎI — học một lần, dùng cho tất cả. Giống biết lái xe — lái hãng nào cũng được. Đăng quen dùng Claude, nhưng anh chị dùng cái nào cũng được."</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Đây là thông điệp giải tỏa tâm lý lớn. Nhiều người không bắt đầu dùng AI chỉ vì sợ chọn sai công cụ, sợ tốn tiền sai chỗ. Câu "biết lái xe — lái hãng nào cũng được" là ẩn dụ mạnh, nên nhấn.</p>
+    </div>
+
+    <hr class="divider-thin">
+
+    <!-- Bước 5 -->
+    <h3>Bước 5 — Negative Prompt nhanh <em style="font-size: 0.65em;">(2 phút)</em></h3>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Một mẹo nữa rất thực tế: nói cho AI biết cái mình KHÔNG muốn. Ví dụ:"</p>
+    </blockquote>
+
+    <ul>
+        <li><em>'Không dùng cụm từ kính gửi quý đồng nghiệp'</em></li>
+        <li><em>'Không mở đầu bằng Great!'</em></li>
+        <li><em>'Không quá 100 chữ'</em></li>
+        <li><em>'Không dùng giọng quá formal, sếp tôi thân thiện'</em></li>
+    </ul>
+
+    <blockquote>
+        <p>"AI rất giỏi khi biết ranh giới. Nói cho nó biết cái KHÔNG muốn, đôi khi còn hiệu quả hơn nói cái muốn."</p>
+    </blockquote>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ THỰC HÀNH ═══════════════════════════ -->
+<section id="thuc-hanh">
+    <span class="section-num">10:25 – 10:45</span>
+    <h2>Thực hành prompt trên giấy</h2>
+
+    <p><strong>Mục đích:</strong> Cho họ tự rèn tư duy CRISP mà không phụ thuộc thiết bị. 100% tham gia. Không ai được "ẩn" sau màn hình.</p>
+
+    <div class="callout">
+        <div class="callout-label">📌 Vì sao thực hành giấy</div>
+        <p>Đầu buổi thiết bị/mạng chưa ổn, đông người dùng chung wifi dễ lag. Giấy đảm bảo 100% tham gia, không ai bị kẹt ở bước đăng nhập.</p>
+    </div>
+
+    <h4>Cách làm:</h4>
+
+    <p><strong>1. Đưa tình huống</strong> (chiếu hoặc viết lên bảng):</p>
+
+    <blockquote>
+        <p><strong>TÌNH HUỐNG:</strong> Viết email cho đồng nghiệp phòng khác, nhờ họ gửi gấp số liệu mà mình đang chờ để hoàn thành báo cáo — họ đã trễ 2 hôm rồi. Cần lịch sự mà vẫn thúc đẩy.</p>
+    </blockquote>
+
+    <p><strong>2. Mỗi người viết prompt CRISP ra giấy</strong> — 5 phút</p>
+    <p><em>(Nhấn mạnh: chỉ viết PROMPT giao cho AI, không viết email)</em></p>
+
+    <p><strong>3. Mời 3-4 người đọc to</strong> prompt của họ. Sau mỗi người, bạn comment ngắn:</p>
+    <ul>
+        <li>"Rất tốt, phần bối cảnh rõ ràng."</li>
+        <li>"Hay đấy, nhưng thêm phần 'người nhận là ai' thì tốt hơn."</li>
+        <li>"Đăng thích cái này — có negative prompt luôn!"</li>
+    </ul>
+
+    <p><strong>4. Chọn 1 prompt hay nhất</strong>, gõ thật lên màn hình, cho cả lớp xem AI trả ra gì.</p>
+
+    <p><strong>5. Chốt:</strong></p>
+
+    <blockquote>
+        <p>"Thấy chưa ạ — quý anh/chị vừa tự làm được rồi đấy. Không có gì khó. Chỉ cần nhớ: nói đủ thông tin, như giao việc cho người thật."</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Khi chọn prompt để gõ, ưu tiên prompt chưa hoàn hảo nhưng gần đúng — để bạn có cơ hội chỉnh sửa trước mặt cả lớp, biến thành "teachable moment". Prompt hoàn hảo quá thì không có gì để dạy thêm.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ BẢN ĐỒ CÔNG CỤ ═══════════════════════════ -->
+<section>
+    <span class="section-num">10:45 – 11:00</span>
+    <h2>Chia sẻ kết quả + Bản đồ công cụ AI</h2>
+
+    <p><strong>Mục đích:</strong> Củng cố kiến thức vừa học + mở rộng tầm nhìn với bản đồ công cụ.</p>
+
+    <h4>Bản đồ công cụ AI 2025-2026 (trên slide hoặc vẽ trên bảng):</h4>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Loại</th>
+                <th>Công cụ</th>
+                <th>Dùng khi nào</th>
+                <th>Lưu ý</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hội thoại đa năng</td>
+                <td>ChatGPT, Claude, Gemini</td>
+                <td>Viết, brainstorm, giải thích, tóm tắt</td>
+                <td>Có thể bịa nguồn</td>
+            </tr>
+            <tr>
+                <td>Tìm kiếm có nguồn</td>
+                <td>Perplexity, ChatGPT Search</td>
+                <td>Tra số liệu công khai, có link dẫn nguồn</td>
+                <td>Vẫn cần verify</td>
+            </tr>
+            <tr>
+                <td>Quản trị tri thức</td>
+                <td>NotebookLM</td>
+                <td>Hỏi-đáp trên TÀI LIỆU CỦA BẠN</td>
+                <td>Không bịa vì giới hạn trong tài liệu</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Quý anh/chị chỉ cần nhớ: CÙNG MỘT CÂU HỎI, dùng ĐÚNG LOẠI CÔNG CỤ sẽ cho kết quả tốt hơn gấp bội."</p>
+        <p>"Ví dụ: hỏi 'quy trình mua sắm vật tư của công ty' — nếu hỏi ChatGPT, nó sẽ bịa ra một quy trình nghe rất hợp lý. Nhưng nếu tải quy trình thật lên NotebookLM rồi hỏi, nó trả lời chính xác theo tài liệu, có trích dẫn trang mấy, đoạn nào."</p>
+        <p>"Chiều nay Đăng sẽ demo NotebookLM — quý anh/chị sẽ thấy nó khác hoàn toàn."</p>
+    </blockquote>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Không demo NotebookLM ở đây — chỉ gieo. Chiều mới mở.</p>
+    </div>
+</section>
+
+<hr class="divider-thin">
+
+
+<!-- ═══════════════════════════ KỸ THUẬT NÂNG CAO ═══════════════════════════ -->
+<section>
+    <span class="section-num">11:00 – 11:15</span>
+    <h2>Kỹ thuật Iterative + Negative Prompt (nâng cao)</h2>
+
+    <p><strong>Mục đích:</strong> Demo thêm 2 tình huống thực tế để củng cố CRISP + Iterative + Negative trong ngữ cảnh dầu khí.</p>
+
+    <hr class="divider-thin">
+
+    <!-- Tình huống 1 -->
+    <h3>Tình huống 1 — Tóm tắt biên bản họp <em style="font-size: 0.65em;">(~7 phút)</em></h3>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Ai ở đây hay phải viết biên bản họp? Hoặc nhận biên bản dài 5 trang mà chỉ cần biết: ai làm gì, deadline bao giờ?"</p>
+    </blockquote>
+
+    <p>Paste nội dung cuộc họp mẫu (chuẩn bị sẵn, khoảng 1-2 trang) vào Claude.</p>
+
+    <h4>Prompt CRISP:</h4>
+
+<pre><code>Bối cảnh: Tôi là chuyên viên phòng kế hoạch tại một tập đoàn dầu khí.
+Vai trò: Bạn là trợ lý hành chính chuyên nghiệp.
+Dữ liệu: [Paste nội dung biên bản họp]
+Yêu cầu: Tóm tắt theo format bảng gồm 4 cột: Quyết định — Hành động cần làm — Người chịu trách nhiệm — Deadline.
+Tiêu chí: Ngắn gọn, rõ ràng, có thể gửi cho cả phòng mà không cần chỉnh sửa.</code></pre>
+
+    <p>Sau khi AI trả kết quả, iterative:</p>
+
+<pre><code>Thêm cột 'Trạng thái' cho mỗi hành động, mặc định ghi 'Chưa bắt đầu'</code></pre>
+
+    <blockquote>
+        <p>"Thấy không ạ? Từ 2 trang biên bản thành 1 cái bảng gọn gàng, gửi được luôn. Và nếu muốn thêm cột, chỉ cần nói tiếp."</p>
+    </blockquote>
+
+    <hr class="divider-thin">
+
+    <!-- Tình huống 2 -->
+    <h3>Tình huống 2 — Draft thư mời thầu <em style="font-size: 0.65em;">(~7 phút)</em></h3>
+
+    <h4>Prompt CRISP:</h4>
+
+<pre><code>Bối cảnh: Phòng mua sắm vật tư, tập đoàn dầu khí Việt Nam.
+Vai trò: Chuyên viên soạn thảo văn bản hành chính.
+Dữ liệu: Thư mời thầu cung cấp 500 bộ van an toàn ASTM A216 cho giàn khoan số 3, hạn nộp hồ sơ 30 ngày kể từ ngày phát hành.
+Yêu cầu: Format thư hành chính chuẩn, có đầy đủ phần: kính gửi, nội dung, yêu cầu kỹ thuật, thời hạn, thông tin liên hệ.
+Tiêu chí: Văn phong hành chính nghiêm túc. Không dùng ngôn ngữ quảng cáo.</code></pre>
+
+    <h4>Negative prompt:</h4>
+
+<pre><code>Không dùng ngôn ngữ quảng cáo hoặc marketing. Giữ văn phong hành chính. Không thêm câu mời chào kiểu "rất hân hạnh được hợp tác".</code></pre>
+
+    <blockquote>
+        <p>"Với văn bản hành chính, negative prompt cực kỳ quan trọng. AI hay thêm những câu xã giao không cần thiết — nói cho nó biết ranh giới, nó sẽ giữ đúng tone."</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📝 Ghi chú cho Đăng</div>
+        <p>Nếu thời gian eo hẹp, chỉ demo 1 trong 2 tình huống. Ưu tiên tình huống biên bản họp vì phổ quát hơn — ai cũng gặp.</p>
+    </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+
+<!-- ═══════════════════════════ WRAP-UP ═══════════════════════════ -->
+<section id="wrap-up">
+    <span class="section-num">11:15 – 11:30</span>
+    <h2>Wrap-up sáng + Preview chiều</h2>
+
+    <p><strong>Mục đích:</strong> Tóm tắt buổi sáng, đánh dấu thành quả, tạo kỳ vọng cho buổi chiều.</p>
+
+    <h4>Lời dẫn gợi ý:</h4>
+
+    <blockquote>
+        <p>"Quý anh/chị, sáng nay mình đã giải quyết xong mục tiêu đầu tiên trên bảng."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Bước tới bảng, đánh dấu ✓ vào mục tiêu 1. Cử chỉ rõ ràng, chậm rãi — để cả lớp thấy.)</p>
+
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║              BẢNG MỤC TIÊU HÔM NAY                          ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  ✓ 1. Viết email / báo cáo / văn bản nhanh + đúng giọng      ║
+║                                                               ║
+║  □ 2. Tra cứu nội quy, quy trình, hợp đồng — không sợ       ║
+║       AI bịa                                                  ║
+║                                                               ║
+║  □ 3. Dùng AI mà KHÔNG rò rỉ dữ liệu công ty                ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝</code></pre>
+
+    <blockquote>
+        <p>"Quý anh/chị giờ đã biết:"</p>
+        <p>"<strong>Một</strong> — AI là máy đoán chữ, không phải thần thánh — luôn phải kiểm tra."</p>
+        <p>"<strong>Hai</strong> — CRISP — công thức giao việc hiệu quả: Bối cảnh, Vai trò, Dữ liệu, Yêu cầu, Tiêu chí."</p>
+        <p>"<strong>Ba</strong> — Iterative — chỉnh dần, không cần hoàn hảo lần đầu."</p>
+        <p>"<strong>Bốn</strong> — ChatGPT, Claude, Gemini giống nhau — biết cách hỏi 1 lần, dùng cả 3."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Dừng một nhịp.)</p>
+
+    <blockquote>
+        <p>"Chiều nay Đăng sẽ demo một thứ mà Đăng nghĩ quý anh/chị sẽ RẤT thích — cách hỏi AI về chính nội quy, quy trình của công ty mình, mà KHÔNG SỢ nó bịa. Và cách dùng AI an toàn, không rò rỉ dữ liệu. Hẹn gặp lại quý anh/chị sau nghỉ trưa."</p>
+    </blockquote>
+
+    <p class="stage-direction">(Cười, vỗ tay nhẹ kết thúc.)</p>
+
+    <div class="callout instructor">
+        <div class="callout-label">💡 Lưu ý nhịp</div>
+        <p>Kết thúc bằng năng lượng tích cực và kỳ vọng. Câu "RẤT thích" nên nhấn giọng — tạo tò mò. Không cần giải thích NotebookLM là gì ở đây, để cho buổi chiều.</p>
+    </div>
+</section>
+
+<div class="divider">❦ ❦ ❦</div>
+
+
+<!-- ═══════════════════════════ PHỤ LỤC ═══════════════════════════ -->
+<section>
+    <span class="section-num">Phụ lục</span>
+    <h2>Checklist chuẩn bị trước buổi sáng</h2>
+
+    <ul class="checklist">
+        <li>Bảng mục tiêu vẽ sẵn trên bảng (3 mục, có □ trống)</li>
+        <li>Giấy note 2 màu + bút (đủ cho tất cả học viên)</li>
+        <li>Đăng nhập sẵn: Claude, ChatGPT, Gemini (3 tab)</li>
+        <li>Notepad mở sẵn với prompt CRISP mẫu (tránh gõ sai lúc demo)</li>
+        <li>Obsidian mở sẵn ở graph view (cho đoạn 3a)</li>
+        <li>Câu hỏi hallucination chuẩn bị sẵn (quy chuẩn bịa)</li>
+        <li>Biên bản họp mẫu (1-2 trang, cho phần 11:00)</li>
+        <li>Bút bảng 2-3 màu (vẽ sơ đồ, viết CRISP)</li>
+        <li>Wifi kiểm tra, backup hotspot điện thoại</li>
+        <li>Slide bản đồ công cụ AI (nếu dùng slide)</li>
+    </ul>
+</section>
+
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+    <div class="ornament">❦ ❦ ❦</div>
+    <em>Kịch bản này là tài liệu nội bộ dành cho giảng viên.</em><br>
+    Nội dung gợi ý — không phải đọc nguyên văn. Hãy dùng giọng tự nhiên của bạn.<br><br>
+    Kỹ Năng AI Cho Chuyên Viên Văn Phòng · Buổi Sáng · 2026
+</footer>
+
+</div><!-- .frame -->
+</body>
+</html>

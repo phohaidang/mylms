@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi Chiều — Tra Cứu Tài Liệu Nội Bộ & An Toàn Dữ Liệu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --paper: #F7F2E7;
+    --paper-shade: #EFE8D6;
+    --ink: #1B1714;
+    --ink-soft: #4A413A;
+    --rule: #C8BCA3;
+    --oxblood: #7A1F1F;
+    --oxblood-soft: #9B3838;
+    --gold: #B8893A;
+    --gold-soft: #D4A85F;
+    --green: #2F4A36;
+    --warm-gray: #8B7E6F;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
+    background-image: 
+        radial-gradient(ellipse at top left, rgba(184,137,58,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(122,31,31,0.03) 0%, transparent 50%);
+    min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.frame {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 60px 48px 120px;
+    position: relative;
+}
+
+@media (max-width: 720px) {
+    .frame { padding: 40px 24px 80px; }
+    body { font-size: 16px; }
+}
+
+/* ===== Hero / Cover ===== */
+.cover {
+    position: relative;
+    margin-bottom: 80px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+}
+
+.cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.cover-meta-left { line-height: 1.9; }
+.cover-meta-right { text-align: right; line-height: 1.9; }
+
+.cover-meta strong {
+    color: var(--oxblood);
+    font-weight: 600;
+}
+
+.session-roman {
+    font-family: 'Cormorant Garamond', 'Garamond', serif;
+    font-size: 220px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 0.9;
+    color: var(--gold);
+    margin-bottom: 0;
+    letter-spacing: -0.04em;
+    opacity: 0.9;
+}
+
+.session-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 16px;
+}
+
+.session-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 24px 0 32px;
+    letter-spacing: -0.02em;
+    max-width: 720px;
+}
+
+@media (max-width: 720px) {
+    .session-roman { font-size: 140px; }
+    .session-title { font-size: 36px; }
+}
+
+.session-subtitle {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 640px;
+    margin-bottom: 40px;
+}
+
+.cover-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+}
+
+.cover-stat { text-align: left; }
+
+.cover-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--oxblood);
+    line-height: 1;
+}
+
+.cover-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+    .cover-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== Section ===== */
+section {
+    margin-bottom: 72px;
+    scroll-margin-top: 40px;
+}
+
+.section-num {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.section-num::before {
+    content: "§ ";
+    color: var(--oxblood);
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+}
+
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--oxblood);
+    margin-top: 40px;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    text-transform: none;
+}
+
+p { margin-bottom: 18px; max-width: 720px; }
+
+p.lede {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 28px;
+}
+
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 28px;
+    max-width: 720px;
+}
+
+li { margin-bottom: 8px; padding-left: 6px; }
+
+ul li::marker { color: var(--gold); }
+ol li::marker { color: var(--oxblood); font-weight: 600; }
+
+strong { color: var(--ink); font-weight: 700; }
+em { color: var(--ink-soft); }
+
+a {
+    color: var(--oxblood);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-soft);
+    transition: color 0.2s;
+}
+
+a:hover { color: var(--gold); }
+
+/* ===== Blockquote — Instructor speech ===== */
+blockquote {
+    margin: 24px 0;
+    padding: 0 0 0 28px;
+    border-left: 3px solid var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 720px;
+}
+
+blockquote::before {
+    content: "❝";
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--oxblood);
+    margin-right: 6px;
+    font-size: 26px;
+    line-height: 0;
+    vertical-align: -6px;
+}
+
+blockquote p { margin-bottom: 10px; font-size: inherit; max-width: 100%; }
+blockquote p:last-child { margin-bottom: 0; }
+blockquote ul, blockquote ol { margin-top: 8px; margin-bottom: 8px; }
+blockquote li { font-size: 20px; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+
+/* ===== Instructor note callout ===== */
+.callout {
+    background: var(--paper-shade);
+    border-radius: 2px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-left: 3px solid var(--gold);
+}
+
+.callout-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.callout p { margin-bottom: 8px; font-size: 15.5px; }
+.callout p:last-child { margin-bottom: 0; }
+
+.callout.note {
+    border-left-color: var(--green);
+}
+.callout.note .callout-label { color: var(--green); }
+
+.callout.danger {
+    border-left-color: var(--oxblood);
+    background: rgba(122, 31, 31, 0.04);
+}
+.callout.danger .callout-label { color: var(--oxblood); }
+
+/* ===== Stage direction ===== */
+.stage {
+    font-style: italic;
+    color: var(--warm-gray);
+    font-size: 15px;
+    margin: 12px 0;
+    padding-left: 16px;
+    border-left: 2px solid var(--rule);
+}
+
+/* ===== Code / Prompt blocks ===== */
+pre {
+    background: var(--ink);
+    color: var(--gold-soft);
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9em;
+    background: var(--paper-shade);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--oxblood);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* ===== Tables ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+table thead {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+}
+
+table th {
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    vertical-align: bottom;
+}
+
+table tbody tr {
+    border-bottom: 1px solid var(--rule);
+}
+
+table tbody tr:last-child {
+    border-bottom: 2px solid var(--ink);
+}
+
+table td {
+    padding: 14px;
+    vertical-align: top;
+    color: var(--ink);
+}
+
+table td:first-child {
+    font-weight: 600;
+    color: var(--oxblood);
+}
+
+/* ===== Checklist box ===== */
+.checklist-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    margin: 28px 0;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.checklist-box .checklist-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.checklist-box .check-item {
+    color: var(--gold-soft);
+    margin-bottom: 6px;
+}
+
+.checklist-box .check-item .emoji {
+    margin-right: 8px;
+}
+
+/* ===== Golden rule highlight ===== */
+.golden-rule {
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding: 28px 32px;
+    margin: 32px 0;
+    text-align: center;
+    background: rgba(184,137,58,0.06);
+}
+
+.golden-rule p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--oxblood);
+    line-height: 1.4;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* ===== Scenario card ===== */
+.scenario {
+    margin: 24px 0;
+    padding: 20px 24px;
+    border: 1px solid var(--rule);
+    background: #FFFEFB;
+    position: relative;
+}
+
+.scenario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.scenario-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.scenario-verdict {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+}
+
+.scenario-verdict.ok {
+    background: rgba(47,74,54,0.1);
+    color: var(--green);
+    border: 1px solid rgba(47,74,54,0.3);
+}
+
+.scenario-verdict.no {
+    background: rgba(122,31,31,0.06);
+    color: var(--oxblood);
+    border: 1px solid rgba(122,31,31,0.2);
+}
+
+.scenario-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.35;
+}
+
+.scenario-answer {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+}
+
+/* ===== Ecosystem card ===== */
+.eco-card {
+    margin: 24px 0;
+    padding: 24px 28px;
+    border-left: 3px solid var(--gold);
+    background: var(--paper-shade);
+}
+
+.eco-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.eco-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 12px;
+}
+
+.eco-card p { font-size: 15.5px; margin-bottom: 8px; }
+.eco-card p:last-child { margin-bottom: 0; }
+
+/* ===== Objective board ===== */
+.objectives {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    margin: 28px 0;
+    border-radius: 2px;
+}
+
+.objectives .obj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.objectives .obj-item {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+    color: var(--gold-soft);
+}
+
+.objectives .obj-item .check {
+    color: var(--green);
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+/* ===== Commitment suggestions ===== */
+.commit-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 720px;
+    counter-reset: commit;
+}
+
+.commit-list li {
+    padding: 12px 0 12px 40px;
+    position: relative;
+    border-bottom: 1px dashed var(--rule);
+    font-style: italic;
+    color: var(--ink-soft);
+}
+
+.commit-list li::before {
+    content: "→";
+    position: absolute;
+    left: 12px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ===== Section divider ===== */
+.divider {
+    text-align: center;
+    margin: 56px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+}
+
+/* ===== Nav pills ===== */
+.nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 32px 0;
+}
+
+.nav-pill {
+    padding: 8px 14px;
+    background: var(--paper-shade);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-radius: 1px;
+}
+
+.nav-pill:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+}
+
+/* ===== Footer ===== */
+footer {
+    margin-top: 100px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--warm-gray);
+    text-align: center;
+    line-height: 1.8;
+}
+
+footer .ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* ===== Print ===== */
+@media print {
+    body { 
+        background: white; 
+        font-size: 12pt;
+        background-image: none;
+    }
+    .frame { padding: 0; max-width: 100%; }
+    .session-roman { font-size: 100pt; }
+    .session-title { font-size: 24pt; }
+    h2 { font-size: 18pt; }
+    h3 { font-size: 14pt; }
+    section { break-inside: avoid-page; }
+    .scenario { break-inside: avoid; }
+    .checklist-box, .objectives { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="frame">
+
+<header class="cover">
+    <div class="cover-meta">
+        <div class="cover-meta-left">
+            Kỹ Năng Ứng Dụng AI · Chuyên viên Văn phòng<br>
+            Tập đoàn Dầu Khí<br>
+            <strong>Kịch bản giảng dạy</strong> · Buổi chiều
+        </div>
+        <div class="cover-meta-right">
+            Buổi Chiều<br>
+            13:30 – 16:30<br>
+            <strong>Người dẫn: Đăng</strong>
+        </div>
+    </div>
+
+    <div class="session-label">Buổi Chiều · 3 tiếng thực giảng</div>
+    <div class="session-roman">II</div>
+    <h1 class="session-title">Tra Cứu Tài Liệu Nội Bộ &amp; An Toàn Dữ Liệu</h1>
+    <p class="session-subtitle">Mục tiêu 2 (NotebookLM/RAG) + Mục tiêu 3 (An toàn dữ liệu) + Đóng buổi — Dành cho chuyên viên văn phòng tập đoàn dầu khí</p>
+
+    <div class="cover-stats">
+        <div class="cover-stat">
+            <div class="cover-stat-value">3h</div>
+            <div class="cover-stat-label">Thời lượng</div>
+        </div>
+        <div class="cover-stat">
+            <div class="cover-stat-value">2</div>
+            <div class="cover-stat-label">Mục tiêu</div>
+        </div>
+        <div class="cover-stat">
+            <div class="cover-stat-value">⭐</div>
+            <div class="cover-stat-label">Viên ngọc</div>
+        </div>
+        <div class="cover-stat">
+            <div class="cover-stat-value">8</div>
+            <div class="cover-stat-label">Tình huống</div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav-pills">
+    <a class="nav-pill" href="#timeline">Timeline</a>
+    <a class="nav-pill" href="#khoi-dong">Khởi động</a>
+    <a class="nav-pill" href="#muc-tieu-2">Mục tiêu 2 — RAG</a>
+    <a class="nav-pill" href="#demo-notebooklm">Demo NotebookLM</a>
+    <a class="nav-pill" href="#thuc-hanh">Thực hành</a>
+    <a class="nav-pill" href="#muc-tieu-3">Mục tiêu 3 — An toàn</a>
+    <a class="nav-pill" href="#case-study">Case Study</a>
+    <a class="nav-pill" href="#checklist">Checklist</a>
+    <a class="nav-pill" href="#he-sinh-thai">Hệ sinh thái</a>
+    <a class="nav-pill" href="#dong-buoi">Đóng buổi</a>
+    <a class="nav-pill" href="#phu-luc">Phụ lục</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TIMELINE BUỔI CHIỀU -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="timeline">
+    <span class="section-num">Timeline</span>
+    <h2>Timeline Buổi Chiều</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Thời gian</th>
+                <th>Nội dung</th>
+                <th>Mục đích</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>13:30 – 13:40</td>
+                <td>Khởi động lại + Recap sáng</td>
+                <td>Nối mạch</td>
+            </tr>
+            <tr>
+                <td>13:40 – 13:55</td>
+                <td>Bản chất: RAG khác AI tạo sinh</td>
+                <td>Nền tảng cho NotebookLM</td>
+            </tr>
+            <tr>
+                <td>13:55 – 14:35</td>
+                <td>Demo NotebookLM: upload nội quy → Q&amp;A → trích dẫn ⭐</td>
+                <td>WOW moment</td>
+            </tr>
+            <tr>
+                <td>14:35 – 14:55</td>
+                <td>Thực hành NotebookLM</td>
+                <td>Tự làm được</td>
+            </tr>
+            <tr>
+                <td>14:55 – 15:05</td>
+                <td>Giải lao</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>15:05 – 15:15</td>
+                <td>Bản chất: 3 rủi ro AI</td>
+                <td>Mở Mục tiêu 3</td>
+            </tr>
+            <tr>
+                <td>15:15 – 15:35</td>
+                <td>Case study + Demo hallucination + Privacy</td>
+                <td>Thấy tận mắt</td>
+            </tr>
+            <tr>
+                <td>15:35 – 15:55</td>
+                <td>Checklist 3 câu hỏi + Phân loại dữ liệu (giơ tay)</td>
+                <td>Thực hành</td>
+            </tr>
+            <tr>
+                <td>15:55 – 16:10</td>
+                <td>Hệ sinh thái mở rộng (nhẹ)</td>
+                <td>Tương lai gần</td>
+            </tr>
+            <tr>
+                <td>16:10 – 16:25</td>
+                <td>Quay lại bảng mục tiêu + Q&amp;A + Cam kết</td>
+                <td>Đóng buổi</td>
+            </tr>
+            <tr>
+                <td>16:25 – 16:30</td>
+                <td>Lời nhắn cuối</td>
+                <td>Cảm xúc đọng lại</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- KỊCH BẢN CHI TIẾT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section>
+    <span class="section-num">Kịch bản chi tiết</span>
+    <h2>Kịch Bản Chi Tiết</h2>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- KHỞI ĐỘNG LẠI -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="khoi-dong">
+    <span class="section-num">13:30 – 13:40</span>
+    <h2>Khởi Động Lại</h2>
+
+    <p><strong>Mục đích:</strong> Nối mạch buổi sáng. Đánh dấu tiến độ. Kéo năng lượng học viên lên sau giờ nghỉ trưa.</p>
+
+    <blockquote>
+        <p>Chào quý anh/chị trở lại. Hy vọng quý anh/chị nghỉ trưa ngon giấc. Trước khi vào phần mới, Đăng muốn hỏi nhanh: ai đã thử prompt gì lúc nghỉ trưa không? Có ai mở AI lên nghịch thử không ạ?</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Nếu có người thử → mời chia sẻ ngắn (1–2 phút). Câu hỏi gợi mở: "Anh/chị thử hỏi gì? Kết quả có ổn không?" Nếu không ai thử → hoàn toàn bình thường, đừng tạo áp lực. Chuyển tiếp nhẹ nhàng.</p>
+    </div>
+
+    <blockquote>
+        <p>Sáng nay mình đã giải quyết được mục tiêu 1.</p>
+    </blockquote>
+
+    <p class="stage">Đi tới bảng mục tiêu, chỉ vào mục 1 đã đánh dấu ✓</p>
+
+    <blockquote>
+        <p>Quý anh/chị đã biết cách viết prompt theo CRISP, đã thấy AI viết email, tóm tắt biên bản — và quan trọng nhất — đã hiểu mình là LEADER, AI là cộng sự.</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Nhìn phòng.</p>
+
+    <blockquote>
+        <p>Chiều nay Đăng sẽ demo thứ mà Đăng nghĩ quý anh/chị sẽ thích nhất — và cũng là thứ thực tế nhất cho công việc tại tập đoàn. Đăng gọi nó là 'viên ngọc' của buổi hôm nay.</p>
+    </blockquote>
+
+    <p class="stage">Chuyển tiếp</p>
+
+    <blockquote>
+        <p>Nhưng trước khi vào demo, Đăng cần giải thích một khái niệm nền tảng — sẽ mất khoảng 15 phút thôi. Nhưng nếu hiểu cái này, quý anh/chị sẽ hiểu TẠI SAO công cụ Đăng sắp giới thiệu lại KHÁC HOÀN TOÀN những gì mình dùng buổi sáng.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MỤC TIÊU 2 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="muc-tieu-2">
+    <span class="section-num">Mục tiêu 2</span>
+    <h2>Tra Cứu Nội Quy / Quy Trình — Không Sợ AI Bịa ⭐ Viên Ngọc Của Buổi</h2>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- RAG vs AI TẠO SINH -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="rag">
+    <span class="section-num">13:40 – 13:55</span>
+    <h2>Bản Chất: RAG Khác AI Tạo Sinh Thế Nào</h2>
+
+    <p><strong>Mục đích:</strong> Giải thích đơn giản tại sao NotebookLM KHÁC hoàn toàn ChatGPT/Claude/Gemini khi tra cứu tài liệu. Đặt nền tảng để học viên hiểu phần demo tiếp theo.</p>
+
+    <blockquote>
+        <p>Sáng nay Đăng nói AI tạo sinh giỏi viết nhưng hay bịa, đúng không ạ? Quý anh/chị đã thấy rồi — hỏi nó về quy chuẩn không tồn tại mà nó vẫn trả lời vanh vách.</p>
+    </blockquote>
+
+    <p class="stage">Dừng để phòng gật đầu hoặc cười</p>
+
+    <blockquote>
+        <p>Vậy khi quý anh/chị cần tra cứu nội quy công ty, quy trình vận hành, hợp đồng — toàn thứ KHÔNG ĐƯỢC BỊA — thì sao? Dùng ChatGPT ư? Nó sẽ bịa cho mình một bộ nội quy nghe rất hợp lý... nhưng không phải của công ty mình.</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Để câu hỏi treo.</p>
+
+    <blockquote>
+        <p>Đây là chỗ NotebookLM khác hoàn toàn.</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng hoặc chuyển slide: <strong>NotebookLM</strong></p>
+
+    <blockquote>
+        <p>NotebookLM không sáng tạo. Nó ĐỌC tài liệu CỦA MÌNH và trả lời từ đó. Giống như quý anh/chị có một nhân viên mới, rất chăm chỉ, đã đọc thuộc toàn bộ nội quy công ty, toàn bộ quy trình HSE, toàn bộ hợp đồng — và khi quý anh/chị hỏi bất cứ điều gì, nhân viên đó trả lời — nhưng luôn chỉ ra: 'Tôi đọc ở trang này, đoạn này, văn bản này.'</p>
+    </blockquote>
+
+    <div class="callout">
+        <div class="callout-label">🎵 Lưu ý nhịp</div>
+        <p>Ẩn dụ "nhân viên đã đọc thuộc nội quy" rất hiệu quả. Nhấn mạnh từ "THUỘC" — vì đây đúng là điều NotebookLM làm. Nó index toàn bộ tài liệu.</p>
+    </div>
+
+    <h3>Bảng so sánh</h3>
+    <p class="stage">Vẽ lên bảng hoặc chiếu slide:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>ChatGPT / Claude / Gemini</th>
+                <th>NotebookLM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nguồn dữ liệu</strong></td>
+                <td>Internet (đến thời điểm cắt dữ liệu)</td>
+                <td>TÀI LIỆU BẠN UPLOAD</td>
+            </tr>
+            <tr>
+                <td><strong>Có thể bịa?</strong></td>
+                <td>Có (hallucination)</td>
+                <td>RẤT KHÓ (giới hạn trong tài liệu)</td>
+            </tr>
+            <tr>
+                <td><strong>Trích dẫn?</strong></td>
+                <td>Không chính xác</td>
+                <td>ĐÚNG TRANG, ĐÚNG ĐOẠN</td>
+            </tr>
+            <tr>
+                <td><strong>Phù hợp cho</strong></td>
+                <td>Sáng tạo, brainstorm, viết mới</td>
+                <td>TRA CỨU, TÓM TẮT, Q&amp;A tài liệu nội bộ</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <blockquote>
+        <p>Nói đơn giản cho dễ nhớ: ChatGPT, Claude, Gemini giống <strong>CHUYÊN GIA</strong> — biết rất nhiều thứ trên đời nhưng đôi khi bịa, nhất là khi hỏi về chuyện riêng của công ty mình. NotebookLM giống <strong>THƯ KÝ</strong> — chỉ đọc tài liệu mình đưa, không biết gì ngoài tài liệu đó, nhưng đọc rất kỹ và luôn trích dẫn.</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng: <strong>Chuyên gia vs. Thư ký</strong></p>
+
+    <blockquote>
+        <p>Và trong công việc văn phòng — nhất là ngành dầu khí, nơi mà con số sai một chữ cũng không được — thì đôi khi Thư ký đáng tin hơn Chuyên gia.</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Giải thích RAG bằng ẩn dụ, KHÔNG dùng thuật ngữ kỹ thuật "Retrieval Augmented Generation" trước. Nếu có ai hỏi "kỹ thuật đằng sau là gì?" → giải thích ngắn: "Kỹ thuật này gọi là RAG — Retrieval Augmented Generation — nghĩa là AI đi TÌM thông tin trong tài liệu trước, rồi mới tạo câu trả lời dựa trên thông tin tìm được. Nhưng quý anh/chị không cần nhớ tên — chỉ cần nhớ: NÓ ĐỌC TÀI LIỆU CỦA MÌNH."</p>
+    </div>
+
+    <p class="stage">Chuyển tiếp sang demo</p>
+
+    <blockquote>
+        <p>Nói nhiều rồi. Giờ Đăng cho quý anh/chị xem tận mắt.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DEMO NOTEBOOKLM -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="demo-notebooklm">
+    <span class="section-num">13:55 – 14:35</span>
+    <h2>Demo NotebookLM ⭐⭐ <em style="font-size:0.6em; color: var(--warm-gray);">(40 phút — phần dài nhất, quan trọng nhất)</em></h2>
+
+    <p><strong>Mục đích:</strong> WOW moment. Cho thấy NotebookLM giải quyết đúng pain point của nhân viên văn phòng dầu khí: tra cứu nội quy, quy trình, hợp đồng — nhanh, chính xác, có trích dẫn.</p>
+
+    <h4>Chuẩn bị trước buổi dạy:</h4>
+    <ul>
+        <li><strong>Tài liệu 1:</strong> Nội quy lao động công ty (hoặc bản mẫu tương tự, đã ẩn thông tin nhạy cảm)</li>
+        <li><strong>Tài liệu 2:</strong> Quy trình HSE (Health–Safety–Environment) hoặc quy trình vận hành</li>
+        <li><strong>Tài liệu 3:</strong> Một hợp đồng mẫu (đã ẩn thông tin)</li>
+    </ul>
+
+    <div class="callout">
+        <div class="callout-label">🎵 Lưu ý nhịp</div>
+        <p>Đây là phần DÀI NHẤT buổi chiều (40 phút). Chia thành 4 bước rõ ràng. Giữ năng lượng bằng cách liên tục HỎI học viên — để họ đề xuất câu hỏi, rồi bạn gõ câu hỏi của HỌ vào NotebookLM. Wow moment sẽ MẠNH hơn nhiều khi câu hỏi là của chính họ.</p>
+    </div>
+
+    <!-- Bước 1 -->
+    <h3>Bước 1 — Upload 1 tài liệu <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <p class="stage">Mở trình duyệt → vào notebooklm.google.com → Đăng nhập Google</p>
+
+    <blockquote>
+        <p>Đăng mở NotebookLM lên. Đây là công cụ miễn phí của Google. Quý anh/chị chỉ cần tài khoản Google là dùng được.</p>
+    </blockquote>
+
+    <p class="stage">Tạo notebook mới → Click "New Notebook" → Click "Upload" → Chọn file nội quy công ty</p>
+
+    <blockquote>
+        <p>Đăng upload nội quy lao động vào đây. File PDF, khoảng 20–30 trang. NotebookLM sẽ đọc toàn bộ — không bỏ sót trang nào.</p>
+    </blockquote>
+
+    <p class="stage">Đợi upload xong. NotebookLM sẽ tự tạo summary.</p>
+
+    <blockquote>
+        <p>Quý anh/chị thấy không — nó đã đọc xong và tự tóm tắt nội dung. Giờ Đăng hỏi nó như hỏi một người đã đọc thuộc nội quy.</p>
+    </blockquote>
+
+    <!-- Bước 2 -->
+    <h3>Bước 2 — Hỏi đáp đơn giản <em style="font-size:0.7em; color: var(--warm-gray);">(10 phút)</em></h3>
+
+    <p class="stage">Gõ câu hỏi đầu tiên vào ô chat</p>
+
+    <h4>Câu hỏi 1:</h4>
+    <pre><code>Quy trình xin nghỉ phép trên 3 ngày là gì?</code></pre>
+
+    <p class="stage">Đợi NotebookLM trả lời. Khi câu trả lời hiện ra — DỪNG LẠI. Chỉ vào phần trích dẫn.</p>
+
+    <blockquote>
+        <p>Quý anh/chị nhìn chỗ này. Thấy con số nhỏ nhỏ ở cuối câu không ạ? Đó là trích dẫn. Đăng click vào — nó nhảy thẳng tới ĐÚNG ĐOẠN trong nội quy mà nó lấy thông tin.</p>
+    </blockquote>
+
+    <p class="stage">Click vào trích dẫn để show cho phòng thấy</p>
+
+    <blockquote>
+        <p>Nó không bịa. Nó CHỈ RÕ đọc từ đoạn nào, trang nào.</p>
+    </blockquote>
+
+    <h4>Câu hỏi 2:</h4>
+    <pre><code>Điều khoản nào quy định về sử dụng thiết bị cá nhân trong công ty?</code></pre>
+
+    <p class="stage">Đợi trả lời. Lại chỉ vào trích dẫn.</p>
+
+    <blockquote>
+        <p>Lại có trích dẫn. Mỗi câu trả lời đều có nguồn.</p>
+    </blockquote>
+
+    <h4>Câu hỏi 3:</h4>
+    <pre><code>Nhân viên vi phạm kỷ luật lần đầu bị xử lý thế nào?</code></pre>
+
+    <p class="stage">Đợi trả lời</p>
+
+    <blockquote>
+        <p>Quý anh/chị thấy không ạ? Nó không chỉ trả lời — nó còn CHỈ RÕ đọc từ đoạn nào, trang nào. Câu trả lời có cấu trúc, có nguồn gốc.</p>
+    </blockquote>
+
+    <p class="stage">Quay sang phòng</p>
+
+    <blockquote>
+        <p>Nếu Đăng hỏi ChatGPT câu 'Quy trình xin nghỉ phép trên 3 ngày ở công ty tôi là gì?' — quý anh/chị nghĩ nó sẽ trả lời sao?</p>
+    </blockquote>
+
+    <p class="stage">Dừng để phòng trả lời</p>
+
+    <blockquote>
+        <p>Đúng rồi. Nó sẽ BỊA một quy trình nghe rất hợp lý, rất chuyên nghiệp — nhưng KHÔNG PHẢI của công ty mình. Vì nó không CÓ nội quy của mình.</p>
+    </blockquote>
+
+    <!-- So sánh trực tiếp -->
+    <h3>So sánh trực tiếp <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <p class="stage">Copy câu hỏi "Quy trình xin nghỉ phép trên 3 ngày là gì?" → Mở ChatGPT hoặc Claude ở tab khác → Paste vào</p>
+
+    <blockquote>
+        <p>Đăng thử luôn cho quý anh/chị xem.</p>
+    </blockquote>
+
+    <p class="stage">Đợi ChatGPT trả lời. Cho phòng đọc.</p>
+
+    <blockquote>
+        <p>Quý anh/chị thấy không? Nó trả lời rất mượt, rất tự tin — nhưng đây KHÔNG PHẢI quy trình của công ty mình. Không có trích dẫn. Không có nguồn. Nếu quý anh/chị làm theo quy trình này... có thể sai hoàn toàn.</p>
+    </blockquote>
+
+    <p class="stage">Quay lại tab NotebookLM</p>
+
+    <blockquote>
+        <p>So sánh với NotebookLM — đúng quy trình của công ty mình, có trích dẫn trang, đoạn. Đây là lý do Đăng gọi NotebookLM là 'viên ngọc' — cho việc tra cứu tài liệu nội bộ, nó VƯỢT TRỘI hoàn toàn.</p>
+    </blockquote>
+
+    <div class="callout">
+        <div class="callout-label">🎵 Lưu ý nhịp</div>
+        <p>Phần so sánh trực tiếp này rất mạnh. Để 2 tab cạnh nhau nếu được — một bên ChatGPT bịa, một bên NotebookLM trích dẫn chính xác. Contrast trực quan sẽ tạo WOW moment.</p>
+    </div>
+
+    <!-- Bước 3 -->
+    <h3>Bước 3 — Upload nhiều tài liệu <em style="font-size:0.7em; color: var(--warm-gray);">(10 phút)</em></h3>
+
+    <blockquote>
+        <p>Giờ Đăng nâng cấp lên. Thay vì 1 tài liệu — Đăng upload thêm 2 tài liệu nữa.</p>
+    </blockquote>
+
+    <p class="stage">Upload thêm quy trình HSE + hợp đồng mẫu vào cùng notebook</p>
+
+    <blockquote>
+        <p>Giờ trong notebook này có 3 tài liệu: nội quy lao động, quy trình HSE, và hợp đồng mẫu. NotebookLM đã đọc HẾT.</p>
+    </blockquote>
+
+    <h4>Hỏi chéo giữa các tài liệu:</h4>
+    <pre><code>So sánh quy trình xử lý vi phạm trong nội quy lao động và trong quy trình HSE — có khác biệt gì không?</code></pre>
+
+    <p class="stage">Đợi trả lời. NotebookLM sẽ tổng hợp từ 2 tài liệu khác nhau và chỉ ra sự khác biệt.</p>
+
+    <blockquote>
+        <p>Quý anh/chị thấy không — nó vừa ĐỌC CHÉO 2 tài liệu và so sánh cho mình. Việc này nếu làm thủ công — mở 2 file, đọc từng trang, ghi chú so sánh — mất bao lâu ạ?</p>
+    </blockquote>
+
+    <p class="stage">Dừng để phòng ước lượng: "Vài tiếng", "Nửa ngày"...</p>
+
+    <blockquote>
+        <p>Đúng rồi. NotebookLM làm trong 10 giây.</p>
+    </blockquote>
+
+    <h4>Hỏi về hợp đồng:</h4>
+    <pre><code>Tóm tắt nghĩa vụ bên B trong hợp đồng này</code></pre>
+    <pre><code>Điều khoản phạt vi phạm nằm ở đâu?</code></pre>
+
+    <blockquote>
+        <p>Khi upload nhiều tài liệu, NotebookLM có thể TỔNG HỢP CHÉO — so sánh giữa các tài liệu, phát hiện khác biệt, tạo bảng so sánh. Đây là việc mà đọc thủ công mất hàng giờ, thậm chí cả ngày.</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Nếu phòng bắt đầu xôn xao, hứng thú — đây là lúc bạn hỏi: "Quý anh/chị muốn hỏi gì nữa không? Cứ nói — Đăng gõ vào luôn." Để HỌ đề xuất câu hỏi. Wow moment từ câu hỏi của chính họ sẽ mạnh gấp đôi.</p>
+    </div>
+
+    <!-- Bước 4 -->
+    <h3>Bước 4 — Tính năng đặc biệt <em style="font-size:0.7em; color: var(--warm-gray);">(10 phút)</em></h3>
+
+    <blockquote>
+        <p>NotebookLM còn có mấy tính năng mà Đăng rất thích. Để Đăng demo nhanh.</p>
+    </blockquote>
+
+    <h4>Tính năng 1 — Tạo FAQ tự động:</h4>
+
+    <p class="stage">Yêu cầu NotebookLM tạo FAQ từ nội quy</p>
+
+    <pre><code>Tạo bảng FAQ 10 câu hỏi phổ biến nhất mà nhân viên thường hỏi về nội quy này</code></pre>
+
+    <blockquote>
+        <p>Quý anh/chị tưởng tượng — phòng Nhân sự mỗi ngày nhận bao nhiêu câu hỏi về nội quy? Nghỉ phép bao nhiêu ngày? Quy trình kỷ luật thế nào? Nếu có sẵn một bảng FAQ như thế này trên intranet...</p>
+    </blockquote>
+
+    <h4>Tính năng 2 — Tạo bảng tóm tắt điều khoản:</h4>
+
+    <pre><code>Tạo bảng tóm tắt các điều khoản quan trọng nhất trong nội quy, gồm: số điều, tên điều khoản, nội dung tóm tắt trong 1 câu</code></pre>
+
+    <blockquote>
+        <p>Đây là bảng tra cứu nhanh. Thay vì đọc 30 trang — nhìn bảng này biết ngay điều khoản nào nói về vấn đề gì.</p>
+    </blockquote>
+
+    <h4>Tính năng 3 — Audio Overview <em style="font-weight:normal; color: var(--warm-gray);">(nếu còn thời gian):</em></h4>
+
+    <blockquote>
+        <p>Và đây là tính năng mà Đăng thấy rất thú vị — NotebookLM có thể tạo một PODCAST từ tài liệu. Hai người dẫn chương trình thảo luận về nội dung nội quy, bằng giọng tự nhiên.</p>
+    </blockquote>
+
+    <p class="stage">Bật Audio Overview, cho phòng nghe 30–60 giây</p>
+
+    <blockquote>
+        <p>Tưởng tượng quý anh/chị nghe cái này trên đường đi làm — thay vì đọc nội quy. Đây là cách học thụ động rất hiệu quả.</p>
+    </blockquote>
+
+    <div class="callout">
+        <div class="callout-label">🎵 Lưu ý nhịp</div>
+        <p>Audio Overview là phần "bonus", chỉ demo nếu còn thời gian. Đừng cắt phần hỏi đáp hoặc so sánh trực tiếp để nhường chỗ cho phần này. Nếu hết giờ → nói: "Đăng sẽ gửi link, quý anh/chị tự khám phá thêm."</p>
+    </div>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- THỰC HÀNH NOTEBOOKLM -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="thuc-hanh">
+    <span class="section-num">14:35 – 14:55</span>
+    <h2>Thực Hành NotebookLM</h2>
+
+    <p><strong>Mục đích:</strong> Học viên tự tay upload tài liệu và hỏi. Từ "xem demo" chuyển sang "tự làm được". Đây là bước chuyển đổi quan trọng nhất.</p>
+
+    <blockquote>
+        <p>Giờ tới lượt quý anh/chị.</p>
+    </blockquote>
+
+    <h4>Cách tổ chức:</h4>
+    <ul>
+        <li><strong>Ai có laptop:</strong> Tự mở NotebookLM (notebooklm.google.com), tạo notebook mới, upload tài liệu</li>
+        <li><strong>Ai không có laptop:</strong> Xem cùng người bên cạnh (ghép đôi), hoặc viết câu hỏi ra giấy note → Đăng gõ lên màn hình chung</li>
+        <li><strong>Đăng đi từng bàn hỗ trợ</strong> — ưu tiên người gặp khó khăn đăng nhập hoặc upload</li>
+    </ul>
+
+    <blockquote>
+        <p>Quý anh/chị có thể upload tài liệu công ty thật — nếu quý anh/chị có sẵn trên máy và tài liệu đó KHÔNG phải dạng bí mật kinh doanh. Nếu chưa có tài liệu — Đăng đã chuẩn bị sẵn tài liệu mẫu.</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Chuẩn bị USB hoặc link Google Drive chứa tài liệu mẫu: nội quy lao động mẫu, quy trình HSE mẫu, hợp đồng mẫu. Phát link trên bảng/slide hoặc phát USB cho từng bàn. Nhắc: "Đăng nhập bằng tài khoản Google cá nhân — Gmail là được."</p>
+    </div>
+
+    <h4>Gợi ý câu hỏi cho học viên thử:</h4>
+
+    <blockquote>
+        <p>Nếu quý anh/chị chưa biết hỏi gì, đây là vài gợi ý:</p>
+        <ul>
+            <li>"Quy trình xin nghỉ phép là gì?"</li>
+            <li>"Tóm tắt chương 3 của tài liệu này"</li>
+            <li>"Những điều khoản nào liên quan đến an toàn lao động?"</li>
+            <li>"Tạo bảng so sánh giữa 2 tài liệu này"</li>
+        </ul>
+    </blockquote>
+
+    <p class="stage">Cho 15 phút thực hành. Đi từng bàn. Giúp đỡ. Khuyến khích.</p>
+    <p class="stage">Sau 15 phút — gọi phòng lại</p>
+
+    <div class="callout danger">
+        <div class="callout-label">✅ Chốt phần NotebookLM</div>
+        <p></p>
+    </div>
+
+    <blockquote>
+        <p>Quý anh/chị vừa tự tay làm rồi — với NotebookLM, quý anh/chị có thể tra cứu bất kỳ tài liệu nội bộ nào trong vài giây, thay vì lật từng trang. Và nó KHÔNG BỊA vì chỉ đọc tài liệu mình đưa.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Đây là công cụ mà Đăng nghĩ phù hợp NHẤT cho công việc văn phòng tại tập đoàn — nơi mà nội quy, quy trình, hợp đồng là thứ quý anh/chị phải tra cứu mỗi ngày.</p>
+    </blockquote>
+
+    <p class="stage">Đi tới bảng mục tiêu. Đánh dấu ✓ vào mục tiêu 2.</p>
+
+    <blockquote>
+        <p>Mục tiêu 2 — xong. Còn mục tiêu cuối cùng.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- GIẢI LAO -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section>
+    <span class="section-num">14:55 – 15:05</span>
+    <h2>Giải Lao</h2>
+
+    <blockquote>
+        <p>Giải lao 10 phút. Quý anh/chị tranh thủ nghỉ ngơi, uống nước. Phần tiếp theo rất quan trọng — Đăng sẽ nói về rủi ro khi dùng AI và cách bảo vệ dữ liệu công ty.</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Trong giờ giải lao, bạn chuẩn bị sẵn: (1) Tab ChatGPT/Claude mở sẵn để demo hallucination, (2) Slide/bảng chính sách data các nền tảng, (3) Danh sách 8 tình huống phân loại dữ liệu. Kiểm tra lại kết quả demo hallucination — vì output AI thay đổi theo thời gian.</p>
+    </div>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MỤC TIÊU 3 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="muc-tieu-3">
+    <span class="section-num">Mục tiêu 3</span>
+    <h2>Dùng AI Mà Không Rò Rỉ Dữ Liệu Công Ty</h2>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 3 RỦI RO LỚN NHẤT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section>
+    <span class="section-num">15:05 – 15:15</span>
+    <h2>Bản Chất: 3 Rủi Ro Lớn Nhất</h2>
+
+    <p><strong>Mục đích:</strong> Không hù dọa, không gây sợ hãi. Cho thấy rủi ro THẬT để học viên dùng AI THÔNG MINH hơn. Giọng điệu: quan tâm, chia sẻ — không phải cảnh báo lạnh lùng.</p>
+
+    <blockquote>
+        <p>Quý anh/chị đã thấy AI rất hữu ích — viết email, tóm tắt, tra cứu nội quy. Nhưng Đăng sẽ thiếu trách nhiệm nếu không nói về mặt kia — rủi ro.</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Giọng chậm lại, nghiêm túc hơn nhưng vẫn ấm.</p>
+
+    <blockquote>
+        <p>Đặc biệt trong ngành dầu khí — nơi mà một con số sai có thể ảnh hưởng đến an toàn giàn khoan, một dữ liệu rò rỉ có thể gây thiệt hại hàng triệu đô — thì mình càng cần hiểu rủi ro để dùng đúng cách.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Có 3 rủi ro chính Đăng muốn chia sẻ.</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng: 3 RỦI RO</p>
+
+    <!-- Rủi ro 1 -->
+    <h3>Rủi ro 1 — Hallucination (Ảo giác AI)</h3>
+
+    <blockquote>
+        <p>Cái này sáng nay Đăng đã demo rồi. AI bịa rất tự tin. Nó không nói 'tôi không biết' — nó nói 'theo quy định...' rồi bịa luôn.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Dấu hiệu nhận biết: con số quá tròn quá đẹp, trích dẫn không có link hoặc link chết, tên người/tên sách/tên quy chuẩn không Google ra.</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng: <strong>1. Hallucination — AI bịa tự tin</strong></p>
+
+    <!-- Rủi ro 2 -->
+    <h3>Rủi ro 2 — Privacy &amp; Data Leakage (Rò rỉ dữ liệu)</h3>
+
+    <blockquote>
+        <p>Đây là rủi ro LỚN NHẤT cho quý anh/chị. Và cũng là rủi ro mà nhiều người không nghĩ tới.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Đăng kể 2 vụ thật.</p>
+    </blockquote>
+
+    <blockquote>
+        <p><strong>Vụ Samsung, năm 2023:</strong> Kỹ sư Samsung paste code nội bộ — mã nguồn bí mật — vào ChatGPT để nhờ sửa lỗi. Vấn đề là gì? Phiên bản miễn phí của ChatGPT lúc đó lưu dữ liệu và có thể dùng để cải thiện model. Code bí mật của Samsung — đã vào hệ thống của OpenAI. Kết quả: Samsung cấm toàn bộ nhân viên dùng ChatGPT.</p>
+    </blockquote>
+
+    <p class="stage">Dừng để phòng thấm.</p>
+
+    <blockquote>
+        <p><strong>Vụ ChatGPT bug, cũng năm 2023:</strong> Một lỗi hệ thống khiến lịch sử chat của người dùng bị lộ cho người KHÁC. Nghĩa là: quý anh/chị paste hợp đồng vào AI, có thể người lạ đọc được.</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng: <strong>2. Data Leakage — Dữ liệu rò rỉ</strong></p>
+
+    <blockquote>
+        <p>Nguyên tắc vàng — Đăng xin quý anh/chị nhớ một câu thôi:</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng, chữ lớn:</p>
+
+    <div class="golden-rule">
+        <p>"NẾU quý anh/chị không dám đọc to nội dung này trước toàn công ty — thì ĐỪNG paste vào AI công khai."</p>
+    </div>
+
+    <!-- Rủi ro 3 -->
+    <h3>Rủi ro 3 — Cognitive Offloading (Phụ thuộc AI)</h3>
+
+    <blockquote>
+        <p>Rủi ro cuối này... nhẹ hơn nhưng ngấm ngầm hơn.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Dùng AI quá nhiều → quên cách tự suy nghĩ. Dấu hiệu: không viết được email nếu không có AI. Không tóm tắt được cuộc họp nếu không nhờ AI. Không ra quyết định được nếu AI chưa phân tích.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Nguyên tắc của Đăng: AI làm draft, MÌNH làm final. Ít nhất 50% bản nháp nên do MÌNH viết trước — rồi mới nhờ AI cải thiện. Đừng để AI nghĩ thay mình.</p>
+    </blockquote>
+
+    <p class="stage">Viết lên bảng: <strong>3. Cognitive Offloading — Quên cách nghĩ</strong></p>
+
+    <blockquote>
+        <p>3 rủi ro: bịa, rò rỉ, phụ thuộc. Giờ Đăng cho quý anh/chị THẤY tận mắt.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CASE STUDY + DEMO -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="case-study">
+    <span class="section-num">15:15 – 15:35</span>
+    <h2>Case Study + Demo</h2>
+
+    <p><strong>Mục đích:</strong> Demo trực tiếp để học viên thấy rủi ro bằng mắt, không phải chỉ nghe kể. Cảm giác "thấy tận mắt" sẽ nhớ lâu hơn.</p>
+
+    <!-- Demo hallucination -->
+    <h3>Demo hallucination ngành dầu khí <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <blockquote>
+        <p>Đăng sẽ hỏi AI một câu về ngành mình — nhưng câu hỏi này có BẪY.</p>
+    </blockquote>
+
+    <p class="stage">Mở ChatGPT hoặc Claude. Gõ:</p>
+
+    <pre><code>Quy chuẩn PVEP-2024-HSE về an toàn giàn khoan ngoài khơi quy định gì về khoảng cách an toàn tối thiểu khi vận hành cẩu trục?</code></pre>
+
+    <p class="stage">Đợi AI trả lời. AI sẽ trả lời rất chi tiết, rất tự tin, có thể đưa ra con số cụ thể.</p>
+
+    <blockquote>
+        <p>Quý anh/chị nhìn này. Nó trả lời rất tự tin — có cả con số, có cả tham chiếu.</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Nhìn phòng.</p>
+
+    <blockquote>
+        <p>Nhưng sự thật là: quy chuẩn PVEP-2024-HSE này... KHÔNG TỒN TẠI. Đăng bịa cái tên đó ra. Và AI không nói 'tôi không biết quy chuẩn này' — nó BỊA LUÔN NỘI DUNG.</p>
+    </blockquote>
+
+    <p class="stage">Dừng để phòng thấm. Sẽ có tiếng ồ hoặc cười.</p>
+
+    <blockquote>
+        <p>Nếu quý anh/chị đưa con số này vào báo cáo HSE... đưa vào hồ sơ an toàn giàn khoan... Hậu quả thế nào ạ?</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Để phòng tự hình dung.</p>
+
+    <blockquote>
+        <p>Đây là lý do Đăng nhắc đi nhắc lại: AI là cộng sự — nhưng VERIFY LÀ TRÁCH NHIỆM CỦA MÌNH.</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Test prompt này 1 ngày trước buổi dạy. Output của AI thay đổi theo thời gian — đôi khi phiên bản mới sẽ nói "tôi không tìm thấy quy chuẩn này". Nếu vậy, thử đổi tên quy chuẩn sang một cái khác cũng không tồn tại. Mục tiêu: cho thấy AI CÓ THỂ bịa khi hỏi về thứ không tồn tại.</p>
+    </div>
+
+    <!-- Bảng chính sách data -->
+    <h3>Bảng chính sách data các nền tảng <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <blockquote>
+        <p>Giờ Đăng nói về rủi ro thứ hai — rò rỉ dữ liệu. Câu hỏi đầu tiên quý anh/chị nên hỏi: nền tảng AI mình đang dùng có LƯU dữ liệu không? Có dùng dữ liệu mình để TRAIN model không?</p>
+    </blockquote>
+
+    <p class="stage">Chiếu slide hoặc viết lên bảng:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nền tảng</th>
+                <th>Free (Miễn phí)</th>
+                <th>Pro/Plus (Trả phí cá nhân)</th>
+                <th>Enterprise (Doanh nghiệp)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ChatGPT</strong></td>
+                <td>⚠️ Có thể dùng cho training</td>
+                <td>⚠️ Có thể opt-out</td>
+                <td>✅ Cam kết KHÔNG training</td>
+            </tr>
+            <tr>
+                <td><strong>Claude</strong></td>
+                <td>⚠️ Có thể dùng cho training</td>
+                <td>✅ Cam kết KHÔNG training</td>
+                <td>✅ Cam kết + SOC2</td>
+            </tr>
+            <tr>
+                <td><strong>Gemini</strong></td>
+                <td>⚠️ Có thể dùng cho training</td>
+                <td>⚠️ Có thể opt-out</td>
+                <td>✅ Cam kết KHÔNG training</td>
+            </tr>
+            <tr>
+                <td><strong>NotebookLM</strong></td>
+                <td>Google xử lý, không training</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <blockquote>
+        <p>Quan trọng nhất quý anh/chị cần nhớ: phiên bản MIỄN PHÍ của hầu hết AI đều CÓ THỂ dùng dữ liệu quý anh/chị để cải thiện model. Nghĩa là: khi quý anh/chị paste hợp đồng vào ChatGPT miễn phí — nội dung đó CÓ THỂ được đưa vào dữ liệu huấn luyện.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Phiên bản trả tiền — Pro, Plus — thường có tùy chọn tắt. Phiên bản Enterprise cam kết không dùng. Nhưng từng nền tảng khác nhau.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Quý anh/chị cần làm gì? Kiểm tra chính sách công ty cho phép dùng phiên bản nào. Nếu công ty chưa có chính sách — đây là lúc đề xuất với IT department.</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Chính sách data các nền tảng thay đổi thường xuyên. Kiểm tra lại bảng này 1 tuần trước buổi dạy. Nguồn: trang chính sách dữ liệu của từng nền tảng (OpenAI, Anthropic, Google). Mục tiêu không phải chi tiết chính xác từng dòng — mà là nguyên tắc: FREE ≠ AN TOÀN.</p>
+    </div>
+
+    <!-- Demo Privacy concern -->
+    <h3>Demo Privacy concern <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <blockquote>
+        <p>Đăng demo thêm một ví dụ thực tế. Giả sử Đăng là nhân viên phòng kế hoạch, Đăng paste đoạn này vào ChatGPT miễn phí:</p>
+    </blockquote>
+
+    <p class="stage">Gõ một email giả lập chứa thông tin nhạy cảm — dùng thông tin GIẢ:</p>
+
+    <pre><code>Nhờ AI viết lại email sau cho lịch sự hơn:
+"Anh Minh, theo hợp đồng DK-2024-0892, sản lượng khai thác lô 09-1 tháng này đạt 4,200 thùng/ngày, thấp hơn cam kết 15%. Đề nghị họp khẩn với PVEP để thảo luận phương án bù sản lượng. Chi phí dự kiến tăng thêm 2.3 triệu USD."</code></pre>
+
+    <blockquote>
+        <p>Trong đoạn email ngắn này có: số hợp đồng, sản lượng khai thác, tên lô khai thác, chi phí — toàn dữ liệu nhạy cảm. Nếu paste vào AI miễn phí — tất cả thông tin này CÓ THỂ bị lưu.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Cách an toàn hơn? ẨN thông tin trước khi paste:</p>
+    </blockquote>
+
+    <pre><code>Nhờ AI viết lại email sau cho lịch sự hơn:
+"Anh [TÊN], theo hợp đồng [MÃ HĐ], sản lượng khai thác lô [MÃ LÔ] tháng này đạt [SỐ] thùng/ngày, thấp hơn cam kết [X]%. Đề nghị họp khẩn với [ĐỐI TÁC] để thảo luận phương án bù sản lượng. Chi phí dự kiến tăng thêm [SỐ TIỀN]."</code></pre>
+
+    <blockquote>
+        <p>Giữ nguyên cấu trúc — nhưng ẩn toàn bộ con số nhạy cảm. AI vẫn viết lại được email lịch sự — mà không biết gì về hợp đồng thật của mình.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHECKLIST + PHÂN LOẠI DỮ LIỆU -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="checklist">
+    <span class="section-num">15:35 – 15:55</span>
+    <h2>Checklist 3 Câu Hỏi + Phân Loại Dữ Liệu</h2>
+
+    <p><strong>Mục đích:</strong> Cho học viên một công cụ thực tế — 3 câu hỏi tự kiểm tra trước khi paste bất cứ thứ gì vào AI. Sau đó thực hành phân loại bằng hoạt động giơ tay — tạo năng lượng giữa buổi chiều.</p>
+
+    <!-- Checklist 3 câu hỏi -->
+    <h3>Checklist 3 câu hỏi <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <p class="stage">Viết lên bảng, chữ rõ ràng, to:</p>
+
+    <div class="checklist-box">
+        <div class="checklist-title">CHECKLIST TRƯỚC KHI PASTE VÀO AI</div>
+        <div class="check-item"><span class="emoji">✅</span> <strong>1.</strong> Dữ liệu này có NHẠY CẢM không?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(hợp đồng, tài chính, nhân sự, kỹ thuật khai thác)</div>
+        <div class="check-item"><span class="emoji">✅</span> <strong>2.</strong> Nền tảng AI này có CHÍNH SÁCH BẢO MẬT phù hợp không?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Enterprise vs Free — kiểm tra trước)</div>
+        <div class="check-item"><span class="emoji">✅</span> <strong>3.</strong> Tôi có thể VERIFY output này không? Bằng cách nào?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(đối chiếu nguồn gốc, hỏi chuyên gia, tra cứu)</div>
+    </div>
+
+    <blockquote>
+        <p>3 câu hỏi. Trước khi paste BẤT CỨ THỨ GÌ vào AI — quý anh/chị tự hỏi 3 câu này. Nếu câu 1 là CÓ và câu 2 là KHÔNG — DỪNG LẠI. Nếu câu 3 là KHÔNG BIẾT CÁCH VERIFY — thì đừng dùng output đó.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Đăng gợi ý quý anh/chị chụp ảnh cái này, để làm hình nền điện thoại.</p>
+    </blockquote>
+
+    <p class="stage">Dừng để phòng chụp ảnh nếu muốn</p>
+
+    <!-- Thực hành phân loại -->
+    <h3>Thực hành phân loại dữ liệu — Giơ tay <em style="font-size:0.7em; color: var(--warm-gray);">(15 phút)</em></h3>
+
+    <blockquote>
+        <p>Giờ mình thực hành. Đăng sẽ đọc từng tình huống. Quý anh/chị giơ tay: ĐƯA VÀO AI ĐƯỢC — giơ tay phải. KHÔNG ĐƯỢC — giơ tay trái. Sẵn sàng chưa?</p>
+    </blockquote>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Phần giơ tay này tạo năng lượng RẤT TỐT giữa buổi chiều khi mọi người hay buồn ngủ. Đọc chậm, rõ, đợi mọi người giơ tay rồi mới giải thích. Tạo không khí vui — không phải thi. Khen khi có người trả lời đúng.</p>
+    </div>
+
+    <!-- Tình huống 1 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 1</span>
+            <span class="scenario-verdict ok">✅ Đưa được</span>
+        </div>
+        <div class="scenario-question">Email nội bộ nhờ phòng kế toán gửi số liệu — mình muốn viết lại cho gọn.</div>
+        <div class="scenario-answer">→ ĐƯA ĐƯỢC. Email hành chính, nội dung không nhạy cảm. Nhưng nhớ: KHÔNG paste số liệu tài chính vào đó.</div>
+    </div>
+
+    <!-- Tình huống 2 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 2</span>
+            <span class="scenario-verdict no">🚫 Không</span>
+        </div>
+        <div class="scenario-question">Hợp đồng mua bán dầu thô với đối tác nước ngoài — muốn tóm tắt các điều khoản chính.</div>
+        <div class="scenario-answer">→ KHÔNG. Đây là bí mật kinh doanh. Giá, điều kiện, đối tác — tất cả đều nhạy cảm. Nếu cần tóm tắt → dùng NotebookLM hoặc phiên bản Enterprise có cam kết bảo mật.</div>
+    </div>
+
+    <!-- Tình huống 3 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 3</span>
+            <span class="scenario-verdict no">🚫 Không</span>
+        </div>
+        <div class="scenario-question">Báo cáo sản lượng khai thác quý — muốn AI tạo biểu đồ.</div>
+        <div class="scenario-answer">→ KHÔNG. Số liệu kinh doanh nội bộ. Đây là loại dữ liệu mà nếu rò rỉ ra ngoài, có thể ảnh hưởng đến giá cổ phiếu, đến đàm phán với đối tác.</div>
+    </div>
+
+    <!-- Tình huống 4 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 4</span>
+            <span class="scenario-verdict ok">✅ Đưa được</span>
+        </div>
+        <div class="scenario-question">Nội quy công ty đã được công bố công khai trên website — muốn tạo FAQ.</div>
+        <div class="scenario-answer">→ ĐƯA ĐƯỢC. Đã công khai rồi thì không còn nhạy cảm. Và đây là use case hoàn hảo cho NotebookLM.</div>
+    </div>
+
+    <!-- Tình huống 5 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 5</span>
+            <span class="scenario-verdict ok">✅ Đưa được</span>
+        </div>
+        <div class="scenario-question">Email cá nhân mình tự viết — muốn nhờ AI sửa lại cho lịch sự hơn.</div>
+        <div class="scenario-answer">→ ĐƯA ĐƯỢC. Email cá nhân, không chứa thông tin công ty. Hoàn toàn an toàn.</div>
+    </div>
+
+    <!-- Tình huống 6 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 6</span>
+            <span class="scenario-verdict no">🚫 Tuyệt đối không</span>
+        </div>
+        <div class="scenario-question">Danh sách nhân sự toàn phòng kèm theo mức lương — muốn AI phân tích.</div>
+        <div class="scenario-answer">→ TUYỆT ĐỐI KHÔNG. Đây vừa là thông tin cá nhân (PII — tên, lương) vừa là bí mật nội bộ. Loại dữ liệu này — kể cả phiên bản Enterprise cũng nên cân nhắc kỹ trước khi đưa vào.</div>
+    </div>
+
+    <!-- Tình huống 7 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 7</span>
+            <span class="scenario-verdict ok">✅ Đưa được</span>
+        </div>
+        <div class="scenario-question">Bài thuyết trình về xu hướng năng lượng tái tạo — muốn AI gợi ý thêm ý tưởng.</div>
+        <div class="scenario-answer">→ ĐƯA ĐƯỢC. Thông tin công khai, không chứa số liệu nội bộ. Đây đúng là thế mạnh của AI tạo sinh — brainstorm, mở rộng ý tưởng.</div>
+    </div>
+
+    <!-- Tình huống 8 -->
+    <div class="scenario">
+        <div class="scenario-header">
+            <span class="scenario-num">Tình huống 8</span>
+            <span class="scenario-verdict no">🚫 Không</span>
+        </div>
+        <div class="scenario-question">Mã nguồn phần mềm quản lý nội bộ — muốn AI sửa bug.</div>
+        <div class="scenario-answer">→ KHÔNG. Đây là tài sản trí tuệ của công ty. Chính Samsung đã mất bài học đau đớn vì chuyện này. Nếu cần AI hỗ trợ code → dùng phiên bản Enterprise hoặc AI cài nội bộ.</div>
+    </div>
+
+    <p class="stage">Sau 8 tình huống</p>
+
+    <blockquote>
+        <p>Quý anh/chị thấy không — không phải lúc nào cũng rõ ràng đen trắng. Có những tình huống phải CÂN NHẮC. Và đó là lý do có checklist 3 câu hỏi — để mình không cần nhớ từng case, mà có NGUYÊN TẮC để tự quyết định.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Nếu quý anh/chị phân vân — nghĩ tới nguyên tắc vàng: 'Nếu mình không dám đọc to cái này trước cả công ty — thì đừng paste vào AI miễn phí.'</p>
+    </blockquote>
+
+    <p class="stage">Đánh dấu ✓ vào mục tiêu 3 trên bảng</p>
+
+    <blockquote>
+        <p>Mục tiêu 3 — xong. Cả 3 mục tiêu hôm nay đều có dấu ✓ rồi.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HỆ SINH THÁI MỞ RỘNG -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="he-sinh-thai">
+    <span class="section-num">15:55 – 16:10</span>
+    <h2>Hệ Sinh Thái Mở Rộng <em style="font-size:0.5em; color: var(--warm-gray);">(nhẹ, 15 phút)</em></h2>
+
+    <p><strong>Mục đích:</strong> Cho thấy "tương lai gần" của AI — để học viên không bị bất ngờ trong 6–12 tháng tới. KHÔNG demo sâu, chỉ giới thiệu khái niệm. Giọng nhẹ nhàng, gợi mở — không tạo áp lực phải học thêm.</p>
+
+    <blockquote>
+        <p>Trước khi đóng buổi, Đăng muốn cho quý anh/chị nhìn thấy AI đang đi đâu tiếp — để quý anh/chị không bị bất ngờ khi đọc tin tức tháng sau, quý sau.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Đăng sẽ giới thiệu 4 khái niệm — rất nhanh, không đi sâu. Chỉ để quý anh/chị biết tên, biết ý nghĩa.</p>
+    </blockquote>
+
+    <!-- 1. GPTs / Gems / Spaces -->
+    <div class="eco-card">
+        <div class="eco-card-num">01 / 04</div>
+        <div class="eco-card-title">GPTs / Gems / Spaces — Chatbot tùy biến</div>
+        <p>Hiện tại, quý anh/chị có thể tạo một 'nhân viên AI riêng' — chỉ biết về quy trình của phòng mình.</p>
+        <p>Ví dụ: quý anh/chị tạo một 'AI trợ lý phòng HSE' — upload toàn bộ quy trình an toàn vào đó — và bất kỳ ai trong phòng cũng có thể hỏi, 24/7. Giống NotebookLM nhưng chia sẻ được cho cả team.</p>
+        <p>ChatGPT gọi là GPTs. Gemini gọi là Gems. Mỗi nhà gọi một tên — nhưng ý tưởng giống nhau.</p>
+    </div>
+
+    <!-- 2. AI Skills -->
+    <div class="eco-card">
+        <div class="eco-card-num">02 / 04</div>
+        <div class="eco-card-title">AI Skills — Kỹ năng mở rộng</div>
+        <p>AI không chỉ chat bằng chữ nữa. Nó có thể đọc file Excel và phân tích dữ liệu, nhìn biểu đồ và nhận xét, tạo slide PowerPoint, thậm chí viết code.</p>
+        <p>Mỗi tháng, mỗi nền tảng lại thêm kỹ năng mới. Quý anh/chị không cần theo dõi tất cả — chỉ cần biết: AI đang mở rộng rất nhanh.</p>
+    </div>
+
+    <!-- 3. AI Agent -->
+    <div class="eco-card">
+        <div class="eco-card-num">03 / 04</div>
+        <div class="eco-card-title">AI Agent — AI tự thực thi</div>
+        <p>Đây là bước tiếp theo — và cũng là bước lớn nhất.</p>
+        <p>Hiện tại, AI trả lời câu hỏi. Nhưng AI Agent sẽ TỰ LÀM.</p>
+        <p>Ví dụ: quý anh/chị nói: 'Mỗi sáng thứ 2, tổng hợp email tuần trước và gửi báo cáo tóm tắt cho sếp.' AI Agent sẽ tự động: đọc email → tóm tắt → soạn báo cáo → gửi. Không cần mình ngồi làm.</p>
+        <p>Tương lai gần — chưa phải bây giờ. Nhưng đang tới rất nhanh.</p>
+    </div>
+
+    <!-- 4. MCP & Plugin -->
+    <div class="eco-card">
+        <div class="eco-card-num">04 / 04</div>
+        <div class="eco-card-title">MCP &amp; Plugin — AI kết nối công cụ nội bộ</div>
+        <p>Và cuối cùng: AI sẽ kết nối trực tiếp với hệ thống nội bộ của công ty — ERP, email, calendar, SharePoint.</p>
+        <p>Nghĩa là: thay vì copy dữ liệu từ ERP → paste vào AI → copy output → paste lại vào email — AI sẽ tự kéo dữ liệu, tự xử lý, tự đưa kết quả vào đúng chỗ.</p>
+        <p>Nhưng — điều này cần IT department setup. Và cần chính sách bảo mật rõ ràng từ công ty.</p>
+    </div>
+
+    <p class="stage">Dừng. Nhìn phòng.</p>
+
+    <blockquote>
+        <p>Đăng kể những điều này không phải để quý anh/chị lo lắng. Cũng không phải để quý anh/chị phải học thêm gì ngay bây giờ.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Mà để thấy một điều rất quan trọng: những gì mình học hôm nay — CÁCH TƯ DUY khi làm việc với AI — sẽ vẫn đúng dù công cụ thay đổi.</p>
+    </blockquote>
+
+    <p class="stage">Nhấn mạnh, chỉ vào bảng</p>
+
+    <blockquote>
+        <p>CRISP — vẫn đúng. Kiểm tra output — vẫn đúng. Leader-Cộng sự — vẫn đúng. Checklist 3 câu hỏi — vẫn đúng.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Công cụ sẽ thay đổi mỗi năm. Nhưng TƯ DUY — thì bền vững.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ĐÓNG BUỔI -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="dong-buoi">
+    <span class="section-num">Đóng buổi</span>
+    <h2>Đóng Buổi</h2>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- BẢNG MỤC TIÊU + Q&A + CAM KẾT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section>
+    <span class="section-num">16:10 – 16:25</span>
+    <h2>Quay Lại Bảng Mục Tiêu + Q&amp;A + Cam Kết</h2>
+
+    <p><strong>Mục đích:</strong> Tạo cảm giác hoàn thành. Giải quyết câu hỏi còn lại. Chuyển từ "học" sang "hành" bằng cam kết cụ thể.</p>
+
+    <p class="stage">Đi tới bảng mục tiêu. Đứng trước phòng.</p>
+
+    <blockquote>
+        <p>Quý anh/chị, mình quay lại bảng mục tiêu hôm nay.</p>
+    </blockquote>
+
+    <p class="stage">Chỉ từng mục, đánh dấu ✓ nếu chưa đánh:</p>
+
+    <div class="objectives">
+        <div class="obj-title">BẢNG MỤC TIÊU HÔM NAY</div>
+        <div class="obj-item"><span class="check">✓</span> 1. Viết email / báo cáo / văn bản nhanh + đúng giọng</div>
+        <div class="obj-item"><span class="check">✓</span> 2. Tra cứu nội quy, quy trình, hợp đồng — không sợ AI bịa</div>
+        <div class="obj-item"><span class="check">✓</span> 3. Dùng AI mà KHÔNG rò rỉ dữ liệu công ty</div>
+    </div>
+
+    <blockquote>
+        <p>Quý anh/chị viết 3 cái này lên bảng lúc sáng. Giờ cả 3 đều có dấu ✓ rồi.</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Để phòng nhìn bảng.</p>
+
+    <blockquote>
+        <p>Mục tiêu 1 — quý anh/chị đã biết CRISP, đã thấy AI viết email, tóm tắt biên bản, và đã tự prompt thử.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Mục tiêu 2 — quý anh/chị đã thấy NotebookLM tra cứu nội quy, so sánh chéo tài liệu, tạo FAQ — và đã tự tay upload tài liệu.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Mục tiêu 3 — quý anh/chị biết 3 rủi ro, có checklist 3 câu hỏi, và vừa phân loại được 8 tình huống.</p>
+    </blockquote>
+
+    <!-- Q&A mở -->
+    <h3>Q&amp;A mở <em style="font-size:0.7em; color: var(--warm-gray);">(10 phút)</em></h3>
+
+    <p class="stage">Quay lại xem note dán trên bảng — nếu buổi sáng có hoạt động viết nỗi lo/mong đợi</p>
+
+    <blockquote>
+        <p>Lúc sáng quý anh/chị còn viết thêm nhiều thứ trên giấy note — nỗi lo, mong đợi, câu hỏi. Có cái nào mình chưa đề cập mà quý anh/chị muốn hỏi không ạ?</p>
+    </blockquote>
+
+    <p class="stage">Đọc qua các note dán. Nếu có câu hỏi chưa trả lời → trả lời ngắn gọn. Nếu câu hỏi quá chuyên sâu → ghi nhận và hẹn trả lời sau qua email.</p>
+
+    <div class="callout note">
+        <div class="callout-label">📋 Ghi chú cho Đăng</div>
+        <p>Nếu phòng im lặng, bạn chủ động đọc 1–2 note dán và trả lời. Hoặc gợi mở: "Có ai muốn hỏi về cách dùng AI cho công việc cụ thể của mình không? Phòng nào, vị trí nào — Đăng sẽ gợi ý prompt phù hợp." Phần Q&amp;A không nên kéo quá 10 phút — giữ năng lượng cho phần cam kết.</p>
+    </div>
+
+    <!-- Cam kết 1 việc -->
+    <h3>Cam kết 1 việc <em style="font-size:0.7em; color: var(--warm-gray);">(5 phút)</em></h3>
+
+    <blockquote>
+        <p>Trước khi về, Đăng xin quý anh/chị một điều.</p>
+    </blockquote>
+
+    <p class="stage">Giọng chậm, ấm</p>
+
+    <blockquote>
+        <p>Viết ra MỘT VIỆC cụ thể quý anh/chị sẽ làm với AI ngay NGÀY MAI. Chỉ một việc thôi. Cụ thể. Viết ra giấy note — giữ trên bàn làm việc.</p>
+    </blockquote>
+
+    <p class="stage">Phát giấy note nếu cần. Đợi 2 phút để mọi người viết.</p>
+
+    <blockquote>
+        <p>Không cần gì to tát. Ví dụ:</p>
+    </blockquote>
+
+    <ul class="commit-list">
+        <li>Ngày mai viết 1 email bằng CRISP</li>
+        <li>Upload nội quy phòng mình vào NotebookLM</li>
+        <li>Kiểm tra chính sách bảo mật AI của công ty</li>
+        <li>Dùng AI tóm tắt biên bản họp buổi chiều mai</li>
+        <li>Thử hỏi AI cách viết báo cáo tuần cho gọn hơn</li>
+    </ul>
+
+    <blockquote>
+        <p>Một việc nhỏ — nhưng nếu quý anh/chị LÀM — nó sẽ khởi động cả một thói quen mới.</p>
+    </blockquote>
+
+    <p class="stage">Đợi mọi người viết xong</p>
+
+    <blockquote>
+        <p>Ai viết xong rồi — giữ tờ note đó. Dán trên máy tính. Ngày mai nhìn thấy — và LÀM.</p>
+    </blockquote>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- LỜI NHẮN CUỐI -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section>
+    <span class="section-num">16:25 – 16:30</span>
+    <h2>Lời Nhắn Cuối — Cảm Xúc Đọng Lại</h2>
+
+    <p><strong>Mục đích:</strong> Kết thúc bằng cảm xúc, không phải lý thuyết. Để họ rời phòng với cảm giác "tôi muốn thử" và "tôi làm được". Đây là 5 phút quan trọng nhất của cả ngày — vì đây là thứ họ sẽ NHỚ khi về nhà.</p>
+
+    <p class="stage">Bước ra trước phòng. Không cần slide. Không cần bảng. Chỉ Đăng và phòng.</p>
+
+    <blockquote>
+        <p>Quý anh/chị...</p>
+    </blockquote>
+
+    <p class="stage">Dừng. Nhìn phòng.</p>
+
+    <blockquote>
+        <p>Đăng bắt đầu buổi hôm nay bằng câu chuyện của mình. Đăng muốn kết thúc cũng bằng một điều rất thật.</p>
+    </blockquote>
+
+    <p class="stage">Giọng chậm, thật.</p>
+
+    <blockquote>
+        <p>6 tháng trước, Đăng cũng từng sợ AI. Sợ nó thay thế mình. Sợ không theo kịp. Sợ học không nổi. Mỗi lần đọc tin 'AI sẽ thay thế X triệu việc làm' — Đăng lo thật sự.</p>
+    </blockquote>
+
+    <p class="stage">Dừng.</p>
+
+    <blockquote>
+        <p>Nhưng khi Đăng thực sự ngồi xuống và HỌC CÁCH LÀM VIỆC CÙNG nó — Đăng nhận ra một điều:</p>
+    </blockquote>
+
+    <div class="golden-rule">
+        <p>AI không thay thế mình. AI KHUẾCH ĐẠI mình.</p>
+    </div>
+
+    <p class="stage">Nhấn mạnh "khuếch đại"</p>
+
+    <blockquote>
+        <p>Nếu mình tư duy rõ — AI cho output tốt.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Nếu mình cẩn trọng — AI là trợ thủ đắc lực.</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Nếu mình có hệ thống — AI trở thành cộng sự hiểu mình.</p>
+    </blockquote>
+
+    <p class="stage">Dừng.</p>
+
+    <blockquote>
+        <p>Đăng không đến đây để DẠY quý anh/chị. Đăng đến để CHIA SẺ — vì Đăng cũng từng ở đúng vị trí đó. Ngồi trong một buổi tập huấn, tự hỏi: 'Mình có theo kịp không?'</p>
+    </blockquote>
+
+    <blockquote>
+        <p>Và câu trả lời là CÓ. Quý anh/chị hôm nay đã chứng minh điều đó. Quý anh/chị đã viết prompt, đã dùng NotebookLM, đã phân loại dữ liệu — tất cả trong một ngày. Nếu Đăng làm được, quý anh/chị chắc chắn cũng làm được.</p>
+    </blockquote>
+
+    <p class="stage">Nhìn phòng. Gật đầu.</p>
+
+    <blockquote>
+        <p>Cảm ơn quý anh/chị đã dành cả ngày hôm nay. Chúc quý anh/chị một hành trình AI thật hiệu quả và an toàn.</p>
+    </blockquote>
+
+    <p class="stage">Dừng.</p>
+
+    <blockquote>
+        <p>Và Đăng rất vui nếu sau này quý anh/chị có câu hỏi gì — cứ liên lạc. Đăng luôn sẵn lòng.</p>
+    </blockquote>
+
+    <p class="stage">Cúi đầu. Im lặng. Kết thúc.</p>
+
+    <div class="callout danger">
+        <div class="callout-label">⚠️ Quan trọng cho Đăng</div>
+        <p>ĐỪNG thêm slide sau lời nhắn này. ĐỪNG quay lại nói thêm lý thuyết. ĐỪNG nhắc lại nội dung buổi học. Kết thúc đúng lúc, đúng cảm xúc. Im lặng sau câu cuối — để khoảng lặng tự nhiên. Để phòng vỗ tay tự nhiên. Nếu có ai đến bắt tay, cảm ơn — nhận. Đây là dấu hiệu buổi dạy thành công.</p>
+    </div>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PHỤ LỤC -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="phu-luc">
+    <span class="section-num">Phụ lục</span>
+    <h2>Phụ Lục</h2>
+
+    <!-- A — Checklist chuẩn bị -->
+    <h3>A — Checklist chuẩn bị trước buổi dạy</h3>
+    <ul>
+        <li>Giấy note dán (2 màu khác nhau nếu có) — đủ cho mỗi người 2 tờ</li>
+        <li>Bảng trắng / flipchart + bút (ít nhất 2 màu: đen và đỏ)</li>
+        <li>Laptop kết nối projector, có internet ổn định (test trước 30 phút)</li>
+        <li>Đăng nhập sẵn trên trình duyệt: Claude, ChatGPT, Gemini, NotebookLM</li>
+        <li>Tài liệu mẫu đã upload sẵn vào NotebookLM (backup — phòng trường hợp upload chậm khi demo)</li>
+        <li>USB hoặc link Google Drive chứa tài liệu mẫu cho học viên thực hành</li>
+        <li>Test demo hallucination 1 ngày trước (AI output thay đổi theo thời gian — chuẩn bị prompt backup)</li>
+        <li>Obsidian mở sẵn ở tab graph view (cho phần show 30 giây nếu có trong buổi sáng)</li>
+        <li>Slide tối thiểu: bảng CRISP, bảng so sánh ChatGPT vs NotebookLM, bảng chính sách data — phần lớn dùng bảng viết tay</li>
+        <li>Nước uống cho bản thân — 3 tiếng nói liên tục cần giữ giọng</li>
+        <li>Micro không dây nếu phòng lớn (trên 20 người)</li>
+    </ul>
+
+    <!-- B — Prompt demo chuẩn bị sẵn -->
+    <h3>B — Prompt demo chuẩn bị sẵn</h3>
+
+    <h4>Demo 1 — Prompt nghèo:</h4>
+    <pre><code>Viết email xin gia hạn báo cáo</code></pre>
+
+    <h4>Demo 2 — Prompt CRISP đầy đủ:</h4>
+    <pre><code>Bối cảnh: Tôi là chuyên viên phòng kế hoạch tập đoàn dầu khí, 5 năm kinh nghiệm.
+Vai trò: Đóng vai người viết email công sở chuyên nghiệp trong ngành năng lượng.
+Dữ liệu: Email gửi trưởng phòng, xin gia hạn báo cáo sản lượng khai thác quý thêm 2 ngày vì đang chờ số liệu từ đơn vị khai thác ngoài khơi.
+Yêu cầu: Khoảng 120 chữ, lịch sự, không vòng vo, nêu rõ lý do và cam kết thời hạn mới.
+Tiêu chí: Giọng trang trọng nhưng không cứng nhắc, sếp sẽ đọc trong 30 giây nên phải rõ ý ngay.</code></pre>
+
+    <h4>Demo 3 — Iterative (chỉnh sửa liên tục):</h4>
+    <pre><code>Rút ngắn còn 80 chữ và thêm câu cảm ơn sự thông cảm</code></pre>
+    <pre><code>Đổi giọng trang trọng hơn vì email này CC cho Giám đốc khối</code></pre>
+
+    <h4>Demo 4 — Tóm tắt biên bản họp:</h4>
+    <pre><code>Tóm tắt biên bản họp sau theo format:
+(1) Quyết định
+(2) Hành động cần làm
+(3) Người chịu trách nhiệm
+(4) Deadline
+
+[Paste nội dung họp vào đây]</code></pre>
+
+    <h4>Demo 5 — Hallucination ngành dầu khí:</h4>
+    <pre><code>Quy chuẩn PVEP-2024-HSE về an toàn giàn khoan ngoài khơi quy định gì về khoảng cách an toàn tối thiểu khi vận hành cẩu trục?</code></pre>
+    <p><em>(Quy chuẩn này KHÔNG TỒN TẠI — AI sẽ bịa)</em></p>
+
+    <h4>Demo 6 — NotebookLM questions:</h4>
+    <pre><code>Quy trình xin nghỉ phép trên 3 ngày là gì?</code></pre>
+    <pre><code>So sánh quy trình xử lý vi phạm trong nội quy và trong HSE</code></pre>
+    <pre><code>Tóm tắt nghĩa vụ bên B trong hợp đồng</code></pre>
+    <pre><code>Tạo bảng FAQ 10 câu hỏi phổ biến nhất từ nội quy</code></pre>
+
+    <!-- C — Tài liệu mẫu -->
+    <h3>C — Tài liệu mẫu cho NotebookLM demo</h3>
+
+    <p>Nếu không xin được tài liệu thật từ tập đoàn (do bảo mật), chuẩn bị:</p>
+
+    <ol>
+        <li><strong>Nội quy lao động mẫu:</strong> Tải từ mẫu Bộ Lao động – Thương binh &amp; Xã hội, chỉnh sửa cho giống ngành dầu khí (thêm điều khoản về làm việc ngoài khơi, ca kíp, an toàn lao động đặc thù)</li>
+        <li><strong>Quy trình HSE mẫu:</strong> Tham khảo ISO 45001 (Hệ thống quản lý An toàn &amp; Sức khỏe nghề nghiệp), viết dạng quy trình nội bộ với các bước cụ thể, phân quyền, biểu mẫu</li>
+        <li><strong>Hợp đồng mua bán mẫu:</strong> Tải từ mẫu hợp đồng thương mại phổ biến, ẩn toàn bộ thông tin thật (tên công ty, giá, sản lượng), thay bằng dữ liệu giả</li>
+    </ol>
+
+    <div class="callout danger">
+        <div class="callout-label">⚠️ Quan trọng</div>
+        <p>Tất cả tài liệu mẫu phải được kiểm tra kỹ — KHÔNG chứa bất kỳ thông tin thật nào của bất kỳ công ty nào. Dùng tên giả, số giả, địa chỉ giả.</p>
+    </div>
+
+    <!-- D — Tài nguyên tự học -->
+    <h3>D — Tài nguyên tự học gợi ý cho học viên</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Công cụ</th>
+                <th>Link</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Claude</td>
+                <td><a href="https://claude.ai" target="_blank">claude.ai</a></td>
+                <td>Miễn phí, giỏi viết tiếng Việt</td>
+            </tr>
+            <tr>
+                <td>ChatGPT</td>
+                <td><a href="https://chat.openai.com" target="_blank">chat.openai.com</a></td>
+                <td>Miễn phí, phổ biến nhất</td>
+            </tr>
+            <tr>
+                <td>Gemini</td>
+                <td><a href="https://gemini.google.com" target="_blank">gemini.google.com</a></td>
+                <td>Miễn phí, tích hợp Google</td>
+            </tr>
+            <tr>
+                <td>NotebookLM</td>
+                <td><a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a></td>
+                <td>Miễn phí, tra cứu tài liệu</td>
+            </tr>
+            <tr>
+                <td>Perplexity</td>
+                <td><a href="https://perplexity.ai" target="_blank">perplexity.ai</a></td>
+                <td>Miễn phí, tìm kiếm có trích dẫn</td>
+            </tr>
+            <tr>
+                <td>Khóa học</td>
+                <td>Google "AI Prompting Essentials" trên Coursera</td>
+                <td>Miễn phí, có chứng chỉ</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- E — Lưu ý quan trọng -->
+    <h3>E — Lưu ý quan trọng cho người dẫn</h3>
+
+    <ol>
+        <li><strong>Nhịp buổi chiều:</strong> Sau giờ trưa, năng lượng phòng thấp hơn buổi sáng. Phần demo NotebookLM (13:55–14:35) cần tạo WOW moment sớm để kéo năng lượng lên. Phần giơ tay (15:35–15:55) giúp phá vỡ cơn buồn ngủ.</li>
+        <li><strong>Thời lượng linh hoạt:</strong> Nếu phần Q&amp;A ngắn → dành thêm thời gian cho phần cam kết hoặc hệ sinh thái mở rộng. Nếu phần thực hành NotebookLM kéo dài (do nhiều người gặp khó khăn đăng nhập) → rút ngắn phần hệ sinh thái mở rộng.</li>
+        <li><strong>Kết thúc đúng giờ:</strong> TUYỆT ĐỐI kết thúc đúng 16:30 hoặc sớm hơn. Không bao giờ kéo dài. Kết thúc đúng giờ = tôn trọng học viên = họ nhớ buổi học tốt hơn.</li>
+        <li><strong>Sau buổi dạy:</strong> Gửi email cảm ơn kèm: (a) link tài nguyên tự học, (b) slide/bảng tóm tắt, (c) email liên lạc của Đăng, (d) FAQ ngắn về những câu hỏi phổ biến trong buổi.</li>
+    </ol>
+</section>
+
+<div class="divider">❧ ❧ ❧</div>
+
+<p style="text-align: center; font-style: italic; color: var(--warm-gray); font-size: 15px; max-width: 100%;">Kịch bản này là bản hướng dẫn chi tiết — không phải bài đọc. Người dẫn nên đọc kỹ trước buổi dạy, nắm mạch nội dung, nhưng khi đứng lớp — hãy NÓI bằng ngôn ngữ tự nhiên của mình, không đọc y nguyên kịch bản.</p>
+
+<footer>
+    <div class="ornament">❧ ❦ ❧</div>
+    Kỹ Năng Ứng Dụng AI · Chuyên Viên Văn Phòng<br>
+    Tập Đoàn Dầu Khí · Buổi Chiều<br>
+    Người dẫn: Đăng
+</footer>
+
+</div><!-- .frame -->
+</body>
+</html>
