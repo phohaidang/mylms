@@ -11,6 +11,13 @@ const IS_VERCEL = !!process.env.VERCEL;
 
 const router = Router();
 
+function parseSessionNumber(val) {
+  if (val === undefined || val === null) return 0;
+  const str = String(val).trim();
+  const match = str.match(/\d+/);
+  return match ? parseInt(match[0], 10) : parseInt(str, 10) || 0;
+}
+
 /**
  * GET /api/evidence/exams/:examId/export
  * Admin: export all exam attempts as Excel + ZIP
@@ -200,7 +207,7 @@ router.get('/quizzes/export', authenticate, adminOnly, async (req, res) => {
 
     for (const a of attempts) {
       if (studentMap[a.student_id]) {
-        studentMap[a.student_id].scores[parseInt(a.session_number)] = parseFloat(a.score);
+        studentMap[a.student_id].scores[parseSessionNumber(a.session_number)] = parseFloat(a.score);
       }
     }
 

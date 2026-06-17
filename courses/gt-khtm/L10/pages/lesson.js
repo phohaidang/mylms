@@ -130,19 +130,20 @@ export async function renderLesson(app, { id }) {
                <div class="card-body" style="padding:0">
                   ${session.fullObjectives ? session.fullObjectives : `
                   <p><strong>Nội dung:</strong> ${session.topics}</p>
-                  <p><strong>Chuẩn đầu ra:</strong> ${session.clo}</p>
+                  ${session.clo ? `<p><strong>Chuẩn đầu ra:</strong> ${session.clo}</p>` : ''}
                   `}
                </div>
             </div>
             
+            ${session.scqaContent ? `
             <div class="card" style="background: var(--bg-secondary); border-style: dashed">
                <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.25rem">
                   <h3 style="margin:0; color: var(--warning)">💡 Bối cảnh thực tế</h3>
                </div>
                <div class="card-body" style="padding:0; font-size: 0.95rem; line-height: 1.7">
-                  ${session.scqaContent || '<p class="text-muted">Đang cập nhật bối cảnh cho buổi học này...</p>'}
+                  ${session.scqaContent}
                </div>
-            </div>
+            </div>` : ''}
          </div>
 
          <!-- Section 2: Core Concepts -->

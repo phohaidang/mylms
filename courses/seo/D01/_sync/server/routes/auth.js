@@ -15,11 +15,96 @@ const checkMustChangePassword = (val) => {
 
 
 /**
+ * GET /api/auth/config
+ * Return public auth config (e.g., whether self-registration is allowed)
+ */
+router.get('/config', (req, res) => {
+  res.json({
+    allowSelfRegister: process.env.ALLOW_SELF_REGISTER === 'true',
+    courseName: process.env.COURSE_NAME || ''
+  });
+});
+
+/**
  * POST /api/auth/register
- * Register a new student account (DISABLED)
+ * Register a new student account
+ * Only enabled when ALLOW_SELF_REGISTER=true in .env
  */
 router.post('/register', async (req, res) => {
-  return res.status(403).json({ error: 'Chức năng tự đăng ký đã bị vô hiệu hóa. Vui lòng liên hệ Giảng viên.' });
+  // Check if self-registration is enabled for this deployment
+  if (process.env.ALLOW_SELF_REGISTER !== 'true') {
+    return res.status(403).json({ error: 'Chức năng tự đăng ký đã bị vô hiệu hóa. Vui lòng liên hệ Giảng viên.' });
+  }
+
+  try {
+    const { full_name, email, password } = req.body;
+
+    if (!full_name || !email || !password) {
+      return res.status(400).json({ error: 'Vui lòng nhập đầy đủ họ tên, email và mật khẩu' });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: 'Mật khẩu phải có ít nhất 6 ký tự' });
+    }
+
+    // Check email domain restriction (if configured)
+    const allowedDomain = process.env.ALLOWED_EMAIL_DOMAIN;
+    if (allowedDomain && !email.toLowerCase().endsWith(`@${allowedDomain}`)) {
+      return res.status(400).json({ error: `Chỉ chấp nhận email có đuôi @${allowedDomain}` });
+    }
+
+    // Check if email already exists
+    const normalizeEmail = e => e ? e.toString().trim().toLowerCase() : '';
+    const existing = await db.findOne('students', s => normalizeEmail(s.email) === normalizeEmail(email));
+    if (existing) {
+      return res.status(409).json({ error: 'Email này đã được đăng ký. Vui lòng đăng nhập.' });
+    }
+
+    // Hash password and create student
+    const password_hash = await bcrypt.hash(password, 10);
+    const student_id = `DK-${uuidv4().slice(0, 8).toUpperCase()}`;
+
+    const newStudent = {
+      student_id,
+      email: email.trim().toLowerCase(),
+      full_name: full_name.trim(),
+      password: '',
+      role: 'student',
+      must_change_password: 'false',
+      created_at: new Date().toISOString(),
+      password_hash,
+      last_login: new Date().toISOString()
+    };
+
+    await db.append('students', newStudent);
+
+    // Auto-login after registration
+    const token = jwt.sign(
+      {
+        student_id: newStudent.student_id,
+        email: newStudent.email,
+        full_name: newStudent.full_name,
+        role: newStudent.role
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
+    );
+
+    res.status(201).json({
+      message: 'Đăng ký thành công! Chào mừng bạn đến với khóa học.',
+      token,
+      user: {
+        student_id: newStudent.student_id,
+        email: newStudent.email,
+        full_name: newStudent.full_name,
+        role: newStudent.role,
+        must_change_password: false
+      }
+    });
+  } catch (err) {
+    console.error('Register error:', err);
+    res.status(500).json({ error: 'Lỗi hệ thống. Vui lòng thử lại.' });
+  }
 });
 
 /**

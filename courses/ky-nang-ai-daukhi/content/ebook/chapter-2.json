@@ -1,0 +1,249 @@
+{
+  "chapter": 2,
+  "title": "Tra Cứu Tài Liệu Nội Bộ & An Toàn Dữ Liệu",
+  "sessions": [
+    2
+  ],
+  "scqa": {
+    "situation": "Doanh nghiệp dầu khí có hàng ngàn trang tài liệu: nội quy lao động, quy trình HSE, hợp đồng, quy chuẩn kỹ thuật. Tìm đúng một điều khoản cần thiết nhiều khi phải lật từng trang, mất rất nhiều thời gian.",
+    "complication": "Hỏi ChatGPT/Claude/Gemini về tài liệu nội bộ thì chúng có thể bịa ra một quy trình nghe rất hợp lý nhưng KHÔNG ĐÚNG với công ty mình. Tệ hơn, khi paste dữ liệu nội bộ (hợp đồng, sản lượng) vào AI công khai, rủi ro rò rỉ dữ liệu rất cao — như bài học đắt giá của Samsung năm 2023.",
+    "question": "Làm sao tra cứu tài liệu nội bộ bằng AI mà không sợ nó bịa, và dùng AI an toàn — không vô tình rò rỉ dữ liệu công ty?",
+    "answer": "Dùng NotebookLM (công nghệ RAG) để tra cứu chính xác có trích dẫn — nó chỉ đọc tài liệu bạn đưa và luôn chỉ rõ nguồn. Để dùng AI an toàn, áp dụng Checklist 3 câu hỏi trước khi paste, và rèn kỹ năng Phân loại dữ liệu theo nguyên tắc vàng: 'Không dám đọc to trước công ty → đừng paste vào AI miễn phí'."
+  },
+  "concepts": [
+    {
+      "id": "c2-rag",
+      "term": "RAG — AI đọc tài liệu của bạn rồi mới trả lời",
+      "definition": "RAG (Retrieval Augmented Generation) là cách AI đi TÌM thông tin trong tài liệu bạn cung cấp trước, rồi mới tạo câu trả lời dựa trên cái tìm được. Bạn không cần nhớ tên kỹ thuật — chỉ cần nhớ: 'NÓ ĐỌC TÀI LIỆU CỦA MÌNH'.",
+      "key_points": [
+        "Khác AI tạo sinh thông thường: RAG không 'đoán' từ kiến thức chung mà đọc đúng tài liệu bạn đưa rồi trả lời từ đó.",
+        "Luôn trích dẫn: chỉ rõ thông tin được lấy từ trang nào, đoạn nào — bạn kiểm chứng được ngay.",
+        "Khả năng bịa thấp hơn hẳn vì câu trả lời bị giới hạn trong phạm vi tài liệu.",
+        "Đây là nền tảng kỹ thuật đứng sau NotebookLM và nhiều công cụ tra cứu tài liệu nội bộ."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-notebooklm"
+      ]
+    },
+    {
+      "id": "c2-notebooklm",
+      "term": "NotebookLM — 'Thư ký' đã đọc thuộc tài liệu",
+      "definition": "NotebookLM là công cụ RAG miễn phí của Google. Hãy hình dung nó như một nhân viên mới rất chăm chỉ, đã đọc THUỘC toàn bộ tài liệu bạn đưa, trả lời mọi câu hỏi và luôn chỉ rõ 'tôi đọc ở trang này, đoạn này'.",
+      "key_points": [
+        "Ẩn dụ Chuyên gia vs Thư ký: ChatGPT/Claude/Gemini là 'chuyên gia' (biết nhiều, đôi khi bịa); NotebookLM là 'thư ký' (chỉ đọc tài liệu mình đưa, luôn trích dẫn).",
+        "Quy trình đơn giản: Upload tài liệu → Hỏi đáp → Nhận câu trả lời kèm trích dẫn đúng trang/đoạn.",
+        "Hỏi chéo nhiều tài liệu: upload nội quy + quy trình HSE + hợp đồng, NotebookLM so sánh và phát hiện khác biệt trong vài giây — việc đọc thủ công mất hàng giờ.",
+        "Tính năng thêm: tạo FAQ tự động, bảng tóm tắt điều khoản, và Audio Overview (biến tài liệu thành podcast hai người dẫn).",
+        "Trong ngành dầu khí — nơi con số sai một chữ cũng không được — đôi khi 'Thư ký' đáng tin hơn 'Chuyên gia'."
+      ],
+      "case_study": {
+        "title": "Quy trình nghỉ phép: bịa vs trích dẫn",
+        "context": "Hỏi 'Quy trình xin nghỉ phép trên 3 ngày là gì?'. Trên ChatGPT (không có tài liệu công ty): nó bịa một quy trình chung chung nghe rất hợp lý. Trên NotebookLM (đã upload nội quy thật): nó trả lời đúng quy trình công ty, click vào trích dẫn là nhảy thẳng tới đoạn gốc.",
+        "analysis": "Cùng một câu hỏi: NotebookLM cho câu trả lời có nguồn gốc kiểm chứng được; ChatGPT cho câu trả lời nghe chuyên nghiệp nhưng không phải của công ty mình — làm theo có thể sai hoàn toàn.",
+        "lesson_learned": "Với tài liệu nội bộ, hãy dùng công cụ đọc đúng tài liệu của mình, đừng dùng công cụ chỉ biết 'đoán'."
+      },
+      "related_concepts": [
+        "c2-rag",
+        "c2-data-classification"
+      ]
+    },
+    {
+      "id": "c2-hallucination-risk",
+      "term": "Rủi ro 1 — Hallucination (AI bịa tự tin)",
+      "definition": "Hallucination là khi AI bịa thông tin một cách rất tự tin. Nó không nói 'tôi không biết' mà nói 'theo quy định...' rồi bịa luôn nội dung.",
+      "key_points": [
+        "Dấu hiệu nhận biết: con số quá tròn quá đẹp; trích dẫn không có link hoặc link chết; tên người/sách/quy chuẩn không Google ra.",
+        "Nguy hiểm nhất khi hỏi về thứ cụ thể không tồn tại — AI vẫn bịa ra nội dung chi tiết, có cả số điều số khoản.",
+        "Cách phòng: luôn verify bằng nguồn độc lập trước khi đưa thông tin vào báo cáo, hồ sơ, văn bản chính thức."
+      ],
+      "case_study": {
+        "title": "Con số 'ma' trong hồ sơ an toàn",
+        "context": "Hỏi AI về khoảng cách an toàn vận hành cẩu trục theo 'quy chuẩn PVEP-2024-HSE'. AI đưa ra con số cụ thể, giải thích vanh vách.",
+        "analysis": "Quy chuẩn này hoàn toàn không tồn tại. Nếu chuyên viên đưa con số bịa vào báo cáo HSE hoặc hồ sơ an toàn giàn khoan, sai sót có thể ảnh hưởng tới an toàn vận hành thực tế.",
+        "lesson_learned": "AI là cộng sự, nhưng VERIFY là trách nhiệm của con người — đặc biệt với dữ liệu kỹ thuật và an toàn."
+      },
+      "related_concepts": [
+        "c2-safety-checklist"
+      ]
+    },
+    {
+      "id": "c2-data-leakage",
+      "term": "Rủi ro 2 — Data Leakage (Rò rỉ dữ liệu)",
+      "definition": "Data leakage là rủi ro rò rỉ thông tin khi bạn paste dữ liệu nội bộ vào AI công khai — dữ liệu có thể bị lưu lại, dùng để huấn luyện model, hoặc lộ ra ngoài.",
+      "key_points": [
+        "Nguyên tắc cảnh báo: bản MIỄN PHÍ của hầu hết AI đều CÓ THỂ dùng dữ liệu bạn nhập để cải thiện model — 'Free ≠ An toàn'.",
+        "Vụ Samsung 2023: kỹ sư paste mã nguồn bí mật vào ChatGPT miễn phí để nhờ sửa lỗi; hậu quả là Samsung cấm toàn bộ nhân viên dùng ChatGPT.",
+        "Vụ ChatGPT bug 2023: một lỗi hệ thống làm lộ lịch sử chat của người này cho người khác.",
+        "Cách giảm rủi ro: ẨN thông tin nhạy cảm trước khi paste — thay số hợp đồng, sản lượng, tên lô, chi phí bằng [placeholder]."
+      ],
+      "case_study": {
+        "title": "Email vô tình lộ bí mật",
+        "context": "Một email ngắn nhờ AI 'viết lại cho lịch sự hơn' lại chứa: số hợp đồng DK-2024-0892, sản lượng khai thác lô 09-1, mức chênh so với cam kết, chi phí dự kiến tăng thêm. Toàn dữ liệu nhạy cảm bị paste nguyên vào AI miễn phí.",
+        "analysis": "Cách an toàn là giữ nguyên cấu trúc nhưng thay con số nhạy cảm bằng [TÊN], [MÃ HĐ], [MÃ LÔ], [SỐ]. AI vẫn viết lại được email lịch sự mà không hề biết dữ liệu thật của công ty.",
+        "lesson_learned": "Giữ cấu trúc, ẩn con số — bạn vẫn dùng được AI mà không lộ bí mật kinh doanh."
+      },
+      "related_concepts": [
+        "c2-safety-checklist",
+        "c2-data-classification"
+      ]
+    },
+    {
+      "id": "c2-cognitive-offloading",
+      "term": "Rủi ro 3 — Cognitive Offloading (Phụ thuộc AI)",
+      "definition": "Cognitive offloading là việc dùng AI quá nhiều đến mức quên cách tự suy nghĩ, tự viết. Rủi ro này nhẹ hơn nhưng ngấm ngầm hơn hai rủi ro kia.",
+      "key_points": [
+        "Dấu hiệu: không viết được email nếu thiếu AI; không tóm tắt được cuộc họp nếu không nhờ AI; không ra quyết định được nếu AI chưa phân tích.",
+        "Nguyên tắc 'AI làm draft, MÌNH làm final': ít nhất 50% bản nháp nên do mình viết trước, rồi mới nhờ AI cải thiện.",
+        "Giữ kỹ năng tư duy ở vị trí trung tâm — đừng để AI nghĩ thay mình, vì chính sự tinh tế và phán đoán của bạn mới tạo ra giá trị."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-safety-checklist"
+      ]
+    },
+    {
+      "id": "c2-safety-checklist",
+      "term": "Checklist 3 câu hỏi trước khi paste vào AI",
+      "definition": "Một bộ 3 câu hỏi tự kiểm tra nhanh trước khi paste bất cứ thứ gì vào AI — giúp bạn không cần nhớ từng tình huống mà vẫn có nguyên tắc để quyết định.",
+      "key_points": [
+        "Câu 1 — Dữ liệu này có NHẠY CẢM không? (hợp đồng, tài chính, nhân sự, kỹ thuật khai thác)",
+        "Câu 2 — Nền tảng AI này có CHÍNH SÁCH BẢO MẬT phù hợp không? (Enterprise vs Free — kiểm tra trước)",
+        "Câu 3 — Tôi có VERIFY được output này không, và bằng cách nào?",
+        "Quy tắc dừng: nếu Câu 1 là CÓ và Câu 2 là KHÔNG → DỪNG LẠI. Nếu Câu 3 là 'không biết verify' → đừng dùng output đó."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-data-classification"
+      ]
+    },
+    {
+      "id": "c2-data-classification",
+      "term": "Phân loại dữ liệu — Nguyên tắc 'đọc to'",
+      "definition": "Kỹ năng quyết định nhanh dữ liệu nào ĐƯA ĐƯỢC và dữ liệu nào KHÔNG NÊN đưa vào AI miễn phí. Đây là kỹ năng an toàn quan trọng nhất cho chuyên viên văn phòng dầu khí.",
+      "key_points": [
+        "Nguyên tắc vàng: 'Nếu mình không dám đọc to nội dung này trước cả công ty → đừng paste vào AI miễn phí'.",
+        "KHÔNG đưa vào AI miễn phí: hợp đồng mua bán dầu thô, báo cáo sản lượng khai thác, danh sách nhân sự kèm lương, mã nguồn phần mềm nội bộ.",
+        "ĐƯA ĐƯỢC: email hành chính thông thường, nội quy đã công khai trên website, bài thuyết trình về xu hướng công khai, email cá nhân tự viết.",
+        "Vùng xám cần cân nhắc: dữ liệu vừa nhạy cảm vừa cần xử lý → dùng NotebookLM hoặc phiên bản Enterprise có cam kết bảo mật."
+      ],
+      "case_study": {
+        "title": "Phân loại 8 tình huống văn phòng",
+        "context": "Trong buổi chia sẻ, học viên giơ tay phân loại 8 tình huống: email mời họp, hợp đồng dầu thô, báo cáo sản lượng, nội quy công khai, email cá nhân, danh sách lương, bài thuyết trình năng lượng tái tạo, mã nguồn nội bộ.",
+        "analysis": "Không phải lúc nào cũng đen trắng. Danh sách lương vừa là thông tin cá nhân (PII) vừa là bí mật nội bộ — tuyệt đối không đưa. Nội quy đã công khai thì hoàn toàn an toàn và là use case lý tưởng cho NotebookLM.",
+        "lesson_learned": "Có checklist 3 câu hỏi và nguyên tắc vàng thì bạn tự quyết được, không cần nhớ thuộc lòng từng tình huống."
+      },
+      "related_concepts": [
+        "c2-safety-checklist",
+        "c2-notebooklm"
+      ]
+    },
+    {
+      "id": "c2-ecosystem",
+      "term": "Hệ sinh thái AI mở rộng — Tương lai gần",
+      "definition": "Tổng quan nhẹ về 4 xu hướng AI đang tới rất nhanh, để bạn không bị bất ngờ khi đọc tin tức trong vài tháng tới. Chỉ cần biết tên và ý nghĩa, không cần học sâu ngay.",
+      "key_points": [
+        "GPTs / Gems / Spaces — Chatbot tùy biến: tạo một 'nhân viên AI riêng' chỉ biết quy trình phòng mình, ví dụ 'AI trợ lý phòng HSE' để cả phòng hỏi 24/7.",
+        "AI Skills — Kỹ năng mở rộng: AI đọc file Excel và phân tích dữ liệu, nhận xét biểu đồ, tạo slide, thậm chí viết code — không chỉ chat bằng chữ.",
+        "AI Agent — AI tự thực thi: thay vì trả lời, Agent TỰ LÀM cả chuỗi việc, ví dụ 'mỗi sáng thứ 2 tự tổng hợp email tuần trước và gửi báo cáo cho sếp'.",
+        "MCP & Plugin — AI kết nối hệ thống nội bộ (ERP, email, calendar) để tự kéo dữ liệu và xử lý; cần IT department setup và chính sách bảo mật rõ ràng.",
+        "Thông điệp cốt lõi: công cụ thay đổi mỗi năm, nhưng TƯ DUY (CRISP, verify, Leader-Cộng sự, checklist 3 câu hỏi) thì bền vững."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-notebooklm"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nắm khái niệm",
+      "description": "Trắc nghiệm nhận diện RAG/NotebookLM, các rủi ro và quy tắc an toàn.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        {
+          "id": "L1-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-notebooklm",
+          "question": "NotebookLM khác ChatGPT/Claude/Gemini ở điểm quan trọng nhất nào?",
+          "options": [
+            "A. NotebookLM trả lời nhanh hơn",
+            "B. NotebookLM chỉ đọc tài liệu bạn upload và trả lời từ đó, kèm trích dẫn",
+            "C. NotebookLM có giao diện đẹp hơn",
+            "D. NotebookLM miễn phí còn các công cụ kia thì không"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-data-leakage",
+          "question": "Vụ Samsung năm 2023 cho thấy rủi ro gì khi dùng AI?",
+          "options": [
+            "A. AI trả lời sai về sản phẩm Samsung",
+            "B. ChatGPT từ chối giúp kỹ sư Samsung",
+            "C. Kỹ sư paste mã nguồn bí mật vào ChatGPT miễn phí — dữ liệu có thể bị lưu và dùng để train model",
+            "D. Samsung không trả tiền bản quyền cho OpenAI"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-safety-checklist",
+          "question": "Checklist 3 câu hỏi cần tự hỏi trước khi paste dữ liệu vào AI gồm những gì?",
+          "options": [
+            "A. AI này miễn phí không / Có nhanh không / Có tiếng Việt không",
+            "B. AI này của hãng nào / Có nổi tiếng không / Bạn bè có dùng không",
+            "C. Câu hỏi dài hay ngắn / Có cần đăng nhập không / Có lưu lịch sử không",
+            "D. Dữ liệu có nhạy cảm không / Nền tảng có chính sách bảo mật phù hợp không / Mình có verify được output không"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L1-c2-q4",
+          "type": "mc",
+          "concept_ref": "c2-rag",
+          "question": "Công nghệ RAG (đứng sau NotebookLM) khác AI tạo sinh thông thường ở chỗ nào?",
+          "options": [
+            "A. RAG đi tìm thông tin trong tài liệu bạn đưa rồi mới trả lời, và trích dẫn nguồn",
+            "B. RAG đoán từ tiếp theo nhanh hơn",
+            "C. RAG chỉ dùng được tiếng Anh",
+            "D. RAG không cần tài liệu nào cả"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích an toàn dữ liệu",
+      "description": "Phân tích một tình huống dữ liệu nhạy cảm và đề xuất cách xử lý.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        {
+          "id": "L2-c2-q1",
+          "type": "essay",
+          "concept_ref": "c2-data-classification",
+          "question": "Một chuyên viên muốn nhờ AI tóm tắt nhanh một hợp đồng mua bán dầu thô với đối tác nước ngoài. Hãy phân tích: dữ liệu này có nên đưa vào ChatGPT bản miễn phí không? Vì sao? Và đề xuất một cách xử lý an toàn để vẫn hoàn thành công việc.",
+          "rubric": "Cần nêu: (1) KHÔNG nên đưa vào ChatGPT miễn phí vì hợp đồng dầu thô là bí mật kinh doanh (giá, điều khoản, đối tác đều nhạy cảm) và bản miễn phí có thể lưu/dùng dữ liệu để train. (2) Áp checklist 3 câu hỏi và nguyên tắc vàng 'không dám đọc to → đừng paste'. (3) Cách an toàn: dùng NotebookLM hoặc phiên bản Enterprise có cam kết bảo mật; hoặc ẩn thông tin nhạy cảm bằng placeholder nếu chỉ cần xử lý ngôn ngữ.",
+          "max_words": 200
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Thiết kế giải pháp",
+      "description": "Đề xuất một giải pháp AI an toàn và hiệu quả cho tình huống thực tế.",
+      "bloom_level": "Apply / Evaluate",
+      "questions": [
+        {
+          "id": "L3-c2-q1",
+          "type": "essay",
+          "concept_ref": "c2-notebooklm",
+          "question": "Phòng HSE của bạn có một bộ quy trình an toàn dài khoảng 50 trang, nhân viên thường xuyên hỏi đi hỏi lại cùng những câu giống nhau. Hãy đề xuất một giải pháp dùng AI để giải quyết, nêu rõ: dùng công cụ nào, vì sao giải pháp đó an toàn về mặt dữ liệu, và những lợi ích cụ thể nó mang lại.",
+          "rubric": "Cần nêu: (1) Công cụ — NotebookLM (hoặc một chatbot tùy biến GPTs/Gems) upload bộ quy trình HSE để hỏi-đáp có trích dẫn. (2) An toàn dữ liệu — đánh giá quy trình HSE có phải tài liệu công khai/được phép không; nếu nhạy cảm thì dùng bản Enterprise hoặc kiểm tra chính sách bảo mật; áp checklist 3 câu hỏi. (3) Lợi ích cụ thể — tra cứu trong vài giây thay vì lật 50 trang, câu trả lời có trích dẫn đúng đoạn nên không bịa, có thể tạo FAQ tự động cho nhân viên, giảm tải cho người phụ trách.",
+          "max_words": 300
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "session": 2,
+  "chapter": "Ch.2",
+  "title": "Tra Cứu Tài Liệu Nội Bộ & An Toàn Dữ Liệu",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s2-mc1",
+      "type": "mc",
+      "question": "NotebookLM khác ChatGPT/Claude/Gemini ở điểm quan trọng nhất nào?",
+      "options": [
+        "A. NotebookLM miễn phí còn các công cụ kia thì không",
+        "B. NotebookLM có giao diện đẹp hơn",
+        "C. NotebookLM chỉ đọc tài liệu bạn upload và trả lời từ đó, kèm trích dẫn",
+        "D. NotebookLM trả lời nhanh hơn"
+      ],
+      "correct": "C",
+      "explanation": "NotebookLM giống 'thư ký' — chỉ đọc tài liệu của bạn, trả lời dựa trên đó và luôn trích dẫn đúng trang/đoạn. ChatGPT giống 'chuyên gia' — biết nhiều nhưng có thể bịa khi hỏi về tài liệu riêng của công ty."
+    },
+    {
+      "id": "s2-mc2",
+      "type": "mc",
+      "question": "Khi nào nên dùng NotebookLM thay vì ChatGPT?",
+      "options": [
+        "A. Khi cần dịch một đoạn văn ngắn",
+        "B. Khi cần tra cứu, hỏi đáp trên tài liệu nội bộ (nội quy, quy trình, hợp đồng) cần chính xác",
+        "C. Khi cần brainstorm ý tưởng mới hoàn toàn",
+        "D. Khi cần viết một email sáng tạo"
+      ],
+      "correct": "B",
+      "explanation": "NotebookLM mạnh nhất ở việc tra cứu tài liệu nội bộ — nơi không được phép bịa. Còn brainstorm, viết mới, sáng tạo thì AI hội thoại (ChatGPT/Claude/Gemini) phù hợp hơn."
+    },
+    {
+      "id": "s2-mc3",
+      "type": "mc",
+      "question": "Ưu điểm lớn nhất của NotebookLM khi tra cứu nội quy công ty là gì?",
+      "options": [
+        "A. Tóm tắt nội quy thành thơ cho dễ nhớ",
+        "B. Gửi nội quy tự động cho cả phòng",
+        "C. Trả lời kèm trích dẫn đúng trang, đúng đoạn trong tài liệu gốc",
+        "D. Tự động dịch nội quy sang nhiều thứ tiếng"
+      ],
+      "correct": "C",
+      "explanation": "Mỗi câu trả lời của NotebookLM đều chỉ rõ nguồn — click vào là nhảy thẳng tới đúng đoạn trong tài liệu. Nhờ vậy bạn kiểm chứng được ngay, không lo AI bịa."
+    },
+    {
+      "id": "s2-mc4",
+      "type": "mc",
+      "question": "Dấu hiệu nào cho thấy AI có thể đang 'bịa' (hallucination)?",
+      "options": [
+        "A. AI trả lời ngắn gọn",
+        "B. Con số quá tròn đẹp, trích dẫn không có link hoặc link chết, tên quy chuẩn/sách không Google ra",
+        "C. AI trả lời bằng tiếng Việt",
+        "D. AI hỏi lại để làm rõ câu hỏi"
+      ],
+      "correct": "B",
+      "explanation": "Cảnh giác khi: con số quá tròn, trích dẫn không kiểm chứng được, tên người/sách/quy chuẩn không tìm thấy khi Google. Buổi học có ví dụ AI mô tả vanh vách một quy chuẩn dầu khí hoàn toàn không tồn tại."
+    },
+    {
+      "id": "s2-mc5",
+      "type": "mc",
+      "question": "Vụ Samsung năm 2023 cho thấy rủi ro gì khi dùng AI?",
+      "options": [
+        "A. ChatGPT từ chối giúp kỹ sư Samsung",
+        "B. AI trả lời sai về sản phẩm Samsung",
+        "C. Samsung không trả tiền bản quyền cho OpenAI",
+        "D. Kỹ sư paste mã nguồn bí mật vào ChatGPT miễn phí — dữ liệu có thể bị lưu và dùng để train model"
+      ],
+      "correct": "D",
+      "explanation": "Kỹ sư Samsung paste code nội bộ vào ChatGPT để nhờ sửa lỗi; bản miễn phí lúc đó có thể lưu và dùng dữ liệu để cải thiện model. Hậu quả: Samsung cấm toàn bộ nhân viên dùng ChatGPT. Bài học: dữ liệu mật thì đừng paste vào AI công khai."
+    },
+    {
+      "id": "s2-mc6",
+      "type": "mc",
+      "question": "Trước khi paste dữ liệu vào AI, checklist 3 câu hỏi cần tự hỏi là gì?",
+      "options": [
+        "A. Dữ liệu có NHẠY CẢM không? / Nền tảng có chính sách bảo mật phù hợp không? / Mình VERIFY được output không?",
+        "B. Câu hỏi dài hay ngắn? / Có cần đăng nhập không? / Có lưu lịch sử không?",
+        "C. AI này của hãng nào? / Có nổi tiếng không? / Bạn bè có dùng không?",
+        "D. AI này miễn phí không? / Có nhanh không? / Có tiếng Việt không?"
+      ],
+      "correct": "A",
+      "explanation": "3 câu hỏi vàng: (1) Nhạy cảm? (2) Chính sách bảo mật phù hợp? (3) Verify được không? Nếu dữ liệu nhạy cảm mà nền tảng không đảm bảo — DỪNG LẠI."
+    },
+    {
+      "id": "s2-mc7",
+      "type": "mc",
+      "question": "Dữ liệu nào sau đây KHÔNG NÊN đưa vào AI miễn phí?",
+      "options": [
+        "A. Hợp đồng mua bán dầu thô với đối tác (giá, điều khoản, đối tác)",
+        "B. Bài thuyết trình về xu hướng năng lượng tái tạo",
+        "C. Email mời họp nội dung hành chính thông thường",
+        "D. Nội quy công ty đã công bố công khai trên website"
+      ],
+      "correct": "A",
+      "explanation": "Hợp đồng mua bán dầu thô là bí mật kinh doanh — giá, điều khoản, đối tác đều nhạy cảm. Nếu cần tóm tắt, dùng NotebookLM hoặc bản Enterprise có cam kết bảo mật, không paste vào AI miễn phí."
+    },
+    {
+      "id": "s2-mc8",
+      "type": "mc",
+      "question": "Dữ liệu nào sau đây AN TOÀN để đưa vào AI miễn phí?",
+      "options": [
+        "A. Mã nguồn phần mềm quản lý nội bộ",
+        "B. Nội quy công ty đã công bố công khai để tạo bảng FAQ",
+        "C. Báo cáo sản lượng khai thác quý",
+        "D. Danh sách nhân sự kèm mức lương toàn phòng"
+      ],
+      "correct": "B",
+      "explanation": "Nội quy đã công khai thì không còn nhạy cảm — đây là use case hoàn hảo cho NotebookLM. Ba lựa chọn còn lại đều là dữ liệu nội bộ hoặc cá nhân nhạy cảm, tuyệt đối không đưa vào AI miễn phí."
+    },
+    {
+      "id": "s2-mc9",
+      "type": "mc",
+      "question": "Nguyên tắc vàng nào giúp quyết định nhanh dữ liệu có nên đưa vào AI không?",
+      "options": [
+        "A. Cứ thử, nếu AI trả lời tốt thì dùng",
+        "B. Nếu mình không dám đọc to nội dung đó trước cả công ty thì đừng paste vào AI công khai",
+        "C. Dữ liệu nào dài thì không đưa, ngắn thì đưa",
+        "D. Hỏi đồng nghiệp xem họ có đưa không"
+      ],
+      "correct": "B",
+      "explanation": "Một câu dễ nhớ thay cho cả bảng quy định: 'Không dám đọc to trước công ty → đừng paste vào AI miễn phí.' Khi phân vân, áp dụng nguyên tắc này là an toàn nhất."
+    },
+    {
+      "id": "s2-mc10",
+      "type": "mc",
+      "question": "'AI Agent' khác chatbot thông thường ở điểm nào?",
+      "options": [
+        "A. AI Agent trả lời nhanh hơn chatbot",
+        "B. AI Agent chỉ dùng được tiếng Anh",
+        "C. AI Agent là tên gọi khác của ChatGPT",
+        "D. AI Agent tự thực thi cả chuỗi công việc, không chỉ trả lời câu hỏi"
+      ],
+      "correct": "D",
+      "explanation": "Chatbot trả lời; AI Agent TỰ LÀM. Ví dụ: 'Mỗi sáng thứ 2, tổng hợp email tuần trước và gửi báo cáo cho sếp' — Agent tự đọc email, tóm tắt, soạn, gửi. Đây là tương lai gần đang tới rất nhanh."
+    },
+    {
+      "id": "s2-mc11",
+      "type": "mc",
+      "question": "Cần kiểm tra điều khoản phạt vi phạm trong một hợp đồng nội bộ của công ty. Nên dùng công cụ nào?",
+      "options": [
+        "A. ChatGPT miễn phí — hỏi trực tiếp về điều khoản phạt",
+        "B. Gemini — nhờ nó đoán điều khoản phổ biến",
+        "C. Perplexity — tìm trên internet",
+        "D. NotebookLM — upload hợp đồng rồi hỏi, có trích dẫn đúng đoạn"
+      ],
+      "correct": "D",
+      "explanation": "Hợp đồng là tài liệu nội bộ cần chính xác — NotebookLM đọc đúng tài liệu bạn đưa và trích dẫn đúng đoạn, không bịa. Hỏi ChatGPT/Perplexity về hợp đồng riêng của công ty thì nó sẽ bịa điều khoản chung chung."
+    },
+    {
+      "id": "s2-tf1",
+      "type": "tf",
+      "question": "NotebookLM có thể tự bịa ra thông tin nằm ngoài các tài liệu bạn đã upload.",
+      "correct": "B",
+      "explanation": "Sai (rất khó xảy ra). NotebookLM giới hạn trả lời trong tài liệu bạn đưa và luôn trích dẫn nguồn, nên khả năng bịa thấp hơn hẳn AI hội thoại thông thường."
+    },
+    {
+      "id": "s2-tf2",
+      "type": "tf",
+      "question": "Phiên bản miễn phí của hầu hết AI cam kết KHÔNG dùng dữ liệu người dùng để cải thiện model.",
+      "correct": "B",
+      "explanation": "Sai. Bản MIỄN PHÍ của hầu hết nền tảng đều CÓ THỂ dùng dữ liệu của bạn để train. 'Free ≠ An toàn'. Muốn cam kết không train thường phải dùng bản Pro/Enterprise."
+    },
+    {
+      "id": "s2-tf3",
+      "type": "tf",
+      "question": "Dùng AI viết 100% email hàng ngày mà không bao giờ tự viết là cách sử dụng AI hiệu quả và nên khuyến khích.",
+      "correct": "B",
+      "explanation": "Sai. Lạm dụng AI dẫn tới 'cognitive offloading' — quên cách tự suy nghĩ, tự viết. Nguyên tắc: 'AI làm draft, MÌNH làm final' — giữ tư duy của mình ở vị trí trung tâm."
+    }
+  ]
+}

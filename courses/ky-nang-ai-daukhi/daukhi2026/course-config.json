@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "code": "ETECHS_AI_DK",
+    "name": "Kỹ Năng Ứng Dụng AI Cho Chuyên Viên Văn Phòng",
+    "total_sessions": 2,
+    "chapters": 2,
+    "organization": "Tập đoàn Dầu khí",
+    "textbook": "Tài liệu chia sẻ — ThS. Phó Hải Đăng"
+  },
+  "sessions": [
+    {
+      "id": 1,
+      "chapter": "Ch.1",
+      "title": "AI Tạo Sinh & Viết Văn Bản Chuyên Nghiệp",
+      "topics": "Bản chất AI tạo sinh, Hallucination, CRISP framework, Demo Claude/ChatGPT/Gemini, Iterative prompt, Negative prompt, Few-shot prompt, Bản đồ công cụ AI",
+      "duration": "3 tiếng (Sáng)"
+    },
+    {
+      "id": 2,
+      "chapter": "Ch.2",
+      "title": "Tra Cứu Tài Liệu Nội Bộ & An Toàn Dữ Liệu",
+      "topics": "RAG vs AI tạo sinh, NotebookLM, 3 rủi ro AI, Checklist an toàn dữ liệu, Phân loại dữ liệu, Hệ sinh thái AI mở rộng",
+      "duration": "3 tiếng (Chiều)"
+    }
+  ]
+}

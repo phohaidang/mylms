@@ -1,0 +1,179 @@
+{
+  "session": 1,
+  "chapter": "Ch.1",
+  "title": "AI Tạo Sinh & Viết Văn Bản Chuyên Nghiệp",
+  "time_limit_minutes": 10,
+  "questions": [
+    {
+      "id": "s1-mc1",
+      "type": "mc",
+      "question": "AI tạo sinh như ChatGPT, Claude, Gemini hoạt động dựa trên cơ chế nào?",
+      "options": [
+        "A. Suy luận logic giống hệt bộ não con người",
+        "B. Đoán từ tiếp theo dựa trên xác suất, học từ hàng tỷ trang chữ",
+        "C. Tìm kiếm trực tiếp trên internet rồi sao chép kết quả",
+        "D. Tra cứu trong cơ sở dữ liệu nội bộ của công ty"
+      ],
+      "correct": "B",
+      "explanation": "AI tạo sinh về bản chất là 'máy đoán chữ' — dự đoán từ tiếp theo dựa trên xác suất, không tra cứu hay suy luận như con người. Hiểu đúng điều này giúp ta biết vì sao AI có thể 'bịa' rất tự tin."
+    },
+    {
+      "id": "s1-mc2",
+      "type": "mc",
+      "question": "'Hallucination' (ảo giác) của AI nghĩa là gì?",
+      "options": [
+        "A. AI trả lời bằng ngôn ngữ khác với câu hỏi",
+        "B. AI từ chối trả lời vì câu hỏi nhạy cảm",
+        "C. AI bị treo, không trả lời được",
+        "D. AI tự tin đưa ra thông tin nghe hợp lý nhưng hoàn toàn sai sự thật"
+      ],
+      "correct": "D",
+      "explanation": "Hallucination là khi AI 'đoán' ra thông tin nghe rất hợp lý — có cả số điều, số khoản — nhưng không có thật. Ví dụ trong buổi học: AI mô tả vanh vách một quy chuẩn dầu khí được bịa hoàn toàn."
+    },
+    {
+      "id": "s1-mc3",
+      "type": "mc",
+      "question": "Khi làm việc với AI, vai trò đúng của bạn là gì?",
+      "options": [
+        "A. Bạn là Leader chỉ huy và kiểm tra, AI là cộng sự thực thi",
+        "B. Chỉ dùng AI khi không còn cách nào khác",
+        "C. Tin tưởng tuyệt đối vào mọi output AI đưa ra",
+        "D. Để AI tự quyết định và làm thay toàn bộ công việc"
+      ],
+      "correct": "A",
+      "explanation": "Triết lý xuyên suốt buổi học: 'Bạn là Leader, AI là Cộng sự.' AI là cộng sự rất giỏi nhưng không chịu trách nhiệm — bạn giao việc rõ ràng và luôn kiểm tra lại kết quả."
+    },
+    {
+      "id": "s1-mc4",
+      "type": "mc",
+      "question": "Trong công thức CRISP, chữ 'C' (Context) yêu cầu bạn cung cấp điều gì?",
+      "options": [
+        "A. Số lượng từ tối đa của câu trả lời",
+        "B. Tên công cụ AI muốn sử dụng",
+        "C. Bối cảnh: bạn là ai, đang ở tình huống nào",
+        "D. Danh sách những điều không muốn AI làm"
+      ],
+      "correct": "C",
+      "explanation": "C – Context là bối cảnh: bạn là ai, đang ở tình huống nào. Ví dụ: 'Tôi là chuyên viên phòng kế hoạch, 5 năm kinh nghiệm.' Càng rõ bối cảnh, AI càng trả lời đúng ngữ cảnh."
+    },
+    {
+      "id": "s1-mc5",
+      "type": "mc",
+      "question": "Vì sao nên gán 'vai trò' (Role) cho AI trong prompt?",
+      "options": [
+        "A. Để AI trả lời với góc nhìn và văn phong của chuyên gia phù hợp",
+        "B. Để tiết kiệm chi phí sử dụng AI",
+        "C. Vì đó là quy định bắt buộc của các nền tảng AI",
+        "D. Để AI trả lời nhanh hơn"
+      ],
+      "correct": "A",
+      "explanation": "Gán vai trò (ví dụ: 'Đóng vai người viết email công sở chuyên nghiệp ngành dầu khí') giúp AI điều chỉnh giọng văn và góc nhìn cho đúng chuyên môn, cho ra kết quả sát nhu cầu hơn."
+    },
+    {
+      "id": "s1-mc6",
+      "type": "mc",
+      "question": "Prompt nào sau đây áp dụng CRISP tốt nhất để viết email xin gia hạn báo cáo?",
+      "options": [
+        "A. Viết giúp tôi cái email gửi sếp",
+        "B. Email gia hạn, ngắn thôi",
+        "C. Tôi là chuyên viên phòng kế hoạch; đóng vai người viết email công sở ngành dầu khí; viết email gửi trưởng phòng xin gia hạn báo cáo sản lượng 2 ngày vì đang chờ số liệu; khoảng 120 chữ, lịch sự, không vòng vo",
+        "D. Viết email xin gia hạn báo cáo"
+      ],
+      "correct": "C",
+      "explanation": "Prompt tốt theo CRISP nêu đủ Bối cảnh – Vai trò – Dữ liệu – Yêu cầu – Tiêu chí. Các prompt còn lại quá nghèo thông tin nên AI sẽ trả về email chung chung, vô hồn, phải sửa gần hết."
+    },
+    {
+      "id": "s1-mc7",
+      "type": "mc",
+      "question": "Kỹ thuật 'Iterative prompting' (tinh chỉnh từng bước) nghĩa là gì?",
+      "options": [
+        "A. Hỏi cùng một câu trên nhiều công cụ AI khác nhau",
+        "B. Trò chuyện tiếp với AI để sửa dần kết quả cho tới khi vừa ý",
+        "C. Viết một prompt thật dài và hoàn hảo ngay từ đầu",
+        "D. Chỉ dùng prompt ngắn nhất có thể"
+      ],
+      "correct": "B",
+      "explanation": "Iterative là sửa dần qua hội thoại: 'rút ngắn còn 80 chữ', 'đổi giọng trang trọng hơn vì email CC cho Giám đốc'... Không cần hoàn hảo ngay lần đầu — đây là kỹ thuật dùng hàng ngày."
+    },
+    {
+      "id": "s1-mc8",
+      "type": "mc",
+      "question": "Ví dụ nào dưới đây là 'Negative prompt' (nói điều KHÔNG muốn) đúng cách?",
+      "options": [
+        "A. Đóng vai trưởng phòng để viết email",
+        "B. Viết email theo phong cách của tôi",
+        "C. Hãy viết email thật chuyên nghiệp",
+        "D. Không dùng ngôn ngữ quảng cáo, không quá 100 chữ, không mở đầu bằng 'Great!'"
+      ],
+      "correct": "D",
+      "explanation": "Negative prompt chỉ rõ ranh giới — cái KHÔNG muốn AI làm. Với văn bản hành chính (thư mời thầu, công văn), điều này cực hữu ích vì AI hay thêm những câu xã giao thừa."
+    },
+    {
+      "id": "s1-mc9",
+      "type": "mc",
+      "question": "Kỹ thuật 'Few-shot prompting' nghĩa là gì?",
+      "options": [
+        "A. Hỏi AI thật nhiều câu liên tiếp",
+        "B. Dùng prompt ngắn nhất có thể",
+        "C. Đưa cho AI 1-2 ví dụ mẫu để nó bắt chước đúng giọng và format",
+        "D. Chỉ hỏi AI đúng một câu duy nhất"
+      ],
+      "correct": "C",
+      "explanation": "Few-shot là 'dạy AI bằng ví dụ': paste 1 email mẫu tốt → AI viết email mới theo đúng giọng và format đó. Rất hợp khi cần output theo template công ty (biên bản, báo cáo, thư mời thầu)."
+    },
+    {
+      "id": "s1-mc10",
+      "type": "mc",
+      "question": "Cần viết 5 email thông báo họp theo đúng format chuẩn của công ty. Cách hiệu quả nhất là?",
+      "options": [
+        "A. Để AI tự chọn format nó thấy hợp lý",
+        "B. Copy-paste thủ công rồi sửa từng cái",
+        "C. Viết prompt CRISP riêng cho từng email một",
+        "D. Paste 1 email mẫu tốt và nhờ AI viết 5 email mới theo đúng giọng + format đó"
+      ],
+      "correct": "D",
+      "explanation": "Đây là tình huống lý tưởng cho Few-shot: đưa 1 mẫu chuẩn, AI nhân bản đúng giọng và cấu trúc cho cả 5 email — nhanh và đồng nhất hơn nhiều so với viết CRISP từng cái."
+    },
+    {
+      "id": "s1-mc11",
+      "type": "mc",
+      "question": "Khi cần tra cứu số liệu thống kê công khai và muốn có link nguồn để kiểm chứng, nên dùng công cụ nào?",
+      "options": [
+        "A. NotebookLM",
+        "B. Perplexity (hoặc ChatGPT Search) — công cụ tìm kiếm có trích nguồn",
+        "C. Công cụ nào cũng cho kết quả như nhau",
+        "D. ChatGPT bản miễn phí thông thường"
+      ],
+      "correct": "B",
+      "explanation": "Số liệu công khai cần link nguồn → dùng nhóm 'tìm kiếm có nguồn' như Perplexity. AI hội thoại thường (ChatGPT/Claude/Gemini) dễ bịa nguồn nên không phù hợp cho việc này."
+    },
+    {
+      "id": "s1-tf1",
+      "type": "tf",
+      "question": "AI tạo sinh luôn trả lời chính xác miễn là câu hỏi được đặt rõ ràng.",
+      "correct": "B",
+      "explanation": "Sai. Câu hỏi rõ giúp tăng chất lượng, nhưng AI vẫn có thể 'bịa' (hallucination) ngay cả khi câu hỏi rõ — nhất là khi hỏi về thứ không tồn tại. Verify luôn là trách nhiệm của mình."
+    },
+    {
+      "id": "s1-tf2",
+      "type": "tf",
+      "question": "Prompt 'Viết email xin nghỉ phép' đã đủ thông tin để AI viết được một email tốt.",
+      "correct": "B",
+      "explanation": "Sai. Đây là input quá nghèo — AI sẽ trả về email chung chung, vô hồn. Cần bổ sung bối cảnh, người nhận, lý do, độ dài, văn phong (theo CRISP) để có kết quả dùng được ngay."
+    },
+    {
+      "id": "s1-tf3",
+      "type": "tf",
+      "question": "Để dùng AI hiệu quả, bạn phải viết được prompt hoàn hảo ngay từ lần đầu tiên.",
+      "correct": "B",
+      "explanation": "Sai. Tinh thần Iterative là sửa dần qua hội thoại. Không ai viết prompt hoàn hảo ngay — cứ trò chuyện tiếp để chỉnh kết quả cho vừa ý."
+    },
+    {
+      "id": "s1-tf4",
+      "type": "tf",
+      "question": "ChatGPT, Claude và Gemini cho ra kết quả hoàn toàn khác nhau khi dùng cùng một prompt.",
+      "correct": "B",
+      "explanation": "Sai. Với cùng một prompt tốt, ba công cụ cho kết quả na ná nhau, chỉ khác chút về văn phong. Vì vậy đừng lo chọn công cụ — 'biết lái xe thì hãng nào cũng lái được', kỹ năng quan trọng nhất là CÁCH HỎI."
+    }
+  ]
+}

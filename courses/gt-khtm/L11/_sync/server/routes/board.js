@@ -4,6 +4,13 @@ import { authenticate } from '../middleware/auth.js';
 
 const router = Router();
 
+function parseSessionNumber(val) {
+  if (val === undefined || val === null) return 0;
+  const str = String(val).trim();
+  const match = str.match(/\d+/);
+  return match ? parseInt(match[0], 10) : parseInt(str, 10) || 0;
+}
+
 /**
  * GET /api/board/students
  * Public (authenticated): Get summary of all students' progress
@@ -30,7 +37,7 @@ router.get('/students', authenticate, async (req, res) => {
         const studentQuizzes = quizAttempts.filter(a => a.student_id === s.student_id);
         const bestScores = {};
         for (const a of studentQuizzes) {
-          const sess = a.session_number;
+          const sess = parseSessionNumber(a.session_number);
           const score = parseFloat(a.score || 0);
           if (bestScores[sess] === undefined || score > bestScores[sess]) {
             bestScores[sess] = score;

@@ -1,0 +1,23 @@
+{
+  "students": [
+    {
+      "student_id": "DK-75DF7F06",
+      "email": "vana@gmail.com",
+      "full_name": "Văn A",
+      "password": "",
+      "role": "student",
+      "must_change_password": "false",
+      "created_at": "2026-06-16T17:01:59.345Z",
+      "password_hash": "$2a$10$.nvC9PDLAdslsnmpaHMrWeG72Sur3aRY4qIwB53jUqVOYpDpGaz9u",
+      "last_login": "2026-06-16T17:01:59.345Z"
+    }
+  ],
+  "quiz_attempts": [],
+  "exam_attempts": [],
+  "manual_grades": [],
+  "ebook_progress": [],
+  "course_config": [],
+  "session_feedback": [],
+  "attendance_log": [],
+  "session_journals": []
+}

@@ -5,6 +5,13 @@ import { adminOnly } from '../middleware/auth.js';
 
 const router = Router();
 
+function parseSessionNumber(val) {
+  if (val === undefined || val === null) return 0;
+  const str = String(val).trim();
+  const match = str.match(/\d+/);
+  return match ? parseInt(match[0], 10) : parseInt(str, 10) || 0;
+}
+
 /**
  * GET /api/grades/me
  * Student: view own grades
@@ -29,7 +36,7 @@ router.get('/me', authenticate, async (req, res) => {
     // Nhóm các lần làm quiz theo buổi học và chỉ chọn điểm số cao nhất (Best Score)
     const bestQuizzesMap = {};
     for (const a of quizAttempts) {
-      const session = parseInt(a.session_number);
+      const session = parseSessionNumber(a.session_number);
       const score = parseFloat(a.score || 0);
       if (bestQuizzesMap[session] === undefined || score > bestQuizzesMap[session].score) {
         bestQuizzesMap[session] = {
@@ -82,7 +89,7 @@ router.get('/admin/all', authenticate, adminOnly, async (req, res) => {
         // Nhóm theo buổi học và lấy điểm cao nhất của từng buổi học
         const bestScores = {};
         for (const a of studentQuizzes) {
-          const sess = a.session_number;
+          const sess = parseSessionNumber(a.session_number);
           const score = parseFloat(a.score || 0);
           if (bestScores[sess] === undefined || score > bestScores[sess]) {
             bestScores[sess] = score;

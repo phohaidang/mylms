@@ -28,6 +28,13 @@ function shuffle(arr) {
   return a;
 }
 
+function parseSessionNumber(val) {
+  if (val === undefined || val === null) return 0;
+  const str = String(val).trim();
+  const match = str.match(/\d+/);
+  return match ? parseInt(match[0], 10) : parseInt(str, 10) || 0;
+}
+
 const router = Router();
 
 /**
@@ -45,7 +52,7 @@ router.get('/:sessionId', authenticate, async (req, res) => {
     
     // Check attempts limit (max 5)
     const attempts = await db.find('quiz_attempts',
-      a => a.student_id === req.user.student_id && parseInt(a.session_number) === sessionId
+      a => a.student_id === req.user.student_id && parseSessionNumber(a.session_number) === sessionId
     );
     
     if (attempts.length >= 5) {
@@ -100,7 +107,7 @@ router.post('/:sessionId/submit', authenticate, async (req, res) => {
     
     // Check attempts limit (max 5)
     const attempts = await db.find('quiz_attempts',
-      a => a.student_id === req.user.student_id && parseInt(a.session_number) === sessionId
+      a => a.student_id === req.user.student_id && parseSessionNumber(a.session_number) === sessionId
     );
     if (attempts.length >= 5) {
       return res.status(409).json({ error: 'Bạn đã làm quiz này tối đa 5 lần rồi' });
@@ -173,7 +180,7 @@ router.get('/my/attempts', authenticate, async (req, res) => {
     );
     
     res.json(attempts.map(a => ({
-      session_number: parseInt(a.session_number),
+      session_number: parseSessionNumber(a.session_number),
       score: parseFloat(a.score),
       total_questions: parseInt(a.total_questions),
       correct_count: parseInt(a.correct_count),
@@ -193,7 +200,7 @@ router.get('/:sessionId/results', authenticate, async (req, res) => {
   try {
     const sessionId = parseInt(req.params.sessionId);
     const attempts = await db.find('quiz_attempts',
-      a => a.student_id === req.user.student_id && parseInt(a.session_number) === sessionId
+      a => a.student_id === req.user.student_id && parseSessionNumber(a.session_number) === sessionId
     );
     
     // Sắp xếp các lần làm bài tăng dần theo thời gian nộp
@@ -249,7 +256,7 @@ router.get('/admin/statistics', authenticate, adminOnly, async (req, res) => {
     const missedCounts = {}; // { [sessionId]: { [questionId]: count } }
     
     for (const attempt of attempts) {
-      const sessionId = attempt.session_number;
+      const sessionId = parseSessionNumber(attempt.session_number);
       if (!missedCounts[sessionId]) missedCounts[sessionId] = {};
       
       let answers = [];

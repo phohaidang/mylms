@@ -1,0 +1,244 @@
+{
+  "chapter": 1,
+  "title": "AI Tạo Sinh & Viết Văn Bản Chuyên Nghiệp",
+  "sessions": [
+    1
+  ],
+  "scqa": {
+    "situation": "Chuyên viên văn phòng tại tập đoàn dầu khí xử lý hàng chục email, báo cáo, biên bản mỗi ngày. Thời gian dành cho việc viết lách ước tính 2–3 giờ mỗi ngày — một gánh nặng thầm lặng nhưng rất lớn.",
+    "complication": "AI tạo sinh hứa hẹn giúp viết nhanh hơn, nhưng khoảng 90% người dùng gõ vài chữ kiểu 'viết giúp cái email' rồi nhận về kết quả chung chung, vô hồn, đọc là biết máy viết — phải sửa gần hết. Nhiều người kết luận 'AI bị thổi phồng' và bỏ cuộc, trong khi vấn đề thật ra nằm ở cách giao việc.",
+    "question": "Làm sao để AI viết ra đúng cái mình cần ngay từ lần đầu, đúng giọng công ty, gửi được luôn mà không phải sửa nhiều?",
+    "answer": "Hiểu đúng bản chất AI (một 'máy đoán chữ' theo xác suất, có thể bịa và phụ thuộc cách hỏi), rồi áp dụng công thức CRISP để giao việc đầy đủ. Khi cần tinh chỉnh, dùng ba kỹ thuật thực chiến: Iterative (sửa dần qua hội thoại), Negative prompt (nói cái KHÔNG muốn), và Few-shot (đưa mẫu để AI bắt chước). Nguyên tắc xuyên suốt: 'Bạn là Leader, AI là Cộng sự' — mình chỉ huy và kiểm tra, AI thực thi."
+  },
+  "concepts": [
+    {
+      "id": "c1-ai-generative",
+      "term": "AI tạo sinh — 'Máy đoán chữ'",
+      "definition": "AI tạo sinh (ChatGPT, Claude, Gemini) về bản chất là một cỗ máy đoán chữ cực giỏi: nó dự đoán từ tiếp theo dựa trên xác suất, học từ hàng tỷ trang chữ — chứ không tra cứu hay suy luận như con người.",
+      "key_points": [
+        "Cơ chế đoán từ tiếp theo: giống trò hoàn thành câu 'Hôm nay trời rất...' — bạn đoán 'đẹp', 'nắng', 'nóng'; AI làm y hệt nhưng mượt hơn vì học từ khối lượng chữ khổng lồ.",
+        "Hệ quả 1 — Hallucination: vì AI ĐOÁN chứ không tra cứu, nó có thể bịa ra con số, điều luật, quy chuẩn nghe rất hợp lý nhưng hoàn toàn không có thật.",
+        "Hệ quả 2 — 'Rác vào, rác ra': input mơ hồ cho output mơ hồ; input rõ ràng, đầy đủ cho output chất lượng. Đây là lý do nhiều người dùng AI thấy dở.",
+        "Bạn không cần hiểu machine learning — chỉ cần nhớ 2 điều: (1) nó CÓ THỂ bịa, (2) chất lượng phụ thuộc cách mình hỏi."
+      ],
+      "case_study": {
+        "title": "Quy chuẩn 'ma' PVEP-2024-HSE",
+        "context": "Một chuyên viên hỏi AI: 'Quy chuẩn PVEP-2024-HSE quy định gì về khoảng cách an toàn tối thiểu khi vận hành cẩu trục trên giàn khoan?' AI trả lời rất chi tiết, tự tin, có cả con số cụ thể.",
+        "analysis": "Sự thật là quy chuẩn PVEP-2024-HSE này không tồn tại — nó được bịa ra để thử AI. AI không nói 'tôi không biết quy chuẩn này' mà bịa luôn nội dung nghe như thật.",
+        "lesson_learned": "AI rất tự tin kể cả khi sai. Nếu đưa con số bịa này vào báo cáo HSE hay hồ sơ an toàn giàn khoan, hậu quả khôn lường. Verify luôn là trách nhiệm của mình."
+      },
+      "related_concepts": [
+        "c1-leader-partner"
+      ]
+    },
+    {
+      "id": "c1-leader-partner",
+      "term": "Mô hình 'Bạn là Leader, AI là Cộng sự'",
+      "definition": "Cách định vị đúng khi làm việc với AI: bạn là người chỉ huy ra quyết định và chịu trách nhiệm cuối cùng, AI là cộng sự rất giỏi nhưng không chịu trách nhiệm — nên luôn cần bạn kiểm tra, duyệt lại.",
+      "key_points": [
+        "Bạn là Leader: đặt yêu cầu rõ ràng, đánh giá phản biện, ra quyết định và chịu trách nhiệm về kết quả cuối.",
+        "AI là Cộng sự: thực thi nhanh và giỏi, nhưng không 'biết' đúng sai và không chịu trách nhiệm — mình phải kiểm tra.",
+        "Vòng làm việc đúng: MÌNH giao việc rõ → AI làm → MÌNH kiểm tra, duyệt lại → (nếu cần) chỉnh tiếp.",
+        "Thông điệp cốt lõi: AI không thay thế bạn — AI khuếch đại bạn. Bạn tư duy rõ thì AI cho output tốt."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-crisp",
+        "c1-ai-generative"
+      ]
+    },
+    {
+      "id": "c1-crisp",
+      "term": "Công thức CRISP — Giao việc cho AI",
+      "definition": "CRISP là một công thức dễ nhớ để cấu trúc mọi yêu cầu gửi AI. Hãy hình dung giao việc cho AI giống giao việc cho một nhân viên mới: càng nói rõ, kết quả càng đúng.",
+      "key_points": [
+        "C – Context (Bối cảnh): bạn là ai, đang ở tình huống nào. Ví dụ: 'Tôi là chuyên viên phòng kế hoạch, 5 năm kinh nghiệm'.",
+        "R – Role (Vai trò): AI đóng vai gì để trả lời tốt nhất. Ví dụ: 'Đóng vai người viết email công sở ngành dầu khí'.",
+        "I – Input (Dữ liệu): thông tin cụ thể bạn đưa vào — người nhận, lý do, số liệu.",
+        "S – Specifics (Yêu cầu): độ dài, định dạng, văn phong. Ví dụ: 'khoảng 120 chữ, lịch sự, không vòng vo'.",
+        "P – Performance (Tiêu chí): ai đọc, để làm gì, đạt chuẩn nào. Ví dụ: 'sếp đọc trong 30 giây nên phải rõ ý ngay'."
+      ],
+      "case_study": {
+        "title": "Từ email vô hồn đến email gửi được ngay",
+        "context": "Prompt nghèo 'Viết email xin gia hạn báo cáo' cho ra một email chung chung, ai gửi cũng biết là máy viết. Sau đó áp CRISP đầy đủ: chuyên viên phòng kế hoạch, gửi trưởng phòng, xin gia hạn báo cáo sản lượng quý thêm 2 ngày vì đang chờ số liệu từ đơn vị khai thác ngoài khơi, ~120 chữ, lịch sự không vòng vo.",
+        "analysis": "Cùng một AI, chỉ khác cách hỏi — bản CRISP cho ra email đúng ngữ cảnh, đúng giọng, chỉ cần kiểm tra lại thông tin rồi bấm gửi.",
+        "lesson_learned": "10 phút viết một prompt tốt tiết kiệm cả giờ chỉnh sửa output. Đầu tư vào cách hỏi, không phải vào việc sửa."
+      },
+      "related_concepts": [
+        "c1-iterative",
+        "c1-leader-partner"
+      ]
+    },
+    {
+      "id": "c1-iterative",
+      "term": "Kỹ thuật Iterative — Tinh chỉnh từng bước",
+      "definition": "Iterative là cách trò chuyện tiếp với AI để sửa dần kết quả cho tới khi vừa ý — không kỳ vọng prompt đầu tiên đã hoàn hảo.",
+      "key_points": [
+        "Đừng cố viết prompt hoàn hảo ngay lần đầu — cứ ra kết quả thô rồi chỉnh dần.",
+        "Mỗi vòng chỉnh chỉ cần một câu: 'rút ngắn còn 80 chữ' → 'thêm câu cảm ơn sự thông cảm' → 'đổi giọng trang trọng hơn vì email CC cho Giám đốc'.",
+        "Đây là kỹ thuật dùng hàng ngày và quan trọng nhất khi làm việc thực tế với AI.",
+        "Tư duy: AI là cộng sự đang ngồi cạnh — cứ nói tiếp điều mình muốn, không phải làm lại từ đầu."
+      ],
+      "case_study": {
+        "title": "Biên bản 2 trang thành bảng hành động",
+        "context": "Paste nội dung một cuộc họp dài 2 trang vào AI, yêu cầu tóm tắt thành bảng 4 cột: Quyết định — Hành động cần làm — Người chịu trách nhiệm — Deadline. Sau khi có kết quả, gõ tiếp: 'Thêm cột Trạng thái, mặc định ghi Chưa bắt đầu'.",
+        "analysis": "Chỉ qua vài câu chỉnh ngắn, bảng dần hoàn thiện đúng nhu cầu, gửi được cho cả phòng mà không cần định dạng lại.",
+        "lesson_learned": "Sửa dần qua hội thoại luôn nhanh hơn cố viết một prompt hoàn hảo ngay từ đầu."
+      },
+      "related_concepts": [
+        "c1-crisp"
+      ]
+    },
+    {
+      "id": "c1-negative",
+      "term": "Kỹ thuật Negative Prompt — Nói cái KHÔNG muốn",
+      "definition": "Negative prompt là việc chỉ rõ cho AI biết những gì bạn KHÔNG muốn nó làm. AI rất giỏi khi biết ranh giới — đôi khi nói cái KHÔNG muốn còn hiệu quả hơn nói cái muốn.",
+      "key_points": [
+        "Dùng để chặn những thói quen thừa của AI: 'Không dùng ngôn ngữ quảng cáo', 'Không quá 100 chữ', 'Không mở đầu bằng Great!'.",
+        "Cực kỳ hữu ích cho văn bản hành chính (thư mời thầu, công văn) — nơi AI hay thêm những câu xã giao không cần thiết.",
+        "Kết hợp với CRISP: phần Yêu cầu (S) nêu cái muốn, negative prompt nêu cái không muốn — output sẽ đúng tone hơn nhiều."
+      ],
+      "case_study": {
+        "title": "Thư mời thầu không 'quảng cáo'",
+        "context": "Soạn thư mời thầu cung cấp 500 bộ van an toàn cho giàn khoan. AI bản đầu thêm câu 'rất hân hạnh được hợp tác' nghe như marketing. Thêm negative prompt: 'Không dùng ngôn ngữ quảng cáo, giữ văn phong hành chính, không thêm câu mời chào xã giao'.",
+        "analysis": "Sau negative prompt, AI giữ đúng văn phong hành chính nghiêm túc — đúng chuẩn văn bản công sở của ngành.",
+        "lesson_learned": "Với văn bản trang trọng, nói rõ ranh giới giúp AI giữ đúng tone, tránh các câu thừa làm giảm tính chuyên nghiệp."
+      },
+      "related_concepts": [
+        "c1-crisp"
+      ]
+    },
+    {
+      "id": "c1-few-shot",
+      "term": "Kỹ thuật Few-shot — Dạy AI bằng ví dụ",
+      "definition": "Few-shot là việc đưa cho AI 1–2 ví dụ mẫu thay vì giải thích dài dòng — AI sẽ bắt chước đúng giọng, format và cấu trúc của mẫu.",
+      "key_points": [
+        "Thay vì mô tả 'viết trang trọng, có phần kính gửi, có mục...', chỉ cần đưa 1 mẫu tốt và nói 'viết theo đúng giọng và format này'.",
+        "Rất phù hợp khi cần output theo template công ty: email chuẩn, biên bản, báo cáo, thư mời thầu.",
+        "Ví dụ: paste 1 email mẫu tốt rồi nhờ AI viết email mới theo đúng giọng + format đó.",
+        "Phân biệt với Iterative: Few-shot dạy bằng MẪU ngay từ đầu; Iterative sửa DẦN qua nhiều lượt hội thoại."
+      ],
+      "case_study": {
+        "title": "Một mẫu, năm email đồng nhất",
+        "context": "Cần soạn 5 email thông báo họp cho 5 phòng, tất cả phải đúng format chuẩn của công ty. Thay vì viết CRISP cho từng email, paste 1 email mẫu tốt và nhờ AI: 'Viết 5 email tương tự theo đúng giọng và format này'.",
+        "analysis": "AI nhân bản đúng giọng và cấu trúc cho cả 5 email — nhanh và đồng nhất hơn nhiều so với viết riêng từng cái.",
+        "lesson_learned": "Khi đã có một mẫu chuẩn, hãy để AI nhân bản đúng phong cách thay vì giải thích lại từ đầu."
+      },
+      "related_concepts": [
+        "c1-crisp",
+        "c1-iterative"
+      ]
+    },
+    {
+      "id": "c1-tool-map",
+      "term": "Bản đồ công cụ AI — Chọn đúng loại cho đúng việc",
+      "definition": "Các công cụ AI chia thành 3 nhóm theo công dụng. Chọn đúng NHÓM cho đúng việc quan trọng hơn nhiều so với chọn 'hãng' nào trong cùng nhóm.",
+      "key_points": [
+        "Hội thoại đa năng (ChatGPT, Claude, Gemini): viết, brainstorm, giải thích, tóm tắt — nhưng có thể bịa nguồn.",
+        "Tìm kiếm có nguồn (Perplexity, ChatGPT Search): tra số liệu công khai, có link dẫn nguồn — vẫn cần verify.",
+        "Quản trị tri thức (NotebookLM): hỏi-đáp trên TÀI LIỆU CỦA BẠN — rất khó bịa vì giới hạn trong tài liệu.",
+        "Trong cùng nhóm hội thoại, ba công cụ cho kết quả na ná nhau — 'biết lái xe thì hãng nào cũng lái được'. Đừng lo chọn công cụ, hãy lo cách hỏi."
+      ],
+      "case_study": {
+        "title": "Cùng câu hỏi, sai công cụ",
+        "context": "Hỏi 'quy trình mua sắm vật tư của công ty' trên ChatGPT — nó bịa ra một quy trình nghe rất hợp lý nhưng không phải của công ty. Tải đúng quy trình thật lên NotebookLM rồi hỏi lại — nó trả lời chính xác, có trích dẫn trang, đoạn.",
+        "analysis": "Cùng một câu hỏi, dùng đúng loại công cụ cho kết quả tốt hơn gấp bội. Sai công cụ không chỉ kém — nó còn nguy hiểm vì câu trả lời bịa nghe rất thật.",
+        "lesson_learned": "Chọn công cụ theo bản chất công việc (sáng tạo / tra cứu công khai / tra cứu nội bộ), không theo độ phổ biến."
+      },
+      "related_concepts": [
+        "c1-ai-generative"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nắm nền tảng",
+      "description": "Trắc nghiệm nhận diện bản chất AI, CRISP và các kỹ thuật prompt.",
+      "bloom_level": "Remember / Understand",
+      "questions": [
+        {
+          "id": "L1-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-ai-generative",
+          "question": "AI tạo sinh như ChatGPT, Claude, Gemini hoạt động dựa trên cơ chế cốt lõi nào?",
+          "options": [
+            "A. Tra cứu trong cơ sở dữ liệu nội bộ của công ty",
+            "B. Đoán từ tiếp theo dựa trên xác suất, học từ hàng tỷ trang chữ",
+            "C. Suy luận logic giống hệt bộ não con người",
+            "D. Tìm kiếm trực tiếp trên internet rồi sao chép kết quả"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-crisp",
+          "question": "Trong công thức CRISP, chữ 'S' (Specifics) yêu cầu bạn nêu rõ điều gì?",
+          "options": [
+            "A. Vai trò mà AI cần đóng",
+            "B. Bối cảnh bạn là ai",
+            "C. Yêu cầu cụ thể: độ dài, định dạng, văn phong",
+            "D. Tên công cụ AI sử dụng"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-few-shot",
+          "question": "Kỹ thuật 'Few-shot prompting' nghĩa là gì?",
+          "options": [
+            "A. Hỏi AI thật nhiều câu liên tiếp",
+            "B. Dùng prompt ngắn nhất có thể",
+            "C. Chỉ hỏi AI đúng một câu duy nhất",
+            "D. Đưa cho AI 1–2 ví dụ mẫu để nó bắt chước đúng giọng và format"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L1-c1-q4",
+          "type": "mc",
+          "concept_ref": "c1-leader-partner",
+          "question": "Theo mô hình 'Bạn là Leader, AI là Cộng sự', vai trò đúng của bạn là gì?",
+          "options": [
+            "A. Bạn chỉ huy, ra quyết định và kiểm tra; AI thực thi",
+            "B. Để AI tự quyết định toàn bộ công việc",
+            "C. Tin tưởng tuyệt đối vào mọi output của AI",
+            "D. Chỉ dùng AI khi không còn cách nào khác"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Phân tích prompt",
+      "description": "Phân tích vì sao một prompt cho kết quả kém và cách khắc phục.",
+      "bloom_level": "Understand / Analyze",
+      "questions": [
+        {
+          "id": "L2-c1-q1",
+          "type": "essay",
+          "concept_ref": "c1-crisp",
+          "question": "Một đồng nghiệp gõ 'Viết email xin gia hạn báo cáo' và nhận về một email chung chung, vô hồn. Hãy phân tích prompt này còn thiếu những thành phần nào của CRISP, sau đó viết lại một prompt hoàn chỉnh cho tình huống xin gia hạn báo cáo sản lượng quý thêm 2 ngày.",
+          "rubric": "Cần nêu: (1) Prompt gốc thiếu Context (chưa nói mình là ai), Role (chưa gán vai trò), Input (chưa có lý do, người nhận, thời hạn cụ thể), Specifics (chưa nêu độ dài, văn phong), Performance (chưa nói ai đọc, mục đích). (2) Prompt viết lại phải có đủ 5 thành phần CRISP với tình huống dầu khí cụ thể: ví dụ bối cảnh chuyên viên phòng kế hoạch, gửi trưởng phòng, lý do chờ số liệu khai thác, ~120 chữ, lịch sự không vòng vo.",
+          "max_words": 200
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Ứng dụng kết hợp",
+      "description": "Kết hợp nhiều kỹ thuật để giải quyết tình huống văn bản thực tế.",
+      "bloom_level": "Apply / Create",
+      "questions": [
+        {
+          "id": "L3-c1-q1",
+          "type": "essay",
+          "concept_ref": "c1-few-shot",
+          "question": "Bạn cần soạn một thư mời thầu cung cấp vật tư cho giàn khoan, đúng văn phong hành chính chuẩn của công ty. Hãy mô tả cách bạn kết hợp Few-shot và Negative prompt để AI cho ra văn bản đạt chuẩn: bạn sẽ đưa cho AI mẫu gì (Few-shot) và chỉ định AI KHÔNG làm gì (Negative)?",
+          "rubric": "Cần nêu: (1) Few-shot — đưa 1 thư mời thầu mẫu tốt của công ty và yêu cầu AI viết theo đúng giọng + format đó. (2) Negative prompt — chỉ định rõ những gì AI không được làm, ví dụ: không dùng ngôn ngữ quảng cáo, không thêm câu xã giao kiểu 'rất hân hạnh hợp tác', không vượt quá độ dài cho phép. (3) Giải thích vì sao kết hợp hai kỹ thuật này giúp văn bản vừa đúng format công ty vừa giữ văn phong hành chính nghiêm túc.",
+          "max_words": 300
+        }
+      ]
+    }
+  }
+}
