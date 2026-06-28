@@ -69,7 +69,6 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
   // Static files — served from content directory
   const cDir = app.locals.contentDir;
   app.use('/lessons', express.static(join(cDir, 'lessons')));
-  app.use('/slides', express.static(join(cDir, 'slides')));
   app.use('/images', express.static(join(cDir, 'images')));
 
   // API Routes
@@ -123,7 +122,6 @@ export function createApp({ courseDir, classDir, contentDir, config }) {
       app.get('*', (req, res, next) => {
         // Skip SPA catch-all for static content paths
         if (req.path.startsWith('/lessons/') || 
-            req.path.startsWith('/slides/') || 
             req.path.startsWith('/images/')) {
           return res.status(404).send('File not found');
         }

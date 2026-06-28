@@ -47,16 +47,6 @@ router.post('/:sessionId', authenticate, async (req, res) => {
     };
     await db.append('session_feedback', feedback);
 
-    // 2) Save ATTENDANCE record (student identity + timestamp, NO content)
-    const attendance = {
-      id: uuidv4(),
-      session_id: sessionId,
-      student_id: req.user.student_id,
-      student_name: req.user.full_name,
-      checked_in_at: now
-    };
-    await db.append('attendance_log', attendance);
-
     res.json({ message: 'Cảm ơn bạn đã góp ý! Phản hồi của bạn hoàn toàn ẩn danh.' });
   } catch (err) {
     console.error('Feedback submit error:', err);
@@ -73,9 +63,12 @@ router.get('/:sessionId/check', authenticate, async (req, res) => {
     const sessionId = parseInt(req.params.sessionId);
     const anonHash = Buffer.from(req.user.student_id + '_session_' + sessionId).toString('base64');
     const existing = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
-    res.json({ submitted: !!existing });
+    res.json({ 
+      submitted: !!existing, 
+      has_comment: !!(existing && existing.comment && existing.comment.trim().length > 0)
+    });
   } catch (err) {
-    res.json({ submitted: false });
+    res.json({ submitted: false, has_comment: false });
   }
 });
 
@@ -84,9 +77,27 @@ router.get('/:sessionId/check', authenticate, async (req, res) => {
  * Get session IDs attended by current student
  */
 router.get('/my-attendance', authenticate, async (req, res) => {
-  try {
+    // Get downloaded slides
     const logs = await db.find('attendance_log', a => a.student_id === req.user.student_id);
-    const attendedSessions = logs.map(l => parseInt(l.session_id));
+    const downloadedSessions = logs.map(l => parseInt(l.session_id));
+    
+    // Get completed quizzes (score === 10 or attempts >= 5)
+    const quizAttempts = await db.find('quiz_attempts', a => a.student_id === req.user.student_id);
+    const quizStatus = {};
+    quizAttempts.forEach(a => {
+      const sid = parseInt(a.session_number);
+      if (!quizStatus[sid]) quizStatus[sid] = { maxScore: 0, attempts: 0 };
+      quizStatus[sid].attempts++;
+      if (parseFloat(a.score) > quizStatus[sid].maxScore) {
+        quizStatus[sid].maxScore = parseFloat(a.score);
+      }
+    });
+    
+    // Attended = Slide Downloaded AND Quiz Completed
+    const attendedSessions = downloadedSessions.filter(sid => 
+      quizStatus[sid] && (quizStatus[sid].maxScore >= 10 || quizStatus[sid].attempts >= 5)
+    );
+    
     res.json(attendedSessions);
   } catch (err) {
     console.error('My attendance error:', err);
@@ -153,19 +164,39 @@ router.get('/admin/summary', authenticate, adminOnly, async (req, res) => {
 router.get('/admin/attendance', authenticate, adminOnly, async (req, res) => {
   try {
     const allAttendance = await db.getAll('attendance_log');
+    const allQuizzes = await db.getAll('quiz_attempts');
 
-    // Group by session
+    // Calculate quiz completion per student per session
+    const quizStatus = {}; // { student_id: { session_id: { maxScore, attempts } } }
+    allQuizzes.forEach(q => {
+      const sid = parseInt(q.session_number);
+      if (isNaN(sid)) return;
+      if (!quizStatus[q.student_id]) quizStatus[q.student_id] = {};
+      if (!quizStatus[q.student_id][sid]) quizStatus[q.student_id][sid] = { maxScore: 0, attempts: 0 };
+      
+      quizStatus[q.student_id][sid].attempts++;
+      if (parseFloat(q.score) > quizStatus[q.student_id][sid].maxScore) {
+        quizStatus[q.student_id][sid].maxScore = parseFloat(q.score);
+      }
+    });
+
+    // Group by session (Only include if Slide Downloaded AND Quiz Completed)
     const grouped = {};
     allAttendance.forEach(a => {
       const sid = String(a.session_id || '').match(/\d+/) ? parseInt(String(a.session_id).match(/\d+/)[0]) : NaN;
       if (isNaN(sid)) return;
+      
+      // Check quiz requirement
+      const qs = quizStatus[a.student_id]?.[sid];
+      if (!qs || (qs.maxScore < 10 && qs.attempts < 5)) return;
+
       if (!grouped[sid]) {
         grouped[sid] = { session_id: sid, students: [] };
       }
       grouped[sid].students.push({
         student_id: a.student_id,
         student_name: a.student_name,
-        checked_in_at: a.checked_in_at
+        checked_in_at: a.checked_in_at // Time of slide download
       });
     });
 

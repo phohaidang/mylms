@@ -1,4 +1,4 @@
-import { api, getUser } from '../api.js';
+import { api, getUser, getToken } from '../api.js';
 
 export async function renderLesson(app, { id }) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
@@ -103,7 +103,7 @@ export async function renderLesson(app, { id }) {
         <div style="display:flex;gap:0.75rem">
           ${!isStudent ? `<button class="btn btn-secondary" id="btn-lesson" onclick="showTab('lesson')">📄 Kịch bản dạy</button>` : ''}
           ${!isStudent ? `<button class="btn btn-secondary" id="btn-slide" onclick="showTab('slide')">📊 Slide</button>` : ''}
-          ${isStudent && session.hasSlide ? `<a href="/slides/Buoi_${paddedId}.pdf" target="_blank" class="btn btn-secondary">📥 Tải Slide</a>` : ''}
+          ${isStudent && session.hasSlide ? `<a href="#" id="btn-student-slide" onclick="alert('Vui lòng kéo xuống dưới, nộp đánh giá ẩn danh kèm bình luận để có thể tải Slide!'); return false;" class="btn btn-secondary" style="opacity: 0.5">📥 Tải Slide</a>` : ''}
           <a href="#/quiz/${session.id}" class="btn btn-primary">📝 Làm Quiz Online</a>
         </div>
       </div>
@@ -116,7 +116,7 @@ export async function renderLesson(app, { id }) {
 
       <div id="content-slide" class="content-tab" style="display:none">
         ${!isStudent ? (session.hasSlide
-          ? `<embed src="/slides/Buoi_${paddedId}.pdf" type="application/pdf" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md)">`
+          ? `<embed src="/api/courses/sessions/${session.id}/slide?token=${getToken()}" type="application/pdf" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md)">`
           : `<div class="alert alert-warning">Slide chưa được convert cho buổi này</div>`) : ''}
       </div>
 
@@ -224,6 +224,19 @@ export async function renderLesson(app, { id }) {
     const fbSection = document.getElementById('feedback-section');
     try {
       const checkRes = await api.get(`/feedback/${id}/check`);
+      
+      const slideBtn = document.getElementById('btn-student-slide');
+      if (slideBtn) {
+        if (checkRes.submitted && checkRes.has_comment) {
+          slideBtn.href = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
+          slideBtn.target = '_blank';
+          slideBtn.onclick = null;
+          slideBtn.style.opacity = '1';
+        } else if (checkRes.submitted && !checkRes.has_comment) {
+          slideBtn.onclick = (e) => { e.preventDefault(); alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Slide. Vui lòng báo Giảng viên.'); };
+        }
+      }
+
       if (checkRes.submitted) {
         fbSection.innerHTML = `
           <div class="card" style="text-align:center; padding: 2rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08))">
