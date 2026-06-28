@@ -103,6 +103,7 @@ export async function renderLesson(app, { id }) {
         <div style="display:flex;gap:0.75rem">
           ${!isStudent ? `<button class="btn btn-secondary" id="btn-lesson" onclick="showTab('lesson')">📄 Kịch bản dạy</button>` : ''}
           ${!isStudent ? `<button class="btn btn-secondary" id="btn-slide" onclick="showTab('slide')">📊 Slide</button>` : ''}
+          ${isStudent && session.hasSlide ? `<a href="/slides/Buoi_${paddedId}.pdf" target="_blank" class="btn btn-secondary">📥 Tải Slide</a>` : ''}
           <a href="#/quiz/${session.id}" class="btn btn-primary">📝 Làm Quiz Online</a>
         </div>
       </div>
