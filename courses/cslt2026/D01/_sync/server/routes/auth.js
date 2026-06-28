@@ -1,0 +1,313 @@
+import { Router } from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { v4 as uuidv4 } from 'uuid';
+import db from '../services/sheets.js';
+import { authenticate } from '../middleware/auth.js';
+
+const router = Router();
+
+const checkMustChangePassword = (val) => {
+  if (val === undefined || val === null) return false;
+  const s = String(val).trim().toLowerCase();
+  return s === 'true' || s === '1';
+};
+
+
+/**
+ * GET /api/auth/config
+ * Return public auth config (e.g., whether self-registration is allowed)
+ */
+router.get('/config', (req, res) => {
+  res.json({
+    allowSelfRegister: process.env.ALLOW_SELF_REGISTER === 'true',
+    courseName: process.env.COURSE_NAME || ''
+  });
+});
+
+/**
+ * POST /api/auth/register
+ * Register a new student account
+ * Only enabled when ALLOW_SELF_REGISTER=true in .env
+ */
+router.post('/register', async (req, res) => {
+  // Check if self-registration is enabled for this deployment
+  if (process.env.ALLOW_SELF_REGISTER !== 'true') {
+    return res.status(403).json({ error: 'Chức năng tự đăng ký đã bị vô hiệu hóa. Vui lòng liên hệ Giảng viên.' });
+  }
+
+  try {
+    const { full_name, email, password } = req.body;
+
+    if (!full_name || !email || !password) {
+      return res.status(400).json({ error: 'Vui lòng nhập đầy đủ họ tên, email và mật khẩu' });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: 'Mật khẩu phải có ít nhất 6 ký tự' });
+    }
+
+    // Check email domain restriction (if configured)
+    const allowedDomain = process.env.ALLOWED_EMAIL_DOMAIN;
+    if (allowedDomain && !email.toLowerCase().endsWith(`@${allowedDomain}`)) {
+      return res.status(400).json({ error: `Chỉ chấp nhận email có đuôi @${allowedDomain}` });
+    }
+
+    // Check if email already exists
+    const normalizeEmail = e => e ? e.toString().trim().toLowerCase() : '';
+    const existing = await db.findOne('students', s => normalizeEmail(s.email) === normalizeEmail(email));
+    if (existing) {
+      return res.status(409).json({ error: 'Email này đã được đăng ký. Vui lòng đăng nhập.' });
+    }
+
+    // Hash password and create student
+    const password_hash = await bcrypt.hash(password, 10);
+    const student_id = `DK-${uuidv4().slice(0, 8).toUpperCase()}`;
+
+    const newStudent = {
+      student_id,
+      email: email.trim().toLowerCase(),
+      full_name: full_name.trim(),
+      password: '',
+      role: 'student',
+      must_change_password: 'false',
+      created_at: new Date().toISOString(),
+      password_hash,
+      last_login: new Date().toISOString()
+    };
+
+    await db.append('students', newStudent);
+
+    // Auto-login after registration
+    const token = jwt.sign(
+      {
+        student_id: newStudent.student_id,
+        email: newStudent.email,
+        full_name: newStudent.full_name,
+        role: newStudent.role
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
+    );
+
+    res.status(201).json({
+      message: 'Đăng ký thành công! Chào mừng bạn đến với khóa học.',
+      token,
+      user: {
+        student_id: newStudent.student_id,
+        email: newStudent.email,
+        full_name: newStudent.full_name,
+        role: newStudent.role,
+        must_change_password: false
+      }
+    });
+  } catch (err) {
+    console.error('Register error:', err);
+    res.status(500).json({ error: 'Lỗi hệ thống. Vui lòng thử lại.' });
+  }
+});
+
+/**
+ * POST /api/auth/login
+ * Login with email + password
+ */
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Vui lòng nhập email và mật khẩu' });
+    }
+    
+    // 1. Check if it's the Admin account from ENV
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminPass = process.env.ADMIN_PASSWORD;
+
+    if (email === adminEmail && password === adminPass) {
+      const adminUser = {
+        student_id: 'ADMIN',
+        email: adminEmail,
+        full_name: process.env.ADMIN_NAME || 'Administrator',
+        role: 'admin'
+      };
+
+      const token = jwt.sign(
+        adminUser,
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
+      );
+
+      return res.json({
+        message: 'Chào mừng Giảng viên quay trở lại!',
+        token,
+        user: adminUser
+      });
+    }
+
+    // 2. If not admin, find student in DB
+    const normalizeEmail = e => e ? e.toString().trim().toLowerCase().replace(/^0+/, '') : '';
+    const targetEmailNormalized = normalizeEmail(email);
+
+    const user = await db.findOne('students', s => normalizeEmail(s.email) === targetEmailNormalized);
+    if (!user) {
+      return res.status(401).json({ error: 'Email hoặc mật khẩu không đúng' });
+    }
+    
+    // Verify password
+    const storedHash = user.password_hash || user.password;
+    const valid = await bcrypt.compare(password, storedHash);
+    if (!valid) {
+      return res.status(401).json({ error: 'Email hoặc mật khẩu không đúng' });
+    }
+    
+    // Update last login
+    await db.update('students', s => normalizeEmail(s.email) === targetEmailNormalized, {
+      last_login: new Date().toISOString()
+    });
+    
+    // Generate JWT
+    const token = jwt.sign(
+      {
+        student_id: user.student_id,
+        email: user.email,
+        full_name: user.full_name,
+        role: user.role
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
+    );
+    
+    res.json({
+      message: 'Đăng nhập thành công!',
+      token,
+      user: {
+        student_id: user.student_id,
+        email: user.email,
+        full_name: user.full_name,
+        role: user.role,
+        must_change_password: checkMustChangePassword(user.must_change_password)
+      }
+    });
+    
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Lỗi hệ thống. Vui lòng thử lại.' });
+  }
+});
+
+/**
+ * POST /api/auth/change-password
+ * Change current user password
+ */
+router.post('/change-password', authenticate, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ error: 'Vui lòng nhập đầy đủ thông tin' });
+    }
+    
+    if (newPassword.length < 6) {
+      return res.status(400).json({ error: 'Mật khẩu mới phải có ít nhất 6 ký tự' });
+    }
+    
+    const user = await db.findOne('students', s => s.student_id === req.user.student_id);
+    if (!user) {
+      return res.status(404).json({ error: 'Không tìm thấy tài khoản' });
+    }
+    
+    // Verify current password
+    const storedHash = user.password_hash || user.password;
+    const valid = await bcrypt.compare(currentPassword, storedHash);
+    if (!valid) {
+      return res.status(401).json({ error: 'Mật khẩu hiện tại không đúng' });
+    }
+    
+    // Hash new password
+    const password_hash = await bcrypt.hash(newPassword, 10);
+    
+    // Update password and clear flag
+    await db.update('students', s => s.student_id === req.user.student_id, {
+      password_hash,
+      must_change_password: false
+    });
+    
+    res.json({ message: 'Đổi mật khẩu thành công!' });
+  } catch (err) {
+    console.error('Change password error:', err);
+    res.status(500).json({ error: 'Lỗi hệ thống' });
+  }
+});
+
+/**
+ * GET /api/auth/me
+ * Get current user profile
+ */
+router.get('/me', authenticate, async (req, res) => {
+  try {
+    const user = await db.findOne('students', s => s.email === req.user.email);
+    if (!user) {
+      return res.status(404).json({ error: 'Không tìm thấy tài khoản' });
+    }
+    
+    res.json({
+      student_id: user.student_id,
+      email: user.email,
+      full_name: user.full_name,
+      role: user.role,
+      must_change_password: checkMustChangePassword(user.must_change_password),
+      created_at: user.created_at,
+      last_login: user.last_login
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Lỗi hệ thống' });
+  }
+});
+
+/**
+ * POST /api/auth/reset-password
+ * Reset password to student_id (MSSV) — requires email + student_id for verification
+ */
+router.post('/reset-password', async (req, res) => {
+  try {
+    const { email, student_id } = req.body;
+    
+    if (!email || !student_id) {
+      return res.status(400).json({ error: 'Vui lòng nhập đầy đủ Email và MSSV' });
+    }
+
+    const normalize = id => id ? id.toString().trim().replace(/^0+/, '') : '';
+    const normalizeEmail = e => e ? e.toString().trim().toLowerCase().replace(/^0+/, '') : '';
+    
+    const targetNormalized = normalize(student_id);
+    const targetEmailNormalized = normalizeEmail(email);
+
+    // Find student matching BOTH email and student_id (ignoring leading zeros)
+    const user = await db.findOne('students', s => 
+      normalizeEmail(s.email) === targetEmailNormalized && 
+      normalize(s.student_id) === targetNormalized
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: 'Không tìm thấy tài khoản. Hãy kiểm tra lại Email và MSSV.' });
+    }
+
+    // Reset password to student_id (MSSV) as entered by the student
+    const password_hash = await bcrypt.hash(student_id.trim(), 10);
+
+    // Update using normalized ID to ensure we find the row in the sheet
+    await db.update('students', s => normalize(s.student_id) === targetNormalized, {
+      password_hash,
+      must_change_password: 'true'
+    });
+
+    res.json({ 
+      message: `Mật khẩu đã được reset về MSSV của bạn. Vui lòng đăng nhập và đổi mật khẩu mới.`
+    });
+  } catch (err) {
+    console.error('Reset password error:', err);
+    res.status(500).json({ error: 'Lỗi hệ thống. Vui lòng thử lại.' });
+  }
+});
+
+export default router;

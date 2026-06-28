@@ -1,0 +1,83 @@
+{
+  "chapter": 9,
+  "title": "Kiểu tập tin (Files)",
+  "sessions": [9],
+  "scqa": {
+    "situation": "Từ trước đến nay, toàn bộ dữ liệu mà chương trình tạo ra hoặc yêu cầu người dùng nhập vào (mảng sinh viên, ma trận số) đều được lưu trữ trên RAM. Ưu điểm của RAM là tốc độ truy xuất cực kỳ nhanh.",
+    "complication": "Tuy nhiên, RAM là bộ nhớ khả biến (volatile memory). Điều đó có nghĩa là ngay khi chương trình kết thúc, hoặc máy tính bị tắt nguồn, TẤT CẢ dữ liệu sẽ bốc hơi. Việc người dùng phải hì hục nhập lại điểm cho 100 sinh viên ở mỗi lần bật phần mềm lên là hoàn toàn không thể chấp nhận được trong thế giới thực.",
+    "question": "Làm thế nào để chương trình C có thể giao tiếp trực tiếp với ổ cứng, lưu lại kết quả tính toán một cách vĩnh viễn và đọc lại chúng trong các lần chạy sau?",
+    "answer": "Giải pháp là thao tác với Kiểu Tập Tin (File). Ngôn ngữ C cung cấp các con trỏ kiểu FILE* và một thư viện hàm đồ sộ (fopen, fclose, fprintf, fscanf, fread, fwrite...) để mở kênh giao tiếp với ổ cứng. Bằng cách này, ta có thể lưu dữ liệu dưới dạng văn bản dễ đọc (.txt) hoặc dạng nhị phân siêu tốc (.bin, .dat), đảm bảo tính bền vững của hệ thống."
+  },
+  "concepts": [
+    {
+      "id": "c9-file-basics",
+      "term": "Phân loại và Biến Con trỏ Tập tin",
+      "definition": "Định nghĩa cách thức quản lý tập tin trên đĩa bằng con trỏ FILE và phân loại hai định dạng tập tin cơ bản.",
+      "key_points": [
+        "Biến con trỏ: Để quản lý một file, C bắt buộc khai báo một con trỏ kiểu FILE (ví dụ: `FILE *fp;`).",
+        "Tập tin văn bản (Text File - .txt): Dữ liệu được lưu dưới dạng chuỗi ký tự con người có thể đọc được bằng Notepad. Các dòng ngăn cách bằng ký tự xuống dòng '\\n'.",
+        "Tập tin nhị phân (Binary File - .bin, .dat): Dữ liệu (ví dụ struct, int) được lưu nguyên bản chuỗi bit từ RAM xuống đĩa. Con người không thể đọc trực tiếp nhưng tốc độ đọc/ghi của máy tính cực nhanh vì không cần chuyển đổi format."
+      ],
+      "case_study": null,
+      "related_concepts": ["c9-file-operations"]
+    },
+    {
+      "id": "c9-file-operations",
+      "term": "Chu trình Mở - Đọc/Ghi - Đóng",
+      "definition": "Quy trình 3 bước bắt buộc phải tuân thủ khi làm việc với bất kỳ tập tin nào.",
+      "key_points": [
+        "1. Mở (fopen): Cú pháp `fp = fopen(\"data.txt\", \"r\");`. Cần lưu ý các chế độ mở: 'r' (đọc), 'w' (ghi đè), 'a' (ghi nối thêm), 'rb' (đọc nhị phân), 'wb' (ghi nhị phân). Nếu mở thất bại, fopen trả về NULL.",
+        "2. Đọc/Ghi (IO): Dùng fscanf/fprintf, fgets/fputs cho file văn bản. Dùng fread/fwrite cho file nhị phân.",
+        "3. Đóng (fclose): Rất quan trọng! Lệnh `fclose(fp);` giải phóng RAM và ép hệ điều hành xả bộ đệm (flush buffer) ghi nốt dữ liệu còn sót lại xuống đĩa ổ cứng. Nếu quên đóng, file có thể bị hỏng hoặc rỗng."
+      ],
+      "case_study": {
+        "title": "Sự cố mất dữ liệu do quên fclose",
+        "context": "Một chương trình thu thập log liên tục ghi dữ liệu bằng fprintf nhưng sau đó kết thúc ngang mà không gọi fclose().",
+        "analysis": "Hệ điều hành thường gom dữ liệu trên RAM thành từng khối (buffer) rồi mới ghi xuống ổ cứng một lần cho nhanh. Nếu tắt đột ngột mà chưa fclose, khối buffer cuối cùng chưa kịp xả xuống ổ cứng sẽ biến mất.",
+        "lesson_learned": "Luôn gọi fclose() trước khi thoát chương trình."
+      },
+      "related_concepts": ["c9-file-basics"]
+    },
+    {
+      "id": "c9-file-seek",
+      "term": "Truy cập ngẫu nhiên với fseek()",
+      "definition": "Kỹ thuật di chuyển con trỏ đọc/ghi đến một vị trí bất kỳ bên trong tập tin thay vì phải đọc tuần tự từ trên xuống dưới.",
+      "key_points": [
+        "Hàm `fseek(fp, offset, origin);` cho phép con trỏ nhảy cóc.",
+        "Origin: SEEK_SET (đầu file), SEEK_CUR (vị trí hiện tại), SEEK_END (cuối file).",
+        "Offset: Số byte di chuyển (số âm là lùi lại).",
+        "Hàm `ftell(fp)` dùng để lấy vị trí hiện tại của con trỏ (thường dùng kết hợp với fseek(SEEK_END) để đo dung lượng của file tính bằng byte)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c9-file-operations"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhớ cú pháp mở và đóng tập tin.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c9-q1", "type": "mc", "concept_ref": "c9-file-operations", "question": "Hàm fopen() sẽ trả về giá trị gì nếu việc mở tập tin bị thất bại (ví dụ: file cần đọc không tồn tại)?", "options": ["A. -1", "B. 0", "C. NULL", "D. EOF"], "correct": "C" },
+        { "id": "L1-c9-q2", "type": "mc", "concept_ref": "c9-file-operations", "question": "Chế độ (mode) nào sau đây trong hàm fopen được dùng để mở file văn bản và GHI NỐI THÊM dữ liệu vào cuối file mà không xóa dữ liệu cũ?", "options": ["A. \"r\"", "B. \"w\"", "C. \"a\"", "D. \"w+\""], "correct": "C" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Phân biệt các hàm đọc ghi.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c9-q1", "type": "mc", "concept_ref": "c9-file-basics", "question": "Cặp hàm nào sau đây được thiết kế ĐẶC BIỆT để thao tác (đọc/ghi) với tập tin NHỊ PHÂN (binary file)?", "options": ["A. fscanf() / fprintf()", "B. fgets() / fputs()", "C. fread() / fwrite()", "D. getc() / putc()"], "correct": "C" },
+        { "id": "L2-c9-q2", "type": "mc", "concept_ref": "c9-file-operations", "question": "Tại sao việc gọi hàm fclose() lại mang tính chất bắt buộc trước khi kết thúc chương trình?", "options": ["A. Để xóa file đó khỏi ổ cứng.", "B. Để đẩy (flush) những dữ liệu còn kẹt trong bộ đệm RAM xuống đĩa cứng và giải phóng tài nguyên.", "C. Để mã hóa file tránh bị người khác đọc.", "D. Để nén dung lượng file nhỏ lại."], "correct": "B" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Sử dụng fseek để đo kích thước file.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c9-q1", "type": "mc", "concept_ref": "c9-file-seek", "question": "Đoạn code: `fseek(fp, 0, SEEK_END); long size = ftell(fp);` dùng để thực hiện chức năng gì?", "options": ["A. Đọc nội dung dòng cuối cùng của file.", "B. Xóa nội dung của file.", "C. Xác định dung lượng (kích thước) của file tính bằng số byte.", "D. Chèn thêm một ký tự NULL vào cuối file."], "correct": "C" }
+      ]
+    }
+  }
+}

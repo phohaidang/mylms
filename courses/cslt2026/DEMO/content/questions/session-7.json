@@ -1,0 +1,128 @@
+{
+  "session": 7,
+  "chapter": "Ch.7",
+  "title": "Kiểu chuỗi ký tự",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "s7-mc1",
+      "type": "mc",
+      "question": "Chuỗi ký tự trong C thực chất là gì?",
+      "options": [
+        "A. Kiểu dữ liệu riêng biệt (string)",
+        "B. Mảng ký tự kết thúc bằng '\\0'",
+        "C. Con trỏ kiểu void",
+        "D. Mảng số nguyên"
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "s7-mc2",
+      "type": "mc",
+      "question": "Thư viện nào chứa các hàm chuẩn để thao tác với chuỗi như strlen, strcmp trong C?",
+      "options": [
+        "A. stdio.h",
+        "B. math.h",
+        "C. string.h",
+        "D. ctype.h"
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc3",
+      "type": "mc",
+      "question": "Hàm strlen() và toán tử sizeof() khác nhau như thế nào khi thao tác trên mảng ký tự `char str[50] = \"Hello\";`?",
+      "options": [
+        "A. strlen trả về 5, sizeof trả về 5",
+        "B. strlen trả về 5, sizeof trả về 50",
+        "C. strlen trả về 6 (tính cả \\0), sizeof trả về 50",
+        "D. strlen trả về 50, sizeof trả về 5"
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "s7-mc4",
+      "type": "mc",
+      "question": "Tại sao không nên sử dụng hàm gets() để nhập chuỗi?",
+      "options": [
+        "A. Vì nó không cho phép nhập khoảng trắng.",
+        "B. Vì nó có thể gây ra lỗi tràn bộ đệm (buffer overflow) do không kiểm soát kích thước chuỗi nhập vào.",
+        "C. Vì nó yêu cầu thêm thư viện phụ ngoài stdio.h.",
+        "D. Vì nó tự động thêm ký tự '\\n' vào cuối chuỗi."
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "s7-mc5",
+      "type": "mc",
+      "question": "Hàm fgets() khi nhập chuỗi từ bàn phím thường để lại ký tự nào ở cuối chuỗi (trước '\\0') nếu bộ đệm đủ lớn?",
+      "options": [
+        "A. Ký tự khoảng trắng (space)",
+        "B. Ký tự tab (\\t)",
+        "C. Ký tự xuống dòng (\\n)",
+        "D. Ký tự kết thúc tập tin (EOF)"
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc6",
+      "type": "mc",
+      "question": "Khi thực hiện phép so sánh `if (str1 == str2)` trong C, hệ thống thực chất đang so sánh điều gì?",
+      "options": [
+        "A. Nội dung của hai chuỗi xem có giống nhau từng ký tự hay không.",
+        "B. Địa chỉ bộ nhớ của ký tự đầu tiên trong hai mảng str1 và str2.",
+        "C. Độ dài của hai chuỗi.",
+        "D. Kích thước (sizeof) của hai mảng."
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "s7-mc7",
+      "type": "mc",
+      "question": "Giá trị trả về của hàm strcmp(str1, str2) mang ý nghĩa gì?",
+      "options": [
+        "A. Trả về true (1) nếu giống nhau, false (0) nếu khác nhau.",
+        "B. Trả về độ chênh lệch độ dài giữa 2 chuỗi.",
+        "C. Trả về 0 nếu 2 chuỗi giống hệt nhau, khác 0 nếu có sự khác biệt (dựa trên mã ASCII).",
+        "D. Trả về số ký tự khác nhau giữa 2 chuỗi."
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc8",
+      "type": "mc",
+      "question": "Cho đoạn code: `char a[10] = \"Hi\"; char b[10] = \"Ho\"; strcat(a, b); printf(\"%s\", a);`. Kết quả in ra màn hình là gì?",
+      "options": [
+        "A. Hi",
+        "B. Ho",
+        "C. HiHo",
+        "D. Lỗi biên dịch"
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "s7-mc9",
+      "type": "mc",
+      "question": "Để xóa ký tự xuống dòng '\\n' do fgets() để lại ở cuối chuỗi `str`, cách làm nào sau đây là đúng?",
+      "options": [
+        "A. str[strlen(str)] = '\\0';",
+        "B. str[strlen(str) - 1] = '\\0';",
+        "C. str[sizeof(str) - 1] = '\\0';",
+        "D. str = remove_newline(str);"
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "s7-mc10",
+      "type": "mc",
+      "question": "Đoạn code: `for (int i = 0; i < strlen(str); i++) { if (str[i] >= 'a' && str[i] <= 'z') str[i] = str[i] - 32; }` thực hiện công việc gì?",
+      "options": [
+        "A. Chuyển toàn bộ chuỗi sang chữ thường.",
+        "B. Đếm số lượng chữ cái in thường trong chuỗi.",
+        "C. Chuyển các ký tự in thường trong chuỗi thành in hoa.",
+        "D. Loại bỏ các khoảng trắng trong chuỗi."
+      ],
+      "correct": "C"
+    }
+  ]
+}

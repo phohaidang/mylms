@@ -1,5 +1,14 @@
 import { api } from '../api.js';
 
+function escapeHTML(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+}
+
 export async function renderQuiz(app, { sessionId }) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
 
@@ -25,14 +34,14 @@ export async function renderQuiz(app, { sessionId }) {
                 <span class="badge badge-info">Câu ${idx + 1}/${quiz.total_questions}</span>
                 <span class="badge">${q.type === 'mc' ? 'Trắc nghiệm' : 'Đúng/Sai'}</span>
               </div>
-              <h4 style="margin-bottom:1rem;line-height:1.6">${q.question}</h4>
+              <h4 style="margin-bottom:1rem;line-height:1.6">${escapeHTML(q.question)}</h4>
 
               ${q.type === 'mc' ? `
                 <div>
                   ${q.options.map(opt => `
                     <div class="quiz-option" data-qid="${q.id}" data-value="${opt.charAt(0)}" onclick="selectQuizOption(this)">
                       <div class="quiz-option-letter">${opt.charAt(0)}</div>
-                      <div style="font-size:0.92rem">${opt}</div>
+                      <div style="font-size:0.92rem">${escapeHTML(opt)}</div>
                     </div>
                   `).join('')}
                 </div>

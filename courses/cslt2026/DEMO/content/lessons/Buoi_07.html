@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KỊCH BẢN GIẢNG DẠY: CHƯƠNG 7 — KIỂU CHUỖI KÝ TỰ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pygments/2.15.1/default.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --toc-bg: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --text: #f1f5f9;
+                --card-bg: #1e293b;
+                --border: #334155;
+                --toc-bg: #1e293b;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 95%;
+            padding: 40px 20px;
+            margin-bottom: 100px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; margin-top: 0; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            background: rgba(79, 70, 229, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th { background: rgba(79, 70, 229, 0.05); }
+
+        tr:hover { background: rgba(79, 70, 229, 0.02); }
+
+        .toc {
+            background: var(--toc-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .toc ul { list-style: none; padding-left: 20px; }
+        .toc a { color: var(--text); opacity: 0.8; font-size: 0.9rem; }
+        .toc a:hover { opacity: 1; color: var(--primary); }
+
+        blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(79, 70, 229, 0.05);
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <div class="toc"><span class="toctitle">Mục lục</span><ul>
+<li><a href="#kich-ban-giang-day-chuong-7-kieu-chuoi-ky-tu">KỊCH BẢN GIẢNG DẠY: CHƯƠNG 7 — KIỂU CHUỖI KÝ TỰ</a><ul>
+<li><a href="#i-muc-tieu-buoi-hoc">I. Mục tiêu buổi học</a></li>
+<li><a href="#ii-khung-scqa-cua-buoi">II. Khung SCQA của buổi</a></li>
+<li><a href="#iii-khoi-ong-tu-cai-biet-cua-sv">III. Khởi động từ "Cái Biết" của SV</a></li>
+<li><a href="#iv-kich-ban-chi-tiet-theo-timeline">IV. Kịch bản chi tiết theo timeline</a><ul>
+<li><a href="#tiet-1-ly-thuyet-ban-chat-chuoi-nhapxuat-50-phut">TIẾT 1 — Lý thuyết: Bản chất chuỗi &amp; Nhập/Xuất (50 phút)</a><ul>
+<li><a href="#mo-tiet-5-phut-scqa-hook">Mở tiết (5 phút) — SCQA Hook</a></li>
+<li><a href="#ao-sau-khai-niem-khai-bao-chuoi-15-phut">Đào sâu khái niệm — Khai báo chuỗi (15 phút)</a></li>
+<li><a href="#ao-sau-khai-niem-nhapxuat-chuoi-20-phut">Đào sâu khái niệm — Nhập/Xuất chuỗi (20 phút)</a></li>
+<li><a href="#ao-sau-khai-niem-ham-xu-ly-chuoi-10-phut">Đào sâu khái niệm — Hàm xử lý chuỗi (10 phút)</a></li>
+</ul>
+</li>
+<li><a href="#tiet-2-ly-thuyet-nang-cao-demo-50-phut">TIẾT 2 — Lý thuyết nâng cao + Demo (50 phút)</a><ul>
+<li><a href="#mo-tiet-2-5-phut-ket-noi">Mở tiết 2 (5 phút) — Kết nối</a></li>
+<li><a href="#tim-kiem-ham-bo-sung-15-phut">Tìm kiếm &amp; Hàm bổ sung (15 phút)</a></li>
+<li><a href="#demo-co-tham-gia-code-along-30-phut">Demo có tham gia — Code-along (30 phút)</a></li>
+</ul>
+</li>
+<li><a href="#tiet-3-4-thuc-hanh-tai-phong-may-100-phut">TIẾT 3 &amp; 4 — Thực hành tại phòng máy (100 phút)</a><ul>
+<li><a href="#lab-1-co-ban-bat-buoc-30-phut">Lab 1: Cơ bản — Bắt buộc (30 phút)</a></li>
+<li><a href="#lab-2-nang-cao-khuyen-khich-30-phut">Lab 2: Nâng cao — Khuyến khích (30 phút)</a></li>
+<li><a href="#lab-3-thu-thach-optional-25-phut">Lab 3: Thử thách — Optional (25 phút)</a></li>
+<li><a href="#tong-ket-cau-noi-15-phut">Tổng kết &amp; Cầu nối (15 phút)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#v-bang-cau-hoi-thao-luan">V. Bảng câu hỏi thảo luận</a></li>
+<li><a href="#vi-bai-tap-ve-nha">VI. Bài tập về nhà</a></li>
+<li><a href="#vii-cau-hoi-trac-nghiem-cuoi-buoi-5-cau">VII. Câu hỏi trắc nghiệm cuối buổi (5 câu)</a></li>
+<li><a href="#viii-luu-y-cho-giang-vien">VIII. Lưu ý cho giảng viên</a><ul>
+<li><a href="#vung-nguy-hiem-sv-hay-sai">Vùng nguy hiểm (SV hay sai)</a></li>
+<li><a href="#du-phong-tinh-huong">Dự phòng tình huống</a></li>
+<li><a href="#related-vault-notes">Related vault notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="kich-ban-giang-day-chuong-7-kieu-chuoi-ky-tu">KỊCH BẢN GIẢNG DẠY: CHƯƠNG 7 — KIỂU CHUỖI KÝ TỰ</h1>
+<p><strong>Môn học:</strong> Cơ sở lập trình (ITS318)<br />
+<strong>Chương:</strong> Chương 7 — Kiểu chuỗi ký tự<br />
+<strong>Đối tượng:</strong> Sinh viên năm 1, ngành HTTT Quản lý / Tài chính - Ngân hàng<br />
+<strong>Tiền kiến thức:</strong> Chương 1-6 (đặc biệt: Mảng 1 chiều Ch.5, Con trỏ Ch.6)<br />
+<strong>Thời lượng:</strong> 4 tiết (200 phút) — 2 tiết LT + 2 tiết TH (tại phòng máy)<br />
+<strong>Giảng viên:</strong> Đăng<br />
+<strong>CLO liên quan:</strong> CLO1, CLO2, CLO3</p>
+<hr />
+<h2 id="i-muc-tieu-buoi-hoc">I. Mục tiêu buổi học</h2>
+<p>Sau buổi học này, sinh viên có thể:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Mục tiêu</th>
+<th>Bloom</th>
+<th>CLO</th>
+<th>Đánh giá bằng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Trình bày</strong> được bản chất chuỗi ký tự trong C (mảng char + '\0')</td>
+<td>Hiểu</td>
+<td>CLO1</td>
+<td>Câu hỏi ôn tập, trắc nghiệm</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Phân biệt</strong> scanf và fgets khi nhập chuỗi, giải thích ưu/nhược</td>
+<td>Hiểu</td>
+<td>CLO1</td>
+<td>Thảo luận, trắc nghiệm</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Sử dụng</strong> thành thạo các hàm strlen, strcmp, strcat, strcpy, strchr, strstr</td>
+<td>Áp dụng</td>
+<td>CLO2</td>
+<td>Lab thực hành, bài tập</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Viết</strong> chương trình xử lý chuỗi cơ bản: đếm từ, đảo chuỗi, tìm kiếm</td>
+<td>Áp dụng</td>
+<td>CLO2, CLO3</td>
+<td>Lab thực hành, bài tập nhóm</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Phân tích</strong> các lỗi phổ biến khi xử lý chuỗi (tràn bộ nhớ, quên '\0')</td>
+<td>Phân tích</td>
+<td>CLO2</td>
+<td>Bài tập debug</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ii-khung-scqa-cua-buoi">II. Khung SCQA của buổi</h2>
+<table>
+<thead>
+<tr>
+<th>Phần</th>
+<th>Nội dung</th>
+<th>Thời gian</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S — Situation</strong></td>
+<td>6 chương qua chúng ta chỉ làm việc với số (int, float, mảng số). Nhưng 80% dữ liệu thực tế là văn bản: tên, mật khẩu, tin nhắn, prompt AI. Google xử lý 8.5 tỷ truy vấn chuỗi mỗi ngày.</td>
+<td>1 phút</td>
+</tr>
+<tr>
+<td><strong>C — Complication</strong></td>
+<td>C không có kiểu String sẵn như Python/Java. Chuỗi chỉ là mảng char + '\0'. Không thể dùng = để gán, == để so sánh. Quên '\0' → buffer overflow → lỗ hổng bảo mật.</td>
+<td>1 phút</td>
+</tr>
+<tr>
+<td><strong>Q — Question</strong></td>
+<td>Vậy làm sao khai báo, nhập, so sánh, nối, tìm kiếm chuỗi đúng cách trong C?</td>
+<td>0.5 phút</td>
+</tr>
+<tr>
+<td><strong>A — Answer-preview</strong></td>
+<td>"Thư viện string.h là bộ công cụ vàng giúp các em làm chủ mọi thao tác với chuỗi."</td>
+<td>0.5 phút</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iii-khoi-ong-tu-cai-biet-cua-sv">III. Khởi động từ "Cái Biết" của SV</h2>
+<p><strong>"Cái Biết" của SV đã có:</strong>
+- Đã biết mảng 1 chiều (Ch.5) → chuỗi chính là mảng char
+- Đã biết con trỏ (Ch.6) → tên mảng = con trỏ → scanf không cần &amp;
+- Đã dùng printf("%s") nhiều lần → quen format string
+- Hàng ngày: gõ mật khẩu, tìm kiếm Google, nhắn tin → đều là xử lý chuỗi</p>
+<p><strong>Câu hỏi kích hoạt:</strong> "Khi các em đăng nhập Wi-Fi, ứng dụng kiểm tra mật khẩu bằng cách nào?"</p>
+<hr />
+<h2 id="iv-kich-ban-chi-tiet-theo-timeline">IV. Kịch bản chi tiết theo timeline</h2>
+<h3 id="tiet-1-ly-thuyet-ban-chat-chuoi-nhapxuat-50-phut">TIẾT 1 — Lý thuyết: Bản chất chuỗi &amp; Nhập/Xuất (50 phút)</h3>
+<h4 id="mo-tiet-5-phut-scqa-hook">Mở tiết (5 phút) — SCQA Hook</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00-2:00</td>
+<td>GV mở đầu</td>
+<td>Chiếu slide 1: "Khi Máy Tính Bắt Đầu Đọc Chữ". Hỏi: "Khi gõ mật khẩu Wi-Fi, ứng dụng kiểm tra bằng cách nào?" → Cho SV trả lời 30 giây</td>
+</tr>
+<tr>
+<td>2:00-3:00</td>
+<td>Situation</td>
+<td>Slide 2: Dữ liệu chữ ở khắp nơi — Google 8.5 tỷ truy vấn/ngày, ChatGPT xử lý prompt, ngân hàng xác thực tên/CCCD</td>
+</tr>
+<tr>
+<td>3:00-4:00</td>
+<td>Complication</td>
+<td>Slide 3: C không có kiểu String! Chuỗi = mảng + '\0'. Quên '\0' → crash</td>
+</tr>
+<tr>
+<td>4:00-5:00</td>
+<td>Q → A preview</td>
+<td>Slide 4: Giới thiệu string.h — bộ công cụ vàng. Chiếu roadmap buổi học (slide TOC)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ao-sau-khai-niem-khai-bao-chuoi-15-phut">Đào sâu khái niệm — Khai báo chuỗi (15 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5:00-10:00</td>
+<td>Concept core</td>
+<td>Slide 5: Chuỗi = mảng char + '\0'. Minh họa trên bảng: vẽ mảng 6 ô chứa H-E-L-L-O-\0. Nhấn mạnh: khai báo char[30] chứa tối đa 29 ký tự</td>
+</tr>
+<tr>
+<td>10:00-15:00</td>
+<td>3 cách khai báo</td>
+<td>Slide 6: Trình bày 3 cú pháp. Code trên máy chiếu: tạo file demo_khaibao.c, khai báo chuỗi 3 cách, printf ra xem kết quả giống nhau</td>
+</tr>
+<tr>
+<td>15:00-18:00</td>
+<td>strlen vs sizeof</td>
+<td>Slide 7: Ví dụ char name[30] = "Dang" → strlen=4, sizeof=30. Ẩn dụ: căn phòng 30m² chỉ bày đồ 4m²</td>
+</tr>
+<tr>
+<td>18:00-20:00</td>
+<td>Kết nối Ch.5 &amp; 6</td>
+<td>Slide 8: Nhắc lại mảng + con trỏ → giải thích tại sao scanf không cần &amp;. <strong>Câu hỏi tương tác:</strong> "Nếu char str[10], thì str và &amp;str[0] có giống nhau không?"</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ao-sau-khai-niem-nhapxuat-chuoi-20-phut">Đào sâu khái niệm — Nhập/Xuất chuỗi (20 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20:00-25:00</td>
+<td>scanf("%s")</td>
+<td>Slide 9: Demo trực tiếp Ví dụ 7.2 (ebook). Gõ "Nguyen Van A" → chỉ nhận "Nguyen". SV quan sát và giải thích tại sao</td>
+</tr>
+<tr>
+<td>25:00-32:00</td>
+<td>fgets()</td>
+<td>Slide 10: Demo Ví dụ 7.3 (ebook). Gõ "Nguyen Van A" → nhận đầy đủ. Giải thích 3 tham số. Chỉ ra '\n' cuối chuỗi, cách xóa nó</td>
+</tr>
+<tr>
+<td>32:00-36:00</td>
+<td>So sánh bảng</td>
+<td>Slide 11: Chiếu bảng so sánh scanf vs fgets. <strong>Câu hỏi:</strong> "Trong bài tập lớn, nếu cần nhập họ tên sinh viên, em chọn hàm nào?"</td>
+</tr>
+<tr>
+<td>36:00-40:00</td>
+<td>Xuất chuỗi</td>
+<td>Slide 12: printf, fputs, puts. Demo nhanh fputs(str, stdout)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ao-sau-khai-niem-ham-xu-ly-chuoi-10-phut">Đào sâu khái niệm — Hàm xử lý chuỗi (10 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40:00-42:00</td>
+<td>Tổng quan string.h</td>
+<td>Slide 13: Giới thiệu 5 nhóm: Đo-Sánh-Nối-Chép-Tìm. Viết lên bảng</td>
+</tr>
+<tr>
+<td>42:00-46:00</td>
+<td>strlen &amp; strcmp</td>
+<td>Slide 14: Demo strcmp trả về 0 / âm / dương. <strong>CẢNH BÁO:</strong> Không dùng == so sánh chuỗi! Demo lỗi if(str1==str2) trả về false dù 2 chuỗi giống nhau → SV "Ủa sao vậy?"</td>
+</tr>
+<tr>
+<td>46:00-50:00</td>
+<td>strcat &amp; strcpy</td>
+<td>Slide 15: Demo nối 2 chuỗi. Nhấn mạnh: đích phải đủ chỗ. Demo lỗi khi mảng đích quá nhỏ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="tiet-2-ly-thuyet-nang-cao-demo-50-phut">TIẾT 2 — Lý thuyết nâng cao + Demo (50 phút)</h3>
+<h4 id="mo-tiet-2-5-phut-ket-noi">Mở tiết 2 (5 phút) — Kết nối</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50:00-52:00</td>
+<td>Recap nhanh</td>
+<td>"Tiết 1 chúng ta đã biết: Chuỗi = ? Nhập chuỗi an toàn bằng hàm gì? So sánh chuỗi bằng hàm gì?" → SV trả lời</td>
+</tr>
+<tr>
+<td>52:00-55:00</td>
+<td>Kết nối mới</td>
+<td>Chiếu lại slide 13 (5 nhóm). Hôm nay đi tiếp: Tìm kiếm + Hàm bổ sung + Demo tổng hợp</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tim-kiem-ham-bo-sung-15-phut">Tìm kiếm &amp; Hàm bổ sung (15 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>55:00-62:00</td>
+<td>strchr, strstr</td>
+<td>Slide 16: Demo tìm ký tự '@' trong email bằng strchr. Demo tìm chuỗi con "error" trong log bằng strstr</td>
+</tr>
+<tr>
+<td>62:00-68:00</td>
+<td>ctype.h + stdlib.h</td>
+<td>Slide 17: Demo toupper/tolower chuyển hoa/thường. Demo atoi chuyển "123" (chuỗi) → 123 (số)</td>
+</tr>
+<tr>
+<td>68:00-70:00</td>
+<td>Hỏi đáp lý thuyết</td>
+<td><strong>Câu hỏi:</strong> "Muốn kiểm tra ký tự vừa nhập là chữ cái hay chữ số, dùng hàm gì?"</td>
+</tr>
+</tbody>
+</table>
+<h4 id="demo-co-tham-gia-code-along-30-phut">Demo có tham gia — Code-along (30 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>70:00-78:00</td>
+<td>Demo 1: Ví dụ 7.5</td>
+<td>Code-along Ví dụ 7.5 trong ebook: Nhập 2 chuỗi → xuất độ dài → so sánh → nối → tìm ký tự. GV code, SV code theo</td>
+</tr>
+<tr>
+<td>78:00-88:00</td>
+<td>Demo 2: Chuyển hoa/thường</td>
+<td>Code-along Bài 4 (ebook 7.6): Chương trình chuyển chuỗi hoa↔thường. Giải thích islower + toupper logic</td>
+</tr>
+<tr>
+<td>88:00-95:00</td>
+<td>Demo 3: Đếm từ</td>
+<td>Code-along Bài 5 (ebook 7.6): Đếm số từ trong chuỗi. Thuật toán: đếm khoảng trắng (space/tab/newline)</td>
+</tr>
+<tr>
+<td>95:00-100:00</td>
+<td>Tóm tắt + Chuyển tiếp</td>
+<td>Slide 21: Bản đồ kiến thức + 5 lỗi cần tránh. Chuyển sang tiết thực hành</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="tiet-3-4-thuc-hanh-tai-phong-may-100-phut">TIẾT 3 &amp; 4 — Thực hành tại phòng máy (100 phút)</h3>
+<h4 id="lab-1-co-ban-bat-buoc-30-phut">Lab 1: Cơ bản — Bắt buộc (30 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100:00-105:00</td>
+<td>Phát đề + hướng dẫn</td>
+<td>Slide 18: 3 bài cơ bản (tính strlen thủ công, tách ký tự, in ngược). GV giải thích yêu cầu, gợi ý cách tiếp cận</td>
+</tr>
+<tr>
+<td>105:00-125:00</td>
+<td>SV code</td>
+<td>SV làm cá nhân tại máy. GV đi quan sát, hỗ trợ SV gặp khó khăn</td>
+</tr>
+<tr>
+<td>125:00-130:00</td>
+<td>Chữa bài 1</td>
+<td>GV chữa Bài 1 (tính strlen thủ công) → nhấn mạnh kỹ thuật duyệt chuỗi bằng while + '\0'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lab-2-nang-cao-khuyen-khich-30-phut">Lab 2: Nâng cao — Khuyến khích (30 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>130:00-135:00</td>
+<td>Giới thiệu bài</td>
+<td>Slide 19: 3 bài nâng cao (chuyển hoa/thường, đếm từ, so sánh chuỗi thủ công)</td>
+</tr>
+<tr>
+<td>135:00-155:00</td>
+<td>SV code</td>
+<td>SV làm cá nhân hoặc cặp. GV hỗ trợ theo yêu cầu. Gợi ý SV giỏi thử bài khó hơn</td>
+</tr>
+<tr>
+<td>155:00-160:00</td>
+<td>Chữa bài 5</td>
+<td>GV chữa Bài 5 (đếm từ) → phân tích thuật toán đếm khoảng trắng</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lab-3-thu-thach-optional-25-phut">Lab 3: Thử thách — Optional (25 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>160:00-165:00</td>
+<td>Giới thiệu thử thách</td>
+<td>Slide 20: Bài 7 (ký tự xuất hiện nhiều nhất), Bài 8 (sắp xếp ký tự), Bài 9 (tìm từ dài/ngắn nhất). Cộng điểm thưởng cho SV giải được</td>
+</tr>
+<tr>
+<td>165:00-185:00</td>
+<td>SV code</td>
+<td>Ai xong Lab 2 sớm → thử Lab 3. Những SV khác tiếp tục Lab 2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tong-ket-cau-noi-15-phut">Tổng kết &amp; Cầu nối (15 phút)</h4>
+<table>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Hoạt động</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>185:00-190:00</td>
+<td>Tóm tắt</td>
+<td>Slide 21: Bản đồ kiến thức + 5 lỗi cần tránh. Nhắc công thức: Đo-Sánh-Nối-Chép-Tìm</td>
+</tr>
+<tr>
+<td>190:00-195:00</td>
+<td>Quiz nhanh</td>
+<td>5 câu trắc nghiệm (xem phần VII) — SV trả lời bằng giơ tay hoặc app</td>
+</tr>
+<tr>
+<td>195:00-200:00</td>
+<td>Câu cầu nối</td>
+<td>Slide 22: "Nếu muốn gom tên, tuổi, điểm của SV vào MỘT biến thì sao?" → Chương 8: struct. Giao BTVN: bài đề nghị 1-7 (ebook 7.7)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="v-bang-cau-hoi-thao-luan">V. Bảng câu hỏi thảo luận</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Câu hỏi</th>
+<th>Thời điểm hỏi</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>"Khi gõ mật khẩu Wi-Fi, ứng dụng kiểm tra bằng cách nào?"</td>
+<td>Mở đầu buổi</td>
+<td>Kích hoạt, kết nối đời sống</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"char str[10] thì str và &amp;str[0] có giống nhau không?"</td>
+<td>Sau slide 8</td>
+<td>Kết nối Ch.5 &amp; 6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>"Nếu nhập họ tên đầy đủ, em chọn scanf hay fgets?"</td>
+<td>Sau slide 11</td>
+<td>Kiểm tra hiểu so sánh</td>
+</tr>
+<tr>
+<td>4</td>
+<td>"Tại sao if (str1 == str2) luôn false dù 2 chuỗi giống?"</td>
+<td>Sau slide 14</td>
+<td>Hiểu sâu bản chất</td>
+</tr>
+<tr>
+<td>5</td>
+<td>"Muốn kiểm tra ký tự là chữ hay số, dùng hàm gì?"</td>
+<td>Sau slide 17</td>
+<td>Kiểm tra ctype.h</td>
+</tr>
+<tr>
+<td>6</td>
+<td>"Chuỗi palindrome (đối xứng) — kiểm tra bằng cách nào?"</td>
+<td>Lab 3</td>
+<td>Thử thách tư duy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="vi-bai-tap-ve-nha">VI. Bài tập về nhà</h2>
+<p><strong>Bắt buộc (nộp trước buổi sau):</strong>
+1. Hoàn thành Lab 1 (3 bài cơ bản) nếu chưa xong tại lớp
+2. Bài đề nghị 1, 2, 3 trong ebook (phần 7.7): Đếm chữ cái/chữ số, đếm nguyên âm/phụ âm, loại bỏ ký tự không phải chữ cái</p>
+<p><strong>Khuyến khích:</strong>
+3. Bài đề nghị 4, 5 (ebook 7.7): Đếm tần suất ký tự, kiểm tra palindrome
+4. Bài đề nghị 6, 7 (ebook 7.7): Đếm từ xuất hiện, chuẩn hóa khoảng trắng</p>
+<hr />
+<h2 id="vii-cau-hoi-trac-nghiem-cuoi-buoi-5-cau">VII. Câu hỏi trắc nghiệm cuối buổi (5 câu)</h2>
+<p><strong>Câu 1:</strong> Chuỗi ký tự trong C thực chất là gì?
+- A. Kiểu dữ liệu riêng biệt (string)
+- B. Mảng ký tự kết thúc bằng '\0' ✅
+- C. Con trỏ kiểu void
+- D. Mảng số nguyên</p>
+<p><strong>Câu 2:</strong> Cho khai báo <code>char s[10] = "Hello";</code>. Giá trị của strlen(s) và sizeof(s) lần lượt là:
+- A. 5 và 5
+- B. 5 và 10 ✅
+- C. 6 và 10
+- D. 10 và 10</p>
+<p><strong>Câu 3:</strong> Hàm nào cho phép nhập chuỗi có chứa dấu cách?
+- A. scanf("%s", str)
+- B. gets(str)
+- C. fgets(str, sizeof(str), stdin) ✅
+- D. Cả B và C đều đúng nhưng C an toàn hơn ✅ (chấp nhận cả C và D)</p>
+<p><strong>Câu 4:</strong> Để so sánh hai chuỗi str1 và str2, câu lệnh nào đúng?
+- A. if (str1 == str2)
+- B. if (strcmp(str1, str2) == 0) ✅
+- C. if (str1 = str2)
+- D. if (strcpy(str1, str2))</p>
+<p><strong>Câu 5:</strong> Cho đoạn code:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hi&quot;</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Ho&quot;</span><span class="p">;</span>
+<span class="n">strcat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Kết quả xuất ra màn hình là gì?
+- A. Hi
+- B. HiHo ✅
+- C. HoHi
+- D. Lỗi biên dịch</p>
+<hr />
+<h2 id="viii-luu-y-cho-giang-vien">VIII. Lưu ý cho giảng viên</h2>
+<h3 id="vung-nguy-hiem-sv-hay-sai">Vùng nguy hiểm (SV hay sai)</h3>
+<ol>
+<li><strong>Quên '\0'</strong>: Khi khai báo mảng ký tự thủ công, SV hay quên thêm '\0' cuối → demo lỗi để SV thấy hậu quả</li>
+<li><strong>Dùng == so sánh chuỗi</strong>: Lỗi kinh điển nhất. Luôn demo trước: <code>if ("abc" == "abc")</code> có thể true (compiler optimization) nhưng biến chuỗi thì luôn false</li>
+<li><strong>gets() vẫn chạy</strong>: Một số compiler cũ vẫn cho phép gets() → giải thích tại sao không nên dùng (buffer overflow)</li>
+<li><strong>fgets giữ '\n'</strong>: SV sẽ gặp kết quả lạ khi so sánh chuỗi nhập bằng fgets (vì có '\n' cuối). Chỉ cách xóa: <code>str[strcspn(str, "\n")] = '\0';</code></li>
+<li><strong>strcat/strcpy tràn</strong>: Demo lỗi khi mảng đích quá nhỏ → chương trình crash hoặc output lạ</li>
+</ol>
+<h3 id="du-phong-tinh-huong">Dự phòng tình huống</h3>
+<p><strong>Nếu SV hỏi:</strong> "Tại sao C không có kiểu string sẵn như Python?"
+→ <strong>Trả lời:</strong> C là ngôn ngữ "bậc thấp", gần phần cứng. Nó cho lập trình viên toàn quyền kiểm soát bộ nhớ. Python xây kiểu string bên trên bằng cách tự động quản lý '\0', kích thước mảng. C để các em tự làm → hiểu sâu hơn bản chất máy tính.</p>
+<p><strong>Nếu SV hỏi:</strong> "Em dùng strcpy nhưng bị warning 'unsafe'"
+→ <strong>Trả lời:</strong> Visual Studio gợi ý dùng strcpy_s (phiên bản an toàn của Microsoft). Trong môn này, dùng strcpy là đủ. Thêm <code>#pragma warning(disable : 4996)</code> ở đầu file nếu dùng VS.</p>
+<p><strong>Nếu SV xong sớm Lab 1:</strong>
+→ Cho làm Lab 2 + Lab 3. Gợi ý bài palindrome (bài đề nghị 5) hoặc bài chuẩn hóa khoảng trắng (bài đề nghị 7) là 2 bài có tính thực tế cao.</p>
+<h3 id="related-vault-notes">Related vault notes</h3>
+<ul>
+<li>Chương 5: Mảng 1 chiều (tiền kiến thức trực tiếp)</li>
+<li>Chương 6: Con trỏ (tên mảng = con trỏ)</li>
+<li>Chương 8: Struct (kiến thức nối tiếp — chuỗi là thành phần của struct)</li>
+</ul>
+        </div>
+        <footer>
+            Generated by Second Brain MD-to-Web Converter Skill
+        </footer>
+    </div>
+</body>
+</html>

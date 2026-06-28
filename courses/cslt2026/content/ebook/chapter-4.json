@@ -1,0 +1,80 @@
+{
+  "chapter": 4,
+  "title": "Hàm (Functions)",
+  "sessions": [4],
+  "scqa": {
+    "situation": "Khi giải quyết các bài toán phức tạp, mã nguồn chương trình sẽ phình to ra đến hàng ngàn dòng code. Nếu lập trình viên cố nhét tất cả vào trong hàm main(), chương trình sẽ trở thành một khối code khổng lồ, rối rắm và không thể hợp tác nhóm.",
+    "complication": "Thêm vào đó, nhiều đoạn code (như tìm số lớn nhất, kiểm tra số nguyên tố) thường phải được sử dụng đi sử dụng lại ở nhiều chỗ. Nếu chỉ dùng cách copy-paste, khi có lỗi xảy ra ở đoạn logic đó, ta phải tìm và sửa thủ công ở mọi nơi. Điều này gây tốn thời gian và rủi ro cực cao.",
+    "question": "Công cụ nào giúp chúng ta 'đóng gói' các đoạn mã này thành những module độc lập để dễ quản lý, dễ bảo trì và tái sử dụng?",
+    "answer": "Đó chính là khái niệm 'Hàm' (Function). Bằng cách chia nhỏ chương trình thành các hàm riêng biệt (như một nhà máy chia thành các dây chuyền), ta có thể tuân thủ nguyên tắc 'Chia để trị'. Lập trình viên định nghĩa các tham số đầu vào, logic xử lý, và giá trị trả về của hàm. Hàm có thể được gọi ở bất cứ đâu, làm cho mã nguồn trở nên sáng sủa và mang tính cấu trúc cao."
+  },
+  "concepts": [
+    {
+      "id": "c4-function-definition",
+      "term": "Cấu trúc và Cài đặt Hàm",
+      "definition": "Hàm là một khối lệnh được đặt tên tường minh, thực hiện một chức năng cụ thể và có thể được gọi thực thi nhiều lần.",
+      "key_points": [
+        "Nguyên mẫu hàm (Prototype): Khai báo tên hàm, kiểu trả về, danh sách tham số trước khi sử dụng (thường đặt trên main()).",
+        "Kiểu trả về (Return type): Hàm có thể trả về một giá trị thông qua lệnh `return`, hoặc không trả về gì cả (dùng từ khóa `void`).",
+        "Quy tắc kết dính: Mỗi hàm chỉ nên thực hiện ĐÚNG MỘT nhiệm vụ duy nhất (Single Responsibility).",
+        "Quy tắc độc lập: Hàm không nên lạm dụng biến toàn cục, hãy giao tiếp qua tham số."
+      ],
+      "case_study": null,
+      "related_concepts": ["c4-parameters"]
+    },
+    {
+      "id": "c4-scope",
+      "term": "Phạm vi của Biến (Scope)",
+      "definition": "Định nghĩa vòng đời và giới hạn truy cập của một biến trong chương trình.",
+      "key_points": [
+        "Biến cục bộ (Local Variable): Khai báo bên trong hàm. Chỉ tồn tại và có thể truy cập được bên trong hàm đó. Sẽ bị hủy khi hàm kết thúc.",
+        "Biến toàn cục (Global Variable): Khai báo bên ngoài tất cả các hàm. Tồn tại xuyên suốt chương trình và có thể bị thay đổi bởi bất kỳ hàm nào. Tránh lạm dụng biến toàn cục vì khó kiểm soát luồng dữ liệu."
+      ],
+      "case_study": null,
+      "related_concepts": ["c4-parameters"]
+    },
+    {
+      "id": "c4-parameters",
+      "term": "Truyền Tham số (Pass by Value vs Pass by Reference)",
+      "definition": "Cách thức mà dữ liệu (đối số - argument) được gửi từ nơi gọi hàm vào bên trong (tham số - parameter) của hàm.",
+      "key_points": [
+        "Truyền tham trị (Pass by Value): Mặc định của C. Hàm tạo ra một BẢN SAO của dữ liệu. Mọi thay đổi trên bản sao này bên trong hàm đều KHÔNG ảnh hưởng đến biến gốc ở ngoài.",
+        "Truyền tham chiếu (Pass by Reference): Truyền 'địa chỉ' của biến (thông qua con trỏ hoặc tham chiếu trong C++). Mọi thao tác bên trong hàm sẽ tác động trực tiếp vào vùng nhớ gốc, làm THAY ĐỔI biến gốc ở ngoài."
+      ],
+      "case_study": {
+        "title": "Bài toán hoán vị hai số (Swap)",
+        "context": "Viết hàm swap(int a, int b) chứa các lệnh hoán đổi a và b. Gọi hàm từ main(x, y).",
+        "analysis": "Vì truyền tham trị, hàm swap chỉ hoán đổi 2 bản sao. Khi quay về main, x và y vẫn giữ nguyên giá trị cũ.",
+        "lesson_learned": "Để hàm thực sự làm thay đổi biến bên ngoài (như bài toán hoán vị), phải sử dụng truyền tham chiếu (ví dụ swap(int *a, int *b))."
+      },
+      "related_concepts": ["c4-scope"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết cú pháp và phạm vi của hàm.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c4-q1", "type": "mc", "concept_ref": "c4-function-definition", "question": "Từ khóa nào được dùng để khai báo một hàm KHÔNG trả về bất kỳ giá trị nào?", "options": ["A. int", "B. null", "C. void", "D. return"], "correct": "C" },
+        { "id": "L1-c4-q2", "type": "mc", "concept_ref": "c4-scope", "question": "Một biến được khai báo bên trong một hàm (ví dụ hàm sum) thì được gọi là gì?", "options": ["A. Biến cục bộ (Local variable)", "B. Biến toàn cục (Global variable)", "C. Hằng số", "D. Con trỏ"], "correct": "A" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Phân biệt truyền tham trị và tham chiếu.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c4-q1", "type": "mc", "concept_ref": "c4-parameters", "question": "Khi sử dụng phương pháp 'truyền tham trị' (Pass by Value) cho một hàm trong C, điều gì sẽ xảy ra?", "options": ["A. Hàm sẽ nhận trực tiếp địa chỉ vùng nhớ của biến gốc.", "B. Mọi thay đổi đối với tham số bên trong hàm sẽ làm thay đổi biến gốc bên ngoài.", "C. Hàm nhận một bản sao chép của biến gốc, mọi thay đổi trong hàm không ảnh hưởng đến biến bên ngoài.", "D. Hàm không thể nhận đối số."], "correct": "C" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Đánh giá quy tắc cài đặt hàm.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c4-q1", "type": "mc", "concept_ref": "c4-function-definition", "question": "Theo 'Quy tắc kết dính', lý do nào khiến một hàm vừa in ra màn hình 'Mời nhập giá trị' vừa thực hiện 'tính số nguyên tố' được coi là cài đặt tồi?", "options": ["A. Vì hàm sẽ chạy quá chậm.", "B. Vì một hàm chỉ nên thực hiện ĐÚNG một nhiệm vụ cụ thể (đọc/ghi DỮ LIỆU, hoặc XỬ LÝ tính toán, không nên gộp chung).", "C. Vì trình biên dịch không hỗ trợ vừa printf vừa tính toán.", "D. Vì hàm đó không thể trả về giá trị kiểu int."], "correct": "B" }
+      ]
+    }
+  }
+}

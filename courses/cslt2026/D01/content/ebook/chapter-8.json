@@ -1,0 +1,84 @@
+{
+  "chapter": 8,
+  "title": "Kiểu cấu trúc và Kiểu hợp (Struct & Union)",
+  "sessions": [8],
+  "scqa": {
+    "situation": "Mảng một chiều rất tiện lợi khi ta cần lưu trữ nhiều giá trị CÙNG kiểu dữ liệu (ví dụ 100 con số nguyên). Tuy nhiên, trong đời thực, mọi đối tượng đều được cấu thành từ nhiều thông tin KHÁC kiểu. Ví dụ một 'Sinh Viên' có mã số (int), họ tên (chuỗi char), và điểm trung bình (float).",
+    "complication": "Nếu dùng 3 mảng rời rạc (int mssv[100]; char ten[100][50]; float diem[100];) để quản lý sinh viên, chương trình sẽ vô cùng rối rắm. Khi sắp xếp danh sách theo điểm, lập trình viên phải nhớ hoán vị đồng thời cả 3 mảng, nếu quên một mảng thì râu ông nọ sẽ cắm cằm bà kia. Hơn nữa, việc truyền hàng đống mảng rời rạc này vào một hàm là cực kỳ cồng kềnh.",
+    "question": "Làm thế nào để 'đóng gói' các thuộc tính có kiểu dữ liệu khác nhau vào trong một cái túi duy nhất, tự định nghĩa nên một kiểu dữ liệu mới hoàn hảo cho bài toán đang giải?",
+    "answer": "Giải pháp là sử dụng 'Kiểu Cấu trúc' (Struct). Struct cho phép ta nhóm các biến thuộc các kiểu khác nhau (gọi là các trường/thuộc tính) thành một bản ghi (record) duy nhất. Nhờ đó, ta có thể khai báo một biến `struct SinhVien sv;`, và truy cập dễ dàng bằng toán tử chấm (sv.diem). Ta thậm chí có thể tạo mảng các Struct, giúp quản lý dữ liệu cực kỳ thống nhất và chuyên nghiệp."
+  },
+  "concepts": [
+    {
+      "id": "c8-struct-definition",
+      "term": "Kiểu Cấu trúc (Struct)",
+      "definition": "Một kiểu dữ liệu do người dùng tự định nghĩa, cho phép gom nhóm nhiều thành phần có kiểu dữ liệu khác nhau thành một đơn vị duy nhất.",
+      "key_points": [
+        "Khai báo: dùng từ khóa `struct`. Ví dụ: `struct Point { int x; int y; };`",
+        "Có thể dùng lệnh `typedef` để rút gọn tên gọi, tránh việc phải gõ lại từ `struct` nhiều lần.",
+        "Truy cập thành phần: Sử dụng toán tử chấm (.) nếu là biến thông thường (vidu: sv.age).",
+        "Truy cập qua con trỏ: Sử dụng toán tử mũi tên (->) nếu biến là một con trỏ trỏ đến struct (vidu: p->age)."
+      ],
+      "case_study": {
+        "title": "Phép gán trực tiếp biến struct",
+        "context": "struct Point p1 = {10, 20}; struct Point p2; p2 = p1;",
+        "analysis": "C không cho phép gán trực tiếp mảng, nhưng lại cho phép gán trực tiếp biến struct. p2 = p1 sẽ copy toàn bộ dữ liệu (kể cả mảng bên trong struct) từ p1 sang p2.",
+        "lesson_learned": "Bọc mảng vào trong struct là một 'trick' để copy mảng thông qua toán tử '='."
+      },
+      "related_concepts": ["c8-union"]
+    },
+    {
+      "id": "c8-struct-array-pointer",
+      "term": "Mảng Struct và Con trỏ Struct",
+      "definition": "Các kỹ thuật nâng cao để lưu trữ một danh sách lớn các bản ghi hoặc truyền chúng vào hàm một cách hiệu quả.",
+      "key_points": [
+        "Mảng struct: `struct Student danh_sach[100];` dùng để lưu trữ dữ liệu của 100 học sinh. Truy cập: `danh_sach[i].diem`.",
+        "Vì struct có thể chứa rất nhiều dữ liệu, truyền tham trị (pass by value) vào hàm sẽ gây quá tải RAM. Thay vào đó, hãy truyền con trỏ struct (pass by reference) để tăng tốc độ.",
+        "Con trỏ struct: `struct Student *p; p = &sv;` Khi dùng con trỏ, phải dùng toán tử `->` để truy cập trường."
+      ],
+      "case_study": null,
+      "related_concepts": ["c8-struct-definition"]
+    },
+    {
+      "id": "c8-union",
+      "term": "Kiểu Hợp (Union)",
+      "definition": "Một cấu trúc dữ liệu tương tự Struct nhưng có cách thức quản lý bộ nhớ hoàn toàn khác.",
+      "key_points": [
+        "Sự khác biệt cốt lõi: Trong Struct, mỗi trường được cấp một vùng nhớ riêng biệt. Trong Union, TẤT CẢ các trường DÙNG CHUNG một vùng nhớ duy nhất.",
+        "Kích thước của Union chính là kích thước của trường lớn nhất trong nó.",
+        "Tại một thời điểm, chỉ có thể sử dụng (lưu trữ) duy nhất MỘT trường của Union. Nếu gán giá trị cho trường mới, giá trị của trường cũ sẽ bị ghi đè/phá hủy.",
+        "Ứng dụng: Tiết kiệm tối đa bộ nhớ trong hệ thống nhúng khi biết chắc các trường không bao giờ xuất hiện cùng lúc."
+      ],
+      "case_study": null,
+      "related_concepts": ["c8-struct-definition"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết tính chất của Struct và Union.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c8-q1", "type": "mc", "concept_ref": "c8-struct-definition", "question": "Từ khóa nào trong C cho phép đặt lại một tên gọi mới (rút gọn) cho một kiểu dữ liệu Struct đã có?", "options": ["A. define", "B. using", "C. typeof", "D. typedef"], "correct": "D" },
+        { "id": "L1-c8-q2", "type": "mc", "concept_ref": "c8-union", "question": "Đặc điểm nào dưới đây phân biệt rõ ràng nhất giữa Struct và Union?", "options": ["A. Struct chỉ chứa số nguyên, Union chứa cả chuỗi.", "B. Các thành phần của Struct có vùng nhớ riêng, các thành phần của Union chia sẻ chung một vùng nhớ.", "C. Struct dùng toán tử chấm (.), Union dùng toán tử mũi tên (->).", "D. Struct có thể truyền vào hàm, Union thì không."], "correct": "B" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Toán tử truy cập của Struct.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c8-q1", "type": "mc", "concept_ref": "c8-struct-definition", "question": "Nếu biến `p` là một CON TRỎ trỏ tới một struct có chứa trường `age`, thì cú pháp nào đúng để truy cập vào trường `age`?", "options": ["A. p.age", "B. p->age", "C. *p.age", "D. p[age]"], "correct": "B" },
+        { "id": "L2-c8-q2", "type": "mc", "concept_ref": "c8-union", "question": "Giả sử một Union U chứa một biến char (1 byte) và một biến double (8 bytes). Kích thước của Union U trong bộ nhớ là bao nhiêu?", "options": ["A. 9 bytes", "B. 1 byte", "C. 8 bytes", "D. 4 bytes"], "correct": "C" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Sử dụng struct trong thực tế.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c8-q1", "type": "mc", "concept_ref": "c8-struct-array-pointer", "question": "Cho khai báo: `struct Point {int x; int y;}; struct Point arr[5];`. Cú pháp nào để thay đổi tọa độ y của điểm thứ 2 trong mảng thành 10?", "options": ["A. arr[2]->y = 10;", "B. arr[1].y = 10;", "C. arr.y[1] = 10;", "D. arr[2].y = 10;"], "correct": "B" }
+      ]
+    }
+  }
+}

@@ -1,5 +1,14 @@
 import { api, getUser } from '../api.js';
 
+function escapeHTML(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+}
+
 export async function renderExam(app, { examId }) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
 
@@ -42,13 +51,13 @@ export async function renderExam(app, { examId }) {
                   <span class="eq-num">${idx + 1}</span>
                   <span class="eq-total">/ ${exam.total_questions}</span>
                 </div>
-                <h4 class="exam-question-text">${q.question}</h4>
+                <h4 class="exam-question-text">${escapeHTML(q.question)}</h4>
 
                 <div class="exam-options">
                   ${q.options.map(opt => `
                     <div class="exam-option" data-qid="${q.id}" data-value="${opt.charAt(0)}" onclick="selectExamOption(this)">
                       <div class="exam-option-radio"></div>
-                      <div class="exam-option-text">${opt}</div>
+                      <div class="exam-option-text">${escapeHTML(opt)}</div>
                     </div>
                   `).join('')}
                 </div>

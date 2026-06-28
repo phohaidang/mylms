@@ -1,0 +1,100 @@
+{
+  "chapter": 1,
+  "title": "Các khái niệm cơ bản",
+  "sessions": [1],
+  "scqa": {
+    "situation": "Khi bắt đầu học lập trình, nhiều người nghĩ rằng chỉ cần thuộc cú pháp của một ngôn ngữ (như C, C++, Python) là có thể viết được phần mềm.",
+    "complication": "Tuy nhiên, ngôn ngữ lập trình chỉ là công cụ. Một chương trình máy tính thực chất là quá trình tin học hóa một 'bài toán' từ đời thực. Nếu không biết cách phân tích bài toán, xây dựng thuật toán đúng đắn và hiểu rõ các bước phát triển, lập trình viên sẽ tạo ra những đoạn code chạy sai, không hiệu quả hoặc không thể nâng cấp.",
+    "question": "Vậy làm thế nào để tư duy như một lập trình viên chuyên nghiệp, biết cách biến một 'vấn đề' (Problem) thành 'thuật toán' (Algorithm) và cuối cùng là một 'chương trình' (Program) hoàn chỉnh?",
+    "answer": "Chúng ta cần nắm vững các khái niệm cơ bản về thuật toán (tính hữu hạn, tính đúng, tính hiệu quả) và các phương pháp biểu diễn chúng (ngôn ngữ tự nhiên, lưu đồ, mã giả). Sau đó, áp dụng quy trình 6 bước xây dựng phần mềm chuẩn mực từ khâu phân tích yêu cầu cho đến hiệu chỉnh và bảo trì trên một môi trường phát triển (IDE)."
+  },
+  "concepts": [
+    {
+      "id": "c1-algorithm",
+      "term": "Thuật toán (Algorithm)",
+      "definition": "Dãy hữu hạn các chỉ thị được mô tả rõ ràng và thực hiện được nhằm giải quyết một bài toán cụ thể nào đó.",
+      "key_points": [
+        "Tính xác định: Các chỉ thị phải rõ ràng, không mơ hồ.",
+        "Tính đúng: Kết quả thực hiện phải đúng theo yêu cầu bài toán.",
+        "Tính hữu hạn (tính dừng): Phải kết thúc sau một số bước xác định.",
+        "Tính hiệu quả: Tối ưu về sử dụng bộ nhớ và thời gian thực thi."
+      ],
+      "case_study": {
+        "title": "Thuật toán giải phương trình ax + b = 0",
+        "context": "Giải phương trình bậc 1.",
+        "analysis": "Cần xét đầy đủ các trường hợp a=0, a!=0 để đảm bảo tính 'đúng' và 'xác định' của thuật toán.",
+        "lesson_learned": "Một thuật toán tốt phải lường trước mọi trường hợp đầu vào."
+      },
+      "related_concepts": ["c1-representation"]
+    },
+    {
+      "id": "c1-representation",
+      "term": "Các phương pháp biểu diễn thuật toán",
+      "definition": "Cách thức để diễn đạt thuật toán cho con người hoặc máy tính hiểu.",
+      "key_points": [
+        "Ngôn ngữ tự nhiên: Diễn đạt bằng lời văn (dễ hiểu nhưng dài dòng, dễ mơ hồ).",
+        "Lưu đồ (Flowchart): Sử dụng các khối hình học (oval, chữ nhật, thoi) để biểu diễn trực quan luồng thực thi.",
+        "Mã giả (Pseudo-code): Dùng các cấu trúc chuẩn hóa tựa ngôn ngữ lập trình nhưng không bị gò bó cú pháp khắt khe.",
+        "Ngôn ngữ lập trình: Code thực tế để máy tính biên dịch và chạy (C, C++, Java)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c1-algorithm"]
+    },
+    {
+      "id": "c1-programming-language",
+      "term": "Ngôn ngữ lập trình & Các thế hệ",
+      "definition": "Ngôn ngữ dùng để viết chương trình cho máy tính, giúp chuyển đổi thuật toán thành các lệnh mà CPU có thể thực thi.",
+      "key_points": [
+        "Thế hệ 1 (Ngôn ngữ máy): Chuỗi nhị phân 0, 1 (rất khó đọc).",
+        "Thế hệ 2 (Hợp ngữ - Assembly): Dùng từ gợi nhớ, cần trình Assembler để dịch.",
+        "Thế hệ 3 (Ngôn ngữ cấp cao): Gần gũi với con người (C, Pascal, Java), cần Compiler/Interpreter để dịch.",
+        "Thế hệ 4 (SQL) và Thế hệ 5 (Trí tuệ nhân tạo)."
+      ],
+      "case_study": null,
+      "related_concepts": []
+    },
+    {
+      "id": "c1-dev-process",
+      "term": "6 bước xây dựng chương trình",
+      "definition": "Quy trình tiêu chuẩn để phát triển một phần mềm hoàn chỉnh.",
+      "key_points": [
+        "1. Xác định yêu cầu bài toán.",
+        "2. Lựa chọn phương pháp giải (thuật toán, cấu trúc dữ liệu).",
+        "3. Thể hiện thuật giải (lưu đồ).",
+        "4. Cài đặt chương trình (code).",
+        "5. Hiệu chỉnh chương trình (sửa lỗi cú pháp và lỗi logic).",
+        "6. Kết thúc và chuyển giao."
+      ],
+      "case_study": null,
+      "related_concepts": []
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhớ và phân biệt các khái niệm về thuật toán, NNLT.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c1-q1", "type": "mc", "concept_ref": "c1-algorithm", "question": "Đặc tính nào của thuật toán đòi hỏi việc thực hiện phải kết thúc sau một số bước xác định?", "options": ["A. Tính xác định", "B. Tính đúng", "C. Tính hữu hạn (tính dừng)", "D. Tính hiệu quả"], "correct": "C" },
+        { "id": "L1-c1-q2", "type": "mc", "concept_ref": "c1-representation", "question": "Trong lưu đồ thuật toán, hình thoi (Diamond) được dùng để biểu diễn điều gì?", "options": ["A. Điểm bắt đầu/kết thúc", "B. Khối xử lý/Hành động", "C. Khối nhập/xuất dữ liệu", "D. Khối kiểm tra điều kiện/Rẽ nhánh"], "correct": "D" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Hiểu rõ các thế hệ ngôn ngữ và quy trình lập trình.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c1-q1", "type": "mc", "concept_ref": "c1-programming-language", "question": "Ngôn ngữ lập trình C thuộc thế hệ ngôn ngữ lập trình thứ mấy?", "options": ["A. Thế hệ 1 (Ngôn ngữ máy)", "B. Thế hệ 2 (Hợp ngữ)", "C. Thế hệ 3 (Ngôn ngữ cấp cao)", "D. Thế hệ 4 (Ngôn ngữ truy vấn CSDL)"], "correct": "C" },
+        { "id": "L2-c1-q2", "type": "mc", "concept_ref": "c1-dev-process", "question": "Trong các bước xây dựng chương trình, lỗi logic (ví dụ thuật toán sai dẫn đến kết quả sai) thường được phát hiện ở bước nào?", "options": ["A. Bước 1: Xác định yêu cầu", "B. Bước 2: Lựa chọn phương pháp", "C. Bước 4: Cài đặt chương trình", "D. Bước 5: Hiệu chỉnh chương trình (chạy thử)"], "correct": "D" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Áp dụng kiến thức vào thực tế giải quyết bài toán.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c1-q1", "type": "mc", "concept_ref": "c1-algorithm", "question": "Khi thiết kế thuật toán tìm ước chung lớn nhất (UCLN) của hai số a và b, nếu không có điều kiện dừng khi a = b, thuật toán này vi phạm tính chất nào?", "options": ["A. Tính khách quan", "B. Tính hữu hạn", "C. Tính phổ dụng", "D. Tính hiệu quả"], "correct": "B" }
+      ]
+    }
+  }
+}

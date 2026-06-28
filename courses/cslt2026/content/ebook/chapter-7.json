@@ -1,0 +1,96 @@
+{
+  "chapter": 7,
+  "title": "Kiểu chuỗi ký tự",
+  "sessions": [7],
+  "scqa": {
+    "situation": "Trong thực tế lập trình, ngoài việc tính toán với các con số, phần lớn các ứng dụng đều phải xử lý dữ liệu dạng văn bản (text) như họ tên người dùng, mật khẩu, tin nhắn hay địa chỉ email.",
+    "complication": "Tuy nhiên, ngôn ngữ C lại không hỗ trợ kiểu dữ liệu chuỗi (String) nguyên bản như Python hay Java. Trong C, chuỗi thực chất chỉ là một mảng các ký tự (char array) và phải được kết thúc bằng ký tự '\\0' (Null). Nếu quản lý mảng này không tốt hoặc sử dụng sai hàm nhập dữ liệu (như hàm gets()), chương trình rất dễ bị lỗi tràn bộ đệm (buffer overflow) hoặc sai lệch dữ liệu.",
+    "question": "Vậy làm thế nào để khai báo, nhập xuất và thực hiện các thao tác xử lý phức tạp trên chuỗi (như đo chiều dài, so sánh, copy, tìm kiếm) một cách an toàn và chính xác trong C?",
+    "answer": "Giải pháp là nắm vững bản chất mảng ký tự của C và sử dụng đúng các hàm an toàn trong thư viện <stdio.h> (như fgets thay vì gets). Đồng thời, thư viện <string.h> cung cấp một bộ công cụ mạnh mẽ (strlen, strcpy, strcmp, strcat, strstr...) giúp tự động hóa việc xử lý chuỗi mà không cần phải viết lại các vòng lặp thao tác trên từng ký tự."
+  },
+  "concepts": [
+    {
+      "id": "c7-string-declaration",
+      "term": "Bản chất và Khai báo chuỗi ký tự",
+      "definition": "Chuỗi ký tự trong C là một mảng một chiều gồm các ký tự (char) và luôn được kết thúc bằng ký tự '\\0' (mã ASCII là 0).",
+      "key_points": [
+        "Ký tự '\\0' đánh dấu điểm kết thúc của chuỗi, dù mảng có thể được cấp phát kích thước lớn hơn.",
+        "Khai báo: char HoTen[30]; (lưu trữ tối đa 29 ký tự thực sự và 1 ký tự '\\0').",
+        "Có thể khởi tạo ngay khi khai báo: char str[] = \"HELLO\"; (kích thước mảng sẽ tự động là 6)."
+      ],
+      "case_study": null,
+      "related_concepts": []
+    },
+    {
+      "id": "c7-safe-io",
+      "term": "Nhập xuất chuỗi an toàn",
+      "definition": "Sử dụng các hàm từ thư viện <stdio.h> để đọc và ghi chuỗi từ bàn phím hoặc tập tin.",
+      "key_points": [
+        "scanf(\"%s\", str): Đọc chuỗi nhưng dừng lại khi gặp khoảng trắng. Dễ gây tràn bộ đệm nếu chuỗi nhập dài hơn mảng.",
+        "fgets(str, n, stdin): Đọc tối đa n-1 ký tự, cho phép đọc cả khoảng trắng. Đây là hàm an toàn để nhập chuỗi.",
+        "Lưu ý: fgets() thường giữ lại ký tự '\\n' (xuống dòng) ở cuối chuỗi nếu bộ đệm còn trống.",
+        "Hàm gets() đã bị loại bỏ khỏi chuẩn C mới vì không kiểm soát kích thước, gây lỗi bảo mật nghiêm trọng."
+      ],
+      "case_study": {
+        "title": "Lỗi nhập họ tên bị mất chữ",
+        "context": "Một sinh viên dùng scanf(\"%s\", name); để nhập tên 'Nguyen Van A'.",
+        "analysis": "Khi in ra, biến name chỉ chứa chữ 'Nguyen' vì scanf coi khoảng trắng là dấu hiệu kết thúc nhập.",
+        "lesson_learned": "Luôn dùng fgets() khi cần nhập chuỗi chứa khoảng trắng."
+      },
+      "related_concepts": ["c7-string-declaration"]
+    },
+    {
+      "id": "c7-string-h-functions",
+      "term": "Thư viện xử lý chuỗi <string.h>",
+      "definition": "Tập hợp các hàm chuẩn hỗ trợ thao tác trên chuỗi mà không cần tự duyệt mảng.",
+      "key_points": [
+        "strlen(str): Tính độ dài chuỗi (số ký tự thực sự, không tính '\\0'). Khác với sizeof() trả về kích thước cấp phát.",
+        "strcmp(s1, s2): So sánh hai chuỗi theo thứ tự từ điển (trả về 0 nếu giống nhau, <0 nếu s1 < s2, >0 nếu s1 > s2).",
+        "strcpy(dest, src): Sao chép chuỗi src đè lên chuỗi dest.",
+        "strcat(dest, src): Nối chuỗi src vào đuôi chuỗi dest."
+      ],
+      "case_study": null,
+      "related_concepts": []
+    },
+    {
+      "id": "c7-ctype-h-functions",
+      "term": "Xử lý và phân loại từng ký tự <ctype.h>",
+      "definition": "Thư viện hỗ trợ kiểm tra và chuyển đổi định dạng của từng ký tự riêng lẻ trong chuỗi.",
+      "key_points": [
+        "toupper(ch), tolower(ch): Chuyển ký tự thành in hoa hoặc in thường.",
+        "isalpha(ch), isdigit(ch), isalnum(ch): Kiểm tra xem ký tự là chữ cái, chữ số, hay kết hợp.",
+        "isspace(ch): Kiểm tra ký tự có phải là khoảng trắng (space, tab, enter)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c7-string-h-functions"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhớ được bản chất của chuỗi và các hàm cơ bản.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c7-q1", "type": "mc", "concept_ref": "c7-string-declaration", "question": "Chuỗi ký tự trong C thực chất là gì?", "options": ["A. Kiểu dữ liệu riêng biệt (string)", "B. Mảng ký tự kết thúc bằng '\\0'", "C. Con trỏ kiểu void", "D. Mảng số nguyên"], "correct": "B" },
+        { "id": "L1-c7-q2", "type": "mc", "concept_ref": "c7-string-h-functions", "question": "Hàm nào được sử dụng để so sánh hai chuỗi trong C?", "options": ["A. strcompare()", "B. strcat()", "C. strcmp()", "D. strlen()"], "correct": "C" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Phân biệt các hàm và cách chuỗi hoạt động trong bộ nhớ.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c7-q1", "type": "mc", "concept_ref": "c7-string-h-functions", "question": "Sự khác biệt giữa hàm strlen(s) và toán tử sizeof(s) khi s được khai báo là char s[50] = \"Hello\";?", "options": ["A. strlen trả về 5, sizeof trả về 5", "B. strlen trả về 5, sizeof trả về 50", "C. strlen trả về 6, sizeof trả về 50", "D. strlen trả về 50, sizeof trả về 5"], "correct": "B" },
+        { "id": "L2-c7-q2", "type": "mc", "concept_ref": "c7-safe-io", "question": "Tại sao fgets() được khuyên dùng thay cho scanf(\"%s\") khi nhập họ và tên?", "options": ["A. Vì fgets() chạy nhanh hơn scanf().", "B. Vì fgets() tự động viết hoa chữ cái đầu.", "C. Vì fgets() cho phép đọc khoảng trắng, còn scanf() dừng đọc khi gặp khoảng trắng.", "D. Vì fgets() tự động xóa ký tự '\\n' ở cuối."], "correct": "C" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Áp dụng các hàm để giải quyết bài toán xử lý chuỗi.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c7-q1", "type": "mc", "concept_ref": "c7-string-h-functions", "question": "Đoạn mã `char a[10] = \"Hi\"; char b[10] = \"Ho\"; strcat(a, b);` sẽ làm thay đổi chuỗi a thành gì?", "options": ["A. Ho", "B. HiHo", "C. HoHi", "D. Lỗi do không đủ bộ nhớ"], "correct": "B" }
+      ]
+    }
+  }
+}

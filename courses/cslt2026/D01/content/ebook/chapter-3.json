@@ -1,0 +1,82 @@
+{
+  "chapter": 3,
+  "title": "Các cấu trúc điều khiển",
+  "sessions": [3],
+  "scqa": {
+    "situation": "Mọi chương trình máy tính thực chất là một chuỗi các dòng lệnh. Nếu chỉ chạy tuần tự từ trên xuống dưới, chương trình sẽ không có 'trí thông minh' để xử lý các tình huống khác nhau.",
+    "complication": "Làm thế nào để máy tính biết khi nào thì tính thuế 10%, khi nào thì miễn thuế? Hoặc làm thế nào để yêu cầu máy tính tính tổng của hàng ngàn con số mà không phải viết hàng ngàn dòng code cộng lại? Nếu thiếu đi khả năng điều khiển luồng, phần mềm sẽ trở nên cứng nhắc và cực kỳ tốn công sức để viết.",
+    "question": "Ngôn ngữ C cung cấp những cơ chế nào để giúp chương trình tự động đưa ra quyết định hoặc lặp lại công việc một cách thông minh?",
+    "answer": "Đó là Các cấu trúc điều khiển. Chúng ta có Cấu trúc rẽ nhánh (if...else, switch...case) để kiểm tra điều kiện và chọn hướng đi. Cùng với đó là Cấu trúc lặp (for, while, do...while) để thực thi một khối lệnh nhiều lần dựa trên biểu thức logic, giúp tối ưu hóa và tự động hóa toàn bộ quá trình tính toán."
+  },
+  "concepts": [
+    {
+      "id": "c3-selection",
+      "term": "Cấu trúc rẽ nhánh (Selection)",
+      "definition": "Cho phép chương trình đánh giá một biểu thức điều kiện và thực hiện các khối lệnh khác nhau tùy thuộc vào kết quả đúng (True) hay sai (False).",
+      "key_points": [
+        "Câu lệnh if..else: Dùng cho các điều kiện có tính chất dải (range) hoặc phức tạp.",
+        "Lưu ý: Khối lệnh chứa nhiều hơn 1 câu lệnh bắt buộc phải nằm trong cặp ngoặc nhọn { }.",
+        "Câu lệnh switch..case: Tối ưu khi cần so sánh tính bằng (==) của một biến với nhiều giá trị hằng số (int, char) rời rạc.",
+        "Lệnh break: Cực kỳ quan trọng trong switch để thoát khỏi cấu trúc sau khi thực hiện xong một case."
+      ],
+      "case_study": {
+        "title": "Lỗi thiếu ngoặc nhọn trong câu lệnh if",
+        "context": "if (a > 0) x++; y++;",
+        "analysis": "Lập trình viên nghĩ rằng cả x và y đều chỉ tăng khi a > 0. Nhưng thực tế, do thiếu { }, lệnh y++ luôn luôn được thực thi bất kể a lớn hơn 0 hay không.",
+        "lesson_learned": "Luôn dùng ngoặc nhọn { } cho khối lệnh của if, dù chỉ có 1 dòng, để tránh sai sót khi bảo trì."
+      },
+      "related_concepts": ["c3-iteration"]
+    },
+    {
+      "id": "c3-iteration",
+      "term": "Cấu trúc lặp (Iteration)",
+      "definition": "Cho phép một câu lệnh hoặc một khối lệnh được thực thi lặp đi lặp lại nhiều lần cho đến khi một điều kiện nào đó không còn đúng nữa.",
+      "key_points": [
+        "for: Thường dùng khi biết trước số lần lặp (có đầy đủ phần khởi tạo, điều kiện, và bước nhảy).",
+        "while: Kiểm tra điều kiện trước, nếu đúng mới lặp. Dùng khi không biết trước số lần lặp.",
+        "do...while: Thực hiện khối lệnh trước rồi mới kiểm tra điều kiện. Đảm bảo khối lệnh được chạy ít nhất 1 lần (thường dùng để làm menu chọn hoặc bắt ép nhập lại dữ liệu sai)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c3-jump"]
+    },
+    {
+      "id": "c3-jump",
+      "term": "Câu lệnh bước nhảy (Jump Statements)",
+      "definition": "Các lệnh dùng để thay đổi luồng thực thi thông thường của vòng lặp hoặc rẽ nhánh ngay lập tức.",
+      "key_points": [
+        "break: Lập tức thoát khỏi vòng lặp (hoặc khối switch) gần nhất chứa nó.",
+        "continue: Bỏ qua các câu lệnh còn lại trong lần lặp hiện tại và nhảy sang vòng lặp tiếp theo.",
+        "goto: Nhảy đến một nhãn bất kỳ trong hàm. (Tuy nhiên, rất hiếm khi sử dụng vì nó phá vỡ tính cấu trúc của chương trình)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c3-iteration"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết cú pháp các cấu trúc điều khiển.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c3-q1", "type": "mc", "concept_ref": "c3-selection", "question": "Biểu thức điều kiện trong câu lệnh switch KHÔNG THỂ là kiểu dữ liệu nào sau đây?", "options": ["A. int", "B. char", "C. float", "D. short"], "correct": "C" },
+        { "id": "L1-c3-q2", "type": "mc", "concept_ref": "c3-iteration", "question": "Vòng lặp nào sau đây đảm bảo khối lệnh bên trong được thực thi ít nhất 1 lần bất chấp điều kiện lặp ngay từ ban đầu là sai?", "options": ["A. for", "B. while", "C. do...while", "D. Cả 3 vòng lặp trên"], "correct": "C" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Phân tích cách hoạt động của vòng lặp và rẽ nhánh.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c3-q1", "type": "mc", "concept_ref": "c3-jump", "question": "Sự khác biệt chính giữa lệnh break và continue trong vòng lặp là gì?", "options": ["A. break bỏ qua 1 lần lặp, continue thoát hoàn toàn vòng lặp.", "B. break thoát hoàn toàn vòng lặp, continue bỏ qua phần còn lại của lần lặp hiện tại để chuyển sang lần lặp tiếp theo.", "C. break dùng cho for, continue dùng cho while.", "D. Không có sự khác biệt."], "correct": "B" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Dự đoán luồng thực thi.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c3-q1", "type": "mc", "concept_ref": "c3-selection", "question": "Nếu quên lệnh break trong một khối `case` của lệnh switch, điều gì sẽ xảy ra?", "options": ["A. Trình biên dịch sẽ báo lỗi cú pháp (Syntax error).", "B. Chương trình sẽ crash ngay lập tức.", "C. Chương trình sẽ tự động thoát khỏi switch sau khi xong case đó.", "D. Chương trình sẽ tiếp tục chạy tuột xuống các khối case bên dưới (hiện tượng Fall-through) cho đến khi gặp break hoặc hết switch."], "correct": "D" }
+      ]
+    }
+  }
+}

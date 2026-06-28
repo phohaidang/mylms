@@ -1,0 +1,85 @@
+{
+  "chapter": 5,
+  "title": "Mảng (Arrays)",
+  "sessions": [5],
+  "scqa": {
+    "situation": "Chương trình của bạn cần lưu trữ và tính điểm trung bình cho 100 sinh viên. Nếu chỉ dùng các biến đơn lẻ, bạn sẽ phải khai báo: `int diem1, diem2, ..., diem100;`.",
+    "complication": "Cách làm này vô cùng tệ hại. Viết code sẽ cực kỳ dài dòng, thủ công và không thể dùng vòng lặp để cộng các điểm lại với nhau hay tìm sinh viên có điểm cao nhất. Chương trình thiếu đi sự linh hoạt khi số lượng dữ liệu lớn.",
+    "question": "Làm thế nào để gộp tất cả 100 biến này lại dưới một tên duy nhất, và sử dụng vòng lặp để truy xuất chúng một cách hoàn toàn tự động?",
+    "answer": "Giải pháp là sử dụng 'Mảng' (Array). Mảng là một cấu trúc dữ liệu cho phép cấp phát một dải bộ nhớ liên tục để chứa hàng loạt các phần tử có 'cùng kiểu dữ liệu'. Nhờ vào cơ chế chỉ mục (index) chạy từ 0 đến N-1, ta có thể duyệt qua toàn bộ dữ liệu của mảng một cách nhanh chóng chỉ bằng một vòng lặp for."
+  },
+  "concepts": [
+    {
+      "id": "c5-array-1d",
+      "term": "Mảng Một Chiều",
+      "definition": "Tập hợp các biến có cùng kiểu dữ liệu, nằm liên tiếp nhau trong bộ nhớ, và được quản lý dưới một cái tên chung.",
+      "key_points": [
+        "Khai báo: `type name[size];` (Kích thước mảng phải là hằng số hoặc biết trước khi biên dịch).",
+        "Chỉ số (Index): Bắt đầu từ 0 và kết thúc ở size - 1.",
+        "Mảng có thể được khởi tạo ngay khi khai báo: `int a[] = {2, 4, 6};` (tự cấp phát size là 3).",
+        "Tên mảng thực chất đóng vai trò là một con trỏ hằng, trỏ đến địa chỉ của phần tử đầu tiên (a tương đương &a[0])."
+      ],
+      "case_study": {
+        "title": "Lỗi Out-of-bounds (Vượt quá giới hạn mảng)",
+        "context": "Khai báo `int arr[5];` và cố tình gán `arr[5] = 10;`",
+        "analysis": "Mảng kích thước 5 chỉ có các chỉ số từ 0 đến 4. Việc truy cập arr[5] sẽ ghi đè vào một vùng nhớ chưa được cấp phát cho mảng, gây ra lỗi logic hoặc crash chương trình.",
+        "lesson_learned": "Ngôn ngữ C KHÔNG tự động kiểm tra ranh giới mảng, lập trình viên phải tự đảm bảo vòng lặp luôn dừng lại ở giới hạn an toàn."
+      },
+      "related_concepts": ["c5-array-ops", "c5-array-2d"]
+    },
+    {
+      "id": "c5-array-ops",
+      "term": "Các Thao Tác Trên Mảng",
+      "definition": "Các kỹ thuật thao tác phổ biến xử lý dữ liệu hàng loạt trên mảng.",
+      "key_points": [
+        "Duyệt mảng (Traversal): Dùng vòng lặp for để truy cập từng phần tử để in ra, tính tổng, đếm...",
+        "Tìm kiếm (Search): Lặp qua mảng và dùng lệnh if để đối chiếu giá trị.",
+        "Thêm / Xóa phần tử: Mảng trong C có kích thước cố định, vì vậy để thêm/xóa ta phải dời các phần tử sang phải/trái để tạo khoảng trống hoặc lấp đầy chỗ trống, đồng thời tăng/giảm một biến quản lý kích thước ảo (current_size).",
+        "Mảng truyền vào hàm thực chất là truyền địa chỉ (Pass by Reference). Hàm có thể thay đổi vĩnh viễn mảng ở bên ngoài."
+      ],
+      "case_study": null,
+      "related_concepts": ["c5-array-1d"]
+    },
+    {
+      "id": "c5-array-2d",
+      "term": "Mảng Hai Chiều",
+      "definition": "Mảng hai chiều là mảng của các mảng một chiều, thường được dùng để biểu diễn ma trận (hàng và cột).",
+      "key_points": [
+        "Khai báo: `type name[rows][cols];`",
+        "Truy cập: `matrix[i][j]` (Hàng i, cột j).",
+        "Duyệt mảng 2 chiều cần dùng hai vòng lặp lồng nhau: vòng ngoài lặp theo hàng, vòng trong lặp theo cột.",
+        "Trong bộ nhớ, mảng 2 chiều vẫn được lưu thành một dải liên tục các ô nhớ 1 chiều (theo nguyên tắc lưu hết hàng 1 rồi đến hàng 2)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c5-array-1d"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Kiểm tra kiến thức cơ bản về chỉ số và bộ nhớ mảng.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c5-q1", "type": "mc", "concept_ref": "c5-array-1d", "question": "Chỉ số (index) của phần tử đầu tiên và phần tử cuối cùng trong mảng `int a[10]` lần lượt là bao nhiêu?", "options": ["A. 1 và 10", "B. 0 và 10", "C. 0 và 9", "D. 1 và 9"], "correct": "C" },
+        { "id": "L1-c5-q2", "type": "mc", "concept_ref": "c5-array-1d", "question": "Mảng là tập hợp các biến có đặc điểm gì?", "options": ["A. Có cùng kiểu dữ liệu và nằm liên tiếp nhau trong bộ nhớ.", "B. Có kiểu dữ liệu khác nhau.", "C. Nằm rải rác ngẫu nhiên trong bộ nhớ.", "D. Kích thước có thể tự do co giãn trong lúc chạy chương trình."], "correct": "A" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Hiểu cách mảng lưu trữ và truyền vào hàm.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c5-q1", "type": "mc", "concept_ref": "c5-array-1d", "question": "Tại sao trong ngôn ngữ C, khi truyền mảng một chiều vào hàm, ta thường phải truyền kèm theo một biến chứa số lượng phần tử của mảng?", "options": ["A. Để hàm chạy nhanh hơn.", "B. Vì mảng khi truyền vào hàm sẽ tự phân rã thành một con trỏ trỏ đến phần tử đầu tiên, hàm không thể tự biết được kích thước thực của mảng bằng hàm sizeof().", "C. Để trình biên dịch không báo lỗi cú pháp.", "D. Vì C quy định hàm chỉ nhận tối đa 2 tham số."], "correct": "B" },
+        { "id": "L2-c5-q2", "type": "mc", "concept_ref": "c5-array-2d", "question": "Câu lệnh khai báo và khởi tạo mảng 2 chiều nào sau đây là HỢP LỆ?", "options": ["A. int b[][] = {{1,2}, {3,4}};", "B. int b[2][] = {{1,2}, {3,4}};", "C. int b[][2] = {{1,2}, {3,4}};", "D. int b[2][2] = {1,2,3,4,5};"], "correct": "C" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Tư duy dịch chuyển mảng.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c5-q1", "type": "mc", "concept_ref": "c5-array-ops", "question": "Để XÓA một phần tử tại vị trí index `k` trong một mảng có `n` phần tử, ta cần thực hiện thao tác nào?", "options": ["A. Gán a[k] = 0.", "B. Chạy vòng lặp từ `k` đến `n-2`, gán a[i] = a[i+1], sau đó giảm n đi 1.", "C. Chạy vòng lặp từ `n-1` lùi về `k`, gán a[i+1] = a[i].", "D. Dùng lệnh delete a[k];"], "correct": "B" }
+      ]
+    }
+  }
+}

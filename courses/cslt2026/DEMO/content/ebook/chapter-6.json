@@ -1,0 +1,83 @@
+{
+  "chapter": 6,
+  "title": "Con trỏ (Pointers)",
+  "sessions": [6],
+  "scqa": {
+    "situation": "Khi một biến được khai báo, hệ điều hành tự động cấp phát cho nó một vùng nhớ cụ thể trong RAM. Các thao tác lập trình thông thường chỉ tương tác với 'giá trị' bề nổi của biến, trong khi vị trí thực sự của nó bị che giấu.",
+    "complication": "Sự che giấu này đem lại an toàn nhưng lại bộc lộ hạn chế khi giải quyết các bài toán phức tạp: làm sao để hàm thay đổi vĩnh viễn một biến ở bên ngoài? Làm sao để tạo ra một mảng mà kích thước của nó chỉ được biết khi chương trình đang chạy (người dùng nhập vào) thay vì phải cố định cứng từ trước? Nếu không truy cập trực tiếp vào vùng nhớ, ta sẽ lãng phí rất nhiều dung lượng RAM.",
+    "question": "Công cụ 'bậc thấp' nào trong C cho phép lập trình viên toàn quyền kiểm soát phần cứng bộ nhớ, mang lại sức mạnh và sự linh hoạt tối đa?",
+    "answer": "Đó chính là Con trỏ (Pointer). Một con trỏ không lưu trữ giá trị thông thường (như 5, hay 'A'), mà nó lưu trữ 'địa chỉ bộ nhớ' của một biến khác. Bằng cách sử dụng toán tử & (lấy địa chỉ) và * (truy xuất giá trị tại địa chỉ), kết hợp với các hàm cấp phát động như malloc(), free(), con trỏ giúp C trở thành ngôn ngữ mạnh mẽ vô song trong lập trình hệ thống."
+  },
+  "concepts": [
+    {
+      "id": "c6-pointer-concept",
+      "term": "Bản chất của Con trỏ",
+      "definition": "Con trỏ là một biến đặc biệt dùng để lưu trữ địa chỉ vùng nhớ của một biến khác.",
+      "key_points": [
+        "Khai báo: `type *pointerVariable;` (Ví dụ: int *p;).",
+        "Toán tử & (Address-of): Trả về địa chỉ của biến (Ví dụ: p = &a;).",
+        "Toán tử * (Dereference): Truy xuất hoặc thay đổi giá trị tại địa chỉ mà con trỏ đang trỏ tới (Ví dụ: *p = 10; sẽ làm a biến thành 10)."
+      ],
+      "case_study": {
+        "title": "Lỗi Con trỏ hoang dã (Wild Pointer)",
+        "context": "Khai báo `int *p;` rồi ngay lập tức gán `*p = 500;`",
+        "analysis": "Vì p chưa được gán trỏ đến bất kỳ vùng nhớ hợp lệ nào (chưa có p = &a), nó chứa một địa chỉ rác ngẫu nhiên. Việc ép ghi giá trị 500 vào địa chỉ rác này có thể làm hỏng dữ liệu của hệ điều hành, dẫn đến lỗi màn hình xanh (Crash).",
+        "lesson_learned": "Luôn luôn khởi tạo con trỏ ngay khi khai báo, hoặc trỏ đến một biến có sẵn, hoặc gán bằng NULL."
+      },
+      "related_concepts": ["c6-dynamic-memory"]
+    },
+    {
+      "id": "c6-pointer-and-array",
+      "term": "Mối quan hệ giữa Con trỏ và Mảng",
+      "definition": "Trong C, tên của một mảng thực chất là một con trỏ hằng trỏ đến phần tử đầu tiên của mảng đó.",
+      "key_points": [
+        "Nếu có mảng `int a[10];`, thì `a` tương đương với `&a[0]`.",
+        "Toán tử số học con trỏ: p+1 không phải là cộng 1 byte, mà là nhảy đến phần tử kế tiếp (cộng thêm số byte bằng sizeof của kiểu dữ liệu).",
+        "Truy cập a[i] hoàn toàn tương đương với *(a + i)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c6-pointer-concept"]
+    },
+    {
+      "id": "c6-dynamic-memory",
+      "term": "Cấp phát bộ nhớ động",
+      "definition": "Cơ chế yêu cầu hệ điều hành cấp phát một vùng nhớ trong quá trình chương trình ĐANG chạy (Runtime), lưu trên phân vùng Heap.",
+      "key_points": [
+        "malloc(size_t size): Cấp phát khối nhớ, không xóa rác cũ. Phải ép kiểu con trỏ trả về.",
+        "calloc(num, size): Cấp phát khối nhớ cho mảng, tự động gán tất cả về 0.",
+        "realloc(): Nới rộng hoặc thu hẹp vùng nhớ đã cấp phát.",
+        "free(ptr): BẮT BUỘC phải gọi để trả lại RAM cho hệ điều hành khi không dùng nữa, tránh lỗi Memory Leak (rò rỉ bộ nhớ)."
+      ],
+      "case_study": null,
+      "related_concepts": ["c6-pointer-concept"]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận dạng các toán tử và hàm của con trỏ.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c6-q1", "type": "mc", "concept_ref": "c6-pointer-concept", "question": "Trong ngôn ngữ C, toán tử nào được dùng để lấy ĐỊA CHỈ của một biến?", "options": ["A. *", "B. &", "C. %", "D. &&"], "correct": "B" },
+        { "id": "L1-c6-q2", "type": "mc", "concept_ref": "c6-dynamic-memory", "question": "Hàm nào bắt buộc phải được gọi để giải phóng vùng nhớ động sau khi sử dụng xong, nhằm tránh hiện tượng Memory Leak?", "options": ["A. clear()", "B. release()", "C. free()", "D. delete()"], "correct": "C" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Phân tích số học con trỏ và mảng.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c6-q1", "type": "mc", "concept_ref": "c6-pointer-and-array", "question": "Giả sử có mảng `int a[5];` và con trỏ `int *p = a;`. Biểu thức `*(p + 2)` tương đương với cách viết nào sau đây?", "options": ["A. a[1]", "B. a[2]", "C. a[3]", "D. &a[2]"], "correct": "B" },
+        { "id": "L2-c6-q2", "type": "mc", "concept_ref": "c6-dynamic-memory", "question": "Hàm malloc() và calloc() khác nhau ở điểm cơ bản nào?", "options": ["A. malloc cấp phát ở Heap, calloc cấp phát ở Stack.", "B. calloc tự động khởi tạo các ô nhớ bằng 0, còn malloc thì giữ nguyên giá trị rác.", "C. malloc chỉ dùng cho mảng, calloc chỉ dùng cho con trỏ đơn.", "D. calloc không cần dùng hàm free() để giải phóng."], "correct": "B" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Dự đoán giá trị khi dùng con trỏ.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c6-q1", "type": "mc", "concept_ref": "c6-pointer-concept", "question": "Cho đoạn code: `int a = 10; int *p = &a; *p = *p + 5;`. Giá trị cuối cùng của biến `a` là bao nhiêu?", "options": ["A. 10", "B. 5", "C. 15", "D. Không xác định được (lỗi rác)"], "correct": "C" }
+      ]
+    }
+  }
+}

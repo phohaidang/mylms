@@ -1,5 +1,14 @@
 import { api } from '../../api.js';
 
+function escapeHTML(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+}
+
 export async function renderEbookTest(app, { id, level }) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
 
@@ -28,14 +37,14 @@ export async function renderEbookTest(app, { id, level }) {
               <span class="badge badge-accent">Câu ${idx + 1}</span>
               ${q.concept_ref ? `<span class="badge badge-info">${q.concept_ref}</span>` : ''}
             </div>
-            <h4 style="margin-bottom:1rem;line-height:1.6">${q.question}</h4>
+            <h4 style="margin-bottom:1rem;line-height:1.6">${escapeHTML(q.question)}</h4>
 
             ${q.type === 'mc' ? `
               <div class="quiz-options" data-qid="${q.id}">
                 ${q.options.map((opt, i) => `
                   <div class="quiz-option" data-qid="${q.id}" data-value="${opt.charAt(0)}" onclick="selectOption(this)">
                     <div class="quiz-option-letter">${opt.charAt(0)}</div>
-                    <div style="font-size:0.92rem">${opt}</div>
+                    <div style="font-size:0.92rem">${escapeHTML(opt)}</div>
                   </div>
                 `).join('')}
               </div>

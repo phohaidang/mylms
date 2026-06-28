@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "code": "CSLT2026",
+    "name": "Cơ sở lập trình",
+    "total_sessions": 9,
+    "chapters": 0,
+    "university": "ĐH Ngân Hàng TP.HCM",
+    "textbook": "Cơ sở lập trình"
+  },
+  "sessions": [
+    { "id": 1, "chapter": "", "title": "Buổi 1 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 2, "chapter": "", "title": "Buổi 2 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 3, "chapter": "", "title": "Buổi 3 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 4, "chapter": "", "title": "Buổi 4 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 5, "chapter": "", "title": "Buổi 5 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 6, "chapter": "", "title": "Buổi 6 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 7, "chapter": "Ch.7", "title": "Kiểu chuỗi ký tự", "topics": "Bản chất chuỗi, scanf vs fgets, string.h", "clo": "CLO1, CLO2, CLO3", "textbook": "Chương 7", "duration": "4 tiết" },
+    { "id": 8, "chapter": "", "title": "Buổi 8 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" },
+    { "id": 9, "chapter": "", "title": "Buổi 9 (Chưa cập nhật)", "topics": "", "clo": "", "textbook": "", "duration": "4 tiết" }
+  ]
+}

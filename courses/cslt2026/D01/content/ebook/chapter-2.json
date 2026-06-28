@@ -1,0 +1,96 @@
+{
+  "chapter": 2,
+  "title": "Các thành phần cơ bản của ngôn ngữ C",
+  "sessions": [2],
+  "scqa": {
+    "situation": "Khi học bất kỳ một ngoại ngữ nào, việc đầu tiên là phải thuộc bảng chữ cái, từ vựng và ngữ pháp. Tương tự, để giao tiếp với máy tính bằng ngôn ngữ C, chúng ta phải nắm vững các 'viên gạch' cơ bản nhất.",
+    "complication": "Ngôn ngữ C có tính phân biệt chữ hoa - chữ thường khắt khe, hệ thống kiểu dữ liệu chặt chẽ và hàng loạt các toán tử phức tạp. Một sự nhầm lẫn nhỏ (ví dụ: dùng '=' thay vì '==', hoặc khai báo sai kiểu dữ liệu gây tràn số) cũng có thể làm sụp đổ toàn bộ chương trình mà trình biên dịch không hề báo lỗi trước.",
+    "question": "Vậy cấu trúc của một chương trình C chuẩn gồm những gì, và làm sao để khai báo biến, sử dụng toán tử, ép kiểu một cách chính xác?",
+    "answer": "Chúng ta cần hiểu rõ cấu trúc chương trình (gồm thư viện, hàm main), các quy tắc đặt định danh (identifier), phân loại kiểu dữ liệu cơ sở (int, float, char), và cách ưu tiên thực hiện của các toán tử (số học, logic, quan hệ, bitwise), cũng như nắm vững hàm printf/scanf để trao đổi thông tin với người dùng."
+  },
+  "concepts": [
+    {
+      "id": "c2-program-structure",
+      "term": "Cấu trúc chung của chương trình C",
+      "definition": "Một chương trình C cơ bản luôn bắt đầu bằng các chỉ thị tiền xử lý (#include), khai báo biến toàn cục/hằng số, và quan trọng nhất là hàm main().",
+      "key_points": [
+        "Hàm main() là điểm bắt đầu thực thi của mọi chương trình C.",
+        "#include <stdio.h> được dùng để tải thư viện nhập/xuất chuẩn.",
+        "Mỗi câu lệnh đơn trong C bắt buộc phải kết thúc bằng dấu chấm phẩy (;)."
+      ],
+      "case_study": null,
+      "related_concepts": []
+    },
+    {
+      "id": "c2-data-types",
+      "term": "Các kiểu dữ liệu cơ sở",
+      "definition": "Quy định kích thước bộ nhớ và miền giá trị mà một biến có thể lưu trữ.",
+      "key_points": [
+        "Số nguyên: int, short, long, char (char bản chất là số nguyên 1 byte).",
+        "Số nguyên không dấu: Thêm từ khóa unsigned (ví dụ: unsigned int) để tăng gấp đôi miền giá trị dương.",
+        "Số thực: float (4 bytes), double (8 bytes).",
+        "C không có kiểu Boolean nguyên bản; thay vào đó, giá trị 0 được coi là False, khác 0 là True."
+      ],
+      "case_study": null,
+      "related_concepts": ["c2-operators"]
+    },
+    {
+      "id": "c2-operators",
+      "term": "Biểu thức và Toán tử",
+      "definition": "Các ký hiệu đặc biệt dùng để thực hiện phép tính toán học hoặc logic trên các biến và hằng.",
+      "key_points": [
+        "Toán tử số học: +, -, *, /, % (phép chia lấy dư chỉ dùng cho số nguyên).",
+        "Toán tử quan hệ: >, <, >=, <=, == (so sánh bằng), != (khác).",
+        "Toán tử logic: && (AND), || (OR), ! (NOT).",
+        "Toán tử tăng giảm: ++, --. (Lưu ý sự khác biệt giữa a++ và ++a)."
+      ],
+      "case_study": {
+        "title": "Lỗi nhầm lẫn toán tử gán và so sánh",
+        "context": "Lập trình viên viết câu lệnh kiểm tra: if (a = 0) printf(\"A la so khong\");",
+        "analysis": "Toán tử '=' là phép gán, nó sẽ gán a = 0 và trả về kết quả là 0 (False). Do đó đoạn code bên trong if không bao giờ chạy.",
+        "lesson_learned": "Luôn dùng '==' cho phép so sánh."
+      },
+      "related_concepts": ["c2-data-types"]
+    },
+    {
+      "id": "c2-io-functions",
+      "term": "Nhập / Xuất dữ liệu",
+      "definition": "Sử dụng printf() và scanf() để tương tác với người dùng qua console.",
+      "key_points": [
+        "Đặc tả định dạng (Format specifiers): %d (số nguyên), %f (số thực), %c (ký tự), %s (chuỗi).",
+        "Trong hàm scanf(), bắt buộc phải dùng toán tử & trước tên biến (trừ mảng/chuỗi) để truyền địa chỉ bộ nhớ.",
+        "Xóa bộ đệm: Dùng fflush(stdin) để tránh lỗi trôi lệnh khi nhập ký tự/chuỗi sau khi nhập số."
+      ],
+      "case_study": null,
+      "related_concepts": []
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết kiểu dữ liệu và định danh hợp lệ.",
+      "bloom_level": "Remember",
+      "questions": [
+        { "id": "L1-c2-q1", "type": "mc", "concept_ref": "c2-data-types", "question": "Tên biến nào sau đây là KHÔNG hợp lệ trong ngôn ngữ C?", "options": ["A. _sinhvien", "B. 1A_sinhvien", "C. sinhvien_1A", "D. SinhVien"], "correct": "B" },
+        { "id": "L1-c2-q2", "type": "mc", "concept_ref": "c2-io-functions", "question": "Để in một số thực với 2 chữ số thập phân, ta dùng định dạng đặc tả nào trong printf?", "options": ["A. %2f", "B. %0.2f", "C. %f2", "D. %.f2"], "correct": "B" }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và giải thích",
+      "description": "Hiểu rõ cơ chế hoạt động của toán tử.",
+      "bloom_level": "Understand",
+      "questions": [
+        { "id": "L2-c2-q1", "type": "mc", "concept_ref": "c2-operators", "question": "Kết quả của biểu thức (8 / 3) trong C là bao nhiêu?", "options": ["A. 2.666", "B. 2", "C. 3", "D. 0"], "correct": "B" },
+        { "id": "L2-c2-q2", "type": "mc", "concept_ref": "c2-operators", "question": "Toán tử chia lấy dư (%) có thể áp dụng cho kiểu dữ liệu nào?", "options": ["A. int và float", "B. Chỉ kiểu int", "C. Chỉ kiểu float", "D. Mọi kiểu số"], "correct": "B" }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Đọc hiểu mã nguồn và dự đoán kết quả.",
+      "bloom_level": "Apply",
+      "questions": [
+        { "id": "L3-c2-q1", "type": "mc", "concept_ref": "c2-operators", "question": "Cho đoạn mã: `int a = 5, b = 2; int c = a++ + ++b;`. Giá trị của a, b, c lần lượt là bao nhiêu?", "options": ["A. a=6, b=3, c=8", "B. a=6, b=3, c=9", "C. a=5, b=2, c=7", "D. a=5, b=3, c=8"], "correct": "A" }
+      ]
+    }
+  }
+}

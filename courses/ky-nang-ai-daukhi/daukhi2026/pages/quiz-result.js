@@ -1,5 +1,14 @@
 import { api } from '../api.js';
 
+function escapeHTML(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+}
+
 export async function renderQuizResult(app, { sessionId }) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
 
@@ -110,7 +119,7 @@ export async function renderQuizResult(app, { sessionId }) {
                     </span>
                   </div>
                   
-                  <h4 style="margin-bottom:1.25rem;line-height:1.6;font-size:1rem">${q.question}</h4>
+                  <h4 style="margin-bottom:1.25rem;line-height:1.6;font-size:1rem">${escapeHTML(q.question)}</h4>
                   
                   ${q.type === 'mc' ? `
                     <div style="display:flex;flex-direction:column;gap:0.5rem">
@@ -137,7 +146,7 @@ export async function renderQuizResult(app, { sessionId }) {
                             <div class="quiz-option-letter" style="${isCorrectOption ? 'background:var(--success);color:white;' : isSelectedOption ? 'background:var(--danger);color:white;' : ''}">
                               ${letter}
                             </div>
-                            <div style="font-size:0.92rem;color:var(--text-primary)">${opt}</div>
+                            <div style="font-size:0.92rem;color:var(--text-primary)">${escapeHTML(opt)}</div>
                             ${badgeHTML}
                           </div>
                         `;
@@ -206,7 +215,7 @@ export async function renderQuizResult(app, { sessionId }) {
                   ${q.explanation ? `
                     <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--accent-light);border-left:3px solid var(--accent);border-radius:var(--radius-sm)">
                       <p style="font-size:0.88rem;color:var(--text-primary);line-height:1.6">
-                        <strong>💡 Giải thích chi tiết:</strong> ${q.explanation}
+                        <strong>💡 Giải thích chi tiết:</strong> ${escapeHTML(q.explanation)}
                       </p>
                     </div>
                   ` : ''}
