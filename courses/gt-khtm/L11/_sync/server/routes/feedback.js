@@ -77,6 +77,7 @@ router.get('/:sessionId/check', authenticate, async (req, res) => {
  * Get session IDs attended by current student
  */
 router.get('/my-attendance', authenticate, async (req, res) => {
+  try {
     // Get downloaded slides
     const logs = await db.find('attendance_log', a => a.student_id === req.user.student_id);
     const downloadedSessions = logs.map(l => parseInt(l.session_id));
