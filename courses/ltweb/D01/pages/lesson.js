@@ -284,11 +284,22 @@ export async function renderLesson(app, { id }) {
       }
 
       if (checkRes.submitted) {
+        const downloadUrl = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
         fbSection.innerHTML = `
-          <div class="card" style="text-align:center; padding: 2rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08))">
-            <div style="font-size: 2.5rem; margin-bottom: 0.8rem">✅</div>
-            <h3 style="margin-bottom: 0.4rem; color: var(--success-color)">Cảm ơn bạn đã góp ý!</h3>
-            <p style="color: var(--text-secondary)">Phản hồi ẩn danh của bạn cho buổi này đã được ghi nhận.</p>
+          <div class="card" style="text-align:center; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.2)">
+            <div style="font-size: 3rem; margin-bottom: 0.8rem">✅</div>
+            <h3 style="margin-bottom: 0.5rem; color: var(--success-color); font-size: 1.4rem">Cảm ơn bạn đã góp ý!</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem">Phản hồi ẩn danh của bạn cho buổi này đã được ghi nhận.</p>
+            ${checkRes.has_comment ? `
+            <div>
+              <a href="${downloadUrl}" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 14px rgba(99,102,241,0.4)">
+                📥 Tải Bài giảng Motion (.html) Buổi ${id}
+              </a>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+              Hệ thống đã mở khóa và ghi nhận điểm danh cho buổi học này.
+            </p>
+            ` : ''}
           </div>
         `;
       } else {
@@ -627,11 +638,47 @@ function attachFeedbackHandlers(sessionId, container) {
 
     try {
       const res = await api.post(`/feedback/${sessionId}`, { understanding, pace, usefulness, comment });
+      
+      const hasComment = comment && comment.trim().length > 0;
+      const downloadUrl = `/api/courses/sessions/${sessionId}/slide?token=${getToken()}`;
+
+      // 1. Cập nhật nút ở đầu trang ngay lập tức
+      const slideBtn = document.getElementById('btn-student-slide');
+      if (slideBtn) {
+        if (hasComment) {
+          slideBtn.href = downloadUrl;
+          slideBtn.target = '_blank';
+          slideBtn.onclick = null;
+          slideBtn.style.opacity = '1';
+          slideBtn.className = 'btn btn-primary';
+        } else {
+          slideBtn.onclick = (e) => { 
+            e.preventDefault(); 
+            alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Bài giảng Motion (.html).'); 
+          };
+        }
+      }
+
+      // 2. Hiển thị thông báo thành công và nút tải bài giảng trực tiếp tại chỗ
       container.innerHTML = `
-        <div class="card" style="text-align:center; padding: 2rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08))">
-          <div style="font-size: 2.5rem; margin-bottom: 0.8rem">✅</div>
-          <h3 style="margin-bottom: 0.4rem; color: var(--success-color)">Cảm ơn bạn đã góp ý!</h3>
-          <p style="color: var(--text-secondary)">${res.message}</p>
+        <div class="card" style="text-align:center; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.2)">
+          <div style="font-size: 3rem; margin-bottom: 0.8rem">✅</div>
+          <h3 style="margin-bottom: 0.5rem; color: var(--success-color); font-size: 1.4rem">Cảm ơn bạn đã góp ý!</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem">${res.message}</p>
+          ${hasComment ? `
+          <div>
+            <a href="${downloadUrl}" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 14px rgba(99,102,241,0.4)">
+              📥 Tải Bài giảng Motion (.html) Buổi ${sessionId}
+            </a>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+            Hệ thống đã mở khóa và ghi nhận điểm danh cho buổi học này.
+          </p>
+          ` : `
+          <div class="alert alert-warning" style="display: inline-block; text-align: left">
+            Bạn chưa nhập bình luận nên chưa thể mở khóa tải bài giảng. Vui lòng liên hệ Giảng viên.
+          </div>
+          `}
         </div>
       `;
     } catch (err) {

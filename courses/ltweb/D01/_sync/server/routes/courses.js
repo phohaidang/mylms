@@ -96,11 +96,16 @@ router.get('/sessions/:id/slide', authenticate, async (req, res) => {
   }
 
   // Student logic
-  const anonHash = Buffer.from(req.user.student_id + '_session_' + id).toString('base64');
+  const studentKey = String(req.user.student_id || req.user.email || '').trim().toLowerCase();
+  const anonHash = Buffer.from(`${studentKey}_session_${id}`).toString('base64');
   try {
-    const feedback = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
+    const feedback = await db.findOne('session_feedback', f => {
+      const hash = String(f.anon_hash || f.hash || '').trim();
+      return hash === anonHash;
+    });
     
-    if (!feedback || !feedback.comment || feedback.comment.trim().length === 0) {
+    const commentVal = String(feedback?.comment || feedback?.['bình luận'] || '').trim();
+    if (!feedback || commentVal.length === 0) {
       return res.status(403).json({ error: 'Vui lòng nộp đánh giá có kèm bình luận để tải bài giảng' });
     }
 

@@ -26,8 +26,12 @@ router.post('/:sessionId', authenticate, async (req, res) => {
     }
 
     // Check if this user already submitted feedback for this session
-    const anonHash = Buffer.from(req.user.student_id + '_session_' + sessionId).toString('base64');
-    const existing = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
+    const studentKey = String(req.user.student_id || req.user.email || '').trim().toLowerCase();
+    const anonHash = Buffer.from(`${studentKey}_session_${sessionId}`).toString('base64');
+    const existing = await db.findOne('session_feedback', f => {
+      const hash = String(f.anon_hash || f.hash || '').trim();
+      return hash === anonHash;
+    });
     if (existing) {
       return res.status(409).json({ error: 'Bạn đã gửi đánh giá cho buổi học này rồi.' });
     }
@@ -61,11 +65,16 @@ router.post('/:sessionId', authenticate, async (req, res) => {
 router.get('/:sessionId/check', authenticate, async (req, res) => {
   try {
     const sessionId = parseInt(req.params.sessionId);
-    const anonHash = Buffer.from(req.user.student_id + '_session_' + sessionId).toString('base64');
-    const existing = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
+    const studentKey = String(req.user.student_id || req.user.email || '').trim().toLowerCase();
+    const anonHash = Buffer.from(`${studentKey}_session_${sessionId}`).toString('base64');
+    const existing = await db.findOne('session_feedback', f => {
+      const hash = String(f.anon_hash || f.hash || '').trim();
+      return hash === anonHash;
+    });
+    const commentVal = String(existing?.comment || existing?.['bình luận'] || '').trim();
     res.json({ 
       submitted: !!existing, 
-      has_comment: !!(existing && existing.comment && existing.comment.trim().length > 0)
+      has_comment: commentVal.length > 0
     });
   } catch (err) {
     res.json({ submitted: false, has_comment: false });
