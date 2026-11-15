@@ -1,0 +1,717 @@
+{
+  "chapter": 1,
+  "title": "Tổng quan về lập trình web",
+  "sessions": [
+    1
+  ],
+  "scqa": {
+    "situation": "Mỗi ngày bạn mở Shopee, Facebook hay Google hàng chục lần - chỉ cần gõ một địa chỉ hoặc chạm vào một đường dẫn là trang web hiện ra trong chưa đầy một giây. Với bạn, đó chỉ là \"một trang web\".",
+    "complication": "Phía sau cú nhấp chuột đó là cả một chuỗi sự kiện: trình duyệt gửi yêu cầu, một máy chủ ở nơi nào đó tiếp nhận, xử lý, truy xuất dữ liệu rồi trả kết quả về. Cùng một địa chỉ nhưng người này thấy giỏ hàng của mình, người kia thấy giỏ hàng của người khác. Nếu không hiểu cơ chế này, bạn không thể xây dựng một website thật sự.",
+    "question": "Trang web hoạt động như thế nào, gồm những thành phần nào, và cần học những công nghệ gì để tự xây dựng một website động?",
+    "answer": "Website hoạt động theo mô hình khách – chủ (client – server): web client gửi yêu cầu qua HTTP/HTTPS, web server xử lý và phản hồi. Trang tĩnh chỉ cần HTML/CSS; trang động cần thêm ngôn ngữ lập trình back-end (như PHP) và cơ sở dữ liệu. Chương này trang bị nền tảng đó, cùng HTML và CSS để dựng giao diện."
+  },
+  "concepts": [
+    {
+      "id": "c1-mo-hinh-khach-chu-client-server-cua-tran",
+      "session": 1,
+      "term": "Mô hình khách – chủ (client – server) của trang web",
+      "definition": "Các trang web hoạt động theo mô hình khách – chủ (client – server), trong đó hai thành phần chính là web client và web server tương tác với nhau thông qua môi trường Internet để hỗ trợ người dùng truy cập một tài nguyên hoặc thực hiện một chức năng cụ thể.",
+      "key_points": [
+        "Quy trình cơ bản gồm 4 bước: (1) người dùng nhập URL hoặc nhấp liên kết; (2) web client gửi <strong>HTTP Request</strong> đến web server; (3) web server tìm/xử lý tài nguyên; (4) web server gửi <strong>HTTP Response</strong> về cho web client hiển thị.",
+        "Hiểu rõ mô hình này là điều kiện tiên quyết để xây dựng hay gỡ lỗi bất kỳ trang web nào.",
+        "Ví dụ quen thuộc: bạn là \"khách\" gọi món (request), nhà bếp là \"chủ\" chế biến và mang món ra (response)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-web-client"
+      ]
+    },
+    {
+      "id": "c1-web-client",
+      "session": 1,
+      "term": "Web client",
+      "definition": "Web client là phần mềm chạy trên thiết bị của người dùng, có nhiệm vụ gửi yêu cầu của người dùng đến web server và nhận phản hồi từ web server trả về để hiển thị nội dung kết quả.",
+      "key_points": [
+        "Phổ biến nhất là các <strong>trình duyệt web</strong>: Google Chrome, Microsoft Edge, Mozilla Firefox, Safari, Opera.",
+        "Web client còn có thể là ứng dụng trên điện thoại thông minh, đồng hồ thông minh hoặc thiết bị IoT (Internet of Things) - truy cập dịch vụ web mà không bị giới hạn nền tảng hay vị trí.",
+        "<strong>HTTP</strong> (HyperText Transfer Protocol) là giao thức cơ bản truyền tải dữ liệu trên web (quy định cách trao đổi thông tin giữa web client và web server).",
+        "<strong>HTTPS</strong> (HyperText Transfer Protocol Secure) là phiên bản bảo mật của HTTP: mã hoá thông tin giữa web client và web server, ngăn tấn công từ bên ngoài và chống truy cập trái phép.",
+        "<strong>Mã trạng thái HTTP (HTTP Status Code)</strong> trong HTTP Response cho biết kết quả xử lý tại máy chủ: <strong>200 OK</strong> (máy chủ xử lý yêu cầu thành công), <strong>301 / 302</strong> (chuyển hướng URL - Redirect), <strong>400 Bad Request</strong> (yêu cầu không hợp lệ), <strong>403 Forbidden</strong> (từ chối quyền truy cập), <strong>404 Not Found</strong> (máy chủ không tìm thấy tài nguyên được yêu cầu), <strong>500 Internal Server Error</strong> (lỗi phía máy chủ).",
+        "Lưu ý ôn thi: trình duyệt luôn đóng vai trò <strong>web client</strong>, không phải web server."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-mo-hinh-khach-chu-client-server-cua-tran",
+        "c1-web-server-va-cau-truc-url"
+      ]
+    },
+    {
+      "id": "c1-web-server-va-cau-truc-url",
+      "session": 1,
+      "term": "Web server và cấu trúc URL",
+      "definition": "Web server là một máy tính được cài đặt các phần mềm hỗ trợ để vận hành các trang web trên Internet; máy tính này gọi là máy chủ (server), chứa các tập tin mã nguồn của trang web và dữ liệu liên quan. Chức năng chính là nhận yêu cầu từ web client, xử lý và gửi phản hồi lại kết quả.",
+      "key_points": [
+        "Phần mềm tạo web server phổ biến: <strong>Apache</strong> (Apache HTTP Server), <strong>Nginx</strong> (Engine-X), <strong>IIS</strong> (Internet Information Services), <strong>Apache Tomcat</strong>.",
+        "Việc chọn phần mềm web server tuỳ theo ngôn ngữ lập trình dùng để xây dựng trang web.",
+        "Web server dựa vào <strong>URL</strong> (Uniform Resource Locator - hệ thống định danh tài nguyên trên web, có thể xem như địa chỉ của trang web) để xác định tập tin mã nguồn cần thực thi.",
+        "Cấu trúc URL đầy đủ: <pre><code>scheme://&lt;host&gt;[:port][&lt;path&gt;[?&lt;querystring&gt;]]</code></pre>",
+        "<strong>scheme</strong>: giao thức truyền tải siêu văn bản - <code>http</code> hoặc <code>https</code>.",
+        "<strong>host</strong>: tên miền hoặc địa chỉ IP của web server. IP là duy nhất trên Internet nhưng khó nhớ nên dùng tên miền đại diện cho địa chỉ IP.",
+        "<strong>port</strong>: cổng kết nối. Một máy chủ có thể cung cấp nhiều dịch vụ (web, cơ sở dữ liệu, email…) nên cần chỉ rõ cổng. Nếu không ghi, cổng mặc định của dịch vụ web là <strong>80</strong> (HTTP) - HTTPS mặc định là 443.",
+        "<strong>path</strong>: đường dẫn tới trang web cần truy cập.",
+        "<strong>querystring</strong>: dữ liệu gửi đến web server (các cặp <code>khoá=giá trị</code>, nối bằng <code>&amp;</code>).",
+        "Ví dụ: <pre><code>http://laptrinhweb.edu.vn:8080/xuly.php?key=value\nscheme = http | host = laptrinhweb.edu.vn | port = 8080\npath = /xuly.php | querystring = key=value</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-web-client",
+        "c1-web-hosting"
+      ]
+    },
+    {
+      "id": "c1-web-hosting",
+      "session": 1,
+      "term": "Web hosting",
+      "definition": "Web hosting là dịch vụ cung cấp không gian máy chủ để lưu trữ nội dung và dữ liệu liên quan của trang web, giúp người dùng truy cập được trang web qua Internet.",
+      "key_points": [
+        "Nhà cung cấp hosting không chỉ cho thuê không gian lưu trữ mà còn cài đặt và quản lý các dịch vụ hỗ trợ:",
+        "<strong>Bảo mật</strong>: tường lửa, chứng chỉ SSL (Secure Sockets Layer), hệ thống phát hiện xâm nhập.",
+        "<strong>Sao lưu dữ liệu</strong>: sao lưu hằng ngày, hằng tuần hoặc theo yêu cầu.",
+        "<strong>Phục hồi dữ liệu</strong>: khôi phục từ bản sao lưu khi có lỗi phần mềm, tấn công mạng hoặc mất dữ liệu.",
+        "<strong>Hỗ trợ kỹ thuật</strong>: cấu hình máy chủ, cài phần mềm, xử lý sự cố.",
+        "<strong>Giám sát và bảo trì</strong>: theo dõi liên tục, bảo trì định kỳ, cập nhật bản vá bảo mật.",
+        "Bốn loại hosting phổ biến:<table><thead><tr><th>Loại</th><th>Đặc điểm</th><th>Phù hợp</th></tr></thead><tbody><tr><td><strong>Shared Hosting</strong></td><td>Nhiều trang web dùng chung một web server, chia sẻ bộ nhớ và băng thông</td><td>Website nhỏ và trung bình, chi phí thấp</td></tr><tr><td><strong>VPS Hosting</strong></td><td>Một máy chủ vật lý chia thành nhiều máy chủ ảo độc lập; nhiều tài nguyên và quyền kiểm soát hơn shared</td><td>Website cần tuỳ biến, lưu lượng vừa</td></tr><tr><td><strong>Dedicated Hosting</strong></td><td>Một máy chủ vật lý dành riêng cho một khách hàng</td><td>Website lớn, lưu lượng truy cập cao</td></tr><tr><td><strong>Cloud Hosting</strong></td><td>Mạng lưới nhiều máy chủ, tài nguyên linh hoạt, mở rộng cao, độ tin cậy cao</td><td>Hệ thống cần co giãn theo tải</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-web-server-va-cau-truc-url",
+        "c1-trang-web-tinh-va-trang-web-dong"
+      ]
+    },
+    {
+      "id": "c1-trang-web-tinh-va-trang-web-dong",
+      "session": 1,
+      "term": "Trang web tĩnh và trang web động",
+      "definition": "Web server là trung tâm của mọi hoạt động trên một trang web: tiếp nhận yêu cầu, tìm kiếm, truy xuất và gửi lại dữ liệu cần thiết. Tuỳ cách nội dung được tạo ra và cập nhật, trang web chia thành hai dạng chính: trang web tĩnh và trang web động.",
+      "key_points": [
+        "Khi phát triển trang web động cần phân biệt <strong>front-end</strong> (mọi thứ người dùng nhìn thấy và tương tác trên trình duyệt) và <strong>back-end</strong> (xử lý tại web server mà người dùng không thấy)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-web-hosting",
+        "c1-trang-web-tinh"
+      ]
+    },
+    {
+      "id": "c1-trang-web-tinh",
+      "session": 1,
+      "term": "Trang web tĩnh",
+      "definition": "Trang web tĩnh có nội dung cố định đối với tất cả người dùng tại cùng một thời điểm; tương tác giữa người dùng với trang web tĩnh thường hạn chế.",
+      "key_points": [
+        "Viết chủ yếu bằng <strong>HTML</strong>, có thể kết hợp <strong>CSS</strong> và <strong>JavaScript</strong> để định dạng và thực hiện một số tương tác đơn giản.",
+        "Mọi nội dung được mã hoá trực tiếp trong tập tin HTML → muốn đổi nội dung phải sửa tập tin mã nguồn.",
+        "<strong>Không kết nối cơ sở dữ liệu</strong>, không xử lý dữ liệu tại web server: web server chỉ tìm đúng tập tin HTML và trả nguyên văn về trình duyệt.",
+        "Ưu điểm: tải nhanh, dễ triển khai, không cần cấu hình phức tạp. Nhược điểm: khó cập nhật, tương tác hạn chế.",
+        "Luồng: Trình duyệt → yêu cầu <code>trang.html</code> → Web server tìm tập tin → trả HTML → Trình duyệt hiển thị."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-trang-web-tinh-va-trang-web-dong",
+        "c1-trang-web-dong"
+      ]
+    },
+    {
+      "id": "c1-trang-web-dong",
+      "session": 1,
+      "term": "Trang web động",
+      "definition": "Trang web động có khả năng tuỳ biến nội dung theo từng đối tượng người dùng: cùng một trang web nhưng mỗi người dùng có thể thấy nội dung khác nhau (ví dụ: cùng đăng nhập nhưng thông tin cá nhân khác nhau).",
+      "key_points": [
+        "Mã nguồn dùng thêm ngôn ngữ lập trình bên cạnh HTML/CSS: <strong>PHP, Java, JavaScript, Python, C#</strong>…",
+        "Nhờ ngôn ngữ lập trình, trang động truy cập và thao tác cơ sở dữ liệu, xử lý dữ liệu người dùng gửi đến.",
+        "Với PHP, luồng xử lý: web server nhận yêu cầu → tìm tập tin <code>.php</code> → gọi <strong>bộ xử lý PHP</strong> thực thi mã → kết quả trả về dưới dạng <strong>HTML</strong> → trình duyệt hiển thị.",
+        "Cho phép tương tác phức tạp: đăng nhập, cập nhật thông tin, dùng hệ quản trị nội dung (CMS).",
+        "Hạn chế: chi phí cao hơn, người phát triển cần chuyên môn lập trình, phải quan tâm cài đặt dịch vụ trên server và bảo mật.<table><thead><tr><th>Tiêu chí</th><th>Web tĩnh</th><th>Web động</th></tr></thead><tbody><tr><td>Nội dung</td><td>Cố định cho mọi người dùng</td><td>Thay đổi theo người dùng/thời điểm</td></tr><tr><td>Công nghệ</td><td>HTML, CSS, (JS)</td><td>HTML, CSS, JS + ngôn ngữ back-end + CSDL</td></tr><tr><td>Xử lý tại server</td><td>Không, chỉ trả tập tin</td><td>Có, thực thi mã rồi trả HTML</td></tr><tr><td>Cơ sở dữ liệu</td><td>Không</td><td>Thường có</td></tr><tr><td>Chi phí/độ phức tạp</td><td>Thấp, dễ triển khai</td><td>Cao hơn, cần chuyên môn</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-trang-web-tinh",
+        "c1-lap-trinh-front-end"
+      ]
+    },
+    {
+      "id": "c1-lap-trinh-front-end",
+      "session": 1,
+      "term": "Lập trình front-end",
+      "definition": "Lập trình front-end là xây dựng giao diện hiển thị của trang web, tập trung vào trải nghiệm người dùng: giao diện thân thiện, dễ sử dụng, trực quan, hấp dẫn.",
+      "key_points": [
+        "<strong>HTML</strong>: nền tảng xây dựng cấu trúc tổng thể và các thành phần cơ bản bằng thẻ (tags) và thuộc tính.",
+        "<strong>CSS</strong>: định dạng cách hiển thị - màu sắc, phông chữ, bố cục, hiệu ứng; tách biệt nội dung và định dạng; tạo giao diện tương thích nhiều thiết bị và trình duyệt.",
+        "<strong>JavaScript</strong>: xử lý tương tác - sự kiện nhấp chuột, di chuyển chuột, hiển thị thông báo, kiểm tra dữ liệu nhập, tạo hiệu ứng động. JavaScript còn dùng được ở back-end thông qua các công nghệ và thư viện hỗ trợ."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-trang-web-dong",
+        "c1-lap-trinh-back-end"
+      ]
+    },
+    {
+      "id": "c1-lap-trinh-back-end",
+      "session": 1,
+      "term": "Lập trình back-end",
+      "definition": "Lập trình back-end là thành phần thiết yếu của web động: xây dựng và quản lý các chức năng xử lý yêu cầu mà người dùng gửi đến web server, bằng một ngôn ngữ cụ thể như PHP, Java, Python…",
+      "key_points": [
+        "Từ các yêu cầu chức năng đã phân tích, lập trình viên tạo tập tin mã nguồn và viết mã lệnh thực hiện từng chức năng.",
+        "Cần kiến thức sâu về lập trình <strong>và cơ sở dữ liệu</strong> vì đa số chức năng đều truy xuất/cập nhật dữ liệu từ CSDL.",
+        "Phải chú trọng <strong>bảo mật và phân quyền</strong>: mã hoá dữ liệu, kiểm tra tính hợp lệ của dữ liệu, xác thực người dùng, quản lý quyền truy cập.<table><thead><tr><th>Tiêu chí</th><th>Front-end</th><th>Back-end</th></tr></thead><tbody><tr><td>Chạy ở đâu</td><td>Trình duyệt người dùng</td><td>Web server</td></tr><tr><td>Mục tiêu</td><td>Giao diện, trải nghiệm</td><td>Xử lý nghiệp vụ, dữ liệu, bảo mật</td></tr><tr><td>Công nghệ</td><td>HTML, CSS, JavaScript</td><td>PHP, Java, Python, C#, CSDL</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-lap-trinh-front-end",
+        "c1-ngon-ngu-html"
+      ]
+    },
+    {
+      "id": "c1-ngon-ngu-html",
+      "session": 1,
+      "term": "Ngôn ngữ HTML",
+      "definition": "HTML (HyperText Markup Language) là ngôn ngữ đánh dấu tiêu chuẩn để xây dựng cấu trúc nội dung cho trang web, công bố lần đầu năm 1991 bởi Tim Berners-Lee.",
+      "key_points": [
+        "HTML dùng các <strong>thẻ (tags)</strong> để tạo đoạn văn, hình ảnh, tiêu đề, liên kết, bảng biểu. HTML1 có 18 thẻ cơ bản; phiên bản mới nhất là <strong>HTML5</strong> với hơn 100 thẻ.",
+        "Cấu trúc cơ bản của một trang HTML: <pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;meta charset=\"UTF-8\"&gt;\n  &lt;title&gt;Tiêu đề trang web&lt;/title&gt;\n  &lt;!-- Các khai báo CSS hoặc liên kết đến tập tin CSS, JavaScript --&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;!-- Nội dung của trang web --&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre>",
+        "Nội dung trang web nằm trong cặp thẻ <code>&lt;body&gt;&lt;/body&gt;</code>; chú thích viết trong <code>&lt;!-- ... --&gt;</code>.",
+        "Tạo trang HTML: dùng trình soạn thảo mã nguồn (Visual Studio Code, Sublime Text, Notepad++), lưu tập tin có phần mở rộng <strong>.html</strong>.",
+        "Các phần tử thường là <strong>cặp thẻ</strong> (thẻ mở + thẻ đóng): <pre><code>&lt;p&gt;Đại học Ngân hàng&lt;/p&gt;\n&lt;b&gt;Xin chào&lt;/b&gt;</code></pre>",
+        "Một số thẻ là <strong>thẻ đơn</strong> (không cần thẻ đóng), thường để chèn đối tượng hoặc chức năng đặc biệt: <pre><code>&lt;img src=\"image.jpg\" alt=\"Mô tả hình ảnh\"&gt;\n&lt;br&gt; &lt;!-- xuống dòng --&gt;</code></pre>",
+        "<strong>Thuộc tính</strong> cung cấp thêm thông tin/cấu hình cho thẻ, cú pháp <code>tên=\"giá trị\"</code>: <pre><code>&lt;a href=\"http://hub.edu.vn\" target=\"_blank\"&gt;ĐHNH&lt;/a&gt;</code></pre> Thẻ <code>&lt;a&gt;</code> có hai thuộc tính <code>href</code> (địa chỉ liên kết) và <code>target</code> (<code>_blank</code> mở tab mới)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-lap-trinh-back-end",
+        "c1-cac-the-html-pho-bien"
+      ]
+    },
+    {
+      "id": "c1-cac-the-html-pho-bien",
+      "session": 1,
+      "term": "Các thẻ HTML phổ biến",
+      "definition": "Phần này tổng hợp các thẻ thường dùng trong giáo trình. Hãy gõ thử từng ví dụ vào một tập tin <code>.html</code> và mở bằng trình duyệt.",
+      "key_points": [
+        "<table><thead><tr><th>Thẻ</th><th>Chức năng</th><th>Ví dụ</th></tr></thead><tbody><tr><td>&lt;a&gt;</td><td>Siêu liên kết</td><td>&lt;a href=\"http://hub.edu.vn\" target=\"_blank\"&gt;ĐHNH&lt;/a&gt;</td></tr><tr><td>&lt;audio&gt;</td><td>Chèn âm thanh</td><td>&lt;audio src=\"file.mp3\" controls&gt;…&lt;/audio&gt;</td></tr><tr><td>&lt;video&gt;</td><td>Chèn video</td><td>&lt;video src=\"file.mp4\" controls&gt;…&lt;/video&gt;</td></tr><tr><td>&lt;b&gt;, &lt;i&gt;, &lt;u&gt;</td><td>In đậm, nghiêng, gạch chân</td><td>&lt;b&gt;Đậm&lt;/b&gt; &lt;i&gt;Nghiêng&lt;/i&gt; &lt;u&gt;Gạch chân&lt;/u&gt;</td></tr><tr><td>&lt;br&gt;</td><td>Xuống dòng</td><td>Đại học Ngân hàng&lt;br&gt;TP.HCM</td></tr><tr><td>&lt;button&gt;</td><td>Tạo nút</td><td>&lt;button&gt;Đăng ký&lt;/button&gt;</td></tr><tr><td>&lt;h1&gt;…&lt;h6&gt;</td><td>Tiêu đề (h1 lớn nhất)</td><td>&lt;h1&gt;Đại học Ngân hàng&lt;/h1&gt;</td></tr><tr><td>&lt;img&gt;</td><td>Chèn hình ảnh</td><td>&lt;img src=\"folder/filename.png\" width=\"200px\"&gt;</td></tr><tr><td>&lt;p&gt;</td><td>Đoạn văn</td><td>&lt;p&gt;56 Hoàng Diệu 2, TP.Thủ Đức&lt;/p&gt;</td></tr><tr><td>&lt;div&gt;</td><td>Nhóm các phần tử để tạo bố cục</td><td>&lt;div&gt;&lt;h1&gt;…&lt;/h1&gt;&lt;p&gt;…&lt;/p&gt;&lt;/div&gt;</td></tr><tr><td>&lt;input&gt;</td><td>Ô nhập liệu</td><td>type = text | checkbox | radio | password | number</td></tr></tbody></table>",
+        "<strong>Bảng (<code>&lt;table&gt;</code>)</strong>: <code>&lt;tr&gt;</code> tạo dòng; <code>&lt;th&gt;</code> ô tiêu đề (thường nằm trong <code>&lt;thead&gt;</code>); <code>&lt;td&gt;</code> ô dữ liệu (nằm trong <code>&lt;tbody&gt;</code>). <pre><code>&lt;table&gt;\n  &lt;thead&gt;\n    &lt;tr&gt;&lt;th&gt;MSSV&lt;/th&gt;&lt;th&gt;Họ tên&lt;/th&gt;&lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;&lt;td&gt;030002001&lt;/td&gt;&lt;td&gt;Nguyễn A&lt;/td&gt;&lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>",
+        "Lỗi thường gặp: quên thẻ đóng; viết sai thẻ đóng (ví dụ mở <code>&lt;h2&gt;</code> nhưng đóng <code>&lt;/h3&gt;</code>); đặt nội dung ngoài <code>&lt;body&gt;</code>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-ngon-ngu-html",
+        "c1-ngon-ngu-css"
+      ]
+    },
+    {
+      "id": "c1-ngon-ngu-css",
+      "session": 1,
+      "term": "Ngôn ngữ CSS",
+      "definition": "CSS (Cascading Style Sheets) là ngôn ngữ điều chỉnh cách trình bày các phần tử trong ngôn ngữ đánh dấu, đặc biệt là HTML. HTML xây dựng cấu trúc và nội dung; CSS định dạng và bố trí để giao diện thân thiện, trực quan.",
+      "key_points": [
+        "Lợi ích: tiết kiệm thời gian, nâng cao chất lượng giao diện, mã nguồn gọn gàng, linh hoạt trong thiết kế và bảo trì.",
+        "Cú pháp: các cặp <code>thuộc-tính: giá-trị;</code> ngăn cách bằng dấu chấm phẩy. <pre><code>body {\n  color: #15c;\n  font-size: 20px;\n  margin: 5px;\n}</code></pre>",
+        "Ba phương pháp tích hợp CSS vào trang web: <strong>Inline</strong>, <strong>Internal</strong>, <strong>External</strong>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-cac-the-html-pho-bien",
+        "c1-inline-css"
+      ]
+    },
+    {
+      "id": "c1-inline-css",
+      "session": 1,
+      "term": "Inline CSS",
+      "definition": "Thêm thuộc tính <code>style</code> vào ngay bên trong thẻ cần định dạng.",
+      "key_points": [
+        "Ví dụ: <pre><code>&lt;h3 style=\"color:#15c; margin:5px;\"&gt;\n  ĐĂNG NHẬP HỆ THỐNG\n&lt;/h3&gt;</code></pre>",
+        "<code>color</code> định dạng màu chữ; <code>margin</code> định dạng khoảng cách (ở đây 5 pixel) với các thành phần xung quanh.",
+        "Khi dùng: chỉnh nhanh một phần tử đơn lẻ; không nên lạm dụng vì khó bảo trì."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-ngon-ngu-css",
+        "c1-internal-css-va-selector"
+      ]
+    },
+    {
+      "id": "c1-internal-css-va-selector",
+      "session": 1,
+      "term": "Internal CSS và selector",
+      "definition": "Đặt cặp thẻ <code>&lt;style&gt;&lt;/style&gt;</code> bên trong <code>&lt;head&gt;&lt;/head&gt;</code> và viết mã CSS bên trong cặp thẻ đó.",
+      "key_points": [
+        "Dạng tổng quát: <pre><code>selector {\n  thuộc tính 1: giá trị 1;\n  thuộc tính 2: giá trị 2;\n}</code></pre>",
+        "<strong>Selector</strong> chọn các phần tử HTML muốn định dạng: theo tên thẻ (<code>h3</code>, <code>input</code>, <code>button</code>), theo class, theo ID hoặc kết hợp.",
+        "Selector theo tên thẻ: <pre><code>&lt;head&gt;\n  &lt;style&gt;\n    h3 { color:#15c; margin:5px; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h3&gt;ĐĂNG NHẬP HỆ THỐNG&lt;/h3&gt;\n&lt;/body&gt;</code></pre>",
+        "<strong>Class selector</strong>: thêm thuộc tính <code>class</code> cho thẻ, dùng dấu chấm <code>.</code> trong CSS; áp dụng cho <strong>nhiều</strong> phần tử có chung kiểu định dạng, giữ thiết kế nhất quán, tránh lặp mã. <pre><code>.tieu-de { color:#15c; margin:5px; }\n&lt;h2 class=\"tieu-de\"&gt;HUB&lt;/h2&gt;\n&lt;h3 class=\"tieu-de\"&gt;ĐĂNG NHẬP HỆ THỐNG&lt;/h3&gt;</code></pre>",
+        "<strong>ID selector</strong>: dùng thuộc tính <code>id</code> và dấu thăng <code>#</code>; mỗi giá trị <code>id</code> chỉ nên xuất hiện <strong>một lần</strong> trong trang, dùng cho phần tử có đặc điểm riêng. <pre><code>#tieu-de { color:#15c; margin:5px; }\n&lt;h3 id=\"tieu-de\"&gt;ĐĂNG NHẬP HỆ THỐNG&lt;/h3&gt;</code></pre>",
+        "Mẹo nhớ: <strong>class = chấm (.) dùng nhiều lần; id = thăng (#) duy nhất</strong>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-inline-css",
+        "c1-external-css-va-thu-vien-css"
+      ]
+    },
+    {
+      "id": "c1-external-css-va-thu-vien-css",
+      "session": 1,
+      "term": "External CSS và thư viện CSS",
+      "definition": "External CSS dùng tập tin riêng có phần mở rộng <strong>.css</strong>, liên kết vào HTML bằng thẻ <code>&lt;link&gt;</code> đặt trong <code>&lt;head&gt;</code>.",
+      "key_points": [
+        "Ví dụ: <pre><code>&lt;head&gt;\n  &lt;link rel=\"stylesheet\" href=\"resources/style.css\"&gt;\n&lt;/head&gt;</code></pre>",
+        "Một tập tin CSS dùng chung được cho nhiều trang → dễ bảo trì nhất, phù hợp dự án thực tế (kể cả đồ án nhóm).",
+        "Thường dùng cho các <strong>thư viện CSS</strong> như Bootstrap, Tailwind CSS, Animate CSS - cung cấp sẵn class selector để thiết kế nhanh; cần đọc tài liệu từng thư viện vì mỗi thư viện có cấu trúc selector riêng.",
+        "Ví dụ dùng Bootstrap: <pre><code>&lt;link rel=\"stylesheet\"\n  href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"&gt;\n&lt;button class=\"btn btn-primary\"&gt;Đăng nhập&lt;/button&gt;</code></pre> <code>btn</code> định dạng cơ bản cho nút, <code>btn-primary</code> định dạng màu nền.",
+        "<table><thead><tr><th>Phương pháp</th><th>Vị trí đặt CSS</th><th>Phạm vi</th><th>Khi dùng</th></tr></thead><tbody><tr><td>Inline</td><td>Thuộc tính <code>style</code> trong thẻ</td><td>1 phần tử</td><td>Chỉnh nhanh</td></tr><tr><td>Internal</td><td>Thẻ <code>&lt;style&gt;</code> trong <code>&lt;head&gt;</code></td><td>1 trang</td><td>Trang đơn lẻ</td></tr><tr><td>External</td><td>Tập tin <code>.css</code> + <code>&lt;link&gt;</code></td><td>Nhiều trang</td><td>Dự án, dùng thư viện</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-internal-css-va-selector",
+        "c1-mot-so-thuoc-tinh-css-co-ban"
+      ]
+    },
+    {
+      "id": "c1-mot-so-thuoc-tinh-css-co-ban",
+      "session": 1,
+      "term": "Một số thuộc tính CSS cơ bản",
+      "definition": "Bên cạnh thư viện CSS, bạn có thể tự dùng các thuộc tính CSS để cá nhân hoá giao diện.",
+      "key_points": [
+        "<table><thead><tr><th>Nhóm</th><th>Thuộc tính</th><th>Mô tả</th><th>Ví dụ</th></tr></thead><tbody><tr><td rowspan=\"8\">Văn bản</td><td>color</td><td>Màu văn bản</td><td>color: blue;</td></tr><tr><td>font-size</td><td>Kích thước</td><td>font-size: 15px;</td></tr><tr><td>font-weight</td><td>Độ đậm</td><td>font-weight: bold;</td></tr><tr><td>font-style</td><td>Độ nghiêng</td><td>font-style: italic;</td></tr><tr><td>line-height</td><td>Khoảng cách dòng</td><td>line-height: 1.5</td></tr><tr><td>text-decoration</td><td>Trang trí (gạch chân…)</td><td>text-decoration: underline;</td></tr><tr><td>text-indent</td><td>Khoảng trống đầu văn bản</td><td>text-indent: 10px;</td></tr><tr><td>text-transform / text-align</td><td>Chữ hoa-thường / canh lề</td><td>text-transform: uppercase; text-align: center;</td></tr><tr><td rowspan=\"9\">Mô hình hộp</td><td>width, height</td><td>Chiều rộng, chiều cao</td><td>width: 200px; height: 100px;</td></tr><tr><td>padding</td><td>Khoảng cách giữa phần tử và nội dung bên trong</td><td>padding: 10px;</td></tr><tr><td>margin</td><td>Khoảng cách giữa phần tử với thành phần khác</td><td>margin: 15px;</td></tr><tr><td>overflow</td><td>Xử lý khi nội dung bị tràn</td><td>overflow: scroll;</td></tr><tr><td>float</td><td>Đẩy phần tử sang trái/phải</td><td>float: left;</td></tr><tr><td>display</td><td>Cách hiển thị</td><td>display: inline;</td></tr><tr><td>visibility</td><td>Ẩn/hiện phần tử</td><td>visibility: hidden;</td></tr><tr><td>vertical-align</td><td>Sắp xếp nội dung theo chiều dọc</td><td>vertical-align: middle;</td></tr><tr><td colspan=\"3\">Phân biệt: padding nằm TRONG viền (đệm nội dung); margin nằm NGOÀI viền (cách phần tử khác).</td></tr><tr><td rowspan=\"5\">Nền và viền</td><td>border (-top/-right/-bottom/-left)</td><td>Viền (toàn bộ hoặc từng phía)</td><td>border: 1px solid #000;</td></tr><tr><td>border-radius</td><td>Bo góc viền</td><td>border-radius: 8px;</td></tr><tr><td>box-shadow</td><td>Đổ bóng</td><td>box-shadow: 2px 2px 6px gray;</td></tr><tr><td>background-color</td><td>Màu nền</td><td>background-color: yellow;</td></tr><tr><td>background-image</td><td>Ảnh nền</td><td>background-image: url(\"paper.gif\");</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-external-css-va-thu-vien-css",
+        "c1-thuc-hanh-tu-hoc-trang-web-dau-tien"
+      ]
+    },
+    {
+      "id": "c1-thuc-hanh-tu-hoc-trang-web-dau-tien",
+      "session": 1,
+      "term": "Thực hành tự học: Trang web đầu tiên",
+      "definition": "Mục tiêu: sau phần này bạn tự dựng được một trang HTML có định dạng CSS và hiểu cách trình duyệt hiển thị nó.",
+      "key_points": [
+        "Bước 1: Mở trình soạn thảo (VS Code/Notepad++), tạo tập tin <code>index.html</code>.",
+        "Bước 2: Gõ khung HTML cơ bản và thêm nội dung: <pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;meta charset=\"UTF-8\"&gt;\n  &lt;title&gt;Trang web đầu tiên&lt;/title&gt;\n  &lt;style&gt;\n    .title { color: red; font-style: italic; }\n    .box-content { border: 1px solid black; padding: 15px; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h2 class=\"title\"&gt;LẬP TRÌNH WEB&lt;/h2&gt;\n  &lt;div class=\"box-content\"&gt;\n    &lt;p&gt;Chào mừng bạn đến với khoá học&lt;/p&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre>",
+        "Bước 3: Mở tập tin bằng trình duyệt (nhấp đúp). Kết quả: tiêu đề đỏ, nghiêng; đoạn văn nằm trong khung viền đen.",
+        "Bước 4 (thử thách): tách CSS ra tập tin <code>style.css</code> (External), thêm một bảng và một danh sách sản phẩm; quan sát sự thay đổi.",
+        "Lưu ý: tập tin HTML thuần chỉ cần trình duyệt; từ Chương 2 bạn sẽ dựng web server để chạy PHP."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-mot-so-thuoc-tinh-css-co-ban",
+        "c1-tong-ket-chuong-va-cau-hoi-tu-on"
+      ]
+    },
+    {
+      "id": "c1-tong-ket-chuong-va-cau-hoi-tu-on",
+      "session": 1,
+      "term": "Tổng kết chương và câu hỏi tự ôn",
+      "definition": "Sau Chương 1 bạn cần nắm: mô hình client–server; vai trò của web client/web server/web hosting; cấu trúc URL; phân biệt web tĩnh/động và front-end/back-end; cấu trúc HTML; ba cách tích hợp CSS.",
+      "key_points": [
+        "<strong>Hỏi:</strong> Trình bày mô hình hoạt động của trang web? <strong>Đáp:</strong> Web client (trình duyệt) gửi HTTP/HTTPS Request tới web server; web server tìm/xử lý tài nguyên (có thể truy xuất CSDL) rồi gửi Response về để trình duyệt hiển thị.",
+        "<strong>Hỏi:</strong> Cấu trúc URL? <strong>Đáp:</strong> <code>scheme://host[:port][path[?querystring]]</code> - port mặc định của web là 80.",
+        "<strong>Hỏi:</strong> Các loại web hosting và khác nhau? <strong>Đáp:</strong> Shared (dùng chung, rẻ), VPS (máy chủ ảo, kiểm soát cao hơn), Dedicated (máy chủ riêng), Cloud (mạng nhiều máy chủ, mở rộng linh hoạt).",
+        "<strong>Hỏi:</strong> Web tĩnh khác web động thế nào? <strong>Đáp:</strong> Tĩnh: nội dung cố định, chỉ HTML/CSS/JS, không CSDL, server chỉ trả tập tin. Động: nội dung thay đổi theo người dùng, dùng ngôn ngữ lập trình + CSDL, server thực thi mã rồi trả HTML.",
+        "<strong>Hỏi:</strong> Ngôn ngữ lập trình đóng vai trò gì trong web động? <strong>Đáp:</strong> Xử lý yêu cầu của người dùng, truy cập/thao tác CSDL và sinh ra HTML phản hồi.",
+        "<strong>Hỏi:</strong> Front-end khác back-end? <strong>Đáp:</strong> Front-end là giao diện và tương tác chạy trên trình duyệt (HTML, CSS, JavaScript); back-end là xử lý tại web server (PHP, Java, Python…, CSDL, bảo mật).",
+        "<strong>Hỏi:</strong> Các phương pháp tích hợp CSS? <strong>Đáp:</strong> Inline (thuộc tính style), Internal (thẻ style trong head), External (tập tin .css + thẻ link)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-thuc-hanh-tu-hoc-trang-web-dau-tien"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận biết khái niệm (17 câu)",
+      "description": "Kiểm tra trí nhớ và nhận diện chính xác các khái niệm, cú pháp nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "ltweb-q002",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "Cấu trúc nào mô tả đúng thứ tự các thành phần trong một URL đầy đủ?",
+          "options": [
+            "A. scheme://host/path?query",
+            "B. host://scheme/path?query",
+            "C. scheme://path/host?query",
+            "D. query://host/path?scheme"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q003",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Trong URL dưới đây, thành phần nào dùng để truyền tham số đến máy chủ? https://www.bookstore.com/products?category=book&id=12",
+          "options": [
+            "A. https",
+            "B. /products",
+            "C. www.bookstore.com",
+            "D. category=book&id=12"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q004",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Trong cấu trúc URL, thành phần host dùng để xác định nội dung nào?",
+          "options": [
+            "A. Máy chủ lưu trữ tài nguyên cần truy cập",
+            "B. Giao thức truyền dữ liệu",
+            "C. Chuỗi tham số gửi đến máy chủ",
+            "D. Vị trí cụ thể của tài nguyên trên máy chủ"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q005",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "URL được viết tắt bởi từ nào sau đây?",
+          "options": [
+            "A. Unique Resource Location",
+            "B. Uniform Resource Location",
+            "C. Uniform Resource Locator",
+            "D. Unique Resource Locator"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q006",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "Giao thức nào sau đây giúp truyền tải siêu văn bản?",
+          "options": [
+            "A. FTP",
+            "B. SMTP",
+            "C. HTTP",
+            "D. POP3"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (HTTP): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q007",
+          "type": "mc",
+          "concept_ref": "c1-trang-web-dong",
+          "question": "Ngôn ngữ nào dưới đây thường được sử dụng để xử lý nghiệp vụ và dữ liệu ở phía máy chủ (back-end)?",
+          "options": [
+            "A. Figma, JavaScript",
+            "B. HTML, CSS",
+            "C. Bootstrap, Tailwind CSS",
+            "D. PHP, Python"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (PHP, Python): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q008",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Trong mô hình khách – chủ (client – server), thành phần nào thường gửi yêu cầu (request) để truy cập tài nguyên trên Internet?",
+          "options": [
+            "A. Máy chủ web (Web Server)",
+            "B. Trình duyệt web (Web Browser)",
+            "C. Hệ quản trị cơ sở dữ liệu",
+            "D. Bộ định tuyến (Router)"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Trình duyệt web (Web Browser)): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q009",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Khi máy chủ trả về mã trạng thái (HTTP Status Code) 404 trong HTTP Response, điều này có ý nghĩa gì?",
+          "options": [
+            "A. Máy chủ không tìm thấy tài nguyên (resource) được yêu cầu.",
+            "B. Yêu cầu đã được xử lý thành công và trả về kết quả.",
+            "C. Máy chủ đang xử lý yêu cầu và chưa hoàn tất.",
+            "D. Máy chủ gặp lỗi nội bộ khi xử lý yêu cầu."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Mã trạng thái HTTP 404 (Not Found) báo hiệu web server không tìm thấy tài nguyên theo URL mà trình duyệt yêu cầu."
+        },
+        {
+          "id": "ltweb-q011",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Khi máy chủ trả về mã trạng thái (HTTP Status Code) 200 trong HTTP Response, điều này có ý nghĩa gì?",
+          "options": [
+            "A. Máy chủ xử lý yêu cầu thành công.",
+            "B. Máy chủ không tìm thấy tài nguyên yêu cầu.",
+            "C. Máy chủ đang tiếp tục xử lý yêu cầu.",
+            "D. Máy chủ gặp lỗi khi xử lý yêu cầu."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Mã trạng thái HTTP 200 (OK) cho biết web server đã tiếp nhận và xử lý yêu cầu HTTP thành công."
+        },
+        {
+          "id": "ltweb-q012",
+          "type": "mc",
+          "concept_ref": "c1-ngon-ngu-html",
+          "question": "HTTP là viết tắt của từ gì?",
+          "options": [
+            "A. HyperText Transfer Protocol",
+            "B. HyperText Markup Language",
+            "C. Hyper Transfer Protocol",
+            "D. Hybrid Text Transfer Protocol"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (HyperText Transfer Protocol): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q013",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "HTTP là gì?",
+          "options": [
+            "A. Là ngôn ngữ đánh dấu siêu văn bản.",
+            "B. Là ngôn ngữ lập trình back end.",
+            "C. Là giao thức chuyển giao siêu văn bản trên web.",
+            "D. Là giao thức truyền tập tin."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Là giao thức chuyển giao siêu văn bản trên web.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q021",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Phát biểu nào sau đây là đúng về Web Server?",
+          "options": [
+            "A. Web Server là phần mềm dùng để lưu trữ mã HTML, không tham gia vào quá trình xử lý yêu cầu từ trình duyệt.",
+            "B. Web Server luôn trả về mã HTML cho trình duyệt, không trả về dữ liệu dạng CSS, JavaScript, hình ảnh, JSON hoặc tập tin khác.",
+            "C. Web Server là chương trình chạy trên trình duyệt để gửi yêu cầu HTTP đến máy chủ và hiển thị nội dung website.",
+            "D. Web Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Web Client, xử lý hoặc chuyển tiếp yêu cầu và trả phản hồi tương ứng."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Web Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Web Client, xử lý hoặc chuyển tiếp yêu cầu và trả phản hồi tương ứng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q022",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Phát biểu nào sau đây là đúng về Web Client?",
+          "options": [
+            "A. Web Client là thành phần phía người dùng có nhiệm vụ gửi yêu cầu đến Web Server, nhận phản hồi và hiển thị nội dung web cho người dùng",
+            "B. Web Client là máy tính trung gian có nhiệm vụ xử lý yêu cầu, truy xuất cơ sở dữ liệu và trả dữ liệu cho trình duyệt.",
+            "C. Web Client là nơi lưu trữ mã nguồn website, xử lý nghiệp vụ phía máy chủ và quản lý các kết nối đến cơ sở dữ liệu.",
+            "D. Web Client là hệ thống dùng để triển khai website, quản lý tài nguyên máy chủ và phục vụ đồng thời nhiều yêu cầu truy cập."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Web Client là thành phần phía người dùng có nhiệm vụ gửi yêu cầu đến Web Server, nhận phản hồi và hiển thị nội dung web cho người dùng): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q023",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "URL là gì?",
+          "options": [
+            "A. Là giao thức truyền tải siêu văn bản.",
+            "B. Là đường dẫn chỉ tới một trang web cụ thể trên Internet.",
+            "C. Là địa chỉ của một máy tính trên internet.",
+            "D. Là giao thức truyền tải web."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q024",
+          "type": "mc",
+          "concept_ref": "c1-tong-ket-chuong-va-cau-hoi-tu-on",
+          "question": "Liên kết nào sau đây là URL?",
+          "options": [
+            "A. ftp://ftp.hp.com/pub/caps-softpaq/cmit/softpaq/setup.exe",
+            "B. http://buh.edu.vn/gioi-thieu/danh-ba-don-vi.html",
+            "C. https://www.youtube.com/watch?v=eODJpny8Yxs&feature=share",
+            "D. Cả 3 link trên đều là URL."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q025",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Trong mô hình Client-Server, Client được hiểu là gì?",
+          "options": [
+            "A. Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.",
+            "B. Client là người sử dụng trực tiếp truy cập website và thực hiện các thao tác trên giao diện.",
+            "C. Client là máy chủ có nhiệm vụ tiếp nhận yêu cầu, xử lý dữ liệu và trả kết quả cho người dùng.",
+            "D. Client là chương trình phía Server dùng để biên dịch hoặc thực thi mã nguồn như PHP, ASP.NET hoặc JSP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q026",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Trong mô hình Client-Server, Server được hiểu là gì?",
+          "options": [
+            "A. Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Client, xử lý yêu cầu và trả kết quả phản hồi.",
+            "B. Server là bộ mã nguồn website được viết bằng PHP, ASP.NET hoặc JSP và được tải lên hosting.",
+            "C. Server là trình duyệt web dùng để gửi yêu cầu truy cập website và hiển thị nội dung cho người dùng.",
+            "D. Server là người dùng cuối thực hiện thao tác truy cập và tương tác với website."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Client, xử lý yêu cầu và trả kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Thông hiểu & Phân tích (5 câu)",
+      "description": "Phân biệt, giải thích nguyên lý hoạt động và so sánh các thành phần kỹ thuật.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "ltweb-q001",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Phát biểu nào sau đây không đúng về Web Server?",
+          "options": [
+            "A. Cho phép tiếp nhận yêu cầu từ trình duyệt thông qua các giao thức như HTTP hoặc HTTPS và phản hồi nội dung tương ứng.",
+            "B. Toàn bộ dữ liệu của website đều được lưu trữ trực tiếp trên Web Server của chính website đó",
+            "C. Có thể hoạt động đồng thời với nhiều website khác nhau trên cùng một máy chủ thông qua cấu hình host.",
+            "D. Một Web Server có thể xử lý đồng thời nhiều yêu cầu từ nhiều người dùng khác nhau."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Toàn bộ dữ liệu của website đều được lưu trữ trực tiếp trên Web Server của chính website đó): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q010",
+          "type": "mc",
+          "concept_ref": "c1-trang-web-dong",
+          "question": "Phát biểu nào dưới đây là đúng với website động?",
+          "options": [
+            "A. URL của mọi trang phải cố định và không thay đổi.",
+            "B. Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.",
+            "C. Chỉ sử dụng HTML và không cần xử lý trên máy chủ.",
+            "D. Mọi phản hồi từ máy chủ đều là tập tin tĩnh."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q014",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "Chọn phát biểu đúng về giao thức HTTP.",
+          "options": [
+            "A. Giao thức HTTP là tập hợp các quy định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông, …) giữa Web Server và trình duyệt Web.",
+            "B. HTTP là địa chỉ của một trang web.",
+            "C. HTTP là một giao thức truyền tải tập tin từ máy tính này đến máy tính khác thông qua một mạng TCP hoặc qua mạng Internet.",
+            "D. HTTP là tên gọi khác của PHP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Giao thức HTTP là tập hợp các quy định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông, …) giữa Web Server và trình duyệt Web.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q015",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Chọn phát biểu đúng nhất về mô hình hoạt động của website.",
+          "options": [
+            "A. Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.",
+            "B. Website hoạt động theo mô hình Client/Server, trong đó Client trực tiếp truy xuất cơ sở dữ liệu để lấy dữ liệu và hiển thị nội dung website cho người dùng.",
+            "C. Website hoạt động theo mô hình Client/Server, trong đó Server chủ yếu lưu trữ giao diện website, còn việc xử lý yêu cầu và quản lý dữ liệu được thực hiện hoàn toàn ở phía Client.",
+            "D. Website hoạt động theo mô hình Client/Server, trong đó Web Server và Database Server luôn phải được triển khai trên cùng một máy chủ vật lý để phục vụ nhiều người dùng truy cập đồng thời."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q016",
+          "type": "mc",
+          "concept_ref": "c1-web-client",
+          "question": "Chọn phát biểu đúng về Website tĩnh.",
+          "options": [
+            "A. Nội dung trang web được tạo mới mỗi lần truy cập dựa trên xử lý phía máy chủ.",
+            "B. Nội dung trang web luôn thay đổi theo dữ liệu người dùng nhập vào.",
+            "C. Mọi trang web tĩnh đều phải sử dụng cơ sở dữ liệu để lưu nội dung.",
+            "D. Nội dung trang web được gửi trực tiếp từ máy chủ đến trình duyệt mà không cần xử lý tại phía máy chủ trước khi phản hồi."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Nội dung trang web được gửi trực tiếp từ máy chủ đến trình duyệt mà không cần xử lý tại phía máy chủ trước khi phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế (4 câu)",
+      "description": "Đọc hiểu đoạn mã, dự đoán kết quả thực thi và xử lý tình huống lập trình thực tế.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "ltweb-q017",
+          "type": "mc",
+          "concept_ref": "c1-trang-web-dong",
+          "question": "Chọn phát biểu đúng nhất về website động.",
+          "options": [
+            "A. Website động là website có giao diện tự động thay đổi theo thiết bị truy cập, ví dụ máy tính, máy tính bảng hoặc điện thoại.",
+            "B. Website động là website cho phép người dùng xem nhiều loại nội dung như văn bản, hình ảnh, video và biểu mẫu nhập liệu.",
+            "C. Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.",
+            "D. Website động là website có nội dung thường xuyên được cập nhật bởi người quản trị hoặc lập trình viên."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q018",
+          "type": "mc",
+          "concept_ref": "c1-trang-web-dong",
+          "question": "Đâu là quá trình sau khi trình duyệt yêu cầu truy cập file PHP?",
+          "options": [
+            "A. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho trình duyệt.",
+            "B. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Client sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho Web Server.",
+            "C. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và không cần xử lý gì mà sẽ trả ngay kết quả cho trình duyệt.",
+            "D. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Client sẽ gọi đến file PHP đó, và không cần xử lý gì mà sẽ hiển thị ngay kết quả lên trình duyệt."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q019",
+          "type": "mc",
+          "concept_ref": "c1-web-server-va-cau-truc-url",
+          "question": "Chọn phát biểu đúng nhất về lập trình front-end.",
+          "options": [
+            "A. Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.",
+            "B. Lập trình front end chủ yếu xử lý việc lưu trữ dữ liệu, xác thực người dùng và truy vấn cơ sở dữ liệu trên máy chủ.",
+            "C. Lập trình front end chỉ bao gồm việc thiết kế bố cục giao diện bằng HTML và CSS, không liên quan đến xử lý tương tác bằng JavaScript.",
+            "D. Lập trình front end là quá trình xây dựng toàn bộ hệ thống website, bao gồm giao diện, máy chủ, cơ sở dữ liệu và hạ tầng triển khai."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q020",
+          "type": "mc",
+          "concept_ref": "c1-lap-trinh-front-end",
+          "question": "Chọn phát biểu đúng nhất về lập trình back end.",
+          "options": [
+            "A. Lập trình back end viết mã nguồn chạy trực tiếp trên trình duyệt của người dùng, thường được viết bằng HTML, CSS và JavaScript.",
+            "B. Lập trình back end là thực hiện lưu trữ dữ liệu trong cơ sở dữ liệu, việc xử lý nghiệp vụ được thực hiện hoàn toàn ở phía front end.",
+            "C. Lập trình back end là thực hiện xây dựng giao diện, bố cục, hiệu ứng và các thành phần mà người dùng tương tác trực tiếp trên trình duyệt.",
+            "D. Lập trình back end tập trung xây dựng phần xử lý phía máy chủ để xử lý các yêu cầu từ client và phản hồi kết quả."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Lập trình back end tập trung xây dựng phần xử lý phía máy chủ để xử lý các yêu cầu từ client và phản hồi kết quả.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        }
+      ]
+    }
+  }
+}

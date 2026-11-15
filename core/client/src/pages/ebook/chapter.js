@@ -3,7 +3,11 @@ import { api } from '../../api.js';
 export async function renderEbookChapter(app, { id }) {
   app.innerHTML = `<div class="container page"><div class="loading"><div class="spinner"></div></div></div>`;
   
-  const chapter = await api.get(`/ebook/chapters/${id}`);
+  const [chapter, allChaptersRes] = await Promise.all([
+    api.get(`/ebook/chapters/${id}`),
+    api.get('/ebook/chapters').catch(() => ({ chapters: [] }))
+  ]);
+  const maxChapter = allChaptersRes?.chapters?.length || 5;
   
   app.innerHTML = `
     <div class="container page">
@@ -111,7 +115,7 @@ export async function renderEbookChapter(app, { id }) {
       <!-- Navigation -->
       <div style="display:flex;justify-content:space-between;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
         ${parseInt(id) > 1 ? `<a href="#/ebook/chapter/${parseInt(id)-1}" class="btn btn-secondary">← Chương ${parseInt(id)-1}</a>` : '<div></div>'}
-        ${parseInt(id) < 4 ? `<a href="#/ebook/chapter/${parseInt(id)+1}" class="btn btn-primary">Chương ${parseInt(id)+1} →</a>` : '<div></div>'}
+        ${parseInt(id) < maxChapter ? `<a href="#/ebook/chapter/${parseInt(id)+1}" class="btn btn-primary">Chương ${parseInt(id)+1} →</a>` : '<div></div>'}
       </div>
     </div>
   `;

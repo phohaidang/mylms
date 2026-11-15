@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 7 - Lập trình Web động (Phần 1): Xử lý Web Form, GET/POST & Query String | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 5 (Phần 1) · Buổi 7/9</div>
+    <h1>Buổi 7: Lập trình Web động (Phần 1): Xử lý Web Form, GET/POST & Query String</h1>
+    <p class="hero-sub">CLO1, CLO2 - Xây dựng biểu mẫu HTML Form đa dạng điều khiển, xử lý dữ liệu người dùng gửi lên bằng $_GET/$_POST, truyền tham số qua URL Query String và chống lỗi bảo mật XSS.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> Phần trọng tâm của Chương 5 (8/40 câu đề thi cuối kỳ) · 43 câu trong Ngân hàng câu hỏi thuộc Buổi 7.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Xây dựng biểu mẫu HTML Form đa dạng điều khiển, xử lý dữ liệu người dùng gửi lên bằng $_GET/$_POST, truyền tham số qua URL Query String và chống lỗi bảo mật XSS.
+    </div>
+    <ol>
+      <li>Thiết kế biểu mẫu HTML <strong><code>&lt;form&gt;</code></strong> với đầy đủ các điều khiển: <code>text</code>, <code>password</code>, <code>radio</code> (cùng <code>name</code> để chọn 1), <code>checkbox</code> (<code>name="ten[]"</code> để nhận mảng), <code>select/option</code>, <code>textarea</code>, <code>file</code> và <code>submit</code>.</li>
+      <li>Nắm vững ý nghĩa của thuộc tính <strong><code>action</code></strong> (tập tin xử lý phía server; nếu bỏ trống sẽ gửi về chính trang hiện tại) và <strong><code>method</code></strong> (mặc định là <code>GET</code> nếu không khai báo).</li>
+      <li>Phân biệt toàn diện hai phương thức <strong><code>GET</code> vs <code>POST</code></strong> (vị trí truyền dữ liệu trên URL Query String vs HTTP Request Body, tính bảo mật, giới hạn dung lượng, khả năng bookmark/lưu lịch sử).</li>
+      <li>Sử dụng biến siêu toàn cục <strong><code>$_GET</code></strong> và <strong><code>$_POST</code></strong> (kiểu mảng kết hợp với khóa là thuộc tính <code>name</code> của thẻ input) kết hợp <code>isset()</code>, <code>empty()</code>, <code>htmlspecialchars()</code> để kiểm tra hợp lệ (validate) và giữ lại dữ liệu đã nhập khi form báo lỗi.</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Từ buổi 1 đến buổi 5, dữ liệu trong mã PHP của bạn đều do lập trình viên tự gõ sẵn trong code. Người dùng truy cập chỉ có thể xem chứ chưa thể gửi thông tin tìm kiếm, đăng ký hay đặt hàng lên máy chủ.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Khi người dùng nhập dữ liệu vào biểu mẫu (Web Form) và nhấn nút Gửi (Submit), dữ liệu đi từ trình duyệt (Client) lên máy chủ (Server). Nếu lập trình viên dùng nhầm phương thức <code>GET</code> cho form đổi mật khẩu, toàn bộ mật khẩu sẽ lộ rõ trên thanh địa chỉ URL, lịch sử trình duyệt và nhật ký máy chủ! Ngược lại, nếu không kiểm tra <code>isset()</code> hoặc không lọc dữ liệu đầu vào, website sẽ liên tục báo lỗi <em>Undefined array key</em> hoặc bị tấn công chèn mã độc XSS.</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Cơ chế truyền dữ liệu từ Form HTML sang PHP hoạt động như thế nào, khi nào dùng GET hay POST, và làm sao để xử lý mọi loại ô nhập liệu một cách an toàn?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Hiểu rõ ánh xạ từ thuộc tính <code>name</code> của HTML sang khóa của mảng <code>$_GET</code> / <code>$_POST</code>, dùng <code>GET</code> cho tìm kiếm/lọc/phân trang qua Query String (<code>?key=val</code>), dùng <code>POST</code> cho đăng nhập/đăng ký/thay đổi dữ liệu, và luôn validate dữ liệu phía server.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 75 phút)</div>
+        <div class="timeline-content">
+          <p>Cấu trúc thẻ <code>&lt;form action='...' method='...'&gt;</code>, các điều khiển nhập liệu (textbox, password, radio, checkbox mảng <code>name='vehicle[]'</code>, select, textarea), so sánh chi tiết <code>GET</code> vs <code>POST</code> và cách truy xuất mảng <code>$_GET</code>, <code>$_POST</code>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến Luồng dữ liệu & Bảo mật Form · 95 phút)</div>
+        <div class="timeline-content">
+          <p>Phân tích tình huống lộ mật khẩu qua URL khi dùng GET -> Kỹ thuật gộp Form và mã xử lý PHP vào cùng 1 tập tin -> Kỹ thuật giữ lại dữ liệu người dùng vừa nhập (Sticky Form: <code>value="&lt;?php echo $name; ?&gt;"</code>) và chuyển hướng trang bằng <code>header("Location: ...")</code> kèm Query String.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thực hành Lab Form 3 cấp độ · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Thực hành xây dựng ứng dụng Máy tính 2 số bằng Radio, trang tìm kiếm sản phẩm bằng GET và Form Đăng ký thành viên có kiểm tra hợp lệ (Validate) bằng POST.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>7.1. So sánh phương thức <code>GET</code> và <code>POST</code> theo 5 tiêu chí: vị trí truyền dữ liệu, độ bảo mật, giới hạn dung lượng, khả năng đánh dấu trang (bookmark) và mục đích sử dụng.</li>
+        <li>7.2. Trong thẻ <code>&lt;form&gt;</code>, điều gì xảy ra khi: (a) Không khai báo thuộc tính <code>method</code>? (b) Không khai báo thuộc tính <code>action</code>?</li>
+        <li>7.3. Khóa (key) của mảng <code>$_GET</code> và <code>$_POST</code> được lấy từ thuộc tính nào của thẻ HTML? Vì sao các nút <code>radio</code> cùng nhóm phải đặt cùng thuộc tính <code>name</code>, và làm sao để nhận nhiều giá trị từ nhóm <code>checkbox</code>?</li>
+        <li>7.4. Giải thích ý nghĩa của câu lệnh: <code>echo isset($_GET['name']) ? $_GET['name'] : 'Unknown';</code> và câu lệnh chuyển hướng <code>header('Location: signin.php?error=1');</code>.</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc - Bài 7.4):</strong> Tạo form nhập một chuỗi văn bản và nút Submit; khi gửi bằng POST, dùng PHP chuyển chuỗi thành chữ in hoa (<code>mb_strtoupper</code>) và hiển thị kết quả.</li>
+        <li><strong>Mức Nâng cao (Bài 7.5):</strong> Xây dựng trang <strong>Máy tính cá nhân 2 số</strong> gồm 2 ô nhập số, 4 nút radio chọn phép tính (<code>+, -, *, /</code>) và nút Tính. Kiểm tra lỗi nhập không phải số (<code>is_numeric</code>) và lỗi chia cho 0.</li>
+        <li><strong>Mức Thử thách (Nối đồ án TMĐT - Bài 7.6):</strong> Xây dựng trang <strong>Tìm kiếm & Lọc sản phẩm</strong> (dùng GET qua URL <code>?keyword=...&amp;cat=...</code>) và trang <strong>Đăng ký thành viên</strong> (dùng POST, giữ lại dữ liệu đã nhập khi báo lỗi, chống XSS bằng <code>htmlspecialchars</code>). Hoàn thành Quiz Buổi 7 (43 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

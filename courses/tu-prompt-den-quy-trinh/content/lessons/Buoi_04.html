@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 4: Nâng Cao, An Toàn & Lộ Trình Tương Lai — Petrovietnam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAF7F2;
+  --paper-card: #FFFFFF;
+  --paper-shade: #F2ECE1;
+  --ink: #1B1714;
+  --ink-soft: #4A413A;
+  --rule: #DCD3C1;
+  --oxblood: #7A1F1F;
+  --oxblood-soft: #9B3838;
+  --gold: #B8893A;
+  --gold-soft: #D4A85F;
+  --green: #2F4A36;
+  --blue: #1D4E89;
+  --warm-gray: #7F7365;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  padding: 40px 20px 80px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-red { background: #FDE8E8; color: var(--oxblood); border: 1px solid #F8B4B4; }
+.badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+.badge-blue { background: #E0F2FE; color: var(--blue); border: 1px solid #BAE6FD; }
+.badge-green { background: #DCFCE7; color: var(--green); border: 1px solid #BBF7D0; }
+
+h1.lesson-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.lesson-subtitle {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+
+h2.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 6px;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h3.sub-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.card-box {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.scqa-box {
+  background: #FFFDF9;
+  border-left: 4px solid var(--gold);
+}
+
+.scqa-item {
+  margin-bottom: 12px;
+}
+.scqa-item strong {
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 140px;
+}
+
+.callout-box {
+  background: #FAF5F0;
+  border-left: 4px solid var(--oxblood);
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout-box strong { color: var(--oxblood); }
+
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  background: var(--paper-card);
+}
+.timeline-table th, .timeline-table td {
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  vertical-align: top;
+  text-align: left;
+}
+.timeline-table th {
+  background: var(--paper-shade);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.timeline-table td.time {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--oxblood);
+  white-space: nowrap;
+  width: 90px;
+}
+.timeline-table tr:nth-child(even) td { background: #FCFAF6; }
+
+pre.prompt-block {
+  background: #23201D;
+  color: #EDE7DC;
+  padding: 16px 20px;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.badge-law {
+  background: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header Meta -->
+  <div class="header-meta">
+    <div>Chương trình đào tạo Petrovietnam · AIDK_QT_0001</div>
+    <div>Thời lượng: 180 phút (Chiều Ngày 2)</div>
+  </div>
+
+  <header>
+    <div style="display:flex; gap:8px; margin-bottom:12px;">
+      <span class="badge badge-red">Buổi 4</span>
+      <span class="badge badge-gold">CLO5 · CLO6</span>
+      <span class="badge badge-blue">Safety & Future Roadmap</span>
+    </div>
+    <h1 class="lesson-title">Buổi 4: Nâng Cao, An Toàn & Lộ Trình Tương Lai</h1>
+    <div class="lesson-subtitle">Kỹ thuật Self-check, chủ quyền dữ liệu theo pháp luật Việt Nam, phân loại an toàn 4 mức và lộ trình 5 bước áp dụng thực tế</div>
+  </header>
+
+  <!-- PHẦN I: MỤC TIÊU BUỔI HỌC (BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">I. Mục tiêu buổi học</h2>
+  <div class="card-box">
+    <p>Sau khi kết thúc Buổi 4, học viên nắm vững và thực thi được các chuẩn đầu ra sau:</p>
+    <ul>
+      <li><strong>Mục tiêu kỹ thuật nâng cao (CLO5 - Bloom Evaluate):</strong> Nâng cấp trợ lý AI với các kỹ thuật tinh nhuệ: cơ chế <strong>tự kiểm tra trước khi phản hồi (Self-check)</strong>, yêu cầu trích dẫn nguồn nguyên văn từ Knowledge Base, và xử lý các quy trình rẽ nhánh logic phức tạp (If - Else).</li>
+      <li><strong>Mục tiêu an toàn dữ liệu (CLO6 - Bloom Apply):</strong> Phân loại chính xác dữ liệu công việc theo <strong>4 mức an toàn</strong> (Công khai, Nội bộ, Bí mật, Tối mật), nắm vững kỹ thuật <strong>khử định danh (anonymization)</strong> và thành thạo checklist bảo mật thông tin trước khi đưa vào bất kỳ công cụ AI nào.</li>
+      <li><strong>Cập nhật khung pháp lý Việt Nam mới nhất:</strong> Nắm vững 3 văn bản pháp luật điều chỉnh trực tiếp hoạt động công nghệ và dữ liệu trong doanh nghiệp nhà nước:
+        <ol>
+          <li><span class="badge-law">Luật Bảo vệ dữ liệu cá nhân 2025</span> (số 91/2025/QH15, hiệu lực 01/01/2026): Nhận diện nguy cơ "chuyển dữ liệu cá nhân xuyên biên giới" khi đưa bài làm, hồ sơ người học/nhân sự vào máy chủ nước ngoài.</li>
+          <li><span class="badge-law">Luật Bảo vệ bí mật nhà nước</span> (số 117/2025/QH15, hiệu lực 01/03/2026): Tách bạch ranh giới pháp lý với quy chế nội bộ; tuyệt đối không soạn thảo tài liệu bí mật nhà nước trên máy tính kết nối Internet.</li>
+          <li><span class="badge-law">Luật Trí tuệ nhân tạo 2025</span> (số 134/2025/QH15, hiệu lực 01/03/2026): Định hình hành lang pháp lý sử dụng AI an toàn.</li>
+        </ol>
+      </li>
+      <li><strong>Mở rộng công cụ Quản trị tri thức RAG:</strong> Làm quen với <strong>Gemini Notebook</strong> (trước đây NotebookLM) — công cụ hỏi đáp trích xuất nguồn từ đa định dạng (PDF, YouTube, DOCX, audio) hỗ trợ đắc lực cho tra cứu tài liệu nội bộ.</li>
+      <li><strong>Hành động thực tế:</strong> Nắm vững cẩm nang <em>"5 bước bắt đầu ngay khi về đơn vị/bộ môn"</em> và hoàn tất bản Cam kết hành động 7 ngày.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN II: KHUNG SCQA CỦA BUỔI (BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+  <div class="card-box scqa-box">
+    <div class="scqa-item">
+      <strong>Situation:</strong> Chúng ta đã thấy AI có thể tự động hóa các quy trình nghiệp vụ rất mạnh mẽ qua cả Claude Projects lẫn Claude Cowork.
+    </div>
+    <div class="scqa-item">
+      <strong>Complication:</strong> Tuy nhiên, một cỗ xe chạy càng nhanh thì bộ phanh càng phải vững chắc. Nếu đưa nhầm một bảng lương, một tài liệu mật giàn khoan hay hồ sơ cá nhân của người học vào tài khoản AI công cộng, hậu quả không chỉ là kỷ luật nội bộ mà còn vi phạm các điều khoản nghiêm ngặt của Luật An toàn thông tin và Luật Bảo vệ dữ liệu cá nhân vừa có hiệu lực.
+    </div>
+    <div class="scqa-item">
+      <strong>Question:</strong> Làm sao để cán bộ, giảng viên có thể tự tin triển khai và nhân rộng trợ lý AI trong toàn đơn vị mà không bao giờ lo sợ vi phạm ranh giới bảo mật hay vướng rắc rối pháp lý?
+    </div>
+    <div class="scqa-item">
+      <strong>Answer-preview:</strong> Trang bị "Bộ phanh 3 lớp": Làm chủ <strong>Checklist phân loại dữ liệu 4 mức</strong>, thực hành thành thạo <strong>kỹ thuật khử định danh</strong>, bổ sung module <strong>Self-check tự kiểm soát</strong> vào Custom Instructions và tuân thủ lộ trình <strong>5 bước triển khai từng nấc an toàn</strong>.
+    </div>
+  </div>
+
+  <!-- PHẦN III: KHỞI ĐỘNG TỪ CÁI BIẾT CỦA HỌC VIÊN -->
+  <h2 class="section-title">III. Khởi động từ Cái Biết của Học viên (20 phút)</h2>
+  <div class="card-box">
+    <h3 class="sub-title">1. Dẫn nhập nối mạch kiến thức (00–05')</h3>
+    <p>Giảng viên mở màn bằng lời kết nối xuyên suốt 2 ngày học:</p>
+    <blockquote>
+      <em>"Sáng nay các anh/chị đã thấy Workflow chạy được tới đâu — từ trong chat (Project) ra đến ngoài màn hình máy tính (Cowork). Chiều nay, câu hỏi lớn nhất là: Làm sao để cỗ xe Workflow đó thực sự <strong>đáng tin cậy</strong> và <strong>an toàn tuyệt đối về mặt pháp lý</strong> khi đem về vận hành tại đơn vị mình?"</em>
+    </blockquote>
+
+    <h3 class="sub-title">2. Kỹ thuật nâng cao: Self-check & Trích dẫn nguồn (05–20')</h3>
+    <ul>
+      <li><strong>Self-check (Tự kiểm soát):</strong> Bắt AI phải tự rà soát lại câu trả lời theo một bảng kiểm tra trước khi in ra màn hình cho con người.</li>
+      <li><strong>Trích dẫn nguồn (Source Attribution):</strong> Bắt buộc AI phải chỉ rõ từng con số, từng câu nhận xét được trích xuất từ trang nào, tài liệu nào trong Knowledge Base.</li>
+      <li><strong>Quy trình rẽ nhánh (Branching Logic):</strong> Hướng dẫn cấu trúc điều kiện: <em>"Nếu học viên đạt điểm chuyên cần ≥8 thì thực hiện Bước 3a; nếu &lt;8 thì chuyển sang Bước 3b..."</em>.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN IV: KỊCH BẢN CHI TIẾT THEO TIMELINE -->
+  <h2 class="section-title">IV. Kịch bản chi tiết theo Timeline (180 phút)</h2>
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th style="width: 80px;">Thời gian</th>
+        <th style="width: 50px;">Phút</th>
+        <th style="width: 250px;">Nội dung bài học</th>
+        <th>Hoạt động Giảng viên & Học viên</th>
+        <th style="width: 140px;">Học liệu & Công cụ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">00–20'</td>
+        <td>20'</td>
+        <td><strong>Kỹ thuật nâng cao: Self-check & Trích dẫn</strong></td>
+        <td>GV demo cách cài đặt module Self-check vào Custom Instructions của học viên. Rà soát quy trình rẽ nhánh.</td>
+        <td>Slide Kỹ thuật nâng cao, Prompt mẫu</td>
+      </tr>
+      <tr>
+        <td class="time">20–50'</td>
+        <td>30'</td>
+        <td><strong>3 Rủi ro AI & Khung pháp lý Việt Nam mới</strong></td>
+        <td>
+          GV phân tích 3 rủi ro cốt tử:<br>
+          1. <em>Hallucination:</em> Case study minh họa số liệu HSE.<br>
+          2. <em>Rò rỉ dữ liệu:</em> Mở bằng 2 sự cố thật (Samsung 2023 rò rỉ mã nguồn; Lỗi ChatGPT 20/03/2023 lộ tiêu đề chat). So sánh tài khoản cá nhân vs doanh nghiệp.<br>
+          • <strong>Khung pháp lý mới:</strong> Luật BV Dữ liệu cá nhân 2025 (số 91/2025/QH15) — rủi ro chuyển dữ liệu xuyên biên giới; Luật BV Bí mật nhà nước số 117/2025/QH15 — quy định máy tính độc lập; Luật Trí tuệ nhân tạo 2025.<br>
+          3. <em>Phụ thuộc quá mức:</em> Nguyên tắc "AI viết nháp, người ký chịu trách nhiệm".
+        </td>
+        <td>Slide 2 sự cố thật, Văn bản trích dẫn luật</td>
+      </tr>
+      <tr>
+        <td class="time">50–70'</td>
+        <td>20'</td>
+        <td><strong>Checklist an toàn dữ liệu 4 mức</strong></td>
+        <td>
+          GV mổ xẻ 4 mức độ: Công khai → Nội bộ → Bí mật → Tối mật.<br>
+          Tách bạch "Tối mật theo quy chế doanh nghiệp" vs "Bí mật nhà nước theo luật".<br>
+          <strong>Kỹ thuật khử định danh:</strong> Tách riêng họ tên, MSSV, số hợp đồng, tài chính trước khi nạp vào AI. Nối lại case Chấm đồ án (mục 1–5 để GV tự điền).
+        </td>
+        <td>Slide ma trận 4 mức, Handout Checklist</td>
+      </tr>
+      <tr>
+        <td class="time">70–90'</td>
+        <td>20'</td>
+        <td><strong>Bài tập 4.1: Phân loại 8 tình huống</strong></td>
+        <td>
+          Học viên dùng thẻ <span style="color:green; font-weight:bold;">✅ Cho phép</span> và <span style="color:red; font-weight:bold;">🚫 Cấm</span> giơ lên cho từng tình huống cụ thể.<br>
+          GV điều phối tranh luận các tình huống gây chia rẽ (VD: đưa hợp đồng chưa ký, đưa dữ liệu học tập sinh viên).
+        </td>
+        <td>Bộ thẻ màu ✅/🚫 phát tay, Slide 8 tình huống</td>
+      </tr>
+      <tr>
+        <td class="time">90–100'</td>
+        <td>10'</td>
+        <td><strong>Giải lao giữa buổi</strong></td>
+        <td>Học viên nghỉ ngơi, nạp năng lượng.</td>
+        <td>Tea-break</td>
+      </tr>
+      <tr>
+        <td class="time">100–120'</td>
+        <td>20'</td>
+        <td><strong>Demo Gemini Notebook (RAG Tri thức)</strong></td>
+        <td>
+          GV demo Gemini Notebook nạp 4 nguồn mẫu chủ đề "Họp hiệu quả" (file PDF, video YouTube, tệp DOCX, bản ghi âm).<br>
+          Đặt câu hỏi truy vấn → Xem AI trích dẫn số trang và mốc thời gian nguyên văn.<br>
+          Lưu nội dung hay sang Knowledge Base của Claude Project.
+        </td>
+        <td>Gemini Notebook, 4 file nguồn mẫu, Màn chiếu</td>
+      </tr>
+      <tr>
+        <td class="time">120–140'</td>
+        <td>20'</td>
+        <td><strong>Hoàn thiện sản phẩm Capstone lần cuối</strong></td>
+        <td>Các nhóm bổ sung Self-check và rà soát khử mật dữ liệu lần cuối. Giảng viên chấm điểm chính thức theo Rubric.</td>
+        <td>Laptop 4 nhóm, Phiếu Rubric</td>
+      </tr>
+      <tr>
+        <td class="time">140–160'</td>
+        <td>20'</td>
+        <td><strong>Quay lại Bảng Mục Tiêu & 5 Bước Bắt Đầu</strong></td>
+        <td>
+          Quay lại Bảng Mục Tiêu A0 đầu khóa: Tick từng tờ note-dán của học viên, giải đáp các câu hỏi còn lại.<br>
+          Phát handout <strong>"5 bước bắt đầu ngay khi về đơn vị/bộ môn"</strong>.
+        </td>
+        <td>Bảng Mục Tiêu A0, Handout 5 bước</td>
+      </tr>
+      <tr>
+        <td class="time">160–180'</td>
+        <td>20'</td>
+        <td><strong>Cam kết hành động 7 ngày & Bế giảng</strong></td>
+        <td>
+          Mỗi học viên viết 1 câu lên note-dán: <em>"Trong 7 ngày tới, tôi sẽ dùng AI Assistant để..."</em> và dán lên bảng.<br>
+          GV chốt triết lý: <em>"Hành trình vạn dặm bắt đầu từ một bước chân — và bước chân đó các anh/chị đã đi hôm nay."</em>
+        </td>
+        <td>Note-dán cam kết, Bế giảng</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PHẦN V: BÀI TẬP 4.1 & BẢNG CÂU HỎI THẢO LUẬN -->
+  <h2 class="section-title">V. Bài tập 4.1 & Phân tích Khung Pháp lý</h2>
+  <div class="card-box">
+    <h3 class="sub-title" style="color:var(--oxblood);">Đáp án chuẩn 8 tình huống phân loại dữ liệu (Bài tập 4.1)</h3>
+    <table style="width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;">
+      <thead>
+        <tr style="background:var(--paper-shade); text-align:left;">
+          <th style="padding:8px; border:1px solid var(--rule); width:30px;">#</th>
+          <th style="padding:8px; border:1px solid var(--rule);">Tình huống nghiệp vụ thực tế</th>
+          <th style="padding:8px; border:1px solid var(--rule); width:90px; text-align:center;">Phân loại</th>
+          <th style="padding:8px; border:1px solid var(--rule);">Căn cứ xử lý & Lưu ý pháp lý</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">1</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dùng Claude viết lại thông cáo báo chí đã công bố cho dễ đọc hơn.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:green; font-weight:bold;">✅ Cho phép</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dữ liệu <strong>Công khai</strong>, đã phát hành rộng rãi.</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">2</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Đưa hợp đồng mua bán khí chưa ký vào ChatGPT bản free để tóm tắt.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:red; font-weight:bold;">🚫 Cấm</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dữ liệu <strong>Bí mật kinh doanh</strong> + Công cụ miễn phí có nguy cơ dùng dữ liệu để tái huấn luyện.</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">3</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Nhờ AI soát chính tả công văn nội bộ đã xóa tên người, số hợp đồng.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:green; font-weight:bold;">✅ Cho phép</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Đã áp dụng kỹ thuật <strong>Khử định danh</strong> an toàn.</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">4</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Upload bản đồ vị trí giếng khoan thăm dò mới vào AI để phân tích.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:red; font-weight:bold;">🚫 Cấm</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dữ liệu mức <strong>Tối mật / Bí mật nhà nước</strong>. Tuyệt đối không đưa lên bất kỳ AI đám mây nào.</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">5</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dùng Claude Project (tài khoản Team) soạn khung chương trình đào tạo nội bộ.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:green; font-weight:bold;">✅ Cho phép</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dữ liệu <strong>Nội bộ</strong> kết hợp với công cụ tài khoản doanh nghiệp được đơn vị quản trị.</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">6</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Đưa danh sách lương, phụ cấp của nhân viên vào AI để "nhờ tính giúp cho nhanh".</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:red; font-weight:bold;">🚫 Cấm</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dữ liệu cá nhân nhạy cảm, vi phạm Luật Bảo vệ dữ liệu cá nhân 2025.</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">7</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Hỏi AI kiến thức chung về tiêu chuẩn API 650 cho thiết kế bồn chứa dầu.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:green; font-weight:bold;">✅ Cho phép</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Kiến thức kỹ thuật công khai — tuy nhiên luôn phải đối chiếu lại tiêu chuẩn gốc (chống hallucination).</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">8</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dán toàn văn biên bản họp Hội đồng thành viên vào AI để viết tóm tắt gửi lãnh đạo.</td>
+          <td style="padding:8px; border:1px solid var(--rule); text-align:center; color:red; font-weight:bold;">🚫 Cấm</td>
+          <td style="padding:8px; border:1px solid var(--rule);">Dữ liệu mật quản trị cấp cao; phải tóm tắt thủ công hoặc dùng mô hình On-Premise nội bộ.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PHẦN VI: BÀI TẬP VỀ NHÀ & LAB THỰC HÀNH -->
+  <h2 class="section-title">VI. Bài tập về nhà & Lộ trình 5 bước áp dụng</h2>
+  <div class="card-box">
+    <h3 class="sub-title" style="color:var(--oxblood);">Handout mang về: 5 Bước bắt đầu ngay khi về đơn vị/bộ môn</h3>
+    <ol style="line-height:1.9;">
+      <li><strong>Ngày 1–2 (Chọn việc):</strong> Chọn 1 quy trình lặp đi lặp lại nhiều nhất và ít nhạy cảm nhất ở đơn vị. Đừng chọn việc khó nhất — hãy chọn việc <em>nhàm chán nhất</em> làm mất nhiều thời gian hành chính.</li>
+      <li><strong>Ngày 3 (Vẽ trên giấy):</strong> Vẽ quy trình đó ra giấy theo Phiếu Thiết Kế (xác định rõ Bước – Gate – Fallback). <em>Chưa mở máy tính vội.</em></li>
+      <li><strong>Ngày 4–5 (Số hóa):</strong> Mô tả quy trình đã vẽ cho Siêu trợ lý (dùng tài liệu đã khử mật) để nhận Custom Instructions; tạo Claude Project và upload 1–2 tài liệu mẫu.</li>
+      <li><strong>Ngày 6–7 (Kiểm thử 3 kịch bản):</strong> Chạy thử 3 kịch bản: chạy xuôi — cố tình bỏ trống dữ liệu — thử vượt gate. Tinh chỉnh câu lệnh sau mỗi lần chạy.</li>
+      <li><strong>Tuần thứ 2 (Vận hành thực tế):</strong> Dùng thật cho 1 công việc thật, nhờ 1 đồng nghiệp thân cận dùng thử và ghi nhận phản hồi cải tiến. Luôn nhớ nguyên tắc vàng: <strong>"Bạn là Leader, AI là Cộng sự — AI viết nháp, người ký chịu trách nhiệm."</strong></li>
+    </ol>
+
+    <h3 class="sub-title" style="margin-top:20px;">Bản cam kết hành động 7 ngày của học viên</h3>
+    <p>Điền vào mẫu phiếu cam kết nộp lại cho ban tổ chức:</p>
+    <div class="callout-box">
+      <em>"Tôi tên là: ......................... Đơn vị/Bộ môn: .........................<br>
+      Trong vòng 7 ngày tới, tôi cam kết sẽ sử dụng Trợ lý AI của nhóm để giải quyết công việc cụ thể là: ........................................................................................................"</em>
+    </div>
+  </div>
+
+  <!-- PHẦN VII: CÂU HỎI ÔN TẬP CỦNG CỐ CUỐI BUỔI -->
+  <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi</h2>
+  <div class="card-box">
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 1:</strong> Theo Luật Bảo vệ dữ liệu cá nhân 2025 (số 91/2025/QH15), hành vi nào sau đây có thể bị coi là "Chuyển dữ liệu cá nhân xuyên biên giới"?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. In danh sách điểm thi ra giấy và phát cho học viên tại lớp học.</li>
+        <li>B. Tải danh sách họ tên, ngày sinh, email, bảng điểm của sinh viên/học viên lên một nền tảng AI có máy chủ đặt tại nước ngoài. (Đúng)</li>
+        <li>C. Gửi email nội bộ giữa hai máy tính cùng nằm trong mạng LAN của trường.</li>
+        <li>D. Lưu trữ tài liệu trên ổ cứng di động không nối mạng.</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 2:</strong> Luật Bảo vệ bí mật nhà nước (số 117/2025/QH15) quy định thế nào về việc soạn thảo và lưu giữ tài liệu thuộc danh mục bí mật nhà nước?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Được phép đưa lên các phần mềm AI doanh nghiệp đã có trả phí.</li>
+        <li>B. Chỉ được soạn thảo, lưu giữ trên các máy tính và mạng nội bộ độc lập tuyệt đối không kết nối Internet; nghiêm cấm đưa lên các công cụ AI đám mây. (Đúng)</li>
+        <li>C. Được đưa lên nếu đã đặt mật khẩu cho tệp tin Word/PDF.</li>
+        <li>D. Được phép nếu người dùng là lãnh đạo cơ quan.</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>Câu 3:</strong> Mục đích căn bản của kỹ thuật "Khử định danh" (Anonymization) trước khi đưa dữ liệu vào AI là gì?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Làm cho văn bản dài hơn để AI phân tích kỹ hơn.</li>
+        <li>B. Loại bỏ hoặc mã hóa toàn bộ các thông tin nhận dạng cá nhân hoặc bí mật riêng tư, trong khi vẫn giữ nguyên vẹn cấu trúc và logic nội dung để AI xử lý. (Đúng)</li>
+        <li>C. Chuyển đổi toàn bộ nội dung sang tiếng Anh.</li>
+        <li>D. Xóa bỏ định dạng bảng biểu để giảm dung lượng file.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHẦN VIII: LƯU Ý VÀ TÌNH HUỐNG DỰ PHÒNG CHO GIẢNG VIÊN -->
+  <h2 class="section-title">VIII. Lưu ý và Tình huống dự phòng cho Giảng viên</h2>
+  <div class="card-box">
+    <ul>
+      <li><strong>Diễn đạt chuẩn xác các căn cứ pháp luật:</strong> Giảng viên tránh phát ngôn cực đoan "Luật cấm dùng AI". Cần nhấn mạnh: Luật quy định rõ <em>loại dữ liệu nào được phép</em> và <em>quy trình thủ tục chuyển dữ liệu</em>. Đối với tài khoản cá nhân trong lớp học, nguyên tắc an toàn cao nhất là: chỉ dùng dữ liệu công khai hoặc dữ liệu đã khử định danh.</li>
+      <li><strong>Demo Gemini Notebook:</strong> Kiểm tra trước đường truyền Internet; mở sẵn 4 tài liệu nguồn trong một notebook mẫu ("Họp hiệu quả") để khi demo không mất thời gian tải tệp tin lên máy chủ Google.</li>
+      <li><strong>Tạo không khí tích cực lúc bế giảng:</strong> Tránh để phần bảo mật và luật pháp làm học viên e ngại, sợ sệt không dám dùng AI. Khẳng định: Hiểu luật là để tự tin dùng AI đúng cách và bảo vệ chính bản thân mình trên không gian số.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

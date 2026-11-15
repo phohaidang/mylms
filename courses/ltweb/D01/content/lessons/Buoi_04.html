@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 4 - Nhập môn PHP (Phần 2): Vòng lặp, Mảng & Xử lý dữ liệu tập hợp | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 3 (Phần 2) · Buổi 4/9</div>
+    <h1>Buổi 4: Nhập môn PHP (Phần 2): Vòng lặp, Mảng & Xử lý dữ liệu tập hợp</h1>
+    <p class="hero-sub">CLO1, CLO2 - Sử dụng thành thạo vòng lặp (for, while, do-while, foreach), từ khóa break/continue và cấu trúc mảng 1 chiều, kết hợp, đa chiều.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> Phần trọng tâm của Chương 3 (12/40 câu đề thi cuối kỳ) · 40 câu trong Ngân hàng câu hỏi thuộc Buổi 4.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Sử dụng thành thạo vòng lặp (for, while, do-while, foreach), từ khóa break/continue và cấu trúc mảng 1 chiều, kết hợp, đa chiều.
+    </div>
+    <ol>
+      <li>Phân biệt và sử dụng đúng 4 cấu trúc vòng lặp trong PHP: <strong><code>for</code></strong>, <strong><code>while</code></strong>, <strong><code>do...while</code></strong> (luôn chạy ít nhất 1 lần) và <strong><code>foreach</code></strong>.</li>
+      <li>Vận dụng chính xác từ khóa <strong><code>break</code></strong> (thoát hẳn vòng lặp) và <strong><code>continue</code></strong> (bỏ qua lần lặp hiện tại để sang lần lặp kế tiếp).</li>
+      <li>Khai báo và truy xuất thành thạo 3 loại mảng: <strong>Mảng chỉ số (Indexed Array)</strong>, <strong>Mảng kết hợp (Associative Array <code>key =&gt; value</code>)</strong> và <strong>Mảng đa chiều (Multidimensional Array)</strong>.</li>
+      <li>Sử dụng vòng lặp <code>foreach</code> đơn và <code>foreach</code> lồng nhau để duyệt danh sách sản phẩm, giỏ hàng và xuất ra bảng/lưới giao diện HTML động.</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Ở buổi 3, bạn đã dùng biến <code>$ten_sp</code> và <code>$gia_sp</code> để hiển thị 1 sản phẩm. Nhưng một cửa hàng thương mại điện tử thực tế có hàng trăm đến hàng ngàn sản phẩm cùng lúc.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Bạn không thể khai báo <code>$sp1, $sp2, ..., $sp1000</code> hay copy-paste 1.000 khối thẻ HTML <code>&lt;div class='product-card'&gt;</code>. Cách làm thủ công đó khiến mã nguồn phình to, không thể tìm kiếm, lọc hay tính tổng giỏ hàng tự động.</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Cấu trúc dữ liệu và công cụ điều khiển nào giúp lưu trữ cả danh sách sản phẩm trong một biến duy nhất và tự động sinh giao diện cho bất kỳ số lượng sản phẩm nào chỉ với vài dòng lệnh?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Sử dụng <strong>Mảng đa chiều kết hợp (Associative Multidimensional Array)</strong> để biểu diễn danh sách thực thể (sản phẩm, sinh viên, đơn hàng) và dùng vòng lặp <strong><code>foreach</code></strong> để tự động render giao diện HTML cũng như thống kê dữ liệu.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 75 phút)</div>
+        <div class="timeline-content">
+          <p>Bốn cấu trúc vòng lặp (<code>while</code>, <code>do...while</code>, <code>for</code>, <code>foreach</code>), điều kiện dừng tránh lặp vô hạn, từ khóa <code>break</code> vs <code>continue</code>; 3 loại mảng trong PHP (chỉ số, kết hợp, đa chiều) và cách thêm/truy xuất phần tử.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến Cấu trúc dữ liệu TMĐT · 95 phút)</div>
+        <div class="timeline-content">
+          <p>Biến đổi giao diện tĩnh thành giao diện động dữ liệu (Data-Driven UI): Tổ chức danh mục sản phẩm bằng mảng kết hợp 2 chiều -> Dùng <code>foreach</code> tự động sinh lưới sản phẩm, tự động gắn nhãn 'Hết hàng' khi <code>ton_kho == 0</code> và tính tổng giá trị giỏ hàng.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thực hành Trace Code & Lab · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Giải nhanh chuỗi bài toán đọc code mảng & vòng lặp chuẩn đề thi cuối kỳ + Thực hành nhóm bài tập xử lý mảng số, mảng sinh viên và bảng cửu chương HTML.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>4.1. So sánh sự khác nhau cốt lõi giữa vòng lặp <code>while</code> và <code>do...while</code>. Khi nào vòng lặp <code>do...while</code> vẫn chạy thân vòng lặp dù điều kiện sai?</li>
+        <li>4.2. Phân biệt 3 loại mảng trong PHP (mảng chỉ số, mảng kết hợp, mảng đa chiều) và viết cú pháp khai báo mẫu cho từng loại.</li>
+        <li>4.3. Trình bày 2 cú pháp của vòng lặp <code>foreach</code> (chỉ lấy giá trị vs lấy cả khóa <code>$key =&gt; $value</code>).</li>
+        <li>4.4. Phân biệt tác dụng của lệnh <code>break</code> và lệnh <code>continue</code> khi đặt bên trong vòng lặp.</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc - Bài 4.1 đến 4.5):</strong> Truy xuất phần tử từ mảng 1 chiều và mảng đa chiều; viết vòng lặp tìm giá trị lớn nhất, nhỏ nhất, in các số chẵn và tính tổng mảng 10 số.</li>
+        <li><strong>Mức Nâng cao (Bài 4.8 & 4.9):</strong> Cho chuỗi số <code>"3,8,15,22,7"</code>, tách thành mảng và in ra màn hình sao cho số chẵn tô màu đỏ, số lẻ tô màu xanh dương bằng CSS; in bảng cửu chương từ 1 đến 5 thành bảng <code>&lt;table&gt;</code> HTML.</li>
+        <li><strong>Mức Thử thách (Nối đồ án TMĐT - Bài 4.11):</strong> Đưa danh sách ít nhất 8 sản phẩm của nhóm (gồm mã, tên, giá, hình ảnh, tồn kho) vào mảng đa chiều trong <code>data.php</code>; dùng <code>foreach</code> hiển thị lên trang chủ, tự động hiện nhãn 'Hết hàng' nếu <code>ton_kho == 0</code>. Hoàn thành Quiz Buổi 4 (40 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

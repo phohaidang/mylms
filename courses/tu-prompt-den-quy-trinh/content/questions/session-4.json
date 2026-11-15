@@ -1,0 +1,138 @@
+{
+  "session": 4,
+  "chapter": "Ch.4",
+  "title": "Nâng cao, an toàn và lộ trình tương lai",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "tpq-q040",
+      "type": "mc",
+      "question": "Ba rủi ro chính của AI được học trong Buổi 4 là gì?",
+      "options": [
+        "A. Chậm, đắt tiền, khó cài đặt",
+        "B. Sai chính tả, sai ngữ pháp, sai định dạng",
+        "C. Hallucination, rò rỉ dữ liệu, phụ thuộc quá mức",
+        "D. Mất kết nối, hết hạn tài khoản, lỗi cập nhật"
+      ],
+      "correct": "C",
+      "explanation": "Ba rủi ro cần nhớ: hallucination (bịa), rò rỉ dữ liệu và phụ thuộc quá mức."
+    },
+    {
+      "id": "tpq-q041",
+      "type": "mc",
+      "question": "Bốn mức phân loại dữ liệu theo quy chế nội bộ trong khóa học là gì?",
+      "options": [
+        "A. Công khai, Nội bộ, Bí mật, Tối mật",
+        "B. Công khai, Riêng tư, Bí mật, Tuyệt mật",
+        "C. Thấp, Trung bình, Cao, Rất cao",
+        "D. Công khai, Hạn chế, Bảo mật, Tuyệt đối"
+      ],
+      "correct": "A",
+      "explanation": "Bốn mức theo quy chế nội bộ: Công khai, Nội bộ, Bí mật, Tối mật."
+    },
+    {
+      "id": "tpq-q042",
+      "type": "mc",
+      "question": "Yêu cầu AI trích dẫn nguồn từ Knowledge Base nhằm mục đích chính nào?",
+      "options": [
+        "A. Làm câu trả lời dài hơn và trông đáng tin cậy hơn với người đọc",
+        "B. Để bạn kiểm tra được thông tin có thật sự nằm trong tài liệu hay không",
+        "C. Giúp AI nhớ tài liệu lâu hơn ở các Conversation về sau",
+        "D. Giảm số lần phải mở Conversation mới trong cùng một Project"
+      ],
+      "correct": "B",
+      "explanation": "Trích dẫn nguồn cho phép bạn kiểm tra nhận định có thật sự nằm trong tài liệu hay không, biến việc tin AI thành việc kiểm tra AI."
+    },
+    {
+      "id": "tpq-q044",
+      "type": "mc",
+      "question": "Nguyên tắc nào đúng khi dùng AI trong công việc?",
+      "options": [
+        "A. AI ký, người kiểm tra",
+        "B. AI quyết định, người thực hiện",
+        "C. AI viết nháp, người ký chịu trách nhiệm",
+        "D. AI và người cùng chịu trách nhiệm như nhau"
+      ],
+      "correct": "C",
+      "explanation": "Nguyên tắc nền: AI viết nháp, người ký chịu trách nhiệm."
+    },
+    {
+      "id": "tpq-q045",
+      "type": "mc",
+      "question": "Vì sao mức \"Tối mật\" theo quy chế nội bộ không đồng nghĩa với bí mật nhà nước?",
+      "options": [
+        "A. Vì bí mật nhà nước là phạm trù pháp lý theo luật riêng, còn 4 mức là cách phân loại nội bộ của đơn vị",
+        "B. Vì hai khái niệm là một và chỉ khác nhau ở tên gọi giữa các văn bản của từng đơn vị",
+        "C. Vì bí mật nhà nước chỉ áp dụng cho tài liệu giấy, không áp dụng cho dữ liệu số hay tệp máy tính",
+        "D. Vì mức Tối mật nội bộ luôn nghiêm ngặt hơn mọi cấp độ bí mật nhà nước theo luật hiện hành"
+      ],
+      "correct": "A",
+      "explanation": "Bí mật nhà nước là phạm trù pháp lý theo luật riêng, có quy định chặt về soạn thảo và lưu giữ. Mức Tối mật trong 4 mức chỉ là cách phân loại nội bộ của đơn vị, không suy từ cái này sang cái kia."
+    },
+    {
+      "id": "tpq-q046",
+      "type": "mc",
+      "question": "Vì sao đưa bảng điểm thật của sinh viên vào AI có máy chủ ở nước ngoài vẫn có rủi ro pháp lý, kể cả khi nhà cung cấp cam kết không dùng dữ liệu để huấn luyện?",
+      "options": [
+        "A. Vì AI đặt máy chủ ở nước ngoài thường không đọc được dữ liệu tiếng Việt có dấu và bảng biểu",
+        "B. Vì cam kết không dùng dữ liệu để huấn luyện chỉ áp dụng cho bản miễn phí của nhà cung cấp",
+        "C. Vì có thể là chuyển dữ liệu cá nhân xuyên biên giới, với nghĩa vụ riêng độc lập chính sách huấn luyện",
+        "D. Vì điểm số của sinh viên luôn được coi là bí mật nhà nước theo quy định của luật hiện hành"
+      ],
+      "correct": "C",
+      "explanation": "Đưa dữ liệu cá nhân thật ra máy chủ nước ngoài có thể là chuyển dữ liệu xuyên biên giới, phát sinh nghĩa vụ riêng như hồ sơ đánh giá tác động. Nghĩa vụ này độc lập với chính sách huấn luyện của nhà cung cấp."
+    },
+    {
+      "id": "tpq-q047",
+      "type": "mc",
+      "question": "Điều gì làm hallucination nguy hiểm hơn một lỗi sai thông thường?",
+      "options": [
+        "A. AI luôn bịa quá nửa nội dung, nên kết quả gần như không thể dùng được",
+        "B. Hallucination chỉ xảy ra khi dùng tiếng Việt, nên khó phát hiện ở bản gốc",
+        "C. Hallucination làm hỏng tài khoản và xóa dữ liệu của người dùng trong Project",
+        "D. AI nói thông tin bịa bằng giọng tự tin, nghe thuyết phục nên dễ lọt vào hồ sơ thật"
+      ],
+      "correct": "D",
+      "explanation": "Hallucination nguy hiểm vì được trình bày bằng giọng tự tin, nghe thuyết phục nên dễ lọt vào hồ sơ thật nếu không kiểm chứng nguồn."
+    },
+    {
+      "id": "tpq-q048",
+      "type": "mc",
+      "question": "Trong case chấm đồ án, vì sao mục 1–5 của phiếu chấm để \"[GV tự điền]\"?",
+      "options": [
+        "A. Vì AI không biết định dạng của phiếu nên giáo viên phải tự điền các mục đầu",
+        "B. Để dữ liệu định danh của sinh viên không đi qua AI; giáo viên tự điền sau khi nhận kết quả",
+        "C. Vì phiếu chấm không cần ghi thông tin sinh viên ở các mục đầu của phiếu",
+        "D. Vì Claude không cho phép điền các mục đầu của một mẫu phiếu có sẵn"
+      ],
+      "correct": "B",
+      "explanation": "Mục 1–5 của phiếu chứa thông tin định danh nên để giáo viên tự điền, nhờ đó dữ liệu định danh của sinh viên không đi qua AI."
+    },
+    {
+      "id": "tpq-q050",
+      "type": "mc",
+      "question": "Bạn có bảng điểm giữa kỳ của lớp, gồm họ tên và mã sinh viên, muốn nhờ AI tính điểm trung bình và xếp loại. Bạn đang dùng tài khoản Claude cá nhân. Cách làm đúng nhất là gì?",
+      "options": [
+        "A. Thay họ tên và mã bằng mã ẩn danh trước; dữ liệu thật thì dùng công cụ do đơn vị cấp, qua pháp chế đánh giá",
+        "B. Dán nguyên bảng vì tài khoản đã tắt tùy chọn dùng dữ liệu để huấn luyện mô hình của nhà cung cấp",
+        "C. Dán nguyên bảng rồi yêu cầu AI không lưu lại và tự xóa cuộc trò chuyện sau khi dùng xong",
+        "D. Chia bảng thành nhiều phần nhỏ rồi dán từng phần vào các Conversation khác nhau để giảm rủi ro"
+      ],
+      "correct": "A",
+      "explanation": "Bảng có họ tên và mã sinh viên là dữ liệu cá nhân, tài khoản cá nhân không phù hợp. Cách đúng là thay danh tính bằng mã trước; với dữ liệu thật thì dùng công cụ do đơn vị cấp và qua đánh giá của pháp chế hoặc an ninh thông tin."
+    },
+    {
+      "id": "tpq-q051",
+      "type": "mc",
+      "question": "Trợ lý trong Project trả lời: \"Theo Điều 12 Quy chế đào tạo...\" nhưng Knowledge Base không có quy chế này. Việc đúng nên làm là gì?",
+      "options": [
+        "A. Chấp nhận kết quả vì AI đã trích dẫn rất cụ thể cả số điều lẫn nội dung của điều khoản đó",
+        "B. Yêu cầu AI giải thích thêm cho chắc, nếu lời giải thích nghe hợp lý thì dùng kết quả luôn",
+        "C. Xóa Project và tạo lại từ đầu để AI không còn nhớ thông tin sai này ở các lần dùng sau",
+        "D. Coi là thông tin chưa kiểm chứng, đối chiếu văn bản chính thức và siết mục NGUỒN TIN CẬY của Instructions"
+      ],
+      "correct": "D",
+      "explanation": "Điều khoản không có trong tài liệu đã nạp là thông tin chưa kiểm chứng. Đối chiếu văn bản chính thức và siết mục NGUỒN TIN CẬY để trợ lý ghi \"Chưa đủ căn cứ\" thay vì bịa."
+    }
+  ]
+}

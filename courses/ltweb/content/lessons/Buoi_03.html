@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 3 - Nhập môn PHP (Phần 1): Biến, Kiểu dữ liệu, Toán tử & Cấu trúc điều kiện | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 3 (Phần 1) · Buổi 3/9</div>
+    <h1>Buổi 3: Nhập môn PHP (Phần 1): Biến, Kiểu dữ liệu, Toán tử & Cấu trúc điều kiện</h1>
+    <p class="hero-sub">CLO1, CLO2 - Nắm vững cú pháp PHP nền tảng, quy tắc biến/hằng, 8 kiểu dữ liệu, độ ưu tiên toán tử và cấu trúc rẽ nhánh if/else, switch.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> Phần trọng tâm của Chương 3 (12/40 câu đề thi cuối kỳ) · 64 câu trong Ngân hàng câu hỏi thuộc Buổi 3.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Nắm vững cú pháp PHP nền tảng, quy tắc biến/hằng, 8 kiểu dữ liệu, độ ưu tiên toán tử và cấu trúc rẽ nhánh if/else, switch.
+    </div>
+    <ol>
+      <li>Viết đúng cú pháp nhúng <strong>PHP</strong> (<code>&lt;?php ... ?&gt;</code> và thẻ rút gọn <code>&lt;?= ... ?&gt;</code>), câu lệnh xuất <code>echo</code> / <code>print</code>, và 3 cách viết chú thích (<code>//</code>, <code>#</code>, <code>/* */</code>).</li>
+      <li>Áp dụng chính xác quy tắc đặt tên <strong>biến</strong> (bắt đầu bằng <code>$</code> + chữ cái hoặc <code>_</code>, phân biệt hoa/thường) và khai báo <strong>hằng</strong> bằng <code>define()</code> hoặc <code>const</code>.</li>
+      <li>Phân biệt <strong>8 kiểu dữ liệu</strong> trong PHP (String, Integer, Float, Boolean, Array, Object, NULL, Resource), sự khác nhau giữa chuỗi nháy đơn <code>' '</code> và nháy kép <code>" "</code>, cùng cơ chế ép kiểu.</li>
+      <li>Tính toán chính xác biểu thức có <strong>toán tử tiền tố/hậu tố</strong> (<code>++$x</code> vs <code>$x++</code>), so sánh bằng vs đồng nhất (<code>==</code> vs <code>===</code>), toán tử logic (<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>, lưu ý độ ưu tiên của <code>=</code> so với <code>and/or</code>) và toán tử 3 ngôi (<code>? :</code>).</li>
+      <li>Sử dụng thành thạo cấu trúc rẽ nhánh <code>if</code>, <code>if...else</code>, <code>if...elseif...else</code> và <code>switch...case</code> để xử lý logic tính chiết khấu, phí vận chuyển trong bài toán TMĐT.</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Giao diện cửa hàng của bạn đã chạy trên Web Server XAMPP, nhưng mọi con số (giá bán, tồn kho, phí vận chuyển) đều đang là chữ tĩnh cứng nhắc.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Trong thực tế thương mại điện tử, giá thanh toán phải tự động thay đổi theo số lượng mua, hạng thành viên, mã giảm giá và ngưỡng miễn phí vận chuyển. Đặc biệt, vì PHP là ngôn ngữ định kiểu động (dynamic typing), chỉ cần nhầm lẫn giữa phép gán <code>=</code>, so sánh lỏng <code>==</code> và so sánh nghiêm ngặt <code>===</code> (ví dụ <code>0 == 'abc'</code> hoặc <code>'50' === 50</code>), hệ thống có thể tính sai tiền hoặc mở toang lỗ hổng xác thực.</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Làm sao để viết mã PHP tính toán biểu thức và điều khiển luồng rẽ nhánh chính xác tuyệt đối, đồng thời kiểm toán (audit) được các đoạn code logic do AI sinh ra?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Làm chủ biến, hằng, 8 kiểu dữ liệu, quy tắc nội suy chuỗi nháy kép, bảng độ ưu tiên toán tử (đặc biệt là <code>++$x</code>, <code>$x++</code>, <code>===</code>, <code>?:</code>) và cấu trúc điều kiện <code>if/elseif/switch</code>.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Cú pháp PHP cơ bản, Biến vs Hằng (<code>define</code> vs <code>const</code>), 8 kiểu dữ liệu & hàm gỡ lỗi <code>var_dump()</code>, sự khác biệt giữa nháy đơn <code>' '</code> và nháy kép <code>" "</code>, cách xử lý dấu nháy lồng nhau trong <code>echo</code>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (Thực chiến Đọc code & Toán tử · 85 phút)</div>
+        <div class="timeline-content">
+          <p>Giải phẫu các bẫy toán tử hay gặp trong đề thi và thực tế: Tiền tố <code>++$x</code> vs Hậu tố <code>$x++</code>, <code>==</code> vs <code>===</code>, bẫy độ ưu tiên <code>$kq = $x and $y</code>, toán tử 3 ngôi <code>?:</code>. Thực hành 'Đấu trường Trace Code bằng tay' trước khi chạy máy.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thực chiến Logic TMĐT · 85 phút)</div>
+        <div class="timeline-content">
+          <p>Xây dựng bộ máy tính hóa đơn tự động bằng <code>if...elseif...else</code> và <code>switch...case</code> (tính giảm giá theo bậc, tính phí ship, đổi mệnh giá tiền) và kiểm toán đoạn code tính khuyến mãi bị lỗi logic do AI viết.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>3.1. Trình bày 5 đặc điểm cú pháp cơ bản của PHP. Cú pháp PHP gần giống nhất với ngôn ngữ nào?</li>
+        <li>3.2. Nêu quy tắc đặt tên biến trong PHP. Trong các tên sau: <code>$2name</code>, <code>$_tong</code>, <code>$Ho-Ten</code>, <code>$ten_sv</code>, tên nào hợp lệ và tên nào sai?</li>
+        <li>3.3. Phân biệt hằng và biến. So sánh sự khác nhau giữa khai báo hằng bằng <code>define()</code> và <code>const</code>.</li>
+        <li>3.4. Giải thích sự khác nhau giữa <code>echo 'I love $txt!';</code> và <code>echo "I love $txt!";</code> khi <code>$txt = "PHP";</code>.</li>
+        <li>3.5. Giải thích chi tiết từng bước giá trị của <code>$kq</code> trong 3 biểu thức: (a) <code>$a=4; $b=10; $c=15; $kq = ++$a + $c/$b;</code> (b) <code>$x=true; $y=false; $kq = $x and $y;</code> (c) <code>$a=4; $b=10; $c=15; $kq = ++$a * $b-- + $c / $a++ - --$b;</code>.</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc):</strong> (Bài 3.8 & 3.9) Viết trang PHP tìm số lớn nhất trong 3 số <code>$x=5, $y=9, $z=2</code> bằng <code>if/elseif</code>; viết chương trình in số ngày của một tháng <code>$thang</code> bằng cấu trúc <code>switch...case</code>.</li>
+        <li><strong>Mức Nâng cao (Bài 3.10):</strong> Viết chương trình nhập số tiền <code>$so_tien</code> (ví dụ <code>287000</code>) và đổi ra số tờ tiền mệnh giá 50.000, 20.000, 10.000, 5.000, 1.000 sao cho ưu tiên mệnh giá lớn nhất.</li>
+        <li><strong>Mức Thử thách (Nối đồ án TMĐT - Bài 3.11):</strong> Tích hợp logic tính hóa đơn tự động vào dự án cửa hàng: tính thành tiền, áp dụng chiết khấu bậc thang (từ 500k giảm 5%, từ 1 triệu giảm 10%), phí vận chuyển 30k (miễn phí nếu sau giảm từ 700k trở lên). Hoàn thành Quiz Buổi 3 (64 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

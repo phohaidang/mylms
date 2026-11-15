@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 6 - Quản trị Cơ sở dữ liệu với MySQL & phpMyAdmin | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 4 · Buổi 6/9</div>
+    <h1>Buổi 6: Quản trị Cơ sở dữ liệu với MySQL & phpMyAdmin</h1>
+    <p class="hero-sub">CLO1, CLO2 - Thiết kế bảng CSDL quan hệ, viết thành thạo các câu lệnh SQL (DDL & DML: CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY) và quản trị trên phpMyAdmin.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> 6/40 câu đề thi cuối kỳ (2 câu Mức 1 + 2 câu Mức 2 + 2 câu Mức 3) · 30 câu trong Ngân hàng câu hỏi.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Thiết kế bảng CSDL quan hệ, viết thành thạo các câu lệnh SQL (DDL & DML: CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY) và quản trị trên phpMyAdmin.
+    </div>
+    <ol>
+      <li>Hiểu rõ các khái niệm CSDL quan hệ (Bảng, Cột/Thuộc tính, Dòng/Bản ghi) và các ràng buộc toàn vẹn: <strong><code>PRIMARY KEY</code></strong>, <strong><code>FOREIGN KEY</code></strong>, <strong><code>UNIQUE</code></strong>, <strong><code>NOT NULL</code></strong>, <strong><code>AUTO_INCREMENT</code></strong>.</li>
+      <li>Sử dụng nhóm lệnh <strong>DDL</strong> (<code>CREATE DATABASE</code>, <code>DROP DATABASE</code>, <code>CREATE TABLE</code>, <code>ALTER TABLE</code>, <code>DROP TABLE</code>) và chọn đúng kiểu dữ liệu MySQL (<code>varchar</code>, <code>text</code>, <code>int</code>, <code>float/double</code>, <code>date/datetime</code>).</li>
+      <li>Viết chính xác câu lệnh truy vấn <strong><code>SELECT</code></strong> theo đúng thứ tự mệnh đề bắt buộc: <code>SELECT -&gt; FROM -&gt; WHERE -&gt; GROUP BY -&gt; HAVING -&gt; ORDER BY -&gt; LIMIT</code>.</li>
+      <li>Phân biệt và vận dụng kết nối bảng <strong><code>INNER JOIN</code></strong>, <strong><code>LEFT JOIN</code></strong>, <strong><code>RIGHT JOIN</code></strong>, các hàm tổng hợp (<code>COUNT, SUM, AVG, MIN, MAX</code>) và các lệnh <strong><code>INSERT INTO</code></strong>, <strong><code>UPDATE ... SET ... WHERE</code></strong>, <strong><code>DELETE FROM ... WHERE</code></strong>.</li>
+      <li>Sử dụng thành thạo công cụ <strong>phpMyAdmin</strong> để tạo CSDL (bảng mã <code>utf8mb4_unicode_ci</code>), quản lý bảng, chạy truy vấn SQL và sao lưu/phục hồi (<strong>Export / Import</strong> tập tin <code>.sql</code>).</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Ở Chương 3, danh sách sản phẩm và giỏ hàng của bạn được lưu trong mảng PHP (<code>$products = [...]</code>).</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Biến và mảng trong PHP chỉ sống tạm thời trong bộ nhớ RAM vài mili-giây khi trang web đang chạy. Ngay khi trang tải xong, mọi dữ liệu biến mất; khách hàng đăng ký tài khoản hay đặt hàng xong đều không thể lưu lại lâu dài. Hơn nữa, khi có hàng chục ngàn đơn hàng, việc lọc và thống kê bằng mảng PHP sẽ làm treo máy chủ.</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Hệ thống nào giúp lưu trữ dữ liệu bền vững trên đĩa cứng, đảm bảo tính toàn vẹn giữa Khách hàng - Sản phẩm - Đơn hàng và truy xuất hàng vạn bản ghi trong chớp mắt?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Hệ quản trị cơ sở dữ liệu quan hệ <strong>MySQL</strong> kết hợp ngôn ngữ truy vấn <strong>SQL</strong> và công cụ quản trị trực quan <strong>phpMyAdmin</strong>.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 75 phút)</div>
+        <div class="timeline-content">
+          <p>Mô hình CSDL quan hệ, Khóa chính (Primary Key) vs Khóa ngoại (Foreign Key), các kiểu dữ liệu MySQL; nhóm lệnh DDL (<code>CREATE/ALTER/DROP</code>) và nhóm lệnh DML (<code>SELECT, INSERT, UPDATE, DELETE</code>), quy tắc vàng với mệnh đề <code>WHERE</code>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến Truy vấn & Thiết kế CSDL TMĐT · 95 phút)</div>
+        <div class="timeline-content">
+          <p>Giải phẫu sự khác nhau giữa <code>WHERE</code> vs <code>HAVING</code>, <code>INNER JOIN</code> vs <code>LEFT JOIN</code> vs <code>RIGHT JOIN</code>, và phân trang với <code>LIMIT offset, count</code>. Thực hành Import CSDL <code>bike_stores.sql</code> trên phpMyAdmin và giải các bài toán truy vấn thống kê doanh thu thực tế.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thiết kế CSDL Đồ án nhóm · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Thiết kế lược đồ CSDL cho Đồ án nhóm (tối thiểu 4 bảng: <code>users</code>, <code>categories</code>, <code>products</code>, <code>orders</code>, <code>order_items</code>), nhập dữ liệu mẫu tiếng Việt chuẩn UTF-8 và xuất (Export) tập tin <code>.sql</code>.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>6.1. Phân biệt ràng buộc <code>PRIMARY KEY</code> và <code>UNIQUE</code> trong MySQL. Vì sao phải tạo bảng chứa khóa chính trước bảng chứa khóa ngoại tham chiếu đến nó?</li>
+        <li>6.2. Phân biệt mệnh đề <code>WHERE</code> và mệnh đề <code>HAVING</code> trong câu lệnh <code>SELECT</code>. Viết thứ tự chuẩn của 7 mệnh đề trong câu lệnh <code>SELECT</code>.</li>
+        <li>6.3. So sánh kết quả trả về của <code>INNER JOIN</code>, <code>LEFT JOIN</code> và <code>RIGHT JOIN</code>. Khi một dòng ở bảng bên trái không có dòng khớp ở bảng bên phải thì <code>LEFT JOIN</code> trả về giá trị gì cho các cột của bảng phải?</li>
+        <li>6.4. Phân biệt lệnh <code>DELETE FROM ten_bang;</code> và <code>DROP TABLE ten_bang;</code>. Điều gì xảy ra nếu chạy lệnh <code>UPDATE</code> hoặc <code>DELETE</code> mà quên viết mệnh đề <code>WHERE</code>?</li>
+        <li>6.5. Nêu thông tin tài khoản đăng nhập mặc định của phpMyAdmin trên XAMPP/WAMP và cách sao lưu (Export) / phục hồi (Import) cơ sở dữ liệu.</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc):</strong> Tạo CSDL <code>QLSinhVien</code> gồm bảng <code>Lop</code> và <code>SinhVien</code> có khóa chính, khóa ngoại; thực hiện <code>INSERT</code> 5 sinh viên, truy vấn <code>SELECT ... WHERE ... ORDER BY</code> và <code>INNER JOIN</code>.</li>
+        <li><strong>Mức Nâng cao (Bài 6.3 trên CSDL <code>bike_stores</code>):</strong> Import <code>bike_stores.sql</code> vào phpMyAdmin; viết các truy vấn lọc sản phẩm theo thương hiệu/danh mục, thống kê số đơn hủy theo cửa hàng (<code>GROUP BY</code>), tìm khách hàng có tổng giá trị đơn > 3000 (<code>HAVING</code>) và tìm sản phẩm chưa từng được mua (<code>NOT IN</code>).</li>
+        <li><strong>Mức Thử thách (Nối đồ án TMĐT - Bài 6.5):</strong> Hoàn chỉnh CSDL cho đồ án nhóm trên phpMyAdmin (có đầy đủ khóa chính <code>AUTO_INCREMENT</code>, khóa ngoại và ít nhất 10 sản phẩm mẫu), Export ra tập tin <code>database.sql</code> lưu vào thư mục dự án. Hoàn thành Ebook Chương 4 & Quiz Buổi 6 (30 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

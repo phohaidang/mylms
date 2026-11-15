@@ -1,0 +1,232 @@
+{
+  "session": 8,
+  "chapter": "Ch.5",
+  "title": "Lập trình Web động (Phần 2)",
+  "time_limit_minutes": 20,
+  "questions": [
+    {
+      "id": "ltweb-q191",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào mô tả đúng nhất về session trong PHP?",
+      "options": [
+        "A. Session lưu toàn bộ dữ liệu trực tiếp trong tập tin HTML.",
+        "B. Session luôn tồn tại vĩnh viễn sau khi người dùng đóng trình duyệt",
+        "C. Session lưu thông tin người dùng trên web server trong một phiên làm việc",
+        "D. Session chỉ được sử dụng để lưu mật khẩu người dùng"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q192",
+      "type": "mc",
+      "level": 1,
+      "question": "Điểm khác biệt cơ bản giữa session và cookie là gì?",
+      "options": [
+        "A. Session lưu trên trình duyệt, còn cookie lưu trên web server",
+        "B. Cả session và cookie đều chỉ lưu trong cơ sở dữ liệu",
+        "C. Cookie bảo mật hơn session vì người dùng không thể đọc được",
+        "D. Session lưu trên web server, còn cookie lưu trên thiết bị của người dùng"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q194",
+      "type": "mc",
+      "level": 1,
+      "question": "Trước khi sử dụng biến $_SESSION trong một tập tin PHP, câu lệnh nào thường phải được gọi?",
+      "options": [
+        "A. session_create();",
+        "B. session_start();",
+        "C. session_open();",
+        "D. start_session();"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q282",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào đúng nhất về biến $_SESSION?",
+      "options": [
+        "A. Là một biến chuỗi lưu trong trình duyệt",
+        "B. Là một biến toàn cục có kiểu mảng",
+        "C. Chỉ chứa được một giá trị duy nhất",
+        "D. Chỉ được sử dụng trong tập tin login.php"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q283",
+      "type": "mc",
+      "level": 1,
+      "question": "Cho đoạn lệnh: setcookie( \"user_login\", \"An\", time() + 5 * 60 ); Cookie được thiết lập tồn tại trong khoảng thời gian nào?",
+      "options": [
+        "A. 5 giây",
+        "B. 60 giây",
+        "C. 5 phút",
+        "D. 5 giờ"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q213",
+      "type": "mc",
+      "level": 2,
+      "question": "Đoạn mã sau có tác dụng gì? <?php setcookie(\"user\", \"\", time() - 3600, \"/\"); ?>",
+      "options": [
+        "A. Xóa cookie có tên user",
+        "B. Đổi giá trị cookie thành số 3600",
+        "C. Gia hạn cookie thêm một giờ",
+        "D. Tạo cookie chỉ tồn tại trong một giờ"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q219",
+      "type": "mc",
+      "level": 2,
+      "question": "Cho đoạn mã PHP như sau: <?php session_start(); if ( isset($_SESSION[\"user\"]) \\\\|\\\\| isset($_COOKIE[\"user_login\"]) ) { echo \"Được phép truy cập\"; } else { echo \"Yêu cầu đăng nhập\"; } ?> Trong trường hợp nào chương trình hiển thị \"Được phép truy cập\" sau khi chạy đoạn mã trên?",
+      "options": [
+        "A. Khi session hoặc cookie tồn tại",
+        "B. Khi cả session và cookie đều không tồn tại",
+        "C. Chỉ khi session không tồn tại",
+        "D. Chỉ khi cả session và cookie cùng tồn tại"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q281",
+      "type": "mc",
+      "level": 2,
+      "question": "Câu lệnh nào phù hợp nhất để xóa riêng thông tin đăng nhập nhưng vẫn giữ các dữ liệu session khác?",
+      "options": [
+        "A. session_destroy();",
+        "B. unset($_SESSION[\"user\"]);",
+        "C. unset($_SESSION);",
+        "D. setcookie(\"user\", \"\");"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q284",
+      "type": "mc",
+      "level": 2,
+      "question": "Phương án nào phù hợp nhất khi xây dựng chức năng đăng xuất cho hệ thống sử dụng cả session và cookie duy trì đăng nhập?",
+      "options": [
+        "A. Đóng kết nối từ ứng dụng web đến cơ sở dữ liệu.",
+        "B. Chuyển người dùng đến login.php.",
+        "C. Xóa session và đồng thời làm hết hạn cookie đăng nhập.",
+        "D. Xóa session chứa thông tin đăng nhập."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q285",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ thống đăng nhập, thông tin nào phù hợp nhất để lưu trong session?",
+      "options": [
+        "A. Mật khẩu mã hóa của người dùng.",
+        "B. Toàn bộ nội dung bảng tài khoản.",
+        "C. Mã người dùng và vai trò của người đã được xác thực",
+        "D. Câu lệnh SQL dùng để kiểm tra tài khoản"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q286",
+      "type": "mc",
+      "level": 2,
+      "question": "Một website cần lưu trạng thái đăng nhập của người dùng trong suốt phiên làm việc và tự động xóa khi người dùng đóng trình duyệt hoặc kết thúc phiên. Giải pháp phù hợp nhất là:",
+      "options": [
+        "A. Sử dụng session",
+        "B. Sử dụng cookie với thời gian tồn tại ngắn",
+        "C. Kết hợp session và cookie",
+        "D. Lưu tài khoản trong trình duyệt"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Kết hợp session và cookie): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q287",
+      "type": "mc",
+      "level": 2,
+      "question": "Tại sao không nên lưu mật khẩu người dùng trực tiếp trong cookie?",
+      "options": [
+        "A. Cookie không hỗ trợ lưu dữ liệu dạng chuỗi nên không thể lưu mật khẩu.",
+        "B. Cookie chỉ cho phép lưu các giá trị tạm thời nên không thể chứa mật khẩu.",
+        "C. Cookie được lưu trên thiết bị người dùng và có thể bị đọc hoặc chỉnh sửa.",
+        "D. Cookie chỉ được sử dụng để lưu thông tin giao diện nên không thể lưu thông tin đăng nhập."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    },
+    {
+      "id": "ltweb-q288",
+      "type": "mc",
+      "level": 2,
+      "question": "Một website thương mại điện tử chỉ cần lưu giỏ hàng của người dùng chưa đăng nhập trong suốt phiên làm việc và không cần giữ lại sau khi phiên kết thúc. Giải pháp nào phù hợp nhất?",
+      "options": [
+        "A. Lưu thông tin giỏ hàng trong session.",
+        "B. Lưu thông tin giỏ hàng trong cookie có thời hạn 30 ngày.",
+        "C. Lưu thông tin giỏ hàng trong Local Storage của trình duyệt.",
+        "D. Lưu thông tin giỏ hàng vào cơ sở dữ liệu ngay khi người dùng thêm sản phẩm."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Lưu thông tin giỏ hàng trong session.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q289",
+      "type": "mc",
+      "level": 2,
+      "question": "Một website hỗ trợ nhiều ngôn ngữ và muốn ghi nhớ ngôn ngữ mà người dùng đã chọn ngay cả sau khi họ đóng và mở lại trình duyệt. Trong trường hợp người dùng chưa đăng nhập, giải pháp phù hợp nhất là:",
+      "options": [
+        "A. Lưu thông tin ngôn ngữ mà người dùng chọn trong Session.",
+        "B. Lưu thông tin ngôn ngữ mà người dùng chọn trong Cookie.",
+        "C. Lưu lựa chọn vào Local Storage của trình duyệt.",
+        "D. Lưu lựa chọn trong cơ sở dữ liệu của máy chủ."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Lưu thông tin ngôn ngữ mà người dùng chọn trong Session.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q290",
+      "type": "mc",
+      "level": 2,
+      "question": "Một người dùng đăng nhập thành công vào website. Sau đó, khi chuyển từ trang chủ sang trang thông tin cá nhân, hệ thống vẫn cần nhận biết người dùng đã đăng nhập mà không yêu cầu đăng nhập lại. Giải pháp phù hợp nhất là:",
+      "options": [
+        "A. Khai báo một biến cục bộ sau khi đăng nhập.",
+        "B. Lưu thông tin người dùng vào session và gọi session ở các trang cần sử dụng.",
+        "C. Truyền mã người dùng qua tham số trên URL mỗi khi chuyển trang và sử dụng $_GET để lấy thông tin người dùng tại trang cần sử dụng.",
+        "D. Gửi lại thông tin đăng nhập bằng form mỗi khi người dùng chuyển sang trang mới."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Lưu thông tin người dùng vào session và gọi session ở các trang cần sử dụng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q210",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã sau thực hiện chức năng gì? <?php session_start(); if (isset($_SESSION[\"user\"])) { echo \"Xin chào \" . $_SESSION[\"user\"]; } else { header(\"Location:login.php\"); } ?>",
+      "options": [
+        "A. Luôn chuyển người dùng đến login.php",
+        "B. Hiển thị lời chào nếu session tồn tại, ngược lại chuyển đến trang login.php",
+        "C. Tạo session có tên user",
+        "D. Xóa tài khoản đang đăng nhập"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+    }
+  ]
+}

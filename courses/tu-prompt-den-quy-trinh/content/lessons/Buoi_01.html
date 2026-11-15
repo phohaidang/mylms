@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 1: AI Tạo Sinh & Kỹ Thuật Prompt Cơ Bản — Petrovietnam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAF7F2;
+  --paper-card: #FFFFFF;
+  --paper-shade: #F2ECE1;
+  --ink: #1B1714;
+  --ink-soft: #4A413A;
+  --rule: #DCD3C1;
+  --oxblood: #7A1F1F;
+  --oxblood-soft: #9B3838;
+  --gold: #B8893A;
+  --gold-soft: #D4A85F;
+  --green: #2F4A36;
+  --blue: #1D4E89;
+  --warm-gray: #7F7365;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  padding: 40px 20px 80px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header & Badges */
+.header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-red { background: #FDE8E8; color: var(--oxblood); border: 1px solid #F8B4B4; }
+.badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+.badge-blue { background: #E0F2FE; color: var(--blue); border: 1px solid #BAE6FD; }
+.badge-green { background: #DCFCE7; color: var(--green); border: 1px solid #BBF7D0; }
+
+h1.lesson-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.lesson-subtitle {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+
+/* Section Headings */
+h2.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 6px;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h3.sub-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+/* Boxes & Cards */
+.card-box {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.scqa-box {
+  background: #FFFDF9;
+  border-left: 4px solid var(--gold);
+}
+
+.scqa-item {
+  margin-bottom: 12px;
+}
+.scqa-item strong {
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 140px;
+}
+
+.callout-box {
+  background: #FAF5F0;
+  border-left: 4px solid var(--oxblood);
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout-box strong { color: var(--oxblood); }
+
+/* Tables */
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  background: var(--paper-card);
+}
+
+.timeline-table th, .timeline-table td {
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.timeline-table th {
+  background: var(--paper-shade);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.timeline-table td.time {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--oxblood);
+  white-space: nowrap;
+  width: 90px;
+}
+
+.timeline-table tr:nth-child(even) td {
+  background: #FCFAF6;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 24px;
+  margin: 12px 0;
+}
+li {
+  margin-bottom: 8px;
+}
+
+/* Prompt code block */
+pre.prompt-block {
+  background: #23201D;
+  color: #EDE7DC;
+  padding: 16px 20px;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.tag-crisp {
+  color: #FCD34D;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header Meta -->
+  <div class="header-meta">
+    <div>Chương trình đào tạo Petrovietnam · AIDK_QT_0001</div>
+    <div>Thời lượng: 180 phút (Sáng Ngày 1)</div>
+  </div>
+
+  <header>
+    <div style="display:flex; gap:8px; margin-bottom:12px;">
+      <span class="badge badge-red">Buổi 1</span>
+      <span class="badge badge-gold">CLO1 · CLO2</span>
+      <span class="badge badge-blue">Foundation</span>
+    </div>
+    <h1 class="lesson-title">Buổi 1: AI Tạo Sinh & Kỹ Thuật Prompt Cơ Bản</h1>
+    <div class="lesson-subtitle">Chuyển từ hỏi đáp phập phù sang tư duy Leader giao việc cho Cộng sự theo Framework CRISP</div>
+  </header>
+
+  <!-- PHẦN I: MỤC TIÊU BUỔI HỌC (BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">I. Mục tiêu buổi học</h2>
+  <div class="card-box">
+    <p>Sau khi kết thúc Buổi 1, học viên nắm vững và thực thi được các chuẩn đầu ra sau:</p>
+    <ul>
+      <li><strong>Mục tiêu nhận thức (CLO1 - Bloom Understand):</strong> Giải thích được bản chất AI tạo sinh ("máy đoán từ kế tiếp" dựa trên xác suất), hiện tượng bịa đặt thông tin (<em>hallucination</em>), và các giới hạn cốt lõi của AI khi xử lý nghiệp vụ dầu khí / giáo dục đào tạo.</li>
+      <li><strong>Mục tiêu kỹ năng (CLO2 - Bloom Apply):</strong> Soạn thảo được câu lệnh giao việc chuẩn xác theo khung <strong>CRISP</strong> (Context, Role, Instruction, Specifics, Preview), đồng thời làm chủ 3 kỹ thuật nâng cao: <em>Iterative</em> (hiệu chỉnh nhiều lượt), <em>Negative</em> (chặn điều không mong muốn), và <em>Few-shot</em> (kèm ví dụ mẫu).</li>
+      <li><strong>Bức tranh lộ trình:</strong> Nắm vững sơ đồ chuyển đổi 4 tầng: <code>Data</code> (Dữ liệu thô) → <code>Context</code> (Ngữ cảnh ý nghĩa) → <code>Knowledge</code> (Quy tắc tri thức) → <code>Workflow</code> (Quy trình tự động có cổng kiểm soát).</li>
+      <li><strong>Định vị công cụ:</strong> Phân biệt rõ ràng mục đích sử dụng các nhóm công cụ AI theo tác vụ (Hội thoại đa năng, Tìm kiếm kiểm chứng, Quản trị tri thức RAG).</li>
+      <li><strong>Tư duy cốt lõi:</strong> Thấm nhuần triết lý xuyên suốt: <em>"Bạn là Leader — AI là Cộng sự. AI viết nháp, người ký chịu trách nhiệm."</em></li>
+    </ul>
+  </div>
+
+  <!-- PHẦN II: KHUNG SCQA CỦA BUỔI (BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+  <div class="card-box scqa-box">
+    <div class="scqa-item">
+      <strong>Situation:</strong> Hầu hết chúng ta đều đã từng mở ChatGPT hoặc Claude để nhờ soạn công văn, viết email, tóm tắt báo cáo hoặc làm slide với mong muốn tiết kiệm thời gian làm việc.
+    </div>
+    <div class="scqa-item">
+      <strong>Complication:</strong> Kết quả trả về thường rất chung chung, văn phong sáo rỗng; mỗi lần mở khung chat mới là phải giải thích lại bối cảnh từ đầu; nguy hiểm hơn, AI sẵn sàng bịa ra một quy chuẩn an toàn hay số hiệu văn bản pháp luật không hề tồn tại (hallucination) khiến việc rà soát còn mất nhiều thời gian hơn tự viết.
+    </div>
+    <div class="scqa-item">
+      <strong>Question:</strong> Làm thế nào để giao tiếp với AI chuẩn xác ngay từ lần đầu tiên, loại bỏ triệt để tình trạng ảo giác bịa đặt và biến nó thành một trợ lý cộng sự hiểu đúng ý mình?
+    </div>
+    <div class="scqa-item">
+      <strong>Answer-preview:</strong> Nắm vững bản chất "máy đoán chữ" để không thần thánh hóa AI, chuyển từ tư duy "hỏi đáp tiện tay" sang tư duy "Leader giao việc" với Framework CRISP 5 thành phần và 3 kỹ thuật hiệu chỉnh chuyên sâu.
+    </div>
+  </div>
+
+  <!-- PHẦN III: KHỞI ĐỘNG TỪ CÁI BIẾT CỦA HỌC VIÊN -->
+  <h2 class="section-title">III. Khởi động từ Cái Biết của Học viên (35 phút)</h2>
+  <div class="card-box">
+    <h3 class="sub-title">1. Mở đầu bằng Pain Point thực tế (00–05')</h3>
+    <p>Giảng viên đặt câu hỏi gợi mở, không yêu cầu phát biểu lý thuyết mà chạm vào ức chế hàng ngày:</p>
+    <blockquote>
+      <em>"Anh/chị đã bao giờ hỏi AI xong, nhận được câu trả lời rất dài nhưng hoàn toàn vô dụng? Hoặc phiên làm việc hôm sau lại phải copy-paste giải thích lại chức năng phòng ban từ đầu? Hay tìm một công văn cũ mãi không ra khi cần đối chiếu?"</em>
+    </blockquote>
+    <p>Cả lớp gật đầu nhận diện vấn đề chung → Dẫn dắt vào nguyên nhân cốt lõi: Ta đang dùng AI ở tầng <strong>Data rời rạc</strong> mà chưa đưa nó lên tầng <strong>Context & Workflow</strong>.</p>
+
+    <h3 class="sub-title">2. Bức tranh tổng thể: Data → Context → Knowledge → Workflow (05–20')</h3>
+    <ul>
+      <li><strong>Data (Dữ liệu):</strong> Công văn, hợp đồng, email, số liệu thô — nằm rải rác trên máy tính hoặc ổ đĩa mạng.</li>
+      <li><strong>Context (Ngữ cảnh):</strong> Gắn dữ liệu với hoàn cảnh sử dụng (ai gửi, gửi cho ai, mục đích gì, trong khuôn khổ quy chế nào).</li>
+      <li><strong>Knowledge (Tri thức):</strong> Các quy tắc xử lý lặp đi lặp lại được đúc kết thành hướng dẫn áp dụng được (SOP, checklist, tiêu chuẩn đánh giá).</li>
+      <li><strong>Workflow (Quy trình):</strong> Đóng gói tri thức thành một chuỗi các bước tuần tự có cổng xác nhận (Gate) và phương án dự phòng (Fallback) để AI thực hiện an toàn.</li>
+    </ul>
+    <p><em>(Slide bản đồ này sẽ được chiếu lại ở đầu mỗi buổi học để học viên luôn biết mình đang đứng ở đâu trong hành trình).</em></p>
+
+    <h3 class="sub-title">3. Thiết lập Bảng Mục Tiêu của Học viên (20–35')</h3>
+    <p>Phát note-dán màu cho từng học viên. Yêu cầu mỗi người viết ngắn gọn 1–2 mong muốn cụ thể:</p>
+    <div class="callout-box">
+      <strong>Mẫu câu ghi note-dán:</strong> <em>"Tôi muốn AI giúp tôi [tên công việc cụ thể mất nhiều thời gian nhất ở phòng ban]..."</em>
+    </div>
+    <p>Học viên dán lên tờ A0 treo giữa lớp. Giảng viên gom nhóm nhanh (Nhóm Văn bản/Email, Nhóm Phân tích số liệu, Nhóm Báo cáo/Đề cương) và cam kết giải quyết trong 2 ngày.</p>
+  </div>
+
+  <!-- PHẦN IV: KỊCH BẢN CHI TIẾT THEO TIMELINE -->
+  <h2 class="section-title">IV. Kịch bản chi tiết theo Timeline (180 phút)</h2>
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th style="width: 80px;">Thời gian</th>
+        <th style="width: 50px;">Phút</th>
+        <th style="width: 250px;">Nội dung bài học</th>
+        <th>Hoạt động Giảng viên & Học viên</th>
+        <th style="width: 140px;">Học liệu & Công cụ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">00–05'</td>
+        <td>5'</td>
+        <td><strong>Mở đầu bằng pain point</strong></td>
+        <td>GV đặt câu hỏi gợi mở về trải nghiệm AI gây thất vọng. HV nhận diện vấn đề chung.</td>
+        <td>Slide dẫn nhập</td>
+      </tr>
+      <tr>
+        <td class="time">05–20'</td>
+        <td>15'</td>
+        <td><strong>Bức tranh tổng thể 4 tầng</strong></td>
+        <td>GV trình bày mô hình Data → Context → Knowledge → Workflow. Định vị mục tiêu 2 ngày học.</td>
+        <td>Slide Bản đồ 4 tầng</td>
+      </tr>
+      <tr>
+        <td class="time">20–35'</td>
+        <td>15'</td>
+        <td><strong>Thiết lập Bảng Mục Tiêu</strong></td>
+        <td>HV ghi 1–2 mong muốn cụ thể lên note-dán, dán lên bảng A0. GV gom nhóm cam kết giải quyết.</td>
+        <td>Bảng A0, Note-dán 3 màu</td>
+      </tr>
+      <tr>
+        <td class="time">35–50'</td>
+        <td>15'</td>
+        <td><strong>Bản chất AI & Hallucination</strong></td>
+        <td>
+          GV giải thích mô hình ngôn ngữ lớn là "máy đoán chữ".<br>
+          <strong>Demo sống:</strong> Hỏi Claude một quy chuẩn HSE không tồn tại trong ngành Dầu khí → Phân tích cách AI bịa đặt số liệu tự tin và rút ra bài học cảnh giác.
+        </td>
+        <td>Claude Chat, Màn hình máy chiếu</td>
+      </tr>
+      <tr>
+        <td class="time">50–80'</td>
+        <td>30'</td>
+        <td><strong>Framework CRISP 5 thành phần</strong></td>
+        <td>
+          GV mổ xẻ 5 chữ cái: Context – Role – Instruction – Specifics – Preview.<br>
+          <strong>Demo đối chứng:</strong> Chiếu 4 ảnh chụp so sánh Before/After khi viết <em>email xin gia hạn báo cáo</em> (Prompt sơ sài vs Prompt chuẩn CRISP).
+        </td>
+        <td>Slide đối chứng email, Handout CRISP</td>
+      </tr>
+      <tr>
+        <td class="time">80–95'</td>
+        <td>15'</td>
+        <td><strong>Giải lao giữa buổi</strong></td>
+        <td>Học viên nghỉ ngơi, trao đổi tự do tại bàn trà.</td>
+        <td>Tea-break</td>
+      </tr>
+      <tr>
+        <td class="time">95–125'</td>
+        <td>30'</td>
+        <td><strong>Thực hành 1.1: Soạn Prompt CRISP</strong></td>
+        <td>
+          HV viết prompt CRISP <strong>trên giấy trước</strong> cho một công việc văn bản thật của mình → gõ vào Claude → quét mã QR gửi vào <em>Trợ lý chấm Prompt theo CRISP</em> để nhận phản hồi → đối chứng với người bên cạnh.<br>
+          GV mời 2–3 HV trình chiếu và nhận xét trực tiếp.
+        </td>
+        <td>Phiếu giấy CRISP, QR Trợ lý chấm prompt, Laptop HV</td>
+      </tr>
+      <tr>
+        <td class="time">125–150'</td>
+        <td>25'</td>
+        <td><strong>3 Kỹ thuật Prompt nâng cao</strong></td>
+        <td>
+          GV hướng dẫn & demo trực tiếp trên chính bài làm của học viên:<br>
+          1. <em>Iterative:</em> Tinh chỉnh từng nấc thay vì viết lại từ đầu.<br>
+          2. <em>Negative:</em> Khóa chặt điều KHÔNG được phép làm.<br>
+          3. <em>Few-shot:</em> Đưa 1–2 ví dụ mẫu chuẩn văn phong cơ quan.
+        </td>
+        <td>Claude Chat, Bài làm thực tế của HV</td>
+      </tr>
+      <tr>
+        <td class="time">150–165'</td>
+        <td>15'</td>
+        <td><strong>Bản đồ công cụ AI theo tác vụ</strong></td>
+        <td>
+          GV phân tích: Hội thoại đa năng (Claude/ChatGPT/Gemini) vs Tìm kiếm có kiểm chứng (Perplexity) vs Quản trị tri thức RAG (Gemini Notebook).<br>
+          Lý do chọn Claude: Khả năng cấu trúc Claude Projects và Cowork tự động hóa.<br>
+          <em>Lưu ý:</em> Dùng tài khoản cá nhân trong lớp, chỉ dùng dữ liệu công khai/đã khử mật.
+        </td>
+        <td>Slide Bản đồ công cụ, Sơ đồ tác vụ</td>
+      </tr>
+      <tr>
+        <td class="time">165–180'</td>
+        <td>15'</td>
+        <td><strong>Tổng kết & Giao bài tập trưa</strong></td>
+        <td>
+          Đối chiếu lại Bảng Mục Tiêu: tick các mục đã chạm trong buổi sáng.<br>
+          Nhắc lại: Sáng nay mới ở tầng Data/Context, chiều nay sang tầng Knowledge.<br>
+          Giao nhiệm vụ chuẩn bị cho buổi chiều.
+        </td>
+        <td>Bảng Mục Tiêu A0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PHẦN V: BẢNG CÂU HỎI THẢO LUẬN -->
+  <h2 class="section-title">V. Bảng câu hỏi thảo luận & Tình huống dẫn dắt</h2>
+  <div class="card-box">
+    <ol>
+      <li>
+        <strong>Câu hỏi bẫy Hallucination:</strong> <em>"Nếu chúng ta hỏi Claude: 'Hãy trích dẫn Điều 15 trong Quy chuẩn HSE số 8899/2024 của Petrovietnam về bảo hộ giàn khoan ngoài khơi', tại sao AI vẫn trả lời vanh vách dù quy chuẩn này hoàn toàn do giảng viên tự bịa ra?"</em><br>
+        <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý trả lời: LLM hoạt động dựa trên cơ chế dự đoán từ có xác suất thống kê cao nhất đi sau từ trước đó. Khi nhận câu hỏi mang tính khẳng định ("Quy chuẩn 8899"), nó kích hoạt các trọng số liên quan đến an toàn giàn khoan và tự động xâu chuỗi các câu từ nghe có vẻ hợp lý nhất để trả lời, chứ không có cơ chế tra cứu tính có thực của văn bản nếu không được cấp quyền RAG.</span>
+      </li>
+      <li>
+        <strong>Câu hỏi về Framework CRISP:</strong> <em>"Tại sao chữ P (Preview/Mẫu đầu ra mong muốn) lại là thành phần quyết định 80% tính hữu dụng của kết quả văn bản?"</em><br>
+        <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý trả lời: Nếu không có Preview, AI sẽ tự chọn cấu trúc mặc định (thường là liệt kê gạch đầu dòng dông dài mang phong cách bài văn luận). Cung cấp khung Preview buộc AI phải gọt giũa thông tin vừa khít với biểu mẫu cơ quan.</span>
+      </li>
+      <li>
+        <strong>Câu hỏi bảo mật:</strong> <em>"Có sự khác nhau nào về cam kết bảo mật dữ liệu giữa gói cá nhân miễn phí và gói doanh nghiệp (Team/Enterprise) của Claude/ChatGPT?"</em><br>
+        <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý trả lời: Bản cá nhân mặc định có thể sử dụng hội thoại người dùng để huấn luyện mô hình (trừ khi chủ động tắt trong Settings). Bản doanh nghiệp có cam kết pháp lý không lưu dữ liệu để tái huấn luyện. Tuy nhiên, quy tắc an toàn số 1 vẫn là không đưa dữ liệu mật/nội bộ vào tài khoản cá nhân.</span>
+      </li>
+    </ol>
+  </div>
+
+  <!-- PHẦN VI: BÀI TẬP VỀ NHÀ & LAB THỰC HÀNH (CHỨA TỪ KHÓA 'Bài tập về nhà' HOẶC 'BTVN') -->
+  <h2 class="section-title">VI. Bài tập về nhà & Lab thực hành</h2>
+  <div class="card-box">
+    <h3 class="sub-title">Lab 1.1: Soạn thảo Prompt CRISP hoàn chỉnh (Thực hiện trên lớp)</h3>
+    <p><strong>Nhiệm vụ:</strong> Chọn 1 công việc văn bản có thực mà anh/chị thường xuyên phải làm (ví dụ: công văn phúc đáp, email giải trình tiến độ, thông báo nội bộ, đề cương bài giảng...).</p>
+    <ul>
+      <li><strong>Bước 1 (Viết tay):</strong> Điền đầy đủ 5 thành phần vào Phiếu CRISP in sẵn:
+        <pre class="prompt-block"><span class="tag-crisp">[C - Context]:</span> Bạn là cán bộ đào tạo tại PVN, đang chuẩn bị tổng kết khóa tập huấn...
+<span class="tag-crisp">[R - Role]:</span> Đóng vai trò là Trợ lý Hành chính - Văn thư chuyên nghiệp, văn phong chuẩn mực...
+<span class="tag-crisp">[I - Instruction]:</span> Soạn thảo email thông báo nộp báo cáo thu hoạch cho học viên...
+<span class="tag-crisp">[S - Specifics]:</span> Thời hạn chót 17h00 thứ Sáu; không chấp nhận nộp qua Zalo cá nhân...
+<span class="tag-crisp">[P - Preview]:</span> Tiêu đề: [PVN-TB]... Kính gửi:... 1. Nội dung... 2. Thời hạn... Trân trọng.</pre>
+      </li>
+      <li><strong>Bước 2 (Chạy đối chứng):</strong> Nhập vào Claude câu lệnh kiểu cũ ngắn ngủn vs câu lệnh CRISP đầy đủ. Chụp màn hình so sánh 2 kết quả.</li>
+      <li><strong>Bước 3 (Chấm điểm tự động):</strong> Quét mã QR dán câu lệnh vào <em>Trợ lý chấm Prompt theo CRISP</em> để nhận điểm đánh giá 5 thành phần và gợi ý hoàn thiện.</li>
+    </ul>
+
+    <h3 class="sub-title" style="margin-top:20px; color:var(--oxblood);">Nhiệm vụ giữa giờ trưa / Bài tập chuẩn bị cho Buổi 2:</h3>
+    <ul>
+      <li>Suy nghĩ và chọn ra <strong>01 quy trình nghiệp vụ lặp đi lặp lại</strong> nhiều nhất tại phòng ban/bộ môn của mình (ví dụ: quy trình tiếp nhận và duyệt công văn, quy trình rà soát đề thi, quy trình duyệt cấp phát văn phòng phẩm, quy trình chấm tiểu luận...).</li>
+      <li>Chuẩn bị sẵn 1–2 tài liệu mẫu liên quan đến quy trình này (đã <strong>khử định danh</strong>: xóa tên người, số điện thoại cá nhân, thông tin tài chính mật) để nạp vào Claude Project vào buổi chiều.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN VII: CÂU HỎI ÔN TẬP CỦNG CỐ CUỐI BUỔI -->
+  <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi</h2>
+  <div class="card-box">
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 1:</strong> Hiện tượng "Hallucination" của các mô hình ngôn ngữ lớn (LLM) phát sinh từ nguyên nhân cốt lõi nào?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Do mạng Internet của người dùng bị gián đoạn khi truyền tải.</li>
+        <li>B. Do mô hình dự đoán từ tiếp theo dựa trên xác suất chuỗi ký tự thay vì tra cứu cơ sở dữ liệu sự thật đã được xác thực. (Đúng)</li>
+        <li>C. Do máy chủ Claude bị nhiễm mã độc tấn công dữ liệu.</li>
+        <li>D. Do người dùng sử dụng câu lệnh quá dài vượt quá giới hạn của bộ nhớ.</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 2:</strong> Trong khung CRISP, chữ cái nào đại diện cho việc định hình cấu trúc, biểu mẫu và quy cách hiển thị của văn bản đầu ra?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. C - Context</li>
+        <li>B. R - Role</li>
+        <li>C. S - Specifics</li>
+        <li>D. P - Preview (Đúng)</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>Câu 3:</strong> Kỹ thuật "Negative Prompting" giúp người dùng đạt được mục tiêu nào khi giao việc cho AI?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Khiến AI nổi giận và từ chối trả lời câu hỏi.</li>
+        <li>B. Liệt kê rõ những điều cấm kỵ, từ ngữ sáo rỗng hoặc hành động KHÔNG ĐƯỢC PHÉP làm trong văn bản. (Đúng)</li>
+        <li>C. Xóa bỏ toàn bộ lịch sử trò chuyện để làm sạch dữ liệu.</li>
+        <li>D. Giảm dung lượng của cửa sổ ngữ cảnh để AI chạy nhanh hơn.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHẦN VIII: LƯU Ý VÀ TÌNH HUỐNG DỰ PHÒNG CHO GIẢNG VIÊN -->
+  <h2 class="section-title">VIII. Lưu ý và Tình huống dự phòng cho Giảng viên</h2>
+  <div class="card-box">
+    <ul>
+      <li><strong>Rủi ro demo sống Hallucination không bịa:</strong> Đôi khi Claude 3.5 Sonnet trả lời rất thận trọng: <em>"Tôi không tìm thấy thông tin về Quy chuẩn 8899..."</em>. Nếu gặp tình huống này, GV không hoảng hốt mà chiếu ngay slide dự phòng có ảnh chụp màn hình tình huống Claude bịa đặt đã chụp sẵn để phân tích cho lớp.</li>
+      <li><strong>Trục trặc mạng Wifi phòng học:</strong> Nếu mạng nghẽn do 30 học viên đồng loạt gọi API, hướng dẫn học viên tạm thời viết trước prompt trên phần mềm Notepad / Word, chia sẻ hotspot 4G từ điện thoại.</li>
+      <li><strong>Mã QR Trợ lý chấm Prompt:</strong> Cần kiểm tra quyền truy cập công khai của đường link bot trước 30 phút. Chuẩn bị sẵn link rút gọn (bit.ly) chiếu lên màn hình phòng khi camera điện thoại học viên không quét được mã QR.</li>
+      <li><strong>Kiểm soát thời gian:</strong> Phần Thực hành 1.1 rất dễ cháy giáo án do học viên mải mê tinh chỉnh prompt. GV cần bấm chuông nhắc nhở ở phút 15 và chỉ gọi đúng 2 đại diện chia sẻ trước lớp.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

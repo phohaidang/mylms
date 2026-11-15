@@ -1,0 +1,904 @@
+{
+  "session": 3,
+  "chapter": "Ch.3",
+  "title": "Nhập môn PHP (Phần 1)",
+  "time_limit_minutes": 50,
+  "questions": [
+    {
+      "id": "ltweb-q045",
+      "type": "mc",
+      "level": 1,
+      "question": "Giả sử mục tiêu là hiển thị chính xác nội dung \"Hello World\" trên trang web bằng cách sử dụng ngôn ngữ lập trình PHP. Lựa chọn nào dưới đây phù hợp nhất?",
+      "options": [
+        "A. echo \"Hello World\";",
+        "B. var_dump(\"Hello World\");",
+        "C. print_r(\"Hello World\");",
+        "D. die(\"Hello World\");"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (echo \"Hello World\";): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q046",
+      "type": "mc",
+      "level": 1,
+      "question": "Đoạn mã nguồn được viết bởi PHP (PHP server script) được bao quanh bởi cặp thẻ nào sau đây?",
+      "options": [
+        "A. <script>...</script>",
+        "B. <?php...?>",
+        "C. <?php>...</?>",
+        "D. <&>...</&>"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (<?php...?>): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q047",
+      "type": "mc",
+      "level": 1,
+      "question": "Cú pháp nào dùng cho ghi chú một dòng?",
+      "options": [
+        "A. // This is a single-line comment",
+        "B. */ This is a single-line comment /*",
+        "C. * This is a single-line comment *",
+        "D. $ This is a single-line comment"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (// This is a single-line comment): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q048",
+      "type": "mc",
+      "level": 1,
+      "question": "Cách nào sau đây dùng để thực hiện đoạn ghi chú trong mã PHP?",
+      "options": [
+        "A. <!-- …. -->",
+        "B. /*...*/",
+        "C. <comment>...</comment>",
+        "D. *\\...\\*"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (/*...*/): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q049",
+      "type": "mc",
+      "level": 1,
+      "question": "Ký tự nào sau đây để kết thúc một câu lệnh trong PHP?",
+      "options": [
+        "A. . (dấu chấm)",
+        "B. : (dấu hai chấm)",
+        "C. ; (dấu chấm phẩy)",
+        "D. Không có đáp án nào đúng"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Không có đáp án nào đúng): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q050",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong các tập tin dưới đây, tập tin nào sẽ được web server xử lý như một tập tin PHP trong cấu hình mặc định?",
+      "options": [
+        "A. welcome.html",
+        "B. welcome.css",
+        "C. welcome.js",
+        "D. welcome.php"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (welcome.php): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q051",
+      "type": "mc",
+      "level": 1,
+      "question": "Vai trò chính của PHP trong một ứng dụng web là gì?",
+      "options": [
+        "A. Thiết kế bố cục và định dạng giao diện người dùng.",
+        "B. Xử lý yêu cầu và tạo nội dung động trên máy chủ.",
+        "C. Thực hiện các tương tác trực tiếp trên trình duyệt.",
+        "D. Lưu trữ và quản lý dữ liệu của ứng dụng."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Xử lý yêu cầu và tạo nội dung động trên máy chủ.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q052",
+      "type": "mc",
+      "level": 1,
+      "question": "Chọn phát biểu đúng về tập tin (file) PHP.",
+      "options": [
+        "A. File PHP chỉ được chứa mã PHP.",
+        "B. File PHP chỉ có thể chứa mã HTML.",
+        "C. File PHP chỉ có thể chứa mã JavaScript.",
+        "D. File PHP có thể chứa mã HTML, CSS, JavaScript, mã PHP."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (File PHP có thể chứa mã HTML, CSS, JavaScript, mã PHP.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q053",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong mô hình kiến trúc web, PHP thuộc loại ngôn ngữ nào?",
+      "options": [
+        "A. Ngôn ngữ phía client (client-side)",
+        "B. Ngôn ngữ phía server (server-side)",
+        "C. Ngôn ngữ thiết kế giao diện",
+        "D. Ngôn ngữ hệ thống (system programming language)"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Ngôn ngữ phía server (server-side)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q054",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào dưới đây mô tả đúng nhất cách nhúng và thực thi mã PHP trong một trang web?",
+      "options": [
+        "A. Mã PHP được viết trong thẻ <script> và thực thi trực tiếp trên trình duyệt.",
+        "B. Mã PHP có thể được viết xen kẽ trong tài liệu HTML và được web server xử lý trước khi gửi kết quả HTML về trình duyệt..",
+        "C. Mã PHP luôn phải được tách thành file riêng và không được nhúng trong tài liệu HTML.",
+        "D. Mã PHP chỉ có thể thực thi sau khi được biên dịch thành JavaScript."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Mã PHP có thể được viết xen kẽ trong tài liệu HTML và được web server xử lý trước khi gửi kết quả HTML về trình duyệt..): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q055",
+      "type": "mc",
+      "level": 1,
+      "question": "Khi người dùng truy cập một file PHP thông qua trình duyệt, quá trình xử lý thường diễn ra như thế nào?",
+      "options": [
+        "A. Trình duyệt tải mã PHP về máy người dùng và thực thi mã PHP.",
+        "B. Web Server chuyển file PHP thành JavaScript rồi gửi cho trình duyệt thực thi.",
+        "C. Web Server gọi bộ xử lý PHP để thực thi mã PHP, sau đó gửi kết quả HTML về trình duyệt.",
+        "D. Trình soạn thảo mã nguồn kiểm tra file PHP và tự động tạo trang web hoàn chỉnh."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Web Server gọi bộ xử lý PHP để thực thi mã PHP, sau đó gửi kết quả HTML về trình duyệt.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q056",
+      "type": "mc",
+      "level": 1,
+      "question": "Chọn phát biểu đúng về tên biến trong ngôn ngữ PHP.",
+      "options": [
+        "A. Tên biến phải được viết hoa toàn bộ. Ví dụ: $AGE",
+        "B. Tên biến phải được viết thường toàn bộ. Ví dụ: $age",
+        "C. Tất cả các tên biến không phân biệt chữ hoa chữ thường.",
+        "D. Tất cả các tên biến đều phân biệt chữ hoa chữ thường."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Tất cả các tên biến đều phân biệt chữ hoa chữ thường.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q058",
+      "type": "mc",
+      "level": 1,
+      "question": "Cú pháp ngôn ngữ PHP gần giống nhất với:",
+      "options": [
+        "A. JavaScript",
+        "B. Perl và C",
+        "C. VBScript",
+        "D. HTML"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Perl và C): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q060",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong PHP, ta có thể sử dụng các ký tự nào sau đây để chỉ định là giá trị chuỗi (string)?",
+      "options": [
+        "A. ' (dấu nháy đơn)",
+        "B. \" (dấu nháy kép)",
+        "C. Cả 2 đáp án trên đều đúng.",
+        "D. Không có đáp án nào đúng."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Không có đáp án nào đúng.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q065",
+      "type": "mc",
+      "level": 1,
+      "question": "Đối với ngôn ngữ PHP, kiểu dữ liệu Boolean trả cho ta giá trị gì?",
+      "options": [
+        "A. true hoặc false",
+        "B. equal hoặc unequal",
+        "C. bigger hoặc smaller",
+        "D. yes hoặc none"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (true hoặc false): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q066",
+      "type": "mc",
+      "level": 1,
+      "question": "PHP không hỗ trợ kiểu dữ liệu nào?",
+      "options": [
+        "A. String",
+        "B. Integer",
+        "C. Float",
+        "D. Single"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Single): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q067",
+      "type": "mc",
+      "level": 1,
+      "question": "Tất cả các biến được khai báo trong PHP phải bắt đầu với ký tự nào sau đây?",
+      "options": [
+        "A. $",
+        "B. !",
+        "C. @",
+        "D. &"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A ($): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q068",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong ngôn ngữ PHP, tên biến nào dưới đây không hợp lệ?",
+      "options": [
+        "A. $my-var",
+        "B. $my_var",
+        "C. $myVar",
+        "D. $my1var"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A ($my-var): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q069",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong ngôn ngữ PHP, ký tự nào dưới đây được phép sử dụng đặt tên biến?",
+      "options": [
+        "A. * (sao)",
+        "B. _ (gạch nối dưới)",
+        "C. # (thăng)",
+        "D. Tất cả các đáp án trên"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Tất cả các đáp án trên): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q071",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong ngôn ngữ PHP, kí tự nào sau đây luôn đặt ở đầu tên biến?",
+      "options": [
+        "A. * (sao)",
+        "B. _ (gạch nối dưới)",
+        "C. # (thăng)",
+        "D. $ (tiền tệ)"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D ($ (tiền tệ)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q072",
+      "type": "mc",
+      "level": 1,
+      "question": "Đâu là mã PHP đúng để tạo một biến có tên là txt và được gán giá trị là \"Hello\"?",
+      "options": [
+        "A. $txt, \"Hello\";",
+        "B. $txt : \"Hello\";",
+        "C. $txt => \"Hello\";",
+        "D. $txt = \"Hello\";"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D ($txt = \"Hello\";): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q090",
+      "type": "mc",
+      "level": 1,
+      "question": "Để nối 2 chuỗi trong PHP, ta sử dụng toán tử nào?",
+      "options": [
+        "A. Toán tử (+)",
+        "B. Toán tử (-)",
+        "C. Toán tử (.)",
+        "D. Toán tử (&&)"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Toán tử (.)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q162",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào sau đây là đúng về cách để xuất ra chuỗi văn bản trong PHP?",
+      "options": [
+        "A. Trong PHP, cách duy nhất để xuất ra văn bản là sử dụng echo.",
+        "B. Trong PHP, cách duy nhất để xuất ra văn bản là sử dụng print.",
+        "C. Trong PHP, ta có thể sử dụng echo, hoặc print để xuất ra văn bản.",
+        "D. Trong PHP, không có cách nào để xuất ra văn bản."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Trong PHP, ta có thể sử dụng echo, hoặc print để xuất ra văn bản.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q061",
+      "type": "mc",
+      "level": 2,
+      "question": "Phát biểu nào sau đây là đúng về kiểu dữ liệu chuỗi?",
+      "options": [
+        "A. Bất kỳ tập hợp các ký tự nào được đặt trong dấu nháy đơn (') đều được hiểu là kiểu chuỗi.",
+        "B. Bất kỳ tập hợp các ký tự nào được đặt trong dấu nháy kép (\") đều được hiểu là kiểu chuỗi.",
+        "C. Cả 2 phát biểu trên đều đúng.",
+        "D. Không có đáp án nào đúng."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Không có đáp án nào đúng.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q062",
+      "type": "mc",
+      "level": 2,
+      "question": "Sự khác nhau giữa việc sử dụng dấu nháy đơn (') so với dấu nháy kép (\") trong kiểu dữ liệu chuỗi là gì?",
+      "options": [
+        "A. Không có sự khác nhau.",
+        "B. Khi sử dụng dấu nháy đơn ('), trình thông dịch của PHP sẽ hiển thị giá trị của biến (nếu có) thay cho tên biến. Còn dấu nháy kép (\") sẽ hiển thị tên biến mà không hiển thị giá trị của biến.",
+        "C. Khi sử dụng dấu nháy kép (\"), trình thông dịch của PHP sẽ hiển thị giá trị của biến (nếu có) thay cho tên biến. Còn dấu nháy đơn (') sẽ hiển thị tên biến mà không hiển thị giá trị của biến.",
+        "D. Khi sử dụng dấu nháy đơn (') bao quanh ký tự số thì PHP sẽ tự động gán biến là kiểu dữ liệu Integer. Ngược lại, khi sử dụng dấu nháy kép (\") bao quanh k‎ý tự số thì PHP tự động gán biến là kiểu dữ liệu chuỗi."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong PHP, chuỗi đặt trong dấu nháy kép (\" \") sẽ nội suy (thay thế) tên biến bằng giá trị của biến, còn chuỗi đặt trong dấu nháy đơn (' ') sẽ in nguyên văn tên biến."
+    },
+    {
+      "id": "ltweb-q079",
+      "type": "mc",
+      "level": 2,
+      "question": "Cho đoạn code viết bằng ngôn ngữ PHP như sau: <?php $total = 10; $people = 2; echo $total / $people; ?> Kết quả hiển thị sau khi chạy chương trình là:",
+      "options": [
+        "A. 0",
+        "B. 5",
+        "C. 10/2",
+        "D. 20"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (5): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q237",
+      "type": "mc",
+      "level": 2,
+      "question": "Phát biểu nào đúng nhất về hằng trong PHP?",
+      "options": [
+        "A. Tên hằng bắt buộc phải bắt đầu bằng dấu $",
+        "B. Giá trị của hằng có thể thay đổi bằng toán tử gán",
+        "C. Có thể khai báo hằng bằng define() hoặc const",
+        "D. const có thể được sử dụng trong mọi khối if"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Có thể khai báo hằng bằng define() hoặc const): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q057",
+      "type": "mc",
+      "level": 3,
+      "question": "Chọn phát biểu đúng cho tập lệnh PHP sau đây: $color = \"red\"; echo \"My car is \" . $color . \"<br>\"; echo \"My house is \" . $COLOR . \"<br>\"; echo \"My boat is \" . $coLOR . \"<br>\";",
+      "options": [
+        "A. Chỉ có câu lệnh đầu tiên sẽ hiển thị giá trị của biến $color. Vì $color, $COLOR và $coLOR được coi là 3 biến khác nhau.",
+        "B. Cả 3 câu lệnh đều sẽ hiển thị giá trị của biến $color. Vì $color, $COLOR và $coLOR đều được coi là 1 biến.",
+        "C. Câu lệnh thứ nhất và thứ hai sẽ hiển thị giá trị của biến $color. Vì $color và $COLOR được coi là 1 biến, còn $coLOR thì là biến khác.",
+        "D. Câu lệnh thứ nhất và thứ ba sẽ hiển thị giá trị của biến $color. Vì $color và $coLOR được coi là 1 biến, còn $COLOR thì là biến khác."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Chỉ có câu lệnh đầu tiên sẽ hiển thị giá trị của biến $color. Vì $color, $COLOR và $coLOR được coi là 3 biến khác nhau.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q059",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu lệnh nào tương đương với câu lệnh sau: <?= $_GET['name']; ?>",
+      "options": [
+        "A. <?php $_GET['name']; ?>",
+        "B. <?php = $_GET['name']; ?>",
+        "C. <?php echo $_GET['name']; ?>",
+        "D. <if $name = $_GET['name']; ?>"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (<?php echo $_GET['name']; ?>): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q063",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã sau đây sẽ xuất ra màn hình kết quả gì? $txt = \"PHP\"; echo 'I love $txt!';",
+      "options": [
+        "A. I love PHP!",
+        "B. 'I love PHP!'",
+        "C. I love $txt!",
+        "D. \"I love $txt!\""
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong PHP, chuỗi đặt trong dấu nháy kép (\" \") sẽ nội suy (thay thế) tên biến bằng giá trị của biến, còn chuỗi đặt trong dấu nháy đơn (' ') sẽ in nguyên văn tên biến."
+    },
+    {
+      "id": "ltweb-q064",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã sau đây sẽ xuất ra màn hình kết quả gì? $txt = \"PHP\"; echo \"I love $txt!\";",
+      "options": [
+        "A. I love PHP!",
+        "B. \"I love PHP!\"",
+        "C. I love $txt!",
+        "D. \"I love $txt!\""
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Trong PHP, chuỗi đặt trong dấu nháy kép (\" \") sẽ nội suy (thay thế) tên biến bằng giá trị của biến, còn chuỗi đặt trong dấu nháy đơn (' ') sẽ in nguyên văn tên biến."
+    },
+    {
+      "id": "ltweb-q073",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là mã PHP đúng để tạo một biến có tên x và một biến có tên y, sau đó sử dụng câu lệnh echo để xuất ra tổng của x và y?",
+      "options": [
+        "A. $x = 2; $y = 7; echo $x + $y;",
+        "B. x = 2; y = 7; echo x + y;",
+        "C. $x = 2; $y = 7; echo x + y;",
+        "D. var x = 2; var y = 7; echo x + y;"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A ($x = 2; $y = 7; echo $x + $y;): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q074",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã PHP sau đây sẽ xuất ra kết quả gì? $x = 7; $y = 8; echo $x + $y;",
+      "options": [
+        "A. $x + $y",
+        "B. 7",
+        "C. 8",
+        "D. 15"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (15): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q075",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã sau PHP dưới đây, lựa chọn nào sẽ cho kết quả đúng nhất? $txt = \"PHP\"; echo \"I love \" . $txt . \"!\";",
+      "options": [
+        "A. I love PHP!",
+        "B. \"I love PHP!\"",
+        "C. I love $txt!",
+        "D. \"I love $txt!\""
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Trong PHP, chuỗi đặt trong dấu nháy kép (\" \") sẽ nội suy (thay thế) tên biến bằng giá trị của biến, còn chuỗi đặt trong dấu nháy đơn (' ') sẽ in nguyên văn tên biến."
+    },
+    {
+      "id": "ltweb-q076",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu lệnh nào sẽ xuất ra cùng kết quả với câu lệnh sau: $txt = \"PHP\"; echo \"I love $txt!\";",
+      "options": [
+        "A. echo 'I love $txt!';",
+        "B. echo \"I love \" . $txt . \"!\";",
+        "C. echo I love . $txt . !;",
+        "D. echo I love $txt!;"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, chuỗi đặt trong dấu nháy kép (\" \") sẽ nội suy (thay thế) tên biến bằng giá trị của biến, còn chuỗi đặt trong dấu nháy đơn (' ') sẽ in nguyên văn tên biến."
+    },
+    {
+      "id": "ltweb-q077",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn code viết bằng ngôn ngữ PHP như sau: <?php $stock = 50; $inputStock = \"50\"; if ($stock === $inputStock) { echo \"Đã cập nhật\"; } else { echo \"Dữ liệu cần kiểm tra lại\"; } ?> Kết quả hiển thị sau khi chạy chương trình là:",
+      "options": [
+        "A. Đã cập nhật",
+        "B. Dữ liệu cần kiểm tra lại",
+        "C. 50",
+        "D. Chương trình không in ra kết quả"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q078",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn code viết bằng ngôn ngữ PHP như sau: <?php $price = 10; $quantity = 5; echo $price . $quantity; ?> Kết quả hiển thị sau khi chạy chương trình là:",
+      "options": [
+        "A. 105",
+        "B. 50",
+        "C. 15",
+        "D. 2"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (105): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q080",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = \"10\"; $y = 6; echo $x * $y;",
+      "options": [
+        "A. 10 * 6",
+        "B. 106",
+        "C. 60",
+        "D. Báo lỗi"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (60): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q081",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = \"10\"; $y = \"5\"; echo $x / $y;",
+      "options": [
+        "A. 10 / 5",
+        "B. 15",
+        "C. 50",
+        "D. 2"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (2): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q082",
+      "type": "mc",
+      "level": 3,
+      "question": "Trong PHP, toán tử nào được dùng để kiểm tra hai biến $a và $b có giá trị bằng nhau?",
+      "options": [
+        "A. ==",
+        "B. =",
+        "C. ?=",
+        "D. <>"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (==): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q084",
+      "type": "mc",
+      "level": 3,
+      "question": "Trong PHP, toán tử nào được dùng để kiểm tra hai biến $a có khác với biến $b hay không?",
+      "options": [
+        "A. ==",
+        "B. =!",
+        "C. !=",
+        "D. ?="
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (!=): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q086",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = 20; $x += 100; $x -= 15; echo $x;",
+      "options": [
+        "A. 105",
+        "B. 20",
+        "C. 120",
+        "D. 101"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (105): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q087",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn mã PHP sau: $x = 5; $y = $x++ + 4; $z = ++$x + $y; Sau khi thực hiện đoạn mã trên, giá trị của $x, $y và $z lần lượt là bao nhiêu?",
+      "options": [
+        "A. $x = 7, $y = 10, $z = 17",
+        "B. $x = 7, $y = 9, $z = 16",
+        "C. $x = 6, $y = 9, $z = 15",
+        "D. $x = 7, $y = 9, $z = 15"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B ($x = 7, $y = 9, $z = 16): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q089",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn mã PHP sau: $x = 10; $y = 2 + $x++; $z = 3 + ++$x; Sau khi thực hiện đoạn mã trên, giá trị của $x, $y và $z lần lượt là bao nhiêu?",
+      "options": [
+        "A. $x = 12, $y = 13, $z = 15",
+        "B. $x = 12, $y = 12, $z = 15",
+        "C. $x = 11, $y = 12, $z = 14",
+        "D. $x = 12, $y = 12, $z = 14"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B ($x = 12, $y = 12, $z = 15): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q091",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $txt1 = \"Hello\"; $txt2 = \" world!\"; echo $txt1 . $txt2;",
+      "options": [
+        "A. \"Hello\"",
+        "B. \" world!\"",
+        "C. $txt1 . $txt2",
+        "D. Hello world!"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Hello world!): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q092",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $txt1 = \"Hello\"; $txt2 = \" world!\"; $txt1 .= $txt2; echo $txt1;",
+      "options": [
+        "A. Hello world!",
+        "B. world!",
+        "C. \"Hello\"",
+        "D. \" world!\""
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Hello world!): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q093",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là câu lệnh đúng để: thiết lập cho $msg = \"Số lớn\" nếu $a > 100, ngược lại $msg = \"Số nhỏ\" nếu $a <= 100?",
+      "options": [
+        "A. $msg = \"Số lớn\" if ($a > 100); $msg = \"Số nhỏ\" if not ($a > 100);",
+        "B. $msg = ($a > 100) ? \"Số lớn\" : \"Số nhỏ\";",
+        "C. $msg = \"Số lớn\" if (($a > 100) = TRUE); $msg = \"Số nhỏ\" if (($a > 100) = FALSE);",
+        "D. Cả 3 đáp án trên đều sai."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 đáp án trên đều sai.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q094",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn mã PHP sau: $score = 6; $bonus = 1; $result = ($score + $bonus >= 8) ? \"Đạt\" : \"Không đạt\"; echo $result; Sau khi chạy đoạn mã trên, kết quả hiển thị trên màn hình là gì?",
+      "options": [
+        "A. Đạt",
+        "B. True",
+        "C. Không đạt",
+        "D. 8"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Không đạt): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q095",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn mã PHP sau: $x = 100; $y = 50; if ($x == 100 && $y == 50) { echo \"Hello world!\"; } else { echo \"Hello\"; } Sau khi chạy đoạn mã trên, kết quả hiển thị trên màn hình là gì?",
+      "options": [
+        "A. \"Hello\"",
+        "B. Không có nội dung nào được hiển thị",
+        "C. True",
+        "D. Hello world!"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q096",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là câu lệnh PHP đúng để hiển thị \"Hello World\" khi $a nhỏ hơn $b?",
+      "options": [
+        "A. if ($a < $b) { echo \"Hello World\"; }",
+        "B. if ($a <= $b) { echo \"Hello World\"; }",
+        "C. if ($a > $b) { echo \"Hello World\"; }",
+        "D. if ($a < $b); { echo \"Hello World\"; }"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (if ($a < $b) { echo \"Hello World\"; }): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q097",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là câu lệnh PHP đúng để hiển thị \"Hello World\" khi $a không bằng $b?",
+      "options": [
+        "A. if ($a == $b) { echo \"Hello World\"; }",
+        "B. if ($a != $b) { echo \"Hello World\"; }",
+        "C. if ($a <> $b); { echo \"Hello World\"; }",
+        "D. if ($a =! $b) { echo \"Hello World\"; }"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (if ($a != $b) { echo \"Hello World\"; }): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q098",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $a = 90; $b = \"90\"; if ($a !== $b) { echo \"Yes\"; } else { echo \"No\"; }",
+      "options": [
+        "A. Không có nội dung nào được hiển thị",
+        "B. $a == $b",
+        "C. No",
+        "D. Yes"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q099",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $a = 50; $b = 20; if ($a == $b) { echo \"1\"; } elseif ($a > $b) { echo \"2\"; } else { echo \"3\"; }",
+      "options": [
+        "A. 1",
+        "B. 2",
+        "C. 3",
+        "D. 123"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q159",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu lệnh PHP nào sau đây KHÔNG ĐÚNG cú pháp?",
+      "options": [
+        "A. echo \"<p>Đăng ký thành công!</p>\";",
+        "B. echo \"Mã sinh viên: SV1025\";",
+        "C. echo \"Tổng số tín chỉ: \" . 15;",
+        "D. echo <p>Đăng ký thành công!</p>;"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (echo <p>Đăng ký thành công!</p>;): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q160",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu lệnh PHP nào sau đây KHÔNG ĐÚNG cú pháp?",
+      "options": [
+        "A. echo \"Mã sinh viên: \" $studentId;",
+        "B. echo \"Họ tên: \" . $studentName;",
+        "C. echo \"Điểm trung bình: $gpa\";",
+        "D. echo \"<strong>Kết quả:</strong> Đạt\";"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (echo \"Mã sinh viên: \" $studentId;): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q239",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $result = 2 + 3 * 4 ** 2; echo $result; ?>",
+      "options": [
+        "A. 146",
+        "B. 50",
+        "C. 400",
+        "D. 256"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (50): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q240",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 4; $result = $x + 2 > 5 ? $x * 2 : $x - 2; echo $result; ?>",
+      "options": [
+        "A. 2",
+        "B. 4",
+        "C. 6",
+        "D. 8"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (8): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q246",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 4; $result = $x++ + 3 * 2; echo $result . \"-\" . $x; ?>",
+      "options": [
+        "A. 10-4",
+        "B. 10-5",
+        "C. 11-4",
+        "D. 11-5"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (10-5): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q247",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 4; $result = ++$x + 3 * 2; echo $result . \"-\" . $x; ?>",
+      "options": [
+        "A. 10-4",
+        "B. 10-5",
+        "C. 11-4",
+        "D. 11-5"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (11-5): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q248",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 10; $result = $x-- / 2 + 3; echo $result . \"-\" . $x; ?>",
+      "options": [
+        "A. 7-9",
+        "B. 7.5-9",
+        "C. 8-9",
+        "D. 7.5-10"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (8-9): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q249",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 10; $result = --$x / 3 + 2; echo $result . \"-\" . $x; ?>",
+      "options": [
+        "A. 5-9",
+        "B. 5-10",
+        "C. 6-9",
+        "D. 6-10"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (5-9): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q250",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 10; $y = 8; $result = --$x*3 + $y-- *2 - $x--; echo $result; ?>",
+      "options": [
+        "A. 33",
+        "B. 34",
+        "C. 36",
+        "D. 35"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (34): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q255",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $x = 3; $y = 5; $x += $y++; $y = --$x; echo $x.\" \".$y; ?>",
+      "options": [
+        "A. 7 7",
+        "B. 8 7",
+        "C. 7 6",
+        "D. 8 8"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (7 7): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q265",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $x = 8; $y = 4; echo $x / $y++ + 3 * $y--; ?>",
+      "options": [
+        "A. 13",
+        "B. 14",
+        "C. 16",
+        "D. 17"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (17): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    }
+  ]
+}

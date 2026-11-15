@@ -1,0 +1,504 @@
+{
+  "chapter": 4,
+  "title": "Nâng cao, an toàn và lộ trình tiếp theo",
+  "sessions": [
+    4
+  ],
+  "scqa": {
+    "situation": "Đến Buổi 4, bạn đã có một Claude Project chạy được quy trình: có Instructions, Knowledge Base, GATE để dừng chờ bạn, FALLBACK để hỏi lại khi thiếu thông tin, và đã qua ba kịch bản test.",
+    "complication": "Chạy được chưa có nghĩa là đáng tin. AI vẫn có thể bịa một điều khoản nghe rất thuyết phục. Chỉ một lần dán nhầm là dữ liệu đã rời khỏi nơi được phép. Dùng quen rồi, người dùng dễ ngừng kiểm tra. Với dữ liệu của sinh viên và tài liệu mật, còn có nghĩa vụ pháp lý.",
+    "question": "Làm sao nâng trợ lý từ \"chạy được\" lên \"đáng tin\", và dùng nó mà không đưa dữ liệu nhạy cảm vào nơi không được phép?",
+    "answer": "Hai lớp bảo vệ. Lớp kỹ thuật nằm trong Instructions: self-check, trích dẫn nguồn, quy trình rẽ nhánh. Lớp kỷ luật dữ liệu nằm ở người dùng: phân loại 4 mức, tách khỏi bí mật nhà nước, khử định danh, đúng công cụ. Nền của cả hai là nguyên tắc: AI viết nháp, người ký chịu trách nhiệm."
+  },
+  "concepts": [
+    {
+      "id": "c4-self-check",
+      "term": "Self-check",
+      "definition": "Bắt AI tự rà lại kết quả theo một checklist cụ thể trước khi trả cho bạn. Trong template Custom Instructions, đó là mục TỰ KIỂM TRA.",
+      "key_points": [
+        "<strong>Câu lệnh gốc:</strong> mỗi checklist phải gắn với đúng quy trình của bạn, không dùng câu chung chung như \"hãy cẩn thận\".",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">Trước khi trả kết quả, hãy rà lại theo checklist sau: [liệt kê các mục]. Mục nào chưa đạt thì sửa rồi mới trả.</pre>",
+        "<strong>Mẫu viết vào Instructions:</strong>",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\"># TỰ KIỂM TRA\nTrước khi trả kết quả cuối, rà lại từng mục và ghi rõ mục nào chưa đạt:\n□ Đúng template đầu ra?\n□ Mỗi nhận định đều có trích dẫn từ tài liệu trong Knowledge Base?\n□ Có thông tin ngoài nguồn mà chưa đánh dấu [CẦN KIỂM CHỨNG]?\n□ Đã qua đủ các gate?\nNếu có mục chưa đạt, sửa trước rồi mới trả kết quả.</pre>",
+        "Checklist tốt đo được bằng có/không: đúng mẫu, đủ số lượng, có nguồn, đã qua gate. Tránh mục mơ hồ như \"nội dung hay\".",
+        "Self-check giảm lỗi nhưng không thay được bạn. Nó bắt lỗi AI tự nhận ra; lỗi AI không nhận ra thì cần mắt người đọc kết quả.",
+        "Tiêu chí hoàn thành của buổi này: Project cuối khóa có tối thiểu một cơ chế self-check."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-trich-dan",
+        "c3-template-ci"
+      ]
+    },
+    {
+      "id": "c4-trich-dan",
+      "term": "Trích dẫn nguồn",
+      "definition": "Yêu cầu AI ghi rõ mỗi nhận định dựa vào đoạn nào của tài liệu trong Knowledge Base, để bạn kiểm tra được thay vì phải tin.",
+      "key_points": [
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\"># NGUỒN TIN CẬY\n- Mỗi nhận định phải kèm trích dẫn nguyên văn ngắn từ tài liệu trong Knowledge Base, ghi rõ tên file.\n- Không tìm thấy căn cứ trong tài liệu thì ghi \"Chưa đủ căn cứ\" và hỏi tôi, không tự suy đoán.\n- Kiến thức ngoài tài liệu phải đánh dấu [CẦN KIỂM CHỨNG].</pre>",
+        "<strong>Vì sao hiệu quả:</strong> AI bịa dễ hơn khi không bị buộc chỉ ra căn cứ. Trích dẫn nguyên văn cho phép bạn đối chiếu trong vài giây.",
+        "<strong>Cách kiểm tra:</strong> chọn ngẫu nhiên vài trích dẫn, mở tài liệu gốc, tìm đúng câu đó. Nếu không thấy, đó là dấu hiệu AI diễn đạt lại hoặc bịa.",
+        "<strong>Dòng \"Chưa đủ căn cứ\"</strong> chính là FALLBACK 2 của case chấm đồ án: tiêu chí không có căn cứ trong bài thì hỏi lại, không đoán điểm.",
+        "Trích dẫn chỉ chứng minh AI đọc đúng tài liệu bạn đưa. Nếu tài liệu sai thì kết quả vẫn sai."
+      ],
+      "case_study": {
+        "title": "Trích dẫn trong bảng điểm chấm đồ án",
+        "context": "Ở Kịch bản 1 của case chấm đồ án, mỗi điểm N1–N5 đi kèm một trích dẫn nguyên văn từ báo cáo sinh viên.",
+        "analysis": "Giáo viên không phải đọc lại cả báo cáo. Họ lướt qua bảng điểm, mở đúng đoạn trích để kiểm tra, và chỉnh điểm ở GATE 1 nếu thấy không khớp.",
+        "lesson_learned": "Trích dẫn biến việc \"tin AI\" thành việc \"kiểm tra AI\" tốn ít công sức."
+      },
+      "related_concepts": [
+        "c4-self-check",
+        "c2-fallback"
+      ]
+    },
+    {
+      "id": "c4-re-nhanh",
+      "term": "Quy trình rẽ nhánh",
+      "definition": "Cho AI biết phải làm gì tùy tình huống: nếu A thì làm X, nếu B thì làm Y. Giúp trợ lý xử lý ngoại lệ thay vì làm cùng một cách cho mọi trường hợp.",
+      "key_points": [
+        "<strong>Ví dụ minh họa do ebook dựng</strong> (rẽ nhánh ở bước kiểm tra điều kiện):",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\"># QUY TRÌNH\nBước 3: Kiểm tra điều kiện\n- Nếu báo cáo có đủ các mục theo mẫu: chuyển sang Bước 4.\n- Nếu thiếu một hoặc nhiều mục: liệt kê mục thiếu, DỪNG và hỏi tôi muốn chấm tiếp hay yêu cầu bổ sung.\n- Nếu tài liệu không phải loại báo cáo của quy trình này: báo lại và không chấm.</pre>",
+        "Mỗi nhánh nên nêu rõ hành động (chuyển bước, dừng, hỏi). Nhánh nào dẫn đến \"dừng và hỏi\" thì thực chất là một GATE hoặc FALLBACK.",
+        "Chỉ thêm nhánh cho tình huống có thật xảy ra. Quá nhiều nhánh làm Instructions dài và dễ mâu thuẫn.",
+        "Rubric cho điểm cao ở tiêu chí Cấu trúc quy trình khi quy trình có nhánh xử lý ngoại lệ."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-gate",
+        "c2-fallback"
+      ]
+    },
+    {
+      "id": "c4-nang-cap",
+      "term": "Nâng cấp Project",
+      "definition": "Việc nhóm làm ở Buổi 4 để hoàn thiện sản phẩm cuối khóa: bổ sung các lớp đáng tin và an toàn vào Project đã chạy được ở Buổi 3.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Hạng mục</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Việc cần làm</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Tiêu chí Rubric liên quan</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Self-check</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thêm hoặc làm rõ mục TỰ KIỂM TRA với checklist đo được</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kiểm soát đầu ra</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Nguồn tin cậy</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Buộc trích dẫn từ Knowledge Base; kiến thức ngoài đánh dấu [CẦN KIỂM CHỨNG]</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kiểm soát đầu ra</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Rẽ nhánh</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thêm nhánh cho ngoại lệ có thật</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cấu trúc quy trình</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">An toàn dữ liệu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Rà Instructions và Knowledge Base xem có thông tin cá nhân hay mật không</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tính khả dụng thực tế</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Test lại</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chạy lại 3 kịch bản sau khi sửa</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cổng xác nhận; Xử lý thiếu thông tin</td></tr></tbody></table></div>",
+        "Sau mỗi lần sửa, chạy lại kịch bản liên quan. Sửa một chỗ có thể làm hỏng chỗ khác.",
+        "Giảng viên chấm bản chính thức của Project theo Rubric sản phẩm cuối khóa."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-self-check",
+        "c3-test-3-kich-ban"
+      ]
+    },
+    {
+      "id": "c4-ba-rui-ro",
+      "term": "Ba rủi ro của AI",
+      "definition": "Ba rủi ro cần nhớ khi đưa AI vào công việc: hallucination (bịa), rò rỉ dữ liệu, và phụ thuộc quá mức.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Rủi ro</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Biểu hiện</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Cách phòng</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hallucination</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI nêu thông tin sai nhưng giọng rất tự tin</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trích dẫn nguồn, đánh dấu [CẦN KIỂM CHỨNG], tự đối chiếu văn bản gốc</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Rò rỉ dữ liệu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dữ liệu nhạy cảm bị đưa vào công cụ không được phép</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Phân loại 4 mức, khử định danh, đúng công cụ</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Phụ thuộc quá mức</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ngừng kiểm tra, mất tư duy phản biện</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI viết nháp, người ký chịu trách nhiệm</td></tr></tbody></table></div>",
+        "Ba rủi ro này nối trực tiếp với những gì bạn đã xây: nguồn tin cậy chống bịa, GATE giữ quyền quyết định cho người, phân loại dữ liệu chống rò rỉ.",
+        "Bản doanh nghiệp có thể khác về chính sách dữ liệu, nhưng không làm AI hết bịa và không thay được việc kiểm tra của bạn."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-hallucination",
+        "c4-ro-ri",
+        "c4-phu-thuoc"
+      ]
+    },
+    {
+      "id": "c4-hallucination",
+      "term": "Case: AI bịa quy chuẩn",
+      "definition": "Tình huống minh họa (do khóa học dựng, không phải sự kiện thật) cho thấy hallucination nguy hiểm vì nghe rất thuyết phục.",
+      "key_points": [
+        "Một cán bộ HSE nhờ AI nêu quy chuẩn về khoảng cách an toàn khi lắp đặt một thiết bị. AI trả lời trôi chảy, kèm số hiệu và điều khoản cụ thể.",
+        "Số hiệu nghe hợp lý nhưng không tồn tại, hoặc điều khoản bị diễn đạt sai. Không có dấu hiệu nào trên màn hình cho thấy đây là thông tin bịa.",
+        "Nếu câu trả lời được đưa vào hồ sơ HSE thật, hồ sơ sẽ dựa trên căn cứ không có thật.",
+        "<strong>Tương tự trong nhà trường:</strong> AI trích \"Điều 12 của Quy chế đào tạo\" trong khi file quy chế không hề có điều đó, hoặc nêu một văn bản không tồn tại.",
+        "<strong>Cách phòng:</strong> chỉ cho trợ lý bám vào tài liệu bạn đã nạp, dòng \"Không được bịa số liệu, tên văn bản, quy chuẩn\", đánh dấu [CẦN KIỂM CHỨNG] cho kiến thức ngoài nguồn, và tự đối chiếu văn bản chính thức trước khi dùng."
+      ],
+      "case_study": {
+        "title": "Điều khoản không có trong tài liệu",
+        "context": "Trợ lý trả lời: \"Theo Điều 12 Quy chế đào tạo, sinh viên phải nộp báo cáo trước hạn 7 ngày.\" Knowledge Base của Project không có quy chế này. (Tình huống minh họa do ebook dựng.)",
+        "analysis": "Câu trả lời có số điều, có con số, nghe đúng. Dấu hiệu duy nhất là nguồn: tài liệu nào chứa Điều 12? Không có. Khi nguồn tin cậy chỉ cho phép bám tài liệu đã nạp, trợ lý lẽ ra phải ghi \"Chưa đủ căn cứ\".",
+        "lesson_learned": "Nghe đúng không có nghĩa là đúng. Hãy hỏi: nguồn nằm ở đâu?"
+      },
+      "related_concepts": [
+        "c4-trich-dan",
+        "c1-hallucination"
+      ]
+    },
+    {
+      "id": "c4-ro-ri",
+      "term": "Rò rỉ dữ liệu",
+      "definition": "Dữ liệu rời khỏi nơi được phép, thường vì một người dùng dán nhầm vào công cụ không phù hợp. Có hai sự cố thật thường được dùng để minh họa.",
+      "key_points": [
+        "<strong>Samsung, 2023:</strong> một số nhân viên đã dán mã nguồn và nội dung họp nội bộ vào ChatGPT. Công ty sau đó siết chặt việc dùng công cụ này. Nguồn để đối chiếu: <a href=\"https://www.techradar.com/news/samsung-workers-leaked-company-secrets-by-using-chatgpt\" target=\"_blank\" rel=\"noopener\">TechRadar</a>.",
+        "<strong>Lỗi hệ thống ChatGPT, 20/03/2023:</strong> một lỗi khiến một số người dùng thấy tiêu đề hội thoại của người dùng khác. Nguồn để đối chiếu: <a href=\"https://www.cnbc.com/2023/03/23/openai-ceo-says-a-bug-allowed-some-chatgpt-to-see-others-chat-titles.html\" target=\"_blank\" rel=\"noopener\">CNBC</a>.",
+        "Hai sự cố khác nhau về nguyên nhân: một do người dùng, một do lỗi nhà cung cấp. Điều chung là dữ liệu đã nằm ở nơi bạn không còn kiểm soát được.",
+        "<strong>So sánh chính sách:</strong> mỗi nhà cung cấp (Claude, ChatGPT, Gemini) có chính sách xử lý dữ liệu khác nhau giữa bản miễn phí/cá nhân và bản doanh nghiệp. Chính sách thay đổi theo thời gian, hãy đọc trang chính thức của nhà cung cấp trước khi quyết định.",
+        "<strong>Lớp pháp lý riêng:</strong> với dữ liệu cá nhân, việc đưa vào AI có máy chủ ở nước ngoài còn có thể là chuyển dữ liệu xuyên biên giới (xem mục Dữ liệu cá nhân).",
+        "Hãy đối chiếu lại nguồn của hai sự cố trước khi dùng làm tài liệu chính thức."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-phan-loai-4-muc",
+        "c4-du-lieu-ca-nhan"
+      ]
+    },
+    {
+      "id": "c4-phu-thuoc",
+      "term": "Phụ thuộc quá mức",
+      "definition": "Rủi ro âm thầm: dùng AI quen rồi nên ngừng kiểm tra và ngừng tự suy nghĩ. Phòng bằng nguyên tắc AI viết nháp, người ký chịu trách nhiệm.",
+      "key_points": [
+        "<strong>AI viết nháp, người ký chịu trách nhiệm:</strong> dù AI soạn phần lớn nội dung, người ký tên mới là người chịu trách nhiệm trước đơn vị và trước pháp luật.",
+        "Gắn với triết lý \"Bạn là Leader, AI là Cộng sự\": GATE tồn tại để quyền quyết định luôn ở người.",
+        "<strong>Thói quen tốt:</strong> kiểm tra ngẫu nhiên một phần kết quả mỗi lần; giữ việc phán đoán về con người cho mình (đã học ở phần Phân vai người và AI); thỉnh thoảng tự làm tay một lần để giữ tay nghề.",
+        "Dấu hiệu cần dừng lại: bạn nhận kết quả mà không đọc, hoặc bấm xác nhận GATE chỉ vì \"AI chắc đúng\"."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-leader",
+        "c2-phan-vai"
+      ]
+    },
+    {
+      "id": "c4-phan-loai-4-muc",
+      "term": "Phân loại 4 mức",
+      "definition": "Cách phân loại dữ liệu theo quy chế nội bộ của đơn vị: Công khai, Nội bộ, Bí mật, Tối mật. Mức dữ liệu quyết định được đưa vào công cụ AI nào.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Mức</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Ví dụ minh họa</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Quy tắc với AI</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Công khai</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thông báo đã đăng trên website đơn vị</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dùng được; vẫn phải kiểm chứng kết quả</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Nội bộ</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Khung chương trình đào tạo nội bộ</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chỉ vào công cụ AI doanh nghiệp do đơn vị cấp và quản trị, hoặc phải khử định danh</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bí mật</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hợp đồng chưa ký</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Không đưa vào AI công cộng</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tối mật</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dữ liệu thăm dò chưa công bố</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Không đưa vào AI công cộng</td></tr></tbody></table></div>",
+        "<strong>Tài khoản cá nhân:</strong> dù đã tắt tùy chọn dùng dữ liệu để huấn luyện, tài khoản cá nhân vẫn không đạt chuẩn cho dữ liệu từ mức Nội bộ trở lên. Vì vậy các buổi học chỉ dùng dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh.",
+        "Đây là phân loại theo quy chế nội bộ của đơn vị; ví dụ ở bảng chỉ để minh họa. Hãy dùng quy chế phân loại thật của đơn vị mình.",
+        "Phân loại này không đồng nghĩa với khái niệm \"bí mật nhà nước\" theo luật (xem mục kế tiếp)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-bi-mat-nha-nuoc",
+        "c4-ba-cau-hoi"
+      ]
+    },
+    {
+      "id": "c4-bi-mat-nha-nuoc",
+      "term": "Bí mật nhà nước",
+      "definition": "Khái niệm pháp lý theo Luật Bảo vệ bí mật nhà nước, khác với mức \"Tối mật\" trong quy chế nội bộ của đơn vị. Đây là ranh giới pháp lý, không phải mức phân loại nội bộ.",
+      "key_points": [
+        "Luật hiện hành là Luật Bảo vệ bí mật nhà nước số 117/2025/QH15, hiệu lực từ 01/3/2026, thay Luật năm 2018.",
+        "Tài liệu bí mật nhà nước chỉ được soạn thảo, lưu giữ theo đúng quy định của luật và nghị định hướng dẫn, trên máy tính hoặc mạng nội bộ độc lập, không kết nối Internet.",
+        "Luật cấm lợi dụng AI vào hoạt động trái quy định về bí mật nhà nước.",
+        "<strong>Vì vậy:</strong> không đưa tài liệu bí mật nhà nước vào bất kỳ công cụ AI nào kết nối Internet, kể cả bản doanh nghiệp.",
+        "<strong>Dễ nhầm:</strong> \"Tối mật\" trong 4 mức nội bộ là cách đơn vị tự phân loại; bí mật nhà nước là phạm trù của luật, có quy định riêng. Không suy từ cái này sang cái kia.",
+        "Nếu không chắc tài liệu có phải bí mật nhà nước không, hỏi bộ phận phụ trách bảo mật của đơn vị trước khi làm bất cứ điều gì với công cụ AI.",
+        "Khung pháp lý còn được cụ thể hóa bằng nghị định và thông tư. Hãy đối chiếu văn bản chính thức, đừng trả lời từ trí nhớ hay từ ebook."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-phan-loai-4-muc",
+        "c4-khung-phap-ly"
+      ]
+    },
+    {
+      "id": "c4-khung-phap-ly",
+      "term": "Khung pháp lý Việt Nam",
+      "definition": "Ba văn bản liên quan trực tiếp đến việc dùng AI trong công việc: bảo vệ dữ liệu cá nhân, bảo vệ bí mật nhà nước, và trí tuệ nhân tạo.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Luật</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Số hiệu</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Hiệu lực</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Điều cần nhớ khi dùng AI</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bảo vệ dữ liệu cá nhân 2025</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">91/2025/QH15</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">01/01/2026</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đưa dữ liệu cá nhân vào AI có máy chủ nước ngoài có thể là chuyển dữ liệu xuyên biên giới, phát sinh nghĩa vụ lập hồ sơ đánh giá tác động</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bảo vệ bí mật nhà nước</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">117/2025/QH15</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">01/03/2026</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Không đưa tài liệu bí mật nhà nước vào công cụ AI kết nối Internet</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trí tuệ nhân tạo</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">134/2025/QH15</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">01/03/2026</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Khung pháp lý về AI đang hình thành; theo dõi các nghị định hướng dẫn</td></tr></tbody></table></div>",
+        "Đây là tóm tắt cho mục đích học tập, không phải tư vấn pháp lý. Nội dung và hướng dẫn chi tiết còn đang được cụ thể hóa bằng nghị định, thông tư.",
+        "Trước khi áp dụng cho công việc thật, đối chiếu văn bản chính thức và hỏi bộ phận pháp chế hoặc an ninh thông tin của đơn vị."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-du-lieu-ca-nhan",
+        "c4-bi-mat-nha-nuoc"
+      ]
+    },
+    {
+      "id": "c4-du-lieu-ca-nhan",
+      "term": "Dữ liệu cá nhân",
+      "definition": "Dữ liệu cho phép nhận ra một người, như bài làm, bảng điểm, hồ sơ sinh viên. Đưa dữ liệu thật vào AI cần một lớp đánh giá riêng ngoài việc phân loại 4 mức.",
+      "key_points": [
+        "<strong>Luật Bảo vệ dữ liệu cá nhân 2025 (91/2025/QH15, hiệu lực 01/01/2026):</strong> đưa dữ liệu cá nhân thật vào một AI có máy chủ ở nước ngoài có thể được coi là chuyển dữ liệu cá nhân xuyên biên giới, và phát sinh nghĩa vụ lập hồ sơ đánh giá tác động.",
+        "Nghĩa vụ này <strong>độc lập</strong> với chính sách huấn luyện của nhà cung cấp. Bản doanh nghiệp cam kết không dùng dữ liệu để huấn luyện vẫn không tự động giải quyết nghĩa vụ pháp lý này.",
+        "<strong>Với dữ liệu thật ngoài lớp học</strong> (bài làm, bảng điểm, hồ sơ sinh viên): quy trình cần qua bộ phận pháp chế hoặc an ninh thông tin đánh giá trước khi đưa vào bất kỳ công cụ AI nào. Đừng chỉ dựa vào phân loại 4 mức nội bộ.",
+        "<strong>Trong lớp học:</strong> chỉ dùng dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh.",
+        "Đối chiếu văn bản chính thức và các nghị định hướng dẫn trước khi áp dụng."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-khu-dinh-danh",
+        "c4-khung-phap-ly"
+      ]
+    },
+    {
+      "id": "c4-khu-dinh-danh",
+      "term": "Khử định danh",
+      "definition": "Gỡ hoặc thay các thông tin nhận dạng trước khi đưa dữ liệu vào AI, để AI vẫn xử lý được nội dung mà không biết đó là ai.",
+      "key_points": [
+        "<strong>Thay bằng mã:</strong> họ tên, mã sinh viên, số điện thoại, email, số hợp đồng. Ví dụ SV-A, SV-B, hoặc DA-01, DA-02.",
+        "<strong>Giữ lại:</strong> phần nội dung cần AI xử lý (bố cục, lập luận, số liệu không định danh).",
+        "<strong>Cẩn thận thông tin gián tiếp:</strong> tên đề tài kèm lớp và giảng viên hướng dẫn đôi khi đủ để nhận ra một người, dù đã bỏ tên.",
+        "<strong>Giữ bảng đối chiếu mã và danh tính ở nơi của bạn,</strong> không đưa cho AI.",
+        "Tìm lại bằng từ khóa (tên, mã) trước khi tải lên để chắc đã gỡ hết.",
+        "Khử định danh dùng cho dữ liệu thử trong lớp. Dữ liệu thật ngoài lớp vẫn phải qua đánh giá của pháp chế hoặc an ninh thông tin."
+      ],
+      "case_study": {
+        "title": "Chấm đồ án: dữ liệu sinh viên không đi qua AI",
+        "context": "Trong case chấm đồ án, ba báo cáo mẫu DA-01, DA-02, DA-03 đã được khử thông tin sinh viên trước khi tải lên.",
+        "analysis": "Phiếu chấm có mục 1–5 (thông tin định danh) được để \"[GV tự điền]\": AI không nhận và không điền các mục này. Memory của Project được tắt khi chạy dữ liệu bài làm.",
+        "lesson_learned": "Thiết kế quy trình sao cho phần định danh không bao giờ đi qua AI."
+      },
+      "related_concepts": [
+        "c4-du-lieu-ca-nhan",
+        "c4-ba-cau-hoi"
+      ]
+    },
+    {
+      "id": "c4-ba-cau-hoi",
+      "term": "Ba câu hỏi trước khi dán",
+      "definition": "Một thói quen ba câu hỏi để quyết định có đưa dữ liệu vào AI hay không, và đưa vào đâu.",
+      "key_points": [
+        "<strong>1. Dữ liệu này thuộc mức nào?</strong> Có phải bí mật nhà nước hoặc dữ liệu cá nhân không?",
+        "<strong>2. Đã khử định danh chưa?</strong>",
+        "<strong>3. Công cụ này là gì?</strong> Do đơn vị cấp và quản trị, hay tài khoản cá nhân, công cộng?",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Tình huống minh họa</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Đưa vào AI?</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Lý do</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Nhờ AI viết lại thông báo đã đăng công khai trên website đơn vị</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dữ liệu công khai; vẫn đọc lại kết quả</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dán danh sách điểm kèm họ tên và mã sinh viên vào tài khoản cá nhân để xếp loại</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Không</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dữ liệu cá nhân, công cụ cá nhân</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Soát chính tả một công văn nội bộ đã xóa tên người và số hợp đồng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có, nếu đã khử định danh thật sự</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đã gỡ thông tin nhận dạng</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Soạn khung chương trình đào tạo nội bộ</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có với công cụ doanh nghiệp do đơn vị cấp; Không với tài khoản cá nhân</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dữ liệu Nội bộ cần công cụ do đơn vị quản trị</td></tr></tbody></table></div>",
+        "Nếu không trả lời chắc chắn được một trong ba câu, mặc định là chưa đưa vào.",
+        "Khóa học có trò chơi giơ thẻ ✅/🚫 cho 8 tình huống để luyện thói quen này; cần đúng từ 6/8 trở lên."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-phan-loai-4-muc",
+        "c4-khu-dinh-danh"
+      ]
+    },
+    {
+      "id": "c4-gemini-notebook",
+      "term": "Gemini Notebook",
+      "definition": "Công cụ hỏi đáp dựa trên các nguồn bạn nạp vào (trước đây tên NotebookLM): câu trả lời bám theo nguồn và có trích dẫn để kiểm tra.",
+      "key_points": [
+        "<strong>Demo của khóa:</strong> nạp 4 nguồn mẫu chủ đề \"họp hiệu quả\" (PDF, video YouTube, DOCX, file ghi âm; nguồn công khai hoặc dựng minh họa), hỏi đáp có trích dẫn, rồi kiểm tra trích dẫn.",
+        "Kỹ thuật này gọi là hỏi đáp theo nguồn đã nạp (RAG): AI trả lời từ tài liệu bạn đưa, thay vì chỉ từ kiến thức chung.",
+        "<strong>Lưu câu trả lời hay</strong> vào Knowledge Base của Claude Project để trợ lý dùng lại.",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Cần làm gì</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Dùng công cụ nào</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hỏi đáp, tổng hợp từ nhiều nguồn tài liệu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Gemini Notebook</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chạy một quy trình nhiều bước có GATE và FALLBACK</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude Project</td></tr></tbody></table></div>",
+        "Quy tắc dữ liệu không đổi: tài khoản cá nhân chỉ nạp nguồn công khai hoặc dữ liệu mẫu đã khử định danh.",
+        "Tên sản phẩm và tính năng có thể thay đổi, hãy kiểm tra trang chính thức khi dùng."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-trich-dan",
+        "c2-claude-project"
+      ]
+    },
+    {
+      "id": "c4-nam-buoc",
+      "term": "5 bước bắt đầu",
+      "definition": "Lộ trình bảy ngày đến hai tuần để mang trợ lý về đơn vị, dùng chính Siêu trợ lý đã học.",
+      "key_points": [
+        "<strong>Ngày 1–2:</strong> chọn một quy trình lặp lại nhiều nhất và ít nhạy cảm nhất. Đừng chọn việc khó nhất; chọn việc <em>chán nhất</em>.",
+        "<strong>Ngày 3:</strong> vẽ quy trình ra giấy theo Phiếu Thiết Kế (bước, gate, fallback). Chưa mở máy tính.",
+        "<strong>Ngày 4–5:</strong> mô tả quy trình đã vẽ cho Siêu trợ lý (đã khử thông tin mật) để nhận Custom Instructions và hướng dẫn thiết lập. Tạo Claude Project, upload 1–2 tài liệu mẫu đã khử thông tin theo checklist, và đối chiếu Custom Instructions với template chuẩn.",
+        "<strong>Ngày 6–7:</strong> test 3 kịch bản (chạy xuôi, bỏ trống thông tin, thử vượt gate). Sửa Instructions sau mỗi lần test; có thể nhờ Siêu trợ lý xuất lại đúng phần bị ảnh hưởng.",
+        "<strong>Tuần 2:</strong> dùng thật cho một việc thật, cho một đồng nghiệp dùng thử, ghi lại điều cần cải thiện.",
+        "Nhớ nguyên tắc vàng: <strong>Bạn là Leader, AI là Cộng sự — AI viết nháp, người ký chịu trách nhiệm.</strong>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-sieu-tro-ly",
+        "c4-phu-thuoc"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết thuật ngữ và định nghĩa nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c4-q1",
+          "type": "mc",
+          "concept_ref": "c4-ba-rui-ro",
+          "question": "Ba rủi ro chính của AI được học trong Buổi 4 là gì?",
+          "options": [
+            "A. Chậm, đắt tiền, khó cài đặt",
+            "B. Sai chính tả, sai ngữ pháp, sai định dạng",
+            "C. Hallucination, rò rỉ dữ liệu, phụ thuộc quá mức",
+            "D. Mất kết nối, hết hạn tài khoản, lỗi cập nhật"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c4-q2",
+          "type": "mc",
+          "concept_ref": "c4-phan-loai-4-muc",
+          "question": "Bốn mức phân loại dữ liệu theo quy chế nội bộ trong khóa học là gì?",
+          "options": [
+            "A. Công khai, Nội bộ, Bí mật, Tối mật",
+            "B. Công khai, Riêng tư, Bí mật, Tuyệt mật",
+            "C. Thấp, Trung bình, Cao, Rất cao",
+            "D. Công khai, Hạn chế, Bảo mật, Tuyệt đối"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c4-q3",
+          "type": "mc",
+          "concept_ref": "c4-trich-dan",
+          "question": "Yêu cầu AI trích dẫn nguồn từ Knowledge Base nhằm mục đích chính nào?",
+          "options": [
+            "A. Làm câu trả lời dài hơn và trông đáng tin cậy hơn với người đọc",
+            "B. Để bạn kiểm tra được thông tin có thật sự nằm trong tài liệu hay không",
+            "C. Giúp AI nhớ tài liệu lâu hơn ở các Conversation về sau",
+            "D. Giảm số lần phải mở Conversation mới trong cùng một Project"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c4-q4",
+          "type": "mc",
+          "concept_ref": "c4-ro-ri",
+          "question": "Sự cố Samsung năm 2023 trong bài học là gì?",
+          "options": [
+            "A. Nhân viên bị AI thay thế công việc và phải chuyển sang bộ phận khác",
+            "B. ChatGPT bị tấn công mạng làm mất toàn bộ dữ liệu huấn luyện của hãng",
+            "C. Samsung bị cơ quan quản lý phạt vì phát triển AI chưa đăng ký",
+            "D. Một số nhân viên dán mã nguồn và nội dung họp nội bộ vào ChatGPT để nhờ xử lý"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L1-c4-q5",
+          "type": "mc",
+          "concept_ref": "c4-phu-thuoc",
+          "question": "Nguyên tắc nào đúng khi dùng AI trong công việc?",
+          "options": [
+            "A. AI ký, người kiểm tra",
+            "B. AI quyết định, người thực hiện",
+            "C. AI viết nháp, người ký chịu trách nhiệm",
+            "D. AI và người cùng chịu trách nhiệm như nhau"
+          ],
+          "correct": "C"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Giải thích cơ chế, phân biệt và so sánh các khái niệm.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c4-q1",
+          "type": "mc",
+          "concept_ref": "c4-bi-mat-nha-nuoc",
+          "question": "Vì sao mức \"Tối mật\" theo quy chế nội bộ không đồng nghĩa với bí mật nhà nước?",
+          "options": [
+            "A. Vì bí mật nhà nước là phạm trù pháp lý theo luật riêng, còn 4 mức là cách phân loại nội bộ của đơn vị",
+            "B. Vì hai khái niệm là một và chỉ khác nhau ở tên gọi giữa các văn bản của từng đơn vị",
+            "C. Vì bí mật nhà nước chỉ áp dụng cho tài liệu giấy, không áp dụng cho dữ liệu số hay tệp máy tính",
+            "D. Vì mức Tối mật nội bộ luôn nghiêm ngặt hơn mọi cấp độ bí mật nhà nước theo luật hiện hành"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c4-q2",
+          "type": "mc",
+          "concept_ref": "c4-du-lieu-ca-nhan",
+          "question": "Vì sao đưa bảng điểm thật của sinh viên vào AI có máy chủ ở nước ngoài vẫn có rủi ro pháp lý, kể cả khi nhà cung cấp cam kết không dùng dữ liệu để huấn luyện?",
+          "options": [
+            "A. Vì AI đặt máy chủ ở nước ngoài thường không đọc được dữ liệu tiếng Việt có dấu và bảng biểu",
+            "B. Vì cam kết không dùng dữ liệu để huấn luyện chỉ áp dụng cho bản miễn phí của nhà cung cấp",
+            "C. Vì có thể là chuyển dữ liệu cá nhân xuyên biên giới, với nghĩa vụ riêng độc lập chính sách huấn luyện",
+            "D. Vì điểm số của sinh viên luôn được coi là bí mật nhà nước theo quy định của luật hiện hành"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L2-c4-q3",
+          "type": "mc",
+          "concept_ref": "c4-hallucination",
+          "question": "Điều gì làm hallucination nguy hiểm hơn một lỗi sai thông thường?",
+          "options": [
+            "A. AI luôn bịa quá nửa nội dung, nên kết quả gần như không thể dùng được",
+            "B. Hallucination chỉ xảy ra khi dùng tiếng Việt, nên khó phát hiện ở bản gốc",
+            "C. Hallucination làm hỏng tài khoản và xóa dữ liệu của người dùng trong Project",
+            "D. AI nói thông tin bịa bằng giọng tự tin, nghe thuyết phục nên dễ lọt vào hồ sơ thật"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L2-c4-q4",
+          "type": "mc",
+          "concept_ref": "c4-khu-dinh-danh",
+          "question": "Trong case chấm đồ án, vì sao mục 1–5 của phiếu chấm để \"[GV tự điền]\"?",
+          "options": [
+            "A. Vì AI không biết định dạng của phiếu nên giáo viên phải tự điền các mục đầu",
+            "B. Để dữ liệu định danh của sinh viên không đi qua AI; giáo viên tự điền sau khi nhận kết quả",
+            "C. Vì phiếu chấm không cần ghi thông tin sinh viên ở các mục đầu của phiếu",
+            "D. Vì Claude không cho phép điền các mục đầu của một mẫu phiếu có sẵn"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c4-q5",
+          "type": "mc",
+          "concept_ref": "c4-self-check",
+          "question": "Mục TỰ KIỂM TRA trong Custom Instructions giúp gì cho tiêu chí \"Kiểm soát đầu ra\" của Rubric?",
+          "options": [
+            "A. Giúp AI trả lời nhanh hơn bằng cách bỏ qua các bước kiểm tra trung gian",
+            "B. Thay thế vai trò xác nhận của giảng viên tại các điểm GATE trong quy trình",
+            "C. Cho AI rà lại kết quả theo checklist trước khi trả, giúp đầu ra ổn định và đúng template",
+            "D. Cho phép AI bỏ qua các GATE khi tự kiểm tra thấy kết quả đã đúng"
+          ],
+          "correct": "C"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Áp dụng vào tình huống công việc thực tế của bạn.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c4-q1",
+          "type": "mc",
+          "concept_ref": "c4-ba-cau-hoi",
+          "question": "Bạn có bảng điểm giữa kỳ của lớp, gồm họ tên và mã sinh viên, muốn nhờ AI tính điểm trung bình và xếp loại. Bạn đang dùng tài khoản Claude cá nhân. Cách làm đúng nhất là gì?",
+          "options": [
+            "A. Thay họ tên và mã bằng mã ẩn danh trước; dữ liệu thật thì dùng công cụ do đơn vị cấp, qua pháp chế đánh giá",
+            "B. Dán nguyên bảng vì tài khoản đã tắt tùy chọn dùng dữ liệu để huấn luyện mô hình của nhà cung cấp",
+            "C. Dán nguyên bảng rồi yêu cầu AI không lưu lại và tự xóa cuộc trò chuyện sau khi dùng xong",
+            "D. Chia bảng thành nhiều phần nhỏ rồi dán từng phần vào các Conversation khác nhau để giảm rủi ro"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c4-q2",
+          "type": "mc",
+          "concept_ref": "c4-hallucination",
+          "question": "Trợ lý trong Project trả lời: \"Theo Điều 12 Quy chế đào tạo...\" nhưng Knowledge Base không có quy chế này. Việc đúng nên làm là gì?",
+          "options": [
+            "A. Chấp nhận kết quả vì AI đã trích dẫn rất cụ thể cả số điều lẫn nội dung của điều khoản đó",
+            "B. Yêu cầu AI giải thích thêm cho chắc, nếu lời giải thích nghe hợp lý thì dùng kết quả luôn",
+            "C. Xóa Project và tạo lại từ đầu để AI không còn nhớ thông tin sai này ở các lần dùng sau",
+            "D. Coi là thông tin chưa kiểm chứng, đối chiếu văn bản chính thức và siết mục NGUỒN TIN CẬY của Instructions"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L3-c4-q3",
+          "type": "mc",
+          "concept_ref": "c4-self-check",
+          "question": "Bạn muốn thêm self-check cho trợ lý soạn đề kiểm tra. Câu nào viết đúng cách?",
+          "options": [
+            "A. Hãy luôn cẩn thận, kiểm tra kỹ và cố gắng làm thật tốt khi soạn mỗi đề kiểm tra",
+            "B. Trước khi trả đề cuối, rà lại: đủ số câu và khớp bảng phân bổ? có câu nào ngoài ngân hàng? đã qua đủ 2 gate?",
+            "C. Sau khi trả kết quả cho giáo viên, hãy xin lỗi và giải thích nếu phát hiện có chỗ sai",
+            "D. Nếu thấy có chỗ sai thì tự sửa lại trong im lặng và không cần báo cho giáo viên biết"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c4-essay1",
+          "type": "essay",
+          "concept_ref": "c4-ba-cau-hoi",
+          "question": "Chọn một loại dữ liệu có thật trong công việc của bạn (ví dụ danh sách điểm, bài làm, hợp đồng, kế hoạch đào tạo). (1) Phân loại mức dữ liệu theo 4 mức và nêu có phải dữ liệu cá nhân hoặc bí mật nhà nước không. (2) Quyết định có đưa vào AI hay không, và bằng công cụ nào. (3) Nếu cần, mô tả cách khử định danh. (4) Viết hai dòng self-check đưa vào Instructions của trợ lý bạn đã xây.",
+          "rubric": "Phân loại đúng mức, phân biệt được dữ liệu cá nhân và bí mật nhà nước (25%) · Quyết định và công cụ phù hợp, có lý do (25%) · Cách khử định danh cụ thể, tránh được thông tin gián tiếp (25%) · Hai dòng self-check đo được bằng có/không, gắn với quy trình của bạn (25%)",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

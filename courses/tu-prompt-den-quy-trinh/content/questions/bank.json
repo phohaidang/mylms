@@ -1,0 +1,834 @@
+[
+  {
+    "id": "tpq-q001",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Mô hình ngôn ngữ lớn (LLM) tạo câu trả lời chủ yếu bằng cách nào?",
+    "options": [
+      "A. Tra cứu câu trả lời đúng trong một cơ sở dữ liệu sự thật",
+      "B. Dự đoán từng từ tiếp theo có xác suất cao dựa trên ngữ cảnh đã có",
+      "C. Sao chép đoạn văn phù hợp nhất từ internet theo thời gian thực",
+      "D. Suy luận như con người rồi diễn đạt kết luận bằng lời"
+    ],
+    "correct": "B",
+    "explanation": "LLM không tra cứu sự thật mà dự đoán từng từ tiếp theo có xác suất cao dựa trên ngữ cảnh đã có. Đây là gốc của cả khả năng viết trôi chảy lẫn hiện tượng bịa."
+  },
+  {
+    "id": "tpq-q002",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Hallucination của AI là hiện tượng nào?",
+    "options": [
+      "A. AI bị ngắt giữa chừng và trả lời dở dang khi đường truyền không ổn định",
+      "B. AI từ chối trả lời các câu hỏi nhạy cảm dù người dùng đã yêu cầu rõ ràng",
+      "C. AI tạo ra thông tin sai hoặc không tồn tại nhưng trình bày trôi chảy và tự tin",
+      "D. AI trả lời dài hơn nhiều so với yêu cầu và lặp lại ý đã nói ở các đoạn trước"
+    ],
+    "correct": "C",
+    "explanation": "Hallucination là AI tạo thông tin sai hoặc không tồn tại nhưng trình bày trôi chảy, tự tin, nên khó nhận ra bằng cảm giác. Cần đối chiếu với nguồn gốc."
+  },
+  {
+    "id": "tpq-q003",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Trong khung CRISP, chữ P là viết tắt của thành phần nào?",
+    "options": [
+      "A. Preview: hình dung kết quả đầu ra mong muốn",
+      "B. Process: quy trình thực hiện từng bước",
+      "C. Persona: tính cách riêng của AI",
+      "D. Privacy: mức bảo mật của dữ liệu"
+    ],
+    "correct": "A",
+    "explanation": "Trong CRISP, P là Preview: hình dung kết quả mong muốn (định dạng, độ dài, cấu trúc) để AI biết đích đến. Năm thành phần là Context, Role, Instruction, Specifics, Preview."
+  },
+  {
+    "id": "tpq-q004",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Trong bản đồ Data → Context → Knowledge → Workflow, tầng nào là quy tắc áp dụng lại được khi cùng một dữ liệu và ngữ cảnh lặp lại nhiều lần?",
+    "options": [
+      "A. Data",
+      "B. Context",
+      "C. Workflow",
+      "D. Knowledge"
+    ],
+    "correct": "D",
+    "explanation": "Knowledge là tầng quy tắc áp dụng lại được, hình thành khi cùng loại dữ liệu và ngữ cảnh lặp lại. Data là dữ liệu thô, Context gắn ý nghĩa, Workflow đóng gói thành quy trình chạy lặp lại."
+  },
+  {
+    "id": "tpq-q005",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Kỹ thuật few-shot là gì?",
+    "options": [
+      "A. Chia một công việc lớn thành nhiều lượt hỏi ngắn và xử lý lần lượt từng phần",
+      "B. Nêu rõ những điều AI không được làm để tránh kết quả lệch hướng",
+      "C. Giới hạn câu trả lời của AI trong vài câu để tiết kiệm thời gian đọc",
+      "D. Đưa vài ví dụ mẫu để AI bắt chước kiểu và cấu trúc đầu ra mong muốn"
+    ],
+    "correct": "D",
+    "explanation": "Few-shot là đưa một vài ví dụ mẫu để AI bắt chước kiểu đầu ra mong muốn, hữu ích khi khó mô tả bằng lời nhưng dễ cho thấy bằng ví dụ."
+  },
+  {
+    "id": "tpq-q006",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Điểm khác cốt lõi giữa AI tạo sinh và công cụ tìm kiếm truyền thống là gì?",
+    "options": [
+      "A. AI luôn cập nhật thông tin mới hơn và đầy đủ hơn công cụ tìm kiếm",
+      "B. Công cụ tìm kiếm tạo ra nội dung mới, còn AI chỉ liệt kê các liên kết có sẵn",
+      "C. AI tạo nội dung mới từ xác suất ngôn ngữ, còn công cụ tìm kiếm dẫn tới nguồn có sẵn",
+      "D. Hai loại chỉ khác nhau ở giao diện, còn cơ chế bên trong hoàn toàn giống nhau"
+    ],
+    "correct": "C",
+    "explanation": "AI tạo sinh tạo nội dung mới từ xác suất ngôn ngữ; công cụ tìm kiếm dẫn tới nguồn có sẵn để bạn mở ra kiểm tra. Vì vậy nội dung AI tạo cần được kiểm chứng."
+  },
+  {
+    "id": "tpq-q007",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Vì sao AI có thể bịa ra một số hiệu quy chuẩn nghe rất thuyết phục?",
+    "options": [
+      "A. Vì cơ chế đoán chữ ưu tiên câu hợp lý về ngôn ngữ, không có bước kiểm tra sự thật",
+      "B. Vì AI cố ý đánh lừa người dùng khi không biết câu trả lời chính xác",
+      "C. Vì dữ liệu huấn luyện của AI chỉ gồm các văn bản sai hoặc đã lỗi thời",
+      "D. Vì AI chỉ bịa thông tin khi người dùng đặt câu hỏi bằng tiếng Việt"
+    ],
+    "correct": "A",
+    "explanation": "Cơ chế đoán chữ ưu tiên câu hợp lý về ngôn ngữ và không có bước kiểm tra sự thật, nên một số hiệu nghe hợp lý vẫn có thể được tạo ra dù không tồn tại."
+  },
+  {
+    "id": "tpq-q008",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Prompt \"Viết email xin gia hạn báo cáo\" dễ cho kết quả chung chung vì sao?",
+    "options": [
+      "A. Vì prompt này đã đủ thông tin, kết quả chung chung chỉ do AI chạy ngẫu nhiên",
+      "B. Vì prompt này chỉ thiếu thành phần Role, còn các thành phần khác đã đầy đủ",
+      "C. Vì prompt này chỉ thiếu thành phần Preview nên AI không biết định dạng",
+      "D. Vì nó thiếu bối cảnh (ai, vì sao, hạn nào) và ràng buộc cụ thể (độ dài, giọng văn)"
+    ],
+    "correct": "D",
+    "explanation": "Prompt quá ngắn thiếu bối cảnh (ai, vì sao, hạn nào) và ràng buộc cụ thể (độ dài, giọng văn), nên AI phải đoán và trả lời chung chung. Khung CRISP bổ sung các thành phần này."
+  },
+  {
+    "id": "tpq-q009",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Sau khi có bản nháp, bạn muốn AI ngắn hơn và bỏ lời xin lỗi thừa. Cách làm đúng bản chất kỹ thuật iterative là gì?",
+    "options": [
+      "A. Ở lượt kế tiếp, nêu đúng một hai điểm cần sửa và phần cần giữ nguyên",
+      "B. Xóa cuộc trò chuyện và viết lại prompt hoàn toàn mới",
+      "C. Chuyển sang một công cụ AI khác để may mắn hơn",
+      "D. Chấp nhận bản nháp vì AI không thể chỉnh sửa kết quả của chính nó"
+    ],
+    "correct": "A",
+    "explanation": "Iterative là sửa dần: ở lượt kế tiếp chỉ nêu một hai điểm cần sửa và phần cần giữ nguyên, thay vì viết lại từ đầu hoặc đổi nhiều thứ cùng lúc."
+  },
+  {
+    "id": "tpq-q010",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Khóa học chọn Claude để thực hành vì lý do nào sau đây?",
+    "options": [
+      "A. Chỉ riêng Claude cam kết không dùng dữ liệu người dùng để huấn luyện ở bản doanh nghiệp",
+      "B. Claude Projects gộp sẵn Custom Instructions và Knowledge Base, và Cowork cho thấy bước xa hơn cùng một hãng",
+      "C. Claude không bao giờ bịa thông tin nên phù hợp hơn với công việc cần độ chính xác",
+      "D. Claude là công cụ duy nhất hiện nay xử lý được tiếng Việt ở mức dùng được cho công việc"
+    ],
+    "correct": "B",
+    "explanation": "Lý do thực chất là Claude Projects gộp sẵn Custom Instructions và Knowledge Base, và Cowork cho thấy bước xa hơn cùng một hãng. Cam kết không dùng dữ liệu để huấn luyện không phải lý do riêng của Claude, vì bản doanh nghiệp của các hãng khác cũng có."
+  },
+  {
+    "id": "tpq-q011",
+    "chapter": 1,
+    "level": 3,
+    "session": 1,
+    "type": "mc",
+    "question": "Bạn cần AI soạn thông báo nhắc hạn nộp bài. Prompt nào gần với chuẩn CRISP nhất?",
+    "options": [
+      "A. Tôi là giảng viên một lớp 40 sinh viên. Bạn là trợ lý soạn thông báo lớp học. Hãy viết thông báo nhắc nộp bài thật hay, thật chuyên nghiệp, dùng giọng văn nghiêm túc và trình bày đẹp, đầy đủ các ý cần thiết.",
+      "B. Bạn là trợ lý hành chính giàu kinh nghiệm. Hãy viết một thông báo nhắc nộp bài cho lớp, ngắn gọn, lịch sự, dễ hiểu, gửi trước hạn để mọi người kịp thực hiện và không ai bị bỏ sót thông tin.",
+      "C. Tôi là giảng viên một lớp 40 sinh viên, hạn nộp bài tập lớn là 20h thứ Sáu tuần này. Bạn là trợ lý soạn thông báo lớp học. Hãy viết thông báo nhắc nộp bài, tối đa 80 từ, giọng thân thiện nhưng rõ hạn, không đe dọa trừ điểm; gồm một tiêu đề và ba dòng nội dung.",
+      "D. Hãy viết thật hay, thật chuyên nghiệp một thông báo nhắc nộp bài giúp tôi nhé, nhớ dùng ngôn ngữ trang trọng, đầy đủ và thuyết phục để sinh viên thấy rõ tầm quan trọng của việc nộp bài đúng hạn."
+    ],
+    "correct": "C",
+    "explanation": "Prompt này có đủ CRISP: bối cảnh (giảng viên, lớp 40 sinh viên, hạn 20h thứ Sáu), vai trò (trợ lý soạn thông báo), chỉ dẫn, ràng buộc cụ thể (80 từ, giọng, không đe dọa) và hình dung đầu ra (tiêu đề cùng ba dòng)."
+  },
+  {
+    "id": "tpq-q012",
+    "chapter": 1,
+    "level": 3,
+    "session": 1,
+    "type": "mc",
+    "question": "AI trả lời kèm một số hiệu thông tư rất cụ thể mà bạn chưa từng nghe tới. Việc đúng cần làm đầu tiên là gì?",
+    "options": [
+      "A. Đưa luôn vào văn bản vì AI đã nêu rất cụ thể",
+      "B. Kiểm tra số hiệu đó tại nguồn chính thức trước khi dùng",
+      "C. Hỏi lại AI \"bạn có chắc không\" và tin nếu nó khẳng định",
+      "D. Giữ lại phần diễn giải, chỉ bỏ số hiệu rồi dùng như thường"
+    ],
+    "correct": "B",
+    "explanation": "Số hiệu bạn chưa từng nghe có thể là hallucination. Việc đầu tiên là kiểm tra tại nguồn chính thức trước khi dùng."
+  },
+  {
+    "id": "tpq-q013",
+    "chapter": 1,
+    "level": 3,
+    "session": 1,
+    "type": "mc",
+    "question": "Bạn gộp rubric, mẫu nhận xét và 5 bước chấm thành một quy trình để AI chạy lặp lại mỗi kỳ. Theo bản đồ, bạn đang làm việc ở tầng nào?",
+    "options": [
+      "A. Workflow",
+      "B. Data",
+      "C. Context",
+      "D. Knowledge"
+    ],
+    "correct": "A",
+    "explanation": "Gộp rubric, mẫu nhận xét và các bước thành một quy trình chạy lặp lại mỗi kỳ là tầng Workflow."
+  },
+  {
+    "id": "tpq-q014",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Context Window (cửa sổ ngữ cảnh) là gì?",
+    "options": [
+      "A. Cửa sổ giao diện hiển thị danh sách các cuộc trò chuyện và Project của người dùng",
+      "B. Khoảng thời gian tối đa AI được phép suy nghĩ trước khi bắt buộc phải trả lời",
+      "C. Số lượng tài khoản tối đa được phép dùng chung một Project trong cùng tổ chức",
+      "D. Giới hạn lượng nội dung AI nhìn thấy cùng lúc, gồm hướng dẫn, tài liệu và cuộc trò chuyện"
+    ],
+    "correct": "D",
+    "explanation": "Context Window là giới hạn lượng nội dung AI nhìn thấy cùng lúc khi trả lời, gồm hướng dẫn, tài liệu và cuộc trò chuyện đang diễn ra. Nội dung quá dài có thể bị đẩy ra khỏi khung."
+  },
+  {
+    "id": "tpq-q015",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Một Claude Project gồm những thành phần cốt lõi nào?",
+    "options": [
+      "A. Một mô hình AI riêng được huấn luyện lại từ dữ liệu của bạn",
+      "B. Custom Instructions, Knowledge Base và nhiều Conversation",
+      "C. Một đoạn chat dài được ghim lên đầu danh sách",
+      "D. Một thư mục lưu tệp, không có hướng dẫn đi kèm"
+    ],
+    "correct": "B",
+    "explanation": "Một Claude Project gồm Custom Instructions, Knowledge Base và nhiều Conversation. Hai thành phần đầu thuộc về Project; mỗi Conversation là một cuộc làm việc riêng."
+  },
+  {
+    "id": "tpq-q016",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "GATE trong thiết kế quy trình AI là gì?",
+    "options": [
+      "A. Điểm AI phải dừng chờ người xác nhận trước khi sang bước tiếp, kể cả khi đã đủ dữ liệu",
+      "B. Điểm AI dừng lại để hỏi vì thiếu thông tin cần thiết cho bước đang làm",
+      "C. Cổng bảo mật chặn người lạ truy cập vào Project và Knowledge Base",
+      "D. Bước cuối cùng của mọi quy trình, nơi AI tổng hợp và trả kết quả"
+    ],
+    "correct": "A",
+    "explanation": "GATE là điểm AI phải dừng chờ người xác nhận trước khi sang bước sau, kể cả khi đã đủ dữ liệu. Mục đích là giữ quyền quyết định ở người."
+  },
+  {
+    "id": "tpq-q017",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "FALLBACK trong thiết kế quy trình AI là gì?",
+    "options": [
+      "A. Phương án dự phòng chuyển sang kết nối khác khi mất mạng giữa chừng",
+      "B. Bước sao lưu kết quả đã làm sang Knowledge Base của Project",
+      "C. Điểm AI dừng để hỏi lại khi thiếu thông tin, thay vì tự đoán hoặc tự điền",
+      "D. Lựa chọn chuyển sang công cụ AI khác khi công cụ hiện tại gặp lỗi"
+    ],
+    "correct": "C",
+    "explanation": "FALLBACK là điểm AI dừng để hỏi lại khi thiếu thông tin, thay vì tự đoán hay tự điền."
+  },
+  {
+    "id": "tpq-q018",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Rubric chấm điểm dùng cho mọi bài đồ án thuộc loại dữ liệu nào?",
+    "options": [
+      "A. Data tình huống, vì mỗi bài được chấm một lần",
+      "B. Data nền, đặt trong Knowledge Base của Project",
+      "C. Data cá nhân của sinh viên",
+      "D. Data tạm thời không cần lưu ở đâu cả"
+    ],
+    "correct": "B",
+    "explanation": "Rubric dùng cho mọi bài là Data nền: ổn định, dùng lại nhiều lần, đặt trong Knowledge Base của Project."
+  },
+  {
+    "id": "tpq-q019",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Điểm khác biệt chính giữa GATE và FALLBACK là gì?",
+    "options": [
+      "A. GATE chỉ dùng cho bước đầu của quy trình, FALLBACK chỉ dùng cho bước cuối",
+      "B. GATE do người dùng đặt ra, còn FALLBACK do AI tự đặt thêm khi đang chạy",
+      "C. GATE dừng vì thiếu dữ liệu, còn FALLBACK dừng chờ người duyệt dù đã đủ dữ liệu",
+      "D. GATE dừng chờ người xác nhận dù đã đủ dữ liệu; FALLBACK dừng để hỏi vì thiếu dữ liệu"
+    ],
+    "correct": "D",
+    "explanation": "GATE dừng dù đã đủ dữ liệu để người duyệt; FALLBACK dừng vì thiếu dữ liệu để hỏi bổ sung. Hai cơ chế khác nhau ở lý do dừng."
+  },
+  {
+    "id": "tpq-q020",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Vì sao Conversation mới trong cùng Project vẫn làm đúng quy trình dù bạn không dán lại hướng dẫn?",
+    "options": [
+      "A. Vì Instructions và Knowledge Base thuộc về Project chứ không thuộc một cuộc trò chuyện, nên được nạp lại",
+      "B. Vì AI ghi nhớ nguyên văn mọi cuộc trò chuyện trước đó trong cùng Project và tự dùng lại",
+      "C. Vì AI tự suy đoán quy trình từ tên của Project, không cần hướng dẫn hay tài liệu nào",
+      "D. Vì Project tự sao chép toàn bộ nội dung các Conversation cũ sang Conversation mới"
+    ],
+    "correct": "A",
+    "explanation": "Custom Instructions và Knowledge Base thuộc về Project chứ không thuộc một cuộc trò chuyện, nên Conversation mới trong cùng Project được nạp lại chúng."
+  },
+  {
+    "id": "tpq-q021",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Khi Memory đã tắt, vì sao điểm và báo cáo của DA-01 không xuất hiện trong Conversation mới chấm DA-03?",
+    "options": [
+      "A. Vì Claude tự động xóa mọi dữ liệu của cuộc trò chuyện cũ sau 24 giờ kể từ lúc tạo ra",
+      "B. Vì báo cáo DA-01 nằm trong Knowledge Base nên bị khóa, các Conversation khác không mở được",
+      "C. Vì DA-01 là Data tình huống của cuộc trò chuyện cũ; chỉ Instructions và Knowledge Base đi theo Project",
+      "D. Vì Claude chỉ có thể đọc một báo cáo mỗi ngày trong một Project, kể cả khi mở Conversation mới"
+    ],
+    "correct": "C",
+    "explanation": "Báo cáo và điểm DA-01 là Data tình huống của cuộc trò chuyện cũ. Chỉ Instructions và Knowledge Base đi theo Project, nên Conversation mới không thấy dữ liệu cũ khi Memory đã tắt."
+  },
+  {
+    "id": "tpq-q022",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Phát biểu nào về giới hạn của GATE trong Custom Instructions là đúng?",
+    "options": [
+      "A. GATE là khóa kỹ thuật cứng, người dùng không có cách nào ép AI bỏ qua một khi đã được viết",
+      "B. GATE chỉ có tác dụng khi Memory của tài khoản đã được bật từ trước khi mở Conversation",
+      "C. GATE tự biến mất sau lần đầu người dùng xác nhận, các lần sau AI không dừng nữa",
+      "D. GATE là hướng dẫn hành vi: ngăn AI tự ý đi tiếp nhưng không chặn được người dùng cố ép bỏ qua"
+    ],
+    "correct": "D",
+    "explanation": "GATE là hướng dẫn hành vi trong Instructions: nó ngăn AI tự ý đi tiếp nhưng không phải khóa kỹ thuật, nên không chặn được người dùng cố ép bỏ qua."
+  },
+  {
+    "id": "tpq-q023",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Báo cáo đồ án không có phần nào nói về phương pháp nghiên cứu. Theo thiết kế, AI nên làm gì ở tiêu chí liên quan?",
+    "options": [
+      "A. Suy ra phương pháp từ các chương khác để chấm cho đủ điểm",
+      "B. Ghi \"Chưa đủ căn cứ\" và hỏi giáo viên quyết định",
+      "C. Tự chấm 0 điểm để an toàn",
+      "D. Bỏ qua tiêu chí đó mà không báo gì"
+    ],
+    "correct": "B",
+    "explanation": "Khi không có căn cứ trong bài, AI ghi \"Chưa đủ căn cứ\" và hỏi giáo viên quyết định (FALLBACK 2), không tự cho điểm."
+  },
+  {
+    "id": "tpq-q024",
+    "chapter": 2,
+    "level": 3,
+    "session": 2,
+    "type": "mc",
+    "question": "Quy trình soạn đề: (1) nhận yêu cầu, (2) lập bảng phân bổ câu, (3) chọn câu từ ngân hàng, (4) lập đề. Giáo viên muốn tự duyệt bảng phân bổ trước khi AI chọn câu. Cần thêm gì vào Instructions?",
+    "options": [
+      "A. Một GATE sau Bước 2: dừng lại và hỏi xác nhận bảng phân bổ câu",
+      "B. Một FALLBACK sau Bước 2 để AI hỏi lại giáo viên về bảng phân bổ",
+      "C. Một mục NGUỒN TIN CẬY riêng áp dụng cho Bước 3 khi chọn câu",
+      "D. Một dòng KẾT THÚC PHIÊN hỏi giáo viên bước nào cần điều chỉnh"
+    ],
+    "correct": "A",
+    "explanation": "Muốn tự duyệt bảng phân bổ trước khi AI chọn câu thì thêm một GATE sau Bước 2: dừng và hỏi xác nhận bảng phân bổ."
+  },
+  {
+    "id": "tpq-q025",
+    "chapter": 2,
+    "level": 3,
+    "session": 2,
+    "type": "mc",
+    "question": "Ngân hàng câu hỏi không đủ câu Mức 3 cho Chương 2 theo bảng phân bổ đã duyệt. Hành vi đúng của trợ lý là gì?",
+    "options": [
+      "A. Tự viết thêm câu mới cho đủ số lượng rồi ghi chú đã viết thêm ở cuối đề",
+      "B. Tự hạ mức độ câu hoặc lấy câu từ chương khác cho đủ, không cần báo lại",
+      "C. Dừng, báo ô nào thiếu bao nhiêu câu và hỏi giáo viên chọn hướng xử lý",
+      "D. Bỏ ô đó khỏi đề và giảm tổng số câu cho khớp với số câu hiện có"
+    ],
+    "correct": "C",
+    "explanation": "Thiếu dữ liệu để thực hiện đúng bảng đã duyệt là tình huống FALLBACK: dừng, báo ô nào thiếu bao nhiêu câu, rồi hỏi giáo viên chọn hướng xử lý; không tự lấy câu khác hay tự viết thêm."
+  },
+  {
+    "id": "tpq-q026",
+    "chapter": 2,
+    "level": 3,
+    "session": 2,
+    "type": "mc",
+    "question": "Trong quy trình soạn đề, mục nào là Data tình huống?",
+    "options": [
+      "A. Ngân hàng câu hỏi của bộ môn, dùng lại cho mọi đề trong nhiều học kỳ",
+      "B. Mẫu đề thi của khoa, được dùng chung cho tất cả các đề của khoa",
+      "C. Đề cương học phần, ổn định qua nhiều lần soạn đề",
+      "D. Yêu cầu riêng của đề lần này: phạm vi chương, số câu, tỷ lệ mức độ"
+    ],
+    "correct": "D",
+    "explanation": "Yêu cầu riêng của đề lần này (phạm vi, số câu, tỷ lệ mức độ) thay đổi theo từng lần nên là Data tình huống. Ngân hàng câu hỏi, mẫu đề và đề cương ổn định hơn nên là Data nền."
+  },
+  {
+    "id": "tpq-q027",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Siêu trợ lý trong khóa học là gì?",
+    "options": [
+      "A. Một phiên bản Claude mạnh hơn, luôn trả lời chính xác tuyệt đối, dùng thay cho Project",
+      "B. Một Claude Project tạo trợ lý quy trình: phỏng vấn bạn rồi xuất Custom Instructions, sơ đồ, hướng dẫn",
+      "C. Một phần mềm riêng tự chạy toàn bộ quy trình thay bạn, không cần Project hay Instructions",
+      "D. Một bộ slide mẫu do giảng viên soạn, dùng để trình bày cách viết prompt trên lớp"
+    ],
+    "correct": "B",
+    "explanation": "Siêu trợ lý là một Claude Project chuyên tạo trợ lý quy trình: phỏng vấn bạn rồi xuất Custom Instructions, hai sơ đồ, danh sách tài liệu và hướng dẫn thiết lập. Nó không đảm bảo chính xác tuyệt đối và không tự chạy quy trình thay bạn."
+  },
+  {
+    "id": "tpq-q028",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Siêu trợ lý phỏng vấn tối đa bao nhiêu câu, và mỗi lượt hỏi mấy câu?",
+    "options": [
+      "A. Tối đa 5 câu, mỗi lượt hai câu",
+      "B. Tối đa 8 câu, mỗi lượt đúng một câu",
+      "C. Tối đa 8 câu, mỗi lượt hỏi gộp tất cả",
+      "D. Không giới hạn số câu"
+    ],
+    "correct": "B",
+    "explanation": "Siêu trợ lý hỏi tối đa 8 câu, mỗi lượt đúng một câu, đánh dấu Câu k/8; có thể ít hơn nếu đã đủ thông tin."
+  },
+  {
+    "id": "tpq-q029",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Phần nào trong đầu ra của Siêu trợ lý liệt kê những điều nó đã tự điền và cần bạn soát lại?",
+    "options": [
+      "A. Phần Sơ đồ 1, vẽ quy trình nghiệp vụ chưa có AI",
+      "B. Phần hướng dẫn thiết lập Project và ba kịch bản test",
+      "C. Phần mở đầu tóm tắt số bước, số GATE và số FALLBACK",
+      "D. Phần \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI\" ở cuối kết quả"
+    ],
+    "correct": "D",
+    "explanation": "Phần cuối \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI\" liệt kê 2–4 giả định có rủi ro sai cao nhất để bạn soát đầu tiên."
+  },
+  {
+    "id": "tpq-q030",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Theo mô hình lai của khóa học, thứ tự đúng là gì?",
+    "options": [
+      "A. Vẽ A3 trước, dùng Siêu trợ lý sau, rồi đối chiếu hai kết quả với nhau",
+      "B. Dùng Siêu trợ lý trước, sau đó vẽ A3 dựa trên kết quả nhận được",
+      "C. Chỉ dùng Siêu trợ lý và bỏ qua việc vẽ A3 vì kết quả đã có sơ đồ",
+      "D. Chỉ vẽ A3 trên giấy, không dùng Siêu trợ lý để tránh phụ thuộc AI"
+    ],
+    "correct": "A",
+    "explanation": "Mô hình lai: nhóm vẽ A3 và xác định GATE/FALLBACK trước, dùng Siêu trợ lý sau, rồi đối chiếu. Sơ đồ A3 tự vẽ là sản phẩm được chấm cho CLO3."
+  },
+  {
+    "id": "tpq-q031",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Ba kịch bản test bắt buộc trước khi dùng thật là gì?",
+    "options": [
+      "A. Chạy nhanh với dữ liệu ít, chạy chậm với dữ liệu nhiều, chạy lại từ đầu",
+      "B. Đổi mô hình AI, đổi ngôn ngữ trả lời, đổi tài khoản Claude đang dùng",
+      "C. Chạy xuôi bình thường, bỏ trống thông tin bắt buộc, thử vượt gate",
+      "D. Tải file lớn, tải file nhỏ, không tải file nào vào Knowledge Base"
+    ],
+    "correct": "C",
+    "explanation": "Ba kịch bản test bắt buộc: chạy xuôi bình thường, bỏ trống thông tin bắt buộc, và thử vượt gate."
+  },
+  {
+    "id": "tpq-q032",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Vì sao khóa học yêu cầu vẽ sơ đồ A3 trước khi dùng Siêu trợ lý?",
+    "options": [
+      "A. Vì Siêu trợ lý không biết cách tạo sơ đồ nên phải có sơ đồ A3 làm đầu vào bắt buộc để nó chỉnh lại",
+      "B. Vì vẽ tay luôn nhanh hơn và chính xác hơn so với dùng Siêu trợ lý trong mọi quy trình",
+      "C. Vì Siêu trợ lý chỉ nhận đầu vào là ảnh chụp sơ đồ vẽ tay của nhóm, không nhận văn bản",
+      "D. Vì xác định bước, GATE, FALLBACK là năng lực của bạn; để AI làm hộ ngay thì không còn gì để đối chiếu"
+    ],
+    "correct": "D",
+    "explanation": "Việc xác định bước, GATE, FALLBACK là năng lực của chính bạn. Nếu AI làm hộ ngay từ đầu, bạn không còn gì để đối chiếu và soát."
+  },
+  {
+    "id": "tpq-q033",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Vì sao nên khử thông tin cá nhân khỏi tài liệu trước khi tải lên cho Siêu trợ lý, dù chỉ dùng trong Project cá nhân?",
+    "options": [
+      "A. Vì tài khoản cá nhân chỉ phù hợp với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh",
+      "B. Vì AI không đọc được tên riêng nên kết quả sẽ sai nếu tài liệu còn họ tên",
+      "C. Vì khử thông tin giúp AI trả lời nhanh hơn và dùng ít dung lượng hơn",
+      "D. Vì Siêu trợ lý sẽ từ chối xử lý mọi tài liệu có chứa tên người"
+    ],
+    "correct": "A",
+    "explanation": "Rủi ro không mất đi chỉ vì là Project cá nhân: tài khoản cá nhân của lớp chỉ phù hợp với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh. Siêu trợ lý cũng nhắc đúng một câu về điều này."
+  },
+  {
+    "id": "tpq-q034",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Siêu trợ lý khám phá chỗ nào là GATE và FALLBACK bằng cách nào?",
+    "options": [
+      "A. Hỏi thẳng \"đâu là gate và fallback của bạn\" bằng thuật ngữ chuyên môn",
+      "B. Tự đoán hoàn toàn từ tên của quy trình mà không cần hỏi người dùng",
+      "C. Hỏi bằng tình huống thực tế, không dùng từ gate hay fallback khi hỏi",
+      "D. Bắt người dùng điền một biểu mẫu trống liệt kê các điểm dừng của quy trình"
+    ],
+    "correct": "C",
+    "explanation": "Siêu trợ lý hỏi bằng tình huống đời thường và không dùng từ gate hay fallback khi hỏi. Câu trả lời của bạn được chuyển thành GATE và FALLBACK trong Instructions."
+  },
+  {
+    "id": "tpq-q035",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Điều nào sau đây trái với quy định của prompt Siêu trợ lý khi xuất Custom Instructions?",
+    "options": [
+      "A. Dùng đúng cấu trúc template chuẩn",
+      "B. Đặt Custom Instructions trong một khối code để sao chép",
+      "C. Ghi các giả định đã tự điền ở phần riêng để bạn soát",
+      "D. Để lại chỗ trống kiểu [tên bước] cho người dùng tự điền"
+    ],
+    "correct": "D",
+    "explanation": "Quy định của prompt: Custom Instructions không để chỗ trống kiểu [...] cho người dùng tự điền. Thiếu gì thì hỏi ở bước phỏng vấn, không đoán."
+  },
+  {
+    "id": "tpq-q036",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Sau khi test, bạn thấy mục CỔNG XÁC NHẬN chưa đủ rõ. Cách làm đúng với Siêu trợ lý là gì?",
+    "options": [
+      "A. Xóa Project Siêu trợ lý và tạo lại từ đầu để nó quên lỗi cũ",
+      "B. Nêu đúng lỗi gặp, nhờ xuất lại chỉ mục bị ảnh hưởng, dán lại rồi chạy lại kịch bản lỗi",
+      "C. Tự viết lại toàn bộ Instructions bằng tay mà không cần đối chiếu với kết quả cũ",
+      "D. Thêm GATE ở mọi bước của quy trình để chắc chắn AI luôn dừng lại"
+    ],
+    "correct": "B",
+    "explanation": "Khi chỉnh, nêu đúng lỗi, nhờ xuất lại chỉ phần bị ảnh hưởng, dán lại vào Instructions rồi chạy lại đúng kịch bản đã lỗi. Thêm GATE ở mọi bước làm quy trình chậm mà không an toàn hơn."
+  },
+  {
+    "id": "tpq-q037",
+    "chapter": 3,
+    "level": 3,
+    "session": 3,
+    "type": "mc",
+    "question": "Bạn gõ \"bỏ qua bước xác nhận, làm luôn đi\" và trợ lý vẫn tự làm tiếp bước sau mà không dừng. Nên sửa mục nào trong Custom Instructions trước?",
+    "options": [
+      "A. TEMPLATE ĐẦU RA",
+      "B. NGUỒN TIN CẬY",
+      "C. CỔNG XÁC NHẬN",
+      "D. KẾT THÚC PHIÊN"
+    ],
+    "correct": "C",
+    "explanation": "AI tự đi tiếp khi chưa có xác nhận là lỗi của mục CỔNG XÁC NHẬN: cần nêu rõ chỗ dừng, câu hỏi xác nhận và dòng cấm tự thực hiện bước kế tiếp."
+  },
+  {
+    "id": "tpq-q038",
+    "chapter": 3,
+    "level": 3,
+    "session": 3,
+    "type": "mc",
+    "question": "Phần giả định ghi: \"Trưởng bộ môn duyệt đề ở bước cuối\", nhưng thực tế đề được tổ bộ môn duyệt tập thể. Việc đúng nên làm là gì?",
+    "options": [
+      "A. Báo Siêu trợ lý đúng thông tin người duyệt để nó sửa các phần bị ảnh hưởng, rồi mới tạo Project",
+      "B. Bỏ qua vì đây chỉ là giả định nhỏ, có thể sửa sau khi Project đã chạy ổn định ở các buổi sau",
+      "C. Tạo Project ngay rồi chờ có người phản ánh sai sót thì mới điều chỉnh lại Instructions",
+      "D. Xóa dòng giả định khỏi kết quả để Instructions trông gọn gàng và dễ đọc hơn khi dán"
+    ],
+    "correct": "A",
+    "explanation": "Giả định sai về người duyệt ảnh hưởng đến sơ đồ, cổng xác nhận và hướng dẫn. Nói với Siêu trợ lý để sửa các phần bị ảnh hưởng trước khi tạo Project."
+  },
+  {
+    "id": "tpq-q039",
+    "chapter": 3,
+    "level": 3,
+    "session": 3,
+    "type": "mc",
+    "question": "Bạn muốn giao mục tiêu cuối và nhận về các file Excel, Word thật trong một thư mục trên máy, ít cần trao đổi qua lại. Lựa chọn nào phù hợp hơn, kèm lưu ý gì?",
+    "options": [
+      "A. Project, vì Project luôn tạo file thật trên máy và không cần cấp quyền gì",
+      "B. Gemini Notebook, vì nó ghi trực tiếp lên thư mục trên máy của bạn",
+      "C. Chat thường, vì không cần quan tâm tới loại dữ liệu đưa vào",
+      "D. Cowork, lưu ý chỉ cấp quyền đúng thư mục không chứa dữ liệu mật hay dữ liệu cá nhân"
+    ],
+    "correct": "D",
+    "explanation": "Giao mục tiêu và nhận file thật là thế mạnh của Cowork. Vì Cowork có quyền truy cập file thật và Internet, chỉ cấp quyền đúng thư mục cần dùng, không chứa dữ liệu mật hay dữ liệu cá nhân."
+  },
+  {
+    "id": "tpq-q040",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Ba rủi ro chính của AI được học trong Buổi 4 là gì?",
+    "options": [
+      "A. Chậm, đắt tiền, khó cài đặt",
+      "B. Sai chính tả, sai ngữ pháp, sai định dạng",
+      "C. Hallucination, rò rỉ dữ liệu, phụ thuộc quá mức",
+      "D. Mất kết nối, hết hạn tài khoản, lỗi cập nhật"
+    ],
+    "correct": "C",
+    "explanation": "Ba rủi ro cần nhớ: hallucination (bịa), rò rỉ dữ liệu và phụ thuộc quá mức."
+  },
+  {
+    "id": "tpq-q041",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Bốn mức phân loại dữ liệu theo quy chế nội bộ trong khóa học là gì?",
+    "options": [
+      "A. Công khai, Nội bộ, Bí mật, Tối mật",
+      "B. Công khai, Riêng tư, Bí mật, Tuyệt mật",
+      "C. Thấp, Trung bình, Cao, Rất cao",
+      "D. Công khai, Hạn chế, Bảo mật, Tuyệt đối"
+    ],
+    "correct": "A",
+    "explanation": "Bốn mức theo quy chế nội bộ: Công khai, Nội bộ, Bí mật, Tối mật."
+  },
+  {
+    "id": "tpq-q042",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Yêu cầu AI trích dẫn nguồn từ Knowledge Base nhằm mục đích chính nào?",
+    "options": [
+      "A. Làm câu trả lời dài hơn và trông đáng tin cậy hơn với người đọc",
+      "B. Để bạn kiểm tra được thông tin có thật sự nằm trong tài liệu hay không",
+      "C. Giúp AI nhớ tài liệu lâu hơn ở các Conversation về sau",
+      "D. Giảm số lần phải mở Conversation mới trong cùng một Project"
+    ],
+    "correct": "B",
+    "explanation": "Trích dẫn nguồn cho phép bạn kiểm tra nhận định có thật sự nằm trong tài liệu hay không, biến việc tin AI thành việc kiểm tra AI."
+  },
+  {
+    "id": "tpq-q043",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Sự cố Samsung năm 2023 trong bài học là gì?",
+    "options": [
+      "A. Nhân viên bị AI thay thế công việc và phải chuyển sang bộ phận khác",
+      "B. ChatGPT bị tấn công mạng làm mất toàn bộ dữ liệu huấn luyện của hãng",
+      "C. Samsung bị cơ quan quản lý phạt vì phát triển AI chưa đăng ký",
+      "D. Một số nhân viên dán mã nguồn và nội dung họp nội bộ vào ChatGPT để nhờ xử lý"
+    ],
+    "correct": "D",
+    "explanation": "Năm 2023, một số nhân viên Samsung đã dán mã nguồn và nội dung họp nội bộ vào ChatGPT. Nên đối chiếu lại nguồn trước khi dùng làm tài liệu chính thức."
+  },
+  {
+    "id": "tpq-q044",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Nguyên tắc nào đúng khi dùng AI trong công việc?",
+    "options": [
+      "A. AI ký, người kiểm tra",
+      "B. AI quyết định, người thực hiện",
+      "C. AI viết nháp, người ký chịu trách nhiệm",
+      "D. AI và người cùng chịu trách nhiệm như nhau"
+    ],
+    "correct": "C",
+    "explanation": "Nguyên tắc nền: AI viết nháp, người ký chịu trách nhiệm."
+  },
+  {
+    "id": "tpq-q045",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Vì sao mức \"Tối mật\" theo quy chế nội bộ không đồng nghĩa với bí mật nhà nước?",
+    "options": [
+      "A. Vì bí mật nhà nước là phạm trù pháp lý theo luật riêng, còn 4 mức là cách phân loại nội bộ của đơn vị",
+      "B. Vì hai khái niệm là một và chỉ khác nhau ở tên gọi giữa các văn bản của từng đơn vị",
+      "C. Vì bí mật nhà nước chỉ áp dụng cho tài liệu giấy, không áp dụng cho dữ liệu số hay tệp máy tính",
+      "D. Vì mức Tối mật nội bộ luôn nghiêm ngặt hơn mọi cấp độ bí mật nhà nước theo luật hiện hành"
+    ],
+    "correct": "A",
+    "explanation": "Bí mật nhà nước là phạm trù pháp lý theo luật riêng, có quy định chặt về soạn thảo và lưu giữ. Mức Tối mật trong 4 mức chỉ là cách phân loại nội bộ của đơn vị, không suy từ cái này sang cái kia."
+  },
+  {
+    "id": "tpq-q046",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Vì sao đưa bảng điểm thật của sinh viên vào AI có máy chủ ở nước ngoài vẫn có rủi ro pháp lý, kể cả khi nhà cung cấp cam kết không dùng dữ liệu để huấn luyện?",
+    "options": [
+      "A. Vì AI đặt máy chủ ở nước ngoài thường không đọc được dữ liệu tiếng Việt có dấu và bảng biểu",
+      "B. Vì cam kết không dùng dữ liệu để huấn luyện chỉ áp dụng cho bản miễn phí của nhà cung cấp",
+      "C. Vì có thể là chuyển dữ liệu cá nhân xuyên biên giới, với nghĩa vụ riêng độc lập chính sách huấn luyện",
+      "D. Vì điểm số của sinh viên luôn được coi là bí mật nhà nước theo quy định của luật hiện hành"
+    ],
+    "correct": "C",
+    "explanation": "Đưa dữ liệu cá nhân thật ra máy chủ nước ngoài có thể là chuyển dữ liệu xuyên biên giới, phát sinh nghĩa vụ riêng như hồ sơ đánh giá tác động. Nghĩa vụ này độc lập với chính sách huấn luyện của nhà cung cấp."
+  },
+  {
+    "id": "tpq-q047",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Điều gì làm hallucination nguy hiểm hơn một lỗi sai thông thường?",
+    "options": [
+      "A. AI luôn bịa quá nửa nội dung, nên kết quả gần như không thể dùng được",
+      "B. Hallucination chỉ xảy ra khi dùng tiếng Việt, nên khó phát hiện ở bản gốc",
+      "C. Hallucination làm hỏng tài khoản và xóa dữ liệu của người dùng trong Project",
+      "D. AI nói thông tin bịa bằng giọng tự tin, nghe thuyết phục nên dễ lọt vào hồ sơ thật"
+    ],
+    "correct": "D",
+    "explanation": "Hallucination nguy hiểm vì được trình bày bằng giọng tự tin, nghe thuyết phục nên dễ lọt vào hồ sơ thật nếu không kiểm chứng nguồn."
+  },
+  {
+    "id": "tpq-q048",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Trong case chấm đồ án, vì sao mục 1–5 của phiếu chấm để \"[GV tự điền]\"?",
+    "options": [
+      "A. Vì AI không biết định dạng của phiếu nên giáo viên phải tự điền các mục đầu",
+      "B. Để dữ liệu định danh của sinh viên không đi qua AI; giáo viên tự điền sau khi nhận kết quả",
+      "C. Vì phiếu chấm không cần ghi thông tin sinh viên ở các mục đầu của phiếu",
+      "D. Vì Claude không cho phép điền các mục đầu của một mẫu phiếu có sẵn"
+    ],
+    "correct": "B",
+    "explanation": "Mục 1–5 của phiếu chứa thông tin định danh nên để giáo viên tự điền, nhờ đó dữ liệu định danh của sinh viên không đi qua AI."
+  },
+  {
+    "id": "tpq-q049",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Mục TỰ KIỂM TRA trong Custom Instructions giúp gì cho tiêu chí \"Kiểm soát đầu ra\" của Rubric?",
+    "options": [
+      "A. Giúp AI trả lời nhanh hơn bằng cách bỏ qua các bước kiểm tra trung gian",
+      "B. Thay thế vai trò xác nhận của giảng viên tại các điểm GATE trong quy trình",
+      "C. Cho AI rà lại kết quả theo checklist trước khi trả, giúp đầu ra ổn định và đúng template",
+      "D. Cho phép AI bỏ qua các GATE khi tự kiểm tra thấy kết quả đã đúng"
+    ],
+    "correct": "C",
+    "explanation": "Self-check tạo cơ chế để AI rà lại kết quả theo checklist trước khi trả, giúp đầu ra ổn định và đúng template. Nó không thay GATE hay vai trò của người."
+  },
+  {
+    "id": "tpq-q050",
+    "chapter": 4,
+    "level": 3,
+    "session": 4,
+    "type": "mc",
+    "question": "Bạn có bảng điểm giữa kỳ của lớp, gồm họ tên và mã sinh viên, muốn nhờ AI tính điểm trung bình và xếp loại. Bạn đang dùng tài khoản Claude cá nhân. Cách làm đúng nhất là gì?",
+    "options": [
+      "A. Thay họ tên và mã bằng mã ẩn danh trước; dữ liệu thật thì dùng công cụ do đơn vị cấp, qua pháp chế đánh giá",
+      "B. Dán nguyên bảng vì tài khoản đã tắt tùy chọn dùng dữ liệu để huấn luyện mô hình của nhà cung cấp",
+      "C. Dán nguyên bảng rồi yêu cầu AI không lưu lại và tự xóa cuộc trò chuyện sau khi dùng xong",
+      "D. Chia bảng thành nhiều phần nhỏ rồi dán từng phần vào các Conversation khác nhau để giảm rủi ro"
+    ],
+    "correct": "A",
+    "explanation": "Bảng có họ tên và mã sinh viên là dữ liệu cá nhân, tài khoản cá nhân không phù hợp. Cách đúng là thay danh tính bằng mã trước; với dữ liệu thật thì dùng công cụ do đơn vị cấp và qua đánh giá của pháp chế hoặc an ninh thông tin."
+  },
+  {
+    "id": "tpq-q051",
+    "chapter": 4,
+    "level": 3,
+    "session": 4,
+    "type": "mc",
+    "question": "Trợ lý trong Project trả lời: \"Theo Điều 12 Quy chế đào tạo...\" nhưng Knowledge Base không có quy chế này. Việc đúng nên làm là gì?",
+    "options": [
+      "A. Chấp nhận kết quả vì AI đã trích dẫn rất cụ thể cả số điều lẫn nội dung của điều khoản đó",
+      "B. Yêu cầu AI giải thích thêm cho chắc, nếu lời giải thích nghe hợp lý thì dùng kết quả luôn",
+      "C. Xóa Project và tạo lại từ đầu để AI không còn nhớ thông tin sai này ở các lần dùng sau",
+      "D. Coi là thông tin chưa kiểm chứng, đối chiếu văn bản chính thức và siết mục NGUỒN TIN CẬY của Instructions"
+    ],
+    "correct": "D",
+    "explanation": "Điều khoản không có trong tài liệu đã nạp là thông tin chưa kiểm chứng. Đối chiếu văn bản chính thức và siết mục NGUỒN TIN CẬY để trợ lý ghi \"Chưa đủ căn cứ\" thay vì bịa."
+  },
+  {
+    "id": "tpq-q052",
+    "chapter": 4,
+    "level": 3,
+    "session": 4,
+    "type": "mc",
+    "question": "Bạn muốn thêm self-check cho trợ lý soạn đề kiểm tra. Câu nào viết đúng cách?",
+    "options": [
+      "A. Hãy luôn cẩn thận, kiểm tra kỹ và cố gắng làm thật tốt khi soạn mỗi đề kiểm tra",
+      "B. Trước khi trả đề cuối, rà lại: đủ số câu và khớp bảng phân bổ? có câu nào ngoài ngân hàng? đã qua đủ 2 gate?",
+      "C. Sau khi trả kết quả cho giáo viên, hãy xin lỗi và giải thích nếu phát hiện có chỗ sai",
+      "D. Nếu thấy có chỗ sai thì tự sửa lại trong im lặng và không cần báo cho giáo viên biết"
+    ],
+    "correct": "B",
+    "explanation": "Self-check hiệu quả khi checklist cụ thể, đo được bằng có/không và gắn với quy trình, đặt trước khi trả kết quả cuối."
+  }
+]

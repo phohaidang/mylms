@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "code": "AIDK_QT_0001",
+    "name": "Từ Prompt đến Quy trình: Xây dựng trợ lý AI làm việc theo quy trình với Claude",
+    "total_sessions": 4,
+    "chapters": 4,
+    "university": "Petrovietnam",
+    "textbook": "Tài liệu do giảng viên biên soạn"
+  },
+  "sessions": [
+    {
+      "id": 1,
+      "chapter": "Ch.1",
+      "title": "AI tạo sinh và kỹ thuật prompt cơ bản",
+      "topics": "AI tạo sinh và LLM, hallucination, khung CRISP, iterative / negative / few-shot, bản đồ Data–Context–Knowledge–Workflow, bản đồ công cụ AI theo tác vụ, Bạn là Leader – AI là Cộng sự",
+      "clo": "CLO1, CLO2",
+      "textbook": "Tài liệu do giảng viên biên soạn",
+      "duration": "180 phút"
+    },
+    {
+      "id": 2,
+      "chapter": "Ch.2",
+      "title": "Từ prompt đơn lẻ đến quy trình nhiều bước",
+      "topics": "Context Window, Claude Project, Data nền và Data tình huống, GATE và FALLBACK, case chấm đồ án (4 kịch bản), 7 nguyên tắc thiết kế quy trình, hai sơ đồ quy trình, tạo Project Siêu trợ lý",
+      "clo": "CLO3, CLO4",
+      "textbook": "Tài liệu do giảng viên biên soạn",
+      "duration": "180 phút"
+    },
+    {
+      "id": 3,
+      "chapter": "Ch.3",
+      "title": "Từ workflow trong chat đến tự động hóa, rồi thực hành xây dựng",
+      "topics": "Siêu trợ lý và mô hình lai (vẽ A3 trước), phỏng vấn và 7 phần đầu ra, thiết lập Project, 3 kịch bản test, trình bày chéo, demo Cowork mức 1 và mức 2",
+      "clo": "CLO3, CLO4, CLO5",
+      "textbook": "Tài liệu do giảng viên biên soạn",
+      "duration": "180 phút"
+    },
+    {
+      "id": 4,
+      "chapter": "Ch.4",
+      "title": "Nâng cao, an toàn và lộ trình tương lai",
+      "topics": "Self-check, trích dẫn nguồn, quy trình rẽ nhánh, ba rủi ro AI, phân loại dữ liệu 4 mức, khung pháp lý, khử định danh, Gemini Notebook, 5 bước bắt đầu",
+      "clo": "CLO5, CLO6",
+      "textbook": "Tài liệu do giảng viên biên soạn",
+      "duration": "180 phút"
+    }
+  ]
+}

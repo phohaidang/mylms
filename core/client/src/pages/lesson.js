@@ -25,7 +25,9 @@ export async function renderLesson(app, { id }) {
       const allChapters = await api.get('/ebook/chapters');
       const chapterData = await api.get(`/ebook/chapters/${chapterId}`);
       if (chapterData && chapterData.chapter) {
-         const concepts = chapterData.concepts || [];
+         const allConcepts = chapterData.concepts || [];
+         const sessionConcepts = allConcepts.filter(c => c.session && parseInt(c.session) === parseInt(id));
+         const concepts = sessionConcepts.length > 0 ? sessionConcepts : allConcepts;
          ebookConceptsHTML = concepts.map(c => `
            <div class="card" style="margin-bottom:1rem; border-left: 4px solid var(--primary-color)">
              <div class="card-header" style="padding-bottom: 0.5rem">
@@ -80,6 +82,7 @@ export async function renderLesson(app, { id }) {
 
          session.fullObjectives = extractSection(['Mục tiêu']);
          session.scqaContent = extractSection(['SCQA']);
+         session.roadmapContent = extractSection(['Lộ trình buổi học']);
          session.homeworkContent = extractSection(['Bài tập về nhà', 'BTVN']);
       }
     } catch(err) {
@@ -146,6 +149,16 @@ export async function renderLesson(app, { id }) {
                </div>
             </div>` : ''}
          </div>
+
+         ${session.roadmapContent ? `
+         <div class="card" style="margin-bottom: 2.5rem; border-left: 4px solid var(--accent)">
+            <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; margin-bottom: 1rem">
+               <h3 style="margin:0">🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h3>
+            </div>
+            <div class="card-body" style="padding:0">
+               ${session.roadmapContent}
+            </div>
+         </div>` : ''}
 
          <!-- Section 2: Core Concepts -->
          <div style="margin-bottom: 2.5rem">

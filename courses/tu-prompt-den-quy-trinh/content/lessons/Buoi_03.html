@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 3: Từ Workflow Trong Chat Đến Tự Động Hóa, Rồi Thực Hành Xây Dựng — Petrovietnam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAF7F2;
+  --paper-card: #FFFFFF;
+  --paper-shade: #F2ECE1;
+  --ink: #1B1714;
+  --ink-soft: #4A413A;
+  --rule: #DCD3C1;
+  --oxblood: #7A1F1F;
+  --oxblood-soft: #9B3838;
+  --gold: #B8893A;
+  --gold-soft: #D4A85F;
+  --green: #2F4A36;
+  --blue: #1D4E89;
+  --warm-gray: #7F7365;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  padding: 40px 20px 80px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-red { background: #FDE8E8; color: var(--oxblood); border: 1px solid #F8B4B4; }
+.badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+.badge-blue { background: #E0F2FE; color: var(--blue); border: 1px solid #BAE6FD; }
+.badge-green { background: #DCFCE7; color: var(--green); border: 1px solid #BBF7D0; }
+
+h1.lesson-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.lesson-subtitle {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+
+h2.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 6px;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h3.sub-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.card-box {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.scqa-box {
+  background: #FFFDF9;
+  border-left: 4px solid var(--gold);
+}
+
+.scqa-item {
+  margin-bottom: 12px;
+}
+.scqa-item strong {
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 140px;
+}
+
+.callout-box {
+  background: #FAF5F0;
+  border-left: 4px solid var(--oxblood);
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout-box strong { color: var(--oxblood); }
+
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  background: var(--paper-card);
+}
+.timeline-table th, .timeline-table td {
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  vertical-align: top;
+  text-align: left;
+}
+.timeline-table th {
+  background: var(--paper-shade);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.timeline-table td.time {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--oxblood);
+  white-space: nowrap;
+  width: 90px;
+}
+.timeline-table tr:nth-child(even) td { background: #FCFAF6; }
+
+pre.prompt-block {
+  background: #23201D;
+  color: #EDE7DC;
+  padding: 16px 20px;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.gate-badge {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FCA5A5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header Meta -->
+  <div class="header-meta">
+    <div>Chương trình đào tạo Petrovietnam · AIDK_QT_0001</div>
+    <div>Thời lượng: 180 phút (Sáng Ngày 2)</div>
+  </div>
+
+  <header>
+    <div style="display:flex; gap:8px; margin-bottom:12px;">
+      <span class="badge badge-red">Buổi 3</span>
+      <span class="badge badge-gold">CLO3 · CLO4 · CLO5</span>
+      <span class="badge badge-green">Capstone Product</span>
+    </div>
+    <h1 class="lesson-title">Buổi 3: Từ Workflow Trong Chat Đến Tự Động Hóa, Rồi Thực Hành Xây Dựng</h1>
+    <div class="lesson-subtitle">Hiện thực hóa Trợ lý quy trình bằng Mô hình lai (A3 + Siêu trợ lý), kiểm thử 3 kịch bản và mở rộng tầm nhìn với Claude Cowork</div>
+  </header>
+
+  <!-- PHẦN I: MỤC TIÊU BUỔI HỌC (BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">I. Mục tiêu buổi học</h2>
+  <div class="card-box">
+    <p>Sau khi kết thúc Buổi 3, học viên nắm vững và thực thi được các chuẩn đầu ra sau:</p>
+    <ul>
+      <li><strong>Mục tiêu cốt lõi (CLO4 - Bloom Create - Trọng số 40%):</strong> Mỗi nhóm học viên tự tay hoàn thiện, đóng gói và bàn giao <strong>01 Claude Project hoạt động được</strong> cho một quy trình nghiệp vụ thực tế của đơn vị/bộ môn, kết hợp nhịp nhàng giữa tư duy con người (sơ đồ A3) và công cụ tự động (Siêu trợ lý).</li>
+      <li><strong>Mục tiêu kiểm thử (CLO4 & CLO5 - Bloom Evaluate):</strong> Kiểm thử nghiêm ngặt sản phẩm qua <strong>3 kịch bản bắt buộc</strong>: (1) Chạy xuôi tuần tự đúng template, (2) Cố tình bỏ trống thông tin bắt buộc để kiểm tra phản hồi Fallback, (3) Cố tình ra lệnh vượt Gate để kiểm tra sự từ chối của AI.</li>
+      <li><strong>Mục tiêu phản biện (CLO5):</strong> Tham gia trình bày demo sống (3 phút) và phản biện "thử phá" sản phẩm của nhóm bạn (2 phút) để học hỏi các giải pháp xử lý ngoại lệ.</li>
+      <li><strong>Tầm nhìn tự động hóa (Demo Cowork):</strong> Quan sát và hiểu rõ 2 cấp độ tự động hóa tiếp theo ngoài khung chat: Mức 1 - Giao mục tiêu trọn gói tự sinh file (Excel/Word) và Mức 2 - Thực thi quy trình bằng Skill viết sẵn có chốt chặn kiểm duyệt.</li>
+      <li><strong>Phân định công cụ:</strong> Phân biệt rõ khi nào nên dùng Claude Projects (quy trình trao đổi qua lại nhiều trong chat) và khi nào dùng Claude Cowork (quy trình đã chuẩn hóa, thao tác trực tiếp trên tệp tin).</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN II: KHUNG SCQA CỦA BUỔI (BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+  <div class="card-box scqa-box">
+    <div class="scqa-item">
+      <strong>Situation:</strong> Các nhóm đã có sẵn sơ đồ quy trình nghiệp vụ trên giấy A3 với các cổng kiểm soát GATE và nhánh FALLBACK, cùng các tài liệu mẫu đã được khử thông tin mật.
+    </div>
+    <div class="scqa-item">
+      <strong>Complication:</strong> Việc tự tay ngồi gõ hàng trăm dòng Custom Instructions bằng tay thường mất nhiều thời gian, dễ thiếu sót cú pháp ràng buộc logic; ngược lại, nếu để AI tự sáng tác toàn bộ từ đầu thì người dùng lại không làm chủ được quy trình và dễ rơi vào bẫy hallucination.
+    </div>
+    <div class="scqa-item">
+      <strong>Question:</strong> Làm thế nào để vừa tiết kiệm thời gian viết mã lệnh, vừa đảm bảo con người nắm quyền kiểm soát 100% logic nghiệp vụ, đưa trợ lý AI vượt qua mọi thử thách kiểm thử và mở rộng tầm nhìn tự động hóa?
+    </div>
+    <div class="scqa-item">
+      <strong>Answer-preview:</strong> Vận hành <strong>Mô hình lai (Hybrid Workflow)</strong>: Vẽ A3 trước → Phỏng vấn Siêu trợ lý sau → Nhận 7 phần đầu ra chuẩn hóa → Kiểm thử 3 kịch bản nghiêm ngặt; sau đó chiêm ngưỡng sức mạnh của Claude Cowork trên cùng bài toán nghiệp vụ.
+    </div>
+  </div>
+
+  <!-- PHẦN III: KHỞI ĐỘNG TỪ CÁI BIẾT CỦA HỌC VIÊN -->
+  <h2 class="section-title">III. Khởi động từ Cái Biết của Học viên (25 phút)</h2>
+  <div class="card-box">
+    <h3 class="sub-title">1. Minigame Recap & Hỏi đáp nhanh (00–15')</h3>
+    <p>Giảng viên tổ chức minigame khởi động ngày 2 bằng 3 câu hỏi nhanh tương tác:</p>
+    <ul>
+      <li><em>"Nhắc lại 2 cổng chốt chặn quan trọng nhất đã học ở Buổi 2 là gì?"</em> → <span class="gate-badge">GATE</span> (dừng lại xin lệnh) và <span class="fallback-badge" style="background:#FEFCE8; color:#854D0E; padding:2px 6px; border-radius:4px; font-family:'DM Mono';">FALLBACK</span> (hỏi khi thiếu).</li>
+      <li><em>"Tại sao khi mở một Conversation mới trong Project, AI vẫn không bị mất Custom Instructions?"</em> → Vì Instructions được lưu trữ ở tầng kiến trúc Project bên ngoài cuộc hội thoại, không bị đẩy khỏi Context Window.</li>
+      <li><em>"Giải đáp thắc mắc tồn đọng về việc cài đặt Project Siêu trợ lý tối qua."</em></li>
+    </ul>
+
+    <h3 class="sub-title">2. Dẫn nhập tầng Workflow trên Bản đồ 4 tầng (15–25')</h3>
+    <p>Quay lại slide bản đồ <em>Data → Context → Knowledge → Workflow</em>. Khoanh tròn vào tầng cao nhất: <strong>Workflow</strong>:</p>
+    <blockquote>
+      <em>"Hôm qua các anh/chị đã thấy Knowledge biến thành Workflow chạy trong Project thông qua case study Chấm đồ án. Sáng nay, chính các anh/chị sẽ tự tay biến quy trình phòng ban của mình thành một Workflow hoàn chỉnh chạy được. Và sau khi các nhóm nghiệm thu sản phẩm đạt chuẩn, chúng ta sẽ bước một bước xa hơn: xem Workflow này vận hành tự động ngoài desktop với Claude Cowork!"</em>
+    </blockquote>
+  </div>
+
+  <!-- PHẦN IV: KỊCH BẢN CHI TIẾT THEO TIMELINE -->
+  <h2 class="section-title">IV. Kịch bản chi tiết theo Timeline (180 phút)</h2>
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th style="width: 80px;">Thời gian</th>
+        <th style="width: 50px;">Phút</th>
+        <th style="width: 250px;">Nội dung bài học</th>
+        <th>Hoạt động Giảng viên & Học viên</th>
+        <th style="width: 140px;">Học liệu & Công cụ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">00–15'</td>
+        <td>15'</td>
+        <td><strong>Recap ngày 1 & Minigame</strong></td>
+        <td>Hỏi đáp nhanh củng cố kiến thức Buổi 1–2. Giải đáp thắc mắc về Project Siêu trợ lý.</td>
+        <td>Slide tương tác, LMS Quiz</td>
+      </tr>
+      <tr>
+        <td class="time">15–25'</td>
+        <td>10'</td>
+        <td><strong>Dẫn nhập bản đồ Workflow</strong></td>
+        <td>Định vị mục tiêu buổi sáng: Tạo ra sản phẩm Capstone cuối khóa được nghiệm thu bằng Rubric.</td>
+        <td>Slide Bản đồ Workflow</td>
+      </tr>
+      <tr>
+        <td class="time">25–35'</td>
+        <td>10'</td>
+        <td><strong>Brief nhiệm vụ & Phổ biến Rubric</strong></td>
+        <td>
+          GV phát Phiếu Rubric (5 tiêu chí chấm điểm, thang 4 mức).<br>
+          Nhắc nguyên tắc vàng: <em>Chụp ảnh sơ đồ A3 nộp trước khi chạy Siêu trợ lý</em> (CLO3 chấm trên sơ đồ vẽ tay).
+        </td>
+        <td>Phiếu Rubric in sẵn, Phiếu Thiết Kế</td>
+      </tr>
+      <tr>
+        <td class="time">35–70'</td>
+        <td>35'</td>
+        <td><strong>Giai đoạn 1–2: Mô hình lai A3 + Siêu trợ lý</strong></td>
+        <td>
+          • <em>35–45' (~10'):</em> Hoàn thiện sơ đồ A3 nhóm, chụp ảnh nộp lên hệ thống.<br>
+          • <em>45–65' (~20'):</em> Mở Project Siêu trợ lý, nhập mô tả quy trình đã khử mật, trả lời tối đa 8 câu phỏng vấn → Nhận 7 phần đầu ra.<br>
+          • <em>65–70' (~5'):</em> Đối chiếu sơ đồ A3 với sơ đồ Siêu trợ lý, rà soát lại các giả định đã tự điền.
+        </td>
+        <td>Sơ đồ A3 nhóm, Project Siêu trợ lý trên Claude</td>
+      </tr>
+      <tr>
+        <td class="time">70–80'</td>
+        <td>10'</td>
+        <td><strong>Giải lao giữa buổi</strong></td>
+        <td>Học viên nghỉ ngơi, nạp năng lượng.</td>
+        <td>Tea-break</td>
+      </tr>
+      <tr>
+        <td class="time">80–120'</td>
+        <td>40'</td>
+        <td><strong>Giai đoạn 3–4: Đóng gói & Kiểm thử 3 kịch bản</strong></td>
+        <td>
+          Nhóm tạo Project mới của phòng ban, dán Custom Instructions, nạp Knowledge Base.<br>
+          <strong>Kiểm thử 3 kịch bản bắt buộc:</strong><br>
+          1. <em>Chạy xuôi:</em> Đúng trình tự, đúng mẫu biểu.<br>
+          2. <em>Bỏ trống dữ liệu:</em> AI phải kích hoạt Fallback hỏi lại.<br>
+          3. <em>Cố tình vượt gate:</em> AI phải từ chối đi tiếp.<br>
+          GV đi từng nhóm coaching và chấm điểm quá trình.
+        </td>
+        <td>Laptop nhóm, Tài liệu mẫu đã khử mật, Kịch bản test</td>
+      </tr>
+      <tr>
+        <td class="time">120–140'</td>
+        <td>20'</td>
+        <td><strong>Trình bày chéo & Phản biện (4 nhóm)</strong></td>
+        <td>
+          Mỗi nhóm có đúng 5 phút: <strong>3 phút demo sống</strong> trên màn chiếu + <strong>2 phút nhóm khác phản biện "thử phá"</strong> bằng một tình huống đầu vào bất ngờ.
+        </td>
+        <td>Máy chiếu, Micro, Đồng hồ bấm giờ</td>
+      </tr>
+      <tr>
+        <td class="time">140–155'</td>
+        <td>15'</td>
+        <td><strong>Demo Cowork Mức 1 — Giao mục tiêu</strong></td>
+        <td>
+          GV chiếu Claude Desktop có Cowork, trỏ vào thư mục <code>Demo-Cowork-ChamDoAn/</code>.<br>
+          Giao một mục tiêu cuối cùng → Cowork tự lập kế hoạch nhiều bước, tự gọi code và xuất file thật: <code>BangDiemGoiY.xlsx</code>, <code>NhanXet.docx</code>, <code>PhieuCham_DA-0x.docx</code>.
+        </td>
+        <td>Claude Desktop (Cowork bật sẵn), Máy GV</td>
+      </tr>
+      <tr>
+        <td class="time">155–170'</td>
+        <td>15'</td>
+        <td><strong>Demo Cowork Mức 2 — Dùng Skill quy trình</strong></td>
+        <td>
+          Cùng case study Chấm đồ án, chạy qua Skill viết sẵn 5 bước + 2 Gate.<br>
+          Minh họa: Cowork vẫn dừng đúng ở GATE 1 và GATE 2 ngoài desktop.
+        </td>
+        <td>Skill chấm đồ án, Claude Desktop</td>
+      </tr>
+      <tr>
+        <td class="time">170–180'</td>
+        <td>10'</td>
+        <td><strong>Tổng kết phân định công cụ & Chốt buổi</strong></td>
+        <td>
+          Tổng kết: <em>Project (trong chat, tương tác nhiều) vs Cowork (chạm file thật, tự động hóa cao)</em>.<br>
+          Tổng hợp lỗi chung của 4 nhóm, chuẩn bị hoàn thiện ở Buổi 4.
+        </td>
+        <td>Slide so sánh Project vs Cowork</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PHẦN V: TEMPLATE CHUẨN & BẢNG CÂU HỎI THẢO LUẬN -->
+  <h2 class="section-title">V. Template Custom Instructions chuẩn & Thảo luận</h2>
+  <div class="card-box">
+    <h3 class="sub-title" style="color:var(--oxblood);">Template Custom Instructions chuẩn hóa 7 khối nghiệp vụ</h3>
+    <pre class="prompt-block"># VAI TRÒ
+Bạn là trợ lý [tên nghiệp vụ] của [phòng ban/bộ môn]. Bạn là cộng sự hỗ trợ,
+KHÔNG phải người ra quyết định. Mọi quyết định cuối cùng thuộc về tôi.
+
+# KHỞI TẠO BẮT BUỘC
+Khi bắt đầu phiên làm việc mới, hãy:
+1. Đọc toàn bộ tài liệu trong Knowledge Base
+2. Tóm tắt ngắn quy trình bạn sẽ thực hiện để tôi xác nhận
+3. Chỉ bắt đầu Bước 1 sau khi tôi đồng ý
+
+# QUY TRÌNH (thực hiện TUẦN TỰ, không bỏ bước, không gộp bước)
+Bước 1: [tên bước] — Đầu vào: [...] — Đầu ra: [...]
+Bước 2: [tên bước] — Đầu vào: [...] — Đầu ra: [...]
+Bước 3: ...
+
+# CỔNG XÁC NHẬN
+Sau khi hoàn thành mỗi bước, DỪNG LẠI và hỏi:
+"Bạn xác nhận kết quả Bước [X] và cho phép chuyển sang Bước [X+1] chứ?"
+Tuyệt đối không tự thực hiện bước tiếp theo khi chưa có xác nhận.
+
+# XỬ LÝ THIẾU THÔNG TIN
+- Thông tin BẮT BUỘC còn thiếu: [liệt kê] → hỏi tôi, không được tự giả định
+- Thông tin KHÔNG bắt buộc còn thiếu → dùng mặc định: [liệt kê]
+  và ghi chú rõ "[ĐÃ DÙNG GIÁ TRỊ MẶC ĐỊNH]"
+
+# NGUỒN TIN CẬY
+- Ưu tiên tuyệt đối: tài liệu trong Knowledge Base
+- Kiến thức chung ngoài tài liệu: phải đánh dấu [CẦN KIỂM CHỨNG]
+- Không được bịa số liệu, tên văn bản, số hiệu quy chuẩn
+
+# TEMPLATE ĐẦU RA
+Mọi kết quả cuối cùng trình bày theo đúng cấu trúc:
+[dán cấu trúc chuẩn của phòng ban/bộ môn]
+
+# TỰ KIỂM TRA
+Trước khi trả kết quả cuối, rà lại theo checklist:
+□ Đúng template? □ Có mục nào bịa/thiếu nguồn? □ Đã qua đủ các gate?
+
+# KẾT THÚC PHIÊN
+Hỏi tôi: "Bước nào trong quy trình cần điều chỉnh cho lần sau?"</pre>
+
+    <h3 class="sub-title" style="margin-top:20px;">Câu hỏi thảo luận chuyên sâu:</h3>
+    <ol>
+      <li><strong>Về phương pháp luận sư phạm:</strong> <em>"Tại sao giảng viên yêu cầu các nhóm phải nộp ảnh chụp sơ đồ A3 vẽ tay trước khi được phép chạy Siêu trợ lý?"</em><br>
+      <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý: Nếu để AI phỏng vấn ngay từ đầu khi con người chưa định hình rõ ràng các bước và chốt chặn, học viên sẽ bị dẫn dắt hoàn toàn theo các câu hỏi gợi ý của máy. Vẽ trên giấy A3 buộc con người phải tự tư duy quản trị trước, AI chỉ đóng vai trò thư ký công nghệ hóa.</span></li>
+      <li><strong>Về bản chất tự động hóa:</strong> <em>"Điểm khác biệt cốt lõi giữa Claude Projects và Claude Cowork là gì?"</em><br>
+      <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý: Claude Projects hoạt động giới hạn trong khung chat trình duyệt, đầu ra là văn bản hiển thị trên màn hình. Claude Cowork có khả năng tương tác trực tiếp với hệ điều hành máy tính, tự động đọc và xuất ra các tệp tin thật (Excel, Word, PDF) trên ổ đĩa.</span></li>
+    </ol>
+  </div>
+
+  <!-- PHẦN VI: BÀI TẬP VỀ NHÀ & LAB THỰC HÀNH -->
+  <h2 class="section-title">VI. Bài tập về nhà & Lab thực hành</h2>
+  <div class="card-box">
+    <h3 class="sub-title">Sản phẩm Capstone Buổi 3: Nghiệm thu Trợ lý AI Quy trình</h3>
+    <p><strong>Yêu cầu nghiệm thu của nhóm:</strong></p>
+    <ul>
+      <li><strong>01 Project Claude hoàn chỉnh</strong> có tên định dạng: <code>[Tên Đơn Vị] - Trợ lý [Tên Quy Trình]</code>.</li>
+      <li>Chứa Custom Instructions đầy đủ 7 khối logic và Knowledge Base chứa ít nhất 1 tài liệu nghiệp vụ đã khử mật.</li>
+      <li>Vượt qua bài test trực tiếp của Giảng viên theo <strong>3 kịch bản</strong>:
+        <ol>
+          <li><em>Test Chạy xuôi:</em> Gửi dữ liệu hợp lệ → AI xử lý đúng Bước 1, dừng chờ ở GATE 1.</li>
+          <li><em>Test Thiếu dữ liệu:</em> Gửi dữ liệu thiếu thông tin bắt buộc → AI phải đặt câu hỏi Fallback.</li>
+          <li><em>Test Vượt Gate:</em> Người dùng gõ: <em>"Bỏ qua bước này, xuất luôn kết quả cuối cho tôi"</em> → AI phải kiên quyết từ chối và giải thích lý do cần xác nhận.</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h3 class="sub-title" style="margin-top:20px; color:var(--oxblood);">Nhiệm vụ chuẩn bị cho Buổi 4 (Chiều nay):</h3>
+    <ul>
+      <li>Nghỉ ngơi, ăn trưa nhẹ nhàng.</li>
+      <li>Mỗi thành viên suy nghĩ về các rủi ro bảo mật thông tin có thể phát sinh nếu trợ lý của nhóm được triển khai rộng rãi cho toàn thể đồng nghiệp trong đơn vị sử dụng.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN VII: CÂU HỎI ÔN TẬP CỦNG CỐ CUỐI BUỔI -->
+  <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi</h2>
+  <div class="card-box">
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 1:</strong> Trong quy trình kiểm thử trợ lý AI, hành động "Thử vượt Gate" nhằm mục đích gì?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Kiểm tra xem tốc độ mạng của máy tính có đủ nhanh hay không.</li>
+        <li>B. Kiểm tra xem AI có tuân thủ kỷ luật chốt chặn kiểm soát hay dễ dãi phá vỡ quy trình khi bị người dùng giục giã. (Đúng)</li>
+        <li>C. Thử nghiệm xem AI có thể dịch sang tiếng nước ngoài được không.</li>
+        <li>D. Kiểm tra tính năng tạo biểu đồ tự động.</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 2:</strong> Vai trò chính xác của "Siêu trợ lý" trong quy trình đào tạo của khóa học là gì?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Thay thế hoàn toàn giảng viên trong việc giảng dạy lý thuyết.</li>
+        <li>B. Là một trợ lý AI giúp người dùng phỏng vấn và tự động sinh ra mã lệnh Custom Instructions chuẩn hóa cho một quy trình nghiệp vụ đã có sẵn. (Đúng)</li>
+        <li>C. Tự động chấm điểm thi cuối kỳ của học viên.</li>
+        <li>D. Tự động gửi báo cáo điểm danh về Tập đoàn.</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>Câu 3:</strong> Trường hợp nào sau đây phù hợp nhất để triển khai bằng Claude Cowork thay vì Claude Project?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Cần trao đổi tâm sự giải tỏa căng thẳng sau giờ làm việc.</li>
+        <li>B. Quy trình đã được chuẩn hóa rõ ràng, cần AI tự động thao tác trên hàng chục file Excel/Word trong một thư mục và xuất ra các tệp tin báo cáo tổng hợp hoàn chỉnh. (Đúng)</li>
+        <li>C. Soạn thảo một email ngắn xin nghỉ phép cá nhân.</li>
+        <li>D. Tra cứu nhanh một công thức nấu ăn trên mạng.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHẦN VIII: LƯU Ý VÀ TÌNH HUỐNG DỰ PHÒNG CHO GIẢNG VIÊN -->
+  <h2 class="section-title">VIII. Lưu ý và Tình huống dự phòng cho Giảng viên</h2>
+  <div class="card-box">
+    <ul>
+      <li><strong>Kiểm tra Claude Desktop trước giờ dạy:</strong> GV phải mở ứng dụng Claude trên máy tính cá nhân, kiểm tra tính năng Cowork đã được kích hoạt và tùy chọn <em>Code Execution</em> đã bật. Chạy thử 1 lần lệnh chấm đồ án với thư mục <code>Demo-Cowork-ChamDoAn/</code> trước 08h00.</li>
+      <li><strong>Kiểm soát thời gian phần Trình bày chéo:</strong> 4 nhóm trình bày rất dễ bị cuốn vào tranh luận kéo dài. GV cần dùng chuông bấm hẹn giờ nghiêm ngặt: đúng 3 phút hết giờ trình bày, đúng 2 phút hết giờ phản biện để đảm bảo thời lượng cho 2 bài demo Cowork cực kỳ quan trọng ở cuối buổi.</li>
+      <li><strong>Xử lý lỗi Siêu trợ lý sinh thiếu phần:</strong> Nếu Siêu trợ lý bị ngắt quãng giữa chừng khi đang xuất 7 phần do quá dài, nhắc học viên chỉ cần gõ: <em>"Hãy tiếp tục xuất từ Mục [X]..."</em>.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

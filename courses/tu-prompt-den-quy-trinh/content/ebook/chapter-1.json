@@ -1,0 +1,373 @@
+{
+  "chapter": 1,
+  "title": "AI tạo sinh và kỹ thuật prompt nền tảng",
+  "sessions": [
+    1
+  ],
+  "scqa": {
+    "situation": "Bạn đã dùng AI để soạn email, tóm tắt tài liệu hay hỏi nhanh một quy định. Mỗi lần chỉ cần gõ một câu hỏi, vài giây sau là có ngay một đoạn trả lời trôi chảy, nghe rất hợp lý.",
+    "complication": "Nhưng cùng một công cụ, có lúc cho kết quả rất tốt, có lúc lại bịa ra một số hiệu quy chuẩn không hề tồn tại bằng giọng rất tự tin. Mỗi lần hỏi lại, bạn phải giải thích từ đầu. Nếu không hiểu AI vận hành thế nào và hỏi sao cho đúng, chất lượng công việc phụ thuộc vào may rủi, và người chịu trách nhiệm cuối cùng vẫn là bạn.",
+    "question": "Làm thế nào để dùng AI ổn định, đáng tin, và biết việc này chỉ là bước đầu của một hành trình dài hơn?",
+    "answer": "Hiểu AI là một \"máy đoán chữ\" nên có thể bịa, viết prompt theo khung CRISP rồi cải thiện bằng iterative, negative, few-shot, và đặt tất cả vào bản đồ Data → Context → Knowledge → Workflow, với nguyên tắc vàng: Bạn là Leader, AI là Cộng sự."
+  },
+  "concepts": [
+    {
+      "id": "c1-ban-do",
+      "term": "Bốn tầng nền tảng",
+      "definition": "Bản đồ bốn tầng đi từ dữ liệu rời rạc đến quy trình chạy lặp lại được: Data (dữ liệu thô) → Context (gắn ngữ cảnh để có nghĩa) → Knowledge (quy tắc áp dụng lại được) → Workflow (quy trình đóng gói, chạy lặp lại).",
+      "key_points": [
+        "<strong>Data</strong>: công văn, hợp đồng, email, báo cáo. Còn rời rạc, chưa nói được dùng để làm gì.",
+        "<strong>Context</strong>: gắn thêm ai, khi nào, thuộc quy trình nào. Dữ liệu bắt đầu có nghĩa. Đây là tầng bạn làm mỗi khi viết một prompt tốt.",
+        "<strong>Knowledge</strong>: khi cùng một Data + Context lặp lại nhiều lần, nó trở thành quy tắc dùng lại được (rubric, mẫu biểu, cách viết nhận xét).",
+        "<strong>Workflow</strong>: Knowledge được đóng gói thành quy trình nhiều bước, chạy lặp lại. Đây là đích đến của cả khóa học.",
+        "Khóa học đi theo đúng bản đồ này: Buổi 1 ở tầng Data/Context, Buổi 2 sang Knowledge, Buổi 2–3 tới Workflow."
+      ],
+      "case_study": {
+        "title": "Từ một báo cáo đồ án đến một quy trình chấm",
+        "context": "Một báo cáo đồ án sinh viên chỉ là Data. Khi bạn ghi rõ nó thuộc học phần nào, chấm theo rubric nào, đã có điểm chuyên cần chưa, nó trở thành Context. Cách bạn chấm theo rubric và viết nhận xét, nếu được ghi lại thành quy tắc, là Knowledge. Khi các quy tắc ấy được xếp thành 5 bước có điểm dừng, đó là Workflow. (Tình huống minh họa do ebook dựng.)",
+        "analysis": "Mỗi tầng là một việc bạn làm trước khi giao cho AI. Bỏ qua tầng nào, AI sẽ phải đoán ở tầng đó.",
+        "lesson_learned": "Muốn AI làm việc ổn định, hãy đi lên từng tầng thay vì nhảy thẳng tới Workflow."
+      },
+      "related_concepts": [
+        "c1-may-doan-chu",
+        "c1-crisp"
+      ]
+    },
+    {
+      "id": "c1-may-doan-chu",
+      "term": "Máy đoán chữ (LLM)",
+      "definition": "Mô hình ngôn ngữ lớn (LLM) tạo câu trả lời bằng cách dự đoán từng từ tiếp theo có xác suất cao nhất dựa trên ngữ cảnh đã có. Nó học quy luật của ngôn ngữ, không tra cứu một kho sự thật.",
+      "key_points": [
+        "Trôi chảy không có nghĩa là đúng: AI ưu tiên câu nghe hợp lý về mặt ngôn ngữ.",
+        "Khác công cụ tìm kiếm: tìm kiếm dẫn tới nguồn có sẵn, AI tạo ra nội dung mới mỗi lần.",
+        "Chất lượng đầu ra phụ thuộc rất nhiều vào ngữ cảnh bạn đưa vào, vì vậy prompt là kỹ năng cần học.",
+        "Cùng một prompt, hai lần chạy có thể cho hai kết quả khác nhau; đó là bản chất của xác suất, không phải lỗi."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-hallucination"
+      ]
+    },
+    {
+      "id": "c1-hallucination",
+      "term": "Hallucination (AI bịa)",
+      "definition": "Hiện tượng AI tạo ra thông tin sai hoặc không tồn tại nhưng trình bày trôi chảy và tự tin, ví dụ số hiệu quy chuẩn, trích dẫn, số liệu cụ thể.",
+      "key_points": [
+        "Sinh ra từ chính cơ chế đoán chữ, không phải do AI cố ý đánh lừa.",
+        "Hay gặp nhất ở: số hiệu văn bản và quy chuẩn, trích dẫn tài liệu, số liệu cụ thể, sự kiện gần đây.",
+        "Cách giảm rủi ro: đưa tài liệu nguồn cho AI, yêu cầu trích dẫn đúng nguồn, bắt AI đánh dấu <code>[CẦN KIỂM CHỨNG]</code> cho phần ngoài tài liệu, và kiểm tra độc lập tại nguồn chính thức.",
+        "Quy tắc xuyên suốt: <strong>AI viết nháp, người ký chịu trách nhiệm</strong>."
+      ],
+      "case_study": {
+        "title": "Hỏi về một quy chuẩn không tồn tại",
+        "context": "Người dạy hỏi AI về nội dung của một \"quy chuẩn an toàn HSE\" mà chính mình đặt ra số hiệu, không có thật. (Tình huống dựng để minh họa, không phải sự kiện thật.)",
+        "analysis": "Có hai khả năng: AI nói không xác minh được số hiệu này, hoặc AI mô tả chi tiết như thật. Điều quan trọng không phải lần này AI đúng hay sai, mà là nếu bạn không kiểm tra thì bạn không thể phân biệt được hai trường hợp.",
+        "lesson_learned": "Giọng tự tin không phải bằng chứng. Số hiệu văn bản và quy chuẩn luôn phải được kiểm tra tại nguồn chính thức trước khi đưa vào hồ sơ."
+      },
+      "related_concepts": [
+        "c1-may-doan-chu",
+        "c1-leader"
+      ]
+    },
+    {
+      "id": "c1-crisp",
+      "term": "Khung CRISP",
+      "definition": "Khung viết prompt gồm 5 thành phần: Context (bối cảnh), Role (vai trò), Instruction (nhiệm vụ), Specifics (ràng buộc cụ thể), Preview (hình dung kết quả mong muốn).",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Thành phần</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Trả lời câu hỏi</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Ví dụ: email xin gia hạn báo cáo</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>C</strong> — Context</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ai, việc gì, vì sao</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tôi là giảng viên, cần nộp báo cáo tổng kết học kỳ cho phòng Đào tạo, hạn 30/11 nhưng còn chờ điểm hai lớp.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>R</strong> — Role</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI đóng vai gì</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bạn là trợ lý soạn văn bản hành chính, văn phong lịch sự, ngắn gọn.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>I</strong> — Instruction</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI làm việc gì</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Viết email xin gia hạn nộp báo cáo gửi trưởng phòng Đào tạo.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>S</strong> — Specifics</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ràng buộc cụ thể</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tối đa 150 từ; nêu lý do và ngày đề nghị mới là 03/12; không xin lỗi quá hai lần.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>P</strong> — Preview</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kết quả trông thế nào</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Gồm tiêu đề, lời chào, hai đoạn nội dung, lời cảm ơn.</td></tr></tbody></table></div>",
+        "Prompt xấu: <code>Viết email xin gia hạn báo cáo.</code> Prompt CRISP ghép 5 ô trên thành một đoạn hoàn chỉnh.",
+        "Viết CRISP <strong>trên giấy trước</strong>, rồi mới gõ vào Claude. Việc nghĩ trên giấy buộc bạn trả lời đủ 5 câu hỏi.",
+        "Không có prompt hoàn hảo ngay lần đầu; CRISP chỉ giúp lần đầu đã gần đúng để các kỹ thuật tiếp theo sửa nốt."
+      ],
+      "case_study": {
+        "title": "Email xin gia hạn báo cáo: trước và sau",
+        "context": "Cùng một việc, hai prompt: bản \"kiểu cũ\" chỉ một dòng, và bản CRISP đủ 5 thành phần. Hai email được đặt cạnh nhau để so sánh.",
+        "analysis": "Bản kiểu cũ ra email chung chung, không có lý do cụ thể và không có ngày đề nghị. Bản CRISP ra email đúng người nhận, đúng giọng, đủ lý do và ngày, gần như gửi được ngay.",
+        "lesson_learned": "Phần lớn chênh lệch chất lượng đến từ thông tin bạn đưa vào, không phải từ công cụ."
+      },
+      "related_concepts": [
+        "c1-iterative",
+        "c1-negative",
+        "c1-few-shot"
+      ]
+    },
+    {
+      "id": "c1-iterative",
+      "term": "Iterative (sửa dần)",
+      "definition": "Kỹ thuật cải thiện kết quả qua nhiều lượt: nhận bản nháp, rồi yêu cầu sửa đúng một hai điểm cụ thể ở lượt kế tiếp thay vì viết lại prompt từ đầu.",
+      "key_points": [
+        "Mỗi lượt chỉ sửa 1–2 điều để biết điều nào tạo ra thay đổi.",
+        "Nói rõ phần nào đang đúng cần giữ nguyên, tránh bị viết lại cả bản.",
+        "Ví dụ lệnh: <code>Rút còn 100 từ</code>, <code>Giọng lịch sự hơn, bỏ câu xin lỗi thứ hai</code>.",
+        "Nếu sau 3–4 lượt vẫn lệch hướng, quay lại sửa Context hoặc Specifics trong prompt gốc."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-crisp"
+      ]
+    },
+    {
+      "id": "c1-negative",
+      "term": "Negative (điều KHÔNG muốn)",
+      "definition": "Kỹ thuật nêu rõ những điều AI không được làm hoặc cần tránh, để loại bỏ các lỗi quen thuộc của đầu ra.",
+      "key_points": [
+        "Ví dụ: <code>Không dùng từ ngữ sáo rỗng</code>, <code>Không bịa số liệu</code>, <code>Không quá 150 từ</code>.",
+        "Nên nêu cụ thể: \"không dài dòng\" kém hiệu quả hơn \"không quá 150 từ\".",
+        "Đi kèm với điều bạn muốn, không thay thế nó.",
+        "Là nền móng cho các quy tắc \"không được tự giả định\", \"không được bịa\" mà ta sẽ viết vào Custom Instructions ở các buổi sau."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-crisp"
+      ]
+    },
+    {
+      "id": "c1-few-shot",
+      "term": "Few-shot (đưa ví dụ mẫu)",
+      "definition": "Kỹ thuật đưa cho AI một vài ví dụ mẫu về đúng kiểu đầu ra bạn muốn để nó bắt chước cấu trúc và giọng văn.",
+      "key_points": [
+        "Thường 2–3 ví dụ là đủ; ví dụ phải đúng kiểu bạn muốn, vì AI sẽ bắt chước cả điểm tốt lẫn điểm chưa tốt.",
+        "Ví dụ: dán hai nhận xét bạn từng viết tốt để AI viết nhận xét mới cùng giọng.",
+        "Ví dụ mẫu phải được khử thông tin cá nhân trước khi dán.",
+        "Ví dụ quá dài sẽ chiếm chỗ trong bộ nhớ làm việc của AI; chọn mẫu ngắn, tiêu biểu."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-crisp",
+        "c1-iterative"
+      ]
+    },
+    {
+      "id": "c1-ban-do-cong-cu",
+      "term": "Bản đồ công cụ AI theo tác vụ",
+      "definition": "Cách chọn công cụ theo loại việc cần làm thay vì theo tên hãng: hội thoại đa năng, tìm kiếm có nguồn, và quản trị tri thức từ tài liệu của chính bạn.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Loại tác vụ</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Ví dụ công cụ</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Lưu ý</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hội thoại đa năng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">ChatGPT, Claude, Gemini</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có thể bịa nguồn; cần kiểm chứng.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tìm kiếm có nguồn</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Perplexity, ChatGPT Search</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có dẫn nguồn nhưng vẫn phải mở nguồn để kiểm tra.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Quản trị tri thức</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Gemini Notebook (trước đây NotebookLM)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chỉ trả lời dựa trên nguồn bạn nạp nên ít bịa hơn, nhưng vẫn phải kiểm tra trích dẫn.</td></tr></tbody></table></div>",
+        "Khóa học dùng Claude để thực hành vì <strong>Claude Projects</strong> gộp sẵn Custom Instructions và Knowledge Base, và vì <strong>Cowork</strong> cho thấy bước xa hơn trong cùng một hãng.",
+        "Không phải vì dữ liệu an toàn hơn: bản doanh nghiệp của Claude, ChatGPT và Gemini đều cam kết không dùng dữ liệu để huấn luyện.",
+        "Tài khoản cá nhân của lớp học chỉ dùng với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh.",
+        "Tên gọi và tính năng công cụ thay đổi nhanh; luôn kiểm tra lại trang chính thức của hãng trước khi dựa vào một tính năng."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-hallucination"
+      ]
+    },
+    {
+      "id": "c1-leader",
+      "term": "Bạn là Leader, AI là Cộng sự",
+      "definition": "Nguyên tắc vàng của khóa học: bạn giữ quyền quyết định và trách nhiệm; AI đề xuất, soạn nháp và rà soát.",
+      "key_points": [
+        "<strong>AI viết nháp, người ký chịu trách nhiệm.</strong>",
+        "Việc đếm được, kiểm được, hoặc chỉ bạn có dữ liệu thì bạn làm; việc cần phán đoán thì AI gợi ý, bạn quyết.",
+        "Một Leader giỏi biết hỏi lại, đòi dẫn chứng và kiểm tra trước khi ký.",
+        "Nguyên tắc này sẽ trở thành các dòng lệnh cụ thể trong Custom Instructions: \"bạn là cộng sự hỗ trợ, không phải người ra quyết định\"."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-hallucination",
+        "c1-ban-do"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết thuật ngữ và định nghĩa nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-may-doan-chu",
+          "question": "Mô hình ngôn ngữ lớn (LLM) tạo câu trả lời chủ yếu bằng cách nào?",
+          "options": [
+            "A. Tra cứu câu trả lời đúng trong một cơ sở dữ liệu sự thật",
+            "B. Dự đoán từng từ tiếp theo có xác suất cao dựa trên ngữ cảnh đã có",
+            "C. Sao chép đoạn văn phù hợp nhất từ internet theo thời gian thực",
+            "D. Suy luận như con người rồi diễn đạt kết luận bằng lời"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-hallucination",
+          "question": "Hallucination của AI là hiện tượng nào?",
+          "options": [
+            "A. AI bị ngắt giữa chừng và trả lời dở dang khi đường truyền không ổn định",
+            "B. AI từ chối trả lời các câu hỏi nhạy cảm dù người dùng đã yêu cầu rõ ràng",
+            "C. AI tạo ra thông tin sai hoặc không tồn tại nhưng trình bày trôi chảy và tự tin",
+            "D. AI trả lời dài hơn nhiều so với yêu cầu và lặp lại ý đã nói ở các đoạn trước"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-crisp",
+          "question": "Trong khung CRISP, chữ P là viết tắt của thành phần nào?",
+          "options": [
+            "A. Preview: hình dung kết quả đầu ra mong muốn",
+            "B. Process: quy trình thực hiện từng bước",
+            "C. Persona: tính cách riêng của AI",
+            "D. Privacy: mức bảo mật của dữ liệu"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c1-q4",
+          "type": "mc",
+          "concept_ref": "c1-ban-do",
+          "question": "Trong bản đồ Data → Context → Knowledge → Workflow, tầng nào là quy tắc áp dụng lại được khi cùng một dữ liệu và ngữ cảnh lặp lại nhiều lần?",
+          "options": [
+            "A. Data",
+            "B. Context",
+            "C. Workflow",
+            "D. Knowledge"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L1-c1-q5",
+          "type": "mc",
+          "concept_ref": "c1-few-shot",
+          "question": "Kỹ thuật few-shot là gì?",
+          "options": [
+            "A. Chia một công việc lớn thành nhiều lượt hỏi ngắn và xử lý lần lượt từng phần",
+            "B. Nêu rõ những điều AI không được làm để tránh kết quả lệch hướng",
+            "C. Giới hạn câu trả lời của AI trong vài câu để tiết kiệm thời gian đọc",
+            "D. Đưa vài ví dụ mẫu để AI bắt chước kiểu và cấu trúc đầu ra mong muốn"
+          ],
+          "correct": "D"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Giải thích cơ chế, phân biệt và so sánh các khái niệm.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-may-doan-chu",
+          "question": "Điểm khác cốt lõi giữa AI tạo sinh và công cụ tìm kiếm truyền thống là gì?",
+          "options": [
+            "A. AI luôn cập nhật thông tin mới hơn và đầy đủ hơn công cụ tìm kiếm",
+            "B. Công cụ tìm kiếm tạo ra nội dung mới, còn AI chỉ liệt kê các liên kết có sẵn",
+            "C. AI tạo nội dung mới từ xác suất ngôn ngữ, còn công cụ tìm kiếm dẫn tới nguồn có sẵn",
+            "D. Hai loại chỉ khác nhau ở giao diện, còn cơ chế bên trong hoàn toàn giống nhau"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L2-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-hallucination",
+          "question": "Vì sao AI có thể bịa ra một số hiệu quy chuẩn nghe rất thuyết phục?",
+          "options": [
+            "A. Vì cơ chế đoán chữ ưu tiên câu hợp lý về ngôn ngữ, không có bước kiểm tra sự thật",
+            "B. Vì AI cố ý đánh lừa người dùng khi không biết câu trả lời chính xác",
+            "C. Vì dữ liệu huấn luyện của AI chỉ gồm các văn bản sai hoặc đã lỗi thời",
+            "D. Vì AI chỉ bịa thông tin khi người dùng đặt câu hỏi bằng tiếng Việt"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-crisp",
+          "question": "Prompt \"Viết email xin gia hạn báo cáo\" dễ cho kết quả chung chung vì sao?",
+          "options": [
+            "A. Vì prompt này đã đủ thông tin, kết quả chung chung chỉ do AI chạy ngẫu nhiên",
+            "B. Vì prompt này chỉ thiếu thành phần Role, còn các thành phần khác đã đầy đủ",
+            "C. Vì prompt này chỉ thiếu thành phần Preview nên AI không biết định dạng",
+            "D. Vì nó thiếu bối cảnh (ai, vì sao, hạn nào) và ràng buộc cụ thể (độ dài, giọng văn)"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L2-c1-q4",
+          "type": "mc",
+          "concept_ref": "c1-iterative",
+          "question": "Sau khi có bản nháp, bạn muốn AI ngắn hơn và bỏ lời xin lỗi thừa. Cách làm đúng bản chất kỹ thuật iterative là gì?",
+          "options": [
+            "A. Ở lượt kế tiếp, nêu đúng một hai điểm cần sửa và phần cần giữ nguyên",
+            "B. Xóa cuộc trò chuyện và viết lại prompt hoàn toàn mới",
+            "C. Chuyển sang một công cụ AI khác để may mắn hơn",
+            "D. Chấp nhận bản nháp vì AI không thể chỉnh sửa kết quả của chính nó"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c1-q5",
+          "type": "mc",
+          "concept_ref": "c1-ban-do-cong-cu",
+          "question": "Khóa học chọn Claude để thực hành vì lý do nào sau đây?",
+          "options": [
+            "A. Chỉ riêng Claude cam kết không dùng dữ liệu người dùng để huấn luyện ở bản doanh nghiệp",
+            "B. Claude Projects gộp sẵn Custom Instructions và Knowledge Base, và Cowork cho thấy bước xa hơn cùng một hãng",
+            "C. Claude không bao giờ bịa thông tin nên phù hợp hơn với công việc cần độ chính xác",
+            "D. Claude là công cụ duy nhất hiện nay xử lý được tiếng Việt ở mức dùng được cho công việc"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Áp dụng vào tình huống công việc thực tế của bạn.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-crisp",
+          "question": "Bạn cần AI soạn thông báo nhắc hạn nộp bài. Prompt nào gần với chuẩn CRISP nhất?",
+          "options": [
+            "A. Tôi là giảng viên một lớp 40 sinh viên. Bạn là trợ lý soạn thông báo lớp học. Hãy viết thông báo nhắc nộp bài thật hay, thật chuyên nghiệp, dùng giọng văn nghiêm túc và trình bày đẹp, đầy đủ các ý cần thiết.",
+            "B. Bạn là trợ lý hành chính giàu kinh nghiệm. Hãy viết một thông báo nhắc nộp bài cho lớp, ngắn gọn, lịch sự, dễ hiểu, gửi trước hạn để mọi người kịp thực hiện và không ai bị bỏ sót thông tin.",
+            "C. Tôi là giảng viên một lớp 40 sinh viên, hạn nộp bài tập lớn là 20h thứ Sáu tuần này. Bạn là trợ lý soạn thông báo lớp học. Hãy viết thông báo nhắc nộp bài, tối đa 80 từ, giọng thân thiện nhưng rõ hạn, không đe dọa trừ điểm; gồm một tiêu đề và ba dòng nội dung.",
+            "D. Hãy viết thật hay, thật chuyên nghiệp một thông báo nhắc nộp bài giúp tôi nhé, nhớ dùng ngôn ngữ trang trọng, đầy đủ và thuyết phục để sinh viên thấy rõ tầm quan trọng của việc nộp bài đúng hạn."
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L3-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-hallucination",
+          "question": "AI trả lời kèm một số hiệu thông tư rất cụ thể mà bạn chưa từng nghe tới. Việc đúng cần làm đầu tiên là gì?",
+          "options": [
+            "A. Đưa luôn vào văn bản vì AI đã nêu rất cụ thể",
+            "B. Kiểm tra số hiệu đó tại nguồn chính thức trước khi dùng",
+            "C. Hỏi lại AI \"bạn có chắc không\" và tin nếu nó khẳng định",
+            "D. Giữ lại phần diễn giải, chỉ bỏ số hiệu rồi dùng như thường"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-ban-do",
+          "question": "Bạn gộp rubric, mẫu nhận xét và 5 bước chấm thành một quy trình để AI chạy lặp lại mỗi kỳ. Theo bản đồ, bạn đang làm việc ở tầng nào?",
+          "options": [
+            "A. Workflow",
+            "B. Data",
+            "C. Context",
+            "D. Knowledge"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c1-essay1",
+          "type": "essay",
+          "concept_ref": "c1-crisp",
+          "question": "Chọn một việc bạn lặp lại thường xuyên (ví dụ soạn thông báo, tóm tắt tài liệu, trả lời email). Viết một prompt theo CRISP cho việc đó và chỉ rõ từng thành phần. Sau đó nêu: (1) bạn sẽ kiểm chứng điều gì trong kết quả trước khi dùng, (2) một điều AI không nên tự quyết thay bạn và vì sao. Không dùng dữ liệu thật nhạy cảm.",
+          "rubric": "Prompt đủ 5 thành phần CRISP, mỗi thành phần cụ thể chứ không chung chung (40%) · Nêu ít nhất một điểm kiểm chứng phù hợp với rủi ro hallucination (30%) · Chỉ ra đúng một việc thuộc quyền quyết định của người dùng và giải thích theo tinh thần \"Bạn là Leader, AI là Cộng sự\" (30%)",
+          "max_words": 300
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 9 - Kết nối PHP & MySQL, Prepared Statements & Báo cáo Tổng hợp | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 5 (Phần 3) · Buổi 9/9</div>
+    <h1>Buổi 9: Kết nối PHP & MySQL, Prepared Statements & Báo cáo Tổng hợp</h1>
+    <p class="hero-sub">CLO1, CLO2 - Kết nối PHP với MySQL bằng thư viện MySQLi, thực thi truy vấn đọc/ghi dữ liệu động, phòng chống SQL Injection bằng Prepared Statements và hoàn thiện toàn bộ Website TMĐT.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> Hoàn tất toàn bộ chương trình (40/40 câu đề thi cuối kỳ) · 18 câu thuộc Buổi 9 + Làm Đề thi thử 40 câu trên LMS.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Kết nối PHP với MySQL bằng thư viện MySQLi, thực thi truy vấn đọc/ghi dữ liệu động, phòng chống SQL Injection bằng Prepared Statements và hoàn thiện toàn bộ Website TMĐT.
+    </div>
+    <ol>
+      <li>Thiết lập kết nối từ PHP đến MySQL bằng thư viện <strong>MySQLi</strong> (cả phong cách hướng đối tượng <code>new mysqli(...)</code> và hướng thủ tục <code>mysqli_connect(...)</code>), kiểm tra lỗi kết nối và thiết lập bảng mã <strong><code>set_charset('utf8')</code></strong>.</li>
+      <li>Tổ chức mã kết nối CSDL chuẩn mực bằng cách tách riêng tập tin <strong><code>config.php</code></strong> và nạp bằng <strong><code>require_once</code></strong>.</li>
+      <li>Thực hiện trọn vẹn quy trình 4 bước thao tác dữ liệu: kết nối -> thực thi câu lệnh SQL bằng <code>$conn-&gt;query($sql)</code> -> lấy mảng kết hợp bằng <strong><code>fetch_all(MYSQLI_ASSOC)</code></strong> / <code>fetch_assoc()</code> và duyệt hiển thị bằng <code>foreach</code> -> đóng kết nối <code>$conn-&gt;close()</code>.</li>
+      <li>Sử dụng thành thạo <strong>Prepared Statements</strong> (<code>prepare()</code> -> <code>bind_param('ss', ...)</code> -> <code>execute()</code>) với ký tự giữ chỗ <code>?</code> để ngăn chặn triệt để lỗ hổng <strong>SQL Injection</strong> và xử lý tải tập tin (Upload ảnh sản phẩm) qua <code>$_FILES</code>.</li>
+      <li>Hoàn thành Bài kiểm tra thực hành Giữa kỳ (20%), Báo cáo Đồ án nhóm Website TMĐT (20%) và luyện tập Đề thi thử Cuối kỳ (40 câu / 60 phút).</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Bạn đã có giao diện HTML/CSS, bộ xử lý logic PHP (Form, Session, Cookie) và cơ sở dữ liệu MySQL chứa hàng trăm sản phẩm. Nhưng hiện tại PHP và MySQL vẫn đang đứng tách biệt nhau.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Nếu bạn nối chuỗi trực tiếp dữ liệu người dùng nhập từ Form vào câu lệnh SQL (ví dụ <code>SELECT * FROM users WHERE user = '$user'</code>), kẻ tấn công chỉ cần nhập <code>' OR '1'='1</code> là có thể đăng nhập không cần mật khẩu hoặc xóa trắng cơ sở dữ liệu (tấn công <strong>SQL Injection</strong>)!</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Làm thế nào để kết nối PHP với MySQL một cách khoa học, dễ bảo trì và bảo vệ tuyệt đối cơ sở dữ liệu trước các cuộc tấn công SQL Injection?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Tách cấu hình kết nối ra <code>config.php</code> (đặt <code>set_charset('utf8')</code>), sử dụng phương thức hướng đối tượng của <strong>MySQLi</strong> để hiển thị dữ liệu động (<code>fetch_all(MYSQLI_ASSOC)</code>) và bắt buộc dùng <strong>Prepared Statements</strong> (<code>prepare</code> + <code>bind_param</code>) cho mọi truy vấn có tham số từ người dùng.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 60 phút)</div>
+        <div class="timeline-content">
+          <p>Kết nối PHP - MySQL với MySQLi (4 thông số: <code>servername</code>, <code>username</code>, <code>password</code>, <code>dbname</code>; thiết lập <code>utf8</code>; tách <code>config.php</code>), đọc dữ liệu với <code>query()</code> & <code>fetch_all(MYSQLI_ASSOC)</code>, thêm dữ liệu & upload ảnh với <code>$_FILES</code>, và cơ chế 3 bước của <strong>Prepared Statement</strong> (Chuẩn bị câu lệnh với dấu <code>?</code> -> Liên kết tham số <code>bind_param('ss', ...)</code> -> Thực thi <code>execute()</code>).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (Kiểm tra Thực hành Giữa kỳ · 90 phút)</div>
+        <div class="timeline-content">
+          <p>Làm bài kiểm tra cá nhân trên máy tính (20% điểm học phần): Xây dựng ứng dụng web quản lý & tìm kiếm dữ liệu kết nối MySQL (hiển thị danh sách, tìm kiếm theo từ khóa/thể loại bằng GET, thêm mới bằng POST + Prepared Statement, phân quyền bằng Session).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Bảo vệ Đồ án nhóm & Tổng kết khóa học · 100 phút)</div>
+        <div class="timeline-content">
+          <p>Các nhóm thuyết trình và demo trực tiếp Website Thương mại điện tử chạy trên môi trường Internet (Ngrok hoặc VPS Ubuntu + Coolify), kiểm tra chéo khả năng bảo trì code và tổng kết hệ thống kiến thức ôn thi cuối kỳ (40 câu trắc nghiệm).</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>9.1. Nêu 4 thông tin cần thiết để PHP thiết lập kết nối với MySQL. Vì sao cần gọi <code>$conn-&gt;set_charset('utf8')</code> ngay sau khi kết nối thành công và vì sao nên tách mã kết nối ra tập tin <code>config.php</code>?</li>
+        <li>9.2. Giải thích ý nghĩa của hằng số <code>MYSQLI_ASSOC</code> trong lệnh <code>$result-&gt;fetch_all(MYSQLI_ASSOC)</code>.</li>
+        <li>9.3. Prepared Statement là gì? Nêu đúng thứ tự 3 bước xử lý khi sử dụng Prepared Statement trong MySQLi.</li>
+        <li>9.4. Trong câu lệnh <code>$stmt-&gt;bind_param('ssi', $ten, $tac_gia, $nam_xb);</code>, dấu <code>?</code> trong câu SQL và chuỗi định dạng <code>'ssi'</code> biểu thị điều gì? Ưu điểm bảo mật lớn nhất của Prepared Statement là gì?</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc - Bài 9.1 & 9.2):</strong> Tạo <code>config.php</code> kết nối CSDL <code>bookdb</code> / <code>moviedb</code>; hiển thị danh sách 10 cuốn sách/bộ phim ra giao diện thẻ HTML và tạo Form tìm kiếm theo tên dùng <code>LIKE</code> + Prepared Statement.</li>
+        <li><strong>Mức Nâng cao (Bài 9.3 & 9.4):</strong> Tạo Form thêm sách mới (có tải ảnh bìa lên thư mục <code>uploads/</code> bằng <code>move_uploaded_file</code>) và làm chức năng phân trang 10 sản phẩm/trang bằng <code>LIMIT</code> & tham số <code>?page=</code>.</li>
+        <li><strong>Mức Thử thách (Hoàn thiện Đồ án & Luyện đề thi cuối kỳ):</strong> Hoàn tất 100% Ebook Chương 1-5, hoàn thành Quiz Buổi 9 (18 câu) và làm <strong>Đề kiểm tra tổng hợp / Thi thử cuối kỳ (40 câu - 60 phút)</strong> trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

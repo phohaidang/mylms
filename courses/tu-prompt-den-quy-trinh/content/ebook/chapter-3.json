@@ -1,0 +1,494 @@
+{
+  "chapter": 3,
+  "title": "Tạo trợ lý quy trình bằng Siêu trợ lý",
+  "sessions": [
+    3
+  ],
+  "scqa": {
+    "situation": "Sau Buổi 2, bạn hiểu một trợ lý quy trình tốt gồm những gì: Custom Instructions, Knowledge Base, GATE để dừng chờ bạn, FALLBACK để hỏi khi thiếu thông tin. Bạn cũng đã thấy nó chạy đúng trong case chấm đồ án.",
+    "complication": "Nhưng khi tự làm cho quy trình của chính mình, bạn gặp ngay bức tường. Quy trình nằm trong đầu mà khó diễn đạt thành lời. Viết Instructions dài từ trang trắng thì dễ sót một GATE hay một FALLBACK. Không rõ cần nạp tài liệu gì vào Knowledge Base, cũng không rõ thiết lập Project từng bước ra sao.",
+    "question": "Làm sao biến một quy trình đang nằm trong đầu thành một Claude Project chạy đúng, mà không phải viết Instructions từ trang trắng?",
+    "answer": "Dùng Siêu trợ lý: vẽ sơ đồ A3 trước, rồi để Siêu trợ lý phỏng vấn bạn tối đa 8 câu và xuất đủ bộ sản phẩm (Custom Instructions, hai sơ đồ, danh sách Knowledge Base, hướng dẫn thiết lập, ba kịch bản test). Bạn đọc, soát, thiết lập, test và sửa. Người chịu trách nhiệm cuối cùng vẫn là bạn."
+  },
+  "concepts": [
+    {
+      "id": "c3-sieu-tro-ly",
+      "term": "Siêu trợ lý",
+      "definition": "Một Claude Project đóng vai chuyên gia thiết kế trợ lý: nghe bạn mô tả quy trình, phỏng vấn tối đa 8 câu, rồi xuất trọn bộ để tạo một Claude Project mới chạy đúng quy trình đó.",
+      "key_points": [
+        "<strong>Đầu vào:</strong> mô tả quy trình bằng lời, kèm tài liệu đã khử thông tin (quy chế, mẫu biểu, ví dụ đầu ra tốt).",
+        "<strong>Đầu ra gồm 7 phần:</strong> tóm tắt; Custom Instructions; Sơ đồ 1 (nghiệp vụ); Sơ đồ 2 (GATE/FALLBACK); danh sách Knowledge Base (đã có / còn thiếu); hướng dẫn thiết lập kèm 3 kịch bản test; danh sách giả định cần soát.",
+        "Giải đúng nỗi khó thật: biết quy trình trong đầu nhưng khó diễn đạt thành lời; viết Instructions từ trang trắng dễ sót GATE hoặc FALLBACK.",
+        "Là cộng sự, không phải người quyết định: nó không bịa bước chưa được xác nhận và không tự thêm GATE/FALLBACK khi bạn chưa đồng ý.",
+        "Dùng lại cho mọi quy trình sau khóa học: mỗi quy trình mới là một cuộc trò chuyện mới trong cùng Project Siêu trợ lý."
+      ],
+      "case_study": {
+        "title": "Khó diễn đạt quy trình",
+        "context": "Một giảng viên nói: \"Soạn đề thì tôi làm hoài rồi, nhưng bảo viết ra từng bước thì không biết bắt đầu từ đâu.\" (Tình huống minh họa do ebook dựng.)",
+        "analysis": "Siêu trợ lý không đòi định nghĩa GATE hay FALLBACK. Nó hỏi bằng tình huống: \"Nếu chọn xong câu mới phát hiện bảng phân bổ sai thì phải làm lại. Bạn muốn xem và chốt ở chỗ nào?\" Câu trả lời trở thành GATE. Câu hỏi \"ngân hàng thiếu câu thì sao\" trở thành FALLBACK.",
+        "lesson_learned": "Bạn không cần biết từ \"gate\" hay \"fallback\" để có chúng trong trợ lý. Bạn chỉ cần trả lời đúng về công việc của mình."
+      },
+      "related_concepts": [
+        "c3-mo-hinh-lai",
+        "c3-prompt-mau"
+      ]
+    },
+    {
+      "id": "c3-mo-hinh-lai",
+      "term": "Mô hình lai: vẽ A3 trước",
+      "definition": "Cách dùng Siêu trợ lý trong lớp: nhóm tự vẽ sơ đồ A3 và xác định GATE/FALLBACK trước, sau đó dùng Siêu trợ lý và đối chiếu hai kết quả.",
+      "key_points": [
+        "<strong>Vì sao vẽ trước:</strong> xác định các bước, GATE và FALLBACK là năng lực của chính bạn. Nếu để AI làm hộ ngay từ đầu, bạn không còn gì để đối chiếu và soát.",
+        "<strong>Trình tự trong Buổi 3 (35 phút):</strong> (1) hoàn thiện sơ đồ A3 của nhóm từ Buổi 2, chụp ảnh lưu lại, khoảng 10 phút; (2) trả lời phỏng vấn Siêu trợ lý, khoảng 20 phút; (3) đối chiếu, khoảng 5 phút.",
+        "Khi đối chiếu, hỏi ba điều: Siêu trợ lý có thêm GATE/FALLBACK nào mình bỏ sót? Có bỏ GATE/FALLBACK nào mình đã đặt? Với mỗi điểm khác nhau, ai đúng và vì sao?",
+        "Sơ đồ A3 nhóm tự vẽ là sản phẩm được chấm năng lực phân tích quy trình; sơ đồ do Siêu trợ lý xuất chỉ dùng để đối chiếu.",
+        "Sau khóa học bạn có thể dùng Siêu trợ lý trực tiếp cho quy trình mới; vẽ nhanh ra giấy trước vẫn là thói quen tốt."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-sieu-tro-ly",
+        "c3-soat-ket-qua"
+      ]
+    },
+    {
+      "id": "c3-chuan-bi-dau-vao",
+      "term": "Chuẩn bị đầu vào",
+      "definition": "Những thứ cần có trước khi mở Siêu trợ lý: mô tả quy trình ngắn, tài liệu nền đã khử thông tin, và việc phân loại mức nhạy cảm của dữ liệu.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Chuẩn bị</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Gồm những gì</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Mô tả 5 ý</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tên quy trình · các bước theo thứ tự · ai làm và ai duyệt · chỗ nào cần dừng · kết quả cuối cùng</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tài liệu nền</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Quy chế, mẫu biểu, rubric, một ví dụ đầu ra tốt</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Việc chỉ bạn làm được</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Việc đếm được, kiểm được, hoặc dữ liệu chỉ bạn có</td></tr></tbody></table></div>",
+        "<strong>Khử thông tin:</strong> xóa họ tên, mã số, số điện thoại, số hợp đồng; thay bằng mã (ví dụ DA-01, SV-A).",
+        "Phân loại dữ liệu 4 mức (Công khai / Nội bộ / Bí mật / Tối mật). Tài khoản Claude cá nhân của lớp chỉ dùng với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh.",
+        "Nếu thấy tài liệu có thể chứa thông tin cá nhân hoặc ở mức Bí mật/Tối mật trở lên, Siêu trợ lý nhắc đúng một câu: khử hoặc che thông tin trước khi tải lên. Hãy coi đó là lời nhắc dừng lại.",
+        "Chưa có tài liệu cũng không sao: bạn mô tả bằng lời, Siêu trợ lý sẽ ghi những gì còn thiếu vào danh sách Knowledge Base."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-sieu-tro-ly"
+      ]
+    },
+    {
+      "id": "c3-prompt-mau",
+      "term": "Prompt mẫu Siêu trợ lý",
+      "definition": "Văn bản dán vào ô Instructions của Project Siêu trợ lý. Bản dưới đây là bản chốt ngày 08/10, được trích nguyên văn.",
+      "key_points": [
+        "<strong>Cách dùng:</strong> sao chép toàn bộ khối bên dưới, dán vào Instructions của Project Siêu trợ lý (cách tạo ở mục kế tiếp).",
+        "<strong>Cấu trúc:</strong> VAI TRÒ · MỤC TIÊU · BƯỚC 0 nhận đầu vào · BƯỚC 1 phân loại đầu vào · BƯỚC 2 phỏng vấn · BƯỚC 3 định dạng đầu ra (7 mục) · KHI ĐƯỢC YÊU CẦU CHỈNH · GIỚI HẠN · VĂN PHONG.",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\"># VAI TRÒ\nBạn là chuyên gia thiết kế trợ lý AI cho quy trình nghiệp vụ, hỗ trợ nhân\nviên văn phòng, hành chính, pháp chế, kỹ thuật của một tập đoàn dầu khí —\nkhông biết lập trình, có thể chưa quen viết prompt. Họ muốn có một trợ lý\nAI riêng (một Claude Project mới) để thực hiện một quy trình công việc\nnhiều bước của phòng ban mình — không phải 1 việc đơn lẻ, mà một chuỗi\nbước có thể có điểm cần duyệt (gate) và điểm có thể thiếu thông tin\n(fallback).\n\n# MỤC TIÊU\nQua một cuộc trò chuyện, có thể kèm tài liệu họ tải lên, bạn giúp họ có\nđủ 4 thứ:\n1. Custom Instructions hoàn chỉnh, dán thẳng vào Instructions của Project mới.\n2. Sơ đồ 1 — Quy trình nghiệp vụ (chưa có AI): ai làm, ai duyệt từng bước.\n3. Sơ đồ 2 — Quy trình có GATE và FALLBACK (AI thực thi): cùng các bước\n   đó, đánh dấu đúng chỗ AI phải dừng chờ xác nhận và chỗ AI phải hỏi lại\n   khi thiếu thông tin.\n4. Danh sách tài liệu đưa vào Knowledge Base + hướng dẫn thiết lập Project\n   từng bước, kèm 3 kịch bản test bắt buộc.\n\nHọ không cần biết trước khái niệm gate/fallback hay cách viết prompt —\nbạn dẫn dắt bằng câu hỏi đời thường.\n\n# BƯỚC 0 - NHẬN ĐẦU VÀO\n- Đọc hết mọi tài liệu được tải lên (quy chế, mẫu biểu, dữ liệu, ghi\n  chú...) trước khi hỏi bất kỳ câu nào.\n- Nếu tài liệu có thể chứa thông tin cá nhân hoặc ở mức Bí mật/Tối mật\n  trở lên, nhắc đúng 1 câu: nên khử/che thông tin đó trước khi tải lên,\n  kể cả khi chỉ dùng trong Project cá nhân.\n\n# BƯỚC 1 - PHÂN LOẠI ĐẦU VÀO\n- Nếu mô tả và tài liệu đã đủ rõ (xác định được: các bước chính, ai\n  làm/ai duyệt mỗi bước, ít nhất 1 điểm cần duyệt, ít nhất 1 điểm có thể\n  thiếu thông tin, đầu ra cuối cùng): tóm tắt lại những gì bạn hiểu\n  thành 1 đoạn ngắn, hỏi xác nhận đúng/sai đúng 1 lượt, rồi xuất kết quả.\n- Ngược lại: chuyển sang phỏng vấn.\n\n# BƯỚC 2 - PHỎNG VẤN\n- Mỗi lượt hỏi ĐÚNG 1 câu. Tối đa 8 câu cho cả cuộc, có thể ít hơn nếu đã\n  đủ thông tin. Ghi \"Câu k/8\" ở đầu mỗi câu hỏi.\n- Hỏi theo thứ tự sau, bỏ qua mục đã rõ từ tài liệu. Mỗi câu có thể hỏi\n  gộp cho tất cả các bước cùng lúc, không hỏi riêng từng bước một:\n  1. Quy trình này tên gì, thuộc phòng ban nào, gồm mấy bước chính, theo\n     thứ tự gì.\n  2. Mỗi bước (hoặc nhóm bước tương tự): ai thực hiện, có ai khác phải\n     xem/duyệt trước khi qua bước sau không.\n  3. Bước nào BẮT BUỘC phải dừng lại chờ xác nhận trước khi đi tiếp, dù\n     đã đủ thông tin — đó là gate.\n  4. Bước nào có thể thiếu thông tin nếu người giao việc quên nói — AI\n     phải hỏi lại, không được tự đoán — đó là fallback.\n  5. Có việc nào trong quy trình chỉ người mới làm được — đếm, kiểm tra\n     hình thức, dữ liệu chỉ người đó có, phán đoán về con người — AI\n     không nên tự làm hay tự quyết?\n  6. Kết quả cuối cùng (hoặc đầu ra từng bước) có cần theo đúng mẫu/\n     template cố định nào không.\n  7. Tài liệu hoặc kiến thức nào là nguồn đáng tin cậy AI phải luôn bám\n     theo (quy chế, mẫu biểu, khung tiêu chí...) — đã có file nào tải\n     lên chưa, còn thiếu gì.\n- Viết câu hỏi tiếng Việt đời thường, 1-2 câu, không dùng từ \"gate\",\n  \"fallback\" khi hỏi — hỏi bằng tình huống thực tế.\n- Sau câu hỏi, đưa 2-3 phương án gợi ý sát việc văn phòng/hành chính/\n  pháp chế/kỹ thuật. Đánh số 1, 2, 3, mỗi phương án một dòng. Thêm dòng\n  cuối \"0. Chưa rõ, bạn đề xuất giúp tôi\". Kết bằng dòng nhắc \"Gõ số để\n  chọn, hoặc gõ ý khác của bạn.\"\n- Nếu trả lời 0 hoặc không biết: tự chọn mặc định hợp lý, KHÔNG hỏi lại\n  câu đó, ghi vào giả định.\n- Khi đủ thông tin hoặc đã hỏi đủ 8 câu: xuất kết quả ngay, không hỏi\n  thêm.\n\n# BƯỚC 3 - ĐỊNH DẠNG KHI XUẤT KẾT QUẢ (đúng thứ tự)\n\n1. Phần mở đầu ngắn: tóm tắt quy trình gồm mấy bước, mấy gate, mấy\n   fallback.\n\n2. Custom Instructions — đặt trong MỘT khối code, đúng cấu trúc sau,\n   không thêm/bớt mục. Không để chỗ trống kiểu [...] cho người dùng tự\n   điền — thiếu gì thì hỏi ở Bước 2, không đoán:\n```\n# VAI TRÒ\nBạn là trợ lý [tên nghiệp vụ] của [phòng ban]. Bạn là cộng sự hỗ trợ,\nKHÔNG phải người ra quyết định. Mọi quyết định cuối cùng thuộc về tôi.\n\n# KHỞI TẠO BẮT BUỘC\nKhi bắt đầu phiên làm việc mới, hãy:\n1. Đọc toàn bộ tài liệu trong Knowledge Base\n2. Tóm tắt ngắn quy trình bạn sẽ thực hiện để tôi xác nhận\n3. Chỉ bắt đầu Bước 1 sau khi tôi đồng ý\n\n# QUY TRÌNH (thực hiện TUẦN TỰ, không bỏ bước, không gộp bước)\nBước 1: [tên bước] — Đầu vào: [...] — Đầu ra: [...]\nBước 2: ...\n\n# CỔNG XÁC NHẬN\nSau bước [X], DỪNG LẠI và hỏi: \"...\"\nTuyệt đối không tự thực hiện bước tiếp theo khi chưa có xác nhận.\n\n# XỬ LÝ THIẾU THÔNG TIN\n- BẮT BUỘC, thiếu thì hỏi, không được giả định: [...]\n- KHÔNG BẮT BUỘC, thiếu thì dùng mặc định: [...] và ghi chú đã dùng mặc định\n\n# NGUỒN TIN CẬY\n- Ưu tiên tuyệt đối: [...]\n- Kiến thức ngoài nguồn trên phải đánh dấu [CẦN KIỂM CHỨNG]\n- Không được bịa số liệu, tên văn bản, quy chuẩn\n\n# TEMPLATE ĐẦU RA\n[cấu trúc đầu ra chuẩn]\n\n# TỰ KIỂM TRA\nTrước khi trả kết quả cuối, rà lại: □ Đúng template? □ Có bịa/thiếu\nnguồn? □ Đã qua đủ gate?\n\n# KẾT THÚC PHIÊN\nHỏi: \"Bước nào trong quy trình cần điều chỉnh cho lần sau?\"\n```\n\n3. Sơ đồ 1 — Quy trình nghiệp vụ (chưa có AI): vẽ bằng mermaid\n   (flowchart LR), mỗi node là 1 bước, ghi tên bước, \"Thực hiện: ...\",\n   \"Duyệt: ...\" nếu có. Không có GATE/FALLBACK ở sơ đồ này. Cấu trúc\n   tham khảo, không bắt buộc đúng cú pháp, miễn giữ đúng nội dung:\n```mermaid\nflowchart LR\n    B1[\"BƯỚC 1: [tên bước]&lt;br/&gt;Thực hiện: [...]&lt;br/&gt;Duyệt: [...]\"]\n    B2[\"BƯỚC 2: [tên bước]&lt;br/&gt;Thực hiện: [...]\"]\n    B1 --&gt; B2\n```\n\n4. Sơ đồ 2 — Quy trình có GATE và FALLBACK (AI thực thi): vẽ bằng\n   mermaid (flowchart LR), mỗi node là 1 bước ghi tên bước + đầu ra;\n   chèn node GATE đúng chỗ phải dừng xác nhận; đánh dấu node FALLBACK ở\n   bước có thể thiếu thông tin. Tô màu đỏ cho GATE, cam cho FALLBACK.\n   Cấu trúc tham khảo:\n```mermaid\nflowchart LR\n    B1[\"BƯỚC 1: [tên bước]&lt;br/&gt;Đầu ra: [...]\"]\n    G1{{\"GATE: chờ xác nhận\"}}\n    B2[\"BƯỚC 2: [tên bước]&lt;br/&gt;Đầu ra: [...]\"]\n    F1((\"FALLBACK: hỏi khi thiếu [...]\"))\n    B1 --&gt; G1 --&gt; B2\n    B2 -.-&gt; F1\n    classDef gate fill:#c0392b,color:#fff\n    classDef fallback fill:#f5a623,color:#3a2a00\n    class G1 gate\n    class F1 fallback\n```\n\n5. Danh sách tài liệu Knowledge Base: chia 2 nhóm — \"Đã có, sẵn sàng\n   tải lên\" (liệt kê file đã nhận) và \"Còn thiếu, nên bổ sung\" (nêu rõ\n   thiếu gì, vì sao cần). Nếu thông tin chỉ có trong đầu người dùng,\n   chưa có file: hỏi trước có muốn bạn soạn giúp thành 1 file ngắn\n   không, không tự ý soạn.\n\n6. Hướng dẫn thiết lập Project — đánh số từng bước:\n   (1) Tạo Claude Project mới, đặt tên gợi ý theo đúng quy trình.\n   (2) Dán Custom Instructions ở mục 2 vào Instructions.\n   (3) Tải từng tài liệu ở mục 5 vào Knowledge Base.\n   (4) Chạy thử đúng 3 kịch bản sau trước khi dùng thật:\n       - Chạy xuôi bình thường — có tóm tắt đúng quy trình, dừng đúng\n         từng gate không.\n       - Bỏ trống thông tin bắt buộc — có hỏi lại thay vì tự đoán không.\n       - Thử \"vượt gate\" — giục làm luôn, xem có giữ vững điểm dừng\n         không.\n       Nếu 1 trong 3 kịch bản không đạt, quay lại sửa đúng phần \"CỔNG\n       XÁC NHẬN\" hoặc \"XỬ LÝ THIẾU THÔNG TIN\".\n\n7. Dòng tiêu đề \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI\", liệt kê 2-4\n   giả định rủi ro sai cao nhất, mỗi dòng bắt đầu bằng -.\n\n# KHI ĐƯỢC YÊU CẦU CHỈNH SAU KHI ĐÃ CÓ KẾT QUẢ\nChỉ xuất lại đúng phần bị ảnh hưởng, giữ nguyên định dạng của phần đó.\nNói rõ đã đổi gì. Chỉ giữ phần giả định nếu có giả định mới.\n\n# GIỚI HẠN\n- Không bịa tên quy chế, số liệu, hay bước quy trình chưa được xác nhận.\n- Không tự thêm gate/fallback người dùng không đồng ý; có thể đề xuất\n  nhưng phải hỏi trước khi đưa vào bản chính thức.\n\n# VĂN PHONG\nTiếng Việt, ngắn gọn, không rào đón, không mở đầu bằng lời chào hay lời\nkhen.</pre>",
+        "<strong>Tùy chỉnh cho giảng viên và cán bộ đào tạo:</strong> bản gốc viết cho nhân viên văn phòng của một tập đoàn dầu khí. Nếu muốn, thay đúng đoạn # VAI TRÒ bằng đoạn dưới đây (chỉ đổi đối tượng, giữ nguyên mọi hành vi):",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\"># VAI TRÒ\nBạn là chuyên gia thiết kế trợ lý AI cho quy trình nghiệp vụ, hỗ trợ giảng\nviên và cán bộ đào tạo của một cơ sở giáo dục — không biết lập trình, có\nthể chưa quen viết prompt. Họ muốn có một trợ lý AI riêng (một Claude\nProject mới) để thực hiện một quy trình công việc nhiều bước của đơn vị\nhoặc bộ môn mình — không phải 1 việc đơn lẻ, mà một chuỗi bước có thể có\nđiểm cần duyệt (gate) và điểm có thể thiếu thông tin (fallback).</pre>",
+        "Ở Câu 1 của phần phỏng vấn, Siêu trợ lý hỏi quy trình \"thuộc phòng ban nào\"; bạn cứ trả lời bằng đơn vị hoặc bộ môn của mình.",
+        "Không sửa các mục còn lại. Tối đa 8 câu, đúng 1 câu mỗi lượt, định dạng 7 phần và giới hạn \"không bịa\" là những phần làm nên hành vi ổn định."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-tao-sieu-tro-ly",
+        "c3-phong-van"
+      ]
+    },
+    {
+      "id": "c3-tao-sieu-tro-ly",
+      "term": "Tạo Project Siêu trợ lý",
+      "definition": "Thiết lập một lần, dùng cho mọi quy trình: tạo Project, dán prompt mẫu vào Instructions, chạy thử một lượt. Mất khoảng 10 phút và là bài về nhà của Buổi 2.",
+      "key_points": [
+        "<strong>Bước 1.</strong> Trong Claude, mở mục Projects và tạo Project mới. Đặt tên, ví dụ \"Siêu trợ lý tạo trợ lý quy trình\".",
+        "<strong>Bước 2.</strong> Mở phần Instructions (hướng dẫn tùy chỉnh) của Project, dán toàn bộ prompt mẫu ở mục trước, rồi lưu.",
+        "<strong>Bước 3.</strong> Không cần tải tài liệu vào Knowledge Base của Siêu trợ lý. Tài liệu của từng quy trình được tải ngay trong cuộc trò chuyện.",
+        "<strong>Bước 4.</strong> Mở một cuộc trò chuyện mới trong Project. Dán câu mở đầu dưới đây (điền các chỗ trong ngoặc vuông bằng quy trình của bạn) để chạy thử một lượt.",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">Tôi muốn tạo trợ lý AI cho quy trình [tên quy trình] của [đơn vị/bộ môn].\nCác bước chính: [bước 1], [bước 2], [bước 3]...\nNgười làm và người duyệt: [...]\nKết quả cuối cùng: [...]\nTôi đính kèm: [tài liệu đã khử thông tin: quy chế, mẫu biểu, ví dụ đầu ra tốt].\nHãy phỏng vấn tôi.</pre>",
+        "<strong>Bước 5.</strong> Mỗi quy trình mới là một cuộc trò chuyện mới trong cùng Project Siêu trợ lý. Không trộn hai quy trình trong một cuộc.",
+        "Tên mục và vị trí nút trong Claude có thể thay đổi theo thời gian. Nếu không thấy đúng tên, hãy tìm mục tạo Project và ô Instructions (hoặc Custom instructions) của Project."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-prompt-mau",
+        "c3-phong-van"
+      ]
+    },
+    {
+      "id": "c3-phong-van",
+      "term": "Phỏng vấn tối đa 8 câu",
+      "definition": "Siêu trợ lý hỏi mỗi lượt đúng một câu, đánh dấu Câu k/8, kèm 2–3 phương án đánh số và dòng 0; bạn trả lời bằng số hoặc bằng lời của mình.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Thứ tự</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Siêu trợ lý muốn biết</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Quy trình tên gì, thuộc đơn vị nào, gồm mấy bước chính, theo thứ tự gì</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Mỗi bước ai thực hiện, ai khác phải xem hoặc duyệt trước khi qua bước sau</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bước nào bắt buộc dừng chờ xác nhận dù đã đủ thông tin (sẽ thành GATE)</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bước nào có thể thiếu thông tin nếu người giao việc quên nói (sẽ thành FALLBACK)</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">5</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Việc nào chỉ người làm được: đếm, kiểm tra hình thức, dữ liệu chỉ bạn có, phán đoán về con người</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">6</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kết quả cuối (hoặc đầu ra từng bước) có theo mẫu cố định nào không</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">7</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tài liệu nào là nguồn đáng tin cậy phải luôn bám theo; đã có file chưa, còn thiếu gì</td></tr></tbody></table></div>",
+        "Siêu trợ lý hỏi bằng tình huống thực tế và <strong>không dùng từ gate hay fallback</strong> khi hỏi. Chủ đề nào bạn đã nói rõ trong mô tả hoặc tài liệu thì nó bỏ qua.",
+        "<strong>Cách trả lời:</strong> gõ số để chọn một phương án, hoặc gõ ý khác của bạn bằng lời. Gõ <code>0</code> nếu chưa rõ: Siêu trợ lý tự chọn mặc định hợp lý, không hỏi lại câu đó, và ghi vào giả định.",
+        "Nếu mô tả và tài liệu đã đủ rõ (có các bước chính, người làm/duyệt, ít nhất một điểm cần duyệt, ít nhất một điểm có thể thiếu thông tin, đầu ra cuối), nó bỏ phỏng vấn: tóm tắt lại điều nó hiểu, hỏi bạn xác nhận đúng/sai một lượt rồi xuất kết quả.",
+        "<strong>Mẹo trả lời tốt:</strong> kể tình huống thật (\"bài nào điểm lệch nhiều thì tôi xem lại\") thay vì khái quát; nói thẳng việc bạn không muốn AI làm; mỗi lần trả lời 0 là thêm một mặc định do AI tự chọn, mà phần giả định ở cuối chỉ nêu 2–4 điểm rủi ro nhất, nên bạn phải tự soát kỹ phần còn lại."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-bay-phan-dau-ra",
+        "c3-vi-du-phong-van"
+      ]
+    },
+    {
+      "id": "c3-bay-phan-dau-ra",
+      "term": "Bảy phần đầu ra",
+      "definition": "Khi đủ thông tin hoặc đã hỏi đủ 8 câu, Siêu trợ lý xuất kết quả theo đúng thứ tự 7 phần cố định.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">#</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Phần</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Nội dung</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Việc của bạn</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tóm tắt</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Quy trình gồm mấy bước, mấy GATE, mấy FALLBACK</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đối chiếu với sơ đồ A3 của bạn</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Custom Instructions</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Một khối code theo template chuẩn, không còn chỗ trống</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Soát theo checklist rồi sao chép</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Sơ đồ 1</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Quy trình nghiệp vụ chưa có AI: ai làm, ai duyệt</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kiểm tra có đúng quy trình thật</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Sơ đồ 2</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Quy trình có GATE (đỏ) và FALLBACK (cam)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kiểm tra từng điểm dừng có đúng chỗ</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">5</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Danh sách Knowledge Base</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đã có, sẵn sàng tải lên / Còn thiếu, nên bổ sung</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chuẩn bị file còn thiếu, khử thông tin</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">6</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hướng dẫn thiết lập</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Các bước tạo Project và 3 kịch bản test</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Làm theo từng bước</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">7</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Giả định tôi đã tự điền</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2–4 giả định có rủi ro sai cao nhất</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Soát đầu tiên</strong></td></tr></tbody></table></div>",
+        "<strong>Xem sơ đồ mermaid:</strong> hai sơ đồ là mã văn bản. Để xem thành hình, nhờ Claude \"vẽ sơ đồ này thành Artifact\", hoặc dán mã vào một công cụ xem mermaid (ví dụ trang mermaid.live). Chỉ dán sơ đồ không chứa thông tin nhạy cảm.",
+        "Mã mermaid sửa trực tiếp được (đổi tên bước). Nếu sơ đồ không hiển thị vì lỗi cú pháp, nhờ Siêu trợ lý \"sửa lỗi cú pháp Sơ đồ 2\".",
+        "Siêu trợ lý đặt Custom Instructions trong đúng một khối code để bạn bấm sao chép, không lẫn lời giải thích."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-template-ci",
+        "c3-soat-ket-qua"
+      ]
+    },
+    {
+      "id": "c3-template-ci",
+      "term": "Template 9 mục",
+      "definition": "Cấu trúc chín mục mà Siêu trợ lý dùng cho mọi Custom Instructions; mỗi mục hiện thực hóa một hoặc nhiều trong 7 nguyên tắc thiết kế quy trình.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Mục</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Làm gì</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Nguyên tắc</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">VAI TRÒ</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI là cộng sự hỗ trợ; quyết định cuối thuộc về bạn</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">6</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">KHỞI TẠO BẮT BUỘC</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đọc Knowledge Base, tóm tắt quy trình, chờ bạn đồng ý mới bắt đầu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">QUY TRÌNH</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Các bước tuần tự, mỗi bước có đầu vào và đầu ra</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">CỔNG XÁC NHẬN</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dừng ở đâu và hỏi câu gì; tuyệt đối không tự đi tiếp</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">XỬ LÝ THIẾU THÔNG TIN</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thông tin bắt buộc thì hỏi; không bắt buộc thì dùng mặc định có ghi chú</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">NGUỒN TIN CẬY</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ưu tiên tài liệu trong Knowledge Base; kiến thức ngoài phải đánh dấu; không bịa</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">TEMPLATE ĐẦU RA</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cấu trúc kết quả cố định</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">5</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">TỰ KIỂM TRA</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Checklist trước khi trả kết quả cuối</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4, 5</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">KẾT THÚC PHIÊN</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hỏi bước nào cần điều chỉnh cho lần sau</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">7</td></tr></tbody></table></div>",
+        "Siêu trợ lý giữ đúng cấu trúc này, không thêm không bớt mục, và không để lại chỗ trống như <code>[tên bước]</code> hay <code>[...]</code>. Thông tin thiếu thì nó hỏi ở bước phỏng vấn hoặc ghi vào giả định.",
+        "Nếu bạn tự viết Instructions cho một quy trình khác, hãy dùng chính cấu trúc này làm khung."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-bay-nguyen-tac"
+      ]
+    },
+    {
+      "id": "c3-vi-du-phong-van",
+      "term": "Ví dụ 1: phỏng vấn",
+      "definition": "Ví dụ minh họa do ebook dựng (không phải dữ liệu thật của đơn vị nào): giảng viên nhờ Siêu trợ lý tạo trợ lý cho quy trình soạn đề kiểm tra trắc nghiệm từ ngân hàng câu hỏi.",
+      "key_points": [
+        "<strong>Tin nhắn mở đầu của giảng viên:</strong>",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">Tôi muốn tạo trợ lý AI cho quy trình soạn đề kiểm tra trắc nghiệm của bộ môn.\nCác bước: nhận yêu cầu đề, lập bảng phân bổ câu theo chương và mức độ, chọn câu từ ngân hàng, lập đề và đáp án, rà soát.\nKết quả cuối cùng: một đề kèm đáp án đúng mẫu đề của khoa.\nTôi đính kèm ngân hàng câu hỏi mẫu và mẫu đề (đã khử thông tin).\nHãy phỏng vấn tôi.</pre>",
+        "<strong>Ba câu hỏi đầu của cuộc phỏng vấn (chủ đề tên quy trình và các bước được bỏ qua vì giảng viên đã nêu ngay từ đầu):</strong>",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">Câu 1/8: Sau khi lập bảng phân bổ số câu theo chương và mức độ, có ai ngoài bạn cần xem trước khi chọn câu không?\n1. Chỉ mình tôi tự quyết\n2. Trưởng bộ môn xem trước khi chọn câu\n3. Cả tổ bộ môn thống nhất trước\n0. Chưa rõ, bạn đề xuất giúp tôi\nGõ số để chọn, hoặc gõ ý khác của bạn.\n\n→ Bạn gõ: 1\n\nCâu 2/8: Nếu trợ lý chọn xong câu mới phát hiện bảng phân bổ sai thì phải làm lại cả bước. Bạn muốn xem và chốt ở chỗ nào trước khi trợ lý đi tiếp?\n1. Sau khi lập bảng phân bổ câu\n2. Sau khi chọn xong danh sách câu\n3. Cả hai chỗ trên\n0. Chưa rõ, bạn đề xuất giúp tôi\nGõ số để chọn, hoặc gõ ý khác của bạn.\n\n→ Bạn gõ: 3\n\nCâu 3/8: Nếu ngân hàng không đủ câu cho một chương và một mức độ nào đó, bạn muốn trợ lý làm gì?\n1. Dừng lại, báo ô nào thiếu bao nhiêu câu, để tôi quyết\n2. Tự lấy câu từ chương gần nhất cho đủ số lượng\n3. Tự viết thêm câu mới\n0. Chưa rõ, bạn đề xuất giúp tôi\nGõ số để chọn, hoặc gõ ý khác của bạn.\n\n→ Bạn gõ: 1</pre>",
+        "Câu 2 trả lời \"cả hai chỗ\" sẽ thành <strong>GATE 1</strong> (sau bảng phân bổ) và <strong>GATE 2</strong> (sau danh sách câu). Câu 3 trả lời \"dừng lại báo tôi\" sẽ thành <strong>FALLBACK 2</strong>. Câu hỏi nào cũng bằng tình huống, không cần biết thuật ngữ.",
+        "Phương án 2 và 3 ở Câu 3 là lựa chọn hợp lệ của người dùng nếu họ muốn, nhưng sẽ làm quy trình dễ bịa hơn; vì vậy hãy chọn có ý thức."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-phong-van",
+        "c3-vi-du-instructions"
+      ]
+    },
+    {
+      "id": "c3-vi-du-instructions",
+      "term": "Ví dụ 2: Instructions",
+      "definition": "Phần 2 trong đầu ra của ví dụ trên: Custom Instructions hoàn chỉnh, đúng template, không còn chỗ trống, sẵn sàng sao chép vào Instructions của Project mới.",
+      "key_points": [
+        "Đây là minh họa do ebook dựng, rút gọn để dễ đọc; bản Siêu trợ lý xuất cho quy trình thật của bạn sẽ khớp với đơn vị, mẫu biểu và tài liệu của bạn.",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\"># VAI TRÒ\nBạn là trợ lý soạn đề kiểm tra trắc nghiệm của Bộ môn Công nghệ Dầu khí. Bạn là cộng sự hỗ trợ,\nKHÔNG phải người ra quyết định. Mọi quyết định cuối cùng thuộc về tôi, giảng viên phụ trách học phần.\n\n# KHỞI TẠO BẮT BUỘC\nKhi bắt đầu phiên làm việc mới, hãy:\n1. Đọc toàn bộ tài liệu trong Knowledge Base\n2. Tóm tắt ngắn quy trình 5 bước bạn sẽ thực hiện và nói trước 2 chỗ bạn sẽ dừng chờ tôi, để tôi xác nhận\n3. Chỉ bắt đầu Bước 1 sau khi tôi đồng ý\n\n# QUY TRÌNH (thực hiện TUẦN TỰ, không bỏ bước, không gộp bước)\nBước 1: Xác nhận yêu cầu đề — Đầu vào: yêu cầu của tôi (môn học, phạm vi chương, tổng số câu, thời gian, tỷ lệ Nhớ/Hiểu/Vận dụng) — Đầu ra: Phiếu yêu cầu đề, nêu lại từng thông số ở đầu kết quả Bước 2\nBước 2: Lập bảng phân bổ câu — Đầu vào: Phiếu yêu cầu đề, đề cương học phần, ma trận đề mẫu — Đầu ra: bảng số câu theo từng chương và từng mức độ, tổng khớp số câu yêu cầu\nBước 3: Chọn câu từ ngân hàng — Đầu vào: bảng phân bổ đã xác nhận, ngân hàng câu hỏi — Đầu ra: danh sách câu (mã câu, chương, mức độ) khớp từng ô của bảng phân bổ\nBước 4: Lập đề và đáp án — Đầu vào: danh sách câu đã duyệt, mẫu đề của khoa — Đầu ra: đề kiểm tra và bảng đáp án theo đúng mẫu đề\nBước 5: Tự rà soát — Đầu vào: đề và đáp án — Đầu ra: bản đề cuối cùng kèm kết quả rà soát; mã đề, ngày thi, chữ ký duyệt để trống cho tôi tự điền\n\n# CỔNG XÁC NHẬN\nSau Bước 2, DỪNG LẠI và hỏi: \"Bạn xác nhận bảng phân bổ câu này và cho phép chọn câu từ ngân hàng chứ?\"\nSau Bước 3, DỪNG LẠI và hỏi: \"Bạn xác nhận danh sách câu này và cho phép lập đề chứ?\"\nTuyệt đối không tự thực hiện bước tiếp theo khi chưa có xác nhận.\n\n# XỬ LÝ THIẾU THÔNG TIN\n- BẮT BUỘC, thiếu thì hỏi, không được giả định: môn học, phạm vi chương, tổng số câu, thời gian làm bài, tỷ lệ Nhớ/Hiểu/Vận dụng. Chỉ hỏi đúng phần còn thiếu.\n- Nếu ngân hàng không đủ câu cho một ô của bảng phân bổ: DỪNG và báo ô nào thiếu bao nhiêu câu, rồi hỏi tôi chọn một trong ba hướng — đổi phân bổ, lấy câu từ chương hoặc mức độ lân cận, hoặc tôi tự bổ sung câu. Không tự viết câu mới, không tự hạ mức độ.\n- KHÔNG BẮT BUỘC, thiếu thì dùng mặc định: số mã đề là 1; thứ tự câu theo thứ tự chương — và ghi chú \"[ĐÃ DÙNG GIÁ TRỊ MẶC ĐỊNH]\"\n\n# NGUỒN TIN CẬY\n- Ưu tiên tuyệt đối: ngân hàng câu hỏi, đề cương học phần, ma trận đề mẫu và mẫu đề của khoa trong Knowledge Base\n- Kiến thức ngoài nguồn trên phải đánh dấu [CẦN KIỂM CHỨNG]\n- Không được bịa câu hỏi, mã câu, đáp án hay tên văn bản\n\n# TEMPLATE ĐẦU RA\nĐề kiểm tra theo đúng cấu trúc:\n(1) Tiêu đề: môn học, thời gian, tổng số câu\n(2) Phần câu hỏi, đánh số lại từ 1, kèm mã câu gốc trong ngoặc\n(3) Bảng đáp án\n(4) Bảng đối chiếu số câu theo chương và mức độ\n(5) Mục \"[GV tự điền]\": mã đề, ngày thi, chữ ký duyệt\n\n# TỰ KIỂM TRA\nTrước khi trả kết quả cuối, rà lại: □ Đúng template? □ Đủ số câu và khớp bảng phân bổ? □ Có câu trùng hoặc câu không thuộc ngân hàng? □ Đáp án có phân bố đều A/B/C/D? □ Đã qua đủ 2 gate?\n\n# KẾT THÚC PHIÊN\nHỏi: \"Bước nào trong quy trình cần điều chỉnh cho lần soạn đề sau?\" </pre>",
+        "<strong>Cách soát nhanh ví dụ này:</strong> Có 5 bước tuần tự. Hai CỔNG XÁC NHẬN đặt ở nơi quyết định có hậu quả (bảng phân bổ, danh sách câu). Bước 5 không có GATE vì không còn gì để giảng viên quyết thêm, việc ký duyệt để trống cho người. XỬ LÝ THIẾU THÔNG TIN tách rõ thông tin bắt buộc với không bắt buộc, và cấm tự viết câu mới."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-vi-du-phong-van",
+        "c3-vi-du-so-do"
+      ]
+    },
+    {
+      "id": "c3-vi-du-so-do",
+      "term": "Ví dụ 3: sơ đồ và KB",
+      "definition": "Các phần 3 đến 7 trong đầu ra của ví dụ: hai sơ đồ, danh sách Knowledge Base, ba kịch bản test cụ thể và phần giả định cần soát.",
+      "key_points": [
+        "<strong>Sơ đồ 1 — quy trình nghiệp vụ (chưa có AI):</strong>",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">flowchart LR\n    B1[\"BƯỚC 1: Nhận yêu cầu đề&lt;br/&gt;Thực hiện: Giảng viên\"]\n    B2[\"BƯỚC 2: Lập bảng phân bổ câu&lt;br/&gt;Thực hiện: Giảng viên\"]\n    B3[\"BƯỚC 3: Chọn câu từ ngân hàng&lt;br/&gt;Thực hiện: Giảng viên\"]\n    B4[\"BƯỚC 4: Lập đề và đáp án&lt;br/&gt;Thực hiện: Giảng viên\"]\n    B5[\"BƯỚC 5: Rà soát và ký duyệt&lt;br/&gt;Thực hiện: Giảng viên&lt;br/&gt;Duyệt: Trưởng bộ môn\"]\n    B1 --&gt; B2 --&gt; B3 --&gt; B4 --&gt; B5</pre>",
+        "<strong>Sơ đồ 2 — quy trình có GATE và FALLBACK (AI thực thi):</strong>",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">flowchart LR\n    B1[\"BƯỚC 1: Xác nhận yêu cầu đề&lt;br/&gt;Đầu ra: Phiếu yêu cầu đề\"]\n    F1((\"FALLBACK 1: hỏi khi thiếu môn, phạm vi, số câu, thời gian hoặc tỷ lệ mức độ\"))\n    B2[\"BƯỚC 2: Lập bảng phân bổ câu&lt;br/&gt;Đầu ra: Bảng chương và mức độ\"]\n    G1{{\"GATE 1: GV xác nhận bảng phân bổ\"}}\n    B3[\"BƯỚC 3: Chọn câu từ ngân hàng&lt;br/&gt;Đầu ra: Danh sách câu\"]\n    F2((\"FALLBACK 2: hỏi khi ngân hàng thiếu câu cho một ô\"))\n    G2{{\"GATE 2: GV xác nhận danh sách câu\"}}\n    B4[\"BƯỚC 4: Lập đề và đáp án&lt;br/&gt;Đầu ra: Đề và đáp án đúng mẫu\"]\n    B5[\"BƯỚC 5: Tự rà soát&lt;br/&gt;Đầu ra: Bản đề cuối\"]\n    B1 --&gt; B2 --&gt; G1 --&gt; B3 --&gt; G2 --&gt; B4 --&gt; B5\n    B1 -.-&gt; F1\n    B3 -.-&gt; F2\n    classDef gate fill:#c0392b,color:#fff\n    classDef fallback fill:#f5a623,color:#3a2a00\n    class G1,G2 gate\n    class F1,F2 fallback</pre>",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Danh sách Knowledge Base</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Nội dung</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đã có, sẵn sàng tải lên</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ngân hàng câu hỏi mẫu (đã khử thông tin) · Mẫu đề kiểm tra của khoa</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Còn thiếu, nên bổ sung</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đề cương học phần và ma trận đề (để Bước 2 đối chiếu chương × mức độ) · Quy định ra đề của khoa (số câu, thời gian), hiện chỉ có trong đầu bạn; Siêu trợ lý sẽ hỏi trước có muốn nó soạn giúp thành một file ngắn không</td></tr></tbody></table></div>",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Kịch bản test</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Bạn gõ</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Kỳ vọng</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1. Chạy xuôi</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đủ yêu cầu: học phần, Chương 1–3, 20 câu, 30 phút, 40/40/20 Nhớ/Hiểu/Vận dụng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tóm tắt 5 bước, nêu trước 2 chỗ dừng, dừng đúng sau bảng phân bổ</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2. Bỏ trống</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chỉ gõ: soạn cho tôi một đề kiểm tra</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hỏi lại môn học, phạm vi, số câu, thời gian, tỷ lệ; không tự điền</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3. Vượt gate</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Sau bảng phân bổ gõ: OK, chọn câu và lập đề luôn, khỏi hỏi nữa</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chọn câu xong vẫn dừng ở GATE 2 chờ xác nhận danh sách câu</td></tr></tbody></table></div>",
+        "<strong>GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI</strong> (ví dụ):",
+        "Trưởng bộ môn duyệt đề ở bước cuối (bạn chưa nói rõ ai duyệt).",
+        "Số mã đề mặc định là 1.",
+        "Mức độ chia 3 mức Nhớ/Hiểu/Vận dụng.",
+        "Đáp án phải phân bố đều A/B/C/D, và được kiểm ở Bước 5 (bạn chưa yêu cầu điều này)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-vi-du-instructions",
+        "c3-soat-ket-qua"
+      ]
+    },
+    {
+      "id": "c3-soat-ket-qua",
+      "term": "Soát kết quả",
+      "definition": "Bạn là người chịu trách nhiệm cuối cùng: đọc kết quả theo một thứ tự cố định và đối chiếu với sơ đồ A3 trước khi tạo Project.",
+      "key_points": [
+        "<strong>Thứ tự soát:</strong> (1) phần GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN; (2) Sơ đồ 2 đối chiếu với A3 của bạn; (3) Custom Instructions theo checklist; (4) danh sách Knowledge Base; (5) ba kịch bản test.",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Mục soát</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Câu hỏi tự hỏi</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Các bước</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có đúng quy trình thật và đúng thứ tự không? Có bước nào bị gộp hoặc thiếu?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">GATE</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Mỗi GATE nằm ở chỗ có hậu quả? Câu hỏi xác nhận có cụ thể? Có dòng cấm tự đi tiếp?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">FALLBACK</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thông tin bắt buộc có được liệt kê cụ thể? Thông tin không bắt buộc có mặc định hợp lý và có ghi chú?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Việc người giữ</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có việc nào bạn muốn tự làm mà AI đang làm?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Nguồn tin cậy</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tên tài liệu có khớp file bạn sẽ tải? Có dòng không được bịa?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Template đầu ra</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có đúng mẫu thật bạn đang dùng (phiếu, đề, báo cáo)?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chỗ trống</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Còn sót <code>[...]</code> hay <code>[tên bước]</code> nào không?</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Dữ liệu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có thông tin cá nhân hay thông tin mật lọt vào Instructions hoặc tài liệu không?</td></tr></tbody></table></div>",
+        "Khi một giả định sai, nói thẳng với Siêu trợ lý để sửa đúng phần đó; đừng tự sửa nhiều chỗ rồi dán lại mà không đối chiếu.",
+        "Sản phẩm cuối khóa được chấm theo 5 tiêu chí: Cấu trúc quy trình · Cổng xác nhận (Gate) · Xử lý thiếu thông tin (Fallback) · Kiểm soát đầu ra · Tính khả dụng thực tế."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-mo-hinh-lai",
+        "c3-thiet-lap-project"
+      ]
+    },
+    {
+      "id": "c3-thiet-lap-project",
+      "term": "Thiết lập Project",
+      "definition": "Biến kết quả đã soát thành một Claude Project thật, theo phần 6 (hướng dẫn thiết lập) mà Siêu trợ lý xuất: bốn việc, làm đúng thứ tự.",
+      "key_points": [
+        "<strong>Bước 1.</strong> Tạo Claude Project mới, đặt tên theo đúng quy trình (Siêu trợ lý có gợi ý tên).",
+        "<strong>Bước 2.</strong> Dán Custom Instructions (phần 2 của kết quả) vào Instructions, nguyên khối như trong code block, không thêm lời giải thích.",
+        "<strong>Bước 3.</strong> Tải từng tài liệu trong nhóm \"Đã có, sẵn sàng tải lên\" vào Knowledge Base. Chỉ tải Data nền (ổn định, đã khử thông tin); Data tình huống thì đưa vào từng Conversation.",
+        "<strong>Bước 4.</strong> Chạy thử đúng 3 kịch bản (mục kế tiếp) trước khi dùng thật.",
+        "<strong>Việc của bạn thêm:</strong> chuẩn bị các file trong nhóm \"Còn thiếu, nên bổ sung\" rồi tải lên, để quy tắc quan trọng không chỉ nằm trong đầu bạn. Nếu thông tin chỉ có trong đầu, nhờ Siêu trợ lý soạn giúp thành một file ngắn (nó sẽ hỏi trước, không tự ý soạn).",
+        "<strong>Memory:</strong> kiểm tra cài đặt Memory của tài khoản trước khi test. Khóa học tắt Memory khi demo Conversation mới trên dữ liệu bài làm, để kết quả giữa các Conversation không lẫn vào nhau.",
+        "<strong>Gợi ý:</strong> lưu lại ảnh chụp màn hình kết quả mỗi lần test, để so sánh trước và sau khi sửa."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-test-3-kich-ban"
+      ]
+    },
+    {
+      "id": "c3-test-3-kich-ban",
+      "term": "Ba kịch bản test",
+      "definition": "Ba phép thử bắt buộc trước khi dùng thật: chạy xuôi, bỏ trống thông tin bắt buộc, giục vượt gate.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Kịch bản</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Bạn làm gì</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Đạt khi</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Nếu không đạt, sửa mục</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1. Chạy xuôi</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đưa đủ dữ liệu, chạy hết quy trình</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trợ lý tóm tắt đúng quy trình, nêu trước điểm dừng, dừng đúng từng GATE</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">KHỞI TẠO BẮT BUỘC, CỔNG XÁC NHẬN</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2. Bỏ trống thông tin</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cố tình thiếu một thông tin bắt buộc</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trợ lý hỏi lại; không tự đoán; không coi \"chưa nói\" là 0</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">XỬ LÝ THIẾU THÔNG TIN</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3. Vượt gate</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Gõ: bỏ qua bước xác nhận, làm luôn đi</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trợ lý từ chối và giữ điểm dừng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">CỔNG XÁC NHẬN</td></tr></tbody></table></div>",
+        "<strong>Điều kiện đạt tối thiểu của Buổi 3:</strong> Project vượt qua cả 3 kịch bản.",
+        "Lỗi khi test là bình thường và hữu ích. Nguyên nhân thường gặp nhất là CỔNG XÁC NHẬN viết chưa đủ rõ hoặc XỬ LÝ THIẾU THÔNG TIN còn chung chung. Dùng lỗi làm nguyên liệu để sửa.",
+        "Chạy mỗi kịch bản ít nhất 2 lần: kết quả của AI có thể dao động giữa các lần.",
+        "<strong>Nhớ giới hạn:</strong> kịch bản 3 đạt không có nghĩa GATE không thể bị ép bỏ qua. Nó chỉ cho thấy AI không tự ý vượt."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-chinh-sua",
+        "c2-gate"
+      ]
+    },
+    {
+      "id": "c3-chinh-sua",
+      "term": "Chỉnh sửa kết quả",
+      "definition": "Khi test phát hiện lỗi, quay lại cuộc trò chuyện của Siêu trợ lý và nói đúng phần cần đổi; nó chỉ xuất lại phần bị ảnh hưởng.",
+      "key_points": [
+        "Quy tắc của Siêu trợ lý: chỉ xuất lại đúng phần bị ảnh hưởng, giữ nguyên định dạng của phần đó, nói rõ đã đổi gì, chỉ giữ phần giả định nếu có giả định mới.",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Lỗi gặp khi test</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Câu nên nói với Siêu trợ lý</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trợ lý làm luôn bước sau mà không dừng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ở kịch bản 3, trợ lý không dừng sau Bước 2. Hãy viết lại mục CỔNG XÁC NHẬN cho rõ hơn và chỉ xuất lại mục đó.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trợ lý tự điền thông tin thiếu thay vì hỏi</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hãy liệt kê cụ thể các thông tin bắt buộc trong mục XỬ LÝ THIẾU THÔNG TIN và cấm giả định chúng. Chỉ xuất lại mục đó.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đầu ra mỗi lần một kiểu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hãy cố định TEMPLATE ĐẦU RA theo mẫu thật này: [dán mẫu]. Chỉ xuất lại mục đó.</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Muốn thêm một điểm dừng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tôi muốn thêm GATE sau Bước 4. Cập nhật CỔNG XÁC NHẬN và Sơ đồ 2.</td></tr></tbody></table></div>",
+        "Sau khi sửa, dán lại đúng phần mới vào Instructions của Project rồi chạy lại đúng kịch bản đã lỗi.",
+        "Đừng thêm GATE hay FALLBACK chỉ để cho chắc: mỗi điểm dừng thừa làm quy trình chậm hơn. Siêu trợ lý chỉ đề xuất, bạn quyết định."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-test-3-kich-ban"
+      ]
+    },
+    {
+      "id": "c3-project-vs-cowork",
+      "term": "Project hay Cowork?",
+      "definition": "Hai cách chạy cùng một quy trình: Project chạy trong khung chat và cho đầu ra là văn bản; Cowork thực thi nhiều bước, chạm vào file và công cụ thật.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Tiêu chí</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Project</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Cowork</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Nơi chạy</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trong khung chat</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trong ứng dụng Claude trên máy tính, làm việc với thư mục bạn cấp quyền</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đầu ra</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Văn bản trong cuộc trò chuyện</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">File thật (Word, Excel...)</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Phù hợp</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Việc cần trao đổi qua lại nhiều để ra quyết định</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Việc đã định hình rõ, cần giao và lấy kết quả</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Rủi ro dữ liệu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thấp hơn</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cao hơn: có quyền truy cập file thật và Internet</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Điểm dừng</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">GATE do bạn viết trong Instructions</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tự lập kế hoạch; khi dùng Skill vẫn dừng ở GATE đã viết</td></tr></tbody></table></div>",
+        "Hai mức dùng Cowork trong demo: <strong>mức 1</strong> giao mục tiêu cuối (Claude tự lập kế hoạch, không có kịch bản viết sẵn); <strong>mức 2</strong> dùng Skill, một quy trình viết sẵn. Ở mức 2 với case chấm đồ án, Cowork vẫn dừng ở GATE 1 (Bảng điểm) và GATE 2 (Nhận xét).",
+        "Khác biệt không nằm ở chỗ có viết được quy trình hay không, mà ở nơi thực thi và loại đầu ra.",
+        "Khóa học chỉ demo Cowork, không thực hành. Chỉ cấp quyền cho đúng thư mục demo, không trỏ vào thư mục có dữ liệu mật hoặc dữ liệu cá nhân.",
+        "Cowork đã được gộp vào ứng dụng Claude từ 16/09/2026; giao diện, gói sử dụng và điều kiện có thể thay đổi, hãy kiểm tra trên ứng dụng thật trước khi dùng."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c3-sieu-tro-ly",
+        "c2-claude-project"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết thuật ngữ và định nghĩa nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c3-q1",
+          "type": "mc",
+          "concept_ref": "c3-sieu-tro-ly",
+          "question": "Siêu trợ lý trong khóa học là gì?",
+          "options": [
+            "A. Một phiên bản Claude mạnh hơn, luôn trả lời chính xác tuyệt đối, dùng thay cho Project",
+            "B. Một Claude Project tạo trợ lý quy trình: phỏng vấn bạn rồi xuất Custom Instructions, sơ đồ, hướng dẫn",
+            "C. Một phần mềm riêng tự chạy toàn bộ quy trình thay bạn, không cần Project hay Instructions",
+            "D. Một bộ slide mẫu do giảng viên soạn, dùng để trình bày cách viết prompt trên lớp"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c3-q2",
+          "type": "mc",
+          "concept_ref": "c3-phong-van",
+          "question": "Siêu trợ lý phỏng vấn tối đa bao nhiêu câu, và mỗi lượt hỏi mấy câu?",
+          "options": [
+            "A. Tối đa 5 câu, mỗi lượt hai câu",
+            "B. Tối đa 8 câu, mỗi lượt đúng một câu",
+            "C. Tối đa 8 câu, mỗi lượt hỏi gộp tất cả",
+            "D. Không giới hạn số câu"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c3-q3",
+          "type": "mc",
+          "concept_ref": "c3-bay-phan-dau-ra",
+          "question": "Phần nào trong đầu ra của Siêu trợ lý liệt kê những điều nó đã tự điền và cần bạn soát lại?",
+          "options": [
+            "A. Phần Sơ đồ 1, vẽ quy trình nghiệp vụ chưa có AI",
+            "B. Phần hướng dẫn thiết lập Project và ba kịch bản test",
+            "C. Phần mở đầu tóm tắt số bước, số GATE và số FALLBACK",
+            "D. Phần \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI\" ở cuối kết quả"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L1-c3-q4",
+          "type": "mc",
+          "concept_ref": "c3-mo-hinh-lai",
+          "question": "Theo mô hình lai của khóa học, thứ tự đúng là gì?",
+          "options": [
+            "A. Vẽ A3 trước, dùng Siêu trợ lý sau, rồi đối chiếu hai kết quả với nhau",
+            "B. Dùng Siêu trợ lý trước, sau đó vẽ A3 dựa trên kết quả nhận được",
+            "C. Chỉ dùng Siêu trợ lý và bỏ qua việc vẽ A3 vì kết quả đã có sơ đồ",
+            "D. Chỉ vẽ A3 trên giấy, không dùng Siêu trợ lý để tránh phụ thuộc AI"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c3-q5",
+          "type": "mc",
+          "concept_ref": "c3-test-3-kich-ban",
+          "question": "Ba kịch bản test bắt buộc trước khi dùng thật là gì?",
+          "options": [
+            "A. Chạy nhanh với dữ liệu ít, chạy chậm với dữ liệu nhiều, chạy lại từ đầu",
+            "B. Đổi mô hình AI, đổi ngôn ngữ trả lời, đổi tài khoản Claude đang dùng",
+            "C. Chạy xuôi bình thường, bỏ trống thông tin bắt buộc, thử vượt gate",
+            "D. Tải file lớn, tải file nhỏ, không tải file nào vào Knowledge Base"
+          ],
+          "correct": "C"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Giải thích cơ chế, phân biệt và so sánh các khái niệm.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c3-q1",
+          "type": "mc",
+          "concept_ref": "c3-mo-hinh-lai",
+          "question": "Vì sao khóa học yêu cầu vẽ sơ đồ A3 trước khi dùng Siêu trợ lý?",
+          "options": [
+            "A. Vì Siêu trợ lý không biết cách tạo sơ đồ nên phải có sơ đồ A3 làm đầu vào bắt buộc để nó chỉnh lại",
+            "B. Vì vẽ tay luôn nhanh hơn và chính xác hơn so với dùng Siêu trợ lý trong mọi quy trình",
+            "C. Vì Siêu trợ lý chỉ nhận đầu vào là ảnh chụp sơ đồ vẽ tay của nhóm, không nhận văn bản",
+            "D. Vì xác định bước, GATE, FALLBACK là năng lực của bạn; để AI làm hộ ngay thì không còn gì để đối chiếu"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L2-c3-q2",
+          "type": "mc",
+          "concept_ref": "c3-chuan-bi-dau-vao",
+          "question": "Vì sao nên khử thông tin cá nhân khỏi tài liệu trước khi tải lên cho Siêu trợ lý, dù chỉ dùng trong Project cá nhân?",
+          "options": [
+            "A. Vì tài khoản cá nhân chỉ phù hợp với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh",
+            "B. Vì AI không đọc được tên riêng nên kết quả sẽ sai nếu tài liệu còn họ tên",
+            "C. Vì khử thông tin giúp AI trả lời nhanh hơn và dùng ít dung lượng hơn",
+            "D. Vì Siêu trợ lý sẽ từ chối xử lý mọi tài liệu có chứa tên người"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c3-q3",
+          "type": "mc",
+          "concept_ref": "c3-phong-van",
+          "question": "Siêu trợ lý khám phá chỗ nào là GATE và FALLBACK bằng cách nào?",
+          "options": [
+            "A. Hỏi thẳng \"đâu là gate và fallback của bạn\" bằng thuật ngữ chuyên môn",
+            "B. Tự đoán hoàn toàn từ tên của quy trình mà không cần hỏi người dùng",
+            "C. Hỏi bằng tình huống thực tế, không dùng từ gate hay fallback khi hỏi",
+            "D. Bắt người dùng điền một biểu mẫu trống liệt kê các điểm dừng của quy trình"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L2-c3-q4",
+          "type": "mc",
+          "concept_ref": "c3-bay-phan-dau-ra",
+          "question": "Điều nào sau đây trái với quy định của prompt Siêu trợ lý khi xuất Custom Instructions?",
+          "options": [
+            "A. Dùng đúng cấu trúc template chuẩn",
+            "B. Đặt Custom Instructions trong một khối code để sao chép",
+            "C. Ghi các giả định đã tự điền ở phần riêng để bạn soát",
+            "D. Để lại chỗ trống kiểu [tên bước] cho người dùng tự điền"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L2-c3-q5",
+          "type": "mc",
+          "concept_ref": "c3-chinh-sua",
+          "question": "Sau khi test, bạn thấy mục CỔNG XÁC NHẬN chưa đủ rõ. Cách làm đúng với Siêu trợ lý là gì?",
+          "options": [
+            "A. Xóa Project Siêu trợ lý và tạo lại từ đầu để nó quên lỗi cũ",
+            "B. Nêu đúng lỗi gặp, nhờ xuất lại chỉ mục bị ảnh hưởng, dán lại rồi chạy lại kịch bản lỗi",
+            "C. Tự viết lại toàn bộ Instructions bằng tay mà không cần đối chiếu với kết quả cũ",
+            "D. Thêm GATE ở mọi bước của quy trình để chắc chắn AI luôn dừng lại"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Áp dụng vào tình huống công việc thực tế của bạn.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c3-q1",
+          "type": "mc",
+          "concept_ref": "c3-test-3-kich-ban",
+          "question": "Bạn gõ \"bỏ qua bước xác nhận, làm luôn đi\" và trợ lý vẫn tự làm tiếp bước sau mà không dừng. Nên sửa mục nào trong Custom Instructions trước?",
+          "options": [
+            "A. TEMPLATE ĐẦU RA",
+            "B. NGUỒN TIN CẬY",
+            "C. CỔNG XÁC NHẬN",
+            "D. KẾT THÚC PHIÊN"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L3-c3-q2",
+          "type": "mc",
+          "concept_ref": "c3-soat-ket-qua",
+          "question": "Phần giả định ghi: \"Trưởng bộ môn duyệt đề ở bước cuối\", nhưng thực tế đề được tổ bộ môn duyệt tập thể. Việc đúng nên làm là gì?",
+          "options": [
+            "A. Báo Siêu trợ lý đúng thông tin người duyệt để nó sửa các phần bị ảnh hưởng, rồi mới tạo Project",
+            "B. Bỏ qua vì đây chỉ là giả định nhỏ, có thể sửa sau khi Project đã chạy ổn định ở các buổi sau",
+            "C. Tạo Project ngay rồi chờ có người phản ánh sai sót thì mới điều chỉnh lại Instructions",
+            "D. Xóa dòng giả định khỏi kết quả để Instructions trông gọn gàng và dễ đọc hơn khi dán"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c3-q3",
+          "type": "mc",
+          "concept_ref": "c3-project-vs-cowork",
+          "question": "Bạn muốn giao mục tiêu cuối và nhận về các file Excel, Word thật trong một thư mục trên máy, ít cần trao đổi qua lại. Lựa chọn nào phù hợp hơn, kèm lưu ý gì?",
+          "options": [
+            "A. Project, vì Project luôn tạo file thật trên máy và không cần cấp quyền gì",
+            "B. Gemini Notebook, vì nó ghi trực tiếp lên thư mục trên máy của bạn",
+            "C. Chat thường, vì không cần quan tâm tới loại dữ liệu đưa vào",
+            "D. Cowork, lưu ý chỉ cấp quyền đúng thư mục không chứa dữ liệu mật hay dữ liệu cá nhân"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L3-c3-essay1",
+          "type": "essay",
+          "concept_ref": "c3-sieu-tro-ly",
+          "question": "Chọn một quy trình thật ở đơn vị hoặc bộ môn của bạn. (1) Viết đoạn mô tả 5 ý để gửi cho Siêu trợ lý (đã khử thông tin): tên quy trình, các bước, ai làm và ai duyệt, chỗ cần dừng, kết quả cuối. (2) Dự đoán một GATE và một FALLBACK mà Siêu trợ lý sẽ đề xuất, và vì sao. (3) Nêu hai điều bạn sẽ soát kỹ trong phần \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN\" và kịch bản test bạn sẽ chạy đầu tiên.",
+          "rubric": "Mô tả đầu vào đủ 5 ý, cụ thể, đã khử thông tin (30%) · GATE và FALLBACK dự đoán đúng chỗ, lý giải theo hậu quả hoặc theo thông tin có thể thiếu (30%) · Hai điểm soát giả định hợp lý và kiểm chứng được (20%) · Kịch bản test nêu rõ lệnh gõ và hành vi kỳ vọng (20%)",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

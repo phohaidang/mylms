@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 2: Từ Prompt Đơn Lẻ Đến Quy Trình Nhiều Bước — Petrovietnam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAF7F2;
+  --paper-card: #FFFFFF;
+  --paper-shade: #F2ECE1;
+  --ink: #1B1714;
+  --ink-soft: #4A413A;
+  --rule: #DCD3C1;
+  --oxblood: #7A1F1F;
+  --oxblood-soft: #9B3838;
+  --gold: #B8893A;
+  --gold-soft: #D4A85F;
+  --green: #2F4A36;
+  --blue: #1D4E89;
+  --warm-gray: #7F7365;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  padding: 40px 20px 80px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-red { background: #FDE8E8; color: var(--oxblood); border: 1px solid #F8B4B4; }
+.badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+.badge-blue { background: #E0F2FE; color: var(--blue); border: 1px solid #BAE6FD; }
+.badge-purple { background: #F3E8FF; color: #6B21A8; border: 1px solid #D8B4FE; }
+
+h1.lesson-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.lesson-subtitle {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+
+h2.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--oxblood);
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 6px;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h3.sub-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.card-box {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.scqa-box {
+  background: #FFFDF9;
+  border-left: 4px solid var(--gold);
+}
+
+.scqa-item {
+  margin-bottom: 12px;
+}
+.scqa-item strong {
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 140px;
+}
+
+.callout-box {
+  background: #FAF5F0;
+  border-left: 4px solid var(--oxblood);
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout-box strong { color: var(--oxblood); }
+
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  background: var(--paper-card);
+}
+.timeline-table th, .timeline-table td {
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  vertical-align: top;
+  text-align: left;
+}
+.timeline-table th {
+  background: var(--paper-shade);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.timeline-table td.time {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--oxblood);
+  white-space: nowrap;
+  width: 90px;
+}
+.timeline-table tr:nth-child(even) td { background: #FCFAF6; }
+
+pre.prompt-block {
+  background: #23201D;
+  color: #EDE7DC;
+  padding: 16px 20px;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.gate-badge {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FCA5A5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-weight: bold;
+}
+
+.fallback-badge {
+  background: #FEFCE8;
+  color: #854D0E;
+  border: 1px solid #FDE047;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header Meta -->
+  <div class="header-meta">
+    <div>Chương trình đào tạo Petrovietnam · AIDK_QT_0001</div>
+    <div>Thời lượng: 180 phút (Chiều Ngày 1)</div>
+  </div>
+
+  <header>
+    <div style="display:flex; gap:8px; margin-bottom:12px;">
+      <span class="badge badge-red">Buổi 2</span>
+      <span class="badge badge-gold">CLO3 · CLO4</span>
+      <span class="badge badge-purple">Workflow Architecture</span>
+    </div>
+    <h1 class="lesson-title">Buổi 2: Từ Prompt Đơn Lẻ Đến Quy Trình Nhiều Bước</h1>
+    <div class="lesson-subtitle">Làm chủ Claude Projects, 7 Nguyên tắc thiết kế quy trình và kiến trúc Cổng kiểm soát (GATE & FALLBACK)</div>
+  </header>
+
+  <!-- PHẦN I: MỤC TIÊU BUỔI HỌC (BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">I. Mục tiêu buổi học</h2>
+  <div class="card-box">
+    <p>Sau khi kết thúc Buổi 2, học viên nắm vững và thực thi được các chuẩn đầu ra sau:</p>
+    <ul>
+      <li><strong>Mục tiêu nhận thức (CLO3 - Bloom Analyze):</strong> Phân tích được một quy trình nghiệp vụ phòng ban thành các bước tuần tự, xác định chính xác các điểm chốt chặn kiểm soát (<span class="gate-badge">GATE 🔒</span>) bắt buộc người dùng duyệt trước khi AI đi tiếp, và các điểm dự phòng (<span class="fallback-badge">FALLBACK ❓</span>) khi thiếu dữ liệu đầu vào.</li>
+      <li><strong>Mục tiêu kỹ năng (CLO4 - Bloom Create - Khởi động):</strong> Tự tay thiết lập và vận hành một <strong>Claude Project</strong> hoàn chỉnh (viết Custom Instructions 5 thành phần, tải tài liệu chuẩn vào Knowledge Base, phân tách dữ liệu hội thoại).</li>
+      <li><strong>7 Nguyên tắc thiết kế quy trình:</strong> Thấm nhuần và áp dụng được 7 nguyên tắc thiết kế quy trình AI an toàn (Khởi tạo bắt buộc, Quy trình tuần tự có cổng, Xử lý thiếu thông tin, Phân quyền tin cậy, Template chuẩn, Vai trò Leader-Cộng sự, Vòng phản hồi).</li>
+      <li><strong>Thực hành thiết kế trên giấy A3:</strong> Chuyển thể quy trình nghiệp vụ của đơn vị/bộ môn thành sơ đồ 3–5 bước trên giấy A3 trước khi số hóa lên máy tính.</li>
+      <li><strong>Khởi tạo Siêu trợ lý:</strong> Nắm được cơ chế hoạt động của Project Siêu trợ lý (trợ lý AI giúp sinh mã Custom Instructions quy trình) để chuẩn bị cho buổi thực hành chuyên sâu ngày mai.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN II: KHUNG SCQA CỦA BUỔI (BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS HUB EXTRACT CHO SV) -->
+  <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+  <div class="card-box scqa-box">
+    <div class="scqa-item">
+      <strong>Situation:</strong> Chúng ta đã thành thạo kỹ thuật viết một prompt đơn lẻ chuẩn CRISP để AI thực hiện một nhiệm vụ cụ thể như viết email hay tóm tắt văn bản.
+    </div>
+    <div class="scqa-item">
+      <strong>Complication:</strong> Nhưng công việc thực tế trong cơ quan, trường học là một chuỗi nghiệp vụ liên hoàn gồm nhiều bước. Nếu cố dồn tất cả vào một đoạn chat dài, AI sẽ nhanh chóng bị quá tải bộ nhớ ngữ cảnh (<em>Context Window</em>), bắt đầu quên các chỉ thị ở đầu, tự ý bịa số liệu khi thiếu thông tin hoặc tự tiện nhảy cóc ra kết quả cuối cùng mà không chờ người kiểm tra.
+    </div>
+    <div class="scqa-item">
+      <strong>Question:</strong> Làm thế nào để đóng gói toàn bộ quy chế, biểu mẫu và quy trình nhiều bước vào AI để nó thực hiện tuần tự, nhất quán qua hàng trăm phiên làm việc mà không bao giờ bị "quên" hay "vượt quyền"?
+    </div>
+    <div class="scqa-item">
+      <strong>Answer-preview:</strong> Nâng cấp từ khung chat đơn lẻ lên không gian làm việc chuyên biệt <strong>Claude Projects</strong>, thiết kế quy trình theo <strong>7 nguyên tắc cốt lõi</strong> với 2 chốt chặn sinh tử: <span class="gate-badge">GATE</span> (dừng lại xin duyệt) và <span class="fallback-badge">FALLBACK</span> (hỏi lại khi thiếu dữ kiện).
+    </div>
+  </div>
+
+  <!-- PHẦN III: KHỞI ĐỘNG TỪ CÁI BIẾT CỦA HỌC VIÊN -->
+  <h2 class="section-title">III. Khởi động từ Cái Biết của Học viên (10 phút)</h2>
+  <div class="card-box">
+    <h3 class="sub-title">1. Định vị trên Bản đồ 4 tầng (00–05')</h3>
+    <p>Chiếu lại slide bản đồ <em>Data → Context → Knowledge → Workflow</em>. Khoanh tròn vào tầng <strong>Knowledge</strong>:</p>
+    <blockquote>
+      <em>"Sáng nay ta đã học cách nạp đúng Data + Context vào prompt. Chiều nay: khi Data và Context được lặp đi lặp lại nhiều lần trong công việc, nó kết tinh thành <strong>Knowledge</strong> — tức quy tắc và tri thức dùng lại được. Khi đóng gói Knowledge vào Claude Project, ta bắt đầu bước vào tầng <strong>Workflow</strong>."</em>
+    </blockquote>
+
+    <h3 class="sub-title">2. Bản chất: Context Window & Diagram Cửa Sổ Trượt (05–10')</h3>
+    <p>Giảng viên giải thích ngắn gọn bằng diagram trực quan:</p>
+    <ul>
+      <li><strong>Context Window (Cửa sổ ngữ cảnh):</strong> Bộ nhớ làm việc tức thời của AI trong một cuộc trò chuyện.</li>
+      <li><strong>Cơ chế cửa sổ trượt:</strong> Khi cuộc trò chuyện kéo dài qua nhiều tin nhắn, các chỉ thị quan trọng ban đầu (văn phong, vai trò, quy chuẩn) bị trượt ra ngoài cửa sổ bộ nhớ.</li>
+      <li><strong>Hai hệ quả tất yếu:</strong>
+        <ol>
+          <li><em>Quên context:</em> Càng về sau AI càng trả lời chung chung, quên mất các ràng buộc ban đầu.</li>
+          <li><em>Không nhất quán:</em> Cùng một dữ liệu nhưng nộp ở đầu chat ra điểm khác, nộp ở cuối chat ra điểm khác.</li>
+        </ol>
+      </li>
+      <li><strong>Giải pháp kiến trúc:</strong> Dùng <em>Claude Projects</em> — nơi Custom Instructions và Knowledge Base được neo cố định bên ngoài hội thoại, không bao giờ bị trượt mất khi mở phiên làm việc mới!</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN IV: KỊCH BẢN CHI TIẾT THEO TIMELINE -->
+  <h2 class="section-title">IV. Kịch bản chi tiết theo Timeline (180 phút)</h2>
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th style="width: 80px;">Thời gian</th>
+        <th style="width: 50px;">Phút</th>
+        <th style="width: 250px;">Nội dung bài học</th>
+        <th>Hoạt động Giảng viên & Học viên</th>
+        <th style="width: 140px;">Học liệu & Công cụ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">00–05'</td>
+        <td>5'</td>
+        <td><strong>Định vị bản đồ 4 tầng</strong></td>
+        <td>GV chiếu slide, liên kết kết quả buổi sáng với mục tiêu buổi chiều (tầng Knowledge).</td>
+        <td>Slide Bản đồ 4 tầng</td>
+      </tr>
+      <tr>
+        <td class="time">05–10'</td>
+        <td>5'</td>
+        <td><strong>Context Window & Cửa sổ trượt</strong></td>
+        <td>GV giải thích diagram cửa sổ trượt, chỉ ra 2 rủi ro: quên context và thiếu nhất quán.</td>
+        <td>Slide diagram Context Window</td>
+      </tr>
+      <tr>
+        <td class="time">10–50'</td>
+        <td>40'</td>
+        <td><strong>Case Study: Chấm đồ án sinh viên (4 kịch bản)</strong></td>
+        <td>
+          GV demo sống trên Claude Project mẫu qua 4 tình huống thực tế:<br>
+          • <strong>Kịch bản 1 (DA-01):</strong> Chạy xuôi chuẩn mực → Claude trích dẫn tiêu chí, tính điểm, <em>dừng lại ở GATE 1</em> chờ GV xác nhận.<br>
+          • <strong>Kịch bản 2 (DA-02):</strong> Dữ liệu thiếu điểm chuyên cần → Claude kích hoạt <em>FALLBACK 1</em> hỏi lại chứ không tự đoán; tiêu chí thiếu minh chứng ghi <em>FALLBACK 2: "Chưa đủ căn cứ"</em>.<br>
+          • <strong>Kịch bản 3:</strong> GV giục AI bỏ qua gate → Claude từ chối viết nhận xét khi chưa duyệt điểm → GV chốt GATE 1 → sang GATE 2 duyệt nhận xét.<br>
+          • <strong>Kịch bản 4 (DA-03):</strong> Mở Conversation mới trong cùng Project → Quy trình và quy chế vẫn nguyên vẹn, điểm bài trước không lẫn sang bài sau.
+        </td>
+        <td>Project "Chấm đồ án", 3 file báo cáo mẫu DA-01/02/03.docx, Máy chiếu</td>
+      </tr>
+      <tr>
+        <td class="time">50–80'</td>
+        <td>30'</td>
+        <td><strong>Thực hành tạo Claude Project đầu tay</strong></td>
+        <td>
+          Từng học viên mở laptop làm theo 4 thao tác chuẩn:<br>
+          1. Bấm Create Project, đặt tên quy trình.<br>
+          2. Viết Custom Instructions ngắn gọn (5 dòng mẫu).<br>
+          3. Upload 1 tài liệu quy chế mẫu vào Knowledge Base.<br>
+          4. Chat thử 1 câu để kiểm tra AI trả lời dựa trên tài liệu vừa nạp.
+        </td>
+        <td>Tài khoản Claude cá nhân của HV, File mẫu văn thư</td>
+      </tr>
+      <tr>
+        <td class="time">80–95'</td>
+        <td>15'</td>
+        <td><strong>Giải lao giữa buổi</strong></td>
+        <td>Học viên nghỉ ngơi, trao đổi tại bàn trà.</td>
+        <td>Tea-break</td>
+      </tr>
+      <tr>
+        <td class="time">95–130'</td>
+        <td>35'</td>
+        <td><strong>7 Nguyên tắc thiết kế quy trình AI</strong></td>
+        <td>
+          GV phân tích chi tiết từng nguyên tắc, đối chiếu với các khoảnh khắc trong case study Chấm đồ án vừa xem:<br>
+          1. Khởi tạo bắt buộc · 2. Quy trình tuần tự có cổng (<span class="gate-badge">GATE</span>) · 3. Xử lý thiếu thông tin (<span class="fallback-badge">FALLBACK</span>) · 4. Phân quyền tin cậy · 5. Template chuẩn · 6. Vai trò Leader - Cộng sự · 7. Vòng phản hồi.<br>
+          Cung cấp câu prompt mẫu tiếng Việt cho từng nguyên tắc.
+        </td>
+        <td>Slide 7 Nguyên tắc, Handout in màu</td>
+      </tr>
+      <tr>
+        <td class="time">130–140'</td>
+        <td>10'</td>
+        <td><strong>Sơ đồ nghiệp vụ & Sơ đồ GATE/FALLBACK</strong></td>
+        <td>
+          • <em>130–133':</em> Chiếu sơ đồ nghiệp vụ 5 bước truyền thống ("vẽ cho người trước khi vẽ cho AI").<br>
+          • <em>133–140':</em> Chiếu sơ đồ tích hợp AI với 2 GATE 🔒 và 2 FALLBACK ❓. Nhấn mạnh: Việc không đặt GATE ở bước nào cũng là một quyết định quản trị rủi ro.
+        </td>
+        <td>Slide sơ đồ đối chứng quy trình</td>
+      </tr>
+      <tr>
+        <td class="time">140–175'</td>
+        <td>35'</td>
+        <td><strong>Thực hành 2.1: Vẽ quy trình trên giấy A3</strong></td>
+        <td>
+          Chia 4 nhóm theo cụm đơn vị/bộ môn.<br>
+          Phát tờ A3, bút dạ, sticker 🔒 và ❓.<br>
+          Nhóm chọn 1 quy trình thật → vẽ sơ đồ 3–5 bước → dán sticker cổng GATE và nhánh FALLBACK → thảo luận nháp Custom Instructions.<br>
+          GV đi từng nhóm phản biện và gợi ý.
+        </td>
+        <td>Giấy A3, Bút dạ, Sticker 🔒 và ❓, Phiếu Thiết Kế</td>
+      </tr>
+      <tr>
+        <td class="time">175–180'</td>
+        <td>5'</td>
+        <td><strong>Chia sẻ nhanh & Giao nhiệm vụ tối</strong></td>
+        <td>
+          Mỗi nhóm phát biểu 1 câu tóm tắt quy trình nhóm đã chọn.<br>
+          Giao 2 việc về nhà tối nay (chuẩn bị tài liệu mẫu + tạo sẵn Project Siêu trợ lý theo ebook).
+        </td>
+        <td>Slide bài tập về nhà</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PHẦN V: BẢNG CÂU HỎI THẢO LUẬN -->
+  <h2 class="section-title">V. 7 Nguyên tắc & Bảng câu hỏi thảo luận</h2>
+  <div class="card-box">
+    <h3 class="sub-title" style="color:var(--oxblood);">Bảng tổng hợp 7 Nguyên tắc thiết kế quy trình AI</h3>
+    <table style="width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;">
+      <thead>
+        <tr style="background:var(--paper-shade); text-align:left;">
+          <th style="padding:8px; border:1px solid var(--rule); width:30px;">#</th>
+          <th style="padding:8px; border:1px solid var(--rule); width:180px;">Nguyên tắc</th>
+          <th style="padding:8px; border:1px solid var(--rule);">Câu Prompt mẫu tiếng Việt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">1</td>
+          <td style="padding:8px; border:1px solid var(--rule);"><strong>Khởi tạo bắt buộc</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Trước khi bắt đầu, hãy đọc toàn bộ tài liệu trong Knowledge Base và tóm tắt lại các bước để tôi xác nhận bạn đã hiểu đúng."</em></td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">2</td>
+          <td style="padding:8px; border:1px solid var(--rule); color:var(--oxblood);"><strong>Quy trình tuần tự có cổng (GATE)</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Sau mỗi bước, DỪNG LẠI và hỏi: 'Bạn xác nhận chuyển sang bước tiếp theo chứ?'. Tuyệt đối không tự làm bước kế tiếp."</em></td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">3</td>
+          <td style="padding:8px; border:1px solid var(--rule); color:#854D0E;"><strong>Xử lý thiếu thông tin (FALLBACK)</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Nếu thiếu thông tin bắt buộc, hãy hỏi tôi. Nếu thiếu thông tin không bắt buộc, dùng giá trị mặc định [...] và ghi chú rõ [ĐÃ DÙNG GIÁ TRỊ MẶC ĐỊNH]."</em></td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">4</td>
+          <td style="padding:8px; border:1px solid var(--rule);"><strong>Phân quyền tin cậy</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Ưu tiên tuyệt đối tài liệu tôi nạp trong Knowledge Base. Kiến thức chung bên ngoài bắt buộc phải gắn thẻ [CẦN KIỂM CHỨNG]."</em></td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">5</td>
+          <td style="padding:8px; border:1px solid var(--rule);"><strong>Template đầu ra chuẩn</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Mọi kết quả cuối cùng phải trình bày theo đúng cấu trúc biểu mẫu sau, không tự ý thêm bớt đề mục: [...]"</em></td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">6</td>
+          <td style="padding:8px; border:1px solid var(--rule);"><strong>Vai trò Leader — Cộng sự</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Bạn là cộng sự đề xuất phương án và chỉ ra căn cứ. Quyết định lựa chọn và ký duyệt hoàn toàn thuộc về tôi."</em></td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--rule); font-weight:bold;">7</td>
+          <td style="padding:8px; border:1px solid var(--rule);"><strong>Vòng phản hồi (Feedback Loop)</strong></td>
+          <td style="padding:8px; border:1px solid var(--rule);"><em>"Khi kết thúc phiên làm việc, hãy hỏi tôi: 'Bước nào trong quy trình hôm nay cần điều chỉnh câu lệnh cho lần sau?'"</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-title" style="margin-top:20px;">Câu hỏi thảo luận chuyên sâu:</h3>
+    <ol>
+      <li><strong>Về thiết kế Cổng GATE:</strong> <em>"Tại sao trong case study Chấm đồ án, giảng viên lại đặt GATE 1 ngay sau Bảng điểm mà không để AI viết luôn Nhận xét chi tiết rồi duyệt một thể?"</em><br>
+      <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý: Nếu điểm số bị tính nhầm hoặc giáo viên muốn can thiệp sửa điểm, việc để AI viết nhận xét trước sẽ tạo ra sự mâu thuẫn giữa điểm số và lời phê. Phải chốt chặn điểm đúng ở GATE 1 thì phần nhận xét ở bước sau mới hoàn toàn nhất quán.</span></li>
+      <li><strong>Về ranh giới bảo mật dữ liệu:</strong> <em>"Tại sao mục 1–5 trên phiếu chấm (Họ tên SV, MSSV, Lớp) lại để '[GV tự điền]' thay vì đưa trực tiếp danh sách sinh viên vào Claude?"</em><br>
+      <span style="color:var(--warm-gray); font-size:0.95rem;">→ Gợi ý: Để bảo vệ dữ liệu cá nhân theo Luật Bảo vệ dữ liệu cá nhân 2025. Báo cáo đồ án được khử định danh khi gửi cho AI phân tích nội dung học thuật; thông tin danh tính của người học được giáo viên tự ghép lại sau cùng trên máy tính nội bộ.</span></li>
+    </ol>
+  </div>
+
+  <!-- PHẦN VI: BÀI TẬP VỀ NHÀ & LAB THỰC HÀNH -->
+  <h2 class="section-title">VI. Bài tập về nhà & Lab thực hành</h2>
+  <div class="card-box">
+    <h3 class="sub-title">Thực hành 2.1 (Tại lớp): Thiết kế sơ đồ quy trình A3</h3>
+    <ul>
+      <li><strong>Sản phẩm nộp:</strong> Tờ giấy A3 vẽ sơ đồ 3–5 bước của quy trình nghiệp vụ nhóm chọn.</li>
+      <li><strong>Yêu cầu bắt buộc:</strong>
+        <ol>
+          <li>Ghi rõ Tên bước — Đầu vào — Đầu ra mong muốn của từng bước.</li>
+          <li>Đánh dấu ít nhất <strong>01 cổng xác nhận bắt buộc</strong> bằng sticker <span class="gate-badge">GATE 🔒</span> (nơi AI bắt buộc phải dừng chờ xác nhận của con người).</li>
+          <li>Đánh dấu ít nhất <strong>01 tình huống dự phòng</strong> bằng sticker <span class="fallback-badge">FALLBACK ❓</span> (AI phải hỏi lại khi thiếu dữ liệu bắt buộc hoặc ghi chú giá trị mặc định).</li>
+        </ol>
+      </li>
+      <li><strong>Chụp ảnh:</strong> Chụp ảnh sơ đồ A3 của nhóm lưu vào điện thoại/laptop để làm tư liệu đối chứng cho Buổi 3.</li>
+    </ul>
+
+    <h3 class="sub-title" style="margin-top:20px; color:var(--oxblood);">Nhiệm vụ tối nay (Chuẩn bị bắt buộc cho Buổi 3 sáng mai):</h3>
+    <ol>
+      <li><strong>Mang tài liệu mẫu:</strong> Mỗi nhóm chuẩn bị sẵn 1–2 tài liệu mẫu (file Word, PDF hoặc bảng tính Excel) của quy trình đã chọn — <em>nhớ xóa bỏ toàn bộ thông tin mật hoặc dữ liệu cá nhân nhạy cảm</em>.</li>
+      <li><strong>Khởi tạo Siêu trợ lý (~10 phút):</strong>
+        <ul>
+          <li>Mở tài khoản Claude cá nhân, bấm <strong>Create Project</strong> và đặt tên là: <code>Siêu trợ lý tạo quy trình</code>.</li>
+          <li>Mở LMS Hub, vào mục <em>Ebook Chương 3</em> hoặc tải file <code>Prompt_SieuTroLy_v0810.md</code> do giảng viên cung cấp.</li>
+          <li>Copy toàn bộ nội dung prompt này dán vào ô <strong>Custom Instructions</strong> của Project. Bấm Save.</li>
+          <li><em>Mục tiêu:</em> Sáng mai nhóm chỉ việc mở Project Siêu trợ lý này lên, trả lời 8 câu hỏi phỏng vấn để tự động sinh mã quy trình!</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <!-- PHẦN VII: CÂU HỎI ÔN TẬP CỦNG CỐ CUỐI BUỔI -->
+  <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi</h2>
+  <div class="card-box">
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 1:</strong> Điểm khác biệt mấu chốt giữa việc chat trong một hội thoại thông thường và làm việc trong Claude Project là gì?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Claude Project cho phép AI tự động gửi email mà không cần người duyệt.</li>
+        <li>B. Custom Instructions và Knowledge Base trong Project được lưu giữ cố định bên ngoài hội thoại, không bị trượt mất khỏi Context Window khi mở hội thoại mới. (Đúng)</li>
+        <li>C. Claude Project hoạt động được ngay cả khi mất kết nối mạng Internet.</li>
+        <li>D. Claude Project tự động sửa mọi lỗi chính tả mà không cần cài đặt.</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:14px;">
+      <p><strong>Câu 2:</strong> Trong thiết kế quy trình AI, cơ chế "GATE" (Cổng xác nhận) có nhiệm vụ gì?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Tự động mã hóa mật khẩu tài khoản người dùng.</li>
+        <li>B. Bắt AI phải dừng lại sau khi hoàn thành một bước quan trọng và xin lệnh xác nhận của con người trước khi chuyển bước. (Đúng)</li>
+        <li>C. Tự động bỏ qua các bước phức tạp để hoàn thành nhanh nhất.</li>
+        <li>D. Chặn không cho người dùng khác truy cập vào dự án.</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>Câu 3:</strong> Khi gặp tình huống thiếu dữ liệu đầu vào bắt buộc, một quy trình AI tuân thủ nguyên tắc FALLBACK sẽ hành xử như thế nào?</p>
+      <ul style="list-style-type: none; padding-left: 10px;">
+        <li>A. Tự động suy đoán một số liệu bất kỳ nghe có vẻ hợp lý và tiếp tục chạy.</li>
+        <li>B. Dừng lại, thông báo rõ dữ liệu nào đang thiếu và đặt câu hỏi yêu cầu người dùng bổ sung trước khi tiếp tục. (Đúng)</li>
+        <li>C. Xóa toàn bộ dự án để đảm bảo an toàn thông tin.</li>
+        <li>D. Báo lỗi hệ thống và đăng xuất tài khoản.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHẦN VIII: LƯU Ý VÀ TÌNH HUỐNG DỰ PHÒNG CHO GIẢNG VIÊN -->
+  <h2 class="section-title">VIII. Lưu ý và Tình huống dự phòng cho Giảng viên</h2>
+  <div class="card-box">
+    <ul>
+      <li><strong>Tắt tính năng Memory trước khi demo Kịch bản 4:</strong> Nếu tài khoản Claude của GV đang bật Memory, Claude có thể nhớ thông tin của bài DA-01 sang phiên DA-03. Cần vào Settings > Capabilities > tắt Memory trước buổi dạy để minh họa đúng tính năng phân tách hội thoại của Project.</li>
+      <li><strong>Chuẩn bị 3 tab Conversation mở sẵn:</strong> Tránh tình trạng mạng chập chờn khi đang đứng trên bục giảng, GV mở sẵn 3 tab trình duyệt đã chạy sẵn kết quả của Kịch bản 1, 2, 3 để nếu gặp sự cố có thể chuyển tab thuyết trình ngay.</li>
+      <li><strong>Hỗ trợ nhóm vẽ sơ đồ A3:</strong> Học viên khối kỹ thuật thường vẽ sơ đồ quá nhiều bước chi tiết (10–12 bước), trong khi học viên khối hành chính lại gộp hết vào 1 bước. GV cần hướng dẫn gom nhóm thành đúng 3–5 bước chính mang tính quản trị.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

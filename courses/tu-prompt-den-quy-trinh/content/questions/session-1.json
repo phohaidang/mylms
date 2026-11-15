@@ -1,0 +1,138 @@
+{
+  "session": 1,
+  "chapter": "Ch.1",
+  "title": "AI tạo sinh và kỹ thuật prompt cơ bản",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "tpq-q001",
+      "type": "mc",
+      "question": "Mô hình ngôn ngữ lớn (LLM) tạo câu trả lời chủ yếu bằng cách nào?",
+      "options": [
+        "A. Tra cứu câu trả lời đúng trong một cơ sở dữ liệu sự thật",
+        "B. Dự đoán từng từ tiếp theo có xác suất cao dựa trên ngữ cảnh đã có",
+        "C. Sao chép đoạn văn phù hợp nhất từ internet theo thời gian thực",
+        "D. Suy luận như con người rồi diễn đạt kết luận bằng lời"
+      ],
+      "correct": "B",
+      "explanation": "LLM không tra cứu sự thật mà dự đoán từng từ tiếp theo có xác suất cao dựa trên ngữ cảnh đã có. Đây là gốc của cả khả năng viết trôi chảy lẫn hiện tượng bịa."
+    },
+    {
+      "id": "tpq-q002",
+      "type": "mc",
+      "question": "Hallucination của AI là hiện tượng nào?",
+      "options": [
+        "A. AI bị ngắt giữa chừng và trả lời dở dang khi đường truyền không ổn định",
+        "B. AI từ chối trả lời các câu hỏi nhạy cảm dù người dùng đã yêu cầu rõ ràng",
+        "C. AI tạo ra thông tin sai hoặc không tồn tại nhưng trình bày trôi chảy và tự tin",
+        "D. AI trả lời dài hơn nhiều so với yêu cầu và lặp lại ý đã nói ở các đoạn trước"
+      ],
+      "correct": "C",
+      "explanation": "Hallucination là AI tạo thông tin sai hoặc không tồn tại nhưng trình bày trôi chảy, tự tin, nên khó nhận ra bằng cảm giác. Cần đối chiếu với nguồn gốc."
+    },
+    {
+      "id": "tpq-q003",
+      "type": "mc",
+      "question": "Trong khung CRISP, chữ P là viết tắt của thành phần nào?",
+      "options": [
+        "A. Preview: hình dung kết quả đầu ra mong muốn",
+        "B. Process: quy trình thực hiện từng bước",
+        "C. Persona: tính cách riêng của AI",
+        "D. Privacy: mức bảo mật của dữ liệu"
+      ],
+      "correct": "A",
+      "explanation": "Trong CRISP, P là Preview: hình dung kết quả mong muốn (định dạng, độ dài, cấu trúc) để AI biết đích đến. Năm thành phần là Context, Role, Instruction, Specifics, Preview."
+    },
+    {
+      "id": "tpq-q004",
+      "type": "mc",
+      "question": "Trong bản đồ Data → Context → Knowledge → Workflow, tầng nào là quy tắc áp dụng lại được khi cùng một dữ liệu và ngữ cảnh lặp lại nhiều lần?",
+      "options": [
+        "A. Data",
+        "B. Context",
+        "C. Workflow",
+        "D. Knowledge"
+      ],
+      "correct": "D",
+      "explanation": "Knowledge là tầng quy tắc áp dụng lại được, hình thành khi cùng loại dữ liệu và ngữ cảnh lặp lại. Data là dữ liệu thô, Context gắn ý nghĩa, Workflow đóng gói thành quy trình chạy lặp lại."
+    },
+    {
+      "id": "tpq-q006",
+      "type": "mc",
+      "question": "Điểm khác cốt lõi giữa AI tạo sinh và công cụ tìm kiếm truyền thống là gì?",
+      "options": [
+        "A. AI luôn cập nhật thông tin mới hơn và đầy đủ hơn công cụ tìm kiếm",
+        "B. Công cụ tìm kiếm tạo ra nội dung mới, còn AI chỉ liệt kê các liên kết có sẵn",
+        "C. AI tạo nội dung mới từ xác suất ngôn ngữ, còn công cụ tìm kiếm dẫn tới nguồn có sẵn",
+        "D. Hai loại chỉ khác nhau ở giao diện, còn cơ chế bên trong hoàn toàn giống nhau"
+      ],
+      "correct": "C",
+      "explanation": "AI tạo sinh tạo nội dung mới từ xác suất ngôn ngữ; công cụ tìm kiếm dẫn tới nguồn có sẵn để bạn mở ra kiểm tra. Vì vậy nội dung AI tạo cần được kiểm chứng."
+    },
+    {
+      "id": "tpq-q007",
+      "type": "mc",
+      "question": "Vì sao AI có thể bịa ra một số hiệu quy chuẩn nghe rất thuyết phục?",
+      "options": [
+        "A. Vì cơ chế đoán chữ ưu tiên câu hợp lý về ngôn ngữ, không có bước kiểm tra sự thật",
+        "B. Vì AI cố ý đánh lừa người dùng khi không biết câu trả lời chính xác",
+        "C. Vì dữ liệu huấn luyện của AI chỉ gồm các văn bản sai hoặc đã lỗi thời",
+        "D. Vì AI chỉ bịa thông tin khi người dùng đặt câu hỏi bằng tiếng Việt"
+      ],
+      "correct": "A",
+      "explanation": "Cơ chế đoán chữ ưu tiên câu hợp lý về ngôn ngữ và không có bước kiểm tra sự thật, nên một số hiệu nghe hợp lý vẫn có thể được tạo ra dù không tồn tại."
+    },
+    {
+      "id": "tpq-q008",
+      "type": "mc",
+      "question": "Prompt \"Viết email xin gia hạn báo cáo\" dễ cho kết quả chung chung vì sao?",
+      "options": [
+        "A. Vì prompt này đã đủ thông tin, kết quả chung chung chỉ do AI chạy ngẫu nhiên",
+        "B. Vì prompt này chỉ thiếu thành phần Role, còn các thành phần khác đã đầy đủ",
+        "C. Vì prompt này chỉ thiếu thành phần Preview nên AI không biết định dạng",
+        "D. Vì nó thiếu bối cảnh (ai, vì sao, hạn nào) và ràng buộc cụ thể (độ dài, giọng văn)"
+      ],
+      "correct": "D",
+      "explanation": "Prompt quá ngắn thiếu bối cảnh (ai, vì sao, hạn nào) và ràng buộc cụ thể (độ dài, giọng văn), nên AI phải đoán và trả lời chung chung. Khung CRISP bổ sung các thành phần này."
+    },
+    {
+      "id": "tpq-q009",
+      "type": "mc",
+      "question": "Sau khi có bản nháp, bạn muốn AI ngắn hơn và bỏ lời xin lỗi thừa. Cách làm đúng bản chất kỹ thuật iterative là gì?",
+      "options": [
+        "A. Ở lượt kế tiếp, nêu đúng một hai điểm cần sửa và phần cần giữ nguyên",
+        "B. Xóa cuộc trò chuyện và viết lại prompt hoàn toàn mới",
+        "C. Chuyển sang một công cụ AI khác để may mắn hơn",
+        "D. Chấp nhận bản nháp vì AI không thể chỉnh sửa kết quả của chính nó"
+      ],
+      "correct": "A",
+      "explanation": "Iterative là sửa dần: ở lượt kế tiếp chỉ nêu một hai điểm cần sửa và phần cần giữ nguyên, thay vì viết lại từ đầu hoặc đổi nhiều thứ cùng lúc."
+    },
+    {
+      "id": "tpq-q011",
+      "type": "mc",
+      "question": "Bạn cần AI soạn thông báo nhắc hạn nộp bài. Prompt nào gần với chuẩn CRISP nhất?",
+      "options": [
+        "A. Tôi là giảng viên một lớp 40 sinh viên. Bạn là trợ lý soạn thông báo lớp học. Hãy viết thông báo nhắc nộp bài thật hay, thật chuyên nghiệp, dùng giọng văn nghiêm túc và trình bày đẹp, đầy đủ các ý cần thiết.",
+        "B. Bạn là trợ lý hành chính giàu kinh nghiệm. Hãy viết một thông báo nhắc nộp bài cho lớp, ngắn gọn, lịch sự, dễ hiểu, gửi trước hạn để mọi người kịp thực hiện và không ai bị bỏ sót thông tin.",
+        "C. Tôi là giảng viên một lớp 40 sinh viên, hạn nộp bài tập lớn là 20h thứ Sáu tuần này. Bạn là trợ lý soạn thông báo lớp học. Hãy viết thông báo nhắc nộp bài, tối đa 80 từ, giọng thân thiện nhưng rõ hạn, không đe dọa trừ điểm; gồm một tiêu đề và ba dòng nội dung.",
+        "D. Hãy viết thật hay, thật chuyên nghiệp một thông báo nhắc nộp bài giúp tôi nhé, nhớ dùng ngôn ngữ trang trọng, đầy đủ và thuyết phục để sinh viên thấy rõ tầm quan trọng của việc nộp bài đúng hạn."
+      ],
+      "correct": "C",
+      "explanation": "Prompt này có đủ CRISP: bối cảnh (giảng viên, lớp 40 sinh viên, hạn 20h thứ Sáu), vai trò (trợ lý soạn thông báo), chỉ dẫn, ràng buộc cụ thể (80 từ, giọng, không đe dọa) và hình dung đầu ra (tiêu đề cùng ba dòng)."
+    },
+    {
+      "id": "tpq-q012",
+      "type": "mc",
+      "question": "AI trả lời kèm một số hiệu thông tư rất cụ thể mà bạn chưa từng nghe tới. Việc đúng cần làm đầu tiên là gì?",
+      "options": [
+        "A. Đưa luôn vào văn bản vì AI đã nêu rất cụ thể",
+        "B. Kiểm tra số hiệu đó tại nguồn chính thức trước khi dùng",
+        "C. Hỏi lại AI \"bạn có chắc không\" và tin nếu nó khẳng định",
+        "D. Giữ lại phần diễn giải, chỉ bỏ số hiệu rồi dùng như thường"
+      ],
+      "correct": "B",
+      "explanation": "Số hiệu bạn chưa từng nghe có thể là hallucination. Việc đầu tiên là kiểm tra tại nguồn chính thức trước khi dùng."
+    }
+  ]
+}

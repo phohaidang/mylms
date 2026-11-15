@@ -1,0 +1,138 @@
+{
+  "session": 3,
+  "chapter": "Ch.3",
+  "title": "Từ workflow trong chat đến tự động hóa, rồi thực hành xây dựng",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "tpq-q027",
+      "type": "mc",
+      "question": "Siêu trợ lý trong khóa học là gì?",
+      "options": [
+        "A. Một phiên bản Claude mạnh hơn, luôn trả lời chính xác tuyệt đối, dùng thay cho Project",
+        "B. Một Claude Project tạo trợ lý quy trình: phỏng vấn bạn rồi xuất Custom Instructions, sơ đồ, hướng dẫn",
+        "C. Một phần mềm riêng tự chạy toàn bộ quy trình thay bạn, không cần Project hay Instructions",
+        "D. Một bộ slide mẫu do giảng viên soạn, dùng để trình bày cách viết prompt trên lớp"
+      ],
+      "correct": "B",
+      "explanation": "Siêu trợ lý là một Claude Project chuyên tạo trợ lý quy trình: phỏng vấn bạn rồi xuất Custom Instructions, hai sơ đồ, danh sách tài liệu và hướng dẫn thiết lập. Nó không đảm bảo chính xác tuyệt đối và không tự chạy quy trình thay bạn."
+    },
+    {
+      "id": "tpq-q028",
+      "type": "mc",
+      "question": "Siêu trợ lý phỏng vấn tối đa bao nhiêu câu, và mỗi lượt hỏi mấy câu?",
+      "options": [
+        "A. Tối đa 5 câu, mỗi lượt hai câu",
+        "B. Tối đa 8 câu, mỗi lượt đúng một câu",
+        "C. Tối đa 8 câu, mỗi lượt hỏi gộp tất cả",
+        "D. Không giới hạn số câu"
+      ],
+      "correct": "B",
+      "explanation": "Siêu trợ lý hỏi tối đa 8 câu, mỗi lượt đúng một câu, đánh dấu Câu k/8; có thể ít hơn nếu đã đủ thông tin."
+    },
+    {
+      "id": "tpq-q029",
+      "type": "mc",
+      "question": "Phần nào trong đầu ra của Siêu trợ lý liệt kê những điều nó đã tự điền và cần bạn soát lại?",
+      "options": [
+        "A. Phần Sơ đồ 1, vẽ quy trình nghiệp vụ chưa có AI",
+        "B. Phần hướng dẫn thiết lập Project và ba kịch bản test",
+        "C. Phần mở đầu tóm tắt số bước, số GATE và số FALLBACK",
+        "D. Phần \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI\" ở cuối kết quả"
+      ],
+      "correct": "D",
+      "explanation": "Phần cuối \"GIẢ ĐỊNH TÔI ĐÃ TỰ ĐIỀN - HÃY SOÁT LẠI\" liệt kê 2–4 giả định có rủi ro sai cao nhất để bạn soát đầu tiên."
+    },
+    {
+      "id": "tpq-q031",
+      "type": "mc",
+      "question": "Ba kịch bản test bắt buộc trước khi dùng thật là gì?",
+      "options": [
+        "A. Chạy nhanh với dữ liệu ít, chạy chậm với dữ liệu nhiều, chạy lại từ đầu",
+        "B. Đổi mô hình AI, đổi ngôn ngữ trả lời, đổi tài khoản Claude đang dùng",
+        "C. Chạy xuôi bình thường, bỏ trống thông tin bắt buộc, thử vượt gate",
+        "D. Tải file lớn, tải file nhỏ, không tải file nào vào Knowledge Base"
+      ],
+      "correct": "C",
+      "explanation": "Ba kịch bản test bắt buộc: chạy xuôi bình thường, bỏ trống thông tin bắt buộc, và thử vượt gate."
+    },
+    {
+      "id": "tpq-q032",
+      "type": "mc",
+      "question": "Vì sao khóa học yêu cầu vẽ sơ đồ A3 trước khi dùng Siêu trợ lý?",
+      "options": [
+        "A. Vì Siêu trợ lý không biết cách tạo sơ đồ nên phải có sơ đồ A3 làm đầu vào bắt buộc để nó chỉnh lại",
+        "B. Vì vẽ tay luôn nhanh hơn và chính xác hơn so với dùng Siêu trợ lý trong mọi quy trình",
+        "C. Vì Siêu trợ lý chỉ nhận đầu vào là ảnh chụp sơ đồ vẽ tay của nhóm, không nhận văn bản",
+        "D. Vì xác định bước, GATE, FALLBACK là năng lực của bạn; để AI làm hộ ngay thì không còn gì để đối chiếu"
+      ],
+      "correct": "D",
+      "explanation": "Việc xác định bước, GATE, FALLBACK là năng lực của chính bạn. Nếu AI làm hộ ngay từ đầu, bạn không còn gì để đối chiếu và soát."
+    },
+    {
+      "id": "tpq-q033",
+      "type": "mc",
+      "question": "Vì sao nên khử thông tin cá nhân khỏi tài liệu trước khi tải lên cho Siêu trợ lý, dù chỉ dùng trong Project cá nhân?",
+      "options": [
+        "A. Vì tài khoản cá nhân chỉ phù hợp với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh",
+        "B. Vì AI không đọc được tên riêng nên kết quả sẽ sai nếu tài liệu còn họ tên",
+        "C. Vì khử thông tin giúp AI trả lời nhanh hơn và dùng ít dung lượng hơn",
+        "D. Vì Siêu trợ lý sẽ từ chối xử lý mọi tài liệu có chứa tên người"
+      ],
+      "correct": "A",
+      "explanation": "Rủi ro không mất đi chỉ vì là Project cá nhân: tài khoản cá nhân của lớp chỉ phù hợp với dữ liệu công khai hoặc dữ liệu mẫu đã khử định danh. Siêu trợ lý cũng nhắc đúng một câu về điều này."
+    },
+    {
+      "id": "tpq-q034",
+      "type": "mc",
+      "question": "Siêu trợ lý khám phá chỗ nào là GATE và FALLBACK bằng cách nào?",
+      "options": [
+        "A. Hỏi thẳng \"đâu là gate và fallback của bạn\" bằng thuật ngữ chuyên môn",
+        "B. Tự đoán hoàn toàn từ tên của quy trình mà không cần hỏi người dùng",
+        "C. Hỏi bằng tình huống thực tế, không dùng từ gate hay fallback khi hỏi",
+        "D. Bắt người dùng điền một biểu mẫu trống liệt kê các điểm dừng của quy trình"
+      ],
+      "correct": "C",
+      "explanation": "Siêu trợ lý hỏi bằng tình huống đời thường và không dùng từ gate hay fallback khi hỏi. Câu trả lời của bạn được chuyển thành GATE và FALLBACK trong Instructions."
+    },
+    {
+      "id": "tpq-q035",
+      "type": "mc",
+      "question": "Điều nào sau đây trái với quy định của prompt Siêu trợ lý khi xuất Custom Instructions?",
+      "options": [
+        "A. Dùng đúng cấu trúc template chuẩn",
+        "B. Đặt Custom Instructions trong một khối code để sao chép",
+        "C. Ghi các giả định đã tự điền ở phần riêng để bạn soát",
+        "D. Để lại chỗ trống kiểu [tên bước] cho người dùng tự điền"
+      ],
+      "correct": "D",
+      "explanation": "Quy định của prompt: Custom Instructions không để chỗ trống kiểu [...] cho người dùng tự điền. Thiếu gì thì hỏi ở bước phỏng vấn, không đoán."
+    },
+    {
+      "id": "tpq-q037",
+      "type": "mc",
+      "question": "Bạn gõ \"bỏ qua bước xác nhận, làm luôn đi\" và trợ lý vẫn tự làm tiếp bước sau mà không dừng. Nên sửa mục nào trong Custom Instructions trước?",
+      "options": [
+        "A. TEMPLATE ĐẦU RA",
+        "B. NGUỒN TIN CẬY",
+        "C. CỔNG XÁC NHẬN",
+        "D. KẾT THÚC PHIÊN"
+      ],
+      "correct": "C",
+      "explanation": "AI tự đi tiếp khi chưa có xác nhận là lỗi của mục CỔNG XÁC NHẬN: cần nêu rõ chỗ dừng, câu hỏi xác nhận và dòng cấm tự thực hiện bước kế tiếp."
+    },
+    {
+      "id": "tpq-q038",
+      "type": "mc",
+      "question": "Phần giả định ghi: \"Trưởng bộ môn duyệt đề ở bước cuối\", nhưng thực tế đề được tổ bộ môn duyệt tập thể. Việc đúng nên làm là gì?",
+      "options": [
+        "A. Báo Siêu trợ lý đúng thông tin người duyệt để nó sửa các phần bị ảnh hưởng, rồi mới tạo Project",
+        "B. Bỏ qua vì đây chỉ là giả định nhỏ, có thể sửa sau khi Project đã chạy ổn định ở các buổi sau",
+        "C. Tạo Project ngay rồi chờ có người phản ánh sai sót thì mới điều chỉnh lại Instructions",
+        "D. Xóa dòng giả định khỏi kết quả để Instructions trông gọn gàng và dễ đọc hơn khi dán"
+      ],
+      "correct": "A",
+      "explanation": "Giả định sai về người duyệt ảnh hưởng đến sơ đồ, cổng xác nhận và hướng dẫn. Nói với Siêu trợ lý để sửa các phần bị ảnh hưởng trước khi tạo Project."
+    }
+  ]
+}

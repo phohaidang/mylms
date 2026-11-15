@@ -1,0 +1,1475 @@
+{
+  "chapter": 5,
+  "title": "Lập trình web với PHP và MySQL",
+  "sessions": [
+    7,
+    8,
+    9
+  ],
+  "scqa": {
+    "situation": "Bạn đã biết PHP (chương 3) và đã có CSDL MySQL chứa dữ liệu (chương 4). Hai thứ này đang tách rời nhau.",
+    "complication": "Người dùng nhập dữ liệu trên trình duyệt, còn dữ liệu lại nằm trong MySQL. Cần cầu nối an toàn giữa form web, PHP và CSDL; đồng thời phải \"nhớ\" người dùng đã đăng nhập khi họ chuyển từ trang này sang trang khác (HTTP vốn không nhớ trạng thái).",
+    "question": "Làm sao để PHP đọc/ghi MySQL, nhận dữ liệu từ form và duy trì trạng thái đăng nhập?",
+    "answer": "Dùng thư viện <strong>MySQLi</strong> để kết nối và truy vấn (kèm prepared statement để an toàn), dùng <code>$_GET</code>/<code>$_POST</code> để nhận dữ liệu từ form, dùng <strong>session</strong> (lưu ở server) và <strong>cookie</strong> (lưu ở trình duyệt) để duy trì trạng thái."
+  },
+  "concepts": [
+    {
+      "id": "c5-thu-vien-mysqli",
+      "session": 9,
+      "term": "Thư viện MySQLi",
+      "definition": "MySQLi có từ PHP 5, cải thiện hiệu suất và bảo mật so với thư viện cũ; hỗ trợ <strong>prepared statements</strong>, truy vấn không đồng bộ và nhiều kết nối đến các máy chủ khác nhau.",
+      "key_points": [
+        "<strong>Kết nối PHP với MySQL</strong>: Kết nối PHP - MySQL là bước nền tảng của mọi trang web động (CMS, cửa hàng trực tuyến, ứng dụng quản lý). Thư viện sử dụng: <strong>MySQLi</strong> (MySQL Improved).",
+        "Hỗ trợ cả hai phong cách: <strong>hướng thủ tục</strong> (hàm như <code>mysqli_connect()</code>) và <strong>hướng đối tượng</strong> (<code>new mysqli(...)</code>).",
+        "Giáo trình dùng phong cách <strong>hướng đối tượng</strong> vì mã dễ đọc, dễ bảo trì hơn."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-ket-noi-bang-mysqli-huong-doi-tuong"
+      ]
+    },
+    {
+      "id": "c5-ket-noi-bang-mysqli-huong-doi-tuong",
+      "session": 9,
+      "term": "Kết nối bằng MySQLi hướng đối tượng",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>Kết nối bằng MySQLi hướng đối tượng</strong>.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// Ví dụ 5.1. Thông tin kết nối\n$servername = \"localhost\"; // Địa chỉ máy chủ\n$username = \"root\";        // Tên đăng nhập\n$password = \"\";            // Mật khẩu (mặc định để trống)\n$dbname = \"bookdb\";        // Tên CSDL\n\n// Tạo kết nối\n$conn = new mysqli($servername, $username, $password, $dbname);\n// Kiểm tra lỗi kết nối\nif ($conn-&gt;connect_error) {\n    die(\"Kết nối thất bại: \" . $conn-&gt;connect_error);\n}\necho \"Kết nối thành công\";\n$conn-&gt;set_charset(\"utf8\"); // hiển thị đúng tiếng Việt\n// ... thao tác dữ liệu tại đây ...\n$conn-&gt;close(); // đóng kết nối\n?&gt;</code></pre>",
+        "Tài khoản dùng là tài khoản mặc định <code>root</code>, mật khẩu trống (giống phpMyAdmin).",
+        "<code>die()</code> in thông báo và <strong>dừng chương trình</strong>, các lệnh phía sau không chạy.",
+        "<code>set_charset(\"utf8\")</code> đặt bộ mã để lưu/hiển thị tiếng Việt; <code>close()</code> đóng kết nối sau khi xong."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-thu-vien-mysqli",
+        "c5-ket-noi-bang-mysqli-huong-thu-tuc"
+      ]
+    },
+    {
+      "id": "c5-ket-noi-bang-mysqli-huong-thu-tuc",
+      "session": 9,
+      "term": "Kết nối bằng MySQLi hướng thủ tục",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>Kết nối bằng MySQLi hướng thủ tục</strong>.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// Ví dụ 5.2\n$conn = mysqli_connect($servername, $username, $password, $dbname);\nif (!$conn) {\n    die(\"Kết nối thất bại: \" . mysqli_connect_error());\n}\necho \"Kết nối thành công\";\nmysqli_set_charset($conn, 'utf8');\n// ... thao tác dữ liệu ...\nmysqli_close($conn);\n?&gt;</code></pre>",
+        "Các bước giống Ví dụ 5.1, chỉ khác: dùng <strong>hàm</strong> dựng sẵn (<code>mysqli_connect</code>, <code>mysqli_connect_error</code>...) thay vì tạo đối tượng và gọi phương thức."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-ket-noi-bang-mysqli-huong-doi-tuong",
+        "c5-tach-ma-ket-noi-ra-tap-tin-rieng"
+      ]
+    },
+    {
+      "id": "c5-tach-ma-ket-noi-ra-tap-tin-rieng",
+      "session": 9,
+      "term": "Tách mã kết nối ra tập tin riêng",
+      "definition": "Đoạn mã kết nối dùng lại nhiều lần, nên tách thành tập tin <code>config.php</code> rồi chèn vào bằng <code>require_once</code>.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// Ví dụ 5.3 - config.php (không có lệnh close)\n$servername = \"localhost\";\n$username = \"root\";\n$password = \"\";\n$dbname = \"bookdb\";\n$conn = new mysqli($servername, $username, $password, $dbname);\nif ($conn-&gt;connect_error) {\n    die(\"Kết nối thất bại: \" . $conn-&gt;connect_error);\n}\n$conn-&gt;set_charset(\"utf8\");\n?&gt;</code></pre>",
+        "<pre><code>&lt;?php\n// process.php\nrequire_once \"config.php\";\n// ... các lệnh thao tác dữ liệu ...\n$conn-&gt;close();\n?&gt;</code></pre>",
+        "Khi đổi mật khẩu hoặc tên CSDL, bạn chỉ sửa <strong>một nơi</strong> là <code>config.php</code>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-ket-noi-bang-mysqli-huong-thu-tuc",
+        "c5-include-include-once-require-require-onc"
+      ]
+    },
+    {
+      "id": "c5-include-include-once-require-require-onc",
+      "session": 9,
+      "term": "include, include_once, require, require_once",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>include, include_once, require, require_once</strong>.",
+      "key_points": [
+        "<table><thead><tr><th>Lệnh</th><th>Chèn nhiều lần</th><th>Khi tập tin lỗi/không tồn tại</th></tr></thead><tbody><tr><td><code>require</code></td><td>Mỗi lệnh đều chèn</td><td>Dừng chương trình (lỗi nghiêm trọng)</td></tr><tr><td><code>require_once</code></td><td>Chỉ chèn một lần, các lệnh sau bị bỏ qua</td><td>Dừng chương trình</td></tr><tr><td><code>include</code></td><td>Mỗi lệnh đều chèn</td><td>Chỉ cảnh báo, chương trình vẫn chạy tiếp</td></tr><tr><td><code>include_once</code></td><td>Chỉ chèn một lần</td><td>Chỉ cảnh báo, chương trình vẫn chạy tiếp</td></tr></tbody></table>",
+        "Với tập tin bắt buộc như <code>config.php</code> (thiếu thì ứng dụng vô nghĩa), nên dùng <strong><code>require_once</code></strong>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-tach-ma-ket-noi-ra-tap-tin-rieng",
+        "c5-quy-trinh-thao-tac-du-lieu-voi-php"
+      ]
+    },
+    {
+      "id": "c5-quy-trinh-thao-tac-du-lieu-voi-php",
+      "session": 9,
+      "term": "Quy trình thao tác dữ liệu với PHP",
+      "definition": "1. Tạo <code>config.php</code> chứa mã kết nối.",
+      "key_points": [
+        "2. Tạo tập tin xử lý, chèn <code>config.php</code> bằng <code>require_once</code>.",
+        "3. Viết câu lệnh SQL; thực thi bằng phương thức MySQLi; lấy kết quả; hiển thị.",
+        "4. Đóng kết nối bằng <code>$conn-&gt;close()</code>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-include-include-once-require-require-onc",
+        "c5-truy-van-va-hien-thi-du-lieu-select"
+      ]
+    },
+    {
+      "id": "c5-truy-van-va-hien-thi-du-lieu-select",
+      "session": 9,
+      "term": "Truy vấn và hiển thị dữ liệu (SELECT)",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>Truy vấn và hiển thị dữ liệu (SELECT)</strong>.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// Ví dụ 5.4. Lấy các cuốn sách có bìa mềm\nrequire_once \"config.php\";\n$sql = \"SELECT tieu_de, tac_gia\n        FROM sach\n        WHERE hinh_thuc_bia = 'Bìa Mềm'\";\n$result = $conn-&gt;query($sql);\nif ($result) {\n    // Lấy tất cả dòng dưới dạng mảng kết hợp\n    $book = $result-&gt;fetch_all(MYSQLI_ASSOC);\n    foreach ($book as $row) {\n        echo \"Tên sách: \" . $row[\"tieu_de\"] .\n             \" - Tác giả: \" . $row[\"tac_gia\"] . \"&lt;br&gt;\";\n    }\n} else {\n    echo \"Lỗi: \" . $conn-&gt;error;\n}\n$conn-&gt;close();\n?&gt;</code></pre>",
+        "<code>$conn-&gt;query($sql)</code> thực thi lệnh SQL, trả về <code>$result</code> (hoặc <code>false</code> nếu lỗi).",
+        "<code>fetch_all(MYSQLI_ASSOC)</code> chuyển toàn bộ kết quả sang mảng; <code>MYSQLI_ASSOC</code> nghĩa là mỗi dòng là <strong>mảng kết hợp</strong> với khóa là <strong>tên cột</strong>.",
+        "Mỗi <code>$row</code> có dạng <code>[\"tieu_de\" =&gt; \"...\", \"tac_gia\" =&gt; \"...\"]</code> nên truy cập bằng <code>$row[\"tieu_de\"]</code>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-quy-trinh-thao-tac-du-lieu-voi-php",
+        "c5-xu-ly-bieu-mau-web"
+      ]
+    },
+    {
+      "id": "c5-xu-ly-bieu-mau-web",
+      "session": 7,
+      "term": "Xử lý biểu mẫu web",
+      "definition": "Biểu mẫu web (web form) cho phép người dùng nhập và gửi dữ liệu đến máy chủ: đăng ký, đăng nhập, thêm/sửa/xóa dữ liệu trong trang quản trị... Biểu mẫu được tạo bằng cặp thẻ <code>&lt;form&gt;</code>.",
+      "key_points": [
+        "<pre><code>&lt;!-- Ví dụ 5.5 --&gt;\n&lt;form action=\"file_name.php\" method=\"post\"&gt;\n    Họ tên: &lt;input type=\"text\" name=\"ho_ten\"&gt;&lt;br&gt;\n    Năm sinh: &lt;input type=\"text\" name=\"nam_sinh\"&gt;&lt;br&gt;\n    &lt;input type=\"submit\" value=\"Gửi\"&gt;\n&lt;/form&gt;</code></pre>",
+        "<code>action</code>: tập tin trên server sẽ xử lý dữ liệu. <code>method</code>: phương thức gửi (<code>get</code> hoặc <code>post</code>).",
+        "Thuộc tính <strong>name</strong> của mỗi ô nhập là <strong>khóa</strong> để PHP lấy dữ liệu."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-truy-van-va-hien-thi-du-lieu-select",
+        "c5-cac-thanh-phan-thuong-dung-trong-bieu-ma"
+      ]
+    },
+    {
+      "id": "c5-cac-thanh-phan-thuong-dung-trong-bieu-ma",
+      "session": 7,
+      "term": "Các thành phần thường dùng trong biểu mẫu",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>Các thành phần thường dùng trong biểu mẫu</strong>.",
+      "key_points": [
+        "<table><thead><tr><th>Thẻ</th><th>Công dụng</th></tr></thead><tbody><tr><td><code>input type=\"text\"</code></td><td>Ô nhập văn bản</td></tr><tr><td><code>input type=\"number\"</code></td><td>Ô nhập số nguyên/số thực</td></tr><tr><td><code>input type=\"checkbox\"</code></td><td>Chọn một hoặc nhiều lựa chọn (đặt <code>name=\"language[]\"</code> để nhận mảng)</td></tr><tr><td><code>input type=\"radio\"</code></td><td>Chọn đúng một lựa chọn trong nhóm (các radio cùng <code>name</code>)</td></tr><tr><td><code>input type=\"hidden\"</code></td><td>Dữ liệu ẩn, cần cho xử lý nhưng không hiển thị (ví dụ id bản ghi)</td></tr><tr><td><code>input type=\"password\"</code></td><td>Ô nhập mật khẩu (ký tự bị che)</td></tr><tr><td><code>input type=\"submit\"</code></td><td>Nút gửi dữ liệu</td></tr><tr><td><code>input type=\"file\"</code></td><td>Chọn tập tin tải lên</td></tr><tr><td><code>textarea</code></td><td>Ô nhập văn bản dài, nhiều dòng</td></tr><tr><td><code>select</code> + <code>option</code></td><td>Danh sách chọn; giá trị <code>value</code> của option được chọn sẽ được gửi đi</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-xu-ly-bieu-mau-web",
+        "c5-phuong-thuc-get-va-post"
+      ]
+    },
+    {
+      "id": "c5-phuong-thuc-get-va-post",
+      "session": 7,
+      "term": "Phương thức GET và POST",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>Phương thức GET và POST</strong>.",
+      "key_points": [
+        "<table><thead><tr><th>Tiêu chí</th><th>POST</th><th>GET</th></tr></thead><tbody><tr><td>Vị trí dữ liệu</td><td>Trong phần thân (body) của yêu cầu HTTP, không hiện trên URL</td><td>Gắn vào URL dạng chuỗi truy vấn (query string), hiện trên thanh địa chỉ</td></tr><tr><td>Bảo mật</td><td>Tốt hơn, phù hợp mật khẩu, thông tin cá nhân</td><td>Kém, URL có thể bị lưu lại hoặc bị công cụ thu thập (crawler) lấy</td></tr><tr><td>Độ dài dữ liệu</td><td>Không giới hạn đáng kể; gửi được tập tin</td><td>Bị giới hạn độ dài URL</td></tr><tr><td>Mục đích</td><td>Thao tác <strong>thay đổi</strong> trạng thái server: thêm, sửa, xóa</td><td>Chỉ để <strong>đọc/tìm kiếm</strong> dữ liệu</td></tr><tr><td>Biến PHP</td><td><code>$_POST</code></td><td><code>$_GET</code></td></tr></tbody></table>",
+        "<code>$_POST</code> và <code>$_GET</code> đều là <strong>biến toàn cục kiểu mảng kết hợp</strong>; khóa là giá trị thuộc tính <code>name</code> của ô nhập."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-cac-thanh-phan-thuong-dung-trong-bieu-ma",
+        "c5-gui-du-lieu-bang-post-vi-du-tinh-tong-ha"
+      ]
+    },
+    {
+      "id": "c5-gui-du-lieu-bang-post-vi-du-tinh-tong-ha",
+      "session": 7,
+      "term": "Gửi dữ liệu bằng POST - ví dụ tính tổng hai số",
+      "definition": "Bước 1: tạo <code>tinh_tong.php</code> chứa biểu mẫu (mã HTML thuần, không đặt trong thẻ PHP).",
+      "key_points": [
+        "<pre><code>&lt;form action=\"process.php\" method=\"post\"&gt;\n    Số thứ nhất: &lt;input type=\"number\" name=\"so_thu_nhat\"&gt;&lt;br&gt;\n    Số thứ hai: &lt;input type=\"number\" name=\"so_thu_hai\"&gt;&lt;br&gt;\n    &lt;input type=\"submit\" value=\"Tính tổng\"&gt;\n&lt;/form&gt;</code></pre>",
+        "Bước 2: tạo <code>process.php</code> xử lý dữ liệu nhận được.<pre><code>&lt;?php\n// Ví dụ 5.6. Kiểm tra đã có dữ liệu POST chưa\nif (isset($_POST[\"so_thu_nhat\"]) &amp;&amp; isset($_POST[\"so_thu_hai\"])) {\n    $so_thu_nhat = $_POST[\"so_thu_nhat\"];\n    $so_thu_hai = $_POST[\"so_thu_hai\"];\n    // Kiểm tra tính hợp lệ của dữ liệu\n    if (is_numeric($so_thu_nhat) &amp;&amp; is_numeric($so_thu_hai)) {\n        $tong = $so_thu_nhat + $so_thu_hai;\n        echo \"&lt;h2&gt;Kết quả:&lt;/h2&gt;\";\n        echo \"Tổng của $so_thu_nhat và $so_thu_hai là: $tong\";\n    } else {\n        echo \"Vui lòng nhập hai số hợp lệ.\";\n    }\n} else {\n    echo \"Yêu cầu không hợp lệ.\";\n}\n?&gt;</code></pre>",
+        "<code>isset()</code> kiểm tra dữ liệu đã được gửi đến chưa; <code>is_numeric()</code> kiểm tra dữ liệu có phải số - <strong>luôn kiểm tra dữ liệu người dùng gửi trước khi dùng</strong>.",
+        "Bước 3: chạy <code>tinh_tong.php</code>, nhập hai số, nhấn <strong>Tính tổng</strong> → trình duyệt chuyển sang <code>process.php</code> và hiển thị kết quả."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-phuong-thuc-get-va-post",
+        "c5-gop-bieu-mau-va-xu-ly-vao-mot-tap-tin"
+      ]
+    },
+    {
+      "id": "c5-gop-bieu-mau-va-xu-ly-vao-mot-tap-tin",
+      "session": 7,
+      "term": "Gộp biểu mẫu và xử lý vào một tập tin",
+      "definition": "Với xử lý đơn giản, đặt mã xử lý PHP <strong>phía trước</strong> biểu mẫu trong cùng tập tin, và đặt <code>action</code> trỏ về chính tập tin đó.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// Ví dụ 5.7 - tinh_tong.php\nif (isset($_POST[\"so_thu_nhat\"]) &amp;&amp; isset($_POST[\"so_thu_hai\"])) {\n    $a = $_POST[\"so_thu_nhat\"];\n    $b = $_POST[\"so_thu_hai\"];\n    if (is_numeric($a) &amp;&amp; is_numeric($b)) {\n        echo \"&lt;h2&gt;Kết quả:&lt;/h2&gt;\";\n        echo \"Tổng của $a và $b là: \" . ($a + $b);\n    } else {\n        echo \"Vui lòng nhập hai số hợp lệ.\";\n    }\n} else {\n    echo \"Vui lòng nhập dữ liệu.\";\n}\n?&gt;\n&lt;form action=\"tinh_tong.php\" method=\"post\"&gt;\n    Số thứ nhất: &lt;input type=\"number\" name=\"so_thu_nhat\"&gt;&lt;br&gt;\n    Số thứ hai: &lt;input type=\"number\" name=\"so_thu_hai\"&gt;&lt;br&gt;\n    &lt;input type=\"submit\" value=\"Tính tổng\"&gt;\n&lt;/form&gt;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-gui-du-lieu-bang-post-vi-du-tinh-tong-ha",
+        "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l"
+      ]
+    },
+    {
+      "id": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+      "session": 7,
+      "term": "Gửi dữ liệu bằng GET - lọc sách theo thể loại",
+      "definition": "Yêu cầu (Ví dụ 5.8): một danh sách chọn thể loại; khi chọn một thể loại và nhấn <strong>Xem</strong>, hiển thị các cuốn sách của thể loại đó. CSDL <code>bookdb</code> có bảng <code>the_loai(id, ten_the_loai)</code> và <code>sach(id, tieu_de, tac_gia, id_the_loai, ...)</code>.",
+      "key_points": [
+        "Tập tin <code>sach.php</code>: lấy thể loại để đổ vào <code>select</code>, rồi xử lý <code>$_GET</code>.<pre><code>&lt;?php\nrequire_once \"config.php\";\n$result = $conn-&gt;query(\"SELECT * FROM the_loai\");\n$theloai = $result ? $result-&gt;fetch_all(MYSQLI_ASSOC) : [];\n?&gt;\n&lt;form action=\"sach.php\" method=\"get\"&gt;\n    Chọn thể loại:&lt;br&gt;\n    &lt;select name=\"the_loai_sach\"&gt;\n    &lt;?php foreach ($theloai as $row) { ?&gt;\n        &lt;option value=\"&lt;?php echo $row['id']; ?&gt;\"&gt;\n            &lt;?php echo $row[\"ten_the_loai\"]; ?&gt;\n        &lt;/option&gt;\n    &lt;?php } ?&gt;\n    &lt;/select&gt;\n    &lt;input type=\"submit\" value=\"Xem\"&gt;\n&lt;/form&gt;\n&lt;?php\nif (isset($_GET[\"the_loai_sach\"])) {\n    $the_loai = (int)$_GET[\"the_loai_sach\"];\n    $sql = \"SELECT tieu_de, tac_gia FROM sach WHERE id_the_loai = \" . $the_loai;\n    $result = $conn-&gt;query($sql);\n    if ($result) {\n        $sach = $result-&gt;fetch_all(MYSQLI_ASSOC);\n        echo \"&lt;table class='book-table'&gt;&lt;thead&gt;&lt;th&gt;STT&lt;/th&gt;&lt;th&gt;Tên sách&lt;/th&gt;&lt;th&gt;Tác giả&lt;/th&gt;&lt;/thead&gt;&lt;tbody&gt;\";\n        foreach ($sach as $key =&gt; $row) {\n            echo \"&lt;tr&gt;&lt;td&gt;\" . ($key + 1) . \"&lt;/td&gt;&lt;td&gt;\" . $row[\"tieu_de\"] . \"&lt;/td&gt;&lt;td&gt;\" . $row[\"tac_gia\"] . \"&lt;/td&gt;&lt;/tr&gt;\";\n        }\n        echo \"&lt;/tbody&gt;&lt;/table&gt;\";\n    }\n}\n$conn-&gt;close();\n?&gt;</code></pre>",
+        "<strong>Xen kẽ PHP và HTML</strong>: dùng <code>?&gt;</code> để thoát khỏi PHP viết HTML, rồi <code>&lt;?php</code> để quay lại PHP. Vòng <code>foreach</code> có thể bao quanh các thẻ <code>&lt;option&gt;</code>, mỗi lần lặp sinh thêm một lựa chọn.",
+        "Với <code>select</code>, giá trị gửi đi là <code>value</code> của option được chọn, được đọc bằng <code>$_GET[\"the_loai_sach\"]</code>.",
+        "Vì dùng GET nên <strong>dữ liệu hiện trên URL</strong>; bạn có thể sửa giá trị trên thanh địa chỉ và chạy lại trực tiếp. Chỉ phù hợp chức năng đọc/tìm kiếm.",
+        "Ở đây ta ép kiểu <code>(int)</code> cho dữ liệu từ URL trước khi nối vào SQL (xem mục 5.2.7 về SQL injection). Có thể thêm CSS <code>.book-table{border-collapse:collapse}</code> và viền <code>1px solid #000</code> cho bảng để dễ nhìn."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-gop-bieu-mau-va-xu-ly-vao-mot-tap-tin",
+        "c5-them-du-lieu-vao-csdl-va-tai-tap-tin-len"
+      ]
+    },
+    {
+      "id": "c5-them-du-lieu-vao-csdl-va-tai-tap-tin-len",
+      "session": 7,
+      "term": "Thêm dữ liệu vào CSDL và tải tập tin lên",
+      "definition": "Yêu cầu (Ví dụ 5.9): form nhập tiêu đề, tác giả, thể loại và ảnh bìa; nhấn <strong>Thêm</strong> để lưu vào <code>bookdb</code>.",
+      "key_points": [
+        "<pre><code>&lt;!-- them_sach_form.php (phần form) --&gt;\n&lt;form action=\"add.php\" method=\"post\" enctype=\"multipart/form-data\"&gt;\n    Tiêu đề: &lt;input type=\"text\" name=\"tieu_de\" required&gt;&lt;br&gt;\n    Tác giả: &lt;input type=\"text\" name=\"tac_gia\" required&gt;&lt;br&gt;\n    Thể loại: &lt;select name=\"the_loai_sach\"&gt; ... &lt;/select&gt;&lt;br&gt;\n    Hình ảnh: &lt;input type=\"file\" name=\"hinh_anh\" accept=\"image/*\"&gt;&lt;br&gt;\n    &lt;input type=\"submit\" name=\"book_add\" value=\"Thêm\"&gt;\n&lt;/form&gt;</code></pre>",
+        "Thuộc tính <strong><code>enctype=\"multipart/form-data\"</code></strong> là bắt buộc để form gửi được tập tin; tập tin được lưu trong biến toàn cục <strong><code>$_FILES</code></strong>.",
+        "<pre><code>&lt;?php\n// add.php\nif (isset($_POST['book_add'])) {\n    if (isset($_FILES['hinh_anh']) &amp;&amp; $_FILES['hinh_anh']['error'] == 0) {\n        $target_dir = \"anh_bia/\";\n        $target_file = $target_dir . basename($_FILES[\"hinh_anh\"][\"name\"]);\n        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));\n        $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];\n        if (in_array($imageFileType, $allowed_types)) {\n            if (move_uploaded_file($_FILES[\"hinh_anh\"][\"tmp_name\"], $target_file)) {\n                require_once \"config.php\";\n                $tieu_de = $_POST['tieu_de'];\n                $tac_gia = $_POST['tac_gia'];\n                $id_the_loai = $_POST['the_loai_sach'];\n                $file_anh = basename($_FILES[\"hinh_anh\"][\"name\"]);\n                $sql = \"INSERT INTO sach (tieu_de, tac_gia, id_the_loai, file_anh_bia)\n                        VALUES (?, ?, ?, ?)\";\n                $stmt = $conn-&gt;prepare($sql);\n                if ($stmt) {\n                    $stmt-&gt;bind_param(\"ssis\", $tieu_de, $tac_gia, $id_the_loai, $file_anh);\n                    if ($stmt-&gt;execute()) {\n                        echo \"Thêm sách thành công!\";\n                    } else {\n                        echo \"Lỗi: \" . $stmt-&gt;error;\n                    }\n                    $stmt-&gt;close();\n                } else {\n                    echo \"Lỗi: \" . $conn-&gt;error;\n                }\n            } else {\n                echo \"Có lỗi xảy ra khi tải file.\";\n            }\n        } else {\n            echo \"Chỉ chấp nhận các định dạng hình ảnh (JPG, JPEG, PNG, GIF).\";\n        }\n    }\n}\n?&gt;</code></pre>",
+        "<code>basename()</code> lấy tên tập tin; <code>pathinfo(..., PATHINFO_EXTENSION)</code> lấy phần mở rộng; <code>in_array()</code> kiểm tra có nằm trong danh sách định dạng cho phép (kiểm tra loại tập tin chống tải file nguy hiểm).",
+        "<code>move_uploaded_file(tmp_name, đích)</code> chuyển tập tin từ thư mục tạm vào thư mục lưu ảnh (<code>anh_bia/</code>) - thư mục này phải tồn tại."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+        "c5-prepared-statements-va-sql-injection"
+      ]
+    },
+    {
+      "id": "c5-prepared-statements-va-sql-injection",
+      "session": 7,
+      "term": "Prepared statements và SQL injection",
+      "definition": "Nối trực tiếp dữ liệu người dùng vào câu SQL rất nguy hiểm: kẻ tấn công có thể chèn lệnh SQL (<strong>SQL injection</strong>), ví dụ nhập tên đăng nhập <code>' OR '1'='1</code> để vượt qua đăng nhập.",
+      "key_points": [
+        "<strong>Prepared statement</strong>: viết câu SQL mẫu với dấu <code>?</code> thay cho giá trị, <code>prepare()</code> để server biên dịch trước; sau đó <code>bind_param()</code> gán giá trị và <code>execute()</code> chạy. Giá trị được coi thuần là <strong>dữ liệu</strong>, không bao giờ được hiểu như lệnh.",
+        "Tham số của <code>bind_param</code>: chuỗi kiểu, mỗi ký tự ứng một biến. <code>s</code> = chuỗi (string), <code>i</code> = số nguyên (integer), <code>d</code> = số thực (double). Ví dụ <code>\"ssis\"</code> = chuỗi, chuỗi, số nguyên, chuỗi.",
+        "Lợi ích: <strong>bảo mật hơn</strong> (chống SQL injection) và hiệu năng tốt hơn khi chạy lặp nhiều lần. <strong>Hãy luôn dùng prepared statement khi câu SQL chứa dữ liệu do người dùng gửi.</strong>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-them-du-lieu-vao-csdl-va-tai-tap-tin-len",
+        "c5-doi-tuong-session"
+      ]
+    },
+    {
+      "id": "c5-doi-tuong-session",
+      "session": 8,
+      "term": "Đối tượng session",
+      "definition": "<strong>Session</strong> là kỹ thuật lưu thông tin người dùng <strong>trên web server</strong> trong một phiên làm việc. Mỗi phiên có một mã định danh duy nhất. Session dùng cho thông tin đăng nhập, giỏ hàng, dữ liệu form chưa gửi... Dữ liệu session lưu trên máy chủ nên an toàn hơn cookie; session tự hết khi người dùng đóng trình duyệt.",
+      "key_points": [
+        "Luôn gọi <strong><code>session_start()</code></strong> ở đầu trang (trước mọi xuất HTML) trước khi dùng session.",
+        "Dữ liệu lưu trong biến toàn cục <strong><code>$_SESSION</code></strong> (kiểu mảng).<pre><code>&lt;?php\nsession_start();\n$_SESSION[\"session_name\"] = \"session_value\"; // tạo / gán\necho $_SESSION[\"session_name\"];              // đọc\nunset($_SESSION[\"session_name\"]);            // hủy một session\nsession_destroy();                           // xóa toàn bộ session\n?&gt;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-prepared-statements-va-sql-injection",
+        "c5-vi-du-trang-dang-nhap-dung-session"
+      ]
+    },
+    {
+      "id": "c5-vi-du-trang-dang-nhap-dung-session",
+      "session": 8,
+      "term": "Ví dụ: trang đăng nhập dùng session",
+      "definition": "Yêu cầu (Ví dụ 5.10): người dùng đã đăng nhập thì hiển thị \"Xin chào &lt;tên&gt;\"; chưa đăng nhập thì chuyển sang trang đăng nhập. CSDL <code>bookdb</code> có bảng <code>user(username, password)</code> với mật khẩu đã mã hóa <code>md5()</code>.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// login.php\nsession_start();\nif (isset($_POST[\"username\"]) &amp;&amp; isset($_POST[\"password\"])) {\n    require_once \"config.php\";\n    $user = $_POST[\"username\"];\n    $pass = md5($_POST[\"password\"]);\n    $sql = \"SELECT * FROM user WHERE username = ? AND password = ?\";\n    $stmt = $conn-&gt;prepare($sql);\n    if ($stmt) {\n        $stmt-&gt;bind_param(\"ss\", $user, $pass);\n        $stmt-&gt;execute();\n        $result = $stmt-&gt;get_result();\n        if ($result-&gt;num_rows == 0) {\n            echo \"Tài khoản không đúng. Vui lòng đăng nhập lại\";\n        } else {\n            $row = $result-&gt;fetch_assoc();\n            $_SESSION[\"user\"] = $row[\"username\"];\n            header(\"Location:main.php\"); // chuyển sang trang chính\n        }\n        $stmt-&gt;close();\n    } else {\n        echo \"Lỗi khi chuẩn bị câu lệnh SQL.\";\n    }\n    $conn-&gt;close();\n}\n?&gt;\n&lt;h2&gt;Đăng nhập&lt;/h2&gt;\n&lt;form action=\"login.php\" method=\"post\"&gt;\n    Đăng nhập: &lt;input type=\"text\" name=\"username\"&gt;&lt;br&gt;\n    Password: &lt;input type=\"password\" name=\"password\"&gt;&lt;br&gt;\n    &lt;input type=\"submit\" value=\"Đăng nhập\"&gt;\n&lt;/form&gt;</code></pre>",
+        "<pre><code>&lt;?php\n// main.php - trang chính, chỉ cho người đã đăng nhập\nsession_start();\nif (isset($_SESSION[\"user\"])) {\n    echo \"Xin chào \" . $_SESSION[\"user\"];\n} else {\n    header(\"Location:login.php\");\n}\n?&gt;</code></pre>",
+        "<code>md5()</code> mã hóa mật khẩu trước khi so với CSDL (nên dùng <code>password_hash()</code> trong dự án thực tế, vì MD5 không còn an toàn).",
+        "<code>$result-&gt;num_rows == 0</code> nghĩa là không có tài khoản khớp. <code>fetch_assoc()</code> lấy đúng một dòng.",
+        "<code>header(\"Location:...\")</code> chuyển hướng trình duyệt sang trang khác; sau đó nên gọi <code>exit;</code> để dừng mã phía sau.",
+        "Cách làm: thêm một tài khoản vào bảng <code>user</code> (mật khẩu đã <code>md5</code>), truy cập <code>main.php</code> → bị chuyển về <code>login.php</code> → đăng nhập → vào <code>main.php</code>; thử tải lại trang vẫn còn đăng nhập."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-doi-tuong-session",
+        "c5-doi-tuong-cookie"
+      ]
+    },
+    {
+      "id": "c5-doi-tuong-cookie",
+      "session": 8,
+      "term": "Đối tượng cookie",
+      "definition": "<strong>Cookie</strong> là tập tin nhỏ lưu <strong>trên máy người dùng</strong> thông qua trình duyệt, dùng cho xác thực, lưu tùy chọn người dùng, theo dõi trạng thái. Cookie là văn bản đọc được nên <strong>không lưu thông tin nhạy cảm</strong> (mật khẩu).",
+      "key_points": [
+        "<pre><code>setcookie(name, value, expire, path, domain, secure, httponly);</code></pre>",
+        "<table><thead><tr><th>Tham số</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td><code>name</code></td><td>Tên cookie</td></tr><tr><td><code>value</code></td><td>Giá trị cookie</td></tr><tr><td><code>expire</code></td><td>Thời điểm hết hạn; bằng 0 thì cookie bị xóa khi đóng trình duyệt</td></tr><tr><td><code>path</code></td><td>Đường dẫn áp dụng; <code>\"/\"</code> là toàn bộ website</td></tr><tr><td><code>domain</code></td><td>Tên miền áp dụng (ví dụ \"hub.edu.vn\" cho mọi tên miền con)</td></tr><tr><td><code>secure</code></td><td>True: chỉ gửi qua kết nối bảo mật HTTPS</td></tr><tr><td><code>httponly</code></td><td>True: chỉ truy cập qua HTTP, mã JavaScript không đọc được</td></tr></tbody></table>",
+        "<pre><code>&lt;?php\n// Ví dụ 5.11. Tạo cookie sống 30 ngày (86400 giây = 1 ngày)\nsetcookie(\"user\", \"test\", time() + (86400 * 30), \"/\");\n// Đọc cookie (từ lần tải trang sau)\necho $_COOKIE[\"user\"];\n// Xóa cookie: đặt thời gian hết hạn ở quá khứ\nsetcookie(\"user\", \"\", time() - 3600, \"/\");\n?&gt;</code></pre>",
+        "<code>setcookie()</code> phải gọi <strong>trước</strong> mọi nội dung xuất ra trình duyệt (vì cookie gửi trong header HTTP). Cookie được đọc qua biến toàn cục <strong><code>$_COOKIE</code></strong>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-vi-du-trang-dang-nhap-dung-session",
+        "c5-vi-du-duy-tri-dang-nhap-bang-cookie"
+      ]
+    },
+    {
+      "id": "c5-vi-du-duy-tri-dang-nhap-bang-cookie",
+      "session": 8,
+      "term": "Ví dụ: duy trì đăng nhập bằng cookie",
+      "definition": "Mở rộng Ví dụ 5.10: thêm ô <strong>Duy trì đăng nhập</strong>; nếu chọn, lưu cookie <code>user_login</code>.",
+      "key_points": [
+        "<pre><code>&lt;?php\n// Trong login.php, ngay sau khi gán $_SESSION[\"user\"]\n$_SESSION['user'] = $row[\"username\"];\nif (isset($_POST[\"remember\"]) &amp;&amp; $_POST[\"remember\"] == \"1\") {\n    setcookie(\"user_login\", $row[\"username\"], time() + 5*60); // sống 5 phút\n}\nheader(\"Location:main.php\");\n?&gt;\n&lt;!-- form bổ sung ô chọn --&gt;\n&lt;input type=\"checkbox\" name=\"remember\" value=\"1\"&gt; Duy trì đăng nhập</code></pre>",
+        "<pre><code>&lt;?php\n// main.php - cho vào nếu còn session HOẶC còn cookie\nsession_start();\nif (isset($_SESSION[\"user\"]) || isset($_COOKIE[\"user_login\"])) {\n    if (isset($_SESSION[\"user\"])) {\n        echo \"Xin chào \" . $_SESSION[\"user\"];\n    } else {\n        echo \"Xin chào \" . $_COOKIE[\"user_login\"];\n    }\n} else {\n    header(\"Location:login.php\");\n}\n?&gt;</code></pre>",
+        "Nếu đóng trình duyệt: session mất nhưng cookie còn (trong 5 phút) nên vẫn vào được <code>main.php</code> mà không phải đăng nhập lại."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-doi-tuong-cookie",
+        "c5-so-sanh-session-va-cookie"
+      ]
+    },
+    {
+      "id": "c5-so-sanh-session-va-cookie",
+      "session": 8,
+      "term": "So sánh Session và Cookie",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>So sánh Session và Cookie</strong>.",
+      "key_points": [
+        "<table><thead><tr><th>Tiêu chí</th><th>Session</th><th>Cookie</th></tr></thead><tbody><tr><td>Nơi lưu</td><td>Web server</td><td>Máy tính / trình duyệt người dùng</td></tr><tr><td>Biến PHP</td><td><code>$_SESSION</code></td><td><code>$_COOKIE</code></td></tr><tr><td>Bảo mật</td><td>Cao hơn</td><td>Thấp hơn, người dùng đọc/sửa được</td></tr><tr><td>Thời gian sống</td><td>Hết khi đóng trình duyệt (hoặc <code>session_destroy</code>)</td><td>Theo <code>expire</code> (có thể nhiều ngày)</td></tr><tr><td>Dùng cho</td><td>Đăng nhập, giỏ hàng</td><td>Ghi nhớ đăng nhập, tùy chọn giao diện</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-vi-du-duy-tri-dang-nhap-bang-cookie",
+        "c5-thuc-hanh-tong-hop-ung-dung-quan-ly-sach"
+      ]
+    },
+    {
+      "id": "c5-thuc-hanh-tong-hop-ung-dung-quan-ly-sach",
+      "session": 9,
+      "term": "Thực hành tổng hợp: ứng dụng quản lý sách",
+      "definition": "Dùng CSDL <code>bookdb</code> (bảng <code>the_loai</code>, <code>sach</code>, <code>user</code>), thực hiện theo thứ tự:",
+      "key_points": [
+        "1. Tạo <code>config.php</code> và kiểm tra kết nối thành công.",
+        "2. Trang <code>sach.php</code>: danh sách chọn thể loại (GET) và bảng sách tương ứng.",
+        "3. Trang <code>them_sach_form.php</code> + <code>add.php</code>: thêm sách có tải ảnh bìa, dùng prepared statement.",
+        "4. Trang <code>login.php</code> + <code>main.php</code>: đăng nhập bằng session; chưa đăng nhập thì bị chuyển về <code>login.php</code>.",
+        "5. Thêm \"Duy trì đăng nhập\" bằng cookie và tạo <code>logout.php</code> gọi <code>session_destroy()</code> và xóa cookie.",
+        "6. Nâng cao: làm phân trang bằng <code>LIMIT</code> (bài tập danh sách phim <code>moviedb</code>: Now Playing/Popular/Top Rated)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-so-sanh-session-va-cookie",
+        "c5-tu-kiem-tra-kien-thuc"
+      ]
+    },
+    {
+      "id": "c5-tu-kiem-tra-kien-thuc",
+      "session": 9,
+      "term": "Tự kiểm tra kiến thức",
+      "definition": "<strong>Hỏi:</strong> <code>require</code> khác <code>include</code> ở điểm nào? <strong>Đáp:</strong> Khi tập tin lỗi/không tồn tại, <code>require</code> dừng chương trình còn <code>include</code> chỉ cảnh báo và chạy tiếp. Hậu tố <code>_once</code> chỉ cho chèn một lần.",
+      "key_points": [
+        "<strong>Hỏi:</strong> Khi nào dùng GET, khi nào dùng POST? <strong>Đáp:</strong> GET để đọc/tìm kiếm dữ liệu (hiện trên URL); POST để gửi dữ liệu thay đổi server hoặc dữ liệu nhạy cảm (nằm trong body).",
+        "<strong>Hỏi:</strong> <code>$_GET</code> và <code>$_POST</code> có kiểu gì? <strong>Đáp:</strong> Mảng kết hợp toàn cục; khóa là <code>name</code> của ô nhập.",
+        "<strong>Hỏi:</strong> Vì sao form tải tập tin cần <code>enctype=\"multipart/form-data\"</code>? <strong>Đáp:</strong> Để trình duyệt gửi được dữ liệu nhị phân của tập tin; PHP nhận qua <code>$_FILES</code>.",
+        "<strong>Hỏi:</strong> Prepared statement bảo vệ ứng dụng thế nào? <strong>Đáp:</strong> Tách câu lệnh SQL khỏi dữ liệu nên dữ liệu nhập không thể trở thành lệnh SQL, chống SQL injection.",
+        "<strong>Hỏi:</strong> Session lưu ở đâu, cookie lưu ở đâu? <strong>Đáp:</strong> Session lưu trên web server; cookie lưu ở trình duyệt/máy người dùng.",
+        "<strong>Hỏi:</strong> Vì sao phải gọi <code>session_start()</code>? <strong>Đáp:</strong> Để PHP khởi tạo hoặc nối lại phiên làm việc và cho phép dùng <code>$_SESSION</code>; thiếu lệnh này <code>$_SESSION</code> không hoạt động."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-thuc-hanh-tong-hop-ung-dung-quan-ly-sach"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận biết khái niệm (23 câu)",
+      "description": "Kiểm tra trí nhớ và nhận diện chính xác các khái niệm, cú pháp nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "ltweb-q167",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Thuộc tính (attribute) nào trong thẻ form xác định trang xử lý phía back-end của form này khi người dùng click vào nút Submit?",
+          "options": [
+            "A. method",
+            "B. name",
+            "C. action",
+            "D. id"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (action): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q168",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Biến $_GET và $_POST thuộc kiểu dữ liệu nào dưới đây?",
+          "options": [
+            "A. Mảng",
+            "B. Đối tượng",
+            "C. Chuỗi",
+            "D. Số"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Mảng): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q174",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Chọn phát biểu đúng về 2 phương thức GET và POST trong PHP.",
+          "options": [
+            "A. GET sẽ tạo ra key của mảng, và POST tạo ra value của mảng, để tạo thành các cặp key/value của một mảng.",
+            "B. Cả GET và POST đều tạo ra một mảng. Mảng này chứa các cặp khóa/giá trị (key/value), trong đó các khóa là name của các control của form, và giá trị là dữ liệu đầu vào từ người dùng.",
+            "C. POST được dùng để thêm dữ liệu vào query string của URL.",
+            "D. GET được dùng để biên dịch mã PHP thành mã HTML."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Cả GET và POST đều tạo ra một mảng. Mảng này chứa các cặp khóa/giá trị (key/value), trong đó các khóa là name của các control của form, và giá trị là dữ liệu đầu vào từ người dùng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q175",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Phát biểu nào sau đây mô tả đúng nhất về phương thức GET khi gửi dữ liệu từ Form?",
+          "options": [
+            "A. Dữ liệu thường được đưa vào URL dưới dạng chuỗi truy vấn và phù hợp với dữ liệu không nhạy cảm",
+            "B. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và không xuất hiện trên URL",
+            "C. Dữ liệu gửi bằng GET luôn được mã hóa và bảo mật tự động",
+            "D. GET phù hợp để gửi mật khẩu vì dữ liệu không được hiển thị trên URL"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Dữ liệu thường được đưa vào URL dưới dạng chuỗi truy vấn và phù hợp với dữ liệu không nhạy cảm): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q176",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Phát biểu nào sau đây mô tả đúng nhất về phương thức POST khi gửi dữ liệu từ Form?",
+          "options": [
+            "A. Dữ liệu luôn được mã hóa và bảo mật hoàn toàn khi sử dụng POST",
+            "B. Dữ liệu được gắn trực tiếp vào URL dưới dạng chuỗi truy vấn.",
+            "C. POST không chịu bất kỳ giới hạn nào về kích thước dữ liệu trong mọi hệ thống",
+            "D. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và thường không hiển thị trên URL"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và thường không hiển thị trên URL): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q181",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Trong HTML, khi thuộc tính method không được khai báo trong thẻ <form>, phương thức gửi dữ liệu mặc định là gì?",
+          "options": [
+            "A. GET",
+            "B. POST",
+            "C. REQUEST",
+            "D. HTTP"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (GET): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q182",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Hạn chế chính của phương thức GET khi gửi dữ liệu từ Form là gì?",
+          "options": [
+            "A. Dữ liệu có thể hiển thị trực tiếp trên URL nên không phù hợp với thông tin nhạy cảm.",
+            "B. Dữ liệu luôn chiếm nhiều băng thông hơn phương thức POST.",
+            "C. Dữ liệu không thể chứa chữ cái và chữ số.",
+            "D. Dữ liệu không thể được xử lý ở phía máy chủ."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Dữ liệu có thể hiển thị trực tiếp trên URL nên không phù hợp với thông tin nhạy cảm.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q183",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Phát biểu nào sau đây thể hiện đúng ưu điểm của phương thức POST khi gửi dữ liệu từ Form?",
+          "options": [
+            "A. Dữ liệu luôn được nén tự động trước khi gửi đến máy chủ.",
+            "B. Yêu cầu POST luôn được xử lý nhanh hơn yêu cầu GET.",
+            "C. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.",
+            "D. Dữ liệu gửi bằng POST được bảo mật hoàn toàn mà không cần HTTPS."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q189",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Việc lựa chọn phương thức GET hay POST cho một Form phụ thuộc chủ yếu vào yếu tố nào?",
+          "options": [
+            "A. Mục đích gửi dữ liệu và loại dữ liệu cần xử lý.",
+            "B. Biểu mẫu luôn phải sử dụng POST.",
+            "C. Biểu mẫu luôn phải sử dụng GET.",
+            "D. Tên của tệp PHP nhận dữ liệu."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Mục đích gửi dữ liệu và loại dữ liệu cần xử lý.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q190",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Trong PHP, khóa (key) của mảng $_GET hoặc $_POST được xác định dựa trên thuộc tính nào của phần tử trong Form?",
+          "options": [
+            "A. Thuộc tính type",
+            "B. Thuộc tính name",
+            "C. Thuộc tính method",
+            "D. Thuộc tính id"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Thuộc tính name): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q191",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Phát biểu nào mô tả đúng nhất về session trong PHP?",
+          "options": [
+            "A. Session lưu toàn bộ dữ liệu trực tiếp trong tập tin HTML.",
+            "B. Session luôn tồn tại vĩnh viễn sau khi người dùng đóng trình duyệt",
+            "C. Session lưu thông tin người dùng trên web server trong một phiên làm việc",
+            "D. Session chỉ được sử dụng để lưu mật khẩu người dùng"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q192",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Điểm khác biệt cơ bản giữa session và cookie là gì?",
+          "options": [
+            "A. Session lưu trên trình duyệt, còn cookie lưu trên web server",
+            "B. Cả session và cookie đều chỉ lưu trong cơ sở dữ liệu",
+            "C. Cookie bảo mật hơn session vì người dùng không thể đọc được",
+            "D. Session lưu trên web server, còn cookie lưu trên thiết bị của người dùng"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q194",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Trước khi sử dụng biến $_SESSION trong một tập tin PHP, câu lệnh nào thường phải được gọi?",
+          "options": [
+            "A. session_create();",
+            "B. session_start();",
+            "C. session_open();",
+            "D. start_session();"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q198",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Sau khi người dùng nhập dữ liệu vào form rồi nhấn nút Gửi (Submit), dữ liệu sẽ đi đâu?",
+          "options": [
+            "A. Dữ liệu sẽ được lưu vào form trên Client.",
+            "B. Dữ liệu sẽ được lưu vào cơ sở dữ liệu trên Client.",
+            "C. Dữ liệu sẽ được gửi từ Client lên Server.",
+            "D. Dữ liệu sẽ được xử lý tại ngay tại Client."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Dữ liệu sẽ được gửi từ Client lên Server.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q204",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+          "question": "Vì sao ta phải đặt giá trị cho thuộc tính name của các radio là như nhau nếu như các radio đó thể hiện cho cùng một nhóm? <form method=\"post\"> <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+          "options": [
+            "A. Để ta có thể chọn nhiều radio của một nhóm.",
+            "B. Để cho mã HTML của radio dễ nhìn.",
+            "C. Để đảm bảo chỉ duy nhất một radio được chọn trong số nhiều radio của nhóm.",
+            "D. Vì như vậy, radio mới hiển thị được trên trang web."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q218",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Ta có thể gắn thêm bao nhiêu cặp giá trị (key=value) vào query string của đường dẫn URL (của trang web)?",
+          "options": [
+            "A. 1",
+            "B. 2",
+            "C. 3",
+            "D. Ta có thể gắn thêm nhiều cặp giá trị nhưng có giới hạn (số ký tự)."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Ta có thể gắn thêm nhiều cặp giá trị nhưng có giới hạn (số ký tự).): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q220",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+          "question": "Để gắn thêm nhiều cặp giá trị (key=value) của query string vào đường dẫn URL (của trang web), ta dùng ký tự nào để ngăn cách giữa các cặp giá trị của query string?",
+          "options": [
+            "A. boss",
+            "B. root",
+            "C. admin",
+            "D. administrator"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (root): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q282",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Phát biểu nào đúng nhất về biến $_SESSION?",
+          "options": [
+            "A. Là một biến chuỗi lưu trong trình duyệt",
+            "B. Là một biến toàn cục có kiểu mảng",
+            "C. Chỉ chứa được một giá trị duy nhất",
+            "D. Chỉ được sử dụng trong tập tin login.php"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q283",
+          "type": "mc",
+          "concept_ref": "c5-doi-tuong-cookie",
+          "question": "Cho đoạn lệnh: setcookie( \"user_login\", \"An\", time() + 5 * 60 ); Cookie được thiết lập tồn tại trong khoảng thời gian nào?",
+          "options": [
+            "A. 5 giây",
+            "B. 60 giây",
+            "C. 5 phút",
+            "D. 5 giờ"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q291",
+          "type": "mc",
+          "concept_ref": "c5-doi-tuong-cookie",
+          "question": "Nhóm thông tin nào thường cần thiết để PHP thiết lập kết nối với MySQL?",
+          "options": [
+            "A. Địa chỉ máy chủ, tên tài khoản, mật khẩu và tên cơ sở dữ liệu.",
+            "B. Tên miền website, tên tập tin PHP, tên bảng và khóa chính.",
+            "C. Địa chỉ email, mật khẩu người dùng và tên form.",
+            "D. Tên trình duyệt, địa chỉ IP người dùng và phiên bản HTML."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Địa chỉ máy chủ, tên tài khoản, mật khẩu và tên cơ sở dữ liệu.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q292",
+          "type": "mc",
+          "concept_ref": "c5-ket-noi-bang-mysqli-huong-doi-tuong",
+          "question": "Tại sao cần thiết lập bộ mã UTF-8 sau khi kết nối thành công?",
+          "options": [
+            "A. Để tăng số lượng bản ghi có thể lưu trong bảng.",
+            "B. Để hỗ trợ lưu trữ và hiển thị chính xác dữ liệu tiếng Việt.",
+            "C. Để tự động mã hóa mật khẩu người dùng.",
+            "D. Để chuyển câu lệnh SQL thành PHP."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Để hỗ trợ lưu trữ và hiển thị chính xác dữ liệu tiếng Việt.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q295",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Phát biểu nào mô tả đúng nhất về Prepared Statement?",
+          "options": [
+            "A. Câu lệnh SQL được tạo bằng cách ghép trực tiếp dữ liệu đầu vào của người dùng vào chuỗi SQL.",
+            "B. Câu lệnh SQL được chuẩn bị trước, sau đó dữ liệu được truyền vào các tham số khi thực thi.",
+            "C. Câu lệnh SQL được lưu trong bộ nhớ session để sử dụng lại ở các trang khác.",
+            "D. Câu lệnh SQL được mã hóa trước khi gửi đến máy chủ MySQL."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        },
+        {
+          "id": "ltweb-q299",
+          "type": "mc",
+          "concept_ref": "c5-quy-trinh-thao-tac-du-lieu-voi-php",
+          "question": "Thứ tự xử lý nào đúng khi sử dụng prepared statement?",
+          "options": [
+            "A. Liên kết tham số → chuẩn bị câu lệnh → lấy kết quả → thực thi.",
+            "B. Chuẩn bị câu lệnh → liên kết tham số → thực thi → lấy kết quả.",
+            "C. Thực thi → chuẩn bị câu lệnh → liên kết tham số → đóng kết nối.",
+            "D. Lấy kết quả → thực thi → liên kết tham số → chuẩn bị câu lệnh."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Thông hiểu & Phân tích (38 câu)",
+      "description": "Phân biệt, giải thích nguyên lý hoạt động và so sánh các thành phần kỹ thuật.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "ltweb-q164",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Trong PHP, câu lệnh nào sau đây dùng để lấy giá trị từ ô nhập liệu có thuộc tính name=\"username\" trong một Form được gửi bằng phương thức GET?",
+          "options": [
+            "A. $_POST[\"username\"]",
+            "B. $_REQUEST.Form[\"username\"]",
+            "C. $_GET[\"username\"]",
+            "D. Request.QueryString(\"username\")"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C ($_GET[\"username\"]): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q165",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Phát biểu nào sau đây mô tả đúng sự khác nhau giữa phương thức GET và POST khi gửi dữ liệu từ biểu mẫu trong PHP?",
+          "options": [
+            "A. POST gửi dữ liệu trên URL, còn GET gửi dữ liệu trong phần thân của yêu cầu (Request Body)",
+            "B. GET gửi dữ liệu trên URL, còn POST gửi dữ liệu trong phần thân của yêu cầu (Request Body)",
+            "C. GET nhận dữ liệu dưới dạng mảng, còn POST nhận dữ liệu dưới dạng chuỗi",
+            "D. GET và POST luôn gửi dữ liệu theo cùng một cách."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (GET gửi dữ liệu trên URL, còn POST gửi dữ liệu trong phần thân của yêu cầu (Request Body)): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q166",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Trong PHP, câu lệnh nào sau đây dùng để lấy giá trị từ ô nhập liệu có thuộc tính name=\"keyword\" trong một Form được gửi bằng phương thức POST?",
+          "options": [
+            "A. Request.QueryString(\"keyword \")",
+            "B. $_REQUEST.Form[\"keyword \"]",
+            "C. $_GET[\"keyword \"]",
+            "D. $_POST[\"keyword\"]"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D ($_POST[\"keyword\"]): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q171",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Form đăng nhập chứa tên đăng nhập và mật khẩu. Phương thức nào phù hợp hơn để gửi dữ liệu từ Form này?",
+          "options": [
+            "A. GET, vì dữ liệu được hiển thị trên URL.",
+            "B. POST, vì dữ liệu không được đưa trực tiếp vào chuỗi truy vấn của URL.",
+            "C. GET, vì chỉ GET mới gửi được nhiều trường dữ liệu.",
+            "D. POST, vì dữ liệu gửi bằng POST được tự động mã hóa an toàn."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (POST, vì dữ liệu không được đưa trực tiếp vào chuỗi truy vấn của URL.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q172",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Chọn phát biểu đúng về biến $_GET.",
+          "options": [
+            "A. $ _GET là một biến siêu toàn cục của PHP được sử dụng để thu thập dữ liệu form (biểu mẫu) sau khi gửi form HTML với method=\"get\".",
+            "B. $ _GET cũng có thể thu thập dữ liệu được gửi trong URL.",
+            "C. $ _GET là một mảng các biến được truyền cho tập lệnh hiện tại thông qua các tham số URL.",
+            "D. Cả 3 phát biểu trên đều đúng."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Cả 3 phát biểu trên đều đúng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q173",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Phát biểu nào sau đây mô tả đúng nhất về biến siêu toàn cục $_POST trong PHP?",
+          "options": [
+            "A. $_POST chỉ có thể nhận một giá trị duy nhất từ biểu mẫu",
+            "B. $_POST dùng để lấy dữ liệu được truyền trên URL bằng phương thức GET",
+            "C. $_POST là một mảng dùng để nhận dữ liệu từ Form được gửi bằng phương thức POST.",
+            "D. $_POST tự động mã hóa và bảo mật toàn bộ dữ liệu được gửi"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C ($_POST là một mảng dùng để nhận dữ liệu từ Form được gửi bằng phương thức POST.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q184",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Khi form sử dụng method=\"get\" nhưng không có thuộc tính action, điều gì xảy ra sau khi người dùng nhấn nút Submit?",
+          "options": [
+            "A. Dữ liệu không được gửi.",
+            "B. Dữ liệu được gửi bằng phương thức POST.",
+            "C. Dữ liệu được gửi đến trang default.php.",
+            "D. Dữ liệu được gửi đến chính trang hiện tại và xuất hiện trên URL."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Dữ liệu được gửi đến chính trang hiện tại và xuất hiện trên URL.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q186",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Trong một Form HTML, hai phương thức HTTP thường được sử dụng để gửi dữ liệu từ trình duyệt đến máy chủ là gì?",
+          "options": [
+            "A. FORM và ACTION",
+            "B. GET và POST",
+            "C. PHP và HTML",
+            "D. Apache và IIS"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (GET và POST): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q187",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Chọn phát biểu đúng về 2 phương thức POST và GET.",
+          "options": [
+            "A. Ta dùng POST để chuyển giá trị từ Client lên Server. Sau đó, dùng GET để nhận giá trị từ Server gửi về cho Client.",
+            "B. Ta dùng GET để chuyển giá trị từ Client lên Server. Sau đó, dùng POST để nhận giá trị từ Server gửi về cho Client.",
+            "C. Ta có thể chuyển giá trị từ phía Client cho phía Server bằng cách dùng phương thức POST hoặc GET để Server lấy được giá trị từ người dùng nhập vào form.",
+            "D. Server trả kết quả về cho Client bằng cách dùng phương thức POST hoặc GET."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Ta có thể chuyển giá trị từ phía Client cho phía Server bằng cách dùng phương thức POST hoặc GET để Server lấy được giá trị từ người dùng nhập vào form.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q188",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Chọn phát biểu đúng về phương thức POST, GET.",
+          "options": [
+            "A. Với phương thức GET, ta có thể thấy được giá trị (đã được người dùng nhập vào form và gửi) trên đường dẫn URL.",
+            "B. Với phương thức POST, ta có thể thấy được giá trị (đã được người dùng nhập vào form và gửi) trên đường dẫn URL.",
+            "C. Với phương thức GET, ta không thể thấy giá trị (đã được người dùng nhập vào form và gửi) trên đường dẫn URL.",
+            "D. Cả 3 phát biểu trên đều sai."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Cả 3 phát biểu trên đều sai.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q193",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Phương thức GET thường phù hợp với trường hợp nào sau đây?",
+          "options": [
+            "A. Gửi từ khóa tìm kiếm hoặc yêu cầu xem dữ liệu.",
+            "B. Gửi mật khẩu và thông tin thanh toán.",
+            "C. Tải tệp có dung lượng lớn lên máy chủ.",
+            "D. Gửi dữ liệu cần được ẩn hoàn toàn khỏi URL."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Gửi từ khóa tìm kiếm hoặc yêu cầu xem dữ liệu.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q195",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Một hệ thống PHP thực hiện chức năng đổi mật khẩu bằng yêu cầu với phương thức GET như sau: https://example.com/change-password.php?current_pass=123&new_pass=456 Hệ thống yêu cầu người dùng phải đăng nhập thành công mới có thể thực hiện đổi mật khẩu. Nhận định nào sau đây là đúng về nguy cơ bảo mật của hệ thống này?",
+          "options": [
+            "A. Hệ thống hoàn toàn an toàn vì chỉ có người dùng đã đăng nhập thành công mới thực hiện được yêu cầu đổi mật khẩu.",
+            "B. Trình duyệt của người dùng sẽ tự động mã hóa các tham số current_pass và new_pass trên thanh địa chỉ để người khác không nhìn thấy.",
+            "C. Mật khẩu cũ và mới sẽ bị lộ dưới dạng plain text trong tập tin nhật ký máy chủ (access.log) của Apache/Nginx, bất kỳ ai tiếp cận được file log đều có thể đọc được.",
+            "D. Các Web Spiders (như Googlebot) sẽ tự động quét trang đổi mật khẩu và có thể tự động thực hiện đổi mật khẩu của tất cả người dùng."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Mật khẩu cũ và mới sẽ bị lộ dưới dạng plain text trong tập tin nhật ký máy chủ (access.log) của Apache/Nginx, bất kỳ ai tiếp cận được file log đều có thể đọc được.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q196",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Để khắc phục triệt để tình trạng lộ dữ liệu nhạy cảm trên đường dẫn URL khi Frontend gửi yêu cầu lên Backend PHP, lập trình viên nên thực hiện giải pháp nào sau đây?",
+          "options": [
+            "A. Tiếp tục dùng GET nhưng tăng độ dài của các tham số trên URL để hacker khó đoán hơn.",
+            "B. Mã hóa dữ liệu nhạy cảm thành chuỗi Base64 rồi tiếp tục truyền qua phương thức GET trên URL.",
+            "C. Thêm cấu hình vào file robots.txt để cấm hoàn toàn tất cả các trình duyệt ghi lại lịch sử truy cập của người dùng.",
+            "D. Chuyển sang sử dụng phương thức POST, đưa dữ liệu nhạy cảm vào phần thân của yêu cầu (Request Body)"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Chuyển sang sử dụng phương thức POST, đưa dữ liệu nhạy cảm vào phần thân của yêu cầu (Request Body)): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q197",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Một Form gửi dữ liệu bằng phương thức GET. Sau khi người dùng nhấn nút submit, rủi ro nào có thể xảy ra?",
+          "options": [
+            "A. Dữ liệu có thể xuất hiện trên URL và được lưu trong lịch sử trình duyệt.",
+            "B. Dữ liệu luôn được trình duyệt mã hóa trước khi hiển thị trên URL.",
+            "C. Dữ liệu chỉ được lưu trên máy chủ và không xuất hiện trên trình duyệt.",
+            "D. Dữ liệu được tự động chuyển sang phương thức POST."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Dữ liệu có thể xuất hiện trên URL và được lưu trong lịch sử trình duyệt.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q200",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Chọn phát biểu đúng về quá trình gửi và nhận dữ liệu giữa Client và Server, với form sau: <form action=\"page.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Server có tên \"page.php\" để trang này xử lý. Sau khi trang \"page.php\" xử lý xong, sẽ trả kết quả về cho Client.",
+            "B. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Server có tên \"default.php\".",
+            "C. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Client có tên \"page.php\" để trang này xử lý. Sau khi trang \"page.php\" xử lý xong, sẽ trả kết quả về cho Server.",
+            "D. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Client có tên \"default.php\"."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Server có tên \"page.php\" để trang này xử lý. Sau khi trang \"page.php\" xử lý xong, sẽ trả kết quả về cho Client.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q201",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Với trường hợp: Sau khi người dùng nhập dữ liệu vào form và gửi, dữ liệu được gửi đến một file php trên Server. Vậy, sau khi file php đó xử lý xong sẽ trả về mã gì cho Client?",
+          "options": [
+            "A. Mã PHP",
+            "B. Mã HTML",
+            "C. Mã PHP và HTML",
+            "D. Cả 3 đáp án trên đều sai."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Cả 3 đáp án trên đều sai.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q202",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+          "question": "Với radiobox bên dưới thì key và value của mảng $_POST được lấy từ đâu? <form method=\"post\"> <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+          "options": [
+            "A. $_POST sẽ lưu giá trị của radio với key là \"name của radio\", value là \"value của radio được chọn\", như sau: $_POST = array(\"gender\"=>\"female\");",
+            "B. $_POST sẽ lưu giá trị của radio với key là \"name của radio\", value là \"value của radio đầu tiên\", như sau: $_POST = array(\"gender\"=>\"male\");",
+            "C. $_POST sẽ lưu giá trị của radio với key là \"radio\", value là \"text của radio được chọn\", như sau: $_POST = array(\"radio\"=>\"Nữ\");",
+            "D. $_POST sẽ lưu giá trị của radio với key là \"radio\", value là \"text của radio đầu tiên\", như sau: $_POST = array(\"radio\"=>\"Nam\");"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q203",
+          "type": "mc",
+          "concept_ref": "c5-cac-thanh-phan-thuong-dung-trong-bieu-ma",
+          "question": "Theo đoạn mã PHP dưới đây, chúng ta muốn chỉ định 2 radio box “male” và “female” thuộc cùng một nhóm “gender” nhằm đảm bảo người dùng chỉ chọn được một trong 2 giá trị “male” hoặc “female”. Đáp án nào dưới đây giúp chúng ta thực hiện được việc này? <form method=\"post\"> <input type=\"radio\" value=\"male\" /> Nam <input type=\"radio\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+          "options": [
+            "A. Ta phải đặt giá trị cho thuộc tính name của mỗi radio là value của radio đó. Áp dụng: <input type=\"radio\" name=\"male\" value=\"male\" /> Nam <input type=\"radio\" name=\"female\" value=\"female\" checked/> Nữ",
+            "B. Ta phải đặt giá trị cho thuộc tính name của các radio là như nhau. Áp dụng: <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ",
+            "C. Ta phải đặt giá trị cho thuộc tính name của mỗi radio là text của radio đó. Áp dụng: <input type=\"radio\" name=\"Nam\" value=\"male\" /> Nam <input type=\"radio\" name=\"Nữ\" value=\"female\" checked/> Nữ",
+            "D. Ta phải đặt giá trị cho thuộc tính name của radio là số thứ tự của radio đó, bắt đầu từ 1. Áp dụng: <input type=\"radio\" name=\"1\" value=\"male\" /> Nam <input type=\"radio\" name=\"2\" value=\"female\" checked/> Nữ"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q213",
+          "type": "mc",
+          "concept_ref": "c5-doi-tuong-cookie",
+          "question": "Đoạn mã sau có tác dụng gì? <?php setcookie(\"user\", \"\", time() - 3600, \"/\"); ?>",
+          "options": [
+            "A. Xóa cookie có tên user",
+            "B. Đổi giá trị cookie thành số 3600",
+            "C. Gia hạn cookie thêm một giờ",
+            "D. Tạo cookie chỉ tồn tại trong một giờ"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q214",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Câu lệnh sau đây có nghĩa là gì? if ($_POST[\"password\"] != \"123\") { header(\"Location: signin.php?error=2\"); }",
+          "options": [
+            "A. Nếu biến $_POST[\"password\"] khác \"123\" thì chuyển đến trang \"signin.php\" với URL được gắn thêm query string là \"error=2\".",
+            "B. Nếu biến $_POST[\"password\"] đúng chính xác là \"123\" thì chuyển đến trang \"signin.php\" với URL được gắn thêm query string là \"error=2\".",
+            "C. Nếu biến $_POST[\"password\"] khác \"123\" thì xuất ra chuỗi \"Location: signin.php?error=2\" ở đầu trang.",
+            "D. Nếu biến $_POST[\"password\"] đúng chính xác là \"123\" thì xuất ra chuỗi \"Location: signin.php?error=2\" ở đầu trang."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Nếu biến $_POST[\"password\"] khác \"123\" thì chuyển đến trang \"signin.php\" với URL được gắn thêm query string là \"error=2\".): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q215",
+          "type": "mc",
+          "concept_ref": "c5-cac-thanh-phan-thuong-dung-trong-bieu-ma",
+          "question": "Cách viết nào sau đây đúng để hiển thị giá trị của biến $name trong thuộc tính value của ô nhập liệu?",
+          "options": [
+            "A. <input type=\"text\" name=\"name\" value=\"$name\" >",
+            "B. <input type=\"text\" name=\"name\" value=\"<?php echo $name;?>\" >",
+            "C. <input type=\"text\" name=\"name\" value=\"echo $name\" >",
+            "D. <input type=\"text\" name=\"name\" value=$name >"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (<input type=\"text\" name=\"name\" value=\"<?php echo $name;?>\" >): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q216",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Trong phát triển ứng dụng Web, phát biểu nào sau đây là đúng khi nói về đặc điểm của chuỗi truy vấn (query string)?",
+          "options": [
+            "A. Chuỗi truy vấn không bị giới hạn về độ dài bởi trình duyệt, do đó có thể dùng để truyền các file dữ liệu lớn.",
+            "B. Khi website sử dụng giao thức HTTPS, toàn bộ chuỗi truy vấn sẽ bị ẩn khỏi thanh địa chỉ của trình duyệt người dùng.",
+            "C. Chuỗi truy vấn bắt đầu sau dấu ? trong URL, thường dùng để truyền các cặp key=value và không phù hợp để truyền dữ liệu nhạy cảm (như mật khẩu).",
+            "D. Ký tự khoảng trắng (space) trong chuỗi truy vấn không cần mã hóa mà có thể truyền trực tiếp lên URL."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Chuỗi truy vấn bắt đầu sau dấu ? trong URL, thường dùng để truyền các cặp key=value và không phù hợp để truyền dữ liệu nhạy cảm (như mật khẩu).): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q217",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Đâu là mã đúng để gắn thêm query string \"name=$name\" vào URL để chuyển đến trang \"signin.php\"?",
+          "options": [
+            "A. header(\"Location: name=$name?signin.php\");",
+            "B. header(\"Location: signin.php/name=$name\");",
+            "C. header(\"Location: signin.php&name=$name\");",
+            "D. header(\"Location: signin.php?name=$name\");"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (header(\"Location: signin.php?name=$name\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q219",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Cho đoạn mã PHP như sau: <?php session_start(); if ( isset($_SESSION[\"user\"]) \\\\|\\\\| isset($_COOKIE[\"user_login\"]) ) { echo \"Được phép truy cập\"; } else { echo \"Yêu cầu đăng nhập\"; } ?> Trong trường hợp nào chương trình hiển thị \"Được phép truy cập\" sau khi chạy đoạn mã trên?",
+          "options": [
+            "A. Khi session hoặc cookie tồn tại",
+            "B. Khi cả session và cookie đều không tồn tại",
+            "C. Chỉ khi session không tồn tại",
+            "D. Chỉ khi cả session và cookie cùng tồn tại"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q281",
+          "type": "mc",
+          "concept_ref": "c5-doi-tuong-session",
+          "question": "Câu lệnh nào phù hợp nhất để xóa riêng thông tin đăng nhập nhưng vẫn giữ các dữ liệu session khác?",
+          "options": [
+            "A. session_destroy();",
+            "B. unset($_SESSION[\"user\"]);",
+            "C. unset($_SESSION);",
+            "D. setcookie(\"user\", \"\");"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q284",
+          "type": "mc",
+          "concept_ref": "c5-doi-tuong-session",
+          "question": "Phương án nào phù hợp nhất khi xây dựng chức năng đăng xuất cho hệ thống sử dụng cả session và cookie duy trì đăng nhập?",
+          "options": [
+            "A. Đóng kết nối từ ứng dụng web đến cơ sở dữ liệu.",
+            "B. Chuyển người dùng đến login.php.",
+            "C. Xóa session và đồng thời làm hết hạn cookie đăng nhập.",
+            "D. Xóa session chứa thông tin đăng nhập."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q285",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Trong hệ thống đăng nhập, thông tin nào phù hợp nhất để lưu trong session?",
+          "options": [
+            "A. Mật khẩu mã hóa của người dùng.",
+            "B. Toàn bộ nội dung bảng tài khoản.",
+            "C. Mã người dùng và vai trò của người đã được xác thực",
+            "D. Câu lệnh SQL dùng để kiểm tra tài khoản"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q286",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Một website cần lưu trạng thái đăng nhập của người dùng trong suốt phiên làm việc và tự động xóa khi người dùng đóng trình duyệt hoặc kết thúc phiên. Giải pháp phù hợp nhất là:",
+          "options": [
+            "A. Sử dụng session",
+            "B. Sử dụng cookie với thời gian tồn tại ngắn",
+            "C. Kết hợp session và cookie",
+            "D. Lưu tài khoản trong trình duyệt"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Kết hợp session và cookie): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q287",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Tại sao không nên lưu mật khẩu người dùng trực tiếp trong cookie?",
+          "options": [
+            "A. Cookie không hỗ trợ lưu dữ liệu dạng chuỗi nên không thể lưu mật khẩu.",
+            "B. Cookie chỉ cho phép lưu các giá trị tạm thời nên không thể chứa mật khẩu.",
+            "C. Cookie được lưu trên thiết bị người dùng và có thể bị đọc hoặc chỉnh sửa.",
+            "D. Cookie chỉ được sử dụng để lưu thông tin giao diện nên không thể lưu thông tin đăng nhập."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q288",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Một website thương mại điện tử chỉ cần lưu giỏ hàng của người dùng chưa đăng nhập trong suốt phiên làm việc và không cần giữ lại sau khi phiên kết thúc. Giải pháp nào phù hợp nhất?",
+          "options": [
+            "A. Lưu thông tin giỏ hàng trong session.",
+            "B. Lưu thông tin giỏ hàng trong cookie có thời hạn 30 ngày.",
+            "C. Lưu thông tin giỏ hàng trong Local Storage của trình duyệt.",
+            "D. Lưu thông tin giỏ hàng vào cơ sở dữ liệu ngay khi người dùng thêm sản phẩm."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Lưu thông tin giỏ hàng trong session.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q289",
+          "type": "mc",
+          "concept_ref": "c5-doi-tuong-session",
+          "question": "Một website hỗ trợ nhiều ngôn ngữ và muốn ghi nhớ ngôn ngữ mà người dùng đã chọn ngay cả sau khi họ đóng và mở lại trình duyệt. Trong trường hợp người dùng chưa đăng nhập, giải pháp phù hợp nhất là:",
+          "options": [
+            "A. Lưu thông tin ngôn ngữ mà người dùng chọn trong Session.",
+            "B. Lưu thông tin ngôn ngữ mà người dùng chọn trong Cookie.",
+            "C. Lưu lựa chọn vào Local Storage của trình duyệt.",
+            "D. Lưu lựa chọn trong cơ sở dữ liệu của máy chủ."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Lưu thông tin ngôn ngữ mà người dùng chọn trong Session.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q290",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Một người dùng đăng nhập thành công vào website. Sau đó, khi chuyển từ trang chủ sang trang thông tin cá nhân, hệ thống vẫn cần nhận biết người dùng đã đăng nhập mà không yêu cầu đăng nhập lại. Giải pháp phù hợp nhất là:",
+          "options": [
+            "A. Khai báo một biến cục bộ sau khi đăng nhập.",
+            "B. Lưu thông tin người dùng vào session và gọi session ở các trang cần sử dụng.",
+            "C. Truyền mã người dùng qua tham số trên URL mỗi khi chuyển trang và sử dụng $_GET để lấy thông tin người dùng tại trang cần sử dụng.",
+            "D. Gửi lại thông tin đăng nhập bằng form mỗi khi người dùng chuyển sang trang mới."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Lưu thông tin người dùng vào session và gọi session ở các trang cần sử dụng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q293",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Vì sao nên tách đoạn mã kết nối vào một tập tin riêng như config.php?",
+          "options": [
+            "A. Để mỗi trang có thể sử dụng một cấu hình kết nối cơ sở dữ liệu khác nhau.",
+            "B. Để tái sử dụng mã kết nối và dễ dàng cập nhật cấu hình khi cần.",
+            "C. Để trình duyệt tự động lưu thông tin kết nối cơ sở dữ liệu.",
+            "D. Để các trang PHP không cần thực hiện kết nối đến cơ sở dữ liệu."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Để tái sử dụng mã kết nối và dễ dàng cập nhật cấu hình khi cần.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q294",
+          "type": "mc",
+          "concept_ref": "c5-ket-noi-bang-mysqli-huong-doi-tuong",
+          "question": "Thông tin servername trong kết nối PHP với MySQL có vai trò gì?",
+          "options": [
+            "A. Chỉ định tên cơ sở dữ liệu sẽ được kết nối.",
+            "B. Chỉ định địa chỉ hoặc tên máy chủ đang cung cấp dịch vụ MySQL.",
+            "C. Chỉ định địa chỉ hoặc tên máy chủ đang chạy dịch vụ web.",
+            "D. Chỉ định tên tài khoản dùng để kết nối đến MySQL."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Chỉ định địa chỉ hoặc tên máy chủ đang cung cấp dịch vụ MySQL.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q296",
+          "type": "mc",
+          "concept_ref": "c5-prepared-statements-va-sql-injection",
+          "question": "Trong Prepared Statement, ký tự ? (dấu chấm hỏi) có vai trò gì?",
+          "options": [
+            "A. Đại diện cho tên bảng cần truy vấn.",
+            "B. Đại diện cho một giá trị sẽ được truyền trực tiếp vào câu lệnh SQL mà không cần liên kết.",
+            "C. Đánh dấu vị trí của tham số để liên kết dữ liệu trước khi thực thi câu lệnh SQL.",
+            "D. Đại diện cho điều kiện tìm kiếm sẽ được tạo tự động."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        },
+        {
+          "id": "ltweb-q297",
+          "type": "mc",
+          "concept_ref": "c5-prepared-statements-va-sql-injection",
+          "question": "Ưu điểm bảo mật chính của prepared statement là gì?",
+          "options": [
+            "A. Mã hóa các giá trị đầu vào trước khi gửi đến cơ sở dữ liệu nhằm bảo vệ dữ liệu khỏi bị đánh cắp.",
+            "B. Tự động lọc mọi ký tự đặc biệt trong dữ liệu đầu vào trước khi thực thi câu lệnh SQL.",
+            "C. Tách dữ liệu đầu vào khỏi cấu trúc câu lệnh SQL, sau đó liên kết dữ liệu thông qua các tham số để hạn chế nguy cơ SQL Injection.",
+            "D. Kiểm tra quyền của người dùng đối với bảng dữ liệu trước khi thực hiện truy vấn."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        },
+        {
+          "id": "ltweb-q298",
+          "type": "mc",
+          "concept_ref": "c5-prepared-statements-va-sql-injection",
+          "question": "Trong câu lệnh sau, chuỗi \"ss\" biểu thị điều gì? $stmt->bind_param(\"ss\", $user, $pass);",
+          "options": [
+            "A. Chỉ định rằng hai tham số được liên kết với câu lệnh SQL và đều có kiểu dữ liệu chuỗi.",
+            "B. Chỉ định rằng hai tham số sẽ được lưu vào session trước khi thực thi câu lệnh SQL.",
+            "C. Chỉ định rằng hai tham số được liên kết với câu lệnh SQL và đều có kiểu dữ liệu số nguyên",
+            "D. Chỉ định rằng câu lệnh SQL sẽ được thực thi hai lần, mỗi lần với một tham số khác nhau."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        },
+        {
+          "id": "ltweb-q300",
+          "type": "mc",
+          "concept_ref": "c5-tu-kiem-tra-kien-thuc",
+          "question": "Trong trường hợp nào việc sử dụng Prepared Statement mang lại hiệu quả cao nhất?",
+          "options": [
+            "A. Khi cần thực thi lặp lại một câu lệnh SQL có cùng cấu trúc nhưng sử dụng các giá trị tham số khác nhau.",
+            "B. Khi cần thay đổi linh hoạt tên bảng, tên cột hoặc cấu trúc của câu lệnh SQL ở mỗi lần thực thi.",
+            "C. Khi cần cho phép người dùng nhập trực tiếp các thành phần cú pháp của câu lệnh SQL để tăng tính linh hoạt.",
+            "D. Khi cần mã hóa toàn bộ dữ liệu trước khi lưu trữ trong cơ sở dữ liệu."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế (16 câu)",
+      "description": "Đọc hiểu đoạn mã, dự đoán kết quả thực thi và xử lý tình huống lập trình thực tế.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "ltweb-q169",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Nếu form bên dưới được người dùng nhập và gửi (submit), ta làm thế nào để, trong welcome.php, có thể xuất giá trị từ trường \"First name\"? <form action=\"welcome.php\" method=\"get\"> First name: <input type=\"text\" name=\"fname\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Welcome <?php echo $_POST[\"fname\"]; ?>",
+            "B. Welcome <?php echo $_GET[\"fname\"]; ?>",
+            "C. Welcome <?php echo fname; ?>",
+            "D. Welcome <?php echo name; ?>"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Welcome <?php echo $_GET[\"fname\"]; ?>): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q170",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Nếu form bên dưới được người dùng nhập và gửi (submit), ta làm thế nào để, trong welcome.php, có thể xuất giá trị từ trường \"First name\"? <form action=\"welcome.php\" method=\"post\"> First name: <input type=\"text\" name=\"firstname\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Welcome <?php echo $_POST[\"firstname\"]; ?>",
+            "B. Welcome <?php echo $_GET[\"firstname\"]; ?>",
+            "C. Welcome <?php echo $_POST[\"name\"]; ?>",
+            "D. Welcome <?php echo $_GET[\"name\"]; ?>"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Welcome <?php echo $_POST[\"firstname\"]; ?>): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q177",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Cho form bên dưới. Sau khi người dùng nhập dữ liệu và gửi bằng cách nhấp vào nút \"Gửi\" (submit), dữ liệu từ form sẽ được gửi đến đâu? <form action=\"welcome.php\" method=\"get\"> First name: <input type=\"text\" name=\"fname\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Dữ liệu từ form sẽ được gửi đến file \"welcome.php\".",
+            "B. Dữ liệu từ form sẽ được gửi đến file \"default.php\".",
+            "C. Dữ liệu từ form sẽ được gửi đến cơ sở dữ liệu trên Client.",
+            "D. Dữ liệu sẽ được lưu vào form trên Client."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Dữ liệu từ form sẽ được gửi đến file \"welcome.php\".): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q178",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Chọn phát biểu đúng về form sau đây: <form action=\"welcome.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\">",
+          "options": [
+            "A. Khi người dùng điền vào form ở trên và nhấp vào nút gửi (submit), dữ liệu từ form sẽ được gửi tới file \"default.php\" để xử lý.",
+            "B. Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi tới file \"welcome.php\" để xử lý. Dữ liệu từ form được gửi bằng phương thức POST.",
+            "C. Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi bằng phương thức GET.",
+            "D. Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi đến email của người đó."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi tới file \"welcome.php\" để xử lý. Dữ liệu từ form được gửi bằng phương thức POST.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q179",
+          "type": "mc",
+          "concept_ref": "c5-them-du-lieu-vao-csdl-va-tai-tap-tin-len",
+          "question": "Khi người dùng nhập name là \"Hoa\", email là \"nguyenhoa@gmail.com\" vào form bên dưới, rồi gửi (submit) thì dữ liệu sẽ được lưu như thế nào? <form action=\"welcome.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Dữ liệu sẽ được lưu như sau: $_POST = \"Hoa\"; $_GET = \"nguyenhoa@gmail.com\";",
+            "B. Dữ liệu sẽ được lưu như sau: $_GET = \"Hoa\"; $_POST = \"nguyenhoa@gmail.com\";",
+            "C. Dữ liệu sẽ được lưu trong biến $_POST dưới dạng: $_POST = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");",
+            "D. Dữ liệu sẽ được lưu trong biến $_GET dưới dạng: $_GET = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Dữ liệu sẽ được lưu trong biến $_POST dưới dạng: $_POST = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q180",
+          "type": "mc",
+          "concept_ref": "c5-phuong-thuc-get-va-post",
+          "question": "Với URL \"https://hocweb.net/search.php?id=12&subject=PHP\" thì dữ liệu được lưu như thế nào?",
+          "options": [
+            "A. Dữ liệu được lưu như sau: $id = 12; $subject = \"PHP\";",
+            "B. Dữ liệu sẽ được lưu như sau: $_POST = 12; $_GET = \"PHP\";",
+            "C. Dữ liệu được lưu trong biến $_POST dưới dạng: $_POST = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");",
+            "D. Dữ liệu được lưu trong biến $_GET dưới dạng: $_GET = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Dữ liệu được lưu trong biến $_GET dưới dạng: $_GET = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q185",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+          "question": "Với form bên dưới (có URL là: https://hocweb.net/form.php), sau khi người dùng nhập ID là “19”, Name là “Huy” và nhấn nút gửi, trên thanh address, URL sẽ như thế nào? <form method=\"get\"> ID: <input type=\"text\" name=\"id\"><br> Name: <input type=\"text\" name=\"name\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. https://hocweb.net/form.php?id=19&name=Huy",
+            "B. https://hocweb.net/form.php",
+            "C. https://hocweb.net/form.php?19&Huy",
+            "D. https://hocweb.net/form.php?get=19,Huy"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (https://hocweb.net/form.php?id=19&name=Huy): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q199",
+          "type": "mc",
+          "concept_ref": "c5-xu-ly-bieu-mau-web",
+          "question": "Nếu form không có thuộc tính action (mặc định) thì dữ liệu sẽ được gửi đến đâu sau khi người dùng nhập dữ liệu và gửi (submit)? Ví dụ như file \"abc.php\" có form sau: <form method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Vì không có thuộc tính action nên sẽ không có file để gửi dữ liệu đến.",
+            "B. Dữ liệu sẽ được gửi đến trang \"default.php\".",
+            "C. Dữ liệu sẽ tự động biến mất.",
+            "D. Dữ liệu sẽ được gửi đến file ban đầu (là trang chứa form nhập dữ liệu). Với ví dụ trên thì dữ liệu sẽ được gửi tới chính file \"abc.php\" trên server."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Dữ liệu sẽ được gửi đến file ban đầu (là trang chứa form nhập dữ liệu). Với ví dụ trên thì dữ liệu sẽ được gửi tới chính file \"abc.php\" trên server.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q205",
+          "type": "mc",
+          "concept_ref": "c5-cac-thanh-phan-thuong-dung-trong-bieu-ma",
+          "question": "Để PHP nhận được toàn bộ các giá trị đã chọn từ một nhóm checkbox dưới dạng mảng sau khi submit form, cách khai báo HTML nào sau đây là đúng?",
+          "options": [
+            "A. <input type=\"checkbox\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" value=\"Car\"> Ô tô",
+            "B. <input type=\"checkbox\" name=\"vehicle\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" name=\"vehicle\" value=\"Car\"> Ô tô",
+            "C. <input type=\"checkbox\" name=\"vehicle[]\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" name=\"vehicle[]\" value=\"Car\"> Ô tô",
+            "D. <input type=\"checkbox\" name=\"vehicle1\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" name=\"vehicle2\" value=\"Car\"> Ô tô"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q206",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+          "question": "Với form bên dưới thì mảng $_POST sẽ được lưu với key và value như thế nào (khi Bike và Car đều được chọn)? <form method=\"post\"> <input type=\"checkbox\" name=\"vehicle[]\" value=\"Bike\" checked> I have a bike <br> <input type=\"checkbox\" name=\"vehicle[]\" value=\"Car\" checked> I have a car <br><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Array ( [vehicle] => Car )",
+            "B. Array ( [vehicle] => Array ( [0] => Bike [1] => Car ) )",
+            "C. Array ( [vehicle[]] => Array ( [0] => Bike [1] => Car ) )",
+            "D. Array ( [0] => Bike [1] => Car )"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q207",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-get-loc-sach-theo-the-l",
+          "question": "Với form bên dưới thì mảng $_POST sẽ được lưu với key và value như thế nào (khi Saab được chọn)? <form method=\"post\"> <label for=\"cars\">Choose a car:</label> <select name=\"cars\" id=\"cars\"> <option value=\"volvo\">Volvo</option> <option value=\"saab\" selected>Saab</option> </select><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Array ( [option] => Volvo )",
+            "B. Array ( [option] => Saab )",
+            "C. Array ( [cars] => volvo )",
+            "D. Array ( [cars] => saab )"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q208",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Khi người dùng nhập \"I love building websites in PHP and MySQL.\" vào textarea bên dưới, rồi nhấn nút Submit thì mảng $_POST sẽ được lưu với key và value như thế nào? <form action=\"page2.php\" method=\"post\"> <label for=\"inp08\">Tell us about yourseft:</label><br> <textarea id=\"inp08\" name=\"about\" rows=\"10\" cols=\"50\">I love building websites in PHP and MySQL.</textarea> <br><br> <input type=\"submit\" value=\"Submit\"> </form>",
+          "options": [
+            "A. Array ( [textarea] => I love building websites in PHP and MySQL. )",
+            "B. Array ( [about] => textarea)",
+            "C. Array ( [about] => I love building websites in PHP and MySQL. )",
+            "D. Array ( [inp08] => I love building websites in PHP and MySQL. )"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q209",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Đoạn mã sau đây có nghĩa là gì? if ($name == \"Hoa\") { if ($password == \"123\") { header(\"Location: welcome.php\"); } }",
+          "options": [
+            "A. Nếu $name có giá trị là \"Hoa\", và $password có giá trị là \"123\" thì chuyển đến trang \"welcome.php\".",
+            "B. Nếu $name có giá trị là \"Hoa\", và $password có giá trị là \"123\" thì xuất ra chuỗi \"Location: welcome.php\" ở đầu trang.",
+            "C. Nếu $name có giá trị là \"Hoa\", hoặc $password có giá trị là \"123\" thì chuyển đến trang \"welcome.php\".",
+            "D. Nếu $name có giá trị là \"Hoa\", hoặc $password có giá trị là \"123\" thì xuất ra chuỗi \"Location: welcome.php\" ở đầu trang."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Nếu $name có giá trị là \"Hoa\", và $password có giá trị là \"123\" thì chuyển đến trang \"welcome.php\".): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q210",
+          "type": "mc",
+          "concept_ref": "c5-vi-du-trang-dang-nhap-dung-session",
+          "question": "Đoạn mã sau thực hiện chức năng gì? <?php session_start(); if (isset($_SESSION[\"user\"])) { echo \"Xin chào \" . $_SESSION[\"user\"]; } else { header(\"Location:login.php\"); } ?>",
+          "options": [
+            "A. Luôn chuyển người dùng đến login.php",
+            "B. Hiển thị lời chào nếu session tồn tại, ngược lại chuyển đến trang login.php",
+            "C. Tạo session có tên user",
+            "D. Xóa tài khoản đang đăng nhập"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q211",
+          "type": "mc",
+          "concept_ref": "c5-gui-du-lieu-bang-post-vi-du-tinh-tong-ha",
+          "question": "Ở file “welcome.php” có đoạn mã sau: <h1>Hello <?php echo isset($_GET['name']) ? $_GET['name'] : \"Unknown\"; ?></h1> Vậy khi trên thanh address của trình duyệt có URL \"https://www.host.vn/welcome.php?name=Vy\" thì trên trình duyệt sẽ hiển thị kết quả nào?",
+          "options": [
+            "A. Unknown",
+            "B. Hello Unknown",
+            "C. Hello Vy",
+            "D. Hello"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Hello Vy): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q212",
+          "type": "mc",
+          "concept_ref": "c5-ket-noi-bang-mysqli-huong-doi-tuong",
+          "question": "Cho đoạn mã PHP sau trong tệp signin.php: if (isset($_GET[\"error\"])) { echo \"<p><strong>Bạn đã nhập không đúng mật khẩu.</strong></p>\"; } URL nào sau đây làm cho thông báo trên được hiển thị?",
+          "options": [
+            "A. https://www.host.vn/error=1",
+            "B. https://www.host.vn/signin.php&error",
+            "C. https://www.host.vn?1=error",
+            "D. https://www.host.vn/signin.php?error=1"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (https://www.host.vn/signin.php?error=1): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        }
+      ]
+    }
+  }
+}

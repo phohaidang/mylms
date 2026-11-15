@@ -1,0 +1,138 @@
+{
+  "session": 2,
+  "chapter": "Ch.2",
+  "title": "Từ prompt đơn lẻ đến quy trình nhiều bước",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "tpq-q014",
+      "type": "mc",
+      "question": "Context Window (cửa sổ ngữ cảnh) là gì?",
+      "options": [
+        "A. Cửa sổ giao diện hiển thị danh sách các cuộc trò chuyện và Project của người dùng",
+        "B. Khoảng thời gian tối đa AI được phép suy nghĩ trước khi bắt buộc phải trả lời",
+        "C. Số lượng tài khoản tối đa được phép dùng chung một Project trong cùng tổ chức",
+        "D. Giới hạn lượng nội dung AI nhìn thấy cùng lúc, gồm hướng dẫn, tài liệu và cuộc trò chuyện"
+      ],
+      "correct": "D",
+      "explanation": "Context Window là giới hạn lượng nội dung AI nhìn thấy cùng lúc khi trả lời, gồm hướng dẫn, tài liệu và cuộc trò chuyện đang diễn ra. Nội dung quá dài có thể bị đẩy ra khỏi khung."
+    },
+    {
+      "id": "tpq-q015",
+      "type": "mc",
+      "question": "Một Claude Project gồm những thành phần cốt lõi nào?",
+      "options": [
+        "A. Một mô hình AI riêng được huấn luyện lại từ dữ liệu của bạn",
+        "B. Custom Instructions, Knowledge Base và nhiều Conversation",
+        "C. Một đoạn chat dài được ghim lên đầu danh sách",
+        "D. Một thư mục lưu tệp, không có hướng dẫn đi kèm"
+      ],
+      "correct": "B",
+      "explanation": "Một Claude Project gồm Custom Instructions, Knowledge Base và nhiều Conversation. Hai thành phần đầu thuộc về Project; mỗi Conversation là một cuộc làm việc riêng."
+    },
+    {
+      "id": "tpq-q016",
+      "type": "mc",
+      "question": "GATE trong thiết kế quy trình AI là gì?",
+      "options": [
+        "A. Điểm AI phải dừng chờ người xác nhận trước khi sang bước tiếp, kể cả khi đã đủ dữ liệu",
+        "B. Điểm AI dừng lại để hỏi vì thiếu thông tin cần thiết cho bước đang làm",
+        "C. Cổng bảo mật chặn người lạ truy cập vào Project và Knowledge Base",
+        "D. Bước cuối cùng của mọi quy trình, nơi AI tổng hợp và trả kết quả"
+      ],
+      "correct": "A",
+      "explanation": "GATE là điểm AI phải dừng chờ người xác nhận trước khi sang bước sau, kể cả khi đã đủ dữ liệu. Mục đích là giữ quyền quyết định ở người."
+    },
+    {
+      "id": "tpq-q017",
+      "type": "mc",
+      "question": "FALLBACK trong thiết kế quy trình AI là gì?",
+      "options": [
+        "A. Phương án dự phòng chuyển sang kết nối khác khi mất mạng giữa chừng",
+        "B. Bước sao lưu kết quả đã làm sang Knowledge Base của Project",
+        "C. Điểm AI dừng để hỏi lại khi thiếu thông tin, thay vì tự đoán hoặc tự điền",
+        "D. Lựa chọn chuyển sang công cụ AI khác khi công cụ hiện tại gặp lỗi"
+      ],
+      "correct": "C",
+      "explanation": "FALLBACK là điểm AI dừng để hỏi lại khi thiếu thông tin, thay vì tự đoán hay tự điền."
+    },
+    {
+      "id": "tpq-q019",
+      "type": "mc",
+      "question": "Điểm khác biệt chính giữa GATE và FALLBACK là gì?",
+      "options": [
+        "A. GATE chỉ dùng cho bước đầu của quy trình, FALLBACK chỉ dùng cho bước cuối",
+        "B. GATE do người dùng đặt ra, còn FALLBACK do AI tự đặt thêm khi đang chạy",
+        "C. GATE dừng vì thiếu dữ liệu, còn FALLBACK dừng chờ người duyệt dù đã đủ dữ liệu",
+        "D. GATE dừng chờ người xác nhận dù đã đủ dữ liệu; FALLBACK dừng để hỏi vì thiếu dữ liệu"
+      ],
+      "correct": "D",
+      "explanation": "GATE dừng dù đã đủ dữ liệu để người duyệt; FALLBACK dừng vì thiếu dữ liệu để hỏi bổ sung. Hai cơ chế khác nhau ở lý do dừng."
+    },
+    {
+      "id": "tpq-q020",
+      "type": "mc",
+      "question": "Vì sao Conversation mới trong cùng Project vẫn làm đúng quy trình dù bạn không dán lại hướng dẫn?",
+      "options": [
+        "A. Vì Instructions và Knowledge Base thuộc về Project chứ không thuộc một cuộc trò chuyện, nên được nạp lại",
+        "B. Vì AI ghi nhớ nguyên văn mọi cuộc trò chuyện trước đó trong cùng Project và tự dùng lại",
+        "C. Vì AI tự suy đoán quy trình từ tên của Project, không cần hướng dẫn hay tài liệu nào",
+        "D. Vì Project tự sao chép toàn bộ nội dung các Conversation cũ sang Conversation mới"
+      ],
+      "correct": "A",
+      "explanation": "Custom Instructions và Knowledge Base thuộc về Project chứ không thuộc một cuộc trò chuyện, nên Conversation mới trong cùng Project được nạp lại chúng."
+    },
+    {
+      "id": "tpq-q021",
+      "type": "mc",
+      "question": "Khi Memory đã tắt, vì sao điểm và báo cáo của DA-01 không xuất hiện trong Conversation mới chấm DA-03?",
+      "options": [
+        "A. Vì Claude tự động xóa mọi dữ liệu của cuộc trò chuyện cũ sau 24 giờ kể từ lúc tạo ra",
+        "B. Vì báo cáo DA-01 nằm trong Knowledge Base nên bị khóa, các Conversation khác không mở được",
+        "C. Vì DA-01 là Data tình huống của cuộc trò chuyện cũ; chỉ Instructions và Knowledge Base đi theo Project",
+        "D. Vì Claude chỉ có thể đọc một báo cáo mỗi ngày trong một Project, kể cả khi mở Conversation mới"
+      ],
+      "correct": "C",
+      "explanation": "Báo cáo và điểm DA-01 là Data tình huống của cuộc trò chuyện cũ. Chỉ Instructions và Knowledge Base đi theo Project, nên Conversation mới không thấy dữ liệu cũ khi Memory đã tắt."
+    },
+    {
+      "id": "tpq-q022",
+      "type": "mc",
+      "question": "Phát biểu nào về giới hạn của GATE trong Custom Instructions là đúng?",
+      "options": [
+        "A. GATE là khóa kỹ thuật cứng, người dùng không có cách nào ép AI bỏ qua một khi đã được viết",
+        "B. GATE chỉ có tác dụng khi Memory của tài khoản đã được bật từ trước khi mở Conversation",
+        "C. GATE tự biến mất sau lần đầu người dùng xác nhận, các lần sau AI không dừng nữa",
+        "D. GATE là hướng dẫn hành vi: ngăn AI tự ý đi tiếp nhưng không chặn được người dùng cố ép bỏ qua"
+      ],
+      "correct": "D",
+      "explanation": "GATE là hướng dẫn hành vi trong Instructions: nó ngăn AI tự ý đi tiếp nhưng không phải khóa kỹ thuật, nên không chặn được người dùng cố ép bỏ qua."
+    },
+    {
+      "id": "tpq-q024",
+      "type": "mc",
+      "question": "Quy trình soạn đề: (1) nhận yêu cầu, (2) lập bảng phân bổ câu, (3) chọn câu từ ngân hàng, (4) lập đề. Giáo viên muốn tự duyệt bảng phân bổ trước khi AI chọn câu. Cần thêm gì vào Instructions?",
+      "options": [
+        "A. Một GATE sau Bước 2: dừng lại và hỏi xác nhận bảng phân bổ câu",
+        "B. Một FALLBACK sau Bước 2 để AI hỏi lại giáo viên về bảng phân bổ",
+        "C. Một mục NGUỒN TIN CẬY riêng áp dụng cho Bước 3 khi chọn câu",
+        "D. Một dòng KẾT THÚC PHIÊN hỏi giáo viên bước nào cần điều chỉnh"
+      ],
+      "correct": "A",
+      "explanation": "Muốn tự duyệt bảng phân bổ trước khi AI chọn câu thì thêm một GATE sau Bước 2: dừng và hỏi xác nhận bảng phân bổ."
+    },
+    {
+      "id": "tpq-q025",
+      "type": "mc",
+      "question": "Ngân hàng câu hỏi không đủ câu Mức 3 cho Chương 2 theo bảng phân bổ đã duyệt. Hành vi đúng của trợ lý là gì?",
+      "options": [
+        "A. Tự viết thêm câu mới cho đủ số lượng rồi ghi chú đã viết thêm ở cuối đề",
+        "B. Tự hạ mức độ câu hoặc lấy câu từ chương khác cho đủ, không cần báo lại",
+        "C. Dừng, báo ô nào thiếu bao nhiêu câu và hỏi giáo viên chọn hướng xử lý",
+        "D. Bỏ ô đó khỏi đề và giảm tổng số câu cho khớp với số câu hiện có"
+      ],
+      "correct": "C",
+      "explanation": "Thiếu dữ liệu để thực hiện đúng bảng đã duyệt là tình huống FALLBACK: dừng, báo ô nào thiếu bao nhiêu câu, rồi hỏi giáo viên chọn hướng xử lý; không tự lấy câu khác hay tự viết thêm."
+    }
+  ]
+}

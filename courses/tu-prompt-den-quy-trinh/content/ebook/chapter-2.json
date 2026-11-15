@@ -1,0 +1,371 @@
+{
+  "chapter": 2,
+  "title": "Từ prompt đơn lẻ đến quy trình nhiều bước",
+  "sessions": [
+    2
+  ],
+  "scqa": {
+    "situation": "Bạn đã có một prompt tốt. Nhưng công việc thật của bạn hiếm khi là một câu hỏi: mỗi học kỳ bạn lặp lại những quy trình nhiều bước như chấm đồ án, soạn đề, tổng hợp báo cáo, và bạn đã thử nhờ AI làm cùng.",
+    "complication": "Trong một đoạn chat dài, AI dần quên điều bạn dặn ở đầu cuộc trò chuyện, mỗi lần chạy lại ra một kiểu, và có lúc tự làm luôn cả bước mà bạn muốn tự quyết. Chấm bài thứ 30 lúc 11 giờ đêm, thước đo còn giống bài thứ 3 không? Nhận xét còn cụ thể như bài thứ 3 không?",
+    "question": "Làm thế nào để AI làm đúng một quy trình nhiều bước như một cộng sự đáng tin, ở bài thứ 3 cũng như ở bài thứ 30?",
+    "answer": "Đưa quy trình vào một Claude Project (Custom Instructions + Knowledge Base) và thiết kế nó theo 7 nguyên tắc, trong đó hai cơ chế then chốt là GATE (dừng chờ bạn xác nhận) và FALLBACK (dừng hỏi lại khi thiếu thông tin)."
+  },
+  "concepts": [
+    {
+      "id": "c2-context-window",
+      "term": "Context Window",
+      "definition": "Giới hạn lượng nội dung AI nhìn thấy cùng lúc khi trả lời (cửa sổ ngữ cảnh), gồm cả hướng dẫn, tài liệu và toàn bộ cuộc trò chuyện đang diễn ra.",
+      "key_points": [
+        "Hình dung một cửa sổ trượt: lúc mới bắt đầu, mọi tin nhắn đều nằm trong cửa sổ; sau nhiều lượt trao đổi, tin nhắn đầu bị đẩy ra ngoài.",
+        "Hệ quả 1, <strong>quên context</strong>: điều bạn dặn ở đầu cuộc trò chuyện không còn được AI \"nhìn thấy\".",
+        "Hệ quả 2, <strong>không nhất quán</strong>: cùng một yêu cầu, chạy ở đầu và chạy khi hội thoại đã rất dài có thể cho kết quả khác nhau.",
+        "Cửa sổ ngữ cảnh của các mô hình hiện nay khá lớn nhưng không vô hạn; hội thoại rất dài hoặc nhiều tài liệu vẫn có thể làm AI bỏ sót chi tiết.",
+        "Custom Instructions và Knowledge Base thuộc về Project chứ không thuộc một cuộc trò chuyện, nên mỗi Conversation mới trong Project đều được nạp lại chúng từ đầu."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-claude-project"
+      ]
+    },
+    {
+      "id": "c2-claude-project",
+      "term": "Claude Project",
+      "definition": "Không gian làm việc trong Claude gồm ba phần: Custom Instructions (cách làm việc), Knowledge Base (tài liệu nền) và nhiều Conversation (mỗi cuộc là một lần chạy).",
+      "key_points": [
+        "<strong>Custom Instructions</strong> là Workflow viết thành lời: các bước, điểm dừng, mẫu đầu ra, quy tắc ứng xử.",
+        "<strong>Knowledge Base</strong> là Knowledge được đóng gói: rubric, mẫu biểu, quy chế, mẫu nhận xét.",
+        "<strong>Conversation</strong> là một lần chạy cụ thể với dữ liệu riêng của lần đó.",
+        "Khác một đoạn chat dài: Project không bắt bạn chọn giữa \"nhớ hết, kể cả dữ liệu của lần trước\" và \"quên hết, kể cả quy trình\". Nó giữ lại quy trình, cách ly dữ liệu từng lần."
+      ],
+      "case_study": {
+        "title": "Một đoạn chat dài và một Project",
+        "context": "Bạn chấm 30 bài trong cùng một đoạn chat. Sang bài thứ 20, AI bắt đầu lẫn thông tin giữa các sinh viên và bỏ bớt một tiêu chí. Cùng quy trình ấy trong Project: mỗi bài một Conversation mới, rubric và quy trình tự được nạp lại, dữ liệu bài trước không lẫn sang. (Tình huống minh họa.)",
+        "analysis": "Đoạn chat dài buộc bạn đánh đổi giữa nhớ và quên. Project tách hai thứ ra: quy trình thì tái sử dụng, dữ liệu từng bài thì cách ly.",
+        "lesson_learned": "Việc lặp lại nhiều lần với cùng một thước đo nên nằm trong Project, không nằm trong một đoạn chat."
+      },
+      "related_concepts": [
+        "c2-context-window",
+        "c2-data-nen-tinh-huong"
+      ]
+    },
+    {
+      "id": "c2-data-nen-tinh-huong",
+      "term": "Data nền và Data tình huống",
+      "definition": "Data nền là tài liệu dùng cho mọi lần chạy, đặt trong Knowledge Base. Data tình huống là dữ liệu riêng của từng lần chạy, đưa vào từng Conversation.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\"></th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Data nền</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Data tình huống</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ví dụ (chấm đồ án)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Rubric, phiếu chấm mẫu, đề bài mẫu, mẫu nhận xét</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Báo cáo của một sinh viên, điểm chuyên cần và hình thức của bài đó</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đặt ở đâu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Knowledge Base của Project</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Tải lên trong từng Conversation</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Thay đổi</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ổn định, ít đổi</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đổi sau mỗi lần chạy</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Lưu ý bảo mật</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Không chứa thông tin cá nhân</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Khử thông tin cá nhân trước khi tải lên</td></tr></tbody></table></div>",
+        "Conversation mới không thừa hưởng Data tình huống của Conversation trước: đó là điều ta muốn khi chấm bài, vì thông tin em này không được dính sang em kia.",
+        "Nếu bật Memory, Claude có thể nhớ thông tin giữa các cuộc trò chuyện; với dữ liệu bài làm hãy chủ động kiểm soát hoặc tắt Memory."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-claude-project"
+      ]
+    },
+    {
+      "id": "c2-gate",
+      "term": "GATE (cổng xác nhận)",
+      "definition": "Điểm AI phải dừng lại chờ người xác nhận trước khi sang bước tiếp theo, kể cả khi đã có đủ dữ liệu.",
+      "key_points": [
+        "Mục đích: người giữ quyền kiểm soát những quyết định có hậu quả. Trong case chấm đồ án có hai GATE: sau Bảng điểm và sau Nhận xét.",
+        "Viết trong Custom Instructions bằng lệnh rõ ràng: <code>Sau Bước 3, DỪNG LẠI và hỏi: ...</code> kèm câu <code>Tuyệt đối không tự thực hiện bước tiếp theo khi chưa có xác nhận.</code>",
+        "<strong>Giới hạn thật:</strong> GATE là hướng dẫn hành vi, không phải khóa cứng như phần mềm. Nó bảo vệ bạn khỏi việc AI tự ý đi tiếp, nhưng không chặn được việc chính bạn ra lệnh đủ mạnh để bỏ qua bước kiểm soát.",
+        "Không phải bước nào cũng cần GATE: chỗ nào không còn gì để người quyết thì không cần dừng."
+      ],
+      "case_study": {
+        "title": "Cú từ chối ở Kịch bản 3",
+        "context": "Chấm bài thứ 30, 11 giờ đêm, giáo viên giục: \"bỏ qua bước xem điểm, viết nhận xét và lập phiếu luôn đi\". (Kịch bản demo trong Buổi 2.)",
+        "analysis": "Claude từ chối vì Instructions yêu cầu dừng ở GATE 1. Sau đó giáo viên xem bảng, thấy AI chấm chặt ở một tiêu chí, tự chỉnh lên điểm cao hơn rồi xác nhận. Nhận xét viết ra bám theo điểm giáo viên đã chỉnh, không bám điểm AI gợi ý lúc đầu.",
+        "lesson_learned": "Điểm cuối cùng là quyết định của người. GATE giúp quyết định đó luôn đi trước phần việc phụ thuộc vào nó."
+      },
+      "related_concepts": [
+        "c2-fallback",
+        "c2-bay-nguyen-tac"
+      ]
+    },
+    {
+      "id": "c2-fallback",
+      "term": "FALLBACK (hỏi lại khi thiếu)",
+      "definition": "Điểm AI phải dừng để hỏi lại khi thiếu thông tin cần thiết, thay vì tự đoán hoặc tự điền.",
+      "key_points": [
+        "<strong>FALLBACK 1</strong>, thiếu thứ người nắm: giáo viên chưa đưa điểm Chuyên cần hoặc Hình thức. AI hỏi, không tự chấm, không coi \"chưa nói\" là 0 hay điểm tối đa.",
+        "<strong>FALLBACK 2</strong>, thiếu căn cứ trong tài liệu: báo cáo không có phần phương pháp nghiên cứu. AI ghi <code>Chưa đủ căn cứ</code> và hỏi, không lấy chữ từ chương khác để chấm cho đủ.",
+        "Phân biệt thông tin <strong>BẮT BUỘC</strong> (thiếu thì hỏi, không được giả định) với <strong>KHÔNG BẮT BUỘC</strong> (dùng giá trị mặc định và ghi chú <code>[ĐÃ DÙNG GIÁ TRỊ MẶC ĐỊNH]</code>).",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\"></th><th style=\"text-align:left;padding:0.4rem 0.6rem\">GATE</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">FALLBACK</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI có đủ dữ liệu không?</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Có</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Không</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Vì sao AI dừng?</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Để người xác nhận, kiểm soát quyết định</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Để hỏi lại phần còn thiếu</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Ví dụ</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Sau Bảng điểm, chờ giáo viên chốt điểm</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chưa có điểm Chuyên cần nên hỏi</td></tr></tbody></table></div>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-gate"
+      ]
+    },
+    {
+      "id": "c2-case-cham-do-an",
+      "term": "Case study: Chấm đồ án",
+      "definition": "Quy trình xuyên suốt khóa học: giáo viên hướng dẫn chấm đồ án theo phiếu chấm 10 điểm, có AI hỗ trợ nhưng người giữ các quyết định.",
+      "key_points": [
+        "<strong>Phiếu 10 điểm:</strong> Chuyên cần 1 điểm; Hình thức 3 điểm (H1–H3); Nội dung và phương pháp 6 điểm (N1–N4 mỗi tiêu chí 1,0; N5 2,0).",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Bước</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Việc</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Điểm dừng</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Giáo viên tải báo cáo đã khử thông tin lên Claude</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">—</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude đọc báo cáo và thu thập điểm giáo viên tự chấm (Chuyên cần, Hình thức)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">FALLBACK 1 nếu thiếu điểm</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude chấm N1–N5, mỗi điểm kèm trích dẫn nguyên văn từ báo cáo</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">FALLBACK 2 nếu không đủ căn cứ; GATE 1: giáo viên xác nhận Bảng điểm</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude viết nhận xét (mục 6, 7) và bảng đối chiếu điểm trừ với thiếu sót</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">GATE 2: giáo viên xác nhận Nhận xét</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">5</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude lập phiếu chấm hoàn chỉnh; mục 1–5 để \"[GV tự điền]\"</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">—</td></tr></tbody></table></div>",
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Kịch bản</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Điều được chứng minh</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1. Chạy xuôi (DA-01)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude tóm tắt 5 bước, nói trước hai chỗ sẽ dừng, rồi dừng đúng ở GATE 1</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2. Thiếu thông tin (DA-02)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Hỏi điểm Chuyên cần/Hình thức (FALLBACK 1); ghi \"Chưa đủ căn cứ\" (FALLBACK 2)</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3. Giục vượt gate</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude từ chối; sau đó đi hết GATE 1 → GATE 2 → phiếu hoàn chỉnh</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4. Conversation mới (DA-03)</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Instructions và Knowledge Base tự có sẵn; dữ liệu của DA-01 không lẫn sang</td></tr></tbody></table></div>",
+        "Việc người giữ: Chuyên cần, Hình thức, mục 1–5 của phiếu (họ tên, mã số, số trang...), và quyết định cuối. Dữ liệu sinh viên không đi qua AI.",
+        "Toàn bộ dữ liệu trong case là minh họa; báo cáo đã khử họ tên, mã số sinh viên, và tên file chỉ là DA-01, DA-02, DA-03."
+      ],
+      "case_study": {
+        "title": "Bài thứ 3 và bài thứ 30",
+        "context": "Chấm đồ án bài thứ 30 lúc 11 giờ đêm. Thước đo có còn giống bài thứ 3? Nhận xét có còn cụ thể như bài thứ 3?",
+        "analysis": "Quy trình đóng gói trong Project làm cho cùng một rubric, cùng một mẫu phiếu, cùng hai điểm dừng được áp dụng giống nhau ở mọi bài, và mỗi điểm đi kèm dẫn chứng để giáo viên kiểm tra được ngay.",
+        "lesson_learned": "Giá trị lớn nhất không phải tốc độ, mà là tính nhất quán và khả năng kiểm tra được."
+      },
+      "related_concepts": [
+        "c2-gate",
+        "c2-fallback",
+        "c2-bay-nguyen-tac"
+      ]
+    },
+    {
+      "id": "c2-bay-nguyen-tac",
+      "term": "7 nguyên tắc thiết kế",
+      "definition": "Bảy nguyên tắc cần có trong Custom Instructions để AI làm đúng quy trình: khởi tạo, cổng xác nhận, thiếu thông tin, phân quyền tin cậy, template, vai trò, vòng phản hồi.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">#</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Nguyên tắc</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Câu prompt mẫu</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Thấy ở đâu trong case chấm đồ án</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">1</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Khởi tạo bắt buộc</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trước khi bắt đầu, hãy đọc toàn bộ tài liệu trong Knowledge Base và tóm tắt lại để tôi xác nhận bạn đã hiểu đúng.</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Claude tóm tắt 5 bước và nói trước 2 chỗ sẽ dừng</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">2</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Quy trình tuần tự có cổng</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Sau mỗi bước, DỪNG LẠI và hỏi xác nhận. Tuyệt đối không tự làm bước kế tiếp.</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">GATE 1, GATE 2, cú từ chối ở Kịch bản 3</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">3</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Xử lý thiếu thông tin</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Nếu thiếu thông tin bắt buộc, hãy hỏi tôi. Nếu thiếu thông tin không bắt buộc, dùng giá trị mặc định và ghi chú rõ.</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Kịch bản 2: hỏi điểm giáo viên; \"Chưa đủ căn cứ\"</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">4</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Phân quyền tin cậy</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chỉ dùng số liệu từ tài liệu tôi cung cấp. Kiến thức chung phải đánh dấu [CẦN KIỂM CHỨNG].</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Mọi điểm kèm trích dẫn nguyên văn từ báo cáo</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">5</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Template đầu ra chuẩn</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Mọi đầu ra phải theo đúng cấu trúc sau, không thêm không bớt mục.</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bảng điểm N1–N5 và phiếu chấm hoàn chỉnh</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">6</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Vai trò rõ ràng</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Bạn đề xuất phương án kèm ưu/nhược điểm. Quyết định cuối cùng luôn thuộc về tôi.</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Giáo viên chốt điểm; tự giữ Chuyên cần và Hình thức</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">7</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\"><strong>Vòng phản hồi</strong></td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cuối phiên làm việc, hỏi tôi: Bước nào trong quy trình cần điều chỉnh cho lần sau?</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Câu hỏi cuối phiên</td></tr></tbody></table></div>",
+        "Hai nguyên tắc nặng nhất là 2 (GATE) và 3 (FALLBACK); chúng quyết định AI có đáng tin trong quy trình thật hay không.",
+        "Các nguyên tắc này sẽ trở thành các mục của Template Custom Instructions chuẩn ở Chương 3."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-gate",
+        "c2-fallback"
+      ]
+    },
+    {
+      "id": "c2-hai-so-do",
+      "term": "Hai sơ đồ quy trình",
+      "definition": "Sơ đồ 1 vẽ quy trình nghiệp vụ khi chưa có AI (người làm, người duyệt); Sơ đồ 2 vẽ cùng quy trình khi giao một phần cho AI, thêm GATE (đỏ) và FALLBACK (cam).",
+      "key_points": [
+        "Trước khi vẽ cho AI, hãy vẽ cho người: một người, một phiếu, năm bước, chưa có AI, chưa có GATE.",
+        "GATE đặt ở chỗ người vốn tự dừng lại xem xét (xem lại điểm trước khi viết nhận xét, xem lại nhận xét trước khi ký). FALLBACK đặt ở chỗ người vốn tự lật lại bài hoặc hỏi lại. Việc người vẫn làm ngầm được viết ra thành quy tắc.",
+        "Không có GATE ở một bước cũng là một quyết định thiết kế.",
+        "Trên giấy A3, đánh dấu GATE bằng 🔒 và FALLBACK bằng ❓. Bản mermaid của Sơ đồ 2 cho case chấm đồ án:",
+        "<pre style=\"white-space:pre-wrap;word-break:break-word;max-width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;font-size:0.8rem;line-height:1.55;color:var(--text-primary);margin:0.4rem 0 0\">flowchart LR\n    B1[\"BƯỚC 1: Tải báo cáo đã khử thông tin&lt;br/&gt;Đầu ra: Báo cáo trong cuộc trò chuyện\"]\n    B2[\"BƯỚC 2: Đọc báo cáo, lấy điểm của GV&lt;br/&gt;Đầu ra: Tóm tắt + điểm Chuyên cần, Hình thức\"]\n    F1((\"FALLBACK 1: hỏi khi thiếu điểm GV\"))\n    B3[\"BƯỚC 3: Chấm N1–N5 kèm dẫn chứng&lt;br/&gt;Đầu ra: Bảng điểm\"]\n    F2((\"FALLBACK 2: ghi Chưa đủ căn cứ và hỏi\"))\n    G1{{\"GATE 1: GV xác nhận Bảng điểm\"}}\n    B4[\"BƯỚC 4: Viết nhận xét + bảng đối chiếu&lt;br/&gt;Đầu ra: Mục 6, 7 của phiếu\"]\n    G2{{\"GATE 2: GV xác nhận Nhận xét\"}}\n    B5[\"BƯỚC 5: Lập phiếu chấm hoàn chỉnh&lt;br/&gt;Đầu ra: Phiếu (mục 1–5 để GV tự điền)\"]\n    B1 --&gt; B2 --&gt; B3 --&gt; G1 --&gt; B4 --&gt; G2 --&gt; B5\n    B2 -.-&gt; F1\n    B3 -.-&gt; F2\n    classDef gate fill:#c0392b,color:#fff\n    classDef fallback fill:#f5a623,color:#3a2a00\n    class G1,G2 gate\n    class F1,F2 fallback</pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-gate",
+        "c2-fallback",
+        "c2-phan-vai"
+      ]
+    },
+    {
+      "id": "c2-phan-vai",
+      "term": "Phân vai người và AI",
+      "definition": "Nguyên tắc chia việc: việc đếm được, kiểm được, hoặc chỉ mình có dữ liệu thì người làm; việc cần phán đoán thì AI gợi ý, người quyết.",
+      "key_points": [
+        "<div style=\"overflow-x:auto;margin-top:0.4rem\"><table style=\"font-size:0.84rem\"><thead><tr><th style=\"text-align:left;padding:0.4rem 0.6rem\">Việc</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Ai làm</th><th style=\"text-align:left;padding:0.4rem 0.6rem\">Vì sao</th></tr></thead><tbody><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Điểm Chuyên cần</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Giáo viên</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chỉ giáo viên có dữ liệu điểm danh</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Điểm Hình thức, mục 1–5 của phiếu</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Giáo viên</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Đếm được, kiểm được, và là dữ liệu sinh viên</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Chấm Nội dung N1–N5</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">AI gợi ý, giáo viên quyết</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Cần phán đoán; AI kèm dẫn chứng để giáo viên kiểm</td></tr><tr><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Điểm cuối và chữ ký</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Giáo viên</td><td style=\"vertical-align:top;padding:0.4rem 0.6rem;border-top:1px solid var(--border)\">Trách nhiệm không thể giao</td></tr></tbody></table></div>",
+        "Khi thiết kế quy trình cho đơn vị của bạn, hãy tự hỏi với từng việc: nó đếm được, kiểm được, hay chỉ mình tôi có dữ liệu không? Nếu có, giữ lại."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-hai-so-do"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết thuật ngữ và định nghĩa nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-context-window",
+          "question": "Context Window (cửa sổ ngữ cảnh) là gì?",
+          "options": [
+            "A. Cửa sổ giao diện hiển thị danh sách các cuộc trò chuyện và Project của người dùng",
+            "B. Khoảng thời gian tối đa AI được phép suy nghĩ trước khi bắt buộc phải trả lời",
+            "C. Số lượng tài khoản tối đa được phép dùng chung một Project trong cùng tổ chức",
+            "D. Giới hạn lượng nội dung AI nhìn thấy cùng lúc, gồm hướng dẫn, tài liệu và cuộc trò chuyện"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L1-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-claude-project",
+          "question": "Một Claude Project gồm những thành phần cốt lõi nào?",
+          "options": [
+            "A. Một mô hình AI riêng được huấn luyện lại từ dữ liệu của bạn",
+            "B. Custom Instructions, Knowledge Base và nhiều Conversation",
+            "C. Một đoạn chat dài được ghim lên đầu danh sách",
+            "D. Một thư mục lưu tệp, không có hướng dẫn đi kèm"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-gate",
+          "question": "GATE trong thiết kế quy trình AI là gì?",
+          "options": [
+            "A. Điểm AI phải dừng chờ người xác nhận trước khi sang bước tiếp, kể cả khi đã đủ dữ liệu",
+            "B. Điểm AI dừng lại để hỏi vì thiếu thông tin cần thiết cho bước đang làm",
+            "C. Cổng bảo mật chặn người lạ truy cập vào Project và Knowledge Base",
+            "D. Bước cuối cùng của mọi quy trình, nơi AI tổng hợp và trả kết quả"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c2-q4",
+          "type": "mc",
+          "concept_ref": "c2-fallback",
+          "question": "FALLBACK trong thiết kế quy trình AI là gì?",
+          "options": [
+            "A. Phương án dự phòng chuyển sang kết nối khác khi mất mạng giữa chừng",
+            "B. Bước sao lưu kết quả đã làm sang Knowledge Base của Project",
+            "C. Điểm AI dừng để hỏi lại khi thiếu thông tin, thay vì tự đoán hoặc tự điền",
+            "D. Lựa chọn chuyển sang công cụ AI khác khi công cụ hiện tại gặp lỗi"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c2-q5",
+          "type": "mc",
+          "concept_ref": "c2-data-nen-tinh-huong",
+          "question": "Rubric chấm điểm dùng cho mọi bài đồ án thuộc loại dữ liệu nào?",
+          "options": [
+            "A. Data tình huống, vì mỗi bài được chấm một lần",
+            "B. Data nền, đặt trong Knowledge Base của Project",
+            "C. Data cá nhân của sinh viên",
+            "D. Data tạm thời không cần lưu ở đâu cả"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Giải thích cơ chế, phân biệt và so sánh các khái niệm.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-fallback",
+          "question": "Điểm khác biệt chính giữa GATE và FALLBACK là gì?",
+          "options": [
+            "A. GATE chỉ dùng cho bước đầu của quy trình, FALLBACK chỉ dùng cho bước cuối",
+            "B. GATE do người dùng đặt ra, còn FALLBACK do AI tự đặt thêm khi đang chạy",
+            "C. GATE dừng vì thiếu dữ liệu, còn FALLBACK dừng chờ người duyệt dù đã đủ dữ liệu",
+            "D. GATE dừng chờ người xác nhận dù đã đủ dữ liệu; FALLBACK dừng để hỏi vì thiếu dữ liệu"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L2-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-claude-project",
+          "question": "Vì sao Conversation mới trong cùng Project vẫn làm đúng quy trình dù bạn không dán lại hướng dẫn?",
+          "options": [
+            "A. Vì Instructions và Knowledge Base thuộc về Project chứ không thuộc một cuộc trò chuyện, nên được nạp lại",
+            "B. Vì AI ghi nhớ nguyên văn mọi cuộc trò chuyện trước đó trong cùng Project và tự dùng lại",
+            "C. Vì AI tự suy đoán quy trình từ tên của Project, không cần hướng dẫn hay tài liệu nào",
+            "D. Vì Project tự sao chép toàn bộ nội dung các Conversation cũ sang Conversation mới"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-data-nen-tinh-huong",
+          "question": "Khi Memory đã tắt, vì sao điểm và báo cáo của DA-01 không xuất hiện trong Conversation mới chấm DA-03?",
+          "options": [
+            "A. Vì Claude tự động xóa mọi dữ liệu của cuộc trò chuyện cũ sau 24 giờ kể từ lúc tạo ra",
+            "B. Vì báo cáo DA-01 nằm trong Knowledge Base nên bị khóa, các Conversation khác không mở được",
+            "C. Vì DA-01 là Data tình huống của cuộc trò chuyện cũ; chỉ Instructions và Knowledge Base đi theo Project",
+            "D. Vì Claude chỉ có thể đọc một báo cáo mỗi ngày trong một Project, kể cả khi mở Conversation mới"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L2-c2-q4",
+          "type": "mc",
+          "concept_ref": "c2-gate",
+          "question": "Phát biểu nào về giới hạn của GATE trong Custom Instructions là đúng?",
+          "options": [
+            "A. GATE là khóa kỹ thuật cứng, người dùng không có cách nào ép AI bỏ qua một khi đã được viết",
+            "B. GATE chỉ có tác dụng khi Memory của tài khoản đã được bật từ trước khi mở Conversation",
+            "C. GATE tự biến mất sau lần đầu người dùng xác nhận, các lần sau AI không dừng nữa",
+            "D. GATE là hướng dẫn hành vi: ngăn AI tự ý đi tiếp nhưng không chặn được người dùng cố ép bỏ qua"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L2-c2-q5",
+          "type": "mc",
+          "concept_ref": "c2-fallback",
+          "question": "Báo cáo đồ án không có phần nào nói về phương pháp nghiên cứu. Theo thiết kế, AI nên làm gì ở tiêu chí liên quan?",
+          "options": [
+            "A. Suy ra phương pháp từ các chương khác để chấm cho đủ điểm",
+            "B. Ghi \"Chưa đủ căn cứ\" và hỏi giáo viên quyết định",
+            "C. Tự chấm 0 điểm để an toàn",
+            "D. Bỏ qua tiêu chí đó mà không báo gì"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng",
+      "description": "Áp dụng vào tình huống công việc thực tế của bạn.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-gate",
+          "question": "Quy trình soạn đề: (1) nhận yêu cầu, (2) lập bảng phân bổ câu, (3) chọn câu từ ngân hàng, (4) lập đề. Giáo viên muốn tự duyệt bảng phân bổ trước khi AI chọn câu. Cần thêm gì vào Instructions?",
+          "options": [
+            "A. Một GATE sau Bước 2: dừng lại và hỏi xác nhận bảng phân bổ câu",
+            "B. Một FALLBACK sau Bước 2 để AI hỏi lại giáo viên về bảng phân bổ",
+            "C. Một mục NGUỒN TIN CẬY riêng áp dụng cho Bước 3 khi chọn câu",
+            "D. Một dòng KẾT THÚC PHIÊN hỏi giáo viên bước nào cần điều chỉnh"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-fallback",
+          "question": "Ngân hàng câu hỏi không đủ câu Mức 3 cho Chương 2 theo bảng phân bổ đã duyệt. Hành vi đúng của trợ lý là gì?",
+          "options": [
+            "A. Tự viết thêm câu mới cho đủ số lượng rồi ghi chú đã viết thêm ở cuối đề",
+            "B. Tự hạ mức độ câu hoặc lấy câu từ chương khác cho đủ, không cần báo lại",
+            "C. Dừng, báo ô nào thiếu bao nhiêu câu và hỏi giáo viên chọn hướng xử lý",
+            "D. Bỏ ô đó khỏi đề và giảm tổng số câu cho khớp với số câu hiện có"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L3-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-data-nen-tinh-huong",
+          "question": "Trong quy trình soạn đề, mục nào là Data tình huống?",
+          "options": [
+            "A. Ngân hàng câu hỏi của bộ môn, dùng lại cho mọi đề trong nhiều học kỳ",
+            "B. Mẫu đề thi của khoa, được dùng chung cho tất cả các đề của khoa",
+            "C. Đề cương học phần, ổn định qua nhiều lần soạn đề",
+            "D. Yêu cầu riêng của đề lần này: phạm vi chương, số câu, tỷ lệ mức độ"
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "L3-c2-essay1",
+          "type": "essay",
+          "concept_ref": "c2-hai-so-do",
+          "question": "Chọn một quy trình nhiều bước ở đơn vị hoặc bộ môn của bạn (không dùng dữ liệu thật nhạy cảm). Mô tả các bước chính, rồi chỉ ra: (1) ít nhất một GATE và vì sao người cần dừng ở đó, (2) ít nhất một FALLBACK và loại thông tin AI không được tự đoán, (3) một việc bạn giữ lại, không giao cho AI, và lý do.",
+          "rubric": "Mô tả từ 3 bước trở lên, có đầu vào/đầu ra rõ (25%) · GATE đặt đúng chỗ có hậu quả và giải thích được (25%) · FALLBACK phân biệt đúng với GATE và nêu đúng loại thông tin thiếu (25%) · Việc người giữ có lý do theo nguyên tắc đếm được / kiểm được / chỉ mình có dữ liệu / cần phán đoán (25%)",
+          "max_words": 350
+        }
+      ]
+    }
+  }
+}
