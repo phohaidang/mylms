@@ -28,20 +28,38 @@ export async function renderLesson(app, { id }) {
          const allConcepts = chapterData.concepts || [];
          const sessionConcepts = allConcepts.filter(c => c.session && parseInt(c.session) === parseInt(id));
          const concepts = sessionConcepts.length > 0 ? sessionConcepts : allConcepts;
-         ebookConceptsHTML = concepts.map(c => `
-           <div class="card" style="margin-bottom:1rem; border-left: 4px solid var(--primary-color)">
-             <div class="card-header" style="padding-bottom: 0.5rem">
-               <span class="badge badge-primary" style="font-size: 0.7rem">Khái niệm</span>
-               <h4 style="margin: 0.3rem 0; color: var(--primary-color)">${c.term}</h4>
+         ebookConceptsHTML = concepts.map(c => {
+           const listItems = [];
+           const blockItems = [];
+
+           (c.key_points || []).forEach(kp => {
+             const trimmed = (kp || '').trim();
+             if (trimmed.includes('<table') || trimmed.includes('<pre')) {
+               blockItems.push(`<div class="concept-table-wrap">${trimmed}</div>`);
+             } else {
+               listItems.push(`<li style="margin-bottom: 0.4rem; line-height: 1.65;">${trimmed}</li>`);
+             }
+           });
+
+           return `
+           <div class="card concept-card-block">
+             <div class="card-header" style="padding: 1.25rem 1.5rem 0.5rem; display: flex; flex-direction: column; gap: 0.35rem">
+               <span class="badge badge-accent" style="font-size: 0.72rem; align-self: flex-start; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px">Khái niệm</span>
+               <h3 style="margin: 0.2rem 0 0; color: var(--text-primary); font-size: 1.25rem; font-weight: 700">${c.term}</h3>
              </div>
-             <div class="card-body" style="padding-top: 0">
-               <p style="font-size: 0.92rem; margin-bottom: 0.5rem"><strong>Định nghĩa:</strong> ${c.definition}</p>
-               <ul style="font-size: 0.88rem; color: var(--text-secondary); margin: 0; padding-left: 1.2rem">
-                 ${c.key_points.map(kp => `<li>${kp}</li>`).join('')}
-               </ul>
+             <div class="card-body" style="padding: 0.75rem 1.5rem 1.5rem">
+               <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem 1.15rem; margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.65">
+                 <strong style="color: var(--accent)">Định nghĩa:</strong> ${c.definition}
+               </div>
+               ${listItems.length > 0 ? `
+               <ul style="font-size: 0.92rem; color: var(--text-secondary); margin: 0 0 1rem; padding-left: 1.3rem">
+                 ${listItems.join('')}
+               </ul>` : ''}
+               ${blockItems.join('')}
              </div>
            </div>
-         `).join('');
+           `;
+         }).join('');
       }
     } catch(err) {
       console.error("Failed fetching ebook data", err);
@@ -105,8 +123,8 @@ export async function renderLesson(app, { id }) {
         </div>
         <div style="display:flex;gap:0.75rem">
           ${!isStudent ? `<button class="btn btn-secondary" id="btn-lesson" onclick="showTab('lesson')">📄 Kịch bản dạy</button>` : ''}
-          ${!isStudent ? `<button class="btn btn-secondary" id="btn-slide" onclick="showTab('slide')">📊 Slide</button>` : ''}
-          ${isStudent && session.hasSlide ? `<a href="#" id="btn-student-slide" onclick="alert('Vui lòng kéo xuống dưới, nộp đánh giá ẩn danh kèm bình luận để có thể tải Slide!'); return false;" class="btn btn-secondary" style="opacity: 0.5">📥 Tải Slide</a>` : ''}
+          ${!isStudent ? `<button class="btn btn-secondary" id="btn-slide" onclick="showTab('slide')">📊 Slide / Motion</button>` : ''}
+          ${isStudent && session.hasSlide ? `<a href="#" id="btn-student-slide" onclick="alert('Vui lòng kéo xuống dưới, nộp đánh giá ẩn danh kèm bình luận để có thể tải Bài giảng Motion (.html)!'); return false;" class="btn btn-secondary" style="opacity: 0.5">📥 Tải Bài giảng (.html)</a>` : ''}
           <a href="#/quiz/${session.id}" class="btn btn-primary">📝 Làm Quiz Online</a>
         </div>
       </div>
@@ -119,8 +137,10 @@ export async function renderLesson(app, { id }) {
 
       <div id="content-slide" class="content-tab" style="display:none">
         ${!isStudent ? (session.hasSlide
-          ? `<embed src="/api/courses/sessions/${session.id}/slide?token=${getToken()}" type="application/pdf" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md)">`
-          : `<div class="alert alert-warning">Slide chưa được convert cho buổi này</div>`) : ''}
+          ? (session.slideType === 'html'
+            ? `<iframe src="/lessons/Buoi_${paddedId}.html" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md);background:white"></iframe>`
+            : `<embed src="/api/courses/sessions/${session.id}/slide?token=${getToken()}" type="application/pdf" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md)">`)
+          : `<div class="alert alert-warning">Bài giảng / Slide chưa có cho buổi này</div>`) : ''}
       </div>
 
       ${isStudent ? `
@@ -168,7 +188,7 @@ export async function renderLesson(app, { id }) {
                   <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem">Trích xuất từ học liệu chuẩn của chương ${session.chapter}</p>
                </div>
             </div>
-            <div class="concepts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem">
+            <div class="concepts-list">
                ${ebookConceptsHTML || '<div class="alert alert-info">Chưa có khái niệm đặc thù cho phần này.</div>'}
             </div>
          </div>
@@ -229,6 +249,19 @@ export async function renderLesson(app, { id }) {
         </div>
       </div>
       `}
+      <!-- Floating Scroll Controls (Top & Bottom) -->
+      <div class="floating-scroll-controls">
+        <button id="btn-scroll-top" class="scroll-fab" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </button>
+        <button id="btn-scroll-bottom" class="scroll-fab" title="Xuống cuối trang" onclick="window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'})" aria-label="Xuống cuối trang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+      </div>
     </div>
   `;
 
@@ -246,7 +279,7 @@ export async function renderLesson(app, { id }) {
           slideBtn.onclick = null;
           slideBtn.style.opacity = '1';
         } else if (checkRes.submitted && !checkRes.has_comment) {
-          slideBtn.onclick = (e) => { e.preventDefault(); alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Slide. Vui lòng báo Giảng viên.'); };
+          slideBtn.onclick = (e) => { e.preventDefault(); alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Bài giảng Motion (.html). Vui lòng báo Giảng viên.'); };
         }
       }
 

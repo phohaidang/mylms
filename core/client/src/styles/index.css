@@ -2110,3 +2110,151 @@ tbody tr:hover {
   }
 }
 
+/* ── Concept Block Layout & Overflow Fixes ── */
+.concepts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.concept-card-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.concept-card-block:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.concept-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  -webkit-overflow-scrolling: touch;
+}
+
+.concept-table-wrap table {
+  width: 100%;
+  min-width: 580px;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.concept-table-wrap th,
+.concept-table-wrap td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.concept-table-wrap th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Coding blocks and pre tag overflow protection in student lesson view */
+.student-lesson-view pre,
+.concept-card-block pre {
+  background: #141721;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  max-width: 100%;
+  font-family: var(--font-mono, 'JetBrains Mono', Consolas, monospace);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+  color: #abb2bf;
+}
+
+.student-lesson-view code,
+.concept-card-block code {
+  font-family: var(--font-mono, 'JetBrains Mono', Consolas, monospace);
+  font-size: 0.88em;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  color: #f38ba8;
+  word-break: break-word;
+}
+
+.student-lesson-view pre code,
+.concept-card-block pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  word-break: normal;
+  font-size: inherit;
+}
+
+/* Floating Quick-Scroll Controls (Top & Bottom) */
+.floating-scroll-controls {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 9999;
+}
+
+.scroll-fab {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.scroll-fab:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.scroll-fab:active {
+  transform: translateY(0) scale(0.95);
+}
+
+@media (max-width: 640px) {
+  .floating-scroll-controls {
+    right: 1rem;
+    bottom: 1.5rem;
+  }
+  .scroll-fab {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+

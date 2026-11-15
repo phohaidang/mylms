@@ -24,6 +24,20 @@ router.get('/sessions', (req, res) => {
   });
 });
 
+// Helper: Tìm file slide PDF hoặc file bài giảng motion HTML
+function resolveSlideOrMotion(contentDir, paddedId) {
+  const pdfPath = join(contentDir, 'slides', `Buoi_${paddedId}.pdf`);
+  if (existsSync(pdfPath)) return { path: pdfPath, type: 'pdf' };
+
+  const slideHtml = join(contentDir, 'slides', `Buoi_${paddedId}.html`);
+  if (existsSync(slideHtml)) return { path: slideHtml, type: 'html' };
+
+  const lessonHtml = join(contentDir, 'lessons', `Buoi_${paddedId}.html`);
+  if (existsSync(lessonHtml)) return { path: lessonHtml, type: 'html' };
+
+  return null;
+}
+
 /**
  * GET /api/courses/sessions/:id
  * Get single session metadata
@@ -40,32 +54,45 @@ router.get('/sessions/:id', (req, res) => {
   const paddedId = id.toString().padStart(2, '0');
   const lessonsDir = join(contentDir, 'lessons');
   const teacherDir = join(contentDir, 'lessons-teacher');
+  const slideInfo = resolveSlideOrMotion(contentDir, paddedId);
 
   res.json({
     ...session,
     hasLesson: existsSync(join(lessonsDir, `Buoi_${paddedId}.html`)),
     hasTeacherLesson: existsSync(join(teacherDir, `Buoi_${paddedId}.html`)),
-    hasSlide: existsSync(join(contentDir, 'slides', `Buoi_${paddedId}.pdf`))
+    hasSlide: !!slideInfo,
+    slideType: slideInfo?.type || null
   });
 });
 
 /**
  * GET /api/courses/sessions/:id/slide
- * Secure slide download endpoint
+ * Secure slide download endpoint (hoặc file motion HTML)
  */
 router.get('/sessions/:id/slide', authenticate, async (req, res) => {
   const { contentDir } = req.app.locals;
   const id = parseInt(req.params.id);
   const paddedId = id.toString().padStart(2, '0');
-  const slidePath = join(contentDir, 'slides', `Buoi_${paddedId}.pdf`);
+  const slideInfo = resolveSlideOrMotion(contentDir, paddedId);
 
-  if (!existsSync(slidePath)) {
-    return res.status(404).json({ error: 'Slide không tồn tại' });
+  if (!slideInfo) {
+    return res.status(404).json({ error: 'Bài giảng / Slide không tồn tại' });
   }
+
+  const sendFileWithAttachment = () => {
+    const filename = slideInfo.type === 'html' ? `Buoi_${paddedId}_Motion.html` : `Buoi_${paddedId}_Slide.pdf`;
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    if (slideInfo.type === 'html') {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    } else {
+      res.setHeader('Content-Type', 'application/pdf');
+    }
+    return res.sendFile(slideInfo.path);
+  };
 
   // Admin/Teacher can always download
   if (req.user.role === 'admin' || req.user.role === 'teacher') {
-    return res.sendFile(slidePath);
+    return sendFileWithAttachment();
   }
 
   // Student logic
@@ -74,7 +101,7 @@ router.get('/sessions/:id/slide', authenticate, async (req, res) => {
     const feedback = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
     
     if (!feedback || !feedback.comment || feedback.comment.trim().length === 0) {
-      return res.status(403).json({ error: 'Vui lòng nộp đánh giá có kèm bình luận để tải slide' });
+      return res.status(403).json({ error: 'Vui lòng nộp đánh giá có kèm bình luận để tải bài giảng' });
     }
 
     // Log slide download (used for attendance)
@@ -90,10 +117,10 @@ router.get('/sessions/:id/slide', authenticate, async (req, res) => {
       });
     }
 
-    res.sendFile(slidePath);
+    return sendFileWithAttachment();
   } catch (err) {
     console.error('Slide download error:', err);
-    res.status(500).json({ error: 'Lỗi kiểm tra quyền tải slide' });
+    res.status(500).json({ error: 'Lỗi kiểm tra quyền tải bài giảng' });
   }
 });
 
