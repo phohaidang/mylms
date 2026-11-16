@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.js" },
+    { "source": "/lessons/(.*)", "destination": "/api/index.js" },
+    { "source": "/slides/(.*)", "destination": "/api/index.js" },
+    { "source": "/images/(.*)", "destination": "/api/index.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "{_sync/**,content/**,course-config.json}"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "code": "ITS708",
+    "name": "Lập trình Web",
+    "total_sessions": 9,
+    "chapters": 5,
+    "university": "ĐH Ngân Hàng TP.HCM",
+    "textbook": "PHP and MySQL: server - side web development - Jon Duckett"
+  },
+  "sessions": [
+    { "id": 1, "chapter": "Ch.1", "title": "Bức tranh toàn cảnh & Giao diện tĩnh", "topics": "Mô hình Client-Server, Web tĩnh/động, HTML, CSS", "clo": "CLO1", "textbook": "Ch.1 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 2, "chapter": "Ch.2", "title": "Chuẩn bị môi trường & Máy chủ", "topics": "Cài đặt Web Server (XAMPP), cấu hình Apache, PHP", "clo": "CLO1", "textbook": "Ch.1-2 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 3, "chapter": "Ch.3", "title": "Nhập môn PHP (Phần 1)", "topics": "Biến, kiểu dữ liệu, biểu thức, toán tử, cấu trúc điều kiện", "clo": "CLO1, CLO2", "textbook": "Ch.2-5 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 4, "chapter": "Ch.3", "title": "Nhập môn PHP (Phần 2)", "topics": "Vòng lặp, mảng, xử lý dữ liệu tập hợp", "clo": "CLO1, CLO2", "textbook": "Ch.2-5 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 5, "chapter": "Ch.3", "title": "Nhập môn PHP (Phần 3)", "topics": "Xây dựng và sử dụng Hàm, module hoá code", "clo": "CLO1, CLO2", "textbook": "Ch.2-5 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 6, "chapter": "Ch.4", "title": "Quản trị dữ liệu với MySQL", "topics": "Create, Select, Insert, Update, Delete và sử dụng phpMyAdmin", "clo": "CLO1, CLO2", "textbook": "Ch.11 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 7, "chapter": "Ch.5", "title": "Lập trình Web động (Phần 1)", "topics": "Xử lý Web Form, truyền dữ liệu GET/POST", "clo": "CLO1, CLO2", "textbook": "Ch.9,12,13 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 8, "chapter": "Ch.5", "title": "Lập trình Web động (Phần 2)", "topics": "Quản lý trạng thái với Session & Cookie (Giỏ hàng, Đăng nhập)", "clo": "CLO1, CLO2", "textbook": "Ch.9,12,13 Duckett", "duration": "5 tiết (250 phút)" },
+    { "id": 9, "chapter": "Ch.5", "title": "Kết nối CSDL & Thực hành tổng hợp", "topics": "Kết nối PHP & MySQL, lấy dữ liệu động", "clo": "CLO1, CLO2", "textbook": "Ch.9,12,13 Duckett", "duration": "5 tiết (250 phút)", "hasExam": true, "examId": "midterm" }
+  ]
+}
