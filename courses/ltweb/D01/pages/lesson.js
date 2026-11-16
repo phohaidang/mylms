@@ -268,47 +268,72 @@ export async function renderLesson(app, { id }) {
   // ── Feedback Logic ──
   if (isStudent) {
     const fbSection = document.getElementById('feedback-section');
+    const slideBtn = document.getElementById('btn-student-slide');
+
+    const updateTopSlideBtn = (hasAccess) => {
+      if (!slideBtn) return;
+      if (hasAccess) {
+        slideBtn.href = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
+        slideBtn.target = '_blank';
+        slideBtn.onclick = null;
+        slideBtn.style.opacity = '1';
+        slideBtn.className = 'btn btn-primary';
+      } else {
+        slideBtn.onclick = (e) => {
+          e.preventDefault();
+          alert('Vui lòng hoàn thành đánh giá kèm nhận xét/góp ý bên dưới để mở khóa tải Bài giảng Motion (.html)!');
+          document.getElementById('feedback-section')?.scrollIntoView({ behavior: 'smooth' });
+        };
+      }
+    };
+
+    const showSuccessView = (currentFeedback) => {
+      updateTopSlideBtn(true);
+      fbSection.innerHTML = renderFeedbackSuccess(id, currentFeedback);
+      const editBtn = fbSection.querySelector('#btn-edit-feedback');
+      if (editBtn) {
+        editBtn.addEventListener('click', () => {
+          showFormView(currentFeedback, () => showSuccessView(currentFeedback));
+        });
+      }
+    };
+
+    const showFormView = (initialData, onCancel = null, warningMsg = null) => {
+      fbSection.innerHTML = `
+        ${warningMsg ? `
+          <div class="alert alert-warning" style="margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 0.8rem">
+            <div style="font-size: 1.8rem; line-height: 1">⚠️</div>
+            <div>
+              <div style="font-weight: 700; margin-bottom: 0.2rem">Bạn đã gửi khảo sát nhưng CHƯA nhập nhận xét!</div>
+              <div style="font-size: 0.9rem; line-height: 1.5">${warningMsg}</div>
+            </div>
+          </div>
+        ` : ''}
+        ${renderFeedbackForm(id, initialData)}
+      `;
+      attachFeedbackHandlers(id, fbSection, initialData, onCancel, (updatedFeedback) => {
+        showSuccessView(updatedFeedback);
+      });
+    };
+
     try {
       const checkRes = await api.get(`/feedback/${id}/check`);
-      
-      const slideBtn = document.getElementById('btn-student-slide');
-      if (slideBtn) {
-        if (checkRes.submitted && checkRes.has_comment) {
-          slideBtn.href = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
-          slideBtn.target = '_blank';
-          slideBtn.onclick = null;
-          slideBtn.style.opacity = '1';
-        } else if (checkRes.submitted && !checkRes.has_comment) {
-          slideBtn.onclick = (e) => { e.preventDefault(); alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Bài giảng Motion (.html). Vui lòng báo Giảng viên.'); };
-        }
-      }
-
-      if (checkRes.submitted) {
-        const downloadUrl = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
-        fbSection.innerHTML = `
-          <div class="card" style="text-align:center; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.2)">
-            <div style="font-size: 3rem; margin-bottom: 0.8rem">✅</div>
-            <h3 style="margin-bottom: 0.5rem; color: var(--success-color); font-size: 1.4rem">Cảm ơn bạn đã góp ý!</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem">Phản hồi ẩn danh của bạn cho buổi này đã được ghi nhận.</p>
-            ${checkRes.has_comment ? `
-            <div>
-              <a href="${downloadUrl}" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 14px rgba(99,102,241,0.4)">
-                📥 Tải Bài giảng Motion (.html) Buổi ${id}
-              </a>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
-              Hệ thống đã mở khóa và ghi nhận điểm danh cho buổi học này.
-            </p>
-            ` : ''}
-          </div>
-        `;
+      if (checkRes.submitted && checkRes.has_comment) {
+        showSuccessView(checkRes.feedback);
+      } else if (checkRes.submitted && !checkRes.has_comment) {
+        updateTopSlideBtn(false);
+        showFormView(
+          checkRes.feedback,
+          null,
+          'Để mở khóa Bài giảng Motion (.html) và được ghi nhận điểm danh, bạn cần bổ sung nhận xét/góp ý. Vui lòng nhập bình luận bên dưới và nhấn <b>Cập nhật đánh giá & Lưu bình luận</b>.'
+        );
       } else {
-        fbSection.innerHTML = renderFeedbackForm(id);
-        attachFeedbackHandlers(id, fbSection);
+        updateTopSlideBtn(false);
+        showFormView(null);
       }
     } catch {
-      fbSection.innerHTML = renderFeedbackForm(id);
-      attachFeedbackHandlers(id, fbSection);
+      updateTopSlideBtn(false);
+      showFormView(null);
     }
   } else {
     // Admin view: load feedback summary
@@ -516,44 +541,89 @@ export async function renderLesson(app, { id }) {
   return () => { delete window.showTab; };
 }
 
+// ── Helper: Render feedback success card HTML ──
+function renderFeedbackSuccess(sessionId, feedbackData = null) {
+  const downloadUrl = `/api/courses/sessions/${sessionId}/slide?token=${getToken()}`;
+  return `
+    <div class="card" style="text-align: center; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.2)">
+      <div style="font-size: 3rem; margin-bottom: 0.8rem">✅</div>
+      <h3 style="margin-bottom: 0.5rem; color: var(--success-color); font-size: 1.4rem">Cảm ơn bạn đã góp ý!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem">
+        Phản hồi ẩn danh của bạn cho buổi học này đã được ghi nhận đầy đủ kèm nhận xét.
+      </p>
+      <div>
+        <a href="${downloadUrl}" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 14px rgba(99,102,241,0.4)">
+          📥 Tải Bài giảng Motion (.html) Buổi ${sessionId}
+        </a>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+        Hệ thống đã mở khóa và ghi nhận điểm danh cho buổi học này.
+      </p>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color)">
+        <button id="btn-edit-feedback" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.4rem 0.9rem">
+          ✏️ Chỉnh sửa đánh giá / nhận xét
+        </button>
+      </div>
+    </div>
+  `;
+}
+
 // ── Helper: Render feedback form HTML ──
-function renderFeedbackForm(sessionId) {
+function renderFeedbackForm(sessionId, initialData = null) {
+  const isEdit = !!initialData;
+  const initU = initialData?.understanding ? parseInt(initialData.understanding) : 0;
+  const initP = initialData?.pace ? parseInt(initialData.pace) : 0;
+  const initUse = initialData?.usefulness ? parseInt(initialData.usefulness) : 0;
+  const initComment = initialData?.comment || '';
+
   const scaleLabels = {
     understanding: ['😟 Rất khó hiểu', '😕 Khó hiểu', '😐 Bình thường', '😊 Dễ hiểu', '🤩 Rất dễ hiểu'],
     pace:          ['🐢 Quá chậm', '🚶 Hơi chậm', '👍 Vừa phải', '🏃 Hơi nhanh', '🚀 Quá nhanh'],
     usefulness:    ['😞 Không hữu ích', '🤔 Ít hữu ích', '😐 Tạm được', '😊 Hữu ích', '🌟 Rất hữu ích']
   };
 
-  const renderScale = (name, labels) => `
-    <div style="margin-bottom: 1.5rem">
-      <label style="font-weight: 600; display: block; margin-bottom: 0.6rem">
-        ${name === 'understanding' ? '🧠 Mức độ hiểu bài:' : name === 'pace' ? '⏱ Tốc độ giảng dạy:' : '💡 Buổi học hữu ích thế nào?'}
-      </label>
-      <div style="display: flex; gap: 0.4rem; flex-wrap: wrap">
-        ${labels.map((lbl, i) => `
-          <label style="flex: 1; min-width: 100px; cursor: pointer">
-            <input type="radio" name="${name}" value="${i + 1}" style="display: none" class="fb-radio">
-            <div class="fb-option" data-name="${name}" data-value="${i + 1}" style="
-              text-align: center; padding: 0.6rem 0.4rem; border-radius: 8px;
-              border: 2px solid var(--border-color); font-size: 0.8rem;
-              transition: all 0.2s ease; user-select: none;
-            ">
-              ${lbl}
-            </div>
-          </label>
-        `).join('')}
+  const getInitVal = (name) => name === 'understanding' ? initU : name === 'pace' ? initP : initUse;
+
+  const renderScale = (name, labels) => {
+    const curVal = getInitVal(name);
+    return `
+      <div style="margin-bottom: 1.5rem">
+        <label style="font-weight: 600; display: block; margin-bottom: 0.6rem">
+          ${name === 'understanding' ? '🧠 Mức độ hiểu bài:' : name === 'pace' ? '⏱ Tốc độ giảng dạy:' : '💡 Buổi học hữu ích thế nào?'}
+        </label>
+        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap">
+          ${labels.map((lbl, i) => {
+            const val = i + 1;
+            const isSelected = curVal === val;
+            return `
+            <label style="flex: 1; min-width: 100px; cursor: pointer">
+              <input type="radio" name="${name}" value="${val}" ${isSelected ? 'checked' : ''} style="display: none" class="fb-radio">
+              <div class="fb-option ${isSelected ? 'active' : ''}" data-name="${name}" data-value="${val}" style="
+                text-align: center; padding: 0.6rem 0.4rem; border-radius: 8px;
+                border: 2px solid ${isSelected ? 'var(--primary-color)' : 'var(--border-color)'}; 
+                background: ${isSelected ? 'rgba(99,102,241,0.1)' : 'transparent'};
+                font-weight: ${isSelected ? '600' : 'normal'};
+                font-size: 0.8rem;
+                transition: all 0.2s ease; user-select: none;
+              ">
+                ${lbl}
+              </div>
+            </label>
+            `;
+          }).join('')}
+        </div>
       </div>
-    </div>
-  `;
+    `;
+  };
 
   return `
     <div class="card" style="background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(236,72,153,0.05))">
       <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem">
-        <div style="font-size: 2rem">💬</div>
+        <div style="font-size: 2rem">${isEdit ? '✏️' : '💬'}</div>
         <div>
-          <h3 style="margin: 0">Góp ý buổi học (Ẩn danh)</h3>
+          <h3 style="margin: 0">${isEdit ? 'Chỉnh sửa góp ý buổi học (Ẩn danh)' : 'Góp ý buổi học (Ẩn danh)'}</h3>
           <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0.2rem 0 0">
-            Phản hồi hoàn toàn ẩn danh — giúp giảng viên cải thiện chất lượng giảng dạy.
+            ${isEdit ? 'Bạn có thể điều chỉnh khảo sát và bổ sung hoặc cập nhật nhận xét về buổi học.' : 'Phản hồi hoàn toàn ẩn danh: giúp giảng viên cải thiện chất lượng giảng dạy.'}
           </p>
         </div>
       </div>
@@ -565,28 +635,37 @@ function renderFeedbackForm(sessionId) {
 
         <div style="margin-bottom: 1.5rem">
           <label style="font-weight: 600; display: block; margin-bottom: 0.6rem">
-            ✍️ Cảm nghĩ hoặc góp ý thêm <span style="color: var(--text-secondary); font-weight: 400">(không bắt buộc)</span>
+            ✍️ Cảm nghĩ hoặc góp ý buổi học <span style="color: #ef4444; font-weight: 600">* (Bắt buộc để tải tài liệu bài giảng)</span>
           </label>
-          <textarea id="fb-comment" rows="4" placeholder="Ví dụ: Em muốn thầy/cô giải thích thêm phần..., Buổi học hôm nay em thấy..." 
+          <textarea id="fb-comment" rows="4" 
+            placeholder="Nhập nhận xét của bạn về buổi học (Ví dụ: Em thấy phần thực hành rất hay, cần thầy giải thích thêm phần..., buổi học hôm nay...)" 
             style="width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--border-color); border-radius: 8px;
             background: var(--bg-app); color: var(--text-primary); font-size: 0.95rem; resize: vertical;
             font-family: inherit; line-height: 1.5; transition: border-color 0.2s"
-          ></textarea>
-          <div style="text-align: right; font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.3rem">
-            <span id="fb-char-count">0</span>/1000 ký tự
+          >${initComment}</textarea>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.3rem">
+            <span id="fb-comment-tip" style="color: var(--text-muted)">Vui lòng nhập nhận xét hoặc cảm nghĩ để mở khóa tài liệu.</span>
+            <span><span id="fb-char-count">${initComment.length}</span>/1000 ký tự</span>
           </div>
         </div>
 
-        <button type="submit" id="fb-submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; font-size: 1rem">
-          🔒 Gửi đánh giá ẩn danh
-        </button>
+        <div style="display: flex; gap: 0.8rem; align-items: center">
+          <button type="submit" id="fb-submit" class="btn btn-primary" style="flex: 1; padding: 0.8rem; font-size: 1rem">
+            ${isEdit ? '💾 Cập nhật đánh giá & Lưu bình luận' : '🔒 Gửi đánh giá ẩn danh'}
+          </button>
+          ${isEdit ? `
+          <button type="button" id="fb-cancel-edit" class="btn btn-outline" style="padding: 0.8rem 1.2rem; font-size: 0.95rem">
+            Hủy
+          </button>
+          ` : ''}
+        </div>
       </form>
     </div>
   `;
 }
 
 // ── Helper: Attach event listeners for feedback form ──
-function attachFeedbackHandlers(sessionId, container) {
+function attachFeedbackHandlers(sessionId, container, initialData = null, onCancel = null, onSuccess = null) {
   // Scale option click handler
   container.querySelectorAll('.fb-option').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -606,85 +685,82 @@ function attachFeedbackHandlers(sessionId, container) {
     });
   });
 
-  // Character counter
+  // Cancel button handler (if in edit mode)
+  const cancelBtn = container.querySelector('#fb-cancel-edit');
+  if (cancelBtn && onCancel) {
+    cancelBtn.addEventListener('click', () => {
+      onCancel();
+    });
+  }
+
+  // Character counter and reset border on input
   const textarea = container.querySelector('#fb-comment');
   const counter = container.querySelector('#fb-char-count');
-  if (textarea && counter) {
+  if (textarea) {
     textarea.addEventListener('input', () => {
+      textarea.style.borderColor = 'var(--border-color)';
       const len = textarea.value.length;
-      counter.textContent = len;
-      counter.style.color = len > 900 ? '#ef4444' : 'var(--text-secondary)';
+      if (counter) {
+        counter.textContent = len;
+        counter.style.color = len > 900 ? '#ef4444' : 'var(--text-secondary)';
+      }
       if (len > 1000) textarea.value = textarea.value.substring(0, 1000);
     });
   }
 
   // Submit
   const form = container.querySelector('#feedback-form');
+  if (!form) return;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const understanding = form.querySelector('input[name="understanding"]:checked')?.value;
     const pace = form.querySelector('input[name="pace"]:checked')?.value;
     const usefulness = form.querySelector('input[name="usefulness"]:checked')?.value;
-    const comment = form.querySelector('#fb-comment')?.value || '';
+    const commentVal = form.querySelector('#fb-comment')?.value || '';
+    const trimmedComment = commentVal.trim();
 
     if (!understanding || !pace || !usefulness) {
       alert('Vui lòng chọn đánh giá cho cả 3 câu khảo sát trước khi gửi.');
       return;
     }
 
+    if (!trimmedComment || trimmedComment.length === 0) {
+      alert('Vui lòng nhập nhận xét/góp ý của bạn về buổi học trước khi gửi. Đây là điều kiện bắt buộc để mở khóa tài liệu bài giảng và điểm danh.');
+      if (textarea) {
+        textarea.focus();
+        textarea.style.borderColor = '#ef4444';
+      }
+      return;
+    }
+
     const btn = form.querySelector('#fb-submit');
+    const origText = btn.textContent;
     btn.disabled = true;
-    btn.textContent = '⏳ Đang gửi...';
+    btn.textContent = '⏳ Đang lưu...';
 
     try {
-      const res = await api.post(`/feedback/${sessionId}`, { understanding, pace, usefulness, comment });
-      
-      const hasComment = comment && comment.trim().length > 0;
-      const downloadUrl = `/api/courses/sessions/${sessionId}/slide?token=${getToken()}`;
+      const res = await api.post(`/feedback/${sessionId}`, { 
+        understanding, 
+        pace, 
+        usefulness, 
+        comment: trimmedComment 
+      });
 
-      // 1. Cập nhật nút ở đầu trang ngay lập tức
-      const slideBtn = document.getElementById('btn-student-slide');
-      if (slideBtn) {
-        if (hasComment) {
-          slideBtn.href = downloadUrl;
-          slideBtn.target = '_blank';
-          slideBtn.onclick = null;
-          slideBtn.style.opacity = '1';
-          slideBtn.className = 'btn btn-primary';
-        } else {
-          slideBtn.onclick = (e) => { 
-            e.preventDefault(); 
-            alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Bài giảng Motion (.html).'); 
-          };
-        }
+      const updatedData = {
+        understanding: parseInt(understanding),
+        pace: parseInt(pace),
+        usefulness: parseInt(usefulness),
+        comment: trimmedComment
+      };
+
+      if (onSuccess) {
+        onSuccess(updatedData);
       }
-
-      // 2. Hiển thị thông báo thành công và nút tải bài giảng trực tiếp tại chỗ
-      container.innerHTML = `
-        <div class="card" style="text-align:center; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.2)">
-          <div style="font-size: 3rem; margin-bottom: 0.8rem">✅</div>
-          <h3 style="margin-bottom: 0.5rem; color: var(--success-color); font-size: 1.4rem">Cảm ơn bạn đã góp ý!</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem">${res.message}</p>
-          ${hasComment ? `
-          <div>
-            <a href="${downloadUrl}" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 14px rgba(99,102,241,0.4)">
-              📥 Tải Bài giảng Motion (.html) Buổi ${sessionId}
-            </a>
-          </div>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
-            Hệ thống đã mở khóa và ghi nhận điểm danh cho buổi học này.
-          </p>
-          ` : `
-          <div class="alert alert-warning" style="display: inline-block; text-align: left">
-            Bạn chưa nhập bình luận nên chưa thể mở khóa tải bài giảng. Vui lòng liên hệ Giảng viên.
-          </div>
-          `}
-        </div>
-      `;
     } catch (err) {
-      alert('Lỗi: ' + err.message);
+      alert('Lỗi: ' + (err.message || 'Không thể gửi đánh giá'));
       btn.disabled = false;
-      btn.textContent = '🔒 Gửi đánh giá ẩn danh';
+      btn.textContent = origText;
     }
   });
 }
