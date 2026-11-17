@@ -1,0 +1,372 @@
+{
+  "session": 1,
+  "chapter": "Ch.1",
+  "title": "Bức tranh toàn cảnh & Giao diện tĩnh",
+  "time_limit_minutes": 20,
+  "questions": [
+    {
+      "id": "ltweb-q002",
+      "type": "mc",
+      "level": 1,
+      "question": "Cấu trúc nào mô tả đúng thứ tự các thành phần trong một URL đầy đủ?",
+      "options": [
+        "A. scheme://host/path?query",
+        "B. host://scheme/path?query",
+        "C. scheme://path/host?query",
+        "D. query://host/path?scheme"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+    },
+    {
+      "id": "ltweb-q003",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong URL dưới đây, thành phần nào dùng để truyền tham số đến máy chủ? https://www.bookstore.com/products?category=book&id=12",
+      "options": [
+        "A. https",
+        "B. /products",
+        "C. www.bookstore.com",
+        "D. category=book&id=12"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+    },
+    {
+      "id": "ltweb-q004",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong cấu trúc URL, thành phần host dùng để xác định nội dung nào?",
+      "options": [
+        "A. Máy chủ lưu trữ tài nguyên cần truy cập",
+        "B. Giao thức truyền dữ liệu",
+        "C. Chuỗi tham số gửi đến máy chủ",
+        "D. Vị trí cụ thể của tài nguyên trên máy chủ"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+    },
+    {
+      "id": "ltweb-q005",
+      "type": "mc",
+      "level": 1,
+      "question": "URL được viết tắt bởi từ nào sau đây?",
+      "options": [
+        "A. Unique Resource Location",
+        "B. Uniform Resource Location",
+        "C. Uniform Resource Locator",
+        "D. Unique Resource Locator"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+    },
+    {
+      "id": "ltweb-q006",
+      "type": "mc",
+      "level": 1,
+      "question": "Giao thức nào sau đây giúp truyền tải siêu văn bản?",
+      "options": [
+        "A. FTP",
+        "B. SMTP",
+        "C. HTTP",
+        "D. POP3"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (HTTP): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q007",
+      "type": "mc",
+      "level": 1,
+      "question": "Ngôn ngữ nào dưới đây thường được sử dụng để xử lý nghiệp vụ và dữ liệu ở phía máy chủ (back-end)?",
+      "options": [
+        "A. Figma, JavaScript",
+        "B. HTML, CSS",
+        "C. Bootstrap, Tailwind CSS",
+        "D. PHP, Python"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (PHP, Python): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q008",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong mô hình khách – chủ (client – server), thành phần nào thường gửi yêu cầu (request) để truy cập tài nguyên trên Internet?",
+      "options": [
+        "A. Máy chủ web (Web Server)",
+        "B. Trình duyệt web (Web Browser)",
+        "C. Hệ quản trị cơ sở dữ liệu",
+        "D. Bộ định tuyến (Router)"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Trình duyệt web (Web Browser)): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q009",
+      "type": "mc",
+      "level": 1,
+      "question": "Khi máy chủ trả về mã trạng thái (HTTP Status Code) 404 trong HTTP Response, điều này có ý nghĩa gì?",
+      "options": [
+        "A. Máy chủ không tìm thấy tài nguyên (resource) được yêu cầu.",
+        "B. Yêu cầu đã được xử lý thành công và trả về kết quả.",
+        "C. Máy chủ đang xử lý yêu cầu và chưa hoàn tất.",
+        "D. Máy chủ gặp lỗi nội bộ khi xử lý yêu cầu."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Mã trạng thái HTTP 404 (Not Found) báo hiệu web server không tìm thấy tài nguyên theo URL mà trình duyệt yêu cầu."
+    },
+    {
+      "id": "ltweb-q011",
+      "type": "mc",
+      "level": 1,
+      "question": "Khi máy chủ trả về mã trạng thái (HTTP Status Code) 200 trong HTTP Response, điều này có ý nghĩa gì?",
+      "options": [
+        "A. Máy chủ xử lý yêu cầu thành công.",
+        "B. Máy chủ không tìm thấy tài nguyên yêu cầu.",
+        "C. Máy chủ đang tiếp tục xử lý yêu cầu.",
+        "D. Máy chủ gặp lỗi khi xử lý yêu cầu."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Mã trạng thái HTTP 200 (OK) cho biết web server đã tiếp nhận và xử lý yêu cầu HTTP thành công."
+    },
+    {
+      "id": "ltweb-q012",
+      "type": "mc",
+      "level": 1,
+      "question": "HTTP là viết tắt của từ gì?",
+      "options": [
+        "A. HyperText Transfer Protocol",
+        "B. HyperText Markup Language",
+        "C. Hyper Transfer Protocol",
+        "D. Hybrid Text Transfer Protocol"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (HyperText Transfer Protocol): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q013",
+      "type": "mc",
+      "level": 1,
+      "question": "HTTP là gì?",
+      "options": [
+        "A. Là ngôn ngữ đánh dấu siêu văn bản.",
+        "B. Là ngôn ngữ lập trình back end.",
+        "C. Là giao thức chuyển giao siêu văn bản trên web.",
+        "D. Là giao thức truyền tập tin."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Là giao thức chuyển giao siêu văn bản trên web.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q021",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào sau đây là đúng về Web Server?",
+      "options": [
+        "A. Web Server là phần mềm dùng để lưu trữ mã HTML, không tham gia vào quá trình xử lý yêu cầu từ trình duyệt.",
+        "B. Web Server luôn trả về mã HTML cho trình duyệt, không trả về dữ liệu dạng CSS, JavaScript, hình ảnh, JSON hoặc tập tin khác.",
+        "C. Web Server là chương trình chạy trên trình duyệt để gửi yêu cầu HTTP đến máy chủ và hiển thị nội dung website.",
+        "D. Web Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Web Client, xử lý hoặc chuyển tiếp yêu cầu và trả phản hồi tương ứng."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Web Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Web Client, xử lý hoặc chuyển tiếp yêu cầu và trả phản hồi tương ứng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q022",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào sau đây là đúng về Web Client?",
+      "options": [
+        "A. Web Client là thành phần phía người dùng có nhiệm vụ gửi yêu cầu đến Web Server, nhận phản hồi và hiển thị nội dung web cho người dùng",
+        "B. Web Client là máy tính trung gian có nhiệm vụ xử lý yêu cầu, truy xuất cơ sở dữ liệu và trả dữ liệu cho trình duyệt.",
+        "C. Web Client là nơi lưu trữ mã nguồn website, xử lý nghiệp vụ phía máy chủ và quản lý các kết nối đến cơ sở dữ liệu.",
+        "D. Web Client là hệ thống dùng để triển khai website, quản lý tài nguyên máy chủ và phục vụ đồng thời nhiều yêu cầu truy cập."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Web Client là thành phần phía người dùng có nhiệm vụ gửi yêu cầu đến Web Server, nhận phản hồi và hiển thị nội dung web cho người dùng): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q023",
+      "type": "mc",
+      "level": 1,
+      "question": "URL là gì?",
+      "options": [
+        "A. Là giao thức truyền tải siêu văn bản.",
+        "B. Là đường dẫn chỉ tới một trang web cụ thể trên Internet.",
+        "C. Là địa chỉ của một máy tính trên internet.",
+        "D. Là giao thức truyền tải web."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+    },
+    {
+      "id": "ltweb-q024",
+      "type": "mc",
+      "level": 1,
+      "question": "Liên kết nào sau đây là URL?",
+      "options": [
+        "A. ftp://ftp.hp.com/pub/caps-softpaq/cmit/softpaq/setup.exe",
+        "B. http://buh.edu.vn/gioi-thieu/danh-ba-don-vi.html",
+        "C. https://www.youtube.com/watch?v=eODJpny8Yxs&feature=share",
+        "D. Cả 3 link trên đều là URL."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+    },
+    {
+      "id": "ltweb-q025",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong mô hình Client-Server, Client được hiểu là gì?",
+      "options": [
+        "A. Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.",
+        "B. Client là người sử dụng trực tiếp truy cập website và thực hiện các thao tác trên giao diện.",
+        "C. Client là máy chủ có nhiệm vụ tiếp nhận yêu cầu, xử lý dữ liệu và trả kết quả cho người dùng.",
+        "D. Client là chương trình phía Server dùng để biên dịch hoặc thực thi mã nguồn như PHP, ASP.NET hoặc JSP."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q026",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong mô hình Client-Server, Server được hiểu là gì?",
+      "options": [
+        "A. Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Client, xử lý yêu cầu và trả kết quả phản hồi.",
+        "B. Server là bộ mã nguồn website được viết bằng PHP, ASP.NET hoặc JSP và được tải lên hosting.",
+        "C. Server là trình duyệt web dùng để gửi yêu cầu truy cập website và hiển thị nội dung cho người dùng.",
+        "D. Server là người dùng cuối thực hiện thao tác truy cập và tương tác với website."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Client, xử lý yêu cầu và trả kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q001",
+      "type": "mc",
+      "level": 2,
+      "question": "Phát biểu nào sau đây không đúng về Web Server?",
+      "options": [
+        "A. Cho phép tiếp nhận yêu cầu từ trình duyệt thông qua các giao thức như HTTP hoặc HTTPS và phản hồi nội dung tương ứng.",
+        "B. Toàn bộ dữ liệu của website đều được lưu trữ trực tiếp trên Web Server của chính website đó",
+        "C. Có thể hoạt động đồng thời với nhiều website khác nhau trên cùng một máy chủ thông qua cấu hình host.",
+        "D. Một Web Server có thể xử lý đồng thời nhiều yêu cầu từ nhiều người dùng khác nhau."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Toàn bộ dữ liệu của website đều được lưu trữ trực tiếp trên Web Server của chính website đó): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q010",
+      "type": "mc",
+      "level": 2,
+      "question": "Phát biểu nào dưới đây là đúng với website động?",
+      "options": [
+        "A. URL của mọi trang phải cố định và không thay đổi.",
+        "B. Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.",
+        "C. Chỉ sử dụng HTML và không cần xử lý trên máy chủ.",
+        "D. Mọi phản hồi từ máy chủ đều là tập tin tĩnh."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q014",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về giao thức HTTP.",
+      "options": [
+        "A. Giao thức HTTP là tập hợp các quy định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông, …) giữa Web Server và trình duyệt Web.",
+        "B. HTTP là địa chỉ của một trang web.",
+        "C. HTTP là một giao thức truyền tải tập tin từ máy tính này đến máy tính khác thông qua một mạng TCP hoặc qua mạng Internet.",
+        "D. HTTP là tên gọi khác của PHP."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Giao thức HTTP là tập hợp các quy định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông, …) giữa Web Server và trình duyệt Web.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q015",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng nhất về mô hình hoạt động của website.",
+      "options": [
+        "A. Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.",
+        "B. Website hoạt động theo mô hình Client/Server, trong đó Client trực tiếp truy xuất cơ sở dữ liệu để lấy dữ liệu và hiển thị nội dung website cho người dùng.",
+        "C. Website hoạt động theo mô hình Client/Server, trong đó Server chủ yếu lưu trữ giao diện website, còn việc xử lý yêu cầu và quản lý dữ liệu được thực hiện hoàn toàn ở phía Client.",
+        "D. Website hoạt động theo mô hình Client/Server, trong đó Web Server và Database Server luôn phải được triển khai trên cùng một máy chủ vật lý để phục vụ nhiều người dùng truy cập đồng thời."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q016",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về Website tĩnh.",
+      "options": [
+        "A. Nội dung trang web được tạo mới mỗi lần truy cập dựa trên xử lý phía máy chủ.",
+        "B. Nội dung trang web luôn thay đổi theo dữ liệu người dùng nhập vào.",
+        "C. Mọi trang web tĩnh đều phải sử dụng cơ sở dữ liệu để lưu nội dung.",
+        "D. Nội dung trang web được gửi trực tiếp từ máy chủ đến trình duyệt mà không cần xử lý tại phía máy chủ trước khi phản hồi."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Nội dung trang web được gửi trực tiếp từ máy chủ đến trình duyệt mà không cần xử lý tại phía máy chủ trước khi phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q017",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng nhất về website động.",
+      "options": [
+        "A. Website động là website có giao diện tự động thay đổi theo thiết bị truy cập, ví dụ máy tính, máy tính bảng hoặc điện thoại.",
+        "B. Website động là website cho phép người dùng xem nhiều loại nội dung như văn bản, hình ảnh, video và biểu mẫu nhập liệu.",
+        "C. Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.",
+        "D. Website động là website có nội dung thường xuyên được cập nhật bởi người quản trị hoặc lập trình viên."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q018",
+      "type": "mc",
+      "level": 2,
+      "question": "Đâu là quá trình sau khi trình duyệt yêu cầu truy cập file PHP?",
+      "options": [
+        "A. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho trình duyệt.",
+        "B. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Client sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho Web Server.",
+        "C. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và không cần xử lý gì mà sẽ trả ngay kết quả cho trình duyệt.",
+        "D. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Client sẽ gọi đến file PHP đó, và không cần xử lý gì mà sẽ hiển thị ngay kết quả lên trình duyệt."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q019",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng nhất về lập trình front-end.",
+      "options": [
+        "A. Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.",
+        "B. Lập trình front end chủ yếu xử lý việc lưu trữ dữ liệu, xác thực người dùng và truy vấn cơ sở dữ liệu trên máy chủ.",
+        "C. Lập trình front end chỉ bao gồm việc thiết kế bố cục giao diện bằng HTML và CSS, không liên quan đến xử lý tương tác bằng JavaScript.",
+        "D. Lập trình front end là quá trình xây dựng toàn bộ hệ thống website, bao gồm giao diện, máy chủ, cơ sở dữ liệu và hạ tầng triển khai."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    },
+    {
+      "id": "ltweb-q020",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng nhất về lập trình back end.",
+      "options": [
+        "A. Lập trình back end viết mã nguồn chạy trực tiếp trên trình duyệt của người dùng, thường được viết bằng HTML, CSS và JavaScript.",
+        "B. Lập trình back end là thực hiện lưu trữ dữ liệu trong cơ sở dữ liệu, việc xử lý nghiệp vụ được thực hiện hoàn toàn ở phía front end.",
+        "C. Lập trình back end là thực hiện xây dựng giao diện, bố cục, hiệu ứng và các thành phần mà người dùng tương tác trực tiếp trên trình duyệt.",
+        "D. Lập trình back end tập trung xây dựng phần xử lý phía máy chủ để xử lý các yêu cầu từ client và phản hồi kết quả."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Lập trình back end tập trung xây dựng phần xử lý phía máy chủ để xử lý các yêu cầu từ client và phản hồi kết quả.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+    }
+  ]
+}

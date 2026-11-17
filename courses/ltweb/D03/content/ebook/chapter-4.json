@@ -1,0 +1,798 @@
+{
+  "chapter": 4,
+  "title": "Hệ quản trị cơ sở dữ liệu MySQL",
+  "sessions": [
+    6
+  ],
+  "scqa": {
+    "situation": "Bạn đã dùng PHP để tạo trang web động và lấy được dữ liệu người dùng từ form đăng ký.",
+    "complication": "Biến PHP chỉ sống trong một lần chạy trang. Khi trang tải xong, dữ liệu biến mất. Làm sao giữ thông tin thành viên cho những lần đăng nhập sau?",
+    "question": "Công cụ nào lưu dữ liệu an toàn, lâu dài và truy xuất nhanh cho các trang web động?",
+    "answer": "Hệ quản trị cơ sở dữ liệu quan hệ - phổ biến nhất với web là <strong>MySQL</strong>. Dùng ngôn ngữ SQL, bạn tạo CSDL, tạo bảng, rồi Thêm - Đọc - Sửa - Xóa dữ liệu (CRUD); phpMyAdmin giúp làm tất cả bằng giao diện web."
+  },
+  "concepts": [
+    {
+      "id": "c4-gioi-thieu-mysql",
+      "session": 6,
+      "term": "Giới thiệu MySQL",
+      "definition": "MySQL là hệ quản trị cơ sở dữ liệu quan hệ (RDBMS) mã nguồn mở, do Michael Widenius, Allan Larsson và David Axmark phát triển, phát hành lần đầu năm 1995.",
+      "key_points": [
+        "<strong>2001</strong>: MySQL 4.0 do công ty MySQL AB phát hành.",
+        "<strong>2005</strong>: MySQL 5.0 bổ sung giao dịch <strong>ACID</strong> (tính toàn vẹn dữ liệu khi nhiều thao tác thực hiện cùng lúc).",
+        "<strong>2010</strong>: Oracle mua lại MySQL; hiện có bản mã nguồn mở miễn phí và bản thương mại trả phí."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-dac-diem-noi-bat-cua-mysql"
+      ]
+    },
+    {
+      "id": "c4-dac-diem-noi-bat-cua-mysql",
+      "session": 6,
+      "term": "Đặc điểm nổi bật của MySQL",
+      "definition": "<strong>Mô hình quan hệ</strong>: dữ liệu lưu trong các bảng; bảng liên kết nhau bằng <strong>khóa chính</strong> (primary key) và <strong>khóa ngoại</strong> (foreign key).",
+      "key_points": [
+        "<strong>Chỉ mục (index)</strong>: tăng tốc truy vấn trên bảng lớn.",
+        "<strong>Mã nguồn mở</strong>, miễn phí, đi kèm sẵn trong WAMP/XAMPP.",
+        "<strong>Bảo mật</strong>: kiểm soát quyền truy cập, mã hóa dữ liệu.",
+        "<strong>Sao lưu và phục hồi</strong> (backup/restore) dữ liệu."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-gioi-thieu-mysql",
+        "c4-cac-khai-niem-co-ban-cua-csdl-quan-he"
+      ]
+    },
+    {
+      "id": "c4-cac-khai-niem-co-ban-cua-csdl-quan-he",
+      "session": 6,
+      "term": "Các khái niệm cơ bản của CSDL quan hệ",
+      "definition": "Một CSDL (database) gồm nhiều <strong>bảng</strong> (table). Mỗi bảng có các <strong>cột</strong> (column/field - thuộc tính) và các <strong>dòng</strong> (row/record - bản ghi).",
+      "key_points": [
+        "<strong>Khóa chính (PRIMARY KEY)</strong>: cột (hoặc tập cột) định danh duy nhất một dòng; không trùng, không NULL.",
+        "<strong>Khóa ngoại (FOREIGN KEY)</strong>: cột tham chiếu đến khóa chính của bảng khác, tạo mối quan hệ (ví dụ SinhVien.MaLop tham chiếu Lop.MaLop).",
+        "Quy ước trong chương: dùng CSDL <code>QLSinhVien</code> gồm các bảng SinhVien, MonHoc, Lop, NamHocHocKy, DangKyMonHoc, Diem."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-dac-diem-noi-bat-cua-mysql",
+        "c4-tao-va-xoa-co-so-du-lieu"
+      ]
+    },
+    {
+      "id": "c4-tao-va-xoa-co-so-du-lieu",
+      "session": 6,
+      "term": "Tạo và xóa cơ sở dữ liệu",
+      "definition": "Tạo CSDL bằng <code>CREATE DATABASE</code>, xóa bằng <code>DROP DATABASE</code>. Xóa CSDL là xóa toàn bộ bảng và dữ liệu bên trong - không thể hoàn tác.",
+      "key_points": [
+        "<strong>Tạo CSDL và bảng dữ liệu</strong>: Nhóm lệnh <strong>DDL</strong> (Data Definition Language) dùng để tạo, sửa, xóa cấu trúc CSDL và bảng.",
+        "<pre><code>-- Ví dụ 4.1. Tạo CSDL\nCREATE DATABASE QLSinhVien;\n-- Chọn CSDL để làm việc\nUSE QLSinhVien;\n-- Ví dụ 4.2. Xóa CSDL\nDROP DATABASE QLSinhVien;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-cac-khai-niem-co-ban-cua-csdl-quan-he",
+        "c4-tao-bang-du-lieu"
+      ]
+    },
+    {
+      "id": "c4-tao-bang-du-lieu",
+      "session": 6,
+      "term": "Tạo bảng dữ liệu",
+      "definition": "Cú pháp: <code>CREATE TABLE tên_bảng (tên_cột kiểu_dữ_liệu [ràng_buộc], ...)</code>. Quy tắc đặt tên bảng/cột trong MySQL: bắt đầu bằng chữ cái, chữ số, dấu gạch dưới <code>_</code> hoặc ký tự <code>$</code> (không trùng từ khoá SQL như <code>SELECT</code>, <code>FROM</code>, không chứa khoảng trắng hay dấu gạch ngang <code>-</code> nếu không bọc trong dấu `<code> </code> `<code>; ví dụ </code>$_studentName<code> hay </code>MaSinhVien` đều hợp lệ).",
+      "key_points": [
+        "<pre><code>-- Ví dụ 4.3. Tạo bảng SinhVien\nCREATE TABLE SinhVien (\n    ID int,\n    MaSV varchar(20),\n    Ho varchar(50),\n    Ten varchar(30),\n    NgaySinh date,\n    DiaChi varchar(255)\n);</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-tao-va-xoa-co-so-du-lieu",
+        "c4-cac-kieu-du-lieu-thuong-dung"
+      ]
+    },
+    {
+      "id": "c4-cac-kieu-du-lieu-thuong-dung",
+      "session": 6,
+      "term": "Các kiểu dữ liệu thường dùng",
+      "definition": "Nội dung trọng tâm và cú pháp chi tiết của mục <strong>Các kiểu dữ liệu thường dùng</strong>.",
+      "key_points": [
+        "<table><thead><tr><th>Nhóm</th><th>Kiểu</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>Chuỗi</td><td><code>varchar(n)</code></td><td>Chuỗi độ dài thay đổi, tối đa n ký tự (họ tên, địa chỉ)</td></tr><tr><td>Chuỗi</td><td><code>text</code></td><td>Văn bản dài (mô tả, nội dung bài viết)</td></tr><tr><td>Số nguyên</td><td><code>smallint, int, bigint</code></td><td>Số nguyên cỡ nhỏ, vừa, lớn</td></tr><tr><td>Số thực</td><td><code>float, double</code></td><td>Số thực độ chính xác đơn / kép (điểm, giá)</td></tr><tr><td>Ngày giờ</td><td><code>date</code></td><td>Ngày, dạng YYYY-MM-DD</td></tr><tr><td>Ngày giờ</td><td><code>datetime</code></td><td>Ngày kèm giờ, dạng YYYY-MM-DD HH:MM:SS</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-tao-bang-du-lieu",
+        "c4-cac-rang-buoc-constraints"
+      ]
+    },
+    {
+      "id": "c4-cac-rang-buoc-constraints",
+      "session": 6,
+      "term": "Các ràng buộc (constraints)",
+      "definition": "Ràng buộc là quy tắc do MySQL tự kiểm tra, giúp dữ liệu luôn đúng.",
+      "key_points": [
+        "<table><thead><tr><th>Ràng buộc</th><th>Tác dụng</th></tr></thead><tbody><tr><td><code>NOT NULL</code></td><td>Cột không được để trống</td></tr><tr><td><code>PRIMARY KEY</code></td><td>Định danh duy nhất dòng; ngầm gồm NOT NULL và UNIQUE</td></tr><tr><td><code>UNIQUE</code></td><td>Mọi giá trị trong cột phải khác nhau (một bảng có thể có nhiều UNIQUE, chỉ một PRIMARY KEY)</td></tr><tr><td><code>FOREIGN KEY</code></td><td>Giá trị phải tồn tại ở cột khóa chính của bảng được tham chiếu</td></tr></tbody></table>",
+        "<pre><code>-- Ví dụ 4.4. Bảng có ràng buộc và khóa ngoại\nCREATE TABLE Lop (\n    MaLop varchar(20) NOT NULL PRIMARY KEY,\n    TenLop varchar(100) NOT NULL\n);\nCREATE TABLE SinhVien (\n    ID int NOT NULL PRIMARY KEY,\n    MaSV varchar(20) NOT NULL UNIQUE,\n    Ho varchar(50),\n    Ten varchar(30) NOT NULL,\n    NgaySinh date,\n    DiaChi varchar(255),\n    MaLop varchar(20),\n    FOREIGN KEY (MaLop) REFERENCES Lop(MaLop)\n);</code></pre>",
+        "Lưu ý thứ tự: phải tạo bảng <strong>Lop</strong> (bảng được tham chiếu) trước bảng <strong>SinhVien</strong>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-cac-kieu-du-lieu-thuong-dung",
+        "c4-sua-va-xoa-bang"
+      ]
+    },
+    {
+      "id": "c4-sua-va-xoa-bang",
+      "session": 6,
+      "term": "Sửa và xóa bảng",
+      "definition": "Dùng <code>ALTER TABLE</code> để đổi cấu trúc bảng đã có, <code>DROP TABLE</code> để xóa bảng.",
+      "key_points": [
+        "<pre><code>-- Thêm cột\nALTER TABLE SinhVien ADD Email varchar(255);\n-- Xóa cột\nALTER TABLE SinhVien DROP COLUMN DiaChi;\n-- Xóa khóa chính\nALTER TABLE SinhVien DROP PRIMARY KEY;\n-- Thêm ràng buộc UNIQUE\nALTER TABLE SinhVien ADD UNIQUE(ID);\n-- Xóa cả bảng (cả cấu trúc lẫn dữ liệu)\nDROP TABLE SinhVien;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-cac-rang-buoc-constraints",
+        "c4-cau-lenh-select"
+      ]
+    },
+    {
+      "id": "c4-cau-lenh-select",
+      "session": 6,
+      "term": "Câu lệnh SELECT",
+      "definition": "Cú pháp đầy đủ; chỉ SELECT và FROM là bắt buộc, các mệnh đề còn lại là tùy chọn và <strong>phải viết đúng thứ tự</strong>:",
+      "key_points": [
+        "<strong>Các câu lệnh thao tác dữ liệu (DML)</strong>: Nhóm lệnh <strong>DML</strong> (Data Manipulation Language) là nhóm quan trọng nhất với lập trình viên web: <strong>SELECT</strong> (đọc), <strong>INSERT</strong> (thêm), <strong>UPDATE</strong> (sửa), <strong>DELETE</strong> (xóa).",
+        "<pre><code>SELECT cột1, cột2, ...\nFROM bảng\n[WHERE điều_kiện]\n[GROUP BY cột]\n[HAVING điều_kiện_nhóm]\n[ORDER BY cột [ASC|DESC]]\n[LIMIT n]</code></pre>",
+        "<pre><code>-- Lấy mọi cột, mọi dòng\nSELECT * FROM SinhVien;\n-- Chỉ lấy một số cột\nSELECT MaSV, Ho, Ten FROM SinhVien;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-sua-va-xoa-bang",
+        "c4-menh-de-where-va-cac-toan-tu-so-sanh"
+      ]
+    },
+    {
+      "id": "c4-menh-de-where-va-cac-toan-tu-so-sanh",
+      "session": 6,
+      "term": "Mệnh đề WHERE và các toán tử so sánh",
+      "definition": "<code>WHERE</code> lọc các dòng thỏa điều kiện. Các toán tử: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>AND</code>, <code>OR</code>, <code>IN</code>, <code>NOT IN</code>, <code>LIKE</code>, <code>NOT LIKE</code>.",
+      "key_points": [
+        "<code>IN (a, b, c)</code>: giá trị nằm trong danh sách hoặc kết quả của truy vấn con. <code>NOT IN</code> là phủ định.",
+        "<code>LIKE</code>: so khớp mẫu chuỗi; <code>%</code> thay cho một chuỗi bất kỳ, <code>_</code> thay cho đúng một ký tự.<pre><code>-- Ví dụ 4.5. Sinh viên lớp có mã DH01\nSELECT * FROM SinhVien WHERE MaLop = 'DH01';\n-- Ví dụ 4.6. Nhiều điều kiện\nSELECT * FROM SinhVien WHERE MaLop = 'DH01' AND NgaySinh &gt; '2004-01-01';\n-- Ví dụ 4.7. NOT IN với truy vấn con: sinh viên chưa đăng ký môn nào\nSELECT * FROM SinhVien\nWHERE ID NOT IN (SELECT ID_SinhVien FROM DangKyMonHoc);\n-- Ví dụ 4.8. LIKE: môn học có tên chứa 'Anh'\nSELECT * FROM MonHoc WHERE TenMon LIKE '%Anh%';</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-cau-lenh-select",
+        "c4-truy-van-tu-nhieu-bang-join"
+      ]
+    },
+    {
+      "id": "c4-truy-van-tu-nhieu-bang-join",
+      "session": 6,
+      "term": "Truy vấn từ nhiều bảng (JOIN)",
+      "definition": "Dữ liệu thường rải ở nhiều bảng; dùng <strong>JOIN</strong> để ghép các dòng liên quan dựa trên khóa chính - khóa ngoại. Có thể đặt <strong>bí danh</strong> (alias) bằng <code>AS</code> cho gọn.",
+      "key_points": [
+        "<table><thead><tr><th>Loại JOIN</th><th>Kết quả</th></tr></thead><tbody><tr><td><code>INNER JOIN</code></td><td>Chỉ các dòng có giá trị khớp ở cả hai bảng</td></tr><tr><td><code>LEFT JOIN</code></td><td>Tất cả dòng bảng bên trái; cột bảng phải là NULL nếu không khớp</td></tr><tr><td><code>RIGHT JOIN</code></td><td>Tất cả dòng bảng bên phải; cột bảng trái là NULL nếu không khớp (tương đương LEFT JOIN đổi thứ tự bảng)</td></tr></tbody></table>",
+        "<pre><code>-- Ví dụ 4.9. INNER JOIN: tên sinh viên kèm tên lớp\nSELECT sv.MaSV, sv.Ten, l.TenLop\nFROM SinhVien AS sv\nINNER JOIN Lop AS l ON sv.MaLop = l.MaLop;\n-- Ví dụ 4.12. Cách viết khác: tích Descartes + WHERE (cho kết quả tương đương INNER JOIN)\nSELECT sv.MaSV, sv.Ten, l.TenLop\nFROM SinhVien AS sv, Lop AS l\nWHERE sv.MaLop = l.MaLop;\n-- Ví dụ 4.13. LEFT JOIN: mọi lớp, kể cả lớp chưa có sinh viên\nSELECT l.TenLop, sv.Ten\nFROM Lop AS l\nLEFT JOIN SinhVien AS sv ON sv.MaLop = l.MaLop;\n-- Ví dụ 4.14. RIGHT JOIN: viết lại bằng thứ tự bảng đảo ngược\nSELECT l.TenLop, sv.Ten\nFROM SinhVien AS sv\nRIGHT JOIN Lop AS l ON sv.MaLop = l.MaLop;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-menh-de-where-va-cac-toan-tu-so-sanh",
+        "c4-ham-tong-hop-va-group-by"
+      ]
+    },
+    {
+      "id": "c4-ham-tong-hop-va-group-by",
+      "session": 6,
+      "term": "Hàm tổng hợp và GROUP BY",
+      "definition": "Hàm tổng hợp (aggregate) tính một giá trị từ nhiều dòng: <code>COUNT</code> (đếm), <code>SUM</code> (tổng), <code>AVG</code> (trung bình), <code>MIN</code>, <code>MAX</code>. <code>GROUP BY</code> gom các dòng cùng giá trị thành nhóm; <code>HAVING</code> lọc <strong>nhóm</strong> (còn <code>WHERE</code> lọc <strong>dòng</strong> trước khi gom nhóm).",
+      "key_points": [
+        "<pre><code>-- Ví dụ 4.15. Đếm số sinh viên mỗi lớp\nSELECT MaLop, COUNT(*) AS SoSV\nFROM SinhVien\nGROUP BY MaLop;\n-- Ví dụ 4.16. Chỉ các lớp trên 40 sinh viên\nSELECT MaLop, COUNT(*) AS SoSV\nFROM SinhVien\nGROUP BY MaLop\nHAVING COUNT(*) &gt; 40;\n-- Điểm cao nhất, thấp nhất, trung bình\nSELECT MAX(DiemSo), MIN(DiemSo), AVG(DiemSo) FROM Diem;</code></pre>",
+        "<strong>Cảnh báo (Ví dụ 4.17)</strong>: nếu dùng hàm tổng hợp cùng cột thường mà quên <code>GROUP BY</code>, MySQL có thể <strong>không báo lỗi</strong> nhưng kết quả sai (chỉ lấy một giá trị tùy ý của cột thường). Luôn kiểm tra kết quả."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-truy-van-tu-nhieu-bang-join",
+        "c4-sap-xep-va-gioi-han-ket-qua"
+      ]
+    },
+    {
+      "id": "c4-sap-xep-va-gioi-han-ket-qua",
+      "session": 6,
+      "term": "Sắp xếp và giới hạn kết quả",
+      "definition": "<code>ORDER BY cột</code>: sắp xếp tăng dần (<code>ASC</code>, mặc định); thêm <code>DESC</code> để giảm dần.",
+      "key_points": [
+        "<code>LIMIT n</code>: chỉ lấy n dòng đầu. <code>LIMIT a, b</code>: <strong>bỏ qua a dòng, lấy b dòng tiếp theo</strong> - nền tảng của phân trang.<pre><code>-- Điểm cao nhất xếp trước, lấy 10 dòng\nSELECT * FROM Diem ORDER BY DiemSo DESC LIMIT 10;\n-- Trang 2 với 10 dòng mỗi trang: bỏ 10 lấy 10\nSELECT * FROM SinhVien LIMIT 10, 10;\n-- Bỏ qua 5, lấy 10\nSELECT * FROM SinhVien LIMIT 5, 10;</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-ham-tong-hop-va-group-by",
+        "c4-them-du-lieu-insert"
+      ]
+    },
+    {
+      "id": "c4-them-du-lieu-insert",
+      "session": 6,
+      "term": "Thêm dữ liệu - INSERT",
+      "definition": "Hai dạng: không nêu cột (phải đủ giá trị và đúng thứ tự cột của bảng) hoặc nêu rõ danh sách cột (an toàn, nên dùng).",
+      "key_points": [
+        "<pre><code>INSERT INTO MonHoc VALUES (100001, 'Lập trình web', 3);\nINSERT INTO MonHoc (MaMon, TenMon, SoTinChi) VALUES (100002, 'Cơ sở dữ liệu', 3);</code></pre>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-sap-xep-va-gioi-han-ket-qua",
+        "c4-cap-nhat-du-lieu-update"
+      ]
+    },
+    {
+      "id": "c4-cap-nhat-du-lieu-update",
+      "session": 6,
+      "term": "Cập nhật dữ liệu - UPDATE",
+      "definition": "Dùng <code>UPDATE ... SET ... WHERE ...</code> để sửa dữ liệu đã có.",
+      "key_points": [
+        "<pre><code>UPDATE MonHoc SET SoTinChi = 4 WHERE MaMon = 100001;</code></pre>",
+        "<strong>Quy tắc vàng</strong>: luôn kiểm tra <code>WHERE</code>. Thiếu <code>WHERE</code>, <strong>toàn bộ dòng</strong> trong bảng bị sửa."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-them-du-lieu-insert",
+        "c4-xoa-du-lieu-delete"
+      ]
+    },
+    {
+      "id": "c4-xoa-du-lieu-delete",
+      "session": 6,
+      "term": "Xóa dữ liệu - DELETE",
+      "definition": "Dùng <code>DELETE FROM ... WHERE ...</code> để xóa dòng. Cấu trúc bảng vẫn còn; khác với <code>DROP TABLE</code> xóa luôn bảng.",
+      "key_points": [
+        "<pre><code>DELETE FROM MonHoc WHERE MaMon = 100002;</code></pre>",
+        "Cũng như UPDATE, thiếu <code>WHERE</code> sẽ xóa sạch dữ liệu trong bảng. Mẹo: chạy thử bằng <code>SELECT ... WHERE ...</code> cùng điều kiện trước khi <code>DELETE</code>/<code>UPDATE</code>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-cap-nhat-du-lieu-update",
+        "c4-mo-phpmyadmin"
+      ]
+    },
+    {
+      "id": "c4-mo-phpmyadmin",
+      "session": 6,
+      "term": "Mở phpMyAdmin",
+      "definition": "<strong>WAMP</strong>: nhấn biểu tượng WAMP ở khay hệ thống → chọn <strong>phpMyAdmin</strong>.",
+      "key_points": [
+        "<strong>Quản trị MySQL bằng phpMyAdmin</strong>: phpMyAdmin là ứng dụng web viết bằng PHP giúp quản trị MySQL qua giao diện đồ họa, không cần gõ lệnh. Nó được tích hợp sẵn trong WAMP và XAMPP.",
+        "<strong>XAMPP</strong>: trong Control Panel, nhấn nút <strong>Admin</strong> ở dòng MySQL.",
+        "Hoặc gõ thẳng địa chỉ <code>http://localhost/phpmyadmin</code>.",
+        "Đăng nhập mặc định: tên người dùng <code>root</code>, <strong>mật khẩu để trống</strong> (có thể chọn máy chủ MySQL hoặc MariaDB).",
+        "Nếu không vào được: kiểm tra dịch vụ MySQL đã chạy (biểu tượng xanh/nút Start) chưa."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-xoa-du-lieu-delete",
+        "c4-tao-va-xoa-csdl-bang-phpmyadmin"
+      ]
+    },
+    {
+      "id": "c4-tao-va-xoa-csdl-bang-phpmyadmin",
+      "session": 6,
+      "term": "Tạo và xóa CSDL bằng phpMyAdmin",
+      "definition": "<strong>Tạo</strong>: nhấn <strong>New</strong> → nhập tên CSDL, chọn bảng mã (nên chọn <code>utf8mb4_unicode_ci</code> để lưu tiếng Việt) → <strong>Create</strong>.",
+      "key_points": [
+        "<strong>Xóa</strong>: chọn CSDL → tab <strong>Operations</strong> → mục <strong>Drop the database (DROP)</strong> → xác nhận."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-mo-phpmyadmin",
+        "c4-tao-sua-xoa-bang-bang-phpmyadmin"
+      ]
+    },
+    {
+      "id": "c4-tao-sua-xoa-bang-bang-phpmyadmin",
+      "session": 6,
+      "term": "Tạo, sửa, xóa bảng bằng phpMyAdmin",
+      "definition": "<strong>Tạo bảng</strong>: chọn CSDL → tab <strong>Structure</strong> → nhập tên bảng và số cột → <strong>Create</strong> → khai báo từng cột: Name (tên), Type (kiểu), Length (độ dài), Null (cho phép rỗng), Index (PRIMARY/UNIQUE/INDEX), <strong>A_I</strong> (AUTO_INCREMENT - tự tăng, thường dùng cho khóa chính số) → <strong>Save</strong>.",
+      "key_points": [
+        "<strong>Sửa cấu trúc</strong>: mở bảng → tab <strong>Structure</strong> → dùng Change (đổi cột), Drop (xóa cột), Add (thêm cột).",
+        "<strong>Xóa bảng</strong>: mở bảng → tab <strong>Operations</strong> → <strong>Delete the table (DROP)</strong>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-tao-va-xoa-csdl-bang-phpmyadmin",
+        "c4-chay-sql-xuat-va-nhap-du-lieu"
+      ]
+    },
+    {
+      "id": "c4-chay-sql-xuat-va-nhap-du-lieu",
+      "session": 6,
+      "term": "Chạy SQL, xuất và nhập dữ liệu",
+      "definition": "<strong>Chạy lệnh SQL</strong>: tab <strong>SQL</strong> → gõ lệnh → nhấn <strong>Go</strong>.",
+      "key_points": [
+        "<strong>Xem, thêm, sửa, xóa dòng</strong>: tab <strong>Browse</strong>, <strong>Insert</strong> hoặc các nút Edit/Delete trên từng dòng.",
+        "<strong>Export</strong> (xuất): tạo tập tin <code>.sql</code> chứa cấu trúc và dữ liệu - dùng sao lưu hoặc chuyển CSDL sang máy khác.",
+        "<strong>Import</strong> (nhập): chọn tập tin <code>.sql</code> → <strong>Go</strong> để phục hồi CSDL (ví dụ nạp CSDL <code>bike_stores</code> của bài thực hành)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-tao-sua-xoa-bang-bang-phpmyadmin",
+        "c4-thuc-hanh-tong-hop-csdl-qlsinhvien"
+      ]
+    },
+    {
+      "id": "c4-thuc-hanh-tong-hop-csdl-qlsinhvien",
+      "session": 6,
+      "term": "Thực hành tổng hợp: CSDL QLSinhVien",
+      "definition": "Làm lần lượt trên phpMyAdmin (tab SQL):",
+      "key_points": [
+        "1. Tạo CSDL <code>QLSinhVien</code> và hai bảng <code>Lop</code>, <code>SinhVien</code> như Ví dụ 4.4.",
+        "2. Thêm 2 lớp và 5 sinh viên bằng <code>INSERT</code>.",
+        "3. Xem sinh viên của một lớp bằng <code>WHERE</code>; xem tên lớp kèm sinh viên bằng <code>INNER JOIN</code>.",
+        "4. Đếm sinh viên mỗi lớp bằng <code>GROUP BY</code>; lọc lớp đông hơn 2 sinh viên bằng <code>HAVING</code>.",
+        "5. Sửa địa chỉ một sinh viên bằng <code>UPDATE ... WHERE</code>; xóa một sinh viên bằng <code>DELETE ... WHERE</code>.",
+        "6. Export CSDL ra tập tin <code>.sql</code>, xóa CSDL rồi Import lại để kiểm tra sao lưu.",
+        "Gợi ý bài nâng cao: nạp CSDL <code>bike_stores</code> và làm các truy vấn trong tập bài tập buổi 6."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-chay-sql-xuat-va-nhap-du-lieu",
+        "c4-tu-kiem-tra-kien-thuc"
+      ]
+    },
+    {
+      "id": "c4-tu-kiem-tra-kien-thuc",
+      "session": 6,
+      "term": "Tự kiểm tra kiến thức",
+      "definition": "<strong>Hỏi:</strong> PRIMARY KEY khác UNIQUE ở điểm nào? <strong>Đáp:</strong> Một bảng chỉ có một PRIMARY KEY và nó không được NULL; có thể có nhiều cột UNIQUE.",
+      "key_points": [
+        "<strong>Hỏi:</strong> WHERE khác HAVING ở điểm nào? <strong>Đáp:</strong> WHERE lọc từng dòng trước khi gom nhóm; HAVING lọc các nhóm sau GROUP BY (thường dùng với hàm tổng hợp).",
+        "<strong>Hỏi:</strong> DELETE FROM khác DROP TABLE thế nào? <strong>Đáp:</strong> DELETE chỉ xóa dòng dữ liệu, giữ cấu trúc bảng; DROP TABLE xóa cả bảng.",
+        "<strong>Hỏi:</strong> INNER JOIN khác LEFT JOIN thế nào? <strong>Đáp:</strong> INNER JOIN chỉ giữ dòng khớp ở cả hai bảng; LEFT JOIN giữ mọi dòng bảng trái, cột bảng phải là NULL nếu không khớp.",
+        "<strong>Hỏi:</strong> <code>LIMIT 5, 10</code> trả về gì? <strong>Đáp:</strong> Bỏ qua 5 dòng đầu, lấy 10 dòng tiếp theo.",
+        "<strong>Hỏi:</strong> Vì sao phải kiểm tra WHERE khi UPDATE/DELETE? <strong>Đáp:</strong> Thiếu WHERE, lệnh áp dụng cho toàn bộ bảng và gây mất hoặc sai dữ liệu hàng loạt."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-thuc-hanh-tong-hop-csdl-qlsinhvien"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận biết khái niệm (2 câu)",
+      "description": "Kiểm tra trí nhớ và nhận diện chính xác các khái niệm, cú pháp nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "ltweb-q222",
+          "type": "mc",
+          "concept_ref": "c4-mo-phpmyadmin",
+          "question": "Tên ứng dụng web nào giúp quản trị cơ sở dữ liệu MySQL?",
+          "options": [
+            "A. MySQL Manager",
+            "B. MS MySQL",
+            "C. phpMyAdmin",
+            "D. Tất cả các đáp án trên"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Tất cả các đáp án trên): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q265",
+          "type": "mc",
+          "concept_ref": "c4-cau-lenh-select",
+          "question": "Các mệnh đề trong câu lệnh SELECT của MySQL được viết theo thứ tự nào?",
+          "options": [
+            "A. SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT",
+            "B. SELECT -> FROM -> WHERE -> GROUP BY -> ORDER BY -> HAVING -> LIMIT",
+            "C. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> LIMIT -> ORDER BY",
+            "D. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> ORDER BY -> LIMIT"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Thông hiểu & Phân tích (15 câu)",
+      "description": "Phân biệt, giải thích nguyên lý hoạt động và so sánh các thành phần kỹ thuật.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "ltweb-q223",
+          "type": "mc",
+          "concept_ref": "c4-mo-phpmyadmin",
+          "question": "Trên trang quản trị PhpMyAdmin, để sao lưu (backup) cơ sở dữ liệu trong MySQL khi cần sao chép website qua máy tính hoặc hosting khác thì ta chọn chức năng nào dưới đây?",
+          "options": [
+            "A. Import",
+            "B. Backup",
+            "C. Export",
+            "D. Print"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Export): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q224",
+          "type": "mc",
+          "concept_ref": "c4-chay-sql-xuat-va-nhap-du-lieu",
+          "question": "Trên trang quản trị PhpMyAdmin, để phục hồi dữ liệu từ một tập tin có phần mở rộng .sql thì ta chọn chức năng nào dưới đây?",
+          "options": [
+            "A. Import",
+            "B. Restore",
+            "C. Export",
+            "D. Revert"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Import): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q225",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho câu truy vấn sau: SELECT * FROM SinhVien LIMIT 5. Câu truy vấn này có chức năng gì?",
+          "options": [
+            "A. Trả về 5 bản ghi ngẫu nhiên trong bảng SinhVien",
+            "B. Trả về 5 bản ghi đầu tiên trong bảng SinhVien.",
+            "C. Trả về 5 bản ghi cuối cùng trong bảng SinhVien.",
+            "D. Bỏ qua 5 bản ghi đầu tiên và trả về các bản ghi còn lại trong bảng SinhVien"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Trả về 5 bản ghi đầu tiên trong bảng SinhVien.): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q226",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho câu truy vấn sau: SELECT * FROM SinhVien LIMIT 10, 20. Câu truy vấn này có chức năng gì?",
+          "options": [
+            "A. Trả về các bản ghi từ vị trí 10 đến 20 trong bảng SinhVien",
+            "B. Bỏ qua 10 bản ghi đầu tiên và trả về bản ghi từ vị trí 11 đến 20 trong bảng SinhVien.",
+            "C. Bỏ qua 10 bản ghi đầu tiên và trả về 20 bản ghi tiếp theo trong bảng SinhVien",
+            "D. Bỏ qua các bản ghi từ vị trí thứ 10 đến 20 và trả về các bản ghi còn lại từ bảng SinhVien"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Bỏ qua 10 bản ghi đầu tiên và trả về 20 bản ghi tiếp theo trong bảng SinhVien): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q227",
+          "type": "mc",
+          "concept_ref": "c4-tu-kiem-tra-kien-thuc",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, câu lệnh nào dùng để xóa các bản ghi trong bảng SinhVien với cột MaSV có giá trị là '99999999'?",
+          "options": [
+            "A. DROP TABLE SinhVien WHERE MaSV = '99999999'",
+            "B. DEL SinhVien WHERE MaSV = '99999999'",
+            "C. REMOVE SinhVien WHERE MaSV = '99999999'",
+            "D. DELETE FROM SinhVien WHERE MaSV = '99999999'"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+        },
+        {
+          "id": "ltweb-q228",
+          "type": "mc",
+          "concept_ref": "c4-cau-lenh-select",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, câu lệnh nào dùng để lấy các bản ghi trong bảng SinhVien với cột MaLop có giá trị là 'DH38HT' và sắp xếp lại bản ghi theo thứ tự giảm dần của giá trị cột Ten?",
+          "options": [
+            "A. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten",
+            "B. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER Ten",
+            "C. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten DESC",
+            "D. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten ASC"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten DESC): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q229",
+          "type": "mc",
+          "concept_ref": "c4-cac-rang-buoc-constraints",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, từ khóa nào cho phép tăng tự động giá trị một cột khi tạo bảng?",
+          "options": [
+            "A. IDENTITY",
+            "B. AUTO_INCREMENT",
+            "C. INCREMENT",
+            "D. Cả ba đáp án trên đều đúng"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Cả ba đáp án trên đều đúng): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q230",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu SinhVien(MaSinhVien, HoTen, MaLop). Câu truy vấn nào sau đây bị lỗi?",
+          "options": [
+            "A. SELECT COUNT(*) FROM SinhVien",
+            "B. SELECT MaLop, COUNT(*) FROM SinhVien GROUP BY MaLop",
+            "C. SELECT MaLop, COUNT(*) FROM SinhVien",
+            "D. Các câu truy vấn trên không bị lỗi"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Các câu truy vấn trên không bị lỗi): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q231",
+          "type": "mc",
+          "concept_ref": "c4-cac-rang-buoc-constraints",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu SinhVien(MaSinhVien, HoTen, MaLop). Câu lệnh nào để thêm dữ liệu của một sinh viên vào bảng SinhVien?",
+          "options": [
+            "A. INSERT INTO SinhVien(MaSinhVien, HoTen) VALUES ('099999','Test');",
+            "B. INSERT INTO SinhVien VALUES ('099999','Test');",
+            "C. ADD INTO SinhVien(MaSinhVien, HoTen) VALUES ('099999','Test');",
+            "D. CREATE SinhVien VALUES ('099999','Test');"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+        },
+        {
+          "id": "ltweb-q232",
+          "type": "mc",
+          "concept_ref": "c4-cap-nhat-du-lieu-update",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong). Câu lệnh nào dùng để cập nhật dữ liệu MucLuong của nhân viên có ID là 5?",
+          "options": [
+            "A. UPDATE NhanVien SET MucLuong =10000;",
+            "B. UPDATE TABLE NhanVien SET MucLuong =10000 WHERE ID = 5;",
+            "C. UPDATE NhanVien SET MucLuong =10000 WHERE ID = 5;",
+            "D. ALTER TABLE NhanVien SET MucLuong =10000 WHERE ID = 5;"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+        },
+        {
+          "id": "ltweb-q233",
+          "type": "mc",
+          "concept_ref": "c4-cau-lenh-select",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong). Câu lệnh nào dùng để lấy ra dữ liệu 5 nhân viên có mức lương cao nhất?",
+          "options": [
+            "A. SELECT * FROM NhanVien ORDER BY MucLuong DESC LIMIT 5",
+            "B. SELECT * FROM NhanVien ORDER BY MucLuong LIMIT 5",
+            "C. SELECT * FROM NhanVien LIMIT 5 ORDER BY MucLuong desc",
+            "D. SELECT * FROM NhanVien LIMIT 5"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (SELECT * FROM NhanVien ORDER BY MucLuong DESC LIMIT 5): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q234",
+          "type": "mc",
+          "concept_ref": "c4-ham-tong-hop-va-group-by",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong, PhongBan). Câu lệnh nào dùng để lấy ra dữ liệu mức lương trung bình của các phòng ban?",
+          "options": [
+            "A. SELECT AVG(MucLuong) FROM NhanVien",
+            "B. SELECT PhongBan, AVG(MucLuong) FROM NhanVien",
+            "C. SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan",
+            "D. SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan, ID"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q235",
+          "type": "mc",
+          "concept_ref": "c4-cac-rang-buoc-constraints",
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, từ khóa nào có thể được sử dụng đối với phép kết ngoài?",
+          "options": [
+            "A. $_studentName",
+            "B. $student_name2",
+            "C. $2studentName",
+            "D. $StudentName"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A ($_studentName): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q266",
+          "type": "mc",
+          "concept_ref": "c4-tu-kiem-tra-kien-thuc",
+          "question": "Sự khác biệt đúng nhất giữa WHERE và HAVING là gì?",
+          "options": [
+            "A. WHERE chỉ dùng với chuỗi, còn HAVING chỉ dùng với số",
+            "B. WHERE lọc các bộ dữ liệu trước khi gom nhóm, còn HAVING lọc các nhóm sau GROUP BY",
+            "C. HAVING luôn phải xuất hiện trước GROUP BY",
+            "D. WHERE và HAVING hoàn toàn tương đương trong mọi trường hợp"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+        },
+        {
+          "id": "ltweb-q268",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Phép kết INNER JOIN trả về kết quả nào?",
+          "options": [
+            "A. Tất cả các dòng của bảng bên trái, kể cả khi không khớp",
+            "B. Tất cả các dòng của bảng bên phải, kể cả khi không khớp",
+            "C. Chỉ các dòng có giá trị thỏa mãn điều kiện kết giữa các bảng",
+            "D. Tích Descartes của hai bảng mà không cần điều kiện"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế (13 câu)",
+      "description": "Đọc hiểu đoạn mã, dự đoán kết quả thực thi và xử lý tình huống lập trình thực tế.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "ltweb-q267",
+          "type": "mc",
+          "concept_ref": "c4-menh-de-where-va-cac-toan-tu-so-sanh",
+          "question": "Điều kiện trong câu truy vấn để tìm các sinh viên có tên chứa chuỗi \"Anh\" ở bất kỳ vị trí nào là:",
+          "options": [
+            "A. WHERE Ten LIKE 'Anh%'",
+            "B. WHERE Ten LIKE '%Anh'",
+            "C. WHERE Ten LIKE '%Anh%'",
+            "D. WHERE Ten = '%Anh%'"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (WHERE Ten LIKE '%Anh%'): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q269",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Trong truy vấn sau, tác dụng chính của AS sv và AS l là gì? SELECT * FROM SinhVien AS sv INNER JOIN Lop AS l ON sv.MaLop = l.MaLop;",
+          "options": [
+            "A. Tạo bản sao mới của các bảng để truy vấn để tên bảng ngắn gọn hơn và phân biệt được các cột giống nhau giữa hai bảng.",
+            "B. Đổi tên chính thức của các bảng trong cơ sở dữ liệu để tên bảng ngắn hơn.",
+            "C. Đặt tên đại diện tạm thời để câu truy vấn ngắn gọn và dễ phân biệt cột giữa các bảng.",
+            "D. Chuyển cấu trúc của bảng sang một định dạng khác để viết câu truy vấn ngắn gọn hơn."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q270",
+          "type": "mc",
+          "concept_ref": "c4-menh-de-where-va-cac-toan-tu-so-sanh",
+          "question": "Câu truy vấn sau có vấn đề gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien;",
+          "options": [
+            "A. COUNT(*) không thể sử dụng với bảng SinhVien.",
+            "B. Thiếu mệnh đề WHERE nên kết quả của câu truy vấn sẽ không cho biết được số lượng sinh viên của từng lớp.",
+            "C. Thiếu GROUP BY nên kết quả câu truy vấn không cho biết đúng số lượng sinh viên của từng lớp.",
+            "D. Phải thay COUNT(*) bằng SUM(*) để kết quả câu truy vấn hiển thị được số lượng sinh viên theo từng lớp."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+        },
+        {
+          "id": "ltweb-q271",
+          "type": "mc",
+          "concept_ref": "c4-sap-xep-va-gioi-han-ket-qua",
+          "question": "Câu truy vấn sau sắp xếp dữ liệu như thế nào? SELECT MaLop, Ten, Ho FROM SinhVien ORDER BY MaLop DESC, Ten, Ho;",
+          "options": [
+            "A. Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau sắp xếp giảm dần theo Ten, nếu Ten giống nhau sắp xếp giảm dần theo Ho.",
+            "B. Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau sắp xếp tăng dần theo Ten, nếu Ten giống nhau sắp xếp tăng dần theo Ho.",
+            "C. Sắp xếp tăng dần theo MaLop, nếu MaLop giống nhau sắp xếp giảm dần theo Ten, nếu Ten giống nhau sắp xếp giảm dần theo Ho.",
+            "D. Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau thì sắp xếp theo thứ tự thêm vào bảng dữ liệu."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau sắp xếp tăng dần theo Ten, nếu Ten giống nhau sắp xếp tăng dần theo Ho.): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q272",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng LopHocPhan(MaLopHP, TenLopHP) và bảng Diem(MaLopHP, MaSV, Diem); Bảng LopHocPhan gồm 3 dòng dữ liệu: (ITS708_D01, 'Lập trình web') (ITS302_D02, 'Cơ sở lập trình') (ITS203_D01, 'Cơ sở dữ liệu') Bảng Diem gồm 3 dòng dữ liệu: (ITS708_D01, 'SV01',8) (ITS708_D01, 'SV02',9) (ITS203_D01, 'SV03',8) Câu truy vấn sau trả về bao nhiêu dòng dữ liệu? SELECT * FROM LopHocPhan AS lhp LEFT JOIN Diem AS d ON lhp.MaLopHP = d.MaLopHP;",
+          "options": [
+            "A. 3",
+            "B. 4",
+            "C. 5",
+            "D. 6"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q273",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng LopHocPhan(MaLopHP, TenLopHP) và bảng Diem(MaLopHP, MaSV, Diem); Bảng LopHocPhan gồm 3 dòng dữ liệu: (ITS708_D01, 'Lập trình web') (ITS302_D02, 'Cơ sở lập trình') (ITS203_D01, 'Cơ sở dữ liệu') Bảng Diem gồm 3 dòng dữ liệu: (ITS708_D01, 'SV01',8) (ITS708_D01, 'SV02',9) (ITS203_D01, 'SV03',8) Để kết quả truy vấn luôn chứa tất cả các dòng của bảng LopHocPhan, kể cả khi không tìm thấy bản ghi tương ứng trong bảng Diem, cần sử dụng câu truy vấn nào?",
+          "options": [
+            "A. SELECT * FROM Diem AS d LEFT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+            "B. SELECT * FROM Diem AS d RIGHT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+            "C. SELECT * FROM Diem AS d INNER JOIN LopHocPhan AS lhp ON d.MaLopHP <> lhp.MaLopHP;",
+            "D. SELECT * FROM LopHocPhan AS lhp INNER JOIN Diem AS d ON lhp.MaLopHP = d.MaLopHP;"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q274",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng SinhVien (MaSinhVien, MaLop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'CNTT08') ('SV02', 'CNTT09') ('SV03', 'CNTT08') ('SV04', 'CNTT09') ('SV05', 'CNTT08') Kết quả câu truy vấn sau là gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien GROUP BY MaLop;",
+          "options": [
+            "A. Trả về 2 dòng dữ liệu: ('CNTT08',5) ('CNTT09',5)",
+            "B. Trả về 2 dòng dữ liệu: ('CNTT08',2) ('CNTT09',3)",
+            "C. Trả về 2 dòng dữ liệu: ('CNTT08',3) ('CNTT09',2)",
+            "D. Trả về 2 dòng dữ liệu: ('CNTT08',1) ('CNTT09',1)"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+        },
+        {
+          "id": "ltweb-q275",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng SinhVien (MaSinhVien, MaLop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'CNTT08') ('SV02', 'CNTT09') ('SV03', 'CNTT08') ('SV04', 'CNTT09') ('SV05', 'CNTT08') Kết quả câu truy vấn sau là gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien GROUP BY MaLop HAVING COUNT(*) > 2;",
+          "options": [
+            "A. Trả về 2 dòng dữ liệu: ('CNTT08',3) ('CNTT09',2)",
+            "B. Trả về 1 dòng dữ liệu: ('CNTT08',3)",
+            "C. Trả về 1 dòng dữ liệu: ('CNTT09',2)",
+            "D. Không có dòng dữ liệu nào được trả về"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+        },
+        {
+          "id": "ltweb-q276",
+          "type": "mc",
+          "concept_ref": "c4-ham-tong-hop-va-group-by",
+          "question": "Câu truy vấn nào phù hợp nhất để tìm các lớp có từ 40 sinh viên trở lên?",
+          "options": [
+            "A. SELECT MaLop, COUNT(*) FROM SinhVien WHERE COUNT(*) >= 40 GROUP BY MaLop;",
+            "B. SELECT MaLop, COUNT(*) FROM SinhVien GROUP BY MaLop HAVING COUNT(*) >= 40;",
+            "C. SELECT MaLop FROM SinhVien HAVING MaLop >= 40;",
+            "D. SELECT COUNT(*) FROM SinhVien ORDER BY COUNT(*) >= 40;"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (SELECT MaLop, COUNT(*) FROM SinhVien GROUP BY MaLop HAVING COUNT(*) >= 40;): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q277",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien WHERE (GioiTinh = 'M' AND Lop = 'CNTT08') OR Ten LIKE '%Anh%';",
+          "options": [
+            "A. SV01, SV03",
+            "B. SV01, SV03, SV04",
+            "C. SV01, SV04",
+            "D. SV01, SV02, SV04"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (SV01, SV03, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q278",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien WHERE Ten LIKE '%An%' AND Lop = 'CNTT09';",
+          "options": [
+            "A. SV01, SV04",
+            "B. SV04",
+            "C. SV02, SV04",
+            "D. SV02"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SV02, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q279",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien ORDER BY MaSV DESC LIMIT 2, 2;",
+          "options": [
+            "A. SV01, SV02",
+            "B. SV02, SV03",
+            "C. SV03, SV04",
+            "D. SV04, SV05"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (SV02, SV03): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q280",
+          "type": "mc",
+          "concept_ref": "c4-truy-van-tu-nhieu-bang-join",
+          "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien ORDER BY MaSV LIMIT 1, 3;",
+          "options": [
+            "A. SV01, SV02",
+            "B. SV01, SV02, SV03",
+            "C. SV02, SV03, SV04",
+            "D. SV03, SV04, SV05"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SV02, SV03, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        }
+      ]
+    }
+  }
+}

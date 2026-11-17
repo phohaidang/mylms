@@ -1,0 +1,624 @@
+{
+  "session": 5,
+  "chapter": "Ch.3",
+  "title": "Nhập môn PHP (Phần 3)",
+  "time_limit_minutes": 35,
+  "questions": [
+    {
+      "id": "ltweb-q070",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong ngôn ngữ PHP, từ nào dưới đây là từ khoá (key word)?",
+      "options": [
+        "A. _myFunction",
+        "B. $myFunction",
+        "C. function",
+        "D. MyFunction"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (function): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q117",
+      "type": "mc",
+      "level": 1,
+      "question": "Hàm nào sau đây dùng để in ra toàn bộ giá trị mà một biến mảng đang chứa?",
+      "options": [
+        "A. print_r",
+        "B. echo",
+        "C. reverve",
+        "D. output"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (print_r): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q130",
+      "type": "mc",
+      "level": 1,
+      "question": "Đâu là mã PHP đúng để sắp xếp mảng $age theo thứ tự tăng dần, theo giá trị (value) của mảng? $age = array(\"Huy\"=>\"20\", \"Mai\"=>\"21\", \"Vy\"=>\"19\");",
+      "options": [
+        "A. vsort($age);",
+        "B. asort($age);",
+        "C. valuesort($age);",
+        "D. vasort($age);"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, sort() sắp xếp mảng chỉ số tăng dần (mất khóa chuỗi); asort() sắp xếp mảng kết hợp tăng dần theo giá trị (value) và giữ khóa; ksort() sắp xếp mảng kết hợp tăng dần theo khóa (key)."
+    },
+    {
+      "id": "ltweb-q132",
+      "type": "mc",
+      "level": 1,
+      "question": "Đâu là mã PHP đúng để sắp xếp mảng $student theo thứ tự tăng dần, theo key (khóa) của mảng? $student = array(\"301\"=>\"Khanh\", \"300\"=>\"Dung\", \"302\"=>\"Vinh\");",
+      "options": [
+        "A. esort($student);",
+        "B. kesort($student);",
+        "C. keysort($student);",
+        "D. ksort($student);"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Trong PHP, sort() sắp xếp mảng chỉ số tăng dần (mất khóa chuỗi); asort() sắp xếp mảng kết hợp tăng dần theo giá trị (value) và giữ khóa; ksort() sắp xếp mảng kết hợp tăng dần theo khóa (key)."
+    },
+    {
+      "id": "ltweb-q140",
+      "type": "mc",
+      "level": 1,
+      "question": "Đâu là mã dùng để kiểm tra xem biến $a có phải là một mảng hay không? $a = array(\"red\", \"green\", \"blue\");",
+      "options": [
+        "A. array_key_exists($a)",
+        "B. array_exists($a)",
+        "C. array_is($a)",
+        "D. is_array($a)"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (is_array($a)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q146",
+      "type": "mc",
+      "level": 1,
+      "question": "Câu lệnh nào dưới đây để khai báo sử dụng mã nguồn từ file “header.php”?",
+      "options": [
+        "A. <?php include \"header.php\"; ?>",
+        "B. <!-- include \"header.php\"; -->",
+        "C. <= include \"header.php\"; ?>",
+        "D. <php include = \"header.php\";"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (<?php include \"header.php\"; ?>): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q147",
+      "type": "mc",
+      "level": 1,
+      "question": "Để khai báo sử dụng mã nguồn một file bên ngoài, ta sử dụng lệnh nào sau đây?",
+      "options": [
+        "A. include",
+        "B. require",
+        "C. require_once",
+        "D. Cả 3 lệnh trên đều đúng."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 lệnh trên đều đúng.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q148",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong PHP, ký tự nào dưới đây khai báo tham số là dạng tham biến (reference)?",
+      "options": [
+        "A. !",
+        "B. ?",
+        "C. &",
+        "D. *"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (&): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q149",
+      "type": "mc",
+      "level": 1,
+      "question": "Khai báo giá trị mặc định cho tham số $temp1 là 0 của hàm myFunction nào sau đây là đúng?",
+      "options": [
+        "A. function myFunction($arr, $temp1 as 0)",
+        "B. function myFunction($arr, $temp1 default(0))",
+        "C. function myFunction($arr, $temp1 = 0)",
+        "D. Không có đáp án nào đúng."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Không có đáp án nào đúng.): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q150",
+      "type": "mc",
+      "level": 1,
+      "question": "Đâu là mã PHP đúng để tạo một hàm có tên là writeMsg?",
+      "options": [
+        "A. function writeMsg() { echo \"Hello world!\"; }",
+        "B. writeMsg() function { echo \"Hello world!\"; }",
+        "C. function(writeMsg) { echo \"Hello world!\"; }",
+        "D. writeMsg() { echo \"Hello world!\"; }"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (function writeMsg() { echo \"Hello world!\"; }): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q151",
+      "type": "mc",
+      "level": 1,
+      "question": "Để gọi hàm có tên \"writeMsg\" sau đây thì ta sử dụng mã nào? function writeMsg() { echo \"Hello world!\"; }",
+      "options": [
+        "A. function();",
+        "B. writeMsg();",
+        "C. function(writeMsg);",
+        "D. function(\"Hello world!\");"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (writeMsg();): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q088",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong PHP, hàm var_dump() thường được sử dụng để làm gì?",
+      "options": [
+        "A. Kiểm tra dữ liệu khi gỡ lỗi (debug) chương trình",
+        "B. Gán giá trị mới cho một biến trong PHP",
+        "C. Chuyển toàn bộ mã PHP sang mã HTML",
+        "D. Xóa biến khỏi bộ nhớ sau khi sử dụng"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Kiểm tra dữ liệu khi gỡ lỗi (debug) chương trình): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q136",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $a=array(); $a[\"name\"] = \"Phong\"; $a[\"course\"] = \"Lập trình web\"; if (array_key_exists(\"course\",$a)) { echo \"Course exists!\"; } else { echo \"Course does not exist!\"; }",
+      "options": [
+        "A. course",
+        "B. Lập trình web",
+        "C. Course does not exist!",
+        "D. Course exists!"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Course exists!): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q137",
+      "type": "mc",
+      "level": 2,
+      "question": "Đâu là mã dùng để kiểm tra xem key (khóa) \"Volvo\" có tồn tại trong mảng $cars hay không?",
+      "options": [
+        "A. array_key_exists(\"Volvo\",$cars)",
+        "B. key_exists($cars,\"Volvo\")",
+        "C. key(\"Volvo\",$cars)",
+        "D. array_key($cars,\"Volvo\")"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (array_key_exists(\"Volvo\",$cars)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q141",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $a = array(\"red\", \"green\", \"blue\"); if (is_array($a)) { echo '$a là một mảng.'; } else { echo '$a không phải là một mảng.'; }",
+      "options": [
+        "A. $a là một mảng.",
+        "B. $a không phải là một mảng.",
+        "C. true",
+        "D. false"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A ($a là một mảng.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q142",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $fruits = array(); $fruits[] = \"Apple\"; $fruits[] = \"Orange\"; print_r($fruits);",
+      "options": [
+        "A. Apple, Orange",
+        "B. Array ( [0] => Apple [1] => Orange )",
+        "C. Apple",
+        "D. Orange"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Array ( [0] => Apple [1] => Orange )): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q143",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $students = array(); $students[\"name\"] = \"Linh\"; $students[\"course\"] = \"Lập trình web\"; print_r($students);",
+      "options": [
+        "A. Linh",
+        "B. Lập trình web",
+        "C. Array ( [name] => Linh [course] => Lập trình web )",
+        "D. Linh, Lập trình web"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Array ( [name] => Linh [course] => Lập trình web )): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q158",
+      "type": "mc",
+      "level": 2,
+      "question": "Câu lệnh PHP nào sau đây xuất ngày hiện tại theo định dạng dd/mm/yyyy, ví dụ 10/07/2026?",
+      "options": [
+        "A. echo date(\"m/d/Y\");",
+        "B. echo date(\"d/m/Y\");",
+        "C. echo date(\"D/M/Y\");",
+        "D. echo date(\"d-m-y\");"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (echo date(\"d/m/Y\");): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q161",
+      "type": "mc",
+      "level": 2,
+      "question": "Hàm var_dump() trong PHP trả về thông tin gì?",
+      "options": [
+        "A. Một biến có tồn tại hay không.",
+        "B. Thông tin chứa kiểu dữ liệu và giá trị của một hoặc nhiều biến.",
+        "C. Một biến có phải là mảng không.",
+        "D. Một hàm có đối số hay không."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Thông tin chứa kiểu dữ liệu và giá trị của một hoặc nhiều biến.): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q163",
+      "type": "mc",
+      "level": 2,
+      "question": "Cho mảng $d được khởi tạo theo mã bên dưới. Đâu là câu lệnh đúng để xuất ra kiểu dữ liệu và giá trị của $d? $d = [\"red\", \"green\", \"blue\"];",
+      "options": [
+        "A. echo $d;",
+        "B. echo $d(var_dump);",
+        "C. echo var_dump();",
+        "D. echo var_dump($d);"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (echo var_dump($d);): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q083",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = 100; $y = 10; var_dump($x == $y);",
+      "options": [
+        "A. bool(false)",
+        "B. bool(true)",
+        "C. 100 == 10",
+        "D. 100 != 10"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q085",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = 90; $y = 100; var_dump($x != $y);",
+      "options": [
+        "A. 90 != \"100\"",
+        "B. 90 == \"100\"",
+        "C. bool(true)",
+        "D. bool(false)"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (bool(true)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q119",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là mã PHP đúng để xuất ra số phần tử của mảng $fruits sau đây? $fruits = [\"Apple\", \"Banana\", \"Orange\"];",
+      "options": [
+        "A. echo sum($fruits);",
+        "B. echo count(array($fruits));",
+        "C. echo count($fruits);",
+        "D. echo count(array);"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (echo count($fruits);): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q120",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $fruits = [\"Apple\", \"Banana\", \"Orange\"]; echo count($fruits);",
+      "options": [
+        "A. 0",
+        "B. 1",
+        "C. 2",
+        "D. 3"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (3): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q122",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $cars = array(\"Volvo\", \"BMW\", \"Toyota\"); $arrlength = count($cars); for($x = 0; $x < $arrlength; $x++) { echo $cars[$x]; echo \"<br>\"; }",
+      "options": [
+        "A. 0 1 2",
+        "B. Volvo BMW Toyota",
+        "C. Volvo BMW",
+        "D. BMW Toyota"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Volvo BMW Toyota): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q126",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là mã PHP đúng để sắp xếp các phần tử của mảng $colors theo thứ tự tăng dần của bảng chữ cái? $colors = array(\"red\", \"green\", \"blue\", \"yellow\");",
+      "options": [
+        "A. alphabet($cars);",
+        "B. sort($colors);",
+        "C. arrange($cars);",
+        "D. abc($cars);"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, sort() sắp xếp mảng chỉ số tăng dần (mất khóa chuỗi); asort() sắp xếp mảng kết hợp tăng dần theo giá trị (value) và giữ khóa; ksort() sắp xếp mảng kết hợp tăng dần theo khóa (key)."
+    },
+    {
+      "id": "ltweb-q127",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP dưới đây, kết quả nào sẽ được hiển thị? $subjects = [\"Web Programming\", \"Database\", \"SEO\"]; sort($subjects); foreach ($subjects as $sub) { echo $sub . \"<br>\"; }",
+      "options": [
+        "A. Web Programming Database SEO",
+        "B. SEO Database Web Programming",
+        "C. Database SEO Web Programming",
+        "D. SEO Web Programming Database"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Database SEO Web Programming): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q128",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là mã PHP đúng để sắp xếp các phần tử của mảng $numbers theo thứ tự số tăng dần? $numbers = array(3, 5, 2, 21, 10);",
+      "options": [
+        "A. $numbers(sort);",
+        "B. ascend($numbers);",
+        "C. arrange($numbers);",
+        "D. sort($numbers);"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Trong PHP, sort() sắp xếp mảng chỉ số tăng dần (mất khóa chuỗi); asort() sắp xếp mảng kết hợp tăng dần theo giá trị (value) và giữ khóa; ksort() sắp xếp mảng kết hợp tăng dần theo khóa (key)."
+    },
+    {
+      "id": "ltweb-q129",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP dưới đây, kết quả nào sẽ được hiển thị $numbers = [6, 8, 4]; sort($numbers); foreach($numbers as $num){ echo $num; echo \"<br>\"; }",
+      "options": [
+        "A. 4 6 8",
+        "B. 8 6 4",
+        "C. 6 8 4",
+        "D. Cả 3 đáp án trên đều sai."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 đáp án trên đều sai.): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q131",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $age = array(\"Linh\"=>\"20\", \"Chi\"=>\"21\", \"Hoa\"=>\"19\"); asort($age); foreach($age as $x => $x_value) { echo \"Key=\" . $x . \", Value=\" . $x_value; echo \"<br>\"; }",
+      "options": [
+        "A. Hoa, 19 Linh, 20 Chi, 21",
+        "B. Linh, 20 Chi, 21 Hoa, 19",
+        "C. Key=Hoa, Value=19 Key=Linh, Value=20 Key=Chi, Value=21",
+        "D. Key=Linh, Value=20 Key=Chi, Value=21 Key=Hoa, Value=19"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Key=Hoa, Value=19 Key=Linh, Value=20 Key=Chi, Value=21): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q133",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $student = array(\"189\"=>\"Hoa\", \"190\"=>\"Linh\", \"188\"=>\"Vy\"); ksort($student); foreach($student as $x => $value) { echo \"Key=\" . $x . \", Value=\" . $value; echo \"<br>\"; }",
+      "options": [
+        "A. Key=188, Value=Vy Key=189, Value=Hoa Key=190, Value=Linh",
+        "B. Key=189, Value=Hoa Key=190, Value=Linh Key=188, Value=Vy",
+        "C. Key=190, Value=Linh Key=189, Value=Hoa Key=188, Value=Vy",
+        "D. Key=188, Value=Vy"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Key=188, Value=Vy Key=189, Value=Hoa Key=190, Value=Linh): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q138",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $arr = array('I','love','PHP!'); echo implode(\" \",$arr);",
+      "options": [
+        "A. I,love,PHP!",
+        "B. I love PHP!",
+        "C. I, love, PHP!",
+        "D. 'I','love','PHP!'"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Hàm explode(separator, string) tách chuỗi thành mảng dựa vào ký tự phân cách; ngược lại hàm implode(separator, array) nối các phần tử mảng thành một chuỗi."
+    },
+    {
+      "id": "ltweb-q139",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $str = \"I love PHP.\"; print_r(explode(\" \",$str));",
+      "options": [
+        "A. I love PHP.",
+        "B. array('I','love','PHP.')",
+        "C. Array ( [0] => I [1] => love [2] => PHP. )",
+        "D. Array ( [0] => I love PHP. )"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong PHP, chuỗi đặt trong dấu nháy kép (\" \") sẽ nội suy (thay thế) tên biến bằng giá trị của biến, còn chuỗi đặt trong dấu nháy đơn (' ') sẽ in nguyên văn tên biến."
+    },
+    {
+      "id": "ltweb-q152",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? function familyName($fname) { echo \"$fname Refsnes.<br>\"; } familyName(\"Jani\");",
+      "options": [
+        "A. Jani",
+        "B. Refsnes.",
+        "C. Jani Refsnes.",
+        "D. $fname Refsnes."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Jani Refsnes.): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q153",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP dưới đây, kết quả nào sẽ được hiển thị? function swap($x, $y) { $tmp = $x; $x = $y; $y = $tmp; } $x = 2; $y = 5; swap($x, $y); echo $x.\", \".$y;",
+      "options": [
+        "A. 5, 2",
+        "B. 2, 2",
+        "C. 5, 5",
+        "D. 2, 5"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (2, 5): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q154",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? function add_five($value) { $value += 5; } $num = 2; add_five($num); echo $num;",
+      "options": [
+        "A. 7",
+        "B. 2",
+        "C. 5",
+        "D. $num"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (2): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q155",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP dưới đây, kết quả nào được hiển thị? $students = [ \"SV001\" => \"An\", \"SV002\" => \"Bình\", \"SV003\" => \"Chi\" ]; unset($students[\"SV002\"]); print_r($students);",
+      "options": [
+        "A. Array ( [SV001] => An [SV003] => Chi )",
+        "B. Array ( [SV002] => Bình )",
+        "C. Array ( [SV001] => An [SV002] => Bình )",
+        "D. Array ( [SV001] => An [SV002] => Bình [SV003] => Chi )"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Array ( [SV001] => An [SV003] => Chi )): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q156",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã sau đây có ý nghĩa gì: echo isset($_GET['name']) ? $_GET['name'] : \"Unknown\";",
+      "options": [
+        "A. Xuất ra chuỗi: “isset($_GET['name']) ? $_GET['name'] : \"Unknown\"”.",
+        "B. Nếu biến $_GET['name'] tồn tại thì xuất ra chuỗi: “$_GET['name'] : \"Unknown\"”.",
+        "C. Kiểm tra biến $_GET['name'] có tồn tại hay không, nếu không tồn tại thì xuất ra giá trị của biến $_GET['name'], nếu tồn tại thì xuất ra chuỗi \"Unknown\".",
+        "D. Kiểm tra biến $_GET['name'] có tồn tại hay không, nếu tồn tại thì xuất ra giá trị của biến $_GET['name'], nếu không tồn tại thì xuất ra chuỗi \"Unknown\"."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Kiểm tra biến $_GET['name'] có tồn tại hay không, nếu tồn tại thì xuất ra giá trị của biến $_GET['name'], nếu không tồn tại thì xuất ra chuỗi \"Unknown\".): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q157",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu lệnh sau đây có nghĩa là gì? if (isset($_GET[\"error\"])){ echo \"<p><strong>Bạn đã nhập không đúng Password.</strong></p>\"; }",
+      "options": [
+        "A. Nếu biến $_GET[\"error\"] tồn tại thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".",
+        "B. Nếu biến $_GET[\"error\"] không tồn tại thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".",
+        "C. Nếu biến $_GET[\"error\"] có chứa chuỗi “isset” thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".",
+        "D. Nếu biến $_GET[\"error\"] không chứa chuỗi “isset” thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\"."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Nếu biến $_GET[\"error\"] tồn tại thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q244",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php function calculate($a, $b = 2) { return $a * $b; } echo calculate(4); ?>",
+      "options": [
+        "A. 2",
+        "B. 4",
+        "C. 8",
+        "D. 16"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (8): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q245",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php function process($x) { if ($x <= 1) { return 1; } return $x * process($x - 1); } echo process(4); ?>",
+      "options": [
+        "A. 6",
+        "B. 12",
+        "C. 24",
+        "D. 48"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (24): Hàm trong PHP khai báo bằng từ khóa function. Mặc định tham số truyền theo giá trị (không làm đổi biến gốc bên ngoài); nếu thêm dấu '&' trước tham số (truyền tham chiếu) thì mọi thay đổi bên trong hàm sẽ tác động trực tiếp lên biến gốc."
+    },
+    {
+      "id": "ltweb-q251",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php function findValue($numbers) { foreach ($numbers as $number) { if ($number > 5) { return $number; } } return 0; } echo findValue([2, 7, 9, 4]); ?>",
+      "options": [
+        "A. 0",
+        "B. 5",
+        "C. 7",
+        "D. 9"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (7): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q259",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php function calc($n){ $sum = 0; for($i = 1; $i <= $n; $i++){ if($i % 2 == 0) $sum += $i; } return $sum; } echo calc(6); ?>",
+      "options": [
+        "A. 3",
+        "B. 6",
+        "C. 9",
+        "D. 12"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (12): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q264",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php function calc($x){ if($x % 2 == 0) return $x / 2; return $x * 2; } echo calc(5) + calc(8); ?>",
+      "options": [
+        "A. 12",
+        "B. 14",
+        "C. 16",
+        "D. 18"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    }
+  ]
+}

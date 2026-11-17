@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 5 - Nhập môn PHP (Phần 3): Xây dựng Hàm, Hàm dựng sẵn & Module hóa Code | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 3 (Phần 3) · Buổi 5/9</div>
+    <h1>Buổi 5: Nhập môn PHP (Phần 3): Xây dựng Hàm, Hàm dựng sẵn & Module hóa Code</h1>
+    <p class="hero-sub">CLO1, CLO2 - Định nghĩa và gọi hàm, phân biệt truyền giá trị vs tham chiếu, sử dụng hàm dựng sẵn (chuỗi, mảng, số, ngày) và module hóa bằng include/require.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> Hoàn tất trọn vẹn Chương 3 (148 câu trong Ngân hàng câu hỏi) · 44 câu thuộc Buổi 5.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Định nghĩa và gọi hàm, phân biệt truyền giá trị vs tham chiếu, sử dụng hàm dựng sẵn (chuỗi, mảng, số, ngày) và module hóa bằng include/require.
+    </div>
+    <ol>
+      <li>Định nghĩa và gọi <strong>Hàm tự xây dựng (User-defined function)</strong>, phân biệt tham số (parameter) vs đối số (argument), thiết lập giá trị tham số mặc định và trả về kết quả bằng <code>return</code>.</li>
+      <li>Phân biệt rõ <strong>truyền tham số theo giá trị (pass by value)</strong> và <strong>truyền theo tham chiếu (pass by reference <code>&amp;$x</code>)</strong> qua bài toán hoán vị hai biến.</li>
+      <li>Vận dụng thành thạo các <strong>Hàm dựng sẵn (Built-in functions)</strong> quan trọng: xử lý số (<code>abs</code>, <code>round</code>, <code>number_format</code>), thời gian (<code>date</code>), chuỗi (<code>strlen</code>, <code>substr</code>, <code>strtolower</code>, <code>strtoupper</code>, <code>explode</code>, <code>implode</code>) và mảng/biến (<code>count</code>, <code>is_array</code>, <code>array_key_exists</code>, <code>in_array</code>, <code>sort</code>, <code>asort</code>, <code>ksort</code>, <code>print_r</code>, <code>var_dump</code>, <code>isset</code>, <code>unset</code>).</li>
+      <li>Tổ chức mã nguồn theo kiến trúc module hóa bằng <strong><code>include</code>, <code>include_once</code>, <code>require</code>, <code>require_once</code></strong> để tái sử dụng giao diện và thư viện hàm.</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Sau buổi 4, cửa hàng của bạn đã hiển thị được danh sách sản phẩm và tính hóa đơn, nhưng các đoạn code định dạng tiền tệ (<code>1.250.000đ</code>), tính giảm giá, kiểm tra chuỗi và hiển thị thẻ sản phẩm bị lặp đi lặp lại ở mọi trang.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Khi muốn đổi cách hiển thị tiền tệ hoặc sửa công thức giảm giá, bạn phải mở 10 tập tin khác nhau để sửa từng dòng. Ngoài ra, nếu không nắm rõ sự khác biệt giữa <code>sort()</code>, <code>asort()</code> và <code>ksort()</code>, khi sắp xếp mảng sản phẩm theo giá, toàn bộ mã sản phẩm (key) sẽ bị xóa sạch thành <code>0, 1, 2</code>!</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Làm thế nào để đóng gói các đoạn logic dùng chung thành những khối LEGO tái sử dụng được ở mọi nơi, và chọn đúng hàm dựng sẵn của PHP cho từng bài toán xử lý dữ liệu?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Đóng gói logic vào các <strong>Hàm (Functions)</strong> đặt trong thư viện riêng (<code>helpers.php</code>), nạp vào các trang bằng <strong><code>require_once</code></strong>, và nắm vững bộ hàm dựng sẵn của PHP cho chuỗi, số, ngày tháng và mảng.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Định nghĩa & gọi hàm, tham số mặc định, truyền theo giá trị vs truyền tham chiếu (<code>&amp;$x</code>); tổng hợp các nhóm hàm dựng sẵn hay thi nhất (<code>date</code>, <code>number_format</code>, <code>explode/implode</code>, <code>sort/asort/ksort</code>, <code>array_key_exists</code>, <code>is_array</code>, <code>count</code>, <code>print_r</code>, <code>isset</code>, <code>unset</code>).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến Refactoring & Module hóa · 90 phút)</div>
+        <div class="timeline-content">
+          <p>Phân biệt <code>include</code> vs <code>require</code> vs <code>require_once</code> (khi nào cảnh báo Warning, khi nào dừng chương trình Fatal Error) -> Thực hành Refactor dự án cửa hàng: tách <code>includes/functions.php</code>, <code>includes/header.php</code>, <code>includes/footer.php</code>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thực hành tổng hợp Chương 3 · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Hoàn thành bài thực hành Hóa đơn Mini kết hợp Mảng 2 chiều + Vòng lặp + Điều kiện + Hàm định dạng tiền + Sắp xếp sản phẩm. Tổng ôn toàn bộ Chương 3.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>5.1. Phân biệt truyền tham số theo giá trị (pass by value) và truyền theo tham chiếu (pass by reference <code>&amp;</code>). Tại sao hàm hoán vị <code>swap($a, $b)</code> bắt buộc phải dùng tham chiếu?</li>
+        <li>5.2. So sánh 3 hàm sắp xếp mảng: <code>sort()</code>, <code>asort()</code> và <code>ksort()</code>. Hàm nào làm mất khóa (key) của mảng kết hợp?</li>
+        <li>5.3. Phân biệt <code>explode()</code> và <code>implode()</code>; phân biệt <code>echo</code>, <code>print_r()</code> và <code>var_dump()</code>.</li>
+        <li>5.4. So sánh 4 lệnh chèn tập tin: <code>include</code>, <code>include_once</code>, <code>require</code>, <code>require_once</code>. Vì sao với tập tin cấu hình quan trọng ta luôn ưu tiên <code>require_once</code>?</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc - Bài 5.3 & 5.4):</strong> Viết hàm <code>giai_thua($n)</code> tính <code>n!</code> và hàm <code>trung_binh($mang)</code> tính giá trị trung bình của mảng số nguyên.</li>
+        <li><strong>Mức Nâng cao (Bài 4.7, 4.8 & 5.5):</strong> Viết hàm <code>hoan_vi(&amp;$a, &amp;$b)</code>; dùng <code>explode()</code> tách email <code>test@hub.edu.vn</code> thành tên email và tên miền; tách chuỗi danh sách sinh viên <code>"0302000001-Nguyễn Văn A;0302000002-Nguyễn Văn B"</code> và in từng dòng.</li>
+        <li><strong>Mức Thử thách (Nối đồ án TMĐT - Bài 5.7):</strong> Xây dựng tập tin <code>includes/helpers.php</code> chứa các hàm <code>dinh_dang_gia($so)</code>, <code>tinh_giam_gia($gia, $phan_tram)</code>, <code>render_san_pham($sp)</code> và dùng <code>require_once</code> ở cả trang chủ lẫn trang danh mục. Hoàn thành Ebook Chương 3 & Quiz Buổi 5 (44 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
