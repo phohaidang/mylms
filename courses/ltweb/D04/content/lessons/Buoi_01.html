@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 1 - Bức tranh toàn cảnh & Giao diện tĩnh (HTML/CSS) | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 1 · Buổi 1/9</div>
+    <h1>Buổi 1: Bức tranh toàn cảnh & Giao diện tĩnh (HTML/CSS)</h1>
+    <p class="hero-sub">CLO1 - Hiểu nguyên tắc vận hành website, phân biệt Client-Server, Web tĩnh/động và dựng giao diện HTML/CSS nền tảng.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> 8/40 câu đề thi cuối kỳ (4 câu Mức 1 Nhận biết + 4 câu Mức 2 Thông hiểu) · 26 câu trong Ngân hàng câu hỏi.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1 - Hiểu nguyên tắc vận hành website, phân biệt Client-Server, Web tĩnh/động và dựng giao diện HTML/CSS nền tảng.
+    </div>
+    <ol>
+      <li>Giải thích chính xác mô hình <strong>Khách - Chủ (Client - Server)</strong> và 4 bước trao đổi dữ liệu qua giao thức <strong>HTTP/HTTPS</strong> cùng các mã trạng thái (200 OK, 404 Not Found, 500).</li>
+      <li>Phân tích được 5 thành phần trong cấu trúc <strong>URL</strong>: <code>scheme</code>, <code>host</code>, <code>port</code> (mặc định 80/443), <code>path</code>, và <code>querystring</code>.</li>
+      <li>Phân biệt rõ 4 loại <strong>Web Hosting</strong> (Shared, VPS, Dedicated, Cloud), <strong>Web tĩnh vs Web động</strong>, và <strong>Front-end vs Back-end</strong>.</li>
+      <li>Sử dụng thành thạo cấu trúc trang <strong>HTML5</strong> và các thẻ định dạng văn bản, danh sách (<code>ul/ol/li</code>), bảng biểu (<code>table/tr/td</code>), liên kết (<code>a</code>), hình ảnh (<code>img</code>).</li>
+      <li>Thực chiến tư duy <strong>First Principles</strong>: hiểu cách Internet vận hành từ bài toán CERN năm 1989 và định hình chuẩn đầu ra của kỹ sư web trong kỷ nguyên AI.</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Mỗi ngày bạn mở Shopee, Tiki hay Facebook hàng chục lần. Chỉ cần gõ địa chỉ hoặc chạm vào đường dẫn, giao diện cửa hàng hiện ra trong chưa đầy một giây.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Đằng sau cú chạm đó là cả một chuỗi sự kiện: trình duyệt phân giải tên miền, gửi gói tin HTTP Request, máy chủ xử lý và trả về mã HTML/CSS. Nếu chỉ biết bảo AI sinh code mà không hiểu luồng Client - Server, cấu trúc URL hay thẻ HTML, bạn sẽ hoàn toàn bất lực khi trang web lỗi hiển thị hoặc không tải được tài nguyên.</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Trang web thực sự hoạt động theo cơ chế nào từ lúc gõ địa chỉ đến khi hiển thị, và làm sao để dựng bộ khung giao diện chuẩn mực cho cửa hàng thương mại điện tử?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Nắm vững mô hình Client - Server, giải phẫu cấu trúc URL & gói tin HTTP, phân biệt rõ vai trò của Front-end (HTML dựng khung, CSS làm đẹp, JS tương tác) với Back-end (PHP, MySQL), và tự tay xây dựng trang HTML chuẩn ngữ nghĩa.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 75 phút)</div>
+        <div class="timeline-content">
+          <p>Mô hình Client - Server, URL, Web Hosting, Web tĩnh vs Web động, Front-end vs Back-end, và hệ thống thẻ HTML5 cốt lõi (<code>!DOCTYPE html</code>, <code>head</code>, <code>body</code>, <code>h1-h6</code>, <code>p</code>, <code>a</code>, <code>img</code>, <code>ul/ol/li</code>, <code>table</code>).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến · 120 phút)</div>
+        <div class="timeline-content">
+          <p>Tái hiện bài toán CERN 1989: Đóng vai Trình duyệt và Máy chủ gửi gói tin HTTP qua giấy -> Thiết kế lại ngôn ngữ đánh dấu HTML từ con số 0 -> Thảo luận góc nhìn kỹ sư kỷ nguyên AI (vì sao biết dùng AI sinh code chưa đủ mà phải hiểu kiến trúc và tự vận hành hệ thống).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thực hành & Đồ án · 55 phút)</div>
+        <div class="timeline-content">
+          <p>Dựng khung HTML trang giới thiệu cá nhân & khung trang chủ cửa hàng TMĐT. Chia nhóm (3-5 SV/nhóm), nhận đề tài Đồ án nhóm (20% điểm quá trình) và thống nhất Khế ước học tập 30/70.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>1.1. Trình bày mô hình hoạt động của một trang web (Client - Request - Server - Response).</li>
+        <li>1.2. Trình bày cấu trúc URL; chỉ rõ scheme, host, port, path, querystring trong <code>https://shop.vn:8080/sp?id=12&amp;c=book</code>.</li>
+        <li>1.3. Nêu 4 loại web hosting (Shared, VPS, Dedicated, Cloud) và sự khác nhau về tài nguyên, chi phí, đối tượng phù hợp.</li>
+        <li>1.4. So sánh trang web tĩnh và trang web động theo 5 tiêu chí (nội dung, công nghệ, xử lý tại server, CSDL, chi phí).</li>
+        <li>1.5. So sánh lập trình Front-end và Back-end; nêu 3 công nghệ tiêu biểu cho mỗi bên.</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc):</strong> Tạo tập tin <code>index.html</code> giới thiệu bản thân gồm: tiêu đề <code>&lt;h1&gt;</code>, đoạn văn giới thiệu, 1 ảnh đại diện <code>&lt;img&gt;</code>, 1 danh sách <code>&lt;ul&gt;</code> sở thích, 1 bảng <code>&lt;table&gt;</code> thông tin môn học và 1 liên kết <code>&lt;a&gt;</code>.</li>
+        <li><strong>Mức Nâng cao:</strong> Bổ sung bảng thời khóa biểu học kỳ và biểu mẫu liên hệ cơ bản vào <code>index.html</code>, kiểm tra hiển thị tiếng Việt UTF-8 chuẩn.</li>
+        <li><strong>Mức Thử thách (Đồ án nhóm - 20%):</strong> Nhóm chốt tên cửa hàng TMĐT, ngành hàng, danh sách 5 chức năng chính và phác thảo sơ đồ trang chủ (Header, Menu, Banner, Lưới 6 sản phẩm, Footer). Hoàn thành đọc Ebook Chương 1 và làm Quiz Buổi 1 (26 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

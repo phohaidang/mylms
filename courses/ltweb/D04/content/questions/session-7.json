@@ -1,0 +1,610 @@
+{
+  "session": 7,
+  "chapter": "Ch.5",
+  "title": "Lập trình Web động (Phần 1)",
+  "time_limit_minutes": 35,
+  "questions": [
+    {
+      "id": "ltweb-q167",
+      "type": "mc",
+      "level": 1,
+      "question": "Thuộc tính (attribute) nào trong thẻ form xác định trang xử lý phía back-end của form này khi người dùng click vào nút Submit?",
+      "options": [
+        "A. method",
+        "B. name",
+        "C. action",
+        "D. id"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (action): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q168",
+      "type": "mc",
+      "level": 1,
+      "question": "Biến $_GET và $_POST thuộc kiểu dữ liệu nào dưới đây?",
+      "options": [
+        "A. Mảng",
+        "B. Đối tượng",
+        "C. Chuỗi",
+        "D. Số"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Mảng): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q174",
+      "type": "mc",
+      "level": 1,
+      "question": "Chọn phát biểu đúng về 2 phương thức GET và POST trong PHP.",
+      "options": [
+        "A. GET sẽ tạo ra key của mảng, và POST tạo ra value của mảng, để tạo thành các cặp key/value của một mảng.",
+        "B. Cả GET và POST đều tạo ra một mảng. Mảng này chứa các cặp khóa/giá trị (key/value), trong đó các khóa là name của các control của form, và giá trị là dữ liệu đầu vào từ người dùng.",
+        "C. POST được dùng để thêm dữ liệu vào query string của URL.",
+        "D. GET được dùng để biên dịch mã PHP thành mã HTML."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Cả GET và POST đều tạo ra một mảng. Mảng này chứa các cặp khóa/giá trị (key/value), trong đó các khóa là name của các control của form, và giá trị là dữ liệu đầu vào từ người dùng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q175",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào sau đây mô tả đúng nhất về phương thức GET khi gửi dữ liệu từ Form?",
+      "options": [
+        "A. Dữ liệu thường được đưa vào URL dưới dạng chuỗi truy vấn và phù hợp với dữ liệu không nhạy cảm",
+        "B. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và không xuất hiện trên URL",
+        "C. Dữ liệu gửi bằng GET luôn được mã hóa và bảo mật tự động",
+        "D. GET phù hợp để gửi mật khẩu vì dữ liệu không được hiển thị trên URL"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Dữ liệu thường được đưa vào URL dưới dạng chuỗi truy vấn và phù hợp với dữ liệu không nhạy cảm): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q176",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào sau đây mô tả đúng nhất về phương thức POST khi gửi dữ liệu từ Form?",
+      "options": [
+        "A. Dữ liệu luôn được mã hóa và bảo mật hoàn toàn khi sử dụng POST",
+        "B. Dữ liệu được gắn trực tiếp vào URL dưới dạng chuỗi truy vấn.",
+        "C. POST không chịu bất kỳ giới hạn nào về kích thước dữ liệu trong mọi hệ thống",
+        "D. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và thường không hiển thị trên URL"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và thường không hiển thị trên URL): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q181",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong HTML, khi thuộc tính method không được khai báo trong thẻ <form>, phương thức gửi dữ liệu mặc định là gì?",
+      "options": [
+        "A. GET",
+        "B. POST",
+        "C. REQUEST",
+        "D. HTTP"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (GET): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q182",
+      "type": "mc",
+      "level": 1,
+      "question": "Hạn chế chính của phương thức GET khi gửi dữ liệu từ Form là gì?",
+      "options": [
+        "A. Dữ liệu có thể hiển thị trực tiếp trên URL nên không phù hợp với thông tin nhạy cảm.",
+        "B. Dữ liệu luôn chiếm nhiều băng thông hơn phương thức POST.",
+        "C. Dữ liệu không thể chứa chữ cái và chữ số.",
+        "D. Dữ liệu không thể được xử lý ở phía máy chủ."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Dữ liệu có thể hiển thị trực tiếp trên URL nên không phù hợp với thông tin nhạy cảm.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q183",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào sau đây thể hiện đúng ưu điểm của phương thức POST khi gửi dữ liệu từ Form?",
+      "options": [
+        "A. Dữ liệu luôn được nén tự động trước khi gửi đến máy chủ.",
+        "B. Yêu cầu POST luôn được xử lý nhanh hơn yêu cầu GET.",
+        "C. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.",
+        "D. Dữ liệu gửi bằng POST được bảo mật hoàn toàn mà không cần HTTPS."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q189",
+      "type": "mc",
+      "level": 1,
+      "question": "Việc lựa chọn phương thức GET hay POST cho một Form phụ thuộc chủ yếu vào yếu tố nào?",
+      "options": [
+        "A. Mục đích gửi dữ liệu và loại dữ liệu cần xử lý.",
+        "B. Biểu mẫu luôn phải sử dụng POST.",
+        "C. Biểu mẫu luôn phải sử dụng GET.",
+        "D. Tên của tệp PHP nhận dữ liệu."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Mục đích gửi dữ liệu và loại dữ liệu cần xử lý.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q190",
+      "type": "mc",
+      "level": 1,
+      "question": "Trong PHP, khóa (key) của mảng $_GET hoặc $_POST được xác định dựa trên thuộc tính nào của phần tử trong Form?",
+      "options": [
+        "A. Thuộc tính type",
+        "B. Thuộc tính name",
+        "C. Thuộc tính method",
+        "D. Thuộc tính id"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Thuộc tính name): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q204",
+      "type": "mc",
+      "level": 1,
+      "question": "Vì sao ta phải đặt giá trị cho thuộc tính name của các radio là như nhau nếu như các radio đó thể hiện cho cùng một nhóm? <form method=\"post\"> <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+      "options": [
+        "A. Để ta có thể chọn nhiều radio của một nhóm.",
+        "B. Để cho mã HTML của radio dễ nhìn.",
+        "C. Để đảm bảo chỉ duy nhất một radio được chọn trong số nhiều radio của nhóm.",
+        "D. Vì như vậy, radio mới hiển thị được trên trang web."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q218",
+      "type": "mc",
+      "level": 1,
+      "question": "Ta có thể gắn thêm bao nhiêu cặp giá trị (key=value) vào query string của đường dẫn URL (của trang web)?",
+      "options": [
+        "A. 1",
+        "B. 2",
+        "C. 3",
+        "D. Ta có thể gắn thêm nhiều cặp giá trị nhưng có giới hạn (số ký tự)."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Ta có thể gắn thêm nhiều cặp giá trị nhưng có giới hạn (số ký tự).): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q220",
+      "type": "mc",
+      "level": 1,
+      "question": "Để gắn thêm nhiều cặp giá trị (key=value) của query string vào đường dẫn URL (của trang web), ta dùng ký tự nào để ngăn cách giữa các cặp giá trị của query string?",
+      "options": [
+        "A. boss",
+        "B. root",
+        "C. admin",
+        "D. administrator"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (root): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q164",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong PHP, câu lệnh nào sau đây dùng để lấy giá trị từ ô nhập liệu có thuộc tính name=\"username\" trong một Form được gửi bằng phương thức GET?",
+      "options": [
+        "A. $_POST[\"username\"]",
+        "B. $_REQUEST.Form[\"username\"]",
+        "C. $_GET[\"username\"]",
+        "D. Request.QueryString(\"username\")"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C ($_GET[\"username\"]): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q165",
+      "type": "mc",
+      "level": 2,
+      "question": "Phát biểu nào sau đây mô tả đúng sự khác nhau giữa phương thức GET và POST khi gửi dữ liệu từ biểu mẫu trong PHP?",
+      "options": [
+        "A. POST gửi dữ liệu trên URL, còn GET gửi dữ liệu trong phần thân của yêu cầu (Request Body)",
+        "B. GET gửi dữ liệu trên URL, còn POST gửi dữ liệu trong phần thân của yêu cầu (Request Body)",
+        "C. GET nhận dữ liệu dưới dạng mảng, còn POST nhận dữ liệu dưới dạng chuỗi",
+        "D. GET và POST luôn gửi dữ liệu theo cùng một cách."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (GET gửi dữ liệu trên URL, còn POST gửi dữ liệu trong phần thân của yêu cầu (Request Body)): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q166",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong PHP, câu lệnh nào sau đây dùng để lấy giá trị từ ô nhập liệu có thuộc tính name=\"keyword\" trong một Form được gửi bằng phương thức POST?",
+      "options": [
+        "A. Request.QueryString(\"keyword \")",
+        "B. $_REQUEST.Form[\"keyword \"]",
+        "C. $_GET[\"keyword \"]",
+        "D. $_POST[\"keyword\"]"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D ($_POST[\"keyword\"]): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q172",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về biến $_GET.",
+      "options": [
+        "A. $ _GET là một biến siêu toàn cục của PHP được sử dụng để thu thập dữ liệu form (biểu mẫu) sau khi gửi form HTML với method=\"get\".",
+        "B. $ _GET cũng có thể thu thập dữ liệu được gửi trong URL.",
+        "C. $ _GET là một mảng các biến được truyền cho tập lệnh hiện tại thông qua các tham số URL.",
+        "D. Cả 3 phát biểu trên đều đúng."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 phát biểu trên đều đúng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q173",
+      "type": "mc",
+      "level": 2,
+      "question": "Phát biểu nào sau đây mô tả đúng nhất về biến siêu toàn cục $_POST trong PHP?",
+      "options": [
+        "A. $_POST chỉ có thể nhận một giá trị duy nhất từ biểu mẫu",
+        "B. $_POST dùng để lấy dữ liệu được truyền trên URL bằng phương thức GET",
+        "C. $_POST là một mảng dùng để nhận dữ liệu từ Form được gửi bằng phương thức POST.",
+        "D. $_POST tự động mã hóa và bảo mật toàn bộ dữ liệu được gửi"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C ($_POST là một mảng dùng để nhận dữ liệu từ Form được gửi bằng phương thức POST.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q184",
+      "type": "mc",
+      "level": 2,
+      "question": "Khi form sử dụng method=\"get\" nhưng không có thuộc tính action, điều gì xảy ra sau khi người dùng nhấn nút Submit?",
+      "options": [
+        "A. Dữ liệu không được gửi.",
+        "B. Dữ liệu được gửi bằng phương thức POST.",
+        "C. Dữ liệu được gửi đến trang default.php.",
+        "D. Dữ liệu được gửi đến chính trang hiện tại và xuất hiện trên URL."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Dữ liệu được gửi đến chính trang hiện tại và xuất hiện trên URL.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q186",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong một Form HTML, hai phương thức HTTP thường được sử dụng để gửi dữ liệu từ trình duyệt đến máy chủ là gì?",
+      "options": [
+        "A. FORM và ACTION",
+        "B. GET và POST",
+        "C. PHP và HTML",
+        "D. Apache và IIS"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (GET và POST): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q187",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về 2 phương thức POST và GET.",
+      "options": [
+        "A. Ta dùng POST để chuyển giá trị từ Client lên Server. Sau đó, dùng GET để nhận giá trị từ Server gửi về cho Client.",
+        "B. Ta dùng GET để chuyển giá trị từ Client lên Server. Sau đó, dùng POST để nhận giá trị từ Server gửi về cho Client.",
+        "C. Ta có thể chuyển giá trị từ phía Client cho phía Server bằng cách dùng phương thức POST hoặc GET để Server lấy được giá trị từ người dùng nhập vào form.",
+        "D. Server trả kết quả về cho Client bằng cách dùng phương thức POST hoặc GET."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Ta có thể chuyển giá trị từ phía Client cho phía Server bằng cách dùng phương thức POST hoặc GET để Server lấy được giá trị từ người dùng nhập vào form.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q188",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về phương thức POST, GET.",
+      "options": [
+        "A. Với phương thức GET, ta có thể thấy được giá trị (đã được người dùng nhập vào form và gửi) trên đường dẫn URL.",
+        "B. Với phương thức POST, ta có thể thấy được giá trị (đã được người dùng nhập vào form và gửi) trên đường dẫn URL.",
+        "C. Với phương thức GET, ta không thể thấy giá trị (đã được người dùng nhập vào form và gửi) trên đường dẫn URL.",
+        "D. Cả 3 phát biểu trên đều sai."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 phát biểu trên đều sai.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q193",
+      "type": "mc",
+      "level": 2,
+      "question": "Phương thức GET thường phù hợp với trường hợp nào sau đây?",
+      "options": [
+        "A. Gửi từ khóa tìm kiếm hoặc yêu cầu xem dữ liệu.",
+        "B. Gửi mật khẩu và thông tin thanh toán.",
+        "C. Tải tệp có dung lượng lớn lên máy chủ.",
+        "D. Gửi dữ liệu cần được ẩn hoàn toàn khỏi URL."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Gửi từ khóa tìm kiếm hoặc yêu cầu xem dữ liệu.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q196",
+      "type": "mc",
+      "level": 2,
+      "question": "Để khắc phục triệt để tình trạng lộ dữ liệu nhạy cảm trên đường dẫn URL khi Frontend gửi yêu cầu lên Backend PHP, lập trình viên nên thực hiện giải pháp nào sau đây?",
+      "options": [
+        "A. Tiếp tục dùng GET nhưng tăng độ dài của các tham số trên URL để hacker khó đoán hơn.",
+        "B. Mã hóa dữ liệu nhạy cảm thành chuỗi Base64 rồi tiếp tục truyền qua phương thức GET trên URL.",
+        "C. Thêm cấu hình vào file robots.txt để cấm hoàn toàn tất cả các trình duyệt ghi lại lịch sử truy cập của người dùng.",
+        "D. Chuyển sang sử dụng phương thức POST, đưa dữ liệu nhạy cảm vào phần thân của yêu cầu (Request Body)"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Chuyển sang sử dụng phương thức POST, đưa dữ liệu nhạy cảm vào phần thân của yêu cầu (Request Body)): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q197",
+      "type": "mc",
+      "level": 2,
+      "question": "Một Form gửi dữ liệu bằng phương thức GET. Sau khi người dùng nhấn nút submit, rủi ro nào có thể xảy ra?",
+      "options": [
+        "A. Dữ liệu có thể xuất hiện trên URL và được lưu trong lịch sử trình duyệt.",
+        "B. Dữ liệu luôn được trình duyệt mã hóa trước khi hiển thị trên URL.",
+        "C. Dữ liệu chỉ được lưu trên máy chủ và không xuất hiện trên trình duyệt.",
+        "D. Dữ liệu được tự động chuyển sang phương thức POST."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Dữ liệu có thể xuất hiện trên URL và được lưu trong lịch sử trình duyệt.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q202",
+      "type": "mc",
+      "level": 2,
+      "question": "Với radiobox bên dưới thì key và value của mảng $_POST được lấy từ đâu? <form method=\"post\"> <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+      "options": [
+        "A. $_POST sẽ lưu giá trị của radio với key là \"name của radio\", value là \"value của radio được chọn\", như sau: $_POST = array(\"gender\"=>\"female\");",
+        "B. $_POST sẽ lưu giá trị của radio với key là \"name của radio\", value là \"value của radio đầu tiên\", như sau: $_POST = array(\"gender\"=>\"male\");",
+        "C. $_POST sẽ lưu giá trị của radio với key là \"radio\", value là \"text của radio được chọn\", như sau: $_POST = array(\"radio\"=>\"Nữ\");",
+        "D. $_POST sẽ lưu giá trị của radio với key là \"radio\", value là \"text của radio đầu tiên\", như sau: $_POST = array(\"radio\"=>\"Nam\");"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q203",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, chúng ta muốn chỉ định 2 radio box “male” và “female” thuộc cùng một nhóm “gender” nhằm đảm bảo người dùng chỉ chọn được một trong 2 giá trị “male” hoặc “female”. Đáp án nào dưới đây giúp chúng ta thực hiện được việc này? <form method=\"post\"> <input type=\"radio\" value=\"male\" /> Nam <input type=\"radio\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+      "options": [
+        "A. Ta phải đặt giá trị cho thuộc tính name của mỗi radio là value của radio đó. Áp dụng: <input type=\"radio\" name=\"male\" value=\"male\" /> Nam <input type=\"radio\" name=\"female\" value=\"female\" checked/> Nữ",
+        "B. Ta phải đặt giá trị cho thuộc tính name của các radio là như nhau. Áp dụng: <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ",
+        "C. Ta phải đặt giá trị cho thuộc tính name của mỗi radio là text của radio đó. Áp dụng: <input type=\"radio\" name=\"Nam\" value=\"male\" /> Nam <input type=\"radio\" name=\"Nữ\" value=\"female\" checked/> Nữ",
+        "D. Ta phải đặt giá trị cho thuộc tính name của radio là số thứ tự của radio đó, bắt đầu từ 1. Áp dụng: <input type=\"radio\" name=\"1\" value=\"male\" /> Nam <input type=\"radio\" name=\"2\" value=\"female\" checked/> Nữ"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q215",
+      "type": "mc",
+      "level": 2,
+      "question": "Cách viết nào sau đây đúng để hiển thị giá trị của biến $name trong thuộc tính value của ô nhập liệu?",
+      "options": [
+        "A. <input type=\"text\" name=\"name\" value=\"$name\" >",
+        "B. <input type=\"text\" name=\"name\" value=\"<?php echo $name;?>\" >",
+        "C. <input type=\"text\" name=\"name\" value=\"echo $name\" >",
+        "D. <input type=\"text\" name=\"name\" value=$name >"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (<input type=\"text\" name=\"name\" value=\"<?php echo $name;?>\" >): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q216",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong phát triển ứng dụng Web, phát biểu nào sau đây là đúng khi nói về đặc điểm của chuỗi truy vấn (query string)?",
+      "options": [
+        "A. Chuỗi truy vấn không bị giới hạn về độ dài bởi trình duyệt, do đó có thể dùng để truyền các file dữ liệu lớn.",
+        "B. Khi website sử dụng giao thức HTTPS, toàn bộ chuỗi truy vấn sẽ bị ẩn khỏi thanh địa chỉ của trình duyệt người dùng.",
+        "C. Chuỗi truy vấn bắt đầu sau dấu ? trong URL, thường dùng để truyền các cặp key=value và không phù hợp để truyền dữ liệu nhạy cảm (như mật khẩu).",
+        "D. Ký tự khoảng trắng (space) trong chuỗi truy vấn không cần mã hóa mà có thể truyền trực tiếp lên URL."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Chuỗi truy vấn bắt đầu sau dấu ? trong URL, thường dùng để truyền các cặp key=value và không phù hợp để truyền dữ liệu nhạy cảm (như mật khẩu).): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q217",
+      "type": "mc",
+      "level": 2,
+      "question": "Đâu là mã đúng để gắn thêm query string \"name=$name\" vào URL để chuyển đến trang \"signin.php\"?",
+      "options": [
+        "A. header(\"Location: name=$name?signin.php\");",
+        "B. header(\"Location: signin.php/name=$name\");",
+        "C. header(\"Location: signin.php&name=$name\");",
+        "D. header(\"Location: signin.php?name=$name\");"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (header(\"Location: signin.php?name=$name\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q169",
+      "type": "mc",
+      "level": 3,
+      "question": "Nếu form bên dưới được người dùng nhập và gửi (submit), ta làm thế nào để, trong welcome.php, có thể xuất giá trị từ trường \"First name\"? <form action=\"welcome.php\" method=\"get\"> First name: <input type=\"text\" name=\"fname\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Welcome <?php echo $_POST[\"fname\"]; ?>",
+        "B. Welcome <?php echo $_GET[\"fname\"]; ?>",
+        "C. Welcome <?php echo fname; ?>",
+        "D. Welcome <?php echo name; ?>"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Welcome <?php echo $_GET[\"fname\"]; ?>): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q170",
+      "type": "mc",
+      "level": 3,
+      "question": "Nếu form bên dưới được người dùng nhập và gửi (submit), ta làm thế nào để, trong welcome.php, có thể xuất giá trị từ trường \"First name\"? <form action=\"welcome.php\" method=\"post\"> First name: <input type=\"text\" name=\"firstname\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Welcome <?php echo $_POST[\"firstname\"]; ?>",
+        "B. Welcome <?php echo $_GET[\"firstname\"]; ?>",
+        "C. Welcome <?php echo $_POST[\"name\"]; ?>",
+        "D. Welcome <?php echo $_GET[\"name\"]; ?>"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Welcome <?php echo $_POST[\"firstname\"]; ?>): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q177",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho form bên dưới. Sau khi người dùng nhập dữ liệu và gửi bằng cách nhấp vào nút \"Gửi\" (submit), dữ liệu từ form sẽ được gửi đến đâu? <form action=\"welcome.php\" method=\"get\"> First name: <input type=\"text\" name=\"fname\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Dữ liệu từ form sẽ được gửi đến file \"welcome.php\".",
+        "B. Dữ liệu từ form sẽ được gửi đến file \"default.php\".",
+        "C. Dữ liệu từ form sẽ được gửi đến cơ sở dữ liệu trên Client.",
+        "D. Dữ liệu sẽ được lưu vào form trên Client."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Dữ liệu từ form sẽ được gửi đến file \"welcome.php\".): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q178",
+      "type": "mc",
+      "level": 3,
+      "question": "Chọn phát biểu đúng về form sau đây: <form action=\"welcome.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\">",
+      "options": [
+        "A. Khi người dùng điền vào form ở trên và nhấp vào nút gửi (submit), dữ liệu từ form sẽ được gửi tới file \"default.php\" để xử lý.",
+        "B. Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi tới file \"welcome.php\" để xử lý. Dữ liệu từ form được gửi bằng phương thức POST.",
+        "C. Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi bằng phương thức GET.",
+        "D. Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi đến email của người đó."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Khi người dùng điền vào form và nhấp vào nút gửi, dữ liệu từ form sẽ được gửi tới file \"welcome.php\" để xử lý. Dữ liệu từ form được gửi bằng phương thức POST.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q179",
+      "type": "mc",
+      "level": 3,
+      "question": "Khi người dùng nhập name là \"Hoa\", email là \"nguyenhoa@gmail.com\" vào form bên dưới, rồi gửi (submit) thì dữ liệu sẽ được lưu như thế nào? <form action=\"welcome.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Dữ liệu sẽ được lưu như sau: $_POST = \"Hoa\"; $_GET = \"nguyenhoa@gmail.com\";",
+        "B. Dữ liệu sẽ được lưu như sau: $_GET = \"Hoa\"; $_POST = \"nguyenhoa@gmail.com\";",
+        "C. Dữ liệu sẽ được lưu trong biến $_POST dưới dạng: $_POST = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");",
+        "D. Dữ liệu sẽ được lưu trong biến $_GET dưới dạng: $_GET = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Dữ liệu sẽ được lưu trong biến $_POST dưới dạng: $_POST = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q180",
+      "type": "mc",
+      "level": 3,
+      "question": "Với URL \"https://hocweb.net/search.php?id=12&subject=PHP\" thì dữ liệu được lưu như thế nào?",
+      "options": [
+        "A. Dữ liệu được lưu như sau: $id = 12; $subject = \"PHP\";",
+        "B. Dữ liệu sẽ được lưu như sau: $_POST = 12; $_GET = \"PHP\";",
+        "C. Dữ liệu được lưu trong biến $_POST dưới dạng: $_POST = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");",
+        "D. Dữ liệu được lưu trong biến $_GET dưới dạng: $_GET = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Dữ liệu được lưu trong biến $_GET dưới dạng: $_GET = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q185",
+      "type": "mc",
+      "level": 3,
+      "question": "Với form bên dưới (có URL là: https://hocweb.net/form.php), sau khi người dùng nhập ID là “19”, Name là “Huy” và nhấn nút gửi, trên thanh address, URL sẽ như thế nào? <form method=\"get\"> ID: <input type=\"text\" name=\"id\"><br> Name: <input type=\"text\" name=\"name\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. https://hocweb.net/form.php?id=19&name=Huy",
+        "B. https://hocweb.net/form.php",
+        "C. https://hocweb.net/form.php?19&Huy",
+        "D. https://hocweb.net/form.php?get=19,Huy"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (https://hocweb.net/form.php?id=19&name=Huy): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q199",
+      "type": "mc",
+      "level": 3,
+      "question": "Nếu form không có thuộc tính action (mặc định) thì dữ liệu sẽ được gửi đến đâu sau khi người dùng nhập dữ liệu và gửi (submit)? Ví dụ như file \"abc.php\" có form sau: <form method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Vì không có thuộc tính action nên sẽ không có file để gửi dữ liệu đến.",
+        "B. Dữ liệu sẽ được gửi đến trang \"default.php\".",
+        "C. Dữ liệu sẽ tự động biến mất.",
+        "D. Dữ liệu sẽ được gửi đến file ban đầu (là trang chứa form nhập dữ liệu). Với ví dụ trên thì dữ liệu sẽ được gửi tới chính file \"abc.php\" trên server."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Dữ liệu sẽ được gửi đến file ban đầu (là trang chứa form nhập dữ liệu). Với ví dụ trên thì dữ liệu sẽ được gửi tới chính file \"abc.php\" trên server.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q205",
+      "type": "mc",
+      "level": 3,
+      "question": "Để PHP nhận được toàn bộ các giá trị đã chọn từ một nhóm checkbox dưới dạng mảng sau khi submit form, cách khai báo HTML nào sau đây là đúng?",
+      "options": [
+        "A. <input type=\"checkbox\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" value=\"Car\"> Ô tô",
+        "B. <input type=\"checkbox\" name=\"vehicle\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" name=\"vehicle\" value=\"Car\"> Ô tô",
+        "C. <input type=\"checkbox\" name=\"vehicle[]\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" name=\"vehicle[]\" value=\"Car\"> Ô tô",
+        "D. <input type=\"checkbox\" name=\"vehicle1\" value=\"Bike\"> Xe đạp <input type=\"checkbox\" name=\"vehicle2\" value=\"Car\"> Ô tô"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q206",
+      "type": "mc",
+      "level": 3,
+      "question": "Với form bên dưới thì mảng $_POST sẽ được lưu với key và value như thế nào (khi Bike và Car đều được chọn)? <form method=\"post\"> <input type=\"checkbox\" name=\"vehicle[]\" value=\"Bike\" checked> I have a bike <br> <input type=\"checkbox\" name=\"vehicle[]\" value=\"Car\" checked> I have a car <br><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Array ( [vehicle] => Car )",
+        "B. Array ( [vehicle] => Array ( [0] => Bike [1] => Car ) )",
+        "C. Array ( [vehicle[]] => Array ( [0] => Bike [1] => Car ) )",
+        "D. Array ( [0] => Bike [1] => Car )"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q207",
+      "type": "mc",
+      "level": 3,
+      "question": "Với form bên dưới thì mảng $_POST sẽ được lưu với key và value như thế nào (khi Saab được chọn)? <form method=\"post\"> <label for=\"cars\">Choose a car:</label> <select name=\"cars\" id=\"cars\"> <option value=\"volvo\">Volvo</option> <option value=\"saab\" selected>Saab</option> </select><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Array ( [option] => Volvo )",
+        "B. Array ( [option] => Saab )",
+        "C. Array ( [cars] => volvo )",
+        "D. Array ( [cars] => saab )"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q208",
+      "type": "mc",
+      "level": 3,
+      "question": "Khi người dùng nhập \"I love building websites in PHP and MySQL.\" vào textarea bên dưới, rồi nhấn nút Submit thì mảng $_POST sẽ được lưu với key và value như thế nào? <form action=\"page2.php\" method=\"post\"> <label for=\"inp08\">Tell us about yourseft:</label><br> <textarea id=\"inp08\" name=\"about\" rows=\"10\" cols=\"50\">I love building websites in PHP and MySQL.</textarea> <br><br> <input type=\"submit\" value=\"Submit\"> </form>",
+      "options": [
+        "A. Array ( [textarea] => I love building websites in PHP and MySQL. )",
+        "B. Array ( [about] => textarea)",
+        "C. Array ( [about] => I love building websites in PHP and MySQL. )",
+        "D. Array ( [inp08] => I love building websites in PHP and MySQL. )"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+    },
+    {
+      "id": "ltweb-q211",
+      "type": "mc",
+      "level": 3,
+      "question": "Ở file “welcome.php” có đoạn mã sau: <h1>Hello <?php echo isset($_GET['name']) ? $_GET['name'] : \"Unknown\"; ?></h1> Vậy khi trên thanh address của trình duyệt có URL \"https://www.host.vn/welcome.php?name=Vy\" thì trên trình duyệt sẽ hiển thị kết quả nào?",
+      "options": [
+        "A. Unknown",
+        "B. Hello Unknown",
+        "C. Hello Vy",
+        "D. Hello"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Hello Vy): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    }
+  ]
+}

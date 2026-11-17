@@ -1,0 +1,568 @@
+{
+  "session": 4,
+  "chapter": "Ch.3",
+  "title": "Nhập môn PHP (Phần 2)",
+  "time_limit_minutes": 30,
+  "questions": [
+    {
+      "id": "ltweb-q123",
+      "type": "mc",
+      "level": 1,
+      "question": "Đâu là đoạn mã PHP đúng để khai báo một mảng kết hợp, trong đó mã sinh viên là khóa (key) và họ tên sinh viên là giá trị (value)?",
+      "options": [
+        "A. $students = [\"SV001\" - \"Nguyen Van An\", \"SV002\" - \"Tran Thi Binh\"];",
+        "B. $students = [\"SV001\" -> \"Nguyen Van An\", \"SV002\" -> \"Tran Thi Binh\"];",
+        "C. $students = [\"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\"];",
+        "D. $students = [\"SV001\" = \"Nguyen Van An\", \"SV002\" = \"Tran Thi Binh\"];"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C ($students = [\"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\"];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q112",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về vòng lặp do…while.",
+      "options": [
+        "A. Trong một vòng lặp do...while, điều kiện được kiểm tra sau khi thực hiện các câu lệnh trong vòng lặp. Điều này có nghĩa là vòng lặp do...while sẽ thực hiện các câu lệnh của nó ít nhất một lần, ngay cả khi điều kiện sai.",
+        "B. Vòng lặp do...while sẽ thực hiện các câu lệnh của nó ít nhất 2 lần, ngay cả khi điều kiện sai.",
+        "C. Vòng lặp do…while sẽ luôn được thực hiện vì nó không có điều kiện sai.",
+        "D. Cả 3 đáp án trên đều sai."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 đáp án trên đều sai.): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q134",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $products = array( 'pens' => array( 'ball' => \"Ball Point\", 'marker' => \"Markers\"), 'paper' => array( 'laser' => \"Laser Printer\", 'photo' => \"Photographic Paper\") ); echo $products[\"paper\"][\"photo\"];",
+      "options": [
+        "A. Laser Printer",
+        "B. Photographic Paper",
+        "C. Markers",
+        "D. paper photo"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Photographic Paper): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q135",
+      "type": "mc",
+      "level": 2,
+      "question": "Cho mảng $products được khởi tạo và gán giá trị theo mã bên dưới. Đâu là câu lệnh dùng để xuất ra kết quả là \"Markers\" (giá trị của $products)? $products = array( 'paper' => array( 'laser' => \"Laser Printer\", 'photo' => \"Photographic Paper\"), 'pens' => array( 'ball' => \"Ball Point\", 'marker' => \"Markers\") );",
+      "options": [
+        "A. echo $products[\"marker\"];",
+        "B. echo $products[\"Markers\"];",
+        "C. echo $products[\"pens\"][\"marker\"];",
+        "D. echo $products[2][2];"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (echo $products[\"pens\"][\"marker\"];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q144",
+      "type": "mc",
+      "level": 2,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $arrCourses = array (); $arrCourses[101] = [ 'name' => \"Thiết kế web\", 'credits' => \"3\" ]; $arrCourses[201] = [ 'name' => \"Lập trình web\", 'credits' => \"4\" ]; echo $arrCourses[201]['name'];",
+      "options": [
+        "A. 3",
+        "B. 4",
+        "C. Thiết kế web",
+        "D. Lập trình web"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Lập trình web): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q145",
+      "type": "mc",
+      "level": 2,
+      "question": "Cho mảng $arrCourses được khởi tạo và thêm phần tử theo mã bên dưới. Đâu là câu lệnh dùng để xuất ra giá trị \"90\" của mảng $arrCourses (nghĩa là xuất ra kết quả là \"90\")? $arrCourses = array (); $arrCourses[301] = [ 'name' => \"Cơ sở lập trình\", 'duration' => \"90\" ]; $arrCourses[401] = [ 'name' => \"Cấu trúc dữ liệu và giải thuật\", 'duration' => \"100\" ];",
+      "options": [
+        "A. echo $arrCourses[401]['duration'];",
+        "B. echo $arrCourses[301]['duration'];",
+        "C. echo $arrCourses['duration'];",
+        "D. echo $arrCourses[301];"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (echo $arrCourses[301]['duration'];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q100",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = 2; while($x <= 3) { echo \"The number is: $x <br>\"; $x++; }",
+      "options": [
+        "A. The number is: 2 The number is: 3",
+        "B. The number is: 1 The number is: 2 The number is: 3",
+        "C. The number is: 1 The number is: 2",
+        "D. The number is: 3"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (The number is: 2 The number is: 3): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q101",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = 10; while($x <= 20) { echo \"The number is: $x <br>\"; $x+=10; }",
+      "options": [
+        "A. The number is: 0 The number is: 10 The number is: 20",
+        "B. The number is: 0 The number is: 10",
+        "C. The number is: 10 The number is: 20",
+        "D. The number is: 20"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (The number is: 10 The number is: 20): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q102",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là mã PHP đúng để tạo một vòng lặp hiển thị các số từ 0 đến 10?",
+      "options": [
+        "A. for ($x = 0; $x > 10; $x++) { echo \"The number is: $x <br>\"; }",
+        "B. for ($x = 0; $x < 10; $x++) { echo \"The number is: $x <br>\"; }",
+        "C. for ($x = 0; $x <= 10; $x++) { echo \"The number is: $x <br>\"; }",
+        "D. for ($x = 0; $x = 10; $x++) { echo \"The number is: $x <br>\"; }"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (for ($x = 0; $x <= 10; $x++) { echo \"The number is: $x <br>\"; }): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q103",
+      "type": "mc",
+      "level": 3,
+      "question": "Trong PHP, cách nào thường được sử dụng để xuất lần lượt từng giá trị của một biến mảng?",
+      "options": [
+        "A. Sử dụng lệnh echo trực tiếp với tên mảng",
+        "B. Sử dụng câu lệnh if kết hợp với lệnh echo",
+        "C. Sử dụng hàm array() kết hợp với lệnh echo",
+        "D. Sử dụng vòng lặp foreach kết hợp với lệnh echo"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Sử dụng vòng lặp foreach kết hợp với lệnh echo): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q104",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $subjects = [\"Database\", \"Programming\", \"Web Design\"]; foreach ($subjects as $subject) { echo \"$subject, \"; }",
+      "options": [
+        "A. Database, Programming, Web Design,",
+        "B. Database, Programming,",
+        "C. Database,",
+        "D. Programming,"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Database, Programming, Web Design,): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q105",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là đoạn mã PHP đúng để xuất mã sinh viên và họ tên tương ứng từ mảng $students sau? $students = [ \"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\", \"SV003\" => \"Le Minh Chau\" ];",
+      "options": [
+        "A. echo $students;",
+        "B. foreach ($students as $studentId => $studentName) { echo \"$studentId - $studentName<br>\"; }",
+        "C. echo $students($studentId => $studentName);",
+        "D. echo [$studentId => $studentName];"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (foreach ($students as $studentId => $studentName) { echo \"$studentId - $studentName<br>\"; }): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q106",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào mô tả đúng nhất kết quả được hiển thị? $students = [ \"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\", \"SV003\" => \"Le Minh Chau\" ]; foreach ($students as $studentId => $studentName) { echo \"$studentId: $studentName<br>\"; }",
+      "options": [
+        "A. $students",
+        "B. $studentId: $studentName",
+        "C. SV001: Nguyen Van An SV002: Tran Thi Binh SV003: Le Minh Chau",
+        "D. SV001 => Nguyen Van An SV002 => Tran Thi Binh SV003 => Le Minh Chau"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (SV001: Nguyen Van An SV002: Tran Thi Binh SV003: Le Minh Chau): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q107",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là giải thích sai cho vòng lặp while sau đây? $x = 1; while($x <= 5) { echo \"The number is: $x <br>\"; $x++; }",
+      "options": [
+        "A. $x = 1; -> Khởi tạo bộ đếm vòng lặp ($x) và đặt giá trị bắt đầu thành 1.",
+        "B. $x <= 5 -> Tiếp tục vòng lặp với điều kiện $x nhỏ hơn hoặc bằng 5.",
+        "C. $x++; -> Tăng giá trị bộ đếm vòng lặp lên 1 cho mỗi lần lặp.",
+        "D. $x <= 5 -> Khi $x nhỏ hơn hoặc bằng 5 thì dừng vòng lặp."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D ($x <= 5 -> Khi $x nhỏ hơn hoặc bằng 5 thì dừng vòng lặp.): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q108",
+      "type": "mc",
+      "level": 3,
+      "question": "Trong đoạn mã PHP dưới đây, câu lệnh $x += 10; có tác dụng gì? $x = 0; while ($x <= 100) { echo \"The number is: $x <br>\"; $x += 10; }",
+      "options": [
+        "A. Tăng giá trị của $x thêm 10 khi $x lớn hơn 100.",
+        "B. Tăng giá trị của $x thêm 10 chỉ ở lần lặp đầu tiên.",
+        "C. Tăng giá trị của $x thêm 10 sau mỗi lần lặp.",
+        "D. Lặp lại câu lệnh echo thêm 10 lần."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Tăng giá trị của $x thêm 10 sau mỗi lần lặp.): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q109",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $x = 1; do { echo \"The number is: $x <br>\"; $x++; } while ($x < 4);",
+      "options": [
+        "A. The number is: 2 The number is: 3",
+        "B. The number is: 1 The number is: 2 The number is: 3",
+        "C. The number is: 1",
+        "D. The number is: 3"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (The number is: 1 The number is: 2 The number is: 3): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q110",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã PHP sau hoạt động như thế nào? $x = 1; do { echo \"The number is: $x <br>\"; $x++; } while ($x <= 5);",
+      "options": [
+        "A. Xuất các số từ 1 đến 5.",
+        "B. Xuất các số từ 0 đến 5.",
+        "C. Chỉ xuất số 1.",
+        "D. Không xuất giá trị nào."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Xuất các số từ 1 đến 5.): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q111",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã PHP sau hoạt động như thế nào? $x = 1; do { echo \"The number is: $x <br>\"; $x++; } while ($x <= 0);",
+      "options": [
+        "A. Xuất các số từ 1 đến 5.",
+        "B. Xuất các số từ 0 đến 5.",
+        "C. Chỉ xuất số 1.",
+        "D. Không xuất giá trị nào."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Chỉ xuất số 1.): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q113",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? for ($x = 0; $x <= 2; $x++) { echo \"The number is: $x <br>\"; }",
+      "options": [
+        "A. The number is: 0 The number is: 1",
+        "B. The number is: 0 The number is: 1 The number is: 2",
+        "C. The number is: 1 The number is: 2",
+        "D. The number is: 0"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (The number is: 0 The number is: 1 The number is: 2): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q114",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? for ($x = 0; $x < 30; $x+=10) { echo \"The number is: $x <br>\"; }",
+      "options": [
+        "A. The number is: 0",
+        "B. The number is: 10",
+        "C. The number is: 0 The number is: 10 The number is: 20",
+        "D. The number is: 10 The number is: 20"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (The number is: 0 The number is: 10 The number is: 20): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q115",
+      "type": "mc",
+      "level": 3,
+      "question": "Phát biểu nào sau đây KHÔNG ĐÚNG về vòng lặp for dưới đây? for ($x = 0; $x <= 100; $x += 10) { echo \"The number is: $x <br>\"; }",
+      "options": [
+        "A. $x = 0 dùng để khởi tạo giá trị ban đầu của biến $x.",
+        "B. $x <= 100 là điều kiện để vòng lặp tiếp tục thực hiện.",
+        "C. $x += 10 làm tăng giá trị của $x thêm 10 sau mỗi lần lặp.",
+        "D. Khi $x > 100, vòng lặp vẫn tiếp tục thực hiện thêm một lần."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Khi $x > 100, vòng lặp vẫn tiếp tục thực hiện thêm một lần.): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q116",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu lệnh nào sau đây khai báo mảng chuỗi trong PHP KHÔNG ĐÚNG?",
+      "options": [
+        "A. $cars = [\"Volvo\", \"BMW\", \"Toyota\"];",
+        "B. $cars = \"Volvo\", \"BMW\", \"Toyota\";",
+        "C. $cars = [\"Volvo\" => \"XC90\", \"BMW\" => \"X5\", \"Toyota\" => \"Camry\"];",
+        "D. $cars = array(\"Volvo\", \"BMW\", \"Toyota\");"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B ($cars = \"Volvo\", \"BMW\", \"Toyota\";): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q118",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $cars = array(\"Volvo\", \"BMW\", \"Toyota\"); echo \"I like \" . $cars[0] . \", \" . $cars[1] . \" and \" . $cars[2] . \".\";",
+      "options": [
+        "A. I like Volvo and BMW.",
+        "B. I like Volvo, BMW and Toyota.",
+        "C. I like and.",
+        "D. I like $cars[0], $cars[1] and $cars[2]."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (I like Volvo, BMW and Toyota.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q121",
+      "type": "mc",
+      "level": 3,
+      "question": "Đâu là mã PHP đúng để xuất ra phần tử thứ hai trong mảng $fruits bên dưới (Banana): $fruits = [\"Apple\", \"Banana\", \"Orange\"];",
+      "options": [
+        "A. echo $fruits[1];",
+        "B. echo $fruits[2];",
+        "C. echo $fruits[3];",
+        "D. echo $fruits[\"Banana\"];"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (echo $fruits[1];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q124",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho mảng kết hợp lưu số tín chỉ theo mã học phần như sau. Đâu là đoạn mã PHP đúng để xuất số tín chỉ của học phần có mã ITS708? $credits = [ \"ITS201\" => 3, \"ITS708\" => 4, \"ITS340\" => 3 ];",
+      "options": [
+        "A. echo $credits[1];",
+        "B. echo $credits[4];",
+        "C. echo $credits[\"4\"];",
+        "D. echo $credits[\"ITS708\"];"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (echo $credits[\"ITS708\"];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q125",
+      "type": "mc",
+      "level": 3,
+      "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $age = array(\"Phong\"=>\"19\", \"Vy\"=>\"20\", \"Ly\"=>\"21\"); echo \"Ly is \" . $age['Ly'] . \" years old.\";",
+      "options": [
+        "A. Ly is 21 years old.",
+        "B. 21",
+        "C. Ly is Ly years old.",
+        "D. Ly is years old."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Ly is 21 years old.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q238",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $student = [ \"name\" => \"An\", \"score\" => 8 ]; $student[\"score\"] += 1.5; echo $student[\"name\"].\":\".$student[\"score\"]; ?>",
+      "options": [
+        "A. An:8",
+        "B. An:9",
+        "C. An:9.5",
+        "D. name:9.5"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (An:9.5): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+    },
+    {
+      "id": "ltweb-q241",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $total = 0; for ($i = 1; $i <= 5; $i++) { if ($i % 2 == 0) { $total += $i; } } echo $total; ?>",
+      "options": [
+        "A. 6",
+        "B. 9",
+        "C. 12",
+        "D. 15"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (6): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q242",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $numbers = [2, 4, 6, 8]; $total = 0; foreach ($numbers as $number) { if ($number == 6) { break; } $total += $number; } echo $total; ?>",
+      "options": [
+        "A. 2",
+        "B. 6",
+        "C. 12",
+        "D. 20"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q243",
+      "type": "mc",
+      "level": 3,
+      "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $data = [ \"A\" => 2, \"B\" => 3, \"C\" => 4 ]; $result = \"\"; foreach ($data as $key => $value) { if ($value % 2 == 0) { $result .= $key; } } echo $result; ?>",
+      "options": [
+        "A. ABC",
+        "B. BC",
+        "C. AC",
+        "D. 24"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q252",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $x = 0; while($x < 5){ if($x == 3) break; echo $x; $x++; } ?>",
+      "options": [
+        "A. 01234",
+        "B. 0123",
+        "C. 012",
+        "D. 01"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (012): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q253",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $products = [ [\"name\"=>\"A\",\"price\"=>100], [\"name\"=>\"B\",\"price\"=>200], [\"name\"=>\"C\",\"price\"=>300] ]; $total = 0; foreach($products as $item){ $total += $item[\"price\"]; } echo $total; ?>",
+      "options": [
+        "A. 300",
+        "B. 500",
+        "C. 600",
+        "D. 900"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (600): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q254",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $arr = [2, 5, 8, 11, 14]; $count = 0; foreach ($arr as $value) { if ($value % 2 == 0 && $value > 5) $count++; } echo $count; ?>",
+      "options": [
+        "A. 1",
+        "B. 2",
+        "C. 3",
+        "D. 4"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (2): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    },
+    {
+      "id": "ltweb-q256",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $student = [ \"An\" => 7, \"Bình\" => 9, \"Chi\" => 5, \"Dung\" => 8 ]; $result = 0; foreach($student as $score){ if($score > $result) $result = $score; } echo $result; ?>",
+      "options": [
+        "A. 5",
+        "B. 7",
+        "C. 8",
+        "D. 9"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (9): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q257",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $numbers = [3,5,8,10,15]; $total = 0; foreach($numbers as $n){ if($n % 2 == 0) continue; $total += $n; if($total > 20) break; } echo $total; ?>",
+      "options": [
+        "A. 8",
+        "B. 13",
+        "C. 23",
+        "D. 33"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q258",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $arr = [2, 4, 6, 8]; $result = 1; foreach($arr as $value){ if($value % 4 == 0) $result *= $value; } echo $result; ?>",
+      "options": [
+        "A. 8",
+        "B. 16",
+        "C. 32",
+        "D. 64"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+    },
+    {
+      "id": "ltweb-q260",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $data = [ \"A\" => 5, \"B\" => 8, \"C\" => 6 ]; $total = 0; foreach($data as $key => $value){ if($key != \"B\") $total += $value; } echo $total; ?>",
+      "options": [
+        "A. 8",
+        "B. 11",
+        "C. 13",
+        "D. 19"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (11): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q261",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $numbers = [4, 7, 2, 9, 5]; $result = $numbers[0]; foreach($numbers as $value){ if($value > $result) $result = $value; } echo $result - $numbers[2]; ?>",
+      "options": [
+        "A. 4",
+        "B. 5",
+        "C. 7",
+        "D. 9"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (7): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q262",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $numbers = [4,7,3,8,10]; $total = 0; foreach($numbers as $n){ if($n % 2 != 0) continue; $total += $n; if($total >= 12) break; } echo $total; ?>",
+      "options": [
+        "A. 4",
+        "B. 11",
+        "C. 12",
+        "D. 22"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (12): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+    },
+    {
+      "id": "ltweb-q263",
+      "type": "mc",
+      "level": 3,
+      "question": "Kết quả của đoạn mã sau là gì? <?php $data = [ \"A\" => 5, \"B\" => 8, \"C\" => 3, \"D\" => 10 ]; $count = 0; foreach($data as $key => $value){ if($value >= 5) $count++; } echo $count; ?>",
+      "options": [
+        "A. 2",
+        "B. 3",
+        "C. 4",
+        "D. 5"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (3): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+    }
+  ]
+}

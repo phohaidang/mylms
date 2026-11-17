@@ -1,0 +1,260 @@
+{
+  "session": 9,
+  "chapter": "Ch.5",
+  "title": "Kết nối CSDL & Thực hành tổng hợp",
+  "time_limit_minutes": 20,
+  "questions": [
+    {
+      "id": "ltweb-q198",
+      "type": "mc",
+      "level": 1,
+      "question": "Sau khi người dùng nhập dữ liệu vào form rồi nhấn nút Gửi (Submit), dữ liệu sẽ đi đâu?",
+      "options": [
+        "A. Dữ liệu sẽ được lưu vào form trên Client.",
+        "B. Dữ liệu sẽ được lưu vào cơ sở dữ liệu trên Client.",
+        "C. Dữ liệu sẽ được gửi từ Client lên Server.",
+        "D. Dữ liệu sẽ được xử lý tại ngay tại Client."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Dữ liệu sẽ được gửi từ Client lên Server.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q291",
+      "type": "mc",
+      "level": 1,
+      "question": "Nhóm thông tin nào thường cần thiết để PHP thiết lập kết nối với MySQL?",
+      "options": [
+        "A. Địa chỉ máy chủ, tên tài khoản, mật khẩu và tên cơ sở dữ liệu.",
+        "B. Tên miền website, tên tập tin PHP, tên bảng và khóa chính.",
+        "C. Địa chỉ email, mật khẩu người dùng và tên form.",
+        "D. Tên trình duyệt, địa chỉ IP người dùng và phiên bản HTML."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Địa chỉ máy chủ, tên tài khoản, mật khẩu và tên cơ sở dữ liệu.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q292",
+      "type": "mc",
+      "level": 1,
+      "question": "Tại sao cần thiết lập bộ mã UTF-8 sau khi kết nối thành công?",
+      "options": [
+        "A. Để tăng số lượng bản ghi có thể lưu trong bảng.",
+        "B. Để hỗ trợ lưu trữ và hiển thị chính xác dữ liệu tiếng Việt.",
+        "C. Để tự động mã hóa mật khẩu người dùng.",
+        "D. Để chuyển câu lệnh SQL thành PHP."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Để hỗ trợ lưu trữ và hiển thị chính xác dữ liệu tiếng Việt.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q295",
+      "type": "mc",
+      "level": 1,
+      "question": "Phát biểu nào mô tả đúng nhất về Prepared Statement?",
+      "options": [
+        "A. Câu lệnh SQL được tạo bằng cách ghép trực tiếp dữ liệu đầu vào của người dùng vào chuỗi SQL.",
+        "B. Câu lệnh SQL được chuẩn bị trước, sau đó dữ liệu được truyền vào các tham số khi thực thi.",
+        "C. Câu lệnh SQL được lưu trong bộ nhớ session để sử dụng lại ở các trang khác.",
+        "D. Câu lệnh SQL được mã hóa trước khi gửi đến máy chủ MySQL."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+    },
+    {
+      "id": "ltweb-q299",
+      "type": "mc",
+      "level": 1,
+      "question": "Thứ tự xử lý nào đúng khi sử dụng prepared statement?",
+      "options": [
+        "A. Liên kết tham số → chuẩn bị câu lệnh → lấy kết quả → thực thi.",
+        "B. Chuẩn bị câu lệnh → liên kết tham số → thực thi → lấy kết quả.",
+        "C. Thực thi → chuẩn bị câu lệnh → liên kết tham số → đóng kết nối.",
+        "D. Lấy kết quả → thực thi → liên kết tham số → chuẩn bị câu lệnh."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+    },
+    {
+      "id": "ltweb-q171",
+      "type": "mc",
+      "level": 2,
+      "question": "Form đăng nhập chứa tên đăng nhập và mật khẩu. Phương thức nào phù hợp hơn để gửi dữ liệu từ Form này?",
+      "options": [
+        "A. GET, vì dữ liệu được hiển thị trên URL.",
+        "B. POST, vì dữ liệu không được đưa trực tiếp vào chuỗi truy vấn của URL.",
+        "C. GET, vì chỉ GET mới gửi được nhiều trường dữ liệu.",
+        "D. POST, vì dữ liệu gửi bằng POST được tự động mã hóa an toàn."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (POST, vì dữ liệu không được đưa trực tiếp vào chuỗi truy vấn của URL.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q195",
+      "type": "mc",
+      "level": 2,
+      "question": "Một hệ thống PHP thực hiện chức năng đổi mật khẩu bằng yêu cầu với phương thức GET như sau: https://example.com/change-password.php?current_pass=123&new_pass=456 Hệ thống yêu cầu người dùng phải đăng nhập thành công mới có thể thực hiện đổi mật khẩu. Nhận định nào sau đây là đúng về nguy cơ bảo mật của hệ thống này?",
+      "options": [
+        "A. Hệ thống hoàn toàn an toàn vì chỉ có người dùng đã đăng nhập thành công mới thực hiện được yêu cầu đổi mật khẩu.",
+        "B. Trình duyệt của người dùng sẽ tự động mã hóa các tham số current_pass và new_pass trên thanh địa chỉ để người khác không nhìn thấy.",
+        "C. Mật khẩu cũ và mới sẽ bị lộ dưới dạng plain text trong tập tin nhật ký máy chủ (access.log) của Apache/Nginx, bất kỳ ai tiếp cận được file log đều có thể đọc được.",
+        "D. Các Web Spiders (như Googlebot) sẽ tự động quét trang đổi mật khẩu và có thể tự động thực hiện đổi mật khẩu của tất cả người dùng."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Mật khẩu cũ và mới sẽ bị lộ dưới dạng plain text trong tập tin nhật ký máy chủ (access.log) của Apache/Nginx, bất kỳ ai tiếp cận được file log đều có thể đọc được.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q200",
+      "type": "mc",
+      "level": 2,
+      "question": "Chọn phát biểu đúng về quá trình gửi và nhận dữ liệu giữa Client và Server, với form sau: <form action=\"page.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+      "options": [
+        "A. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Server có tên \"page.php\" để trang này xử lý. Sau khi trang \"page.php\" xử lý xong, sẽ trả kết quả về cho Client.",
+        "B. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Server có tên \"default.php\".",
+        "C. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Client có tên \"page.php\" để trang này xử lý. Sau khi trang \"page.php\" xử lý xong, sẽ trả kết quả về cho Server.",
+        "D. Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Client có tên \"default.php\"."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Sau khi người dùng nhập dữ liệu vào form và nhấn nút \"Gửi\", dữ liệu sẽ được gửi đến một trang trên Server có tên \"page.php\" để trang này xử lý. Sau khi trang \"page.php\" xử lý xong, sẽ trả kết quả về cho Client.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q201",
+      "type": "mc",
+      "level": 2,
+      "question": "Với trường hợp: Sau khi người dùng nhập dữ liệu vào form và gửi, dữ liệu được gửi đến một file php trên Server. Vậy, sau khi file php đó xử lý xong sẽ trả về mã gì cho Client?",
+      "options": [
+        "A. Mã PHP",
+        "B. Mã HTML",
+        "C. Mã PHP và HTML",
+        "D. Cả 3 đáp án trên đều sai."
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả 3 đáp án trên đều sai.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q214",
+      "type": "mc",
+      "level": 2,
+      "question": "Câu lệnh sau đây có nghĩa là gì? if ($_POST[\"password\"] != \"123\") { header(\"Location: signin.php?error=2\"); }",
+      "options": [
+        "A. Nếu biến $_POST[\"password\"] khác \"123\" thì chuyển đến trang \"signin.php\" với URL được gắn thêm query string là \"error=2\".",
+        "B. Nếu biến $_POST[\"password\"] đúng chính xác là \"123\" thì chuyển đến trang \"signin.php\" với URL được gắn thêm query string là \"error=2\".",
+        "C. Nếu biến $_POST[\"password\"] khác \"123\" thì xuất ra chuỗi \"Location: signin.php?error=2\" ở đầu trang.",
+        "D. Nếu biến $_POST[\"password\"] đúng chính xác là \"123\" thì xuất ra chuỗi \"Location: signin.php?error=2\" ở đầu trang."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Nếu biến $_POST[\"password\"] khác \"123\" thì chuyển đến trang \"signin.php\" với URL được gắn thêm query string là \"error=2\".): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q293",
+      "type": "mc",
+      "level": 2,
+      "question": "Vì sao nên tách đoạn mã kết nối vào một tập tin riêng như config.php?",
+      "options": [
+        "A. Để mỗi trang có thể sử dụng một cấu hình kết nối cơ sở dữ liệu khác nhau.",
+        "B. Để tái sử dụng mã kết nối và dễ dàng cập nhật cấu hình khi cần.",
+        "C. Để trình duyệt tự động lưu thông tin kết nối cơ sở dữ liệu.",
+        "D. Để các trang PHP không cần thực hiện kết nối đến cơ sở dữ liệu."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Để tái sử dụng mã kết nối và dễ dàng cập nhật cấu hình khi cần.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q294",
+      "type": "mc",
+      "level": 2,
+      "question": "Thông tin servername trong kết nối PHP với MySQL có vai trò gì?",
+      "options": [
+        "A. Chỉ định tên cơ sở dữ liệu sẽ được kết nối.",
+        "B. Chỉ định địa chỉ hoặc tên máy chủ đang cung cấp dịch vụ MySQL.",
+        "C. Chỉ định địa chỉ hoặc tên máy chủ đang chạy dịch vụ web.",
+        "D. Chỉ định tên tài khoản dùng để kết nối đến MySQL."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Chỉ định địa chỉ hoặc tên máy chủ đang cung cấp dịch vụ MySQL.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q296",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong Prepared Statement, ký tự ? (dấu chấm hỏi) có vai trò gì?",
+      "options": [
+        "A. Đại diện cho tên bảng cần truy vấn.",
+        "B. Đại diện cho một giá trị sẽ được truyền trực tiếp vào câu lệnh SQL mà không cần liên kết.",
+        "C. Đánh dấu vị trí của tham số để liên kết dữ liệu trước khi thực thi câu lệnh SQL.",
+        "D. Đại diện cho điều kiện tìm kiếm sẽ được tạo tự động."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+    },
+    {
+      "id": "ltweb-q297",
+      "type": "mc",
+      "level": 2,
+      "question": "Ưu điểm bảo mật chính của prepared statement là gì?",
+      "options": [
+        "A. Mã hóa các giá trị đầu vào trước khi gửi đến cơ sở dữ liệu nhằm bảo vệ dữ liệu khỏi bị đánh cắp.",
+        "B. Tự động lọc mọi ký tự đặc biệt trong dữ liệu đầu vào trước khi thực thi câu lệnh SQL.",
+        "C. Tách dữ liệu đầu vào khỏi cấu trúc câu lệnh SQL, sau đó liên kết dữ liệu thông qua các tham số để hạn chế nguy cơ SQL Injection.",
+        "D. Kiểm tra quyền của người dùng đối với bảng dữ liệu trước khi thực hiện truy vấn."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+    },
+    {
+      "id": "ltweb-q298",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong câu lệnh sau, chuỗi \"ss\" biểu thị điều gì? $stmt->bind_param(\"ss\", $user, $pass);",
+      "options": [
+        "A. Chỉ định rằng hai tham số được liên kết với câu lệnh SQL và đều có kiểu dữ liệu chuỗi.",
+        "B. Chỉ định rằng hai tham số sẽ được lưu vào session trước khi thực thi câu lệnh SQL.",
+        "C. Chỉ định rằng hai tham số được liên kết với câu lệnh SQL và đều có kiểu dữ liệu số nguyên",
+        "D. Chỉ định rằng câu lệnh SQL sẽ được thực thi hai lần, mỗi lần với một tham số khác nhau."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+    },
+    {
+      "id": "ltweb-q300",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong trường hợp nào việc sử dụng Prepared Statement mang lại hiệu quả cao nhất?",
+      "options": [
+        "A. Khi cần thực thi lặp lại một câu lệnh SQL có cùng cấu trúc nhưng sử dụng các giá trị tham số khác nhau.",
+        "B. Khi cần thay đổi linh hoạt tên bảng, tên cột hoặc cấu trúc của câu lệnh SQL ở mỗi lần thực thi.",
+        "C. Khi cần cho phép người dùng nhập trực tiếp các thành phần cú pháp của câu lệnh SQL để tăng tính linh hoạt.",
+        "D. Khi cần mã hóa toàn bộ dữ liệu trước khi lưu trữ trong cơ sở dữ liệu."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+    },
+    {
+      "id": "ltweb-q209",
+      "type": "mc",
+      "level": 3,
+      "question": "Đoạn mã sau đây có nghĩa là gì? if ($name == \"Hoa\") { if ($password == \"123\") { header(\"Location: welcome.php\"); } }",
+      "options": [
+        "A. Nếu $name có giá trị là \"Hoa\", và $password có giá trị là \"123\" thì chuyển đến trang \"welcome.php\".",
+        "B. Nếu $name có giá trị là \"Hoa\", và $password có giá trị là \"123\" thì xuất ra chuỗi \"Location: welcome.php\" ở đầu trang.",
+        "C. Nếu $name có giá trị là \"Hoa\", hoặc $password có giá trị là \"123\" thì chuyển đến trang \"welcome.php\".",
+        "D. Nếu $name có giá trị là \"Hoa\", hoặc $password có giá trị là \"123\" thì xuất ra chuỗi \"Location: welcome.php\" ở đầu trang."
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Nếu $name có giá trị là \"Hoa\", và $password có giá trị là \"123\" thì chuyển đến trang \"welcome.php\".): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    },
+    {
+      "id": "ltweb-q212",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho đoạn mã PHP sau trong tệp signin.php: if (isset($_GET[\"error\"])) { echo \"<p><strong>Bạn đã nhập không đúng mật khẩu.</strong></p>\"; } URL nào sau đây làm cho thông báo trên được hiển thị?",
+      "options": [
+        "A. https://www.host.vn/error=1",
+        "B. https://www.host.vn/signin.php&error",
+        "C. https://www.host.vn?1=error",
+        "D. https://www.host.vn/signin.php?error=1"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (https://www.host.vn/signin.php?error=1): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+    }
+  ]
+}

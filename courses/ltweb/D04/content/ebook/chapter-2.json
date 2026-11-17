@@ -1,0 +1,480 @@
+{
+  "chapter": 2,
+  "title": "Cài đặt và cấu hình web server",
+  "sessions": [
+    2
+  ],
+  "scqa": {
+    "situation": "Bạn đã dựng được một trang HTML đẹp bằng trình duyệt. Nhưng khi mở một tập tin <code>.php</code> bằng cách nhấp đúp, trình duyệt chỉ hiện ra mã nguồn hoặc tải tập tin về - không có kết quả như mong đợi.",
+    "complication": "Trình duyệt chỉ hiểu HTML/CSS/JavaScript. Mã PHP phải được một <strong>bộ xử lý PHP</strong> chạy trên máy chủ. Cài rời Apache, PHP, MySQL từng cái một dễ gây xung đột phiên bản và rất khó cấu hình cho người mới.",
+    "question": "Làm thế nào để biến chính chiếc laptop của bạn thành một web server hoàn chỉnh, đơn giản, an toàn để học và chạy thử PHP?",
+    "answer": "Dùng các gói tích hợp sẵn như WAMP, XAMPP: cài một lần có đủ Apache + MySQL/MariaDB + PHP. Sau đó đặt mã nguồn vào thư mục gốc (<code>www</code> hoặc <code>htdocs</code>) và truy cập qua <code>http://localhost</code>."
+  },
+  "concepts": [
+    {
+      "id": "c2-lich-su-phat-trien-web-server",
+      "session": 2,
+      "term": "Lịch sử phát triển web server",
+      "definition": "Lịch sử của web server gắn liền với sự phát triển của Internet và WWW (World Wide Web).",
+      "key_points": [
+        "<strong>Giới thiệu web server</strong>: Chương này giới thiệu lịch sử phát triển của web server và hướng dẫn cài đặt, cấu hình các phần mềm web server để chạy thử trang web hoặc ứng dụng web với chức năng đơn giản.",
+        "<strong>3/1989</strong>: tại trung tâm CERN (Thụy Sĩ), Tim Berners-Lee đề xuất hệ thống quản lý thông tin phân tán; hoàn chỉnh đề xuất <strong>11/1990</strong> với tiêu đề <em>\"WorldWideWeb: Proposal for a HyperText project\"</em> - mô tả web là mạng lưới các tài liệu siêu văn bản (hypertext) xem được bằng trình duyệt.",
+        "<strong>12/1990</strong>: ông tạo ra trình duyệt web đầu tiên và web server đầu tiên; cùng cộng sự xây dựng URL, HTML và HTTP. Web server đầu tiên tên <strong>CERN httpd</strong>, cài trên máy tính NeXT.",
+        "<strong>1991</strong>: giới thiệu WWW cho cộng đồng, phát hành mã nguồn trình duyệt và web server; 12/1991 web server lần đầu cài đặt ngoài châu Âu.",
+        "<strong>1994</strong>: Netscape phát hành Netsite Communications Server và Netsite Commerce Server.",
+        "<strong>1995</strong>: Microsoft ra mắt <strong>IIS</strong> (một phần của Windows NT); cùng năm, <strong>Apache HTTP Server</strong> mã nguồn mở được phát hành và nhanh chóng trở thành web server phổ biến nhất thế giới.",
+        "<strong>Từ năm 2000</strong>: <strong>Nginx</strong> và <strong>Lighttpd</strong> ra đời để cải thiện hiệu suất, xử lý đồng thời lượng lớn yêu cầu.",
+        "<strong>Gần đây</strong>: nền tảng đám mây (AWS, Google Cloud, Microsoft Azure) cung cấp dịch vụ tạo web server, giảm gánh nặng quản lý hạ tầng. Dù vậy phần mềm web server (Apache, Nginx, IIS) vẫn không thể thiếu: xử lý yêu cầu, quản lý kết nối, phân phối nội dung, bảo mật."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-chon-web-server-theo-ngon-ngu-lap-trinh"
+      ]
+    },
+    {
+      "id": "c2-chon-web-server-theo-ngon-ngu-lap-trinh",
+      "session": 2,
+      "term": "Chọn web server theo ngôn ngữ lập trình",
+      "definition": "Việc chọn phần mềm web server phụ thuộc vào ngôn ngữ lập trình và nền tảng bạn dùng để xây dựng trang web.",
+      "key_points": [
+        "<table><thead><tr><th>Ngôn ngữ</th><th>Web server / nền tảng thường dùng</th><th>Ghi chú</th></tr></thead><tbody><tr><td><strong>PHP</strong></td><td>Apache, Nginx</td><td>Mã nguồn mở, miễn phí, đa nền tảng. Apache + PHP là giải pháp chuẩn cho nhiều web động; Nginx xử lý song song tốt, hợp trang lưu lượng lớn</td></tr><tr><td><strong>Java</strong></td><td>Apache Tomcat, Jetty (GlassFish, WildFly cho doanh nghiệp lớn)</td><td>Tomcat hỗ trợ Servlet và JSP (Java Server Pages)</td></tr><tr><td><strong>C#</strong></td><td>IIS (ASP.NET); Kestrel hoặc Nginx (ASP.NET Core)</td><td>Tích hợp dịch vụ Windows và SQL Server</td></tr><tr><td><strong>Python</strong></td><td>Gunicorn, uWSGI (WSGI server) cho Django/Flask</td><td>WSGI là chuẩn giao tiếp giữa web server và ứng dụng Python</td></tr><tr><td><strong>JavaScript</strong></td><td>Node.js</td><td>Xử lý yêu cầu không đồng bộ, hợp ứng dụng thời gian thực; thường kết hợp Apache/Nginx</td></tr></tbody></table>",
+        "Vì sao môn học này chọn <strong>Apache + PHP</strong>? Phổ biến cho website quy mô vừa và nhỏ, cộng đồng hỗ trợ rộng, hosting giá rẻ, và PHP được tích hợp trong các CMS như WordPress, Joomla (dùng cho website thương mại điện tử)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-lich-su-phat-trien-web-server",
+        "c2-web-server-apache"
+      ]
+    },
+    {
+      "id": "c2-web-server-apache",
+      "session": 2,
+      "term": "Web server Apache",
+      "definition": "Apache (Apache HTTP Server) là phần mềm web server mã nguồn mở, phát hành lần đầu năm 1995 bởi Apache Software Foundation.",
+      "key_points": [
+        "Hoàn toàn miễn phí và liên tục được cộng đồng cải tiến.",
+        "Chạy trên nhiều hệ điều hành: Windows, Linux, macOS.",
+        "Mặc định hỗ trợ trang web viết bằng <strong>PHP</strong>; có thể hỗ trợ Python, Perl nếu cài thêm mô-đun.",
+        "Điểm mạnh: <strong>cấu trúc mô-đun</strong> - bổ sung chức năng như bộ nhớ đệm (tăng tốc), bảo mật…",
+        "Apache phù hợp website người dùng vừa và nhỏ; website lưu lượng rất lớn có thể dùng <strong>Nginx</strong> (đọc là \"Engine-X\") để tăng hiệu suất."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-chon-web-server-theo-ngon-ngu-lap-trinh",
+        "c2-wamp-va-xampp-vi-sao-can"
+      ]
+    },
+    {
+      "id": "c2-wamp-va-xampp-vi-sao-can",
+      "session": 2,
+      "term": "WAMP và XAMPP - vì sao cần?",
+      "definition": "Trước đây, để lập trình PHP phải tải và cài riêng Apache, PHP, MySQL hoặc MariaDB - dễ <strong>không tương thích phiên bản</strong>, khó thiết lập tham số để các phần mềm kết nối với nhau, gây khó khăn cho người mới.",
+      "key_points": [
+        "<strong>Cài đặt và cấu hình</strong>: Phần này hướng dẫn cài đặt môi trường web server cục bộ (localhost) và cấu hình Apache, PHP.",
+        "<strong>WAMP</strong> (Windows, Apache, MySQL, PHP) - còn gọi WampServer: tích hợp sẵn Apache, MySQL/MariaDB, PHP; <strong>chỉ chạy trên Windows</strong>.",
+        "<strong>XAMPP</strong> (Cross-Platform, Apache, MySQL, PHP, Perl): gói tích hợp tương tự nhưng cài được trên <strong>Windows, Linux, macOS</strong>.",
+        "Các phần mềm tương tự: <strong>LAMP</strong> (Linux, Apache, MySQL, PHP), <strong>MAMP</strong> (macOS, Apache, MySQL, PHP).",
+        "Mục đích chung: đơn giản hoá việc xây dựng và kiểm thử chức năng trang web trên máy cá nhân <strong>trước khi</strong> triển khai lên máy chủ trực tuyến.",
+        "Chọn theo hệ điều hành và sự quen thuộc với giao diện: Windows → WAMP hoặc XAMPP; Linux/macOS → XAMPP (hoặc LAMP/MAMP).<table><thead><tr><th>Phần mềm</th><th>Hệ điều hành</th><th>Thành phần</th></tr></thead><tbody><tr><td>WAMP</td><td>Windows</td><td>Apache, MySQL/MariaDB, PHP</td></tr><tr><td>XAMPP</td><td>Windows, Linux, macOS</td><td>Apache, MySQL/MariaDB, PHP, Perl</td></tr><tr><td>LAMP</td><td>Linux</td><td>Apache, MySQL, PHP</td></tr><tr><td>MAMP</td><td>macOS</td><td>Apache, MySQL, PHP</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-web-server-apache",
+        "c2-cai-dat-wamp-windows"
+      ]
+    },
+    {
+      "id": "c2-cai-dat-wamp-windows",
+      "session": 2,
+      "term": "Cài đặt WAMP (Windows)",
+      "definition": "<strong>Bước 1</strong>: tải tập tin cài đặt tại https://sourceforge.net/projects/wampserver/ (WAMP chỉ dành cho Windows; dùng Linux/macOS hãy cài XAMPP).",
+      "key_points": [
+        "<strong>Bước 2–3</strong>: chạy tập tin cài đặt, chọn ngôn ngữ, đồng ý điều khoản, chọn Next.",
+        "<strong>Bước 4</strong>: kiểm tra các phần mềm nền tảng cần có. Nếu thiếu sẽ báo lỗi; dùng công cụ <code>check_vcredist.exe</code> (tải tại wampserver.aviatechno.net) để biết thiếu gói nào, rồi tải các gói <strong>Visual C++ Redistributable Packages</strong> còn thiếu và cài đặt.",
+        "<strong>Bước 5</strong>: chọn thư mục cài đặt.",
+        "<strong>Bước 6–7</strong>: chọn \"Yes\" nếu muốn đổi trình duyệt / trình soạn thảo mặc định khi dùng WAMP; chọn \"No\" để dùng mặc định (thường là Notepad).",
+        "<strong>Bước 8</strong>: chọn Finish.",
+        "Khởi động: nhấp đúp biểu tượng WAMP. Khi các dịch vụ chạy thành công, biểu tượng WAMP ở góc dưới bên phải màn hình chuyển <strong>màu xanh lá</strong>.",
+        "Điều khiển dịch vụ: nhấp biểu tượng WAMP → <strong>Stop All Services</strong> / <strong>Start All Services</strong> / <strong>Restart All Services</strong>.",
+        "Kiểm tra: mở trình duyệt, nhập <code>http://localhost</code> → trang mặc định của WAMP xuất hiện."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-wamp-va-xampp-vi-sao-can",
+        "c2-cai-dat-xampp"
+      ]
+    },
+    {
+      "id": "c2-cai-dat-xampp",
+      "session": 2,
+      "term": "Cài đặt XAMPP",
+      "definition": "<strong>Bước 1</strong>: tải tại https://www.apachefriends.org/download.html - chọn phiên bản đúng hệ điều hành.",
+      "key_points": [
+        "<strong>Bước 2</strong>: chọn các dịch vụ cần cài (tối thiểu Apache, MySQL, PHP, phpMyAdmin).",
+        "<strong>Bước 3–4</strong>: chọn thư mục cài đặt và ngôn ngữ.",
+        "<strong>Bước 5</strong>: Finish. Bảng điều khiển (Control Panel) tự hiển thị; nếu không, tìm \"XAMPP\" trên thanh tác vụ.",
+        "Khởi động: nhấn nút <strong>Start</strong> tương ứng từng dịch vụ (Apache, MySQL).",
+        "Kiểm tra: <code>http://localhost</code> → trang mặc định của XAMPP.<table><thead><tr><th>Triệu chứng</th><th>Nguyên nhân thường gặp</th><th>Cách xử lý</th></tr></thead><tbody><tr><td>Apache không khởi động</td><td>Cổng 80/443 bị dịch vụ khác chiếm (IIS, Skype, VMware…)</td><td>Đổi cổng Apache (xem 2.2.2.1) hoặc tắt dịch vụ xung đột</td></tr><tr><td>MySQL không khởi động</td><td>Cổng 3306 trùng một MySQL khác</td><td>Dừng MySQL cũ hoặc đổi cổng</td></tr><tr><td>Trình duyệt tải tập tin .php về máy</td><td>Mở bằng đường dẫn tập tin (file://) thay vì qua web server</td><td>Truy cập qua <code>http://localhost/...</code></td></tr><tr><td>WAMP không xanh (cam/đỏ)</td><td>Thiếu Visual C++ Redistributable hoặc một dịch vụ lỗi</td><td>Cài đủ gói VC++, kiểm tra từng dịch vụ</td></tr></tbody></table>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-cai-dat-wamp-windows",
+        "c2-cau-hinh-apache-httpd-conf"
+      ]
+    },
+    {
+      "id": "c2-cau-hinh-apache-httpd-conf",
+      "session": 2,
+      "term": "Cấu hình Apache (httpd.conf)",
+      "definition": "Muốn cấu hình Apache, mở tập tin <strong>httpd.conf</strong> và chỉnh các tham số.",
+      "key_points": [
+        "Mở trong <strong>WAMP</strong>: nhấp biểu tượng WAMP → Apache → httpd.conf.",
+        "Mở trong <strong>XAMPP</strong>: nhấn nút <strong>Config</strong> của Apache trên bảng điều khiển → Apache (httpd.conf).",
+        "<strong>Đổi cổng (port) mặc định</strong>: cổng web mặc định là 80; nếu bị dịch vụ khác dùng thì Apache không khởi động được. Tìm hai dòng <code>Listen 0.0.0.0:80</code> và <code>ServerName localhost:80</code>, sửa cổng. <pre><code>Listen 0.0.0.0:8080\nServerName localhost:8080</code></pre> Sau khi đổi, truy cập kèm cổng: <code>http://localhost:8080</code>. Trả lời bài ôn tập: đổi sang 9999 thì thay 8080 bằng 9999 rồi restart Apache.",
+        "<strong>Giới hạn kích thước tập tin tải lên</strong>: sửa <code>LimitRequestBody</code> (đơn vị byte). Ví dụ giới hạn 10MB: <pre><code>LimitRequestBody 10485760</code></pre> Nếu không thấy dòng này, thêm vào cuối khối <code>&lt;Directory /&gt;</code>: <pre><code>&lt;Directory /&gt;\n  ...\n  LimitRequestBody 10485760\n&lt;/Directory&gt;</code></pre>",
+        "<strong>Dùng mô-đun mod_rewrite</strong>: giúp URL ngắn gọn, dễ nhớ, thân thiện với người dùng và công cụ tìm kiếm (SEO) mà vẫn giữ nguyên chức năng. Cách bật: tìm dòng <code>LoadModule rewrite_module modules/mod_rewrite.so</code> và <strong>bỏ dấu <code>#</code></strong> phía trước.",
+        "Luôn <strong>restart Apache</strong> sau khi sửa cấu hình để có hiệu lực."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-cai-dat-xampp",
+        "c2-cau-hinh-php-php-ini"
+      ]
+    },
+    {
+      "id": "c2-cau-hinh-php-php-ini",
+      "session": 2,
+      "term": "Cấu hình PHP (php.ini)",
+      "definition": "Muốn cấu hình PHP, mở tập tin <strong>php.ini</strong>.",
+      "key_points": [
+        "Mở trong <strong>WAMP</strong>: biểu tượng WAMP → PHP → php.ini. Mở trong <strong>XAMPP</strong>: nút Config của Apache → PHP (php.ini).",
+        "<strong>Giới hạn bộ nhớ và kích thước tải lên</strong>: tìm <code>upload_max_filesize</code>, <code>post_max_size</code>, <code>memory_limit</code>. <pre><code>upload_max_filesize = 50M\npost_max_size = 50M\nmemory_limit = 128M</code></pre>",
+        "<strong>Giới hạn thời gian thực thi</strong>: tự dừng khi chạy quá lâu để không ảnh hưởng hiệu suất máy chủ. <pre><code>max_execution_time = 300   ; đơn vị: giây</code></pre>",
+        "<strong>Hiển thị lỗi khi phát triển</strong>: lập trình viên cần thấy lỗi để sửa. <pre><code>display_errors = On</code></pre> Khi trang web đã hoàn thiện và triển khai thực tế, <strong>phải đổi sang <code>Off</code></strong> để đảm bảo bảo mật (không lộ thông tin hệ thống).",
+        "<table><thead><tr><th>Tập tin</th><th>Cấu hình cho</th><th>Ví dụ tham số</th></tr></thead><tbody><tr><td>httpd.conf</td><td>Apache (web server)</td><td>Listen, ServerName, LimitRequestBody, LoadModule</td></tr><tr><td>php.ini</td><td>PHP</td><td>upload_max_filesize, post_max_size, memory_limit, max_execution_time, display_errors</td></tr><tr><td>my.ini</td><td>MySQL</td><td>cổng, bộ nhớ…</td></tr></tbody></table>",
+        "Mẹo nhớ: đổi <strong>cổng web</strong> → httpd.conf; đổi <strong>kích thước tải lên của PHP</strong> → php.ini."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-cau-hinh-apache-httpd-conf",
+        "c2-chay-trang-web-php-voi-wamp-va-xampp"
+      ]
+    },
+    {
+      "id": "c2-chay-trang-web-php-voi-wamp-va-xampp",
+      "session": 2,
+      "term": "Chạy trang web PHP với WAMP và XAMPP",
+      "definition": "Điều kiện để chạy thử: các dịch vụ của WAMP/XAMPP đã khởi động và mã nguồn đặt đúng <strong>thư mục gốc</strong> của web server.",
+      "key_points": [
+        "<strong>Bước 1</strong>: kiểm tra và khởi động các dịch vụ (Apache, MySQL) nếu chưa bật.",
+        "<strong>Bước 2</strong>: tại thư mục gốc, tạo thư mục <code>my_website</code>. Thư mục gốc mặc định: <strong>WAMP</strong> <code>C:\\wamp64\\www\\</code>; <strong>XAMPP</strong> <code>C:\\xampp\\htdocs\\</code>. (Cài ổ D:, E: thì đổi đường dẫn tương ứng.)",
+        "<strong>Bước 3</strong>: trong <code>my_website</code>, tạo tập tin <code>index.php</code> bằng trình soạn thảo mã nguồn (VS Code, Sublime Text, Notepad++): <pre><code>&lt;?php\necho \"Xin chào\";\n?&gt;</code></pre>",
+        "<strong>Bước 4</strong>: mở trình duyệt, nhập <code>http://localhost/my_website/index.php</code> → hiển thị \"Xin chào\".",
+        "<strong>Tập tin mặc định</strong>: nhập <code>http://localhost/my_website</code> (không ghi tên tập tin) vẫn chạy <code>index.php</code>. Nếu thư mục <strong>không có</strong> <code>index.php</code> thì trình duyệt hiển thị <strong>danh sách các tập tin</strong> trong thư mục để chọn (thử đổi tên <code>index.php</code> thành <code>test.php</code> để quan sát).",
+        "<code>localhost</code> chỉ chạy trên máy cá nhân để xây dựng và chạy thử. Khi hoàn thiện, đưa mã nguồn lên <strong>web hosting</strong> để hoạt động trên Internet.",
+        "Các ví dụ PHP ở chương sau chạy theo cùng quy trình: chỉ cần đổi nội dung tập tin.<table><thead><tr><th>Hệ</th><th>Thư mục gốc mặc định</th><th>Đường dẫn trình duyệt</th></tr></thead><tbody><tr><td>WAMP</td><td>C:\\wamp64\\www\\</td><td>http://localhost/my_website/index.php</td></tr><tr><td>XAMPP</td><td>C:\\xampp\\htdocs\\</td><td>http://localhost/my_website/index.php</td></tr></tbody></table>",
+        "Tự kiểm tra (bài 7 giáo trình): tạo <code>ltweb.php</code> chứa <code>&lt;?php echo \"Lập trình web PHP\"; ?&gt;</code>, đặt vào thư mục gốc, mở <code>http://localhost/ltweb.php</code>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-cau-hinh-php-php-ini",
+        "c2-tong-ket-chuong-va-cau-hoi-tu-on"
+      ]
+    },
+    {
+      "id": "c2-tong-ket-chuong-va-cau-hoi-tu-on",
+      "session": 2,
+      "term": "Tổng kết chương và câu hỏi tự ôn",
+      "definition": "Sau Chương 2 bạn cần: biết các phần mềm web server cho PHP; phân biệt WAMP/XAMPP/LAMP/MAMP; cài, khởi động được môi trường localhost; biết sửa cổng, giới hạn tải lên, bật hiển thị lỗi; chạy được tập tin PHP đầu tiên.",
+      "key_points": [
+        "<strong>Hỏi:</strong> Phần mềm web server nào chạy được trang PHP? <strong>Đáp:</strong> Apache, Nginx (và cả Lighttpd, IIS).",
+        "<strong>Hỏi:</strong> WAMP và XAMPP tích hợp những gì? Khác nhau? <strong>Đáp:</strong> Đều có Apache, MySQL/MariaDB, PHP (XAMPP thêm Perl). WAMP chỉ cho Windows; XAMPP đa nền tảng.",
+        "<strong>Hỏi:</strong> Phần mềm nào cài web server trên macOS? Phần mềm nào đa nền tảng? <strong>Đáp:</strong> MAMP (và XAMPP) cho macOS; XAMPP cài được trên Windows, Linux, macOS.",
+        "<strong>Hỏi:</strong> Cổng mặc định của Apache? Đổi sang 9999 thế nào? <strong>Đáp:</strong> Mặc định 80; sửa <code>Listen</code> và <code>ServerName</code> trong httpd.conf thành 9999, restart Apache, truy cập <code>http://localhost:9999</code>.",
+        "<strong>Hỏi:</strong> Điều kiện để chạy thử trang web? <strong>Đáp:</strong> Cài WAMP/XAMPP, khởi động Apache (và MySQL nếu cần), đặt mã nguồn vào thư mục gốc (<code>www</code>/<code>htdocs</code>), truy cập qua <code>http://localhost</code>.",
+        "<strong>Hỏi:</strong> Địa chỉ không ghi tên tập tin thì chạy gì? <strong>Đáp:</strong> Chạy <code>index.php</code>; nếu không có, hiển thị danh sách tập tin trong thư mục.",
+        "<strong>Hỏi:</strong> Thư mục chứa mã nguồn của WAMP/XAMPP? <strong>Đáp:</strong> WAMP: <code>www</code>; XAMPP: <code>htdocs</code>.",
+        "<strong>Hỏi:</strong> Muốn đổi dung lượng tải lên của PHP, sửa tập tin nào? <strong>Đáp:</strong> <code>php.ini</code> (<code>upload_max_filesize</code>, <code>post_max_size</code>)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-chay-trang-web-php-voi-wamp-va-xampp"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Nhận biết khái niệm (11 câu)",
+      "description": "Kiểm tra trí nhớ và nhận diện chính xác các khái niệm, cú pháp nền tảng của chương.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "ltweb-q027",
+          "type": "mc",
+          "concept_ref": "c2-wamp-va-xampp-vi-sao-can",
+          "question": "Phát biểu nào sau đây là đúng nhất về XAMPP?",
+          "options": [
+            "A. XAMPP là bộ phần mềm hỗ trợ tạo môi trường web server cục bộ, thường bao gồm Apache, MySQL/MariaDB, PHP và Perl.",
+            "B. XAMPP là trình duyệt web dùng để kiểm tra giao diện HTML, CSS và JavaScript trên máy tính cá nhân.",
+            "C. XAMPP là hệ điều hành chuyên dùng để triển khai website trên máy chủ thật.",
+            "D. XAMPP là ngôn ngữ lập trình phía máy chủ dùng để thay thế PHP, ASP.NET và JSP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (XAMPP là bộ phần mềm hỗ trợ tạo môi trường web server cục bộ, thường bao gồm Apache, MySQL/MariaDB, PHP và Perl.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q028",
+          "type": "mc",
+          "concept_ref": "c2-cau-hinh-apache-httpd-conf",
+          "question": "Cổng (Port) mặc định cho web với giao thức http là:",
+          "options": [
+            "A. 8080",
+            "B. 80",
+            "C. 8000",
+            "D. 443"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (80): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q029",
+          "type": "mc",
+          "concept_ref": "c2-cau-hinh-apache-httpd-conf",
+          "question": "Cổng (Port) mặc định cho web với giao thức https là:",
+          "options": [
+            "A. 8080",
+            "B. 80",
+            "C. 8000",
+            "D. 443"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (443): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q031",
+          "type": "mc",
+          "concept_ref": "c2-tong-ket-chuong-va-cau-hoi-tu-on",
+          "question": "Trong môi trường triển khai website, phần mềm nào sau đây thuộc nhóm phần mềm web server?",
+          "options": [
+            "A. phpMyAdmin",
+            "B. MySQL",
+            "C. Nginx",
+            "D. Visual Studio Code"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Nginx): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q032",
+          "type": "mc",
+          "concept_ref": "c2-wamp-va-xampp-vi-sao-can",
+          "question": "Bộ phần mềm web server WAMP được cài đặt trên hệ điều hành nào dưới đây?",
+          "options": [
+            "A. Windows",
+            "B. Mac",
+            "C. Linux",
+            "D. Unix"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Windows): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q033",
+          "type": "mc",
+          "concept_ref": "c2-wamp-va-xampp-vi-sao-can",
+          "question": "Bộ phần mềm web server MAMP được cài đặt trên hệ điều hành nào dưới đây?",
+          "options": [
+            "A. Windows",
+            "B. Mac",
+            "C. Linux",
+            "D. Unix"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Mac): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q036",
+          "type": "mc",
+          "concept_ref": "c2-lich-su-phat-trien-web-server",
+          "question": "Ứng dụng nào dưới đây không phải là phần mềm web server?",
+          "options": [
+            "A. IIS",
+            "B. Apache HTTP Server",
+            "C. MySQL",
+            "D. Nginx"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (MySQL): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q037",
+          "type": "mc",
+          "concept_ref": "c2-tong-ket-chuong-va-cau-hoi-tu-on",
+          "question": "Trong Apache khi cài đặt thông qua WAMP, thư mục nào thường được sử dụng để lưu trữ các tập tin của website?",
+          "options": [
+            "A. htdocs",
+            "B. www",
+            "C. logs",
+            "D. bin"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Với XAMPP, mã nguồn đặt trong thư mục htdocs (còn với WAMP là thư mục www). Tập tin mặc định được tự động chạy khi truy cập thư mục là index.php hoặc index.html."
+        },
+        {
+          "id": "ltweb-q039",
+          "type": "mc",
+          "concept_ref": "c2-wamp-va-xampp-vi-sao-can",
+          "question": "Thành phần nào dưới đây không thuộc bộ phần mềm WAMP?",
+          "options": [
+            "A. Apache",
+            "B. PHP",
+            "C. MySQL",
+            "D. IIS"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (IIS): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q040",
+          "type": "mc",
+          "concept_ref": "c2-lich-su-phat-trien-web-server",
+          "question": "Trong XAMPP, thành phần Apache có vai trò chính là gì?",
+          "options": [
+            "A. Quản lý cơ sở dữ liệu.",
+            "B. Xử lý và phản hồi các yêu cầu HTTP từ trình duyệt.",
+            "C. Biên dịch mã nguồn PHP thành mã máy.",
+            "D. Quản lý tài khoản người dùng của hệ điều hành."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Xử lý và phản hồi các yêu cầu HTTP từ trình duyệt.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q041",
+          "type": "mc",
+          "concept_ref": "c2-wamp-va-xampp-vi-sao-can",
+          "question": "MAMP là bộ phần mềm thường được sử dụng với mục đích nào dưới đây?",
+          "options": [
+            "A. Thiết kế đồ họa và chỉnh sửa video.",
+            "B. Tạo môi trường phát triển và kiểm thử website trên máy tính cá nhân.",
+            "C. Quản lý hệ điều hành máy chủ.",
+            "D. Phân tích dữ liệu thống kê."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Tạo môi trường phát triển và kiểm thử website trên máy tính cá nhân.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Thông hiểu & Phân tích (4 câu)",
+      "description": "Phân biệt, giải thích nguyên lý hoạt động và so sánh các thành phần kỹ thuật.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "ltweb-q030",
+          "type": "mc",
+          "concept_ref": "c2-lich-su-phat-trien-web-server",
+          "question": "Phát biểu nào sau đây là đúng nhất về web hosting?",
+          "options": [
+            "A. Web hosting là dịch vụ chỉ dùng để đăng ký tên miền và chuyển đổi tên miền thành địa chỉ IP của máy chủ.",
+            "B. Web hosting là phần mềm dùng để thiết kế giao diện website, quản lý bố cục trang và xử lý các hiệu ứng tương tác phía người dùng.",
+            "C. Web hosting là dịch vụ cung cấp không gian lưu trữ và môi trường máy chủ để website có thể được lưu trữ, vận hành và truy cập qua Internet.",
+            "D. Web hosting là máy chủ nội bộ chỉ cho phép người dùng trong cùng một doanh nghiệp truy cập website."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Web hosting là dịch vụ cung cấp không gian lưu trữ và môi trường máy chủ để website có thể được lưu trữ, vận hành và truy cập qua Internet.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q038",
+          "type": "mc",
+          "concept_ref": "c2-cau-hinh-apache-httpd-conf",
+          "question": "Trong Apache HTTP Server, tập tin cấu hình nào thường được sử dụng để thay đổi cổng (port) lắng nghe của web server, ví dụ thay đổi từ cổng 80 sang một cổng khác?",
+          "options": [
+            "A. httpd.conf",
+            "B. php.ini",
+            "C. web.config",
+            "D. server.xml"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Tập tin cấu hình chính của Apache HTTP Server là httpd.conf (dùng để đổi cổng Listen 80/8080, ServerName, DocumentRoot)."
+        },
+        {
+          "id": "ltweb-q042",
+          "type": "mc",
+          "concept_ref": "c2-lich-su-phat-trien-web-server",
+          "question": "Lý do phổ biến nhất để sinh viên và lập trình viên cài đặt XAMPP, WAMP hoặc MAMP trên máy tính cá nhân là gì?",
+          "options": [
+            "A. Cho phép website được truy cập trực tiếp từ Internet mà không cần cấu hình bổ sung.",
+            "B. Cung cấp cơ chế cân bằng tải cho các website có lượng truy cập lớn.",
+            "C. Tạo môi trường mô phỏng máy chủ web để phát triển, chạy thử và kiểm tra ứng dụng web trước khi triển khai.",
+            "D. Hỗ trợ quản lý tên miền và dịch vụ DNS cho website trong quá trình phát triển."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Tạo môi trường mô phỏng máy chủ web để phát triển, chạy thử và kiểm tra ứng dụng web trước khi triển khai.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q043",
+          "type": "mc",
+          "concept_ref": "c2-cai-dat-xampp",
+          "question": "Những dịch vụ nào thường được khởi động trong WampServer để một ứng dụng web PHP có thể hoạt động đầy đủ?",
+          "options": [
+            "A. Apache và MySQL",
+            "B. Apache và HTTP",
+            "C. MySQL và HTTP",
+            "D. HTTP và DHCP"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Apache và MySQL): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế (3 câu)",
+      "description": "Đọc hiểu đoạn mã, dự đoán kết quả thực thi và xử lý tình huống lập trình thực tế.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "ltweb-q034",
+          "type": "mc",
+          "concept_ref": "c2-lich-su-phat-trien-web-server",
+          "question": "Đáp án nào dưới đây là giải pháp phù hợp nhất khi muốn cài đặt Apache Web Server trên một máy chủ đã được cài đặt và đang sử dụng IIS?",
+          "options": [
+            "A. Gỡ bỏ IIS trước khi cài đặt Apache nhằm tránh các lỗi cấu hình phát sinh.",
+            "B. Tạm thời vô hiệu hóa tường lửa của hệ điều hành trong quá trình cài đặt Apache.",
+            "C. Thay đổi cổng mặc định của Apache hoặc IIS để tránh xung đột dịch vụ.",
+            "D. Cấu hình Apache sử dụng chung cổng 80 với IIS vì hệ điều hành có thể tự động phân chia lưu lượng truy cập đến từng dịch vụ."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Thay đổi cổng mặc định của Apache hoặc IIS để tránh xung đột dịch vụ.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q035",
+          "type": "mc",
+          "concept_ref": "c2-lich-su-phat-trien-web-server",
+          "question": "Điều gì có khả năng xảy ra khi người dùng nhập một URL chứa số cổng (port) không đúng với cổng mà web server đang lắng nghe?",
+          "options": [
+            "A. Trình duyệt tự động thay thế bằng cổng mặc định của giao thức HTTP hoặc HTTPS.",
+            "B. Web server tự động chuyển hướng yêu cầu sang cổng đang được sử dụng.",
+            "C. Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.",
+            "D. Trang web vẫn được tải nhưng một số thành phần như hình ảnh hoặc tệp CSS không hiển thị."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q044",
+          "type": "mc",
+          "concept_ref": "c2-cau-hinh-php-php-ini",
+          "question": "Khi cần hiển thị đầy đủ thông tin lỗi để hỗ trợ việc gỡ lỗi (debug) ứng dụng PHP trên máy phát triển, tập tin cấu hình nào thường được chỉnh sửa để bật tùy chọn display_errors?",
+          "options": [
+            "A. httpd.conf",
+            "B. php.ini",
+            "C. my.ini",
+            "D. web.config"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Tập tin cấu hình của PHP là php.ini (dùng để bật/tắt hiển thị lỗi display_errors, cấu hình dung lượng tải file upload_max_filesize, post_max_size, múi giờ)."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 8 - Lập trình Web động (Phần 2): Quản lý trạng thái với Session & Cookie | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 5 (Phần 2) · Buổi 8/9</div>
+    <h1>Buổi 8: Lập trình Web động (Phần 2): Quản lý trạng thái với Session & Cookie</h1>
+    <p class="hero-sub">CLO1, CLO2 - Giải quyết tính phi trạng thái (stateless) của HTTP bằng Session và Cookie để xây dựng chức năng Đăng nhập, Phân quyền, Đăng xuất và Giỏ hàng.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> Phần trọng tâm của Chương 5 (8/40 câu đề thi cuối kỳ) · 16 câu trong Ngân hàng câu hỏi thuộc Buổi 8.<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1, CLO2 - Giải quyết tính phi trạng thái (stateless) của HTTP bằng Session và Cookie để xây dựng chức năng Đăng nhập, Phân quyền, Đăng xuất và Giỏ hàng.
+    </div>
+    <ol>
+      <li>Giải thích được vì sao giao thức <strong>HTTP là phi trạng thái (stateless)</strong> và tại sao biến thông thường trong PHP không thể giữ dữ liệu khi người dùng chuyển từ trang này sang trang khác.</li>
+      <li>Nắm vững cơ chế hoạt động của <strong>Session</strong>: lưu dữ liệu trên <strong>Web Server</strong>, bắt buộc gọi <strong><code>session_start()</code></strong> ở đầu tập tin trước khi dùng mảng siêu toàn cục <strong><code>$_SESSION</code></strong>, xóa từng biến bằng <code>unset($_SESSION['key'])</code> và hủy toàn bộ phiên bằng <code>session_destroy()</code>.</li>
+      <li>Nắm vững cơ chế hoạt động của <strong>Cookie</strong>: lưu dữ liệu trên <strong>Trình duyệt (Web Client)</strong>, thiết lập bằng <strong><code>setcookie(name, value, expire, path)</code></strong>, đọc bằng <strong><code>$_COOKIE['name']</code></strong> và xóa cookie bằng cách đặt thời gian hết hạn trong quá khứ (<code>time() - 3600</code>).</li>
+      <li>Phân biệt chính xác khi nào dùng <strong>Session</strong> (lưu thông tin đăng nhập, quyền người dùng, giỏ hàng tạm thời) và khi nào dùng <strong>Cookie</strong> (ghi nhớ ngôn ngữ, giao diện sáng/tối, tự động đăng nhập 'Remember me').</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Khách hàng vừa nhập đúng tài khoản và mật khẩu ở trang <code>login.php</code>, hoặc vừa bấm 'Thêm vào giỏ hàng' ở trang <code>product.php</code>.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Ngay khi khách bấm chuyển sang trang <code>checkout.php</code>, máy chủ web hoàn toàn 'mất trí nhớ' - không biết người này vừa đăng nhập hay đã chọn món hàng nào! Đó là vì mỗi yêu cầu HTTP là hoàn toàn độc lập (stateless). Nhưng nếu bạn lưu thẳng mật khẩu hay quyền Admin vào Cookie trên trình duyệt, kẻ tấn công chỉ cần mở F12 (DevTools) sửa Cookie là chiếm quyền điều khiển!</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Làm thế nào để website ghi nhớ trạng thái đăng nhập và giỏ hàng của từng người dùng xuyên suốt nhiều trang một cách an toàn và đúng chuẩn kỹ thuật?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Kết hợp <strong>Session</strong> (lưu dữ liệu nhạy cảm như ID người dùng, vai trò, giỏ hàng trong phiên trên Server) và <strong>Cookie</strong> (lưu tùy chọn lâu dài trên trình duyệt với thời hạn xác định), đồng thời xóa sạch cả hai khi người dùng Đăng xuất.</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 75 phút)</div>
+        <div class="timeline-content">
+          <p>Bản chất Stateless của HTTP; đối tượng Session (<code>session_start()</code>, <code>$_SESSION</code>, <code>unset()</code>, <code>session_destroy()</code>); đối tượng Cookie (<code>setcookie()</code>, <code>$_COOKIE</code>, cách tính thời gian sống <code>time() + số_giây</code> và cách xóa cookie); bảng so sánh Session vs Cookie.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến Xác thực & Bảo mật Phiên · 95 phút)</div>
+        <div class="timeline-content">
+          <p>Mở Chrome DevTools -> tab Application -> Cookies để quan sát trực tiếp <code>PHPSESSID</code> và các Cookie thực tế -> Xây dựng luồng Đăng nhập (<code>login.php</code>) - Trang quản trị có chốt chặn bảo vệ (<code>admin.php</code>) - Đăng xuất an toàn (<code>logout.php</code>).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (Thực chiến Giỏ hàng TMĐT · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Xây dựng module Giỏ hàng (Shopping Cart) bằng <code>$_SESSION['cart']</code>: thêm sản phẩm, tăng/giảm số lượng, xóa món hàng, tính tổng tiền thanh toán và tích hợp vào Đồ án nhóm.</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>8.1. So sánh Session và Cookie theo 4 tiêu chí: vị trí lưu trữ, thời gian tồn tại mặc định, mức độ bảo mật và dung lượng lưu trữ.</li>
+        <li>8.2. Trước khi truy xuất hoặc gán giá trị cho <code>$_SESSION</code>, ta bắt buộc phải gọi hàm nào? Để xóa riêng thông tin đăng nhập <code>$_SESSION['user']</code> mà vẫn giữ lại giỏ hàng <code>$_SESSION['cart']</code>, ta dùng lệnh nào?</li>
+        <li>8.3. Giải thích ý nghĩa các tham số trong câu lệnh <code>setcookie('user_login', 'An', time() + 5 * 60, '/');</code> và câu lệnh <code>setcookie('user', '', time() - 3600, '/');</code>.</li>
+        <li>8.4. Trong các tình huống sau, nên dùng Session hay Cookie: (a) Lưu thông tin định danh và vai trò người dùng đang đăng nhập; (b) Ghi nhớ ngôn ngữ hiển thị (Tiếng Việt / Tiếng Anh) sau khi đóng trình duyệt mở lại; (c) Lưu mật khẩu người dùng?</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc - Bài 8.4 & 8.5):</strong> Tạo <code>page1.php</code> khởi tạo <code>$_SESSION['username']</code> và cookie sống 5 phút; tạo <code>page2.php</code> đọc và hiển thị giá trị Session/Cookie đó. Kiểm tra trong DevTools -> Application.</li>
+        <li><strong>Mức Nâng cao (Bài 8.6):</strong> Xây dựng hệ thống <strong>Đăng nhập - Bảo vệ trang - Đăng xuất</strong> hoàn chỉnh gồm <code>login.php</code>, <code>dashboard.php</code> (chưa đăng nhập tự động chuyển hướng về <code>login.php</code>) và <code>logout.php</code>.</li>
+        <li><strong>Mức Thử thách (Nối đồ án TMĐT - Bài 8.7):</strong> Xây dựng chức năng <strong>Giỏ hàng bằng Session</strong> (thêm vào giỏ, cập nhật số lượng, xóa sản phẩm, tính tổng đơn hàng) cho website TMĐT của nhóm. Hoàn thành Quiz Buổi 8 (16 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

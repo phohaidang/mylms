@@ -1,0 +1,1823 @@
+{
+  "exam_id": "midterm",
+  "title": "Đề kiểm tra tổng hợp & Thi thử cuối kỳ (Chuẩn Ma trận Đề cương 40 câu)",
+  "time_limit_minutes": 60,
+  "scope": "Chương 1 - Chương 5 (16 câu Mức 1 Nhận biết, 14 câu Mức 2 Thông hiểu, 10 câu Mức 3 Vận dụng)",
+  "variants": [
+    {
+      "variant": 1,
+      "questions": [
+        {
+          "id": "ltweb-q025",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Trong mô hình Client-Server, Client được hiểu là gì?",
+          "options": [
+            "A. Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.",
+            "B. Client là người sử dụng trực tiếp truy cập website và thực hiện các thao tác trên giao diện.",
+            "C. Client là máy chủ có nhiệm vụ tiếp nhận yêu cầu, xử lý dữ liệu và trả kết quả cho người dùng.",
+            "D. Client là chương trình phía Server dùng để biên dịch hoặc thực thi mã nguồn như PHP, ASP.NET hoặc JSP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q005",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "URL được viết tắt bởi từ nào sau đây?",
+          "options": [
+            "A. Unique Resource Location",
+            "B. Uniform Resource Location",
+            "C. Uniform Resource Locator",
+            "D. Unique Resource Locator"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q024",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Liên kết nào sau đây là URL?",
+          "options": [
+            "A. ftp://ftp.hp.com/pub/caps-softpaq/cmit/softpaq/setup.exe",
+            "B. http://buh.edu.vn/gioi-thieu/danh-ba-don-vi.html",
+            "C. https://www.youtube.com/watch?v=eODJpny8Yxs&feature=share",
+            "D. Cả 3 link trên đều là URL."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q006",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Giao thức nào sau đây giúp truyền tải siêu văn bản?",
+          "options": [
+            "A. FTP",
+            "B. SMTP",
+            "C. HTTP",
+            "D. POP3"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (HTTP): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q017",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về website động.",
+          "options": [
+            "A. Website động là website có giao diện tự động thay đổi theo thiết bị truy cập, ví dụ máy tính, máy tính bảng hoặc điện thoại.",
+            "B. Website động là website cho phép người dùng xem nhiều loại nội dung như văn bản, hình ảnh, video và biểu mẫu nhập liệu.",
+            "C. Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.",
+            "D. Website động là website có nội dung thường xuyên được cập nhật bởi người quản trị hoặc lập trình viên."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q015",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về mô hình hoạt động của website.",
+          "options": [
+            "A. Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.",
+            "B. Website hoạt động theo mô hình Client/Server, trong đó Client trực tiếp truy xuất cơ sở dữ liệu để lấy dữ liệu và hiển thị nội dung website cho người dùng.",
+            "C. Website hoạt động theo mô hình Client/Server, trong đó Server chủ yếu lưu trữ giao diện website, còn việc xử lý yêu cầu và quản lý dữ liệu được thực hiện hoàn toàn ở phía Client.",
+            "D. Website hoạt động theo mô hình Client/Server, trong đó Web Server và Database Server luôn phải được triển khai trên cùng một máy chủ vật lý để phục vụ nhiều người dùng truy cập đồng thời."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q010",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Phát biểu nào dưới đây là đúng với website động?",
+          "options": [
+            "A. URL của mọi trang phải cố định và không thay đổi.",
+            "B. Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.",
+            "C. Chỉ sử dụng HTML và không cần xử lý trên máy chủ.",
+            "D. Mọi phản hồi từ máy chủ đều là tập tin tĩnh."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q016",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng về Website tĩnh.",
+          "options": [
+            "A. Nội dung trang web được tạo mới mỗi lần truy cập dựa trên xử lý phía máy chủ.",
+            "B. Nội dung trang web luôn thay đổi theo dữ liệu người dùng nhập vào.",
+            "C. Mọi trang web tĩnh đều phải sử dụng cơ sở dữ liệu để lưu nội dung.",
+            "D. Nội dung trang web được gửi trực tiếp từ máy chủ đến trình duyệt mà không cần xử lý tại phía máy chủ trước khi phản hồi."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Nội dung trang web được gửi trực tiếp từ máy chủ đến trình duyệt mà không cần xử lý tại phía máy chủ trước khi phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q041",
+          "type": "mc",
+          "chapter": 2,
+          "level": 1,
+          "question": "MAMP là bộ phần mềm thường được sử dụng với mục đích nào dưới đây?",
+          "options": [
+            "A. Thiết kế đồ họa và chỉnh sửa video.",
+            "B. Tạo môi trường phát triển và kiểm thử website trên máy tính cá nhân.",
+            "C. Quản lý hệ điều hành máy chủ.",
+            "D. Phân tích dữ liệu thống kê."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Tạo môi trường phát triển và kiểm thử website trên máy tính cá nhân.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q036",
+          "type": "mc",
+          "chapter": 2,
+          "level": 1,
+          "question": "Ứng dụng nào dưới đây không phải là phần mềm web server?",
+          "options": [
+            "A. IIS",
+            "B. Apache HTTP Server",
+            "C. MySQL",
+            "D. Nginx"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (MySQL): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q038",
+          "type": "mc",
+          "chapter": 2,
+          "level": 2,
+          "question": "Trong Apache HTTP Server, tập tin cấu hình nào thường được sử dụng để thay đổi cổng (port) lắng nghe của web server, ví dụ thay đổi từ cổng 80 sang một cổng khác?",
+          "options": [
+            "A. httpd.conf",
+            "B. php.ini",
+            "C. web.config",
+            "D. server.xml"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Tập tin cấu hình chính của Apache HTTP Server là httpd.conf (dùng để đổi cổng Listen 80/8080, ServerName, DocumentRoot)."
+        },
+        {
+          "id": "ltweb-q030",
+          "type": "mc",
+          "chapter": 2,
+          "level": 2,
+          "question": "Phát biểu nào sau đây là đúng nhất về web hosting?",
+          "options": [
+            "A. Web hosting là dịch vụ chỉ dùng để đăng ký tên miền và chuyển đổi tên miền thành địa chỉ IP của máy chủ.",
+            "B. Web hosting là phần mềm dùng để thiết kế giao diện website, quản lý bố cục trang và xử lý các hiệu ứng tương tác phía người dùng.",
+            "C. Web hosting là dịch vụ cung cấp không gian lưu trữ và môi trường máy chủ để website có thể được lưu trữ, vận hành và truy cập qua Internet.",
+            "D. Web hosting là máy chủ nội bộ chỉ cho phép người dùng trong cùng một doanh nghiệp truy cập website."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Web hosting là dịch vụ cung cấp không gian lưu trữ và môi trường máy chủ để website có thể được lưu trữ, vận hành và truy cập qua Internet.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q044",
+          "type": "mc",
+          "chapter": 2,
+          "level": 3,
+          "question": "Khi cần hiển thị đầy đủ thông tin lỗi để hỗ trợ việc gỡ lỗi (debug) ứng dụng PHP trên máy phát triển, tập tin cấu hình nào thường được chỉnh sửa để bật tùy chọn display_errors?",
+          "options": [
+            "A. httpd.conf",
+            "B. php.ini",
+            "C. my.ini",
+            "D. web.config"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Tập tin cấu hình của PHP là php.ini (dùng để bật/tắt hiển thị lỗi display_errors, cấu hình dung lượng tải file upload_max_filesize, post_max_size, múi giờ)."
+        },
+        {
+          "id": "ltweb-q035",
+          "type": "mc",
+          "chapter": 2,
+          "level": 3,
+          "question": "Điều gì có khả năng xảy ra khi người dùng nhập một URL chứa số cổng (port) không đúng với cổng mà web server đang lắng nghe?",
+          "options": [
+            "A. Trình duyệt tự động thay thế bằng cổng mặc định của giao thức HTTP hoặc HTTPS.",
+            "B. Web server tự động chuyển hướng yêu cầu sang cổng đang được sử dụng.",
+            "C. Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.",
+            "D. Trang web vẫn được tải nhưng một số thành phần như hình ảnh hoặc tệp CSS không hiển thị."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q047",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Cú pháp nào dùng cho ghi chú một dòng?",
+          "options": [
+            "A. // This is a single-line comment",
+            "B. */ This is a single-line comment /*",
+            "C. * This is a single-line comment *",
+            "D. $ This is a single-line comment"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (// This is a single-line comment): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q060",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Trong PHP, ta có thể sử dụng các ký tự nào sau đây để chỉ định là giá trị chuỗi (string)?",
+          "options": [
+            "A. ' (dấu nháy đơn)",
+            "B. \" (dấu nháy kép)",
+            "C. Cả 2 đáp án trên đều đúng.",
+            "D. Không có đáp án nào đúng."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Không có đáp án nào đúng.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q068",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Trong ngôn ngữ PHP, tên biến nào dưới đây không hợp lệ?",
+          "options": [
+            "A. $my-var",
+            "B. $my_var",
+            "C. $myVar",
+            "D. $my1var"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A ($my-var): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q052",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Chọn phát biểu đúng về tập tin (file) PHP.",
+          "options": [
+            "A. File PHP chỉ được chứa mã PHP.",
+            "B. File PHP chỉ có thể chứa mã HTML.",
+            "C. File PHP chỉ có thể chứa mã JavaScript.",
+            "D. File PHP có thể chứa mã HTML, CSS, JavaScript, mã PHP."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (File PHP có thể chứa mã HTML, CSS, JavaScript, mã PHP.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q163",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Cho mảng $d được khởi tạo theo mã bên dưới. Đâu là câu lệnh đúng để xuất ra kiểu dữ liệu và giá trị của $d? $d = [\"red\", \"green\", \"blue\"];",
+          "options": [
+            "A. echo $d;",
+            "B. echo $d(var_dump);",
+            "C. echo var_dump();",
+            "D. echo var_dump($d);"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (echo var_dump($d);): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q079",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Cho đoạn code viết bằng ngôn ngữ PHP như sau: <?php $total = 10; $people = 2; echo $total / $people; ?> Kết quả hiển thị sau khi chạy chương trình là:",
+          "options": [
+            "A. 0",
+            "B. 5",
+            "C. 10/2",
+            "D. 20"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (5): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q142",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $fruits = array(); $fruits[] = \"Apple\"; $fruits[] = \"Orange\"; print_r($fruits);",
+          "options": [
+            "A. Apple, Orange",
+            "B. Array ( [0] => Apple [1] => Orange )",
+            "C. Apple",
+            "D. Orange"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Array ( [0] => Apple [1] => Orange )): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q135",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Cho mảng $products được khởi tạo và gán giá trị theo mã bên dưới. Đâu là câu lệnh dùng để xuất ra kết quả là \"Markers\" (giá trị của $products)? $products = array( 'paper' => array( 'laser' => \"Laser Printer\", 'photo' => \"Photographic Paper\"), 'pens' => array( 'ball' => \"Ball Point\", 'marker' => \"Markers\") );",
+          "options": [
+            "A. echo $products[\"marker\"];",
+            "B. echo $products[\"Markers\"];",
+            "C. echo $products[\"pens\"][\"marker\"];",
+            "D. echo $products[2][2];"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (echo $products[\"pens\"][\"marker\"];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q240",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 4; $result = $x + 2 > 5 ? $x * 2 : $x - 2; echo $result; ?>",
+          "options": [
+            "A. 2",
+            "B. 4",
+            "C. 6",
+            "D. 8"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (8): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q157",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Câu lệnh sau đây có nghĩa là gì? if (isset($_GET[\"error\"])){ echo \"<p><strong>Bạn đã nhập không đúng Password.</strong></p>\"; }",
+          "options": [
+            "A. Nếu biến $_GET[\"error\"] tồn tại thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".",
+            "B. Nếu biến $_GET[\"error\"] không tồn tại thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".",
+            "C. Nếu biến $_GET[\"error\"] có chứa chuỗi “isset” thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".",
+            "D. Nếu biến $_GET[\"error\"] không chứa chuỗi “isset” thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\"."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Nếu biến $_GET[\"error\"] tồn tại thì xuất ra chuỗi: \"Bạn đã nhập không đúng Password.\".): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q250",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 10; $y = 8; $result = --$x*3 + $y-- *2 - $x--; echo $result; ?>",
+          "options": [
+            "A. 33",
+            "B. 34",
+            "C. 36",
+            "D. 35"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (34): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+        },
+        {
+          "id": "ltweb-q241",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $total = 0; for ($i = 1; $i <= 5; $i++) { if ($i % 2 == 0) { $total += $i; } } echo $total; ?>",
+          "options": [
+            "A. 6",
+            "B. 9",
+            "C. 12",
+            "D. 15"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (6): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+        },
+        {
+          "id": "ltweb-q265",
+          "type": "mc",
+          "chapter": 4,
+          "level": 1,
+          "question": "Các mệnh đề trong câu lệnh SELECT của MySQL được viết theo thứ tự nào?",
+          "options": [
+            "A. SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT",
+            "B. SELECT -> FROM -> WHERE -> GROUP BY -> ORDER BY -> HAVING -> LIMIT",
+            "C. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> LIMIT -> ORDER BY",
+            "D. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> ORDER BY -> LIMIT"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q222",
+          "type": "mc",
+          "chapter": 4,
+          "level": 1,
+          "question": "Tên ứng dụng web nào giúp quản trị cơ sở dữ liệu MySQL?",
+          "options": [
+            "A. MySQL Manager",
+            "B. MS MySQL",
+            "C. phpMyAdmin",
+            "D. Tất cả các đáp án trên"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Tất cả các đáp án trên): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q268",
+          "type": "mc",
+          "chapter": 4,
+          "level": 2,
+          "question": "Phép kết INNER JOIN trả về kết quả nào?",
+          "options": [
+            "A. Tất cả các dòng của bảng bên trái, kể cả khi không khớp",
+            "B. Tất cả các dòng của bảng bên phải, kể cả khi không khớp",
+            "C. Chỉ các dòng có giá trị thỏa mãn điều kiện kết giữa các bảng",
+            "D. Tích Descartes của hai bảng mà không cần điều kiện"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q234",
+          "type": "mc",
+          "chapter": 4,
+          "level": 2,
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong, PhongBan). Câu lệnh nào dùng để lấy ra dữ liệu mức lương trung bình của các phòng ban?",
+          "options": [
+            "A. SELECT AVG(MucLuong) FROM NhanVien",
+            "B. SELECT PhongBan, AVG(MucLuong) FROM NhanVien",
+            "C. SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan",
+            "D. SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan, ID"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q269",
+          "type": "mc",
+          "chapter": 4,
+          "level": 3,
+          "question": "Trong truy vấn sau, tác dụng chính của AS sv và AS l là gì? SELECT * FROM SinhVien AS sv INNER JOIN Lop AS l ON sv.MaLop = l.MaLop;",
+          "options": [
+            "A. Tạo bản sao mới của các bảng để truy vấn để tên bảng ngắn gọn hơn và phân biệt được các cột giống nhau giữa hai bảng.",
+            "B. Đổi tên chính thức của các bảng trong cơ sở dữ liệu để tên bảng ngắn hơn.",
+            "C. Đặt tên đại diện tạm thời để câu truy vấn ngắn gọn và dễ phân biệt cột giữa các bảng.",
+            "D. Chuyển cấu trúc của bảng sang một định dạng khác để viết câu truy vấn ngắn gọn hơn."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q273",
+          "type": "mc",
+          "chapter": 4,
+          "level": 3,
+          "question": "Cho bảng LopHocPhan(MaLopHP, TenLopHP) và bảng Diem(MaLopHP, MaSV, Diem); Bảng LopHocPhan gồm 3 dòng dữ liệu: (ITS708_D01, 'Lập trình web') (ITS302_D02, 'Cơ sở lập trình') (ITS203_D01, 'Cơ sở dữ liệu') Bảng Diem gồm 3 dòng dữ liệu: (ITS708_D01, 'SV01',8) (ITS708_D01, 'SV02',9) (ITS203_D01, 'SV03',8) Để kết quả truy vấn luôn chứa tất cả các dòng của bảng LopHocPhan, kể cả khi không tìm thấy bản ghi tương ứng trong bảng Diem, cần sử dụng câu truy vấn nào?",
+          "options": [
+            "A. SELECT * FROM Diem AS d LEFT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+            "B. SELECT * FROM Diem AS d RIGHT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+            "C. SELECT * FROM Diem AS d INNER JOIN LopHocPhan AS lhp ON d.MaLopHP <> lhp.MaLopHP;",
+            "D. SELECT * FROM LopHocPhan AS lhp INNER JOIN Diem AS d ON lhp.MaLopHP = d.MaLopHP;"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q183",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Phát biểu nào sau đây thể hiện đúng ưu điểm của phương thức POST khi gửi dữ liệu từ Form?",
+          "options": [
+            "A. Dữ liệu luôn được nén tự động trước khi gửi đến máy chủ.",
+            "B. Yêu cầu POST luôn được xử lý nhanh hơn yêu cầu GET.",
+            "C. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.",
+            "D. Dữ liệu gửi bằng POST được bảo mật hoàn toàn mà không cần HTTPS."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q174",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Chọn phát biểu đúng về 2 phương thức GET và POST trong PHP.",
+          "options": [
+            "A. GET sẽ tạo ra key của mảng, và POST tạo ra value của mảng, để tạo thành các cặp key/value của một mảng.",
+            "B. Cả GET và POST đều tạo ra một mảng. Mảng này chứa các cặp khóa/giá trị (key/value), trong đó các khóa là name của các control của form, và giá trị là dữ liệu đầu vào từ người dùng.",
+            "C. POST được dùng để thêm dữ liệu vào query string của URL.",
+            "D. GET được dùng để biên dịch mã PHP thành mã HTML."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Cả GET và POST đều tạo ra một mảng. Mảng này chứa các cặp khóa/giá trị (key/value), trong đó các khóa là name của các control của form, và giá trị là dữ liệu đầu vào từ người dùng.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q167",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Thuộc tính (attribute) nào trong thẻ form xác định trang xử lý phía back-end của form này khi người dùng click vào nút Submit?",
+          "options": [
+            "A. method",
+            "B. name",
+            "C. action",
+            "D. id"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (action): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q191",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Phát biểu nào mô tả đúng nhất về session trong PHP?",
+          "options": [
+            "A. Session lưu toàn bộ dữ liệu trực tiếp trong tập tin HTML.",
+            "B. Session luôn tồn tại vĩnh viễn sau khi người dùng đóng trình duyệt",
+            "C. Session lưu thông tin người dùng trên web server trong một phiên làm việc",
+            "D. Session chỉ được sử dụng để lưu mật khẩu người dùng"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q293",
+          "type": "mc",
+          "chapter": 5,
+          "level": 2,
+          "question": "Vì sao nên tách đoạn mã kết nối vào một tập tin riêng như config.php?",
+          "options": [
+            "A. Để mỗi trang có thể sử dụng một cấu hình kết nối cơ sở dữ liệu khác nhau.",
+            "B. Để tái sử dụng mã kết nối và dễ dàng cập nhật cấu hình khi cần.",
+            "C. Để trình duyệt tự động lưu thông tin kết nối cơ sở dữ liệu.",
+            "D. Để các trang PHP không cần thực hiện kết nối đến cơ sở dữ liệu."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Để tái sử dụng mã kết nối và dễ dàng cập nhật cấu hình khi cần.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q298",
+          "type": "mc",
+          "chapter": 5,
+          "level": 2,
+          "question": "Trong câu lệnh sau, chuỗi \"ss\" biểu thị điều gì? $stmt->bind_param(\"ss\", $user, $pass);",
+          "options": [
+            "A. Chỉ định rằng hai tham số được liên kết với câu lệnh SQL và đều có kiểu dữ liệu chuỗi.",
+            "B. Chỉ định rằng hai tham số sẽ được lưu vào session trước khi thực thi câu lệnh SQL.",
+            "C. Chỉ định rằng hai tham số được liên kết với câu lệnh SQL và đều có kiểu dữ liệu số nguyên",
+            "D. Chỉ định rằng câu lệnh SQL sẽ được thực thi hai lần, mỗi lần với một tham số khác nhau."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        },
+        {
+          "id": "ltweb-q185",
+          "type": "mc",
+          "chapter": 5,
+          "level": 3,
+          "question": "Với form bên dưới (có URL là: https://hocweb.net/form.php), sau khi người dùng nhập ID là “19”, Name là “Huy” và nhấn nút gửi, trên thanh address, URL sẽ như thế nào? <form method=\"get\"> ID: <input type=\"text\" name=\"id\"><br> Name: <input type=\"text\" name=\"name\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. https://hocweb.net/form.php?id=19&name=Huy",
+            "B. https://hocweb.net/form.php",
+            "C. https://hocweb.net/form.php?19&Huy",
+            "D. https://hocweb.net/form.php?get=19,Huy"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (https://hocweb.net/form.php?id=19&name=Huy): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q207",
+          "type": "mc",
+          "chapter": 5,
+          "level": 3,
+          "question": "Với form bên dưới thì mảng $_POST sẽ được lưu với key và value như thế nào (khi Saab được chọn)? <form method=\"post\"> <label for=\"cars\">Choose a car:</label> <select name=\"cars\" id=\"cars\"> <option value=\"volvo\">Volvo</option> <option value=\"saab\" selected>Saab</option> </select><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Array ( [option] => Volvo )",
+            "B. Array ( [option] => Saab )",
+            "C. Array ( [cars] => volvo )",
+            "D. Array ( [cars] => saab )"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        }
+      ]
+    },
+    {
+      "variant": 2,
+      "questions": [
+        {
+          "id": "ltweb-q025",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Trong mô hình Client-Server, Client được hiểu là gì?",
+          "options": [
+            "A. Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.",
+            "B. Client là người sử dụng trực tiếp truy cập website và thực hiện các thao tác trên giao diện.",
+            "C. Client là máy chủ có nhiệm vụ tiếp nhận yêu cầu, xử lý dữ liệu và trả kết quả cho người dùng.",
+            "D. Client là chương trình phía Server dùng để biên dịch hoặc thực thi mã nguồn như PHP, ASP.NET hoặc JSP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q011",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Khi máy chủ trả về mã trạng thái (HTTP Status Code) 200 trong HTTP Response, điều này có ý nghĩa gì?",
+          "options": [
+            "A. Máy chủ xử lý yêu cầu thành công.",
+            "B. Máy chủ không tìm thấy tài nguyên yêu cầu.",
+            "C. Máy chủ đang tiếp tục xử lý yêu cầu.",
+            "D. Máy chủ gặp lỗi khi xử lý yêu cầu."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Mã trạng thái HTTP 200 (OK) cho biết web server đã tiếp nhận và xử lý yêu cầu HTTP thành công."
+        },
+        {
+          "id": "ltweb-q006",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Giao thức nào sau đây giúp truyền tải siêu văn bản?",
+          "options": [
+            "A. FTP",
+            "B. SMTP",
+            "C. HTTP",
+            "D. POP3"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (HTTP): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q024",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Liên kết nào sau đây là URL?",
+          "options": [
+            "A. ftp://ftp.hp.com/pub/caps-softpaq/cmit/softpaq/setup.exe",
+            "B. http://buh.edu.vn/gioi-thieu/danh-ba-don-vi.html",
+            "C. https://www.youtube.com/watch?v=eODJpny8Yxs&feature=share",
+            "D. Cả 3 link trên đều là URL."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q010",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Phát biểu nào dưới đây là đúng với website động?",
+          "options": [
+            "A. URL của mọi trang phải cố định và không thay đổi.",
+            "B. Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.",
+            "C. Chỉ sử dụng HTML và không cần xử lý trên máy chủ.",
+            "D. Mọi phản hồi từ máy chủ đều là tập tin tĩnh."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Nội dung phản hồi có thể khác nhau tùy người dùng hoặc thời điểm truy cập.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q018",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Đâu là quá trình sau khi trình duyệt yêu cầu truy cập file PHP?",
+          "options": [
+            "A. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho trình duyệt.",
+            "B. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Client sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho Web Server.",
+            "C. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và không cần xử lý gì mà sẽ trả ngay kết quả cho trình duyệt.",
+            "D. Khi trình duyệt web yêu cầu truy cập một file PHP, Web Client sẽ gọi đến file PHP đó, và không cần xử lý gì mà sẽ hiển thị ngay kết quả lên trình duyệt."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Khi trình duyệt web yêu cầu truy cập một file PHP, Web Server sẽ gọi đến file PHP đó, và trình biên dịch PHP sẽ xử lý mã PHP trong file đó rồi mới trả về mã HTML cho trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q015",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về mô hình hoạt động của website.",
+          "options": [
+            "A. Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.",
+            "B. Website hoạt động theo mô hình Client/Server, trong đó Client trực tiếp truy xuất cơ sở dữ liệu để lấy dữ liệu và hiển thị nội dung website cho người dùng.",
+            "C. Website hoạt động theo mô hình Client/Server, trong đó Server chủ yếu lưu trữ giao diện website, còn việc xử lý yêu cầu và quản lý dữ liệu được thực hiện hoàn toàn ở phía Client.",
+            "D. Website hoạt động theo mô hình Client/Server, trong đó Web Server và Database Server luôn phải được triển khai trên cùng một máy chủ vật lý để phục vụ nhiều người dùng truy cập đồng thời."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q019",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về lập trình front-end.",
+          "options": [
+            "A. Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.",
+            "B. Lập trình front end chủ yếu xử lý việc lưu trữ dữ liệu, xác thực người dùng và truy vấn cơ sở dữ liệu trên máy chủ.",
+            "C. Lập trình front end chỉ bao gồm việc thiết kế bố cục giao diện bằng HTML và CSS, không liên quan đến xử lý tương tác bằng JavaScript.",
+            "D. Lập trình front end là quá trình xây dựng toàn bộ hệ thống website, bao gồm giao diện, máy chủ, cơ sở dữ liệu và hạ tầng triển khai."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q032",
+          "type": "mc",
+          "chapter": 2,
+          "level": 1,
+          "question": "Bộ phần mềm web server WAMP được cài đặt trên hệ điều hành nào dưới đây?",
+          "options": [
+            "A. Windows",
+            "B. Mac",
+            "C. Linux",
+            "D. Unix"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Windows): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q040",
+          "type": "mc",
+          "chapter": 2,
+          "level": 1,
+          "question": "Trong XAMPP, thành phần Apache có vai trò chính là gì?",
+          "options": [
+            "A. Quản lý cơ sở dữ liệu.",
+            "B. Xử lý và phản hồi các yêu cầu HTTP từ trình duyệt.",
+            "C. Biên dịch mã nguồn PHP thành mã máy.",
+            "D. Quản lý tài khoản người dùng của hệ điều hành."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Xử lý và phản hồi các yêu cầu HTTP từ trình duyệt.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q038",
+          "type": "mc",
+          "chapter": 2,
+          "level": 2,
+          "question": "Trong Apache HTTP Server, tập tin cấu hình nào thường được sử dụng để thay đổi cổng (port) lắng nghe của web server, ví dụ thay đổi từ cổng 80 sang một cổng khác?",
+          "options": [
+            "A. httpd.conf",
+            "B. php.ini",
+            "C. web.config",
+            "D. server.xml"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Tập tin cấu hình chính của Apache HTTP Server là httpd.conf (dùng để đổi cổng Listen 80/8080, ServerName, DocumentRoot)."
+        },
+        {
+          "id": "ltweb-q043",
+          "type": "mc",
+          "chapter": 2,
+          "level": 2,
+          "question": "Những dịch vụ nào thường được khởi động trong WampServer để một ứng dụng web PHP có thể hoạt động đầy đủ?",
+          "options": [
+            "A. Apache và MySQL",
+            "B. Apache và HTTP",
+            "C. MySQL và HTTP",
+            "D. HTTP và DHCP"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Apache và MySQL): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q035",
+          "type": "mc",
+          "chapter": 2,
+          "level": 3,
+          "question": "Điều gì có khả năng xảy ra khi người dùng nhập một URL chứa số cổng (port) không đúng với cổng mà web server đang lắng nghe?",
+          "options": [
+            "A. Trình duyệt tự động thay thế bằng cổng mặc định của giao thức HTTP hoặc HTTPS.",
+            "B. Web server tự động chuyển hướng yêu cầu sang cổng đang được sử dụng.",
+            "C. Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.",
+            "D. Trang web vẫn được tải nhưng một số thành phần như hình ảnh hoặc tệp CSS không hiển thị."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q034",
+          "type": "mc",
+          "chapter": 2,
+          "level": 3,
+          "question": "Đáp án nào dưới đây là giải pháp phù hợp nhất khi muốn cài đặt Apache Web Server trên một máy chủ đã được cài đặt và đang sử dụng IIS?",
+          "options": [
+            "A. Gỡ bỏ IIS trước khi cài đặt Apache nhằm tránh các lỗi cấu hình phát sinh.",
+            "B. Tạm thời vô hiệu hóa tường lửa của hệ điều hành trong quá trình cài đặt Apache.",
+            "C. Thay đổi cổng mặc định của Apache hoặc IIS để tránh xung đột dịch vụ.",
+            "D. Cấu hình Apache sử dụng chung cổng 80 với IIS vì hệ điều hành có thể tự động phân chia lưu lượng truy cập đến từng dịch vụ."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Thay đổi cổng mặc định của Apache hoặc IIS để tránh xung đột dịch vụ.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q140",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Đâu là mã dùng để kiểm tra xem biến $a có phải là một mảng hay không? $a = array(\"red\", \"green\", \"blue\");",
+          "options": [
+            "A. array_key_exists($a)",
+            "B. array_exists($a)",
+            "C. array_is($a)",
+            "D. is_array($a)"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (is_array($a)): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q162",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Phát biểu nào sau đây là đúng về cách để xuất ra chuỗi văn bản trong PHP?",
+          "options": [
+            "A. Trong PHP, cách duy nhất để xuất ra văn bản là sử dụng echo.",
+            "B. Trong PHP, cách duy nhất để xuất ra văn bản là sử dụng print.",
+            "C. Trong PHP, ta có thể sử dụng echo, hoặc print để xuất ra văn bản.",
+            "D. Trong PHP, không có cách nào để xuất ra văn bản."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Trong PHP, ta có thể sử dụng echo, hoặc print để xuất ra văn bản.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q070",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Trong ngôn ngữ PHP, từ nào dưới đây là từ khoá (key word)?",
+          "options": [
+            "A. _myFunction",
+            "B. $myFunction",
+            "C. function",
+            "D. MyFunction"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (function): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q046",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Đoạn mã nguồn được viết bởi PHP (PHP server script) được bao quanh bởi cặp thẻ nào sau đây?",
+          "options": [
+            "A. <script>...</script>",
+            "B. <?php...?>",
+            "C. <?php>...</?>",
+            "D. <&>...</&>"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (<?php...?>): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q237",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Phát biểu nào đúng nhất về hằng trong PHP?",
+          "options": [
+            "A. Tên hằng bắt buộc phải bắt đầu bằng dấu $",
+            "B. Giá trị của hằng có thể thay đổi bằng toán tử gán",
+            "C. Có thể khai báo hằng bằng define() hoặc const",
+            "D. const có thể được sử dụng trong mọi khối if"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Có thể khai báo hằng bằng define() hoặc const): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q163",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Cho mảng $d được khởi tạo theo mã bên dưới. Đâu là câu lệnh đúng để xuất ra kiểu dữ liệu và giá trị của $d? $d = [\"red\", \"green\", \"blue\"];",
+          "options": [
+            "A. echo $d;",
+            "B. echo $d(var_dump);",
+            "C. echo var_dump();",
+            "D. echo var_dump($d);"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (echo var_dump($d);): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q144",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $arrCourses = array (); $arrCourses[101] = [ 'name' => \"Thiết kế web\", 'credits' => \"3\" ]; $arrCourses[201] = [ 'name' => \"Lập trình web\", 'credits' => \"4\" ]; echo $arrCourses[201]['name'];",
+          "options": [
+            "A. 3",
+            "B. 4",
+            "C. Thiết kế web",
+            "D. Lập trình web"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Lập trình web): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q143",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $students = array(); $students[\"name\"] = \"Linh\"; $students[\"course\"] = \"Lập trình web\"; print_r($students);",
+          "options": [
+            "A. Linh",
+            "B. Lập trình web",
+            "C. Array ( [name] => Linh [course] => Lập trình web )",
+            "D. Linh, Lập trình web"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Array ( [name] => Linh [course] => Lập trình web )): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q127",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Sau khi chạy đoạn mã PHP dưới đây, kết quả nào sẽ được hiển thị? $subjects = [\"Web Programming\", \"Database\", \"SEO\"]; sort($subjects); foreach ($subjects as $sub) { echo $sub . \"<br>\"; }",
+          "options": [
+            "A. Web Programming Database SEO",
+            "B. SEO Database Web Programming",
+            "C. Database SEO Web Programming",
+            "D. SEO Web Programming Database"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Database SEO Web Programming): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+        },
+        {
+          "id": "ltweb-q261",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Kết quả của đoạn mã sau là gì? <?php $numbers = [4, 7, 2, 9, 5]; $result = $numbers[0]; foreach($numbers as $value){ if($value > $result) $result = $value; } echo $result - $numbers[2]; ?>",
+          "options": [
+            "A. 4",
+            "B. 5",
+            "C. 7",
+            "D. 9"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (7): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+        },
+        {
+          "id": "ltweb-q097",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Đâu là câu lệnh PHP đúng để hiển thị \"Hello World\" khi $a không bằng $b?",
+          "options": [
+            "A. if ($a == $b) { echo \"Hello World\"; }",
+            "B. if ($a != $b) { echo \"Hello World\"; }",
+            "C. if ($a <> $b); { echo \"Hello World\"; }",
+            "D. if ($a =! $b) { echo \"Hello World\"; }"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (if ($a != $b) { echo \"Hello World\"; }): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q258",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Kết quả của đoạn mã sau là gì? <?php $arr = [2, 4, 6, 8]; $result = 1; foreach($arr as $value){ if($value % 4 == 0) $result *= $value; } echo $result; ?>",
+          "options": [
+            "A. 8",
+            "B. 16",
+            "C. 32",
+            "D. 64"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong PHP, toán tử '==' chỉ so sánh giá trị (có tự động ép kiểu), còn '===' so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu (tương tự '!=' so sánh giá trị và '!==' so sánh cả giá trị lẫn kiểu)."
+        },
+        {
+          "id": "ltweb-q222",
+          "type": "mc",
+          "chapter": 4,
+          "level": 1,
+          "question": "Tên ứng dụng web nào giúp quản trị cơ sở dữ liệu MySQL?",
+          "options": [
+            "A. MySQL Manager",
+            "B. MS MySQL",
+            "C. phpMyAdmin",
+            "D. Tất cả các đáp án trên"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Tất cả các đáp án trên): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q265",
+          "type": "mc",
+          "chapter": 4,
+          "level": 1,
+          "question": "Các mệnh đề trong câu lệnh SELECT của MySQL được viết theo thứ tự nào?",
+          "options": [
+            "A. SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT",
+            "B. SELECT -> FROM -> WHERE -> GROUP BY -> ORDER BY -> HAVING -> LIMIT",
+            "C. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> LIMIT -> ORDER BY",
+            "D. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> ORDER BY -> LIMIT"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q266",
+          "type": "mc",
+          "chapter": 4,
+          "level": 2,
+          "question": "Sự khác biệt đúng nhất giữa WHERE và HAVING là gì?",
+          "options": [
+            "A. WHERE chỉ dùng với chuỗi, còn HAVING chỉ dùng với số",
+            "B. WHERE lọc các bộ dữ liệu trước khi gom nhóm, còn HAVING lọc các nhóm sau GROUP BY",
+            "C. HAVING luôn phải xuất hiện trước GROUP BY",
+            "D. WHERE và HAVING hoàn toàn tương đương trong mọi trường hợp"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+        },
+        {
+          "id": "ltweb-q235",
+          "type": "mc",
+          "chapter": 4,
+          "level": 2,
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, từ khóa nào có thể được sử dụng đối với phép kết ngoài?",
+          "options": [
+            "A. $_studentName",
+            "B. $student_name2",
+            "C. $2studentName",
+            "D. $StudentName"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A ($_studentName): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q280",
+          "type": "mc",
+          "chapter": 4,
+          "level": 3,
+          "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien ORDER BY MaSV LIMIT 1, 3;",
+          "options": [
+            "A. SV01, SV02",
+            "B. SV01, SV02, SV03",
+            "C. SV02, SV03, SV04",
+            "D. SV03, SV04, SV05"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SV02, SV03, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q274",
+          "type": "mc",
+          "chapter": 4,
+          "level": 3,
+          "question": "Cho bảng SinhVien (MaSinhVien, MaLop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'CNTT08') ('SV02', 'CNTT09') ('SV03', 'CNTT08') ('SV04', 'CNTT09') ('SV05', 'CNTT08') Kết quả câu truy vấn sau là gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien GROUP BY MaLop;",
+          "options": [
+            "A. Trả về 2 dòng dữ liệu: ('CNTT08',5) ('CNTT09',5)",
+            "B. Trả về 2 dòng dữ liệu: ('CNTT08',2) ('CNTT09',3)",
+            "C. Trả về 2 dòng dữ liệu: ('CNTT08',3) ('CNTT09',2)",
+            "D. Trả về 2 dòng dữ liệu: ('CNTT08',1) ('CNTT09',1)"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+        },
+        {
+          "id": "ltweb-q190",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Trong PHP, khóa (key) của mảng $_GET hoặc $_POST được xác định dựa trên thuộc tính nào của phần tử trong Form?",
+          "options": [
+            "A. Thuộc tính type",
+            "B. Thuộc tính name",
+            "C. Thuộc tính method",
+            "D. Thuộc tính id"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Thuộc tính name): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q181",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Trong HTML, khi thuộc tính method không được khai báo trong thẻ <form>, phương thức gửi dữ liệu mặc định là gì?",
+          "options": [
+            "A. GET",
+            "B. POST",
+            "C. REQUEST",
+            "D. HTTP"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (GET): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q175",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Phát biểu nào sau đây mô tả đúng nhất về phương thức GET khi gửi dữ liệu từ Form?",
+          "options": [
+            "A. Dữ liệu thường được đưa vào URL dưới dạng chuỗi truy vấn và phù hợp với dữ liệu không nhạy cảm",
+            "B. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) và không xuất hiện trên URL",
+            "C. Dữ liệu gửi bằng GET luôn được mã hóa và bảo mật tự động",
+            "D. GET phù hợp để gửi mật khẩu vì dữ liệu không được hiển thị trên URL"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Dữ liệu thường được đưa vào URL dưới dạng chuỗi truy vấn và phù hợp với dữ liệu không nhạy cảm): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q283",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Cho đoạn lệnh: setcookie( \"user_login\", \"An\", time() + 5 * 60 ); Cookie được thiết lập tồn tại trong khoảng thời gian nào?",
+          "options": [
+            "A. 5 giây",
+            "B. 60 giây",
+            "C. 5 phút",
+            "D. 5 giờ"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q213",
+          "type": "mc",
+          "chapter": 5,
+          "level": 2,
+          "question": "Đoạn mã sau có tác dụng gì? <?php setcookie(\"user\", \"\", time() - 3600, \"/\"); ?>",
+          "options": [
+            "A. Xóa cookie có tên user",
+            "B. Đổi giá trị cookie thành số 3600",
+            "C. Gia hạn cookie thêm một giờ",
+            "D. Tạo cookie chỉ tồn tại trong một giờ"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        },
+        {
+          "id": "ltweb-q166",
+          "type": "mc",
+          "chapter": 5,
+          "level": 2,
+          "question": "Trong PHP, câu lệnh nào sau đây dùng để lấy giá trị từ ô nhập liệu có thuộc tính name=\"keyword\" trong một Form được gửi bằng phương thức POST?",
+          "options": [
+            "A. Request.QueryString(\"keyword \")",
+            "B. $_REQUEST.Form[\"keyword \"]",
+            "C. $_GET[\"keyword \"]",
+            "D. $_POST[\"keyword\"]"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D ($_POST[\"keyword\"]): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q180",
+          "type": "mc",
+          "chapter": 5,
+          "level": 3,
+          "question": "Với URL \"https://hocweb.net/search.php?id=12&subject=PHP\" thì dữ liệu được lưu như thế nào?",
+          "options": [
+            "A. Dữ liệu được lưu như sau: $id = 12; $subject = \"PHP\";",
+            "B. Dữ liệu sẽ được lưu như sau: $_POST = 12; $_GET = \"PHP\";",
+            "C. Dữ liệu được lưu trong biến $_POST dưới dạng: $_POST = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");",
+            "D. Dữ liệu được lưu trong biến $_GET dưới dạng: $_GET = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Dữ liệu được lưu trong biến $_GET dưới dạng: $_GET = array(\"id\"=>\"12\", \"subject\"=>\"PHP\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q210",
+          "type": "mc",
+          "chapter": 5,
+          "level": 3,
+          "question": "Đoạn mã sau thực hiện chức năng gì? <?php session_start(); if (isset($_SESSION[\"user\"])) { echo \"Xin chào \" . $_SESSION[\"user\"]; } else { header(\"Location:login.php\"); } ?>",
+          "options": [
+            "A. Luôn chuyển người dùng đến login.php",
+            "B. Hiển thị lời chào nếu session tồn tại, ngược lại chuyển đến trang login.php",
+            "C. Tạo session có tên user",
+            "D. Xóa tài khoản đang đăng nhập"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Session lưu dữ liệu trạng thái trên Web Server (bảo mật hơn, cần gọi session_start() trước khi dùng $_SESSION, tự hủy khi đóng trình duyệt hoặc hết phiên), còn Cookie lưu trên trình duyệt người dùng bằng hàm setcookie() với thời gian hết hạn xác định."
+        }
+      ]
+    },
+    {
+      "variant": 3,
+      "questions": [
+        {
+          "id": "ltweb-q021",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Phát biểu nào sau đây là đúng về Web Server?",
+          "options": [
+            "A. Web Server là phần mềm dùng để lưu trữ mã HTML, không tham gia vào quá trình xử lý yêu cầu từ trình duyệt.",
+            "B. Web Server luôn trả về mã HTML cho trình duyệt, không trả về dữ liệu dạng CSS, JavaScript, hình ảnh, JSON hoặc tập tin khác.",
+            "C. Web Server là chương trình chạy trên trình duyệt để gửi yêu cầu HTTP đến máy chủ và hiển thị nội dung website.",
+            "D. Web Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Web Client, xử lý hoặc chuyển tiếp yêu cầu và trả phản hồi tương ứng."
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Web Server là máy chủ hoặc hệ thống máy chủ có nhiệm vụ tiếp nhận yêu cầu từ Web Client, xử lý hoặc chuyển tiếp yêu cầu và trả phản hồi tương ứng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q005",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "URL được viết tắt bởi từ nào sau đây?",
+          "options": [
+            "A. Unique Resource Location",
+            "B. Uniform Resource Location",
+            "C. Uniform Resource Locator",
+            "D. Unique Resource Locator"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q025",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "Trong mô hình Client-Server, Client được hiểu là gì?",
+          "options": [
+            "A. Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.",
+            "B. Client là người sử dụng trực tiếp truy cập website và thực hiện các thao tác trên giao diện.",
+            "C. Client là máy chủ có nhiệm vụ tiếp nhận yêu cầu, xử lý dữ liệu và trả kết quả cho người dùng.",
+            "D. Client là chương trình phía Server dùng để biên dịch hoặc thực thi mã nguồn như PHP, ASP.NET hoặc JSP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Client là thiết bị hoặc phần mềm phía người dùng dùng để gửi yêu cầu đến Server và nhận kết quả phản hồi.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q023",
+          "type": "mc",
+          "chapter": 1,
+          "level": 1,
+          "question": "URL là gì?",
+          "options": [
+            "A. Là giao thức truyền tải siêu văn bản.",
+            "B. Là đường dẫn chỉ tới một trang web cụ thể trên Internet.",
+            "C. Là địa chỉ của một máy tính trên internet.",
+            "D. Là giao thức truyền tải web."
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: Theo cấu trúc URL scheme://host[:port]/path?querystring, phần sau dấu ':' là cổng (port, mặc định HTTP là 80), sau '/' là đường dẫn (path) và sau '?' là chuỗi truy vấn (query string) truyền tham số."
+        },
+        {
+          "id": "ltweb-q015",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về mô hình hoạt động của website.",
+          "options": [
+            "A. Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.",
+            "B. Website hoạt động theo mô hình Client/Server, trong đó Client trực tiếp truy xuất cơ sở dữ liệu để lấy dữ liệu và hiển thị nội dung website cho người dùng.",
+            "C. Website hoạt động theo mô hình Client/Server, trong đó Server chủ yếu lưu trữ giao diện website, còn việc xử lý yêu cầu và quản lý dữ liệu được thực hiện hoàn toàn ở phía Client.",
+            "D. Website hoạt động theo mô hình Client/Server, trong đó Web Server và Database Server luôn phải được triển khai trên cùng một máy chủ vật lý để phục vụ nhiều người dùng truy cập đồng thời."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Website hoạt động theo mô hình Client/Server, trong đó Client gửi yêu cầu đến Server; Server xử lý yêu cầu, có thể truy xuất dữ liệu cần thiết và trả kết quả phản hồi cho Client.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q014",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng về giao thức HTTP.",
+          "options": [
+            "A. Giao thức HTTP là tập hợp các quy định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông, …) giữa Web Server và trình duyệt Web.",
+            "B. HTTP là địa chỉ của một trang web.",
+            "C. HTTP là một giao thức truyền tải tập tin từ máy tính này đến máy tính khác thông qua một mạng TCP hoặc qua mạng Internet.",
+            "D. HTTP là tên gọi khác của PHP."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Giao thức HTTP là tập hợp các quy định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông, …) giữa Web Server và trình duyệt Web.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q017",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về website động.",
+          "options": [
+            "A. Website động là website có giao diện tự động thay đổi theo thiết bị truy cập, ví dụ máy tính, máy tính bảng hoặc điện thoại.",
+            "B. Website động là website cho phép người dùng xem nhiều loại nội dung như văn bản, hình ảnh, video và biểu mẫu nhập liệu.",
+            "C. Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.",
+            "D. Website động là website có nội dung thường xuyên được cập nhật bởi người quản trị hoặc lập trình viên."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Website động là website có khả năng thay đổi nội dung hiển thị dựa trên trạng thái đăng nhập, quyền truy cập hoặc các thao tác của người dùng.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q019",
+          "type": "mc",
+          "chapter": 1,
+          "level": 2,
+          "question": "Chọn phát biểu đúng nhất về lập trình front-end.",
+          "options": [
+            "A. Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.",
+            "B. Lập trình front end chủ yếu xử lý việc lưu trữ dữ liệu, xác thực người dùng và truy vấn cơ sở dữ liệu trên máy chủ.",
+            "C. Lập trình front end chỉ bao gồm việc thiết kế bố cục giao diện bằng HTML và CSS, không liên quan đến xử lý tương tác bằng JavaScript.",
+            "D. Lập trình front end là quá trình xây dựng toàn bộ hệ thống website, bao gồm giao diện, máy chủ, cơ sở dữ liệu và hạ tầng triển khai."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Lập trình front end tập trung vào việc xây dựng phần giao diện và các thành phần tương tác mà người dùng nhìn thấy và thao tác trực tiếp trên trình duyệt.): Trong mô hình Client - Server, trình duyệt (Web Client) gửi HTTP Request đến Web Server; Web tĩnh trả trực tiếp HTML/CSS, còn Web động thực thi mã phía server và kết nối CSDL trước khi trả kết quả HTML."
+        },
+        {
+          "id": "ltweb-q032",
+          "type": "mc",
+          "chapter": 2,
+          "level": 1,
+          "question": "Bộ phần mềm web server WAMP được cài đặt trên hệ điều hành nào dưới đây?",
+          "options": [
+            "A. Windows",
+            "B. Mac",
+            "C. Linux",
+            "D. Unix"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Windows): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q039",
+          "type": "mc",
+          "chapter": 2,
+          "level": 1,
+          "question": "Thành phần nào dưới đây không thuộc bộ phần mềm WAMP?",
+          "options": [
+            "A. Apache",
+            "B. PHP",
+            "C. MySQL",
+            "D. IIS"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (IIS): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q038",
+          "type": "mc",
+          "chapter": 2,
+          "level": 2,
+          "question": "Trong Apache HTTP Server, tập tin cấu hình nào thường được sử dụng để thay đổi cổng (port) lắng nghe của web server, ví dụ thay đổi từ cổng 80 sang một cổng khác?",
+          "options": [
+            "A. httpd.conf",
+            "B. php.ini",
+            "C. web.config",
+            "D. server.xml"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Tập tin cấu hình chính của Apache HTTP Server là httpd.conf (dùng để đổi cổng Listen 80/8080, ServerName, DocumentRoot)."
+        },
+        {
+          "id": "ltweb-q043",
+          "type": "mc",
+          "chapter": 2,
+          "level": 2,
+          "question": "Những dịch vụ nào thường được khởi động trong WampServer để một ứng dụng web PHP có thể hoạt động đầy đủ?",
+          "options": [
+            "A. Apache và MySQL",
+            "B. Apache và HTTP",
+            "C. MySQL và HTTP",
+            "D. HTTP và DHCP"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Apache và MySQL): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q034",
+          "type": "mc",
+          "chapter": 2,
+          "level": 3,
+          "question": "Đáp án nào dưới đây là giải pháp phù hợp nhất khi muốn cài đặt Apache Web Server trên một máy chủ đã được cài đặt và đang sử dụng IIS?",
+          "options": [
+            "A. Gỡ bỏ IIS trước khi cài đặt Apache nhằm tránh các lỗi cấu hình phát sinh.",
+            "B. Tạm thời vô hiệu hóa tường lửa của hệ điều hành trong quá trình cài đặt Apache.",
+            "C. Thay đổi cổng mặc định của Apache hoặc IIS để tránh xung đột dịch vụ.",
+            "D. Cấu hình Apache sử dụng chung cổng 80 với IIS vì hệ điều hành có thể tự động phân chia lưu lượng truy cập đến từng dịch vụ."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Thay đổi cổng mặc định của Apache hoặc IIS để tránh xung đột dịch vụ.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q035",
+          "type": "mc",
+          "chapter": 2,
+          "level": 3,
+          "question": "Điều gì có khả năng xảy ra khi người dùng nhập một URL chứa số cổng (port) không đúng với cổng mà web server đang lắng nghe?",
+          "options": [
+            "A. Trình duyệt tự động thay thế bằng cổng mặc định của giao thức HTTP hoặc HTTPS.",
+            "B. Web server tự động chuyển hướng yêu cầu sang cổng đang được sử dụng.",
+            "C. Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.",
+            "D. Trang web vẫn được tải nhưng một số thành phần như hình ảnh hoặc tệp CSS không hiển thị."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Trình duyệt không thể thiết lập kết nối với web server và hiển thị thông báo lỗi.): Bộ công cụ XAMPP/WAMP/MAMP đóng gói sẵn Apache Web Server, PHP và MySQL/MariaDB kèm phpMyAdmin giúp tạo môi trường máy chủ cục bộ (localhost) để phát triển và kiểm thử ứng dụng web."
+        },
+        {
+          "id": "ltweb-q070",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Trong ngôn ngữ PHP, từ nào dưới đây là từ khoá (key word)?",
+          "options": [
+            "A. _myFunction",
+            "B. $myFunction",
+            "C. function",
+            "D. MyFunction"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (function): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q146",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Câu lệnh nào dưới đây để khai báo sử dụng mã nguồn từ file “header.php”?",
+          "options": [
+            "A. <?php include \"header.php\"; ?>",
+            "B. <!-- include \"header.php\"; -->",
+            "C. <= include \"header.php\"; ?>",
+            "D. <php include = \"header.php\";"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (<?php include \"header.php\"; ?>): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q058",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Cú pháp ngôn ngữ PHP gần giống nhất với:",
+          "options": [
+            "A. JavaScript",
+            "B. Perl và C",
+            "C. VBScript",
+            "D. HTML"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Perl và C): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q123",
+          "type": "mc",
+          "chapter": 3,
+          "level": 1,
+          "question": "Đâu là đoạn mã PHP đúng để khai báo một mảng kết hợp, trong đó mã sinh viên là khóa (key) và họ tên sinh viên là giá trị (value)?",
+          "options": [
+            "A. $students = [\"SV001\" - \"Nguyen Van An\", \"SV002\" - \"Tran Thi Binh\"];",
+            "B. $students = [\"SV001\" -> \"Nguyen Van An\", \"SV002\" -> \"Tran Thi Binh\"];",
+            "C. $students = [\"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\"];",
+            "D. $students = [\"SV001\" = \"Nguyen Van An\", \"SV002\" = \"Tran Thi Binh\"];"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C ($students = [\"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\"];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q142",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $fruits = array(); $fruits[] = \"Apple\"; $fruits[] = \"Orange\"; print_r($fruits);",
+          "options": [
+            "A. Apple, Orange",
+            "B. Array ( [0] => Apple [1] => Orange )",
+            "C. Apple",
+            "D. Orange"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Array ( [0] => Apple [1] => Orange )): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q134",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $products = array( 'pens' => array( 'ball' => \"Ball Point\", 'marker' => \"Markers\"), 'paper' => array( 'laser' => \"Laser Printer\", 'photo' => \"Photographic Paper\") ); echo $products[\"paper\"][\"photo\"];",
+          "options": [
+            "A. Laser Printer",
+            "B. Photographic Paper",
+            "C. Markers",
+            "D. paper photo"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Photographic Paper): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q237",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Phát biểu nào đúng nhất về hằng trong PHP?",
+          "options": [
+            "A. Tên hằng bắt buộc phải bắt đầu bằng dấu $",
+            "B. Giá trị của hằng có thể thay đổi bằng toán tử gán",
+            "C. Có thể khai báo hằng bằng define() hoặc const",
+            "D. const có thể được sử dụng trong mọi khối if"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Có thể khai báo hằng bằng define() hoặc const): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q145",
+          "type": "mc",
+          "chapter": 3,
+          "level": 2,
+          "question": "Cho mảng $arrCourses được khởi tạo và thêm phần tử theo mã bên dưới. Đâu là câu lệnh dùng để xuất ra giá trị \"90\" của mảng $arrCourses (nghĩa là xuất ra kết quả là \"90\")? $arrCourses = array (); $arrCourses[301] = [ 'name' => \"Cơ sở lập trình\", 'duration' => \"90\" ]; $arrCourses[401] = [ 'name' => \"Cấu trúc dữ liệu và giải thuật\", 'duration' => \"100\" ];",
+          "options": [
+            "A. echo $arrCourses[401]['duration'];",
+            "B. echo $arrCourses[301]['duration'];",
+            "C. echo $arrCourses['duration'];",
+            "D. echo $arrCourses[301];"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (echo $arrCourses[301]['duration'];): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q249",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Sau khi chạy đoạn mã PHP bên dưới, kết quả nào sẽ được hiển thị? <?php $x = 10; $result = --$x / 3 + 2; echo $result . \"-\" . $x; ?>",
+          "options": [
+            "A. 5-9",
+            "B. 5-10",
+            "C. 6-9",
+            "D. 6-10"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (5-9): Toán tử tiền tố (++$x, --$x) tăng/giảm giá trị biến trước rồi mới trả về giá trị trong biểu thức; còn toán tử hậu tố ($x++, $x--) trả về giá trị hiện tại cho biểu thức trước rồi mới tăng/giảm biến."
+        },
+        {
+          "id": "ltweb-q106",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào mô tả đúng nhất kết quả được hiển thị? $students = [ \"SV001\" => \"Nguyen Van An\", \"SV002\" => \"Tran Thi Binh\", \"SV003\" => \"Le Minh Chau\" ]; foreach ($students as $studentId => $studentName) { echo \"$studentId: $studentName<br>\"; }",
+          "options": [
+            "A. $students",
+            "B. $studentId: $studentName",
+            "C. SV001: Nguyen Van An SV002: Tran Thi Binh SV003: Le Minh Chau",
+            "D. SV001 => Nguyen Van An SV002 => Tran Thi Binh SV003 => Le Minh Chau"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (SV001: Nguyen Van An SV002: Tran Thi Binh SV003: Le Minh Chau): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+        },
+        {
+          "id": "ltweb-q125",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Theo đoạn mã PHP dưới đây, lựa chọn nào cho kết quả đúng nhất? $age = array(\"Phong\"=>\"19\", \"Vy\"=>\"20\", \"Ly\"=>\"21\"); echo \"Ly is \" . $age['Ly'] . \" years old.\";",
+          "options": [
+            "A. Ly is 21 years old.",
+            "B. 21",
+            "C. Ly is Ly years old.",
+            "D. Ly is years old."
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (Ly is 21 years old.): Theo quy tắc cú pháp PHP (Chương 3), mã PHP đặt trong <?php ... ?>, câu lệnh kết thúc bằng ';', biến bắt đầu bằng '$' + chữ cái hoặc '_' và phân biệt chữ hoa/thường."
+        },
+        {
+          "id": "ltweb-q108",
+          "type": "mc",
+          "chapter": 3,
+          "level": 3,
+          "question": "Trong đoạn mã PHP dưới đây, câu lệnh $x += 10; có tác dụng gì? $x = 0; while ($x <= 100) { echo \"The number is: $x <br>\"; $x += 10; }",
+          "options": [
+            "A. Tăng giá trị của $x thêm 10 khi $x lớn hơn 100.",
+            "B. Tăng giá trị của $x thêm 10 chỉ ở lần lặp đầu tiên.",
+            "C. Tăng giá trị của $x thêm 10 sau mỗi lần lặp.",
+            "D. Lặp lại câu lệnh echo thêm 10 lần."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Tăng giá trị của $x thêm 10 sau mỗi lần lặp.): Vòng lặp for/while kiểm tra điều kiện trước mỗi lần lặp; do...while thực thi ít nhất 1 lần trước khi kiểm tra điều kiện; foreach duyệt qua từng phần tử của mảng. Lệnh break thoát hẳn vòng lặp, còn continue bỏ qua phần còn lại của lần lặp hiện tại để sang lần lặp kế tiếp."
+        },
+        {
+          "id": "ltweb-q222",
+          "type": "mc",
+          "chapter": 4,
+          "level": 1,
+          "question": "Tên ứng dụng web nào giúp quản trị cơ sở dữ liệu MySQL?",
+          "options": [
+            "A. MySQL Manager",
+            "B. MS MySQL",
+            "C. phpMyAdmin",
+            "D. Tất cả các đáp án trên"
+          ],
+          "correct": "D",
+          "explanation": "Đáp án đúng là D (Tất cả các đáp án trên): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q265",
+          "type": "mc",
+          "chapter": 4,
+          "level": 1,
+          "question": "Các mệnh đề trong câu lệnh SELECT của MySQL được viết theo thứ tự nào?",
+          "options": [
+            "A. SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT",
+            "B. SELECT -> FROM -> WHERE -> GROUP BY -> ORDER BY -> HAVING -> LIMIT",
+            "C. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> LIMIT -> ORDER BY",
+            "D. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> ORDER BY -> LIMIT"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A (SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q231",
+          "type": "mc",
+          "chapter": 4,
+          "level": 2,
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu SinhVien(MaSinhVien, HoTen, MaLop). Câu lệnh nào để thêm dữ liệu của một sinh viên vào bảng SinhVien?",
+          "options": [
+            "A. INSERT INTO SinhVien(MaSinhVien, HoTen) VALUES ('099999','Test');",
+            "B. INSERT INTO SinhVien VALUES ('099999','Test');",
+            "C. ADD INTO SinhVien(MaSinhVien, HoTen) VALUES ('099999','Test');",
+            "D. CREATE SinhVien VALUES ('099999','Test');"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+        },
+        {
+          "id": "ltweb-q235",
+          "type": "mc",
+          "chapter": 4,
+          "level": 2,
+          "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, từ khóa nào có thể được sử dụng đối với phép kết ngoài?",
+          "options": [
+            "A. $_studentName",
+            "B. $student_name2",
+            "C. $2studentName",
+            "D. $StudentName"
+          ],
+          "correct": "A",
+          "explanation": "Đáp án đúng là A ($_studentName): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+        },
+        {
+          "id": "ltweb-q273",
+          "type": "mc",
+          "chapter": 4,
+          "level": 3,
+          "question": "Cho bảng LopHocPhan(MaLopHP, TenLopHP) và bảng Diem(MaLopHP, MaSV, Diem); Bảng LopHocPhan gồm 3 dòng dữ liệu: (ITS708_D01, 'Lập trình web') (ITS302_D02, 'Cơ sở lập trình') (ITS203_D01, 'Cơ sở dữ liệu') Bảng Diem gồm 3 dòng dữ liệu: (ITS708_D01, 'SV01',8) (ITS708_D01, 'SV02',9) (ITS203_D01, 'SV03',8) Để kết quả truy vấn luôn chứa tất cả các dòng của bảng LopHocPhan, kể cả khi không tìm thấy bản ghi tương ứng trong bảng Diem, cần sử dụng câu truy vấn nào?",
+          "options": [
+            "A. SELECT * FROM Diem AS d LEFT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+            "B. SELECT * FROM Diem AS d RIGHT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+            "C. SELECT * FROM Diem AS d INNER JOIN LopHocPhan AS lhp ON d.MaLopHP <> lhp.MaLopHP;",
+            "D. SELECT * FROM LopHocPhan AS lhp INNER JOIN Diem AS d ON lhp.MaLopHP = d.MaLopHP;"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q269",
+          "type": "mc",
+          "chapter": 4,
+          "level": 3,
+          "question": "Trong truy vấn sau, tác dụng chính của AS sv và AS l là gì? SELECT * FROM SinhVien AS sv INNER JOIN Lop AS l ON sv.MaLop = l.MaLop;",
+          "options": [
+            "A. Tạo bản sao mới của các bảng để truy vấn để tên bảng ngắn gọn hơn và phân biệt được các cột giống nhau giữa hai bảng.",
+            "B. Đổi tên chính thức của các bảng trong cơ sở dữ liệu để tên bảng ngắn hơn.",
+            "C. Đặt tên đại diện tạm thời để câu truy vấn ngắn gọn và dễ phân biệt cột giữa các bảng.",
+            "D. Chuyển cấu trúc của bảng sang một định dạng khác để viết câu truy vấn ngắn gọn hơn."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+        },
+        {
+          "id": "ltweb-q183",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Phát biểu nào sau đây thể hiện đúng ưu điểm của phương thức POST khi gửi dữ liệu từ Form?",
+          "options": [
+            "A. Dữ liệu luôn được nén tự động trước khi gửi đến máy chủ.",
+            "B. Yêu cầu POST luôn được xử lý nhanh hơn yêu cầu GET.",
+            "C. Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.",
+            "D. Dữ liệu gửi bằng POST được bảo mật hoàn toàn mà không cần HTTPS."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Dữ liệu được gửi trong phần thân của yêu cầu (Request Body) nên phù hợp hơn với lượng dữ liệu lớn.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q204",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Vì sao ta phải đặt giá trị cho thuộc tính name của các radio là như nhau nếu như các radio đó thể hiện cho cùng một nhóm? <form method=\"post\"> <input type=\"radio\" name=\"gender\" value=\"male\" /> Nam <input type=\"radio\" name=\"gender\" value=\"female\" checked/> Nữ <input type=\"submit\"> </form>",
+          "options": [
+            "A. Để ta có thể chọn nhiều radio của một nhóm.",
+            "B. Để cho mã HTML của radio dễ nhìn.",
+            "C. Để đảm bảo chỉ duy nhất một radio được chọn trong số nhiều radio của nhóm.",
+            "D. Vì như vậy, radio mới hiển thị được trên trang web."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        },
+        {
+          "id": "ltweb-q167",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Thuộc tính (attribute) nào trong thẻ form xác định trang xử lý phía back-end của form này khi người dùng click vào nút Submit?",
+          "options": [
+            "A. method",
+            "B. name",
+            "C. action",
+            "D. id"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (action): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q190",
+          "type": "mc",
+          "chapter": 5,
+          "level": 1,
+          "question": "Trong PHP, khóa (key) của mảng $_GET hoặc $_POST được xác định dựa trên thuộc tính nào của phần tử trong Form?",
+          "options": [
+            "A. Thuộc tính type",
+            "B. Thuộc tính name",
+            "C. Thuộc tính method",
+            "D. Thuộc tính id"
+          ],
+          "correct": "B",
+          "explanation": "Đáp án đúng là B (Thuộc tính name): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q187",
+          "type": "mc",
+          "chapter": 5,
+          "level": 2,
+          "question": "Chọn phát biểu đúng về 2 phương thức POST và GET.",
+          "options": [
+            "A. Ta dùng POST để chuyển giá trị từ Client lên Server. Sau đó, dùng GET để nhận giá trị từ Server gửi về cho Client.",
+            "B. Ta dùng GET để chuyển giá trị từ Client lên Server. Sau đó, dùng POST để nhận giá trị từ Server gửi về cho Client.",
+            "C. Ta có thể chuyển giá trị từ phía Client cho phía Server bằng cách dùng phương thức POST hoặc GET để Server lấy được giá trị từ người dùng nhập vào form.",
+            "D. Server trả kết quả về cho Client bằng cách dùng phương thức POST hoặc GET."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Ta có thể chuyển giá trị từ phía Client cho phía Server bằng cách dùng phương thức POST hoặc GET để Server lấy được giá trị từ người dùng nhập vào form.): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q296",
+          "type": "mc",
+          "chapter": 5,
+          "level": 2,
+          "question": "Trong Prepared Statement, ký tự ? (dấu chấm hỏi) có vai trò gì?",
+          "options": [
+            "A. Đại diện cho tên bảng cần truy vấn.",
+            "B. Đại diện cho một giá trị sẽ được truyền trực tiếp vào câu lệnh SQL mà không cần liên kết.",
+            "C. Đánh dấu vị trí của tham số để liên kết dữ liệu trước khi thực thi câu lệnh SQL.",
+            "D. Đại diện cho điều kiện tìm kiếm sẽ được tạo tự động."
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Prepared Statement tách biệt câu lệnh SQL (với dấu chấm hỏi '?' làm vị trí giữ chỗ) và dữ liệu đầu vào qua bước prepare() -> bind_param() -> execute(), giúp chống tấn công SQL Injection và tối ưu hiệu năng khi lặp lại truy vấn."
+        },
+        {
+          "id": "ltweb-q179",
+          "type": "mc",
+          "chapter": 5,
+          "level": 3,
+          "question": "Khi người dùng nhập name là \"Hoa\", email là \"nguyenhoa@gmail.com\" vào form bên dưới, rồi gửi (submit) thì dữ liệu sẽ được lưu như thế nào? <form action=\"welcome.php\" method=\"post\"> Name: <input type=\"text\" name=\"name\"><br> E-mail: <input type=\"text\" name=\"email\"><br> <input type=\"submit\"> </form>",
+          "options": [
+            "A. Dữ liệu sẽ được lưu như sau: $_POST = \"Hoa\"; $_GET = \"nguyenhoa@gmail.com\";",
+            "B. Dữ liệu sẽ được lưu như sau: $_GET = \"Hoa\"; $_POST = \"nguyenhoa@gmail.com\";",
+            "C. Dữ liệu sẽ được lưu trong biến $_POST dưới dạng: $_POST = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");",
+            "D. Dữ liệu sẽ được lưu trong biến $_GET dưới dạng: $_GET = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C (Dữ liệu sẽ được lưu trong biến $_POST dưới dạng: $_POST = array(\"name\"=>\"Hoa\", \"email\"=>\"nguyenhoa@gmail.com\");): Trong xử lý Form với PHP (Chương 5), thuộc tính action chỉ định file xử lý trên server (bỏ trống sẽ gửi về chính trang hiện tại), method xác định phương thức gửi (mặc định là GET truyền qua URL query string; POST truyền trong phần thân HTTP Request bảo mật hơn)."
+        },
+        {
+          "id": "ltweb-q208",
+          "type": "mc",
+          "chapter": 5,
+          "level": 3,
+          "question": "Khi người dùng nhập \"I love building websites in PHP and MySQL.\" vào textarea bên dưới, rồi nhấn nút Submit thì mảng $_POST sẽ được lưu với key và value như thế nào? <form action=\"page2.php\" method=\"post\"> <label for=\"inp08\">Tell us about yourseft:</label><br> <textarea id=\"inp08\" name=\"about\" rows=\"10\" cols=\"50\">I love building websites in PHP and MySQL.</textarea> <br><br> <input type=\"submit\" value=\"Submit\"> </form>",
+          "options": [
+            "A. Array ( [textarea] => I love building websites in PHP and MySQL. )",
+            "B. Array ( [about] => textarea)",
+            "C. Array ( [about] => I love building websites in PHP and MySQL. )",
+            "D. Array ( [inp08] => I love building websites in PHP and MySQL. )"
+          ],
+          "correct": "C",
+          "explanation": "Đáp án đúng là C: Trong HTML Form, thuộc tính 'name' của ô nhập liệu sẽ trở thành khóa (key) trong mảng $_GET/$_POST. Các radio cùng nhóm phải có cùng 'name'; nhóm checkbox chọn nhiều giá trị cần đặt name dạng mảng (ví dụ name='vehicle[]')."
+        }
+      ]
+    }
+  ]
+}

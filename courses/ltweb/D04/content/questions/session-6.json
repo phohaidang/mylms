@@ -1,0 +1,428 @@
+{
+  "session": 6,
+  "chapter": "Ch.4",
+  "title": "Quản trị dữ liệu với MySQL",
+  "time_limit_minutes": 25,
+  "questions": [
+    {
+      "id": "ltweb-q222",
+      "type": "mc",
+      "level": 1,
+      "question": "Tên ứng dụng web nào giúp quản trị cơ sở dữ liệu MySQL?",
+      "options": [
+        "A. MySQL Manager",
+        "B. MS MySQL",
+        "C. phpMyAdmin",
+        "D. Tất cả các đáp án trên"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Tất cả các đáp án trên): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q265",
+      "type": "mc",
+      "level": 1,
+      "question": "Các mệnh đề trong câu lệnh SELECT của MySQL được viết theo thứ tự nào?",
+      "options": [
+        "A. SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT",
+        "B. SELECT -> FROM -> WHERE -> GROUP BY -> ORDER BY -> HAVING -> LIMIT",
+        "C. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> LIMIT -> ORDER BY",
+        "D. SELECT -> FROM -> WHERE -> HAVING -> GROUP BY -> ORDER BY -> LIMIT"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q223",
+      "type": "mc",
+      "level": 2,
+      "question": "Trên trang quản trị PhpMyAdmin, để sao lưu (backup) cơ sở dữ liệu trong MySQL khi cần sao chép website qua máy tính hoặc hosting khác thì ta chọn chức năng nào dưới đây?",
+      "options": [
+        "A. Import",
+        "B. Backup",
+        "C. Export",
+        "D. Print"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Export): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q224",
+      "type": "mc",
+      "level": 2,
+      "question": "Trên trang quản trị PhpMyAdmin, để phục hồi dữ liệu từ một tập tin có phần mở rộng .sql thì ta chọn chức năng nào dưới đây?",
+      "options": [
+        "A. Import",
+        "B. Restore",
+        "C. Export",
+        "D. Revert"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (Import): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q225",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho câu truy vấn sau: SELECT * FROM SinhVien LIMIT 5. Câu truy vấn này có chức năng gì?",
+      "options": [
+        "A. Trả về 5 bản ghi ngẫu nhiên trong bảng SinhVien",
+        "B. Trả về 5 bản ghi đầu tiên trong bảng SinhVien.",
+        "C. Trả về 5 bản ghi cuối cùng trong bảng SinhVien.",
+        "D. Bỏ qua 5 bản ghi đầu tiên và trả về các bản ghi còn lại trong bảng SinhVien"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Trả về 5 bản ghi đầu tiên trong bảng SinhVien.): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q226",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho câu truy vấn sau: SELECT * FROM SinhVien LIMIT 10, 20. Câu truy vấn này có chức năng gì?",
+      "options": [
+        "A. Trả về các bản ghi từ vị trí 10 đến 20 trong bảng SinhVien",
+        "B. Bỏ qua 10 bản ghi đầu tiên và trả về bản ghi từ vị trí 11 đến 20 trong bảng SinhVien.",
+        "C. Bỏ qua 10 bản ghi đầu tiên và trả về 20 bản ghi tiếp theo trong bảng SinhVien",
+        "D. Bỏ qua các bản ghi từ vị trí thứ 10 đến 20 và trả về các bản ghi còn lại từ bảng SinhVien"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (Bỏ qua 10 bản ghi đầu tiên và trả về 20 bản ghi tiếp theo trong bảng SinhVien): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q227",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, câu lệnh nào dùng để xóa các bản ghi trong bảng SinhVien với cột MaSV có giá trị là '99999999'?",
+      "options": [
+        "A. DROP TABLE SinhVien WHERE MaSV = '99999999'",
+        "B. DEL SinhVien WHERE MaSV = '99999999'",
+        "C. REMOVE SinhVien WHERE MaSV = '99999999'",
+        "D. DELETE FROM SinhVien WHERE MaSV = '99999999'"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+    },
+    {
+      "id": "ltweb-q228",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, câu lệnh nào dùng để lấy các bản ghi trong bảng SinhVien với cột MaLop có giá trị là 'DH38HT' và sắp xếp lại bản ghi theo thứ tự giảm dần của giá trị cột Ten?",
+      "options": [
+        "A. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten",
+        "B. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER Ten",
+        "C. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten DESC",
+        "D. SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten ASC"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (SELECT * FROM SinhVien WHERE MaLop='DH38HT' ORDER BY Ten DESC): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q229",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, từ khóa nào cho phép tăng tự động giá trị một cột khi tạo bảng?",
+      "options": [
+        "A. IDENTITY",
+        "B. AUTO_INCREMENT",
+        "C. INCREMENT",
+        "D. Cả ba đáp án trên đều đúng"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Cả ba đáp án trên đều đúng): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q230",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu SinhVien(MaSinhVien, HoTen, MaLop). Câu truy vấn nào sau đây bị lỗi?",
+      "options": [
+        "A. SELECT COUNT(*) FROM SinhVien",
+        "B. SELECT MaLop, COUNT(*) FROM SinhVien GROUP BY MaLop",
+        "C. SELECT MaLop, COUNT(*) FROM SinhVien",
+        "D. Các câu truy vấn trên không bị lỗi"
+      ],
+      "correct": "D",
+      "explanation": "Đáp án đúng là D (Các câu truy vấn trên không bị lỗi): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q231",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu SinhVien(MaSinhVien, HoTen, MaLop). Câu lệnh nào để thêm dữ liệu của một sinh viên vào bảng SinhVien?",
+      "options": [
+        "A. INSERT INTO SinhVien(MaSinhVien, HoTen) VALUES ('099999','Test');",
+        "B. INSERT INTO SinhVien VALUES ('099999','Test');",
+        "C. ADD INTO SinhVien(MaSinhVien, HoTen) VALUES ('099999','Test');",
+        "D. CREATE SinhVien VALUES ('099999','Test');"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+    },
+    {
+      "id": "ltweb-q232",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong). Câu lệnh nào dùng để cập nhật dữ liệu MucLuong của nhân viên có ID là 5?",
+      "options": [
+        "A. UPDATE NhanVien SET MucLuong =10000;",
+        "B. UPDATE TABLE NhanVien SET MucLuong =10000 WHERE ID = 5;",
+        "C. UPDATE NhanVien SET MucLuong =10000 WHERE ID = 5;",
+        "D. ALTER TABLE NhanVien SET MucLuong =10000 WHERE ID = 5;"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Trong SQL, nhóm DDL (CREATE, ALTER, DROP) thao tác trên cấu trúc bảng/CSDL; nhóm DML (SELECT, INSERT INTO, UPDATE ... SET, DELETE FROM) thao tác trên các dòng dữ liệu. Luôn dùng WHERE khi UPDATE/DELETE để tránh sửa/xóa nhầm toàn bộ bảng."
+    },
+    {
+      "id": "ltweb-q233",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong). Câu lệnh nào dùng để lấy ra dữ liệu 5 nhân viên có mức lương cao nhất?",
+      "options": [
+        "A. SELECT * FROM NhanVien ORDER BY MucLuong DESC LIMIT 5",
+        "B. SELECT * FROM NhanVien ORDER BY MucLuong LIMIT 5",
+        "C. SELECT * FROM NhanVien LIMIT 5 ORDER BY MucLuong desc",
+        "D. SELECT * FROM NhanVien LIMIT 5"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A (SELECT * FROM NhanVien ORDER BY MucLuong DESC LIMIT 5): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q234",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, cho bảng dữ liệu NhanVien(ID, HoTen, MucLuong, PhongBan). Câu lệnh nào dùng để lấy ra dữ liệu mức lương trung bình của các phòng ban?",
+      "options": [
+        "A. SELECT AVG(MucLuong) FROM NhanVien",
+        "B. SELECT PhongBan, AVG(MucLuong) FROM NhanVien",
+        "C. SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan",
+        "D. SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan, ID"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (SELECT PhongBan, AVG(MucLuong) FROM NhanVien GROUP BY PhongBan): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q235",
+      "type": "mc",
+      "level": 2,
+      "question": "Trong hệ quản trị cơ sở dữ liệu MySQL, từ khóa nào có thể được sử dụng đối với phép kết ngoài?",
+      "options": [
+        "A. $_studentName",
+        "B. $student_name2",
+        "C. $2studentName",
+        "D. $StudentName"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A ($_studentName): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q266",
+      "type": "mc",
+      "level": 2,
+      "question": "Sự khác biệt đúng nhất giữa WHERE và HAVING là gì?",
+      "options": [
+        "A. WHERE chỉ dùng với chuỗi, còn HAVING chỉ dùng với số",
+        "B. WHERE lọc các bộ dữ liệu trước khi gom nhóm, còn HAVING lọc các nhóm sau GROUP BY",
+        "C. HAVING luôn phải xuất hiện trước GROUP BY",
+        "D. WHERE và HAVING hoàn toàn tương đương trong mọi trường hợp"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+    },
+    {
+      "id": "ltweb-q268",
+      "type": "mc",
+      "level": 2,
+      "question": "Phép kết INNER JOIN trả về kết quả nào?",
+      "options": [
+        "A. Tất cả các dòng của bảng bên trái, kể cả khi không khớp",
+        "B. Tất cả các dòng của bảng bên phải, kể cả khi không khớp",
+        "C. Chỉ các dòng có giá trị thỏa mãn điều kiện kết giữa các bảng",
+        "D. Tích Descartes của hai bảng mà không cần điều kiện"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+    },
+    {
+      "id": "ltweb-q267",
+      "type": "mc",
+      "level": 3,
+      "question": "Điều kiện trong câu truy vấn để tìm các sinh viên có tên chứa chuỗi \"Anh\" ở bất kỳ vị trí nào là:",
+      "options": [
+        "A. WHERE Ten LIKE 'Anh%'",
+        "B. WHERE Ten LIKE '%Anh'",
+        "C. WHERE Ten LIKE '%Anh%'",
+        "D. WHERE Ten = '%Anh%'"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (WHERE Ten LIKE '%Anh%'): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q269",
+      "type": "mc",
+      "level": 3,
+      "question": "Trong truy vấn sau, tác dụng chính của AS sv và AS l là gì? SELECT * FROM SinhVien AS sv INNER JOIN Lop AS l ON sv.MaLop = l.MaLop;",
+      "options": [
+        "A. Tạo bản sao mới của các bảng để truy vấn để tên bảng ngắn gọn hơn và phân biệt được các cột giống nhau giữa hai bảng.",
+        "B. Đổi tên chính thức của các bảng trong cơ sở dữ liệu để tên bảng ngắn hơn.",
+        "C. Đặt tên đại diện tạm thời để câu truy vấn ngắn gọn và dễ phân biệt cột giữa các bảng.",
+        "D. Chuyển cấu trúc của bảng sang một định dạng khác để viết câu truy vấn ngắn gọn hơn."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+    },
+    {
+      "id": "ltweb-q270",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu truy vấn sau có vấn đề gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien;",
+      "options": [
+        "A. COUNT(*) không thể sử dụng với bảng SinhVien.",
+        "B. Thiếu mệnh đề WHERE nên kết quả của câu truy vấn sẽ không cho biết được số lượng sinh viên của từng lớp.",
+        "C. Thiếu GROUP BY nên kết quả câu truy vấn không cho biết đúng số lượng sinh viên của từng lớp.",
+        "D. Phải thay COUNT(*) bằng SUM(*) để kết quả câu truy vấn hiển thị được số lượng sinh viên theo từng lớp."
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+    },
+    {
+      "id": "ltweb-q271",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu truy vấn sau sắp xếp dữ liệu như thế nào? SELECT MaLop, Ten, Ho FROM SinhVien ORDER BY MaLop DESC, Ten, Ho;",
+      "options": [
+        "A. Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau sắp xếp giảm dần theo Ten, nếu Ten giống nhau sắp xếp giảm dần theo Ho.",
+        "B. Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau sắp xếp tăng dần theo Ten, nếu Ten giống nhau sắp xếp tăng dần theo Ho.",
+        "C. Sắp xếp tăng dần theo MaLop, nếu MaLop giống nhau sắp xếp giảm dần theo Ten, nếu Ten giống nhau sắp xếp giảm dần theo Ho.",
+        "D. Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau thì sắp xếp theo thứ tự thêm vào bảng dữ liệu."
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (Sắp xếp giảm dần theo MaLop, nếu MaLop giống nhau sắp xếp tăng dần theo Ten, nếu Ten giống nhau sắp xếp tăng dần theo Ho.): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q272",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng LopHocPhan(MaLopHP, TenLopHP) và bảng Diem(MaLopHP, MaSV, Diem); Bảng LopHocPhan gồm 3 dòng dữ liệu: (ITS708_D01, 'Lập trình web') (ITS302_D02, 'Cơ sở lập trình') (ITS203_D01, 'Cơ sở dữ liệu') Bảng Diem gồm 3 dòng dữ liệu: (ITS708_D01, 'SV01',8) (ITS708_D01, 'SV02',9) (ITS203_D01, 'SV03',8) Câu truy vấn sau trả về bao nhiêu dòng dữ liệu? SELECT * FROM LopHocPhan AS lhp LEFT JOIN Diem AS d ON lhp.MaLopHP = d.MaLopHP;",
+      "options": [
+        "A. 3",
+        "B. 4",
+        "C. 5",
+        "D. 6"
+      ],
+      "correct": "A",
+      "explanation": "Đáp án đúng là A: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+    },
+    {
+      "id": "ltweb-q273",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng LopHocPhan(MaLopHP, TenLopHP) và bảng Diem(MaLopHP, MaSV, Diem); Bảng LopHocPhan gồm 3 dòng dữ liệu: (ITS708_D01, 'Lập trình web') (ITS302_D02, 'Cơ sở lập trình') (ITS203_D01, 'Cơ sở dữ liệu') Bảng Diem gồm 3 dòng dữ liệu: (ITS708_D01, 'SV01',8) (ITS708_D01, 'SV02',9) (ITS203_D01, 'SV03',8) Để kết quả truy vấn luôn chứa tất cả các dòng của bảng LopHocPhan, kể cả khi không tìm thấy bản ghi tương ứng trong bảng Diem, cần sử dụng câu truy vấn nào?",
+      "options": [
+        "A. SELECT * FROM Diem AS d LEFT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+        "B. SELECT * FROM Diem AS d RIGHT JOIN LopHocPhan AS lhp ON d.MaLopHP = lhp.MaLopHP;",
+        "C. SELECT * FROM Diem AS d INNER JOIN LopHocPhan AS lhp ON d.MaLopHP <> lhp.MaLopHP;",
+        "D. SELECT * FROM LopHocPhan AS lhp INNER JOIN Diem AS d ON lhp.MaLopHP = d.MaLopHP;"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B: INNER JOIN chỉ lấy các dòng khớp ở cả 2 bảng; LEFT JOIN lấy toàn bộ bảng bên trái (phần không khớp ở bảng phải nhận NULL); RIGHT JOIN lấy toàn bộ bảng bên phải (phần không khớp ở bảng trái nhận NULL)."
+    },
+    {
+      "id": "ltweb-q274",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng SinhVien (MaSinhVien, MaLop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'CNTT08') ('SV02', 'CNTT09') ('SV03', 'CNTT08') ('SV04', 'CNTT09') ('SV05', 'CNTT08') Kết quả câu truy vấn sau là gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien GROUP BY MaLop;",
+      "options": [
+        "A. Trả về 2 dòng dữ liệu: ('CNTT08',5) ('CNTT09',5)",
+        "B. Trả về 2 dòng dữ liệu: ('CNTT08',2) ('CNTT09',3)",
+        "C. Trả về 2 dòng dữ liệu: ('CNTT08',3) ('CNTT09',2)",
+        "D. Trả về 2 dòng dữ liệu: ('CNTT08',1) ('CNTT09',1)"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+    },
+    {
+      "id": "ltweb-q275",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng SinhVien (MaSinhVien, MaLop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'CNTT08') ('SV02', 'CNTT09') ('SV03', 'CNTT08') ('SV04', 'CNTT09') ('SV05', 'CNTT08') Kết quả câu truy vấn sau là gì? SELECT MaLop, COUNT(*) AS sl FROM SinhVien GROUP BY MaLop HAVING COUNT(*) > 2;",
+      "options": [
+        "A. Trả về 2 dòng dữ liệu: ('CNTT08',3) ('CNTT09',2)",
+        "B. Trả về 1 dòng dữ liệu: ('CNTT08',3)",
+        "C. Trả về 1 dòng dữ liệu: ('CNTT09',2)",
+        "D. Không có dòng dữ liệu nào được trả về"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C: Mệnh đề GROUP BY gom nhóm các bản ghi theo giá trị cột để tính hàm tổng hợp (COUNT, SUM, AVG, MAX, MIN). WHERE lọc dòng trước khi gom nhóm, còn HAVING lọc nhóm sau khi đã GROUP BY."
+    },
+    {
+      "id": "ltweb-q276",
+      "type": "mc",
+      "level": 3,
+      "question": "Câu truy vấn nào phù hợp nhất để tìm các lớp có từ 40 sinh viên trở lên?",
+      "options": [
+        "A. SELECT MaLop, COUNT(*) FROM SinhVien WHERE COUNT(*) >= 40 GROUP BY MaLop;",
+        "B. SELECT MaLop, COUNT(*) FROM SinhVien GROUP BY MaLop HAVING COUNT(*) >= 40;",
+        "C. SELECT MaLop FROM SinhVien HAVING MaLop >= 40;",
+        "D. SELECT COUNT(*) FROM SinhVien ORDER BY COUNT(*) >= 40;"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (SELECT MaLop, COUNT(*) FROM SinhVien GROUP BY MaLop HAVING COUNT(*) >= 40;): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q277",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien WHERE (GioiTinh = 'M' AND Lop = 'CNTT08') OR Ten LIKE '%Anh%';",
+      "options": [
+        "A. SV01, SV03",
+        "B. SV01, SV03, SV04",
+        "C. SV01, SV04",
+        "D. SV01, SV02, SV04"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (SV01, SV03, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q278",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien WHERE Ten LIKE '%An%' AND Lop = 'CNTT09';",
+      "options": [
+        "A. SV01, SV04",
+        "B. SV04",
+        "C. SV02, SV04",
+        "D. SV02"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (SV02, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q279",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien ORDER BY MaSV DESC LIMIT 2, 2;",
+      "options": [
+        "A. SV01, SV02",
+        "B. SV02, SV03",
+        "C. SV03, SV04",
+        "D. SV04, SV05"
+      ],
+      "correct": "B",
+      "explanation": "Đáp án đúng là B (SV02, SV03): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    },
+    {
+      "id": "ltweb-q280",
+      "type": "mc",
+      "level": 3,
+      "question": "Cho bảng SinhVien (MaSV, Ten, GioiTinh, Lop) Bảng SinhVien gồm 5 dòng dữ liệu: ('SV01', 'Anh', 'M', 'CNTT08') ('SV02', 'An', 'M', 'CNTT09') ('SV03', 'Bình', 'M', 'CNTT08') ('SV04', 'Minh Anh', 'F', 'CNTT09') ('SV05', 'Lan', 'F', 'CNTT08') Kết quả câu truy vấn sau trả về những mã sinh viên nào? SELECT MaSV FROM SinhVien ORDER BY MaSV LIMIT 1, 3;",
+      "options": [
+        "A. SV01, SV02",
+        "B. SV01, SV02, SV03",
+        "C. SV02, SV03, SV04",
+        "D. SV03, SV04, SV05"
+      ],
+      "correct": "C",
+      "explanation": "Đáp án đúng là C (SV02, SV03, SV04): Theo chuẩn truy vấn MySQL và quản trị phpMyAdmin (Chương 4), thứ tự mệnh đề chuẩn là SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY [ASC|DESC] -> LIMIT."
+    }
+  ]
+}

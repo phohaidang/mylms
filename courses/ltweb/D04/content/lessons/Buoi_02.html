@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 2 - Chuẩn bị môi trường, Máy chủ Web & Self-Hosting thực chiến | ITS708 Lập trình Web</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1a1612;
+    --ink-light: #4a453e;
+    --accent: #b83b2b;
+    --teal: #1a6b5c;
+    --blue: #1e4d8c;
+    --gold: #a67608;
+    --border: #e5dfd6;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 2.8rem 2rem 2.4rem;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.82); }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--blue); margin: 1rem 0 0.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card ul, .card ol { padding-left: 1.3rem; color: var(--ink-light); }
+  .card li { margin-bottom: 0.55rem; }
+  .meta-bar {
+    background: #eef4ff;
+    border-left: 4px solid var(--blue);
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+  }
+  .scqa-grid { display: grid; gap: 0.8rem; }
+  .scqa-box {
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    border-left: 4px solid var(--teal);
+  }
+  .scqa-box.c { border-left-color: var(--accent); }
+  .scqa-box.q { border-left-color: var(--blue); }
+  .scqa-box.a { border-left-color: var(--gold); }
+  .timeline-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-badge {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  code {
+    background: #f1ece4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    color: #9a2a1a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ITS708 - Chương 2 · Buổi 2/9</div>
+    <h1>Buổi 2: Chuẩn bị môi trường, Máy chủ Web & Self-Hosting thực chiến</h1>
+    <p class="hero-sub">CLO1 - Cài đặt, cấu hình thành thạo Web Server (XAMPP/WAMP), hiểu cơ chế biên dịch PHP, triển khai Self-hosting và kiến trúc Vibe Code.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2>🎯 Mục tiêu buổi học</h2>
+  <div class="card">
+    <div class="meta-bar">
+      <strong>📌 Trọng số Đề thi &amp; Ngân hàng câu hỏi:</strong> 6/40 câu đề thi cuối kỳ (2 câu Mức 1 + 2 câu Mức 2 + 2 câu Mức 3) · 18 câu trong Ngân hàng câu hỏi (+ ôn phần CSS của Chương 1).<br>
+      <strong>🎓 Chuẩn đầu ra (CLO):</strong> CLO1 - Cài đặt, cấu hình thành thạo Web Server (XAMPP/WAMP), hiểu cơ chế biên dịch PHP, triển khai Self-hosting và kiến trúc Vibe Code.
+    </div>
+    <ol>
+      <li>Vận dụng 3 bộ chọn CSS cơ bản (<code>tag</code>, <code>.class</code>, <code>#id</code>), 3 cách nhúng CSS (Inline, Internal, External), CSS Box Model (<code>padding</code>, <code>border</code>, <code>margin</code>) và thư viện CSS (Bootstrap, Tailwind).</li>
+      <li>Giải thích được vì sao trình duyệt không hiểu trực tiếp mã <strong>PHP</strong> và vai trò của <strong>Web Server (Apache, Nginx, IIS)</strong> trong việc gọi PHP Engine biên dịch mã sang HTML.</li>
+      <li>Phân biệt <strong>WAMP vs XAMPP vs MAMP</strong>, thư mục gốc <code>htdocs</code> (XAMPP) vs <code>www</code> (WAMP), và cơ chế tự động chạy tập tin mặc định <code>index.php</code> / <code>index.html</code>.</li>
+      <li>Chỉnh sửa thành thạo 2 tập tin cấu hình cốt lõi: <strong><code>httpd.conf</code></strong> (đổi cổng <code>Listen 80</code> sang <code>8080/9999</code> khi xung đột cổng) và <strong><code>php.ini</code></strong> (bật <code>display_errors</code>, tăng <code>upload_max_filesize</code>).</li>
+      <li>Thực chiến <strong>Self-Hosting trên Windows với Ngrok</strong> (đưa <code>localhost</code> ra Internet thật qua 4G) và áp dụng <strong>Kiến trúc 4 ngăn</strong> khi Vibe Code với AI.</li>
+    </ol>
+  </div>
+
+  <h2>💡 Khung tư duy SCQA &amp; Tình huống thực tế</h2>
+  <div class="card">
+    <div class="scqa-grid">
+      <div class="scqa-box s"><strong>Situation (Bối cảnh):</strong> Bạn vừa tạo xong tập tin <code>shop.php</code> đầu tiên có lệnh <code>echo</code> tính giá khuyến mãi và hào hứng nhấp đúp chuột mở trên máy tính cá nhân, rồi gửi đường dẫn <code>http://localhost/shop/</code> qua Zalo cho bạn cùng bàn xem thử.</div>
+      <div class="scqa-box c"><strong>Complication (Vấn đề thực tế):</strong> Hai cú sốc xảy ra liên tiếp: (1) Nhấp đúp trực tiếp khiến trình duyệt mở bằng giao thức <code>file:///</code> và phơi bày nguyên văn mã nguồn PHP chứ không tính toán; (2) Sau khi cài XAMPP chạy được <code>http://localhost/shop/</code> trên máy mình, bạn cùng bàn bấm vào link đó lại báo lỗi <em>This site can't be reached</em> vì <code>localhost</code> (127.0.0.1) là vòng lặp khép kín trên từng máy riêng biệt.</div>
+      <div class="scqa-box q"><strong>Question (Câu hỏi trọng tâm):</strong> Làm thế nào để biến laptop cá nhân thành một Web Server thực thụ, cấu hình Apache/PHP không bị đụng cổng, phát sóng website ra Internet thật và tổ chức mã nguồn sạch sẽ khi dùng AI sinh code?</div>
+      <div class="scqa-box a"><strong>Answer (Giải pháp kỹ thuật):</strong> Cài đặt XAMPP, đặt mã nguồn vào <code>C:\xampp\htdocs\</code>, làm chủ cặp bài trùng <code>httpd.conf</code> & <code>php.ini</code>, dùng đường hầm ngược <strong>Ngrok</strong> (<code>ngrok http 80</code>) để public <code>localhost</code> ra Internet, và ép AI tuân thủ kiến trúc tách file (<code>config.php</code>, <code>assets/style.css</code>, <code>includes/</code>, <code>index.php</code>).</div>
+    </div>
+  </div>
+
+  <h2>🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h2>
+  <div class="card">
+      <div class="timeline-item">
+        <div class="time-badge">Phần 1 (30% Đề cương · 75 phút)</div>
+        <div class="timeline-content">
+          <p>Ôn tập CSS cốt lõi (Selector <code>tag/.class/#id</code>, Inline/Internal/External CSS, Box Model) + Lý thuyết Web Server (Apache, Nginx, IIS), WAMP vs XAMPP, thư mục <code>htdocs</code> vs <code>www</code>, và cấu hình <code>httpd.conf</code> / <code>php.ini</code>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 2 (70% Thực chiến Self-Hosting · 80 phút)</div>
+        <div class="timeline-content">
+          <p>Giải phẫu mạng máy tính: <code>localhost (127.0.0.1)</code> vs LAN IP vs NAT/Firewall -> Thực hành mở đường hầm ngược với <code>ngrok http 80</code> (hoặc <code>ssh -R 80:localhost:80 nokey@localhost.run</code>) -> Bạn cùng bàn tắt Wi-Fi dùng 4G truy cập và kiểm tra gói tin HTTP trực tiếp trên cổng <code>127.0.0.1:4040</code>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-badge">Phần 3 (70% Thực chiến Vibe Code · 95 phút)</div>
+        <div class="timeline-content">
+          <p>Bắt bệnh 'Vibe Code Mì Ý' (nhét 600 dòng HTML+CSS+PHP vào 1 file) -> Thiết kế kiến trúc 4 ngăn (<code>config.php</code>, <code>assets/style.css</code>, <code>includes/header-footer</code>, <code>index.php</code>) -> Bài test bảo trì chéo trong 60 giây & Giới thiệu đề bài nâng cao cho Đồ án nhóm (VPS Ubuntu + Tailscale + Coolify).</p>
+        </div>
+      </div>
+  </div>
+
+  <h2>🏠 Bài tập về nhà &amp; Thực hành</h2>
+  <div class="card">
+    <h3>Phần A - Câu hỏi ôn tập lý thuyết (Bám sát Giáo trình &amp; Đề cương)</h3>
+    <ul>
+        <li>2.1. Những phần mềm web server nào có thể chạy trang web viết bằng PHP? Nêu sự tương ứng giữa ngôn ngữ lập trình và web server.</li>
+        <li>2.2. WAMP và XAMPP tích hợp sẵn những phần mềm nào? Điểm khác nhau giữa WAMP, MAMP và XAMPP là gì?</li>
+        <li>2.3. Cổng (port) mặc định của Apache trong XAMPP là bao nhiêu? Trình bày các bước đổi sang cổng 8080 hoặc 9999 trong tập tin <code>httpd.conf</code>.</li>
+        <li>2.4. Tập tin <code>php.ini</code> dùng để làm gì? Nêu ý nghĩa của thông số <code>display_errors</code> và <code>upload_max_filesize</code>.</li>
+        <li>2.5. Nếu trong URL chỉ nhập tên thư mục mà không ghi tên tập tin, Apache sẽ tự động tìm tập tin nào? Điều gì xảy ra nếu thư mục đó không có tập tin mặc định?</li>
+    </ul>
+    <h3>Phần B - Bài tập thực hành Lab 3 mức độ (Cơ bản - Nâng cao - Đồ án TMĐT)</h3>
+    <ul>
+        <li><strong>Mức Cơ bản (Bắt buộc - Bài 2.7 Giáo trình):</strong> Cài đặt XAMPP/WAMP, khởi động Apache + MySQL xanh lá. Tạo <code>ltweb.php</code> trong <code>htdocs</code> in ra <code>Lập trình web PHP</code>, truy cập qua <code>http://localhost/ltweb.php</code> và chụp màn hình kết quả.</li>
+        <li><strong>Mức Nâng cao:</strong> Thực hành đổi cổng Apache trong <code>httpd.conf</code> (<code>Listen</code> và <code>ServerName</code>), bật <code>display_errors = On</code> trong <code>php.ini</code>. Tải giao diện cửa hàng tĩnh của buổi 1 vào <code>htdocs/my_shop/</code> và tách CSS ra tập tin <code>assets/style.css</code>.</li>
+        <li><strong>Mức Thử thách (Self-hosting & Kiến trúc):</strong> Dùng Ngrok phát sóng thư mục <code>my_shop</code> đã tách thành 4 phần (<code>config.php</code>, <code>includes/header.php</code>, <code>includes/footer.php</code>, <code>index.php</code>) lên Internet và chụp màn hình truy cập từ điện thoại 4G + giao diện <code>localhost:4040</code>. Hoàn thành Ebook Chương 2 & Quiz Buổi 2 (18 câu) trên LMS.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
