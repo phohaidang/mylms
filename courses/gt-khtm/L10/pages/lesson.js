@@ -25,21 +25,41 @@ export async function renderLesson(app, { id }) {
       const allChapters = await api.get('/ebook/chapters');
       const chapterData = await api.get(`/ebook/chapters/${chapterId}`);
       if (chapterData && chapterData.chapter) {
-         const concepts = chapterData.concepts || [];
-         ebookConceptsHTML = concepts.map(c => `
-           <div class="card" style="margin-bottom:1rem; border-left: 4px solid var(--primary-color)">
-             <div class="card-header" style="padding-bottom: 0.5rem">
-               <span class="badge badge-primary" style="font-size: 0.7rem">Khái niệm</span>
-               <h4 style="margin: 0.3rem 0; color: var(--primary-color)">${c.term}</h4>
+         const allConcepts = chapterData.concepts || [];
+         const sessionConcepts = allConcepts.filter(c => c.session && parseInt(c.session) === parseInt(id));
+         const concepts = sessionConcepts.length > 0 ? sessionConcepts : allConcepts;
+         ebookConceptsHTML = concepts.map(c => {
+           const listItems = [];
+           const blockItems = [];
+
+           (c.key_points || []).forEach(kp => {
+             const trimmed = (kp || '').trim();
+             if (trimmed.includes('<table') || trimmed.includes('<pre')) {
+               blockItems.push(`<div class="concept-table-wrap">${trimmed}</div>`);
+             } else {
+               listItems.push(`<li style="margin-bottom: 0.4rem; line-height: 1.65;">${trimmed}</li>`);
+             }
+           });
+
+           return `
+           <div class="card concept-card-block">
+             <div class="card-header" style="padding: 1.25rem 1.5rem 0.5rem; display: flex; flex-direction: column; gap: 0.35rem">
+               <span class="badge badge-accent" style="font-size: 0.72rem; align-self: flex-start; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px">Khái niệm</span>
+               <h3 style="margin: 0.2rem 0 0; color: var(--text-primary); font-size: 1.25rem; font-weight: 700">${c.term}</h3>
              </div>
-             <div class="card-body" style="padding-top: 0">
-               <p style="font-size: 0.92rem; margin-bottom: 0.5rem"><strong>Định nghĩa:</strong> ${c.definition}</p>
-               <ul style="font-size: 0.88rem; color: var(--text-secondary); margin: 0; padding-left: 1.2rem">
-                 ${c.key_points.map(kp => `<li>${kp}</li>`).join('')}
-               </ul>
+             <div class="card-body" style="padding: 0.75rem 1.5rem 1.5rem">
+               <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem 1.15rem; margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.65">
+                 <strong style="color: var(--accent)">Định nghĩa:</strong> ${c.definition}
+               </div>
+               ${listItems.length > 0 ? `
+               <ul style="font-size: 0.92rem; color: var(--text-secondary); margin: 0 0 1rem; padding-left: 1.3rem">
+                 ${listItems.join('')}
+               </ul>` : ''}
+               ${blockItems.join('')}
              </div>
            </div>
-         `).join('');
+           `;
+         }).join('');
       }
     } catch(err) {
       console.error("Failed fetching ebook data", err);
@@ -80,6 +100,7 @@ export async function renderLesson(app, { id }) {
 
          session.fullObjectives = extractSection(['Mục tiêu']);
          session.scqaContent = extractSection(['SCQA']);
+         session.roadmapContent = extractSection(['Lộ trình buổi học']);
          session.homeworkContent = extractSection(['Bài tập về nhà', 'BTVN']);
       }
     } catch(err) {
@@ -102,8 +123,8 @@ export async function renderLesson(app, { id }) {
         </div>
         <div style="display:flex;gap:0.75rem">
           ${!isStudent ? `<button class="btn btn-secondary" id="btn-lesson" onclick="showTab('lesson')">📄 Kịch bản dạy</button>` : ''}
-          ${!isStudent ? `<button class="btn btn-secondary" id="btn-slide" onclick="showTab('slide')">📊 Slide</button>` : ''}
-          ${isStudent && session.hasSlide ? `<a href="#" id="btn-student-slide" onclick="alert('Vui lòng kéo xuống dưới, nộp đánh giá ẩn danh kèm bình luận để có thể tải Slide!'); return false;" class="btn btn-secondary" style="opacity: 0.5">📥 Tải Slide</a>` : ''}
+          ${!isStudent ? `<button class="btn btn-secondary" id="btn-slide" onclick="showTab('slide')">📊 Slide / Motion</button>` : ''}
+          ${isStudent && session.hasSlide ? `<a href="#" id="btn-student-slide" onclick="alert('Vui lòng kéo xuống dưới, nộp đánh giá ẩn danh kèm bình luận để có thể tải Bài giảng Motion (.html)!'); return false;" class="btn btn-secondary" style="opacity: 0.5">📥 Tải Bài giảng (.html)</a>` : ''}
           <a href="#/quiz/${session.id}" class="btn btn-primary">📝 Làm Quiz Online</a>
         </div>
       </div>
@@ -116,8 +137,10 @@ export async function renderLesson(app, { id }) {
 
       <div id="content-slide" class="content-tab" style="display:none">
         ${!isStudent ? (session.hasSlide
-          ? `<embed src="/api/courses/sessions/${session.id}/slide?token=${getToken()}" type="application/pdf" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md)">`
-          : `<div class="alert alert-warning">Slide chưa được convert cho buổi này</div>`) : ''}
+          ? (session.slideType === 'html'
+            ? `<iframe src="/lessons/Buoi_${paddedId}.html" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md);background:white"></iframe>`
+            : `<embed src="/api/courses/sessions/${session.id}/slide?token=${getToken()}" type="application/pdf" style="width:100%;height:80vh;border:1px solid var(--border);border-radius:var(--radius-md)">`)
+          : `<div class="alert alert-warning">Bài giảng / Slide chưa có cho buổi này</div>`) : ''}
       </div>
 
       ${isStudent ? `
@@ -147,6 +170,16 @@ export async function renderLesson(app, { id }) {
             </div>` : ''}
          </div>
 
+         ${session.roadmapContent ? `
+         <div class="card" style="margin-bottom: 2.5rem; border-left: 4px solid var(--accent)">
+            <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; margin-bottom: 1rem">
+               <h3 style="margin:0">🗺️ Lộ trình buổi học (Mô hình 30% Đề cương - 70% Thực chiến)</h3>
+            </div>
+            <div class="card-body" style="padding:0">
+               ${session.roadmapContent}
+            </div>
+         </div>` : ''}
+
          <!-- Section 2: Core Concepts -->
          <div style="margin-bottom: 2.5rem">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem">
@@ -155,7 +188,7 @@ export async function renderLesson(app, { id }) {
                   <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem">Trích xuất từ học liệu chuẩn của chương ${session.chapter}</p>
                </div>
             </div>
-            <div class="concepts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem">
+            <div class="concepts-list">
                ${ebookConceptsHTML || '<div class="alert alert-info">Chưa có khái niệm đặc thù cho phần này.</div>'}
             </div>
          </div>
@@ -216,42 +249,91 @@ export async function renderLesson(app, { id }) {
         </div>
       </div>
       `}
+      <!-- Floating Scroll Controls (Top & Bottom) -->
+      <div class="floating-scroll-controls">
+        <button id="btn-scroll-top" class="scroll-fab" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </button>
+        <button id="btn-scroll-bottom" class="scroll-fab" title="Xuống cuối trang" onclick="window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'})" aria-label="Xuống cuối trang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+      </div>
     </div>
   `;
 
   // ── Feedback Logic ──
   if (isStudent) {
     const fbSection = document.getElementById('feedback-section');
+    const slideBtn = document.getElementById('btn-student-slide');
+
+    const updateTopSlideBtn = (hasAccess) => {
+      if (!slideBtn) return;
+      if (hasAccess) {
+        slideBtn.href = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
+        slideBtn.target = '_blank';
+        slideBtn.onclick = null;
+        slideBtn.style.opacity = '1';
+        slideBtn.className = 'btn btn-primary';
+      } else {
+        slideBtn.onclick = (e) => {
+          e.preventDefault();
+          alert('Vui lòng hoàn thành đánh giá kèm nhận xét/góp ý bên dưới để mở khóa tải Bài giảng Motion (.html)!');
+          document.getElementById('feedback-section')?.scrollIntoView({ behavior: 'smooth' });
+        };
+      }
+    };
+
+    const showSuccessView = (currentFeedback) => {
+      updateTopSlideBtn(true);
+      fbSection.innerHTML = renderFeedbackSuccess(id, currentFeedback);
+      const editBtn = fbSection.querySelector('#btn-edit-feedback');
+      if (editBtn) {
+        editBtn.addEventListener('click', () => {
+          showFormView(currentFeedback, () => showSuccessView(currentFeedback));
+        });
+      }
+    };
+
+    const showFormView = (initialData, onCancel = null, warningMsg = null) => {
+      fbSection.innerHTML = `
+        ${warningMsg ? `
+          <div class="alert alert-warning" style="margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 0.8rem">
+            <div style="font-size: 1.8rem; line-height: 1">⚠️</div>
+            <div>
+              <div style="font-weight: 700; margin-bottom: 0.2rem">Bạn đã gửi khảo sát nhưng CHƯA nhập nhận xét!</div>
+              <div style="font-size: 0.9rem; line-height: 1.5">${warningMsg}</div>
+            </div>
+          </div>
+        ` : ''}
+        ${renderFeedbackForm(id, initialData)}
+      `;
+      attachFeedbackHandlers(id, fbSection, initialData, onCancel, (updatedFeedback) => {
+        showSuccessView(updatedFeedback);
+      });
+    };
+
     try {
       const checkRes = await api.get(`/feedback/${id}/check`);
-      
-      const slideBtn = document.getElementById('btn-student-slide');
-      if (slideBtn) {
-        if (checkRes.submitted && checkRes.has_comment) {
-          slideBtn.href = `/api/courses/sessions/${id}/slide?token=${getToken()}`;
-          slideBtn.target = '_blank';
-          slideBtn.onclick = null;
-          slideBtn.style.opacity = '1';
-        } else if (checkRes.submitted && !checkRes.has_comment) {
-          slideBtn.onclick = (e) => { e.preventDefault(); alert('Bạn đã gửi đánh giá nhưng CHƯA nhập bình luận nên hệ thống không cho phép tải Slide. Vui lòng báo Giảng viên.'); };
-        }
-      }
-
-      if (checkRes.submitted) {
-        fbSection.innerHTML = `
-          <div class="card" style="text-align:center; padding: 2rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08))">
-            <div style="font-size: 2.5rem; margin-bottom: 0.8rem">✅</div>
-            <h3 style="margin-bottom: 0.4rem; color: var(--success-color)">Cảm ơn bạn đã góp ý!</h3>
-            <p style="color: var(--text-secondary)">Phản hồi ẩn danh của bạn cho buổi này đã được ghi nhận.</p>
-          </div>
-        `;
+      if (checkRes.submitted && checkRes.has_comment) {
+        showSuccessView(checkRes.feedback);
+      } else if (checkRes.submitted && !checkRes.has_comment) {
+        updateTopSlideBtn(false);
+        showFormView(
+          checkRes.feedback,
+          null,
+          'Để mở khóa Bài giảng Motion (.html) và được ghi nhận điểm danh, bạn cần bổ sung nhận xét/góp ý. Vui lòng nhập bình luận bên dưới và nhấn <b>Cập nhật đánh giá & Lưu bình luận</b>.'
+        );
       } else {
-        fbSection.innerHTML = renderFeedbackForm(id);
-        attachFeedbackHandlers(id, fbSection);
+        updateTopSlideBtn(false);
+        showFormView(null);
       }
     } catch {
-      fbSection.innerHTML = renderFeedbackForm(id);
-      attachFeedbackHandlers(id, fbSection);
+      updateTopSlideBtn(false);
+      showFormView(null);
     }
   } else {
     // Admin view: load feedback summary
@@ -459,44 +541,89 @@ export async function renderLesson(app, { id }) {
   return () => { delete window.showTab; };
 }
 
+// ── Helper: Render feedback success card HTML ──
+function renderFeedbackSuccess(sessionId, feedbackData = null) {
+  const downloadUrl = `/api/courses/sessions/${sessionId}/slide?token=${getToken()}`;
+  return `
+    <div class="card" style="text-align: center; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.2)">
+      <div style="font-size: 3rem; margin-bottom: 0.8rem">✅</div>
+      <h3 style="margin-bottom: 0.5rem; color: var(--success-color); font-size: 1.4rem">Cảm ơn bạn đã góp ý!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem">
+        Phản hồi ẩn danh của bạn cho buổi học này đã được ghi nhận đầy đủ kèm nhận xét.
+      </p>
+      <div>
+        <a href="${downloadUrl}" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 14px rgba(99,102,241,0.4)">
+          📥 Tải Bài giảng Motion (.html) Buổi ${sessionId}
+        </a>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+        Hệ thống đã mở khóa và ghi nhận điểm danh cho buổi học này.
+      </p>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color)">
+        <button id="btn-edit-feedback" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.4rem 0.9rem">
+          ✏️ Chỉnh sửa đánh giá / nhận xét
+        </button>
+      </div>
+    </div>
+  `;
+}
+
 // ── Helper: Render feedback form HTML ──
-function renderFeedbackForm(sessionId) {
+function renderFeedbackForm(sessionId, initialData = null) {
+  const isEdit = !!initialData;
+  const initU = initialData?.understanding ? parseInt(initialData.understanding) : 0;
+  const initP = initialData?.pace ? parseInt(initialData.pace) : 0;
+  const initUse = initialData?.usefulness ? parseInt(initialData.usefulness) : 0;
+  const initComment = initialData?.comment || '';
+
   const scaleLabels = {
     understanding: ['😟 Rất khó hiểu', '😕 Khó hiểu', '😐 Bình thường', '😊 Dễ hiểu', '🤩 Rất dễ hiểu'],
     pace:          ['🐢 Quá chậm', '🚶 Hơi chậm', '👍 Vừa phải', '🏃 Hơi nhanh', '🚀 Quá nhanh'],
     usefulness:    ['😞 Không hữu ích', '🤔 Ít hữu ích', '😐 Tạm được', '😊 Hữu ích', '🌟 Rất hữu ích']
   };
 
-  const renderScale = (name, labels) => `
-    <div style="margin-bottom: 1.5rem">
-      <label style="font-weight: 600; display: block; margin-bottom: 0.6rem">
-        ${name === 'understanding' ? '🧠 Mức độ hiểu bài:' : name === 'pace' ? '⏱ Tốc độ giảng dạy:' : '💡 Buổi học hữu ích thế nào?'}
-      </label>
-      <div style="display: flex; gap: 0.4rem; flex-wrap: wrap">
-        ${labels.map((lbl, i) => `
-          <label style="flex: 1; min-width: 100px; cursor: pointer">
-            <input type="radio" name="${name}" value="${i + 1}" style="display: none" class="fb-radio">
-            <div class="fb-option" data-name="${name}" data-value="${i + 1}" style="
-              text-align: center; padding: 0.6rem 0.4rem; border-radius: 8px;
-              border: 2px solid var(--border-color); font-size: 0.8rem;
-              transition: all 0.2s ease; user-select: none;
-            ">
-              ${lbl}
-            </div>
-          </label>
-        `).join('')}
+  const getInitVal = (name) => name === 'understanding' ? initU : name === 'pace' ? initP : initUse;
+
+  const renderScale = (name, labels) => {
+    const curVal = getInitVal(name);
+    return `
+      <div style="margin-bottom: 1.5rem">
+        <label style="font-weight: 600; display: block; margin-bottom: 0.6rem">
+          ${name === 'understanding' ? '🧠 Mức độ hiểu bài:' : name === 'pace' ? '⏱ Tốc độ giảng dạy:' : '💡 Buổi học hữu ích thế nào?'}
+        </label>
+        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap">
+          ${labels.map((lbl, i) => {
+            const val = i + 1;
+            const isSelected = curVal === val;
+            return `
+            <label style="flex: 1; min-width: 100px; cursor: pointer">
+              <input type="radio" name="${name}" value="${val}" ${isSelected ? 'checked' : ''} style="display: none" class="fb-radio">
+              <div class="fb-option ${isSelected ? 'active' : ''}" data-name="${name}" data-value="${val}" style="
+                text-align: center; padding: 0.6rem 0.4rem; border-radius: 8px;
+                border: 2px solid ${isSelected ? 'var(--primary-color)' : 'var(--border-color)'}; 
+                background: ${isSelected ? 'rgba(99,102,241,0.1)' : 'transparent'};
+                font-weight: ${isSelected ? '600' : 'normal'};
+                font-size: 0.8rem;
+                transition: all 0.2s ease; user-select: none;
+              ">
+                ${lbl}
+              </div>
+            </label>
+            `;
+          }).join('')}
+        </div>
       </div>
-    </div>
-  `;
+    `;
+  };
 
   return `
     <div class="card" style="background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(236,72,153,0.05))">
       <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem">
-        <div style="font-size: 2rem">💬</div>
+        <div style="font-size: 2rem">${isEdit ? '✏️' : '💬'}</div>
         <div>
-          <h3 style="margin: 0">Góp ý buổi học (Ẩn danh)</h3>
+          <h3 style="margin: 0">${isEdit ? 'Chỉnh sửa góp ý buổi học (Ẩn danh)' : 'Góp ý buổi học (Ẩn danh)'}</h3>
           <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0.2rem 0 0">
-            Phản hồi hoàn toàn ẩn danh — giúp giảng viên cải thiện chất lượng giảng dạy.
+            ${isEdit ? 'Bạn có thể điều chỉnh khảo sát và bổ sung hoặc cập nhật nhận xét về buổi học.' : 'Phản hồi hoàn toàn ẩn danh: giúp giảng viên cải thiện chất lượng giảng dạy.'}
           </p>
         </div>
       </div>
@@ -508,28 +635,37 @@ function renderFeedbackForm(sessionId) {
 
         <div style="margin-bottom: 1.5rem">
           <label style="font-weight: 600; display: block; margin-bottom: 0.6rem">
-            ✍️ Cảm nghĩ hoặc góp ý thêm <span style="color: var(--text-secondary); font-weight: 400">(không bắt buộc)</span>
+            ✍️ Cảm nghĩ hoặc góp ý buổi học <span style="color: #ef4444; font-weight: 600">* (Bắt buộc để tải tài liệu bài giảng)</span>
           </label>
-          <textarea id="fb-comment" rows="4" placeholder="Ví dụ: Em muốn thầy/cô giải thích thêm phần..., Buổi học hôm nay em thấy..." 
+          <textarea id="fb-comment" rows="4" 
+            placeholder="Nhập nhận xét của bạn về buổi học (Ví dụ: Em thấy phần thực hành rất hay, cần thầy giải thích thêm phần..., buổi học hôm nay...)" 
             style="width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--border-color); border-radius: 8px;
             background: var(--bg-app); color: var(--text-primary); font-size: 0.95rem; resize: vertical;
             font-family: inherit; line-height: 1.5; transition: border-color 0.2s"
-          ></textarea>
-          <div style="text-align: right; font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.3rem">
-            <span id="fb-char-count">0</span>/1000 ký tự
+          >${initComment}</textarea>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.3rem">
+            <span id="fb-comment-tip" style="color: var(--text-muted)">Vui lòng nhập nhận xét hoặc cảm nghĩ để mở khóa tài liệu.</span>
+            <span><span id="fb-char-count">${initComment.length}</span>/1000 ký tự</span>
           </div>
         </div>
 
-        <button type="submit" id="fb-submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; font-size: 1rem">
-          🔒 Gửi đánh giá ẩn danh
-        </button>
+        <div style="display: flex; gap: 0.8rem; align-items: center">
+          <button type="submit" id="fb-submit" class="btn btn-primary" style="flex: 1; padding: 0.8rem; font-size: 1rem">
+            ${isEdit ? '💾 Cập nhật đánh giá & Lưu bình luận' : '🔒 Gửi đánh giá ẩn danh'}
+          </button>
+          ${isEdit ? `
+          <button type="button" id="fb-cancel-edit" class="btn btn-outline" style="padding: 0.8rem 1.2rem; font-size: 0.95rem">
+            Hủy
+          </button>
+          ` : ''}
+        </div>
       </form>
     </div>
   `;
 }
 
 // ── Helper: Attach event listeners for feedback form ──
-function attachFeedbackHandlers(sessionId, container) {
+function attachFeedbackHandlers(sessionId, container, initialData = null, onCancel = null, onSuccess = null) {
   // Scale option click handler
   container.querySelectorAll('.fb-option').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -549,49 +685,82 @@ function attachFeedbackHandlers(sessionId, container) {
     });
   });
 
-  // Character counter
+  // Cancel button handler (if in edit mode)
+  const cancelBtn = container.querySelector('#fb-cancel-edit');
+  if (cancelBtn && onCancel) {
+    cancelBtn.addEventListener('click', () => {
+      onCancel();
+    });
+  }
+
+  // Character counter and reset border on input
   const textarea = container.querySelector('#fb-comment');
   const counter = container.querySelector('#fb-char-count');
-  if (textarea && counter) {
+  if (textarea) {
     textarea.addEventListener('input', () => {
+      textarea.style.borderColor = 'var(--border-color)';
       const len = textarea.value.length;
-      counter.textContent = len;
-      counter.style.color = len > 900 ? '#ef4444' : 'var(--text-secondary)';
+      if (counter) {
+        counter.textContent = len;
+        counter.style.color = len > 900 ? '#ef4444' : 'var(--text-secondary)';
+      }
       if (len > 1000) textarea.value = textarea.value.substring(0, 1000);
     });
   }
 
   // Submit
   const form = container.querySelector('#feedback-form');
+  if (!form) return;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const understanding = form.querySelector('input[name="understanding"]:checked')?.value;
     const pace = form.querySelector('input[name="pace"]:checked')?.value;
     const usefulness = form.querySelector('input[name="usefulness"]:checked')?.value;
-    const comment = form.querySelector('#fb-comment')?.value || '';
+    const commentVal = form.querySelector('#fb-comment')?.value || '';
+    const trimmedComment = commentVal.trim();
 
     if (!understanding || !pace || !usefulness) {
       alert('Vui lòng chọn đánh giá cho cả 3 câu khảo sát trước khi gửi.');
       return;
     }
 
+    if (!trimmedComment || trimmedComment.length === 0) {
+      alert('Vui lòng nhập nhận xét/góp ý của bạn về buổi học trước khi gửi. Đây là điều kiện bắt buộc để mở khóa tài liệu bài giảng và điểm danh.');
+      if (textarea) {
+        textarea.focus();
+        textarea.style.borderColor = '#ef4444';
+      }
+      return;
+    }
+
     const btn = form.querySelector('#fb-submit');
+    const origText = btn.textContent;
     btn.disabled = true;
-    btn.textContent = '⏳ Đang gửi...';
+    btn.textContent = '⏳ Đang lưu...';
 
     try {
-      const res = await api.post(`/feedback/${sessionId}`, { understanding, pace, usefulness, comment });
-      container.innerHTML = `
-        <div class="card" style="text-align:center; padding: 2rem; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08))">
-          <div style="font-size: 2.5rem; margin-bottom: 0.8rem">✅</div>
-          <h3 style="margin-bottom: 0.4rem; color: var(--success-color)">Cảm ơn bạn đã góp ý!</h3>
-          <p style="color: var(--text-secondary)">${res.message}</p>
-        </div>
-      `;
+      const res = await api.post(`/feedback/${sessionId}`, { 
+        understanding, 
+        pace, 
+        usefulness, 
+        comment: trimmedComment 
+      });
+
+      const updatedData = {
+        understanding: parseInt(understanding),
+        pace: parseInt(pace),
+        usefulness: parseInt(usefulness),
+        comment: trimmedComment
+      };
+
+      if (onSuccess) {
+        onSuccess(updatedData);
+      }
     } catch (err) {
-      alert('Lỗi: ' + err.message);
+      alert('Lỗi: ' + (err.message || 'Không thể gửi đánh giá'));
       btn.disabled = false;
-      btn.textContent = '🔒 Gửi đánh giá ẩn danh';
+      btn.textContent = origText;
     }
   });
 }

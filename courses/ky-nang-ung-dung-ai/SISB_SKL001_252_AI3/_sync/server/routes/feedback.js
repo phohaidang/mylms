@@ -25,14 +25,42 @@ router.post('/:sessionId', authenticate, async (req, res) => {
       return res.status(400).json({ error: 'Vui lòng trả lời đầy đủ các câu khảo sát.' });
     }
 
-    // Check if this user already submitted feedback for this session
-    const anonHash = Buffer.from(req.user.student_id + '_session_' + sessionId).toString('base64');
-    const existing = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
-    if (existing) {
-      return res.status(409).json({ error: 'Bạn đã gửi đánh giá cho buổi học này rồi.' });
+    // Validate required comment
+    const trimmedComment = String(comment || '').trim();
+    if (!trimmedComment || trimmedComment.length === 0) {
+      return res.status(400).json({ 
+        error: 'Vui lòng nhập nhận xét/góp ý của bạn về buổi học. Đây là điều kiện bắt buộc để mở khóa tài liệu bài giảng.' 
+      });
     }
 
+    // Check if this user already submitted feedback for this session
+    const studentKey = String(req.user.student_id || req.user.email || '').trim().toLowerCase();
+    const anonHash = Buffer.from(`${studentKey}_session_${sessionId}`).toString('base64');
+    const existing = await db.findOne('session_feedback', f => {
+      const hash = String(f.anon_hash || f.hash || '').trim();
+      return hash === anonHash;
+    });
+
     const now = new Date().toISOString();
+
+    if (existing) {
+      // Cho phép cập nhật/sửa feedback (bổ sung comment hoặc cập nhật đánh giá)
+      await db.update('session_feedback', f => {
+        const hash = String(f.anon_hash || f.hash || '').trim();
+        return hash === anonHash;
+      }, {
+        understanding: parseInt(understanding),
+        pace: parseInt(pace),
+        usefulness: parseInt(usefulness),
+        comment: trimmedComment.substring(0, 1000),
+        updated_at: now
+      });
+
+      return res.json({ 
+        message: 'Đã cập nhật đánh giá thành công! Nhận xét của bạn đã được ghi nhận.',
+        updated: true 
+      });
+    }
 
     // 1) Save ANONYMOUS feedback (no student identity)
     const feedback = {
@@ -42,7 +70,7 @@ router.post('/:sessionId', authenticate, async (req, res) => {
       understanding: parseInt(understanding),
       pace: parseInt(pace),
       usefulness: parseInt(usefulness),
-      comment: (comment || '').trim().substring(0, 1000),
+      comment: trimmedComment.substring(0, 1000),
       submitted_at: now
     };
     await db.append('session_feedback', feedback);
@@ -61,14 +89,25 @@ router.post('/:sessionId', authenticate, async (req, res) => {
 router.get('/:sessionId/check', authenticate, async (req, res) => {
   try {
     const sessionId = parseInt(req.params.sessionId);
-    const anonHash = Buffer.from(req.user.student_id + '_session_' + sessionId).toString('base64');
-    const existing = await db.findOne('session_feedback', f => f.anon_hash === anonHash);
+    const studentKey = String(req.user.student_id || req.user.email || '').trim().toLowerCase();
+    const anonHash = Buffer.from(`${studentKey}_session_${sessionId}`).toString('base64');
+    const existing = await db.findOne('session_feedback', f => {
+      const hash = String(f.anon_hash || f.hash || '').trim();
+      return hash === anonHash;
+    });
+    const commentVal = String(existing?.comment || existing?.['bình luận'] || '').trim();
     res.json({ 
       submitted: !!existing, 
-      has_comment: !!(existing && existing.comment && existing.comment.trim().length > 0)
+      has_comment: commentVal.length > 0,
+      feedback: existing ? {
+        understanding: parseInt(existing.understanding) || 3,
+        pace: parseInt(existing.pace) || 3,
+        usefulness: parseInt(existing.usefulness) || 3,
+        comment: commentVal
+      } : null
     });
   } catch (err) {
-    res.json({ submitted: false, has_comment: false });
+    res.json({ submitted: false, has_comment: false, feedback: null });
   }
 });
 

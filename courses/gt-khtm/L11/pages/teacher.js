@@ -10,7 +10,7 @@ export async function renderTeacher(app) {
         <!-- Cột trái: Hình ảnh & Thông tin nhanh -->
         <div class="teacher-image-col">
           <div class="teacher-portrait-wrap">
-            <img id="teacher-img" src="/images/teacher.webp" alt="ThS. Phó Hải Đăng" class="teacher-portrait">
+            <img id="teacher-img" src="/images/teacher.png" alt="ThS. Phó Hải Đăng" class="teacher-portrait">
           </div>
           
           <div class="teacher-info-box">
@@ -77,7 +77,7 @@ export async function renderTeacher(app) {
 
   // Image fallback logic
   const img = document.getElementById('teacher-img');
-  const formats = ['webp', 'png', 'jpg', 'jpeg'];
+  const formats = ['png', 'jpg', 'jpeg', 'webp'];
   let currentFormatIndex = 0;
 
   img.onerror = () => {

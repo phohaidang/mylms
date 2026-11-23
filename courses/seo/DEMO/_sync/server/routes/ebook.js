@@ -158,20 +158,21 @@ router.post('/chapters/:id/test/:level/submit', authenticate, async (req, res) =
     
     let result = {};
     
-    if (level === 1) {
+    const mcQuestions = (test.questions || []).filter(q => q.type === 'mc');
+    if (level === 1 || (mcQuestions.length > 0 && mcQuestions.length === test.questions.length)) {
       // Auto-grade MC
       let correct = 0;
-      const total = test.questions.length;
+      const total = mcQuestions.length;
       
       for (const ans of answers) {
-        const q = test.questions.find(q => q.id === ans.question_id);
+        const q = mcQuestions.find(q => q.id === ans.question_id);
         if (q && ans.selected === q.correct) correct++;
       }
       
       const score = Math.round((correct / total) * 10 * 100) / 100;
       result = { score, correct_count: correct, total_questions: total, graded: true };
     } else {
-      // Level 2 & 3: save essay, GV grades later
+      // Level 2 & 3 with essays: save essay, GV grades later
       result = { graded: false, message: 'Bài đã được lưu. Giảng viên sẽ chấm điểm.' };
     }
     
