@@ -1,0 +1,23 @@
+{
+  "students": [
+    {
+      "student_id": "HUB-DEMO01",
+      "email": "troly@st.hub.edu.vn",
+      "full_name": "Trợ Lý Nghiên Cứu",
+      "password": "",
+      "role": "student",
+      "must_change_password": "false",
+      "created_at": "2026-11-23T06:00:00.000Z",
+      "password_hash": "$2a$10$QBWbuTPAesezy2m9e6MBXOGTe1NxdrUrKagSrlxXcaRNsSMSjEadu",
+      "last_login": ""
+    }
+  ],
+  "quiz_attempts": [],
+  "exam_attempts": [],
+  "manual_grades": [],
+  "ebook_progress": [],
+  "course_config": [],
+  "session_feedback": [],
+  "attendance_log": [],
+  "session_journals": []
+}

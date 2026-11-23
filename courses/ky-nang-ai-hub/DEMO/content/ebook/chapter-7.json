@@ -1,0 +1,230 @@
+{
+  "chapter": 7,
+  "title": "Trích dẫn bịa, Checklist Kiểm chứng 5 bước, Công cụ Tomaca & Zotero 8",
+  "sessions": [
+    7
+  ],
+  "scqa": {
+    "situation": "Khi viết báo cáo nghiên cứu hoặc khóa luận tốt nghiệp, bạn cần khoảng 15-20 tài liệu tham khảo uy tín. Bạn thấy những trích dẫn do AI gợi ý có tên tác giả rất nổi tiếng trong ngành, tên tạp chí đúng chuẩn quốc tế, có cả số tập, số trang và mã DOI đúng cú pháp `10.xxxx/...` nên yên tâm đưa thẳng vào bài.",
+    "complication": "Nghiên cứu thực nghiệm của Linardon và cộng sự (2025, JMIR Mental Health) trên 176 trích dẫn do GPT-4o tạo ra cho thấy: 19.9% bịa hoàn toàn và tới 56.3% là bịa hoặc sai thông tin thư mục! Nguy hiểm hơn, tỷ lệ bịa tăng vọt từ 6% ở chủ đề phổ biến lên tới 28% - 29% ở các đề tài ít được nghiên cứu (p = .001) - tức là AI bịa nhiều nhất ở đúng những đề tài chuyên sâu mà sinh viên cần nó nhất. Trong một bài báo thực tế (Ren và cs., 2025), tới 18/30 trích dẫn (60%) là bịa và 21/33 mã DOI giả lại dẫn sang một bài báo thật hoàn toàn không liên quan!",
+    "question": "Nếu không thể dựa vào cảm giác 'trông rất giống thật' hay 'có mã DOI', làm thế nào để xây dựng một màng lọc kỹ thuật đảm bảo 100% tài liệu tham khảo trong Đề án của bạn là nguồn thật, đúng ý và sạch lỗi?",
+    "answer": "Khắc cốt ghi tâm quy tắc 'Chưa kiểm chứng, chưa vào bài': thực thi Checklist kiểm chứng 5 bước từ rẻ đến tốn công, kết hợp công cụ rà soát tự động Tomaca theo nguyên tắc 'Máy soát, người quyết', và khóa chặt đầu vào bằng phần mềm Zotero 8 ('Nguồn vào Zotero trước, vào bài sau')."
+  },
+  "concepts": [
+    {
+      "id": "c7-linardon-citation",
+      "session": 7,
+      "term": "Quy luật Trích dẫn bịa của Linardon (2025) & Hình hài một trích dẫn 'ghép xác'",
+      "definition": "Bằng chứng khoa học giải thích khi nào LLM bịa trích dẫn nhiều nhất và cách thức mô hình xác suất lắp ghép các mảnh thông tin thật thành một tài liệu tham khảo giả mạo hoàn hảo.",
+      "key_points": [
+        "<strong>Quy luật Linardon và cs. (2025, JMIR Ment Health 12:e80371):</strong> Kiểm tra 176 trích dẫn từ 6 bài tổng quan do GPT-4o viết -> <strong>19.9% (35/176) bịa hoàn toàn</strong>; gộp cả bài có thật nhưng sai thông tin thư mục là <strong>56.3% (99/176)</strong>.",
+        "<strong>Bịa theo mức độ được nghiên cứu (p = .001):</strong> Tỷ lệ bịa chỉ <strong>6%</strong> ở đề tài được nghiên cứu nhiều, nhưng vọt lên <strong>28% - 29%</strong> ở đề tài ít được nghiên cứu (chứ không phụ thuộc đề tài hẹp hay rộng, p = .21). <em>AI không bịa ngẫu nhiên, nó bịa nhiều nhất ở chỗ nó biết ít nhất!</em>",
+        "<strong>Giải phẫu một trích dẫn 'ghép xác':</strong> AI ghép (1) Tên tác giả có thật trong ngành + (2) Tên tạp chí có thật + (3) Số tập, số trang hợp lý + (4) Mã DOI đúng cú pháp (nhưng không tồn tại hoặc 21/33 trường hợp trỏ sang bài báo khác không liên quan) + (5) Tiêu đề bài báo khớp đúng đề tài của bạn."
+      ],
+      "case_study": {
+        "title": "Bài báo dính 60% trích dẫn bịa (Ren và cs., 2025)",
+        "context": "Kiểm tra một bài viết chuyên ngành trong đó 18 trên 30 tài liệu tham khảo (60%) là sản phẩm do AI bịa ra nhưng tất cả tiêu đề đều bám cực sát chủ đề bài viết.",
+        "analysis": "Người đọc bình thường nếu chỉ nhìn danh mục tài liệu tham khảo bằng mắt thường sẽ không bao giờ phát hiện ra.",
+        "lesson_learned": "Tuyệt đối không đánh giá độ thật/giả của trích dẫn bằng cảm giác 'nghe đúng chủ đề'."
+      },
+      "related_concepts": [
+        "c7-checklist-5-buoc",
+        "c7-tomaca-zotero"
+      ]
+    },
+    {
+      "id": "c7-checklist-5-buoc",
+      "session": 7,
+      "term": "Checklist Kiểm chứng một Trích dẫn qua 5 Bước (Từ rẻ đến tốn công)",
+      "definition": "Quy trình 5 câu hỏi tuần tự giúp lọc sạch cả trích dẫn bịa hoàn toàn lẫn trích dẫn có thật nhưng bị AI gán sai nội dung hoặc đã bị rút lại.",
+      "key_points": [
+        "<strong>Bước 1 - Có thật không?</strong> Tra tiêu đề trên Google Scholar / Semantic Scholar hoặc tra mã DOI trên <code>doi.org</code>.",
+        "<strong>Bước 2 - Thông tin thư mục có khớp không?</strong> Tên tác giả, năm xuất bản, tên tạp chí, số tập, số trang phải trùng khớp với trang gốc của nhà xuất bản.",
+        "<strong>Bước 3 - Bài gốc có nói đúng ý đó không? (Bước hay bị bỏ qua nhất!)</strong> Mở file PDF bản gốc, tìm đúng đoạn văn được trích dẫn để chắc chắn tác giả thực sự nói ý đó (chống lại lỗi gán ghép luận điểm giả vào một bài báo có thật).",
+        "<strong>Bước 4 - Số liệu có khớp không?</strong> Đối chiếu trực tiếp con số trích dẫn với Bảng (Table) và Hình (Figure) trong bài báo gốc.",
+        "<strong>Bước 5 - Bài báo còn hiệu lực không?</strong> Tra cứu trên <em>Retraction Watch Database</em> xem bài báo có bị rút lại (retracted) vì gian lận khoa học hay không."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c7-linardon-citation",
+        "c7-tomaca-zotero"
+      ]
+    },
+    {
+      "id": "c7-tomaca-zotero",
+      "session": 7,
+      "term": "Công cụ Tomaca ('Máy soát, Người quyết') & Quy trình khóa chốt Zotero 8",
+      "definition": "Sự kết hợp giữa công cụ kiểm tra trích dẫn tự động đa cơ sở dữ liệu (Tomaca) và phần mềm quản lý tài liệu tham khảo mã nguồn mở (Zotero 8) để xây dựng quy trình tài liệu tham khảo không thể bị nhiễm rác AI.",
+      "key_points": [
+        "<strong>Cơ chế của Tomaca (TS. Trần Việt Tâm - pro-tomaca.quyentrungga.com):</strong> Đối chiếu chéo DOI trên Crossref, OpenAlex, DataCite; cảnh báo tạp chí săn mồi/mạo danh và xếp hạng Q. Phân loại 3 nhóm kết quả: <em>Đạt</em> (<code>verified-doi</code>, <code>verified-book</code>), <em>Không đạt</em> (<code>no-doi</code>, <code>doi-not-found</code>), và <em>Chưa nêu rõ - Cần người xem lại</em> (<code>metadata-mismatch</code>: DOI thật nhưng năm/tên lệch).",
+        "<strong>Giới hạn thực nghiệm của máy ('Máy soát, Người quyết'):</strong> Trong bộ test thực tế 10 trích dẫn (7 thật, 3 giả ngày 17/10/2026), Tomaca báo 9 <code>verified-doi</code> và 1 <code>metadata-mismatch</code>, bỏ lọt 2 mục giả vì DOI giả tình cờ trỏ về một bài báo có thật khác! Do đó, máy chỉ giúp lọc nhanh bước đầu, con người bắt buộc phải đọc nguồn gốc để quyết định.",
+        "<strong>Quy tắc vàng với Zotero 8: 'Nguồn vào Zotero trước, rồi mới vào bài':</strong> (1) Chỉ lưu bài vào Zotero qua Zotero Connector khi mắt bạn đang mở trang bài báo thật sau khi đã kiểm chứng -> (2) Trong Word/Docs, chỉ chèn trích dẫn từ thư viện Zotero, tuyệt đối không gõ tay hay copy từ AI -> (3) Đổi chuẩn APA 7 / IEEE tự động cho toàn bài chỉ bằng 1 cú nhấp chuột."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c7-checklist-5-buoc"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết số liệu Linardon (2025), Checklist 5 bước, 3 nhóm kết quả Tomaca và quy trình Zotero.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c7-q1",
+          "type": "mc",
+          "concept_ref": "c7-linardon-citation",
+          "question": "Theo nghiên cứu của Linardon và cộng sự (2025) trên tạp chí JMIR Mental Health khi kiểm tra 176 trích dẫn do GPT-4o tạo ra, tổng tỷ lệ trích dẫn bịa hoàn toàn (19.9%) cộng với trích dẫn có thật nhưng sai thông tin thư mục là bao nhiêu?",
+          "options": [
+            "A. Chỉ khoảng 2%",
+            "B. 56.3% (99 trên 176 trích dẫn có vấn đề)",
+            "C. 10%",
+            "D. 0%"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c7-q2",
+          "type": "mc",
+          "concept_ref": "c7-linardon-citation",
+          "question": "Cũng theo nghiên cứu của Linardon và cộng sự (2025), yếu tố nào quyết định việc AI bịa trích dẫn nhiều hơn (tăng từ 6% lên tới 28%-29%, với p = .001)?",
+          "options": [
+            "A. Mức độ chủ đề đó đã được nghiên cứu kỹ hay ít được nghiên cứu (AI bịa nhiều hơn ở các đề tài ít được nghiên cứu)",
+            "B. Thời tiết vào ngày người dùng đặt câu hỏi",
+            "C. Độ dài của tên tác giả",
+            "D. Màu sắc giao diện của phần mềm AI"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c7-q3",
+          "type": "mc",
+          "concept_ref": "c7-checklist-5-buoc",
+          "question": "Năm bước trong Checklist kiểm chứng một trích dẫn khoa học theo thứ tự từ rẻ đến tốn công là gì?",
+          "options": [
+            "A. (1) Có thật không? -> (2) Thông tin thư mục khớp không? -> (3) Bài gốc có nói đúng ý đó không? -> (4) Số liệu khớp bảng/hình không? -> (5) Còn hiệu lực trên Retraction Watch không?",
+            "B. Copy -> Paste -> Đổi phông chữ -> Căn lề -> Nộp bài",
+            "C. Hỏi ChatGPT -> Hỏi Claude -> Hỏi Gemini -> Lấy trung bình cộng",
+            "D. Chỉ cần kiểm tra xem mã DOI có bắt đầu bằng số 10 hay không"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c7-q4",
+          "type": "mc",
+          "concept_ref": "c7-tomaca-zotero",
+          "question": "Khi sử dụng công cụ kiểm tra trích dẫn Tomaca, nhãn kết quả `metadata-mismatch` thuộc nhóm 'Chưa nêu rõ' có ý nghĩa là gì?",
+          "options": [
+            "A. Mã DOI có tồn tại trên cơ sở dữ liệu nhưng thông tin năm xuất bản, tiêu đề hoặc tên tác giả trong bài của bạn bị lệch so với bản gốc, bắt buộc con người phải mở ra kiểm tra lại",
+            "B. Trích dẫn đã hoàn hảo 100%, không cần xem lại",
+            "C. Máy chủ đang bảo trì",
+            "D. Bài báo được viết bằng tiếng Pháp"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Hiểu tại sao Bước 3 hay bị bỏ qua nhất và tại sao công cụ tự động vẫn có thể bỏ lọt trích dẫn giả.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c7-q1",
+          "type": "mc",
+          "concept_ref": "c7-checklist-5-buoc",
+          "question": "Tại sao trong Checklist 5 bước, Bước 3 ('Mở bản gốc kiểm tra xem bài báo có thực sự nói đúng ý đó không') lại là bước quan trọng để chống lại loại lỗi nguy hiểm hơn cả trích dẫn bịa hoàn toàn?",
+          "options": [
+            "A. Vì rất nhiều trường hợp bài báo, tên tác giả và mã DOI đều có thật 100% (vượt qua Bước 1 và 2 dễ dàng), nhưng AI lại gán cho bài báo đó một kết luận hoặc số liệu mà tác giả bài gốc không hề nói tới, hoặc nói ngược lại!",
+            "B. Vì Bước 1 và Bước 2 không cần làm",
+            "C. Vì mở file PDF giúp máy tính chạy nhanh hơn",
+            "D. Vì Bước 3 giúp tự động dịch bài báo"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c7-q2",
+          "type": "mc",
+          "concept_ref": "c7-tomaca-zotero",
+          "question": "Trong thử nghiệm thực tế ngày 17/10/2026 trên bộ test 10 trích dẫn (7 thật, 3 giả), tại sao công cụ Tomaca lại báo `verified-doi` cho cả 2 trích dẫn giả và bài học rút ra là gì?",
+          "options": [
+            "A. Vì AI khi bịa trích dẫn đã lấy một mã DOI có thật của một bài báo khác không liên quan ghép vào tiêu đề bịa; máy kiểm tra thấy DOI tồn tại nên báo đạt. Bài học: 'Máy soát, người quyết' - con người luôn phải mở nguồn gốc để đối chiếu tiêu đề và nội dung",
+            "B. Vì không bao giờ nên dùng bất kỳ công cụ kiểm tra nào",
+            "C. Vì trích dẫn giả đó đã tự động biến thành bài báo thật",
+            "D. Vì chỉ cần máy báo verified-doi là được miễn trách nhiệm học thuật"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c7-q3",
+          "type": "mc",
+          "concept_ref": "c7-tomaca-zotero",
+          "question": "Vì sao việc tuân thủ nghiêm ngặt quy trình 'Nguồn vào Zotero trước, rồi mới vào bài' lại giúp loại bỏ tận gốc nguy cơ lọt trích dẫn do AI bịa vào báo cáo Đề án?",
+          "options": [
+            "A. Vì bạn chỉ bấm nút Zotero Connector để lưu tài liệu khi chính mắt bạn đang mở trang bài báo thật của nhà xuất bản (sau khi đã kiểm chứng), và trong Word bạn chỉ chèn trích dẫn từ thư viện Zotero đó chứ không bao giờ copy-paste dòng trích dẫn từ cửa sổ chat của AI",
+            "B. Vì Zotero là một trí tuệ nhân tạo biết tự viết báo cáo",
+            "C. Vì Zotero cấm người dùng gõ tiếng Việt",
+            "D. Vì Zotero tự động xóa mọi bài báo xuất bản trước năm 2025"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c7-q4",
+          "type": "mc",
+          "concept_ref": "c7-linardon-citation",
+          "question": "Khi giảng viên nói 'AI bịa nhiều hơn ở đề tài ít được nghiên cứu chứ không phải đề tài hẹp', điều này cảnh báo gì cho sinh viên ngành Ngân hàng - Kinh tế khi làm đề tài mới tại Việt Nam?",
+          "options": [
+            "A. Những đề tài mang tính địa phương hoặc bối cảnh mới tại Việt Nam có ít dữ liệu học thuật quốc tế trong tập huấn luyện của LLM, nên nếu sinh viên nhờ Chatbot viết tổng quan tài liệu cho các đề tài này, tỷ lệ AI bịa trích dẫn sẽ ở mức cao nhất",
+            "B. Sinh viên không được phép chọn đề tài mới tại Việt Nam",
+            "C. Đề tài tại Việt Nam thì AI không bao giờ bịa",
+            "D. Chỉ cần viết câu hỏi ngắn lại là AI sẽ không bịa"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Thực hành kiểm chứng danh mục tài liệu của Đề án nhóm qua Checklist 5 bước, Tomaca và Zotero.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c7-q1",
+          "type": "mc",
+          "concept_ref": "c7-checklist-5-buoc",
+          "question": "Trong khi Kiểm toán chéo (Peer Audit) báo cáo của nhóm bạn, bạn thấy câu: 'Theo Nguyễn và Trần (2025, Journal of Banking & Finance, DOI: 10.1016/j.jbankfin.2024.107111), 74% ngân hàng Việt Nam đã dùng AI duyệt vay'. Khi bạn bấm vào link DOI đó trên doi.org, trang web mở ra một bài báo năm 2024 của tác giả Smith về thị trường chứng khoán Mỹ. Kết luận kiểm toán của bạn là gì?",
+          "options": [
+            "A. Trích dẫn đạt chuẩn vì mã DOI có hoạt động và dẫn tới tạp chí Journal of Banking & Finance thật",
+            "B. Đây là một trích dẫn bịa điển hình dạng 'ghép xác' (ghép tác giả Việt Nam và luận điểm bịa vào một mã DOI có thật của bài báo khác); nhóm bạn đã không thực hiện Bước 2 và Bước 3 của Checklist 5 bước nên đã vi phạm Điểm liệt Liêm chính",
+            "C. Chỉ là lỗi đánh máy nhỏ, không cần sửa",
+            "D. Lỗi do trang web doi.org bị hỏng"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c7-q2",
+          "type": "mc",
+          "concept_ref": "c7-tomaca-zotero",
+          "question": "Khi chạy danh mục 12 tài liệu tham khảo của Đề án nhóm trên Tomaca, có 1 báo cáo thường niên của Ngân hàng Nhà nước Việt Nam bị báo nhãn `no-doi` (Không có DOI). Cách xử lý đúng chuẩn 'Máy soát, người quyết' là gì?",
+          "options": [
+            "A. Tự chế ra một mã DOI giả điền vào để Tomaca báo xanh",
+            "B. Hiểu rằng các báo cáo ngành, văn bản pháp quy hoặc sách chuyên khảo trong nước thường không đăng ký mã DOI; nhóm tự kiểm chứng thủ công đường dẫn URL chính thức trên cổng thông tin Ngân hàng Nhà nước, lưu metadata chuẩn vào Zotero và ghi chú rõ trong biên bản kiểm chứng",
+            "C. Xóa bỏ hoàn toàn mọi báo cáo của Ngân hàng Nhà nước khỏi đề án",
+            "D. Nhờ ChatGPT cấp mã DOI cho báo cáo đó"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c7-essay1",
+          "type": "essay",
+          "concept_ref": "c7-checklist-5-buoc",
+          "question": "Hãy lấy 03 tài liệu tham khảo trong Đề án cuối khóa của nhóm bạn và lập 'Bảng Báo cáo Kiểm chứng 5 bước & Zotero': Với mỗi tài liệu, ghi rõ kết quả kiểm tra ở từng bước (Bước 1: Link DOI/Scholar; Bước 2: Khớp thư mục; Bước 3: Trích nguyên văn câu trong bài gốc chứng minh bài báo có nói đúng luận điểm nhóm bạn trích; Bước 4: Số liệu; Bước 5: Tình trạng hiệu lực) và kết quả quét trên Tomaca.",
+          "rubric": "Đủ 3 tài liệu thật phục vụ Đề án nhóm (20%) · Điền đầy đủ và trung thực kết quả cả 5 bước kiểm chứng cho từng bài (40%) · Ở Bước 3 trích dẫn được chính xác câu/đoạn văn gốc kèm số trang (25%) · Nêu rõ kết quả đối chiếu trên Tomaca và xác nhận đã nạp Zotero (15%)",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

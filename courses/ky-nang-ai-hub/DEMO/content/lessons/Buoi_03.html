@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 3: Kiến trúc Harness - Xây dựng 'Bộ dây cương' điều phối AI — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 1: BẢN CHẤT AI, PROMPT, CONTEXT & HARNESS</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO1, CLO2</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 3: Kiến trúc Harness - Xây dựng 'Bộ dây cương' điều phối AI</h1>
+      <p class="subtitle">Thiết kế quy trình nhiều bước có Cổng xác nhận (GATE), Xử lý ngoại lệ (FALLBACK), Gia sư Socrates và chốt Mảnh ghép 1</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Phân biệt rõ 3 tầng kiến trúc điều phối AI: <strong>Prompt (Mệnh lệnh tức thời) -> Context (Ngữ cảnh nền) -> Harness (Bộ khung quy tắc, quy trình và chốt chặn kiểm soát)</strong> (CLO1, CLO2).</li>
+      <li>Thiết kế được quy trình làm việc nhiều bước cho AI có gắn <strong>Cổng dừng xác nhận (GATE 🔒)</strong> và <strong>Cơ chế xử lý khi thiếu dữ liệu/căn cứ (FALLBACK ❓)</strong> (CLO2).</li>
+      <li>Xây dựng được một <strong>Socratic Harness (Gia sư Socrates)</strong> tích hợp 4 kỹ thuật học sâu (Truy hồi chủ động, Lặp lại ngắt quãng, Xáo trộn, Tự mày mò trước) để phục vụ việc tự học (CLO2).</li>
+      <li>Đóng gói và kiểm thử thành công <strong>Bộ Harness Nghiệp vụ (Mảnh ghép 1 của Đề án cuối khóa)</strong> vượt qua cả 3 kịch bản stress-test (CLO2).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Bạn đã biết viết Prompt theo khung CRISP và đính kèm file Context. Nhưng mỗi khi mở một cuộc trò chuyện mới để học môn tiếp theo hay xử lý ca nghiệp vụ mới, bạn lại phải copy-paste lại hàng trang quy tắc; tệ hơn, đôi khi AI làm một mạch từ bước 1 đến bước 5 rồi tự ý chốt kết quả sai mà không hỏi ý kiến bạn.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Giao tiếp với AI bằng các đoạn chat tự do giống như cưỡi một con ngựa chiến sung sức nhưng không có dây cương và yên ngựa. Khi bài toán phức tạp lên, một câu lệnh đơn lẻ không thể kiểm soát được quy trình nhiều bước, không chặn được việc AI 'vượt rào' làm thay phần phán đoán của con người, và đặc biệt trong học tập, AI rất dễ chiều lòng bạn bằng cách đưa thẳng đáp án khiến não bạn ngừng suy nghĩ.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để đóng gói toàn bộ quy tắc, tri thức nền, luồng công việc nhiều bước và các chốt chặn kiểm tra thành một 'bộ khung điều phối cố định' giúp AI luôn vận hành đúng đường ray?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Xây dựng kiến trúc AI Harness ('Bộ dây cương'): thiết lập System Instructions (Hiến pháp của AI), chia quy trình thành các bước tuần tự có Cổng xác nhận (GATE) và Cơ chế xử lý thiếu thông tin (FALLBACK), đồng thời thiết kế Socratic Harness để biến AI thành gia sư rèn luyện tư duy cho chính bạn.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 3): Minh đã viết được Prompt CRISP rất tốt, nhưng mỗi lần học môn mới hay phân tích một báo cáo mới, Minh lại phải copy-paste lại hàng trang chỉ dẫn. Có lần AI chạy tuốt một mạch từ bước trích xuất số liệu đến bước viết kết luận mà không chờ Minh kiểm tra bảng số liệu trung gian, dẫn đến sai số dây chuyền. Minh học cách đóng gói một 'Bộ dây cương' (Harness) trên Claude Project / Gemini Gem với 2 cổng dừng GATE và tạo riêng một Socratic Tutor để truy bài mình trước kỳ thi.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Trong một quy trình nghiệp vụ gồm 5 bước nối tiếp nhau, nếu bước 2 bị sai số liệu mà AI cứ thế chạy thẳng đến bước 5 thì điều gì sẽ xảy ra với kết quả cuối cùng?</li>
+        <li>Tại sao khi bạn nhờ AI 'giải chi tiết bài tập này giúp tôi', bạn hiểu rất nhanh lúc đọc lời giải nhưng khi vào phòng thi gặp bài tương tự vẫn không làm được?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Kiến trúc 3 tầng Prompt - Context - Harness & Cơ chế GATE / FALLBACK:</strong><br>• Ẩn dụ con ngựa chiến: Prompt (tiếng hô), Context (địa hình), Harness (bộ dây cương, yên ngựa và đường ray).<br>• Giảng viên mở trực tiếp hệ thống Rules, Skills và Project Harness thực tế đang vận hành để demo.<br>• Phân tích sâu 2 chốt chặn kỹ thuật: <strong>GATE (🔒 Dừng chờ người duyệt)</strong> và <strong>FALLBACK (❓ Báo thiếu dữ liệu/chưa đủ căn cứ, không tự đoán)</strong>.</td><td>Quan sát demo thực tế 3 kịch bản: chạy xuôi, thiếu thông tin (FALLBACK kích hoạt) và giục vượt rào (GATE chặn lại).</td><td>Slide Buổi 3; Demo Claude Project / Gem</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Thiết kế Harness cho Sự học: Socratic Tutor & 4 Kỹ thuật học sâu:</strong><br>• Khoa học thần kinh về trí nhớ: <em>Active Recall, Spaced Repetition, Interleaving, Productive Struggle</em>.<br>• Hướng dẫn cấu trúc System Instructions biến AI thành Gia sư Socrates (cấm giải bài hộ, chỉ hỏi gợi mở và chấm từng bước lập luận của sinh viên).</td><td>Tự tay tạo và thử nghiệm 1 Socratic Harness cho môn học chuyên ngành khó nhất đang học tại HUB.</td><td>Thiết bị cá nhân; Template Socratic Harness</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Thực hành Thiết kế & Đóng gói Bộ Harness cho Đề án nhóm:</strong><br>• Nguyên tắc 'Vẽ cho người trước khi vẽ cho AI': các nhóm vẽ sơ đồ quy trình 3-5 bước ra giấy, đánh dấu rõ vị trí GATE 🔒 và FALLBACK ❓.<br>• Số hóa sơ đồ thành System Instructions 4 khối và nạp tài liệu Context mẫu lên Claude Project / Gemini Gem.</td><td>Làm việc nhóm: vẽ sơ đồ quy trình, viết System Instructions 4 khối và đóng gói thành bộ Harness chạy được.</td><td>Giấy thiết kế quy trình; Template Harness 4 khối</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Stress-test 3 kịch bản (Chốt Mảnh ghép 1) & Khóa chốt LMS:</strong><br>• Hướng dẫn các nhóm chạy 3 kịch bản test bắt buộc: (1) Chạy xuôi, (2) Bỏ trống thông tin test FALLBACK, (3) Giục vượt GATE.<br>• Kiểm tra xác nhận hoàn thành <strong>Mảnh ghép 1 của Đề án</strong>.</td><td>Chạy 3 kịch bản test, chụp màn hình minh chứng lưu vào Hồ sơ Đề án (Mảnh ghép 1); viết phản tư 4F và làm Quiz Buổi 3 trên LMS.</td><td>LMS Hub (Quiz 3, Journal 3)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Vì sao 'không đặt cổng GATE ở một bước' cũng phải là một quyết định thiết kế có chủ đích chứ không phải do quên?</li>
+      <li>Khi mở một cuộc trò chuyện (Conversation) mới bên trong cùng một Project/Gem đã cài Harness, tại sao AI vẫn nhớ toàn bộ quy tắc chấm và tài liệu chuẩn nhưng lại không bị lẫn điểm số của bài làm trước?</li>
+      <li>Nếu một người bạn nhờ bạn chia sẻ bộ Socratic Harness của bạn, những phần nào bạn có thể giữ nguyên và phần nào bạn ấy cần thay đổi theo mục tiêu riêng?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 3 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 3</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 3 theo khung 4F)</strong>: Đúc kết trải nghiệm khi tự tay thiết kế cổng GATE/FALLBACK và dùng Socratic Harness để ôn bài.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Hoàn tất Mảnh ghép 1):</h3>
+        <ul>
+          <li>Đóng gói hoàn chỉnh hồ sơ <strong>Mảnh ghép 1</strong> (gồm: Bảng phân vai Người - AI, Sơ đồ quy trình có GATE/FALLBACK, Toàn văn System Instructions + Context mẫu, và Ảnh chụp màn hình vượt qua 3 kịch bản test).</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Ba tầng điều phối AI từ thấp đến cao là gì?<br><em>Đáp:</em> Prompt (Câu lệnh tức thời) -> Context (Ngữ cảnh nền) -> Harness (Bộ khung quy tắc, quy trình nhiều bước và chốt chặn kiểm soát).</li>
+      <li><strong>Hỏi:</strong> Hai chốt chặn kỹ thuật quan trọng nhất trong một Workflow Harness là gì?<br><em>Đáp:</em> GATE (Cổng dừng chờ con người xác nhận) và FALLBACK (Cơ chế báo thiếu thông tin/chưa đủ căn cứ thay vì tự đoán).</li>
+      <li><strong>Hỏi:</strong> Bốn kỹ thuật học tập hiệu quả được tích hợp vào Socratic Harness là gì?<br><em>Đáp:</em> Active Recall (Truy hồi chủ động), Spaced Repetition (Lặp lại ngắt quãng), Interleaving (Xáo trộn) và Productive Struggle (Tự mày mò trước).</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Nhắc sinh viên tắt tính năng Memory chéo tự động (nếu cần) khi test các ca nghiệp vụ độc lập để đảm bảo tính khách quan giữa các phiên chạy.</li>
+      <li>Chấm xác nhận tiến độ Mảnh ghép 1 ngay tại lớp để không nhóm nào bị dồn việc về cuối khóa.</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+{
+  "session": 4,
+  "chapter": "Ch.4",
+  "title": "Kiến trúc Second Brain (PARA & CODE) và Nghệ thuật Ghi chú nguyên tử",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s04-L1-c4-q1",
+      "type": "mc",
+      "question": "Trong phương pháp tổ chức thông tin PARA của Tiago Forte, bốn chữ cái P - A - R - A lần lượt là viết tắt của những thành phần nào?",
+      "options": [
+        "A. Prompts - AI - Research - Answers",
+        "B. Projects (Dự án) - Areas (Lĩnh vực trách nhiệm) - Resources (Tài nguyên) - Archives (Lưu trữ lạnh)",
+        "C. Papers - Articles - Reports - Appendices",
+        "D. Plan - Act - Review - Adjust"
+      ],
+      "correct": "B",
+      "explanation": "PARA gồm 4 nhóm theo mức độ hành động: Projects (Dự án có hạn chót) - Areas (Lĩnh vực trách nhiệm dài hạn) - Resources (Tài nguyên tham khảo) - Archives (Lưu trữ lạnh)."
+    },
+    {
+      "id": "aihub-s04-L1-c4-q2",
+      "type": "mc",
+      "question": "Quy trình 4 bước CODE trong xây dựng Bộ Não Thứ Hai (Second Brain) bao gồm các bước theo thứ tự nào?",
+      "options": [
+        "A. Copy -> Open -> Delete -> Export",
+        "B. Capture (Thu nạp) -> Organize (Tổ chức) -> Distill (Tinh chế) -> Express (Diễn đạt)",
+        "C. Create -> Optimize -> Deploy -> Evaluate",
+        "D. Chat -> Order -> Download -> Edit"
+      ],
+      "correct": "B",
+      "explanation": "Luồng vận hành CODE gồm 4 bước: Capture (Thu nạp có chọn lọc) -> Organize (Tổ chức theo PARA) -> Distill (Tinh chế tìm lõi) -> Express (Diễn đạt thành sản phẩm)."
+    },
+    {
+      "id": "aihub-s04-L1-c4-q3",
+      "type": "mc",
+      "question": "Đặc điểm cốt lõi nhất của một Ghi chú nguyên tử (Atomic Note) là gì?",
+      "options": [
+        "A. Là một file văn bản dài ít nhất 20 trang gộp tất cả các môn học vào chung một chỗ",
+        "B. Mỗi ghi chú chỉ đóng gói duy nhất một ý tưởng/luận điểm cốt lõi, được diễn đạt bằng ngôn từ riêng của người học, có nguồn gốc và có liên kết với các ghi chú khác",
+        "C. Là bản sao chép nguyên văn (copy-paste) toàn bộ đoạn chat của ChatGPT",
+        "D. Là một tệp âm thanh chưa được nghe lại"
+      ],
+      "correct": "B",
+      "explanation": "Atomic Note (Ghi chú nguyên tử) là đơn vị tri thức đóng gói duy nhất 1 ý tưởng cốt lõi, diễn đạt bằng ngôn từ riêng của người học, có nguồn gốc và liên kết hai chiều."
+    },
+    {
+      "id": "aihub-s04-L1-c4-q4",
+      "type": "mc",
+      "question": "Khung phản tư 4F dùng để viết nhật ký học tập và đúc kết tri thức gồm 4 yếu tố nào?",
+      "options": [
+        "A. Fast - Free - Friendly - Flexible",
+        "B. Fact (Sự kiện) - Feelings (Cảm xúc/Điểm chạm) - Findings (Bài học đúc kết) - Future (Hành động tương lai)",
+        "C. File - Folder - Format - Font",
+        "D. Find - Filter - Fix - Finish"
+      ],
+      "correct": "B",
+      "explanation": "Khung phản tư 4F gồm: Fact (Sự kiện khách quan) - Feelings (Cảm xúc/Điểm chạm) - Findings (Bài học/Quy luật đúc kết) - Future (Định hướng áp dụng tương lai)."
+    },
+    {
+      "id": "aihub-s04-L2-c4-q1",
+      "type": "mc",
+      "question": "Vì sao việc copy-paste nguyên văn câu trả lời dài 1.000 chữ của AI vào ứng dụng ghi chú KHÔNG được coi là bước Distill (Tinh chế) hay tạo Atomic Note?",
+      "options": [
+        "A. Vì khi copy-paste nguyên văn, não bộ bạn chưa hề đọc hiểu, chắt lọc hay tái cấu trúc thông tin bằng ngôn từ của mình; văn bản đó vẫn là sản phẩm xa lạ nên không tạo ra tri thức nội tại và rất khó lắp ghép khi viết bài",
+        "B. Vì ứng dụng ghi chú không cho phép dán quá 500 chữ",
+        "C. Vì chữ của AI có định dạng phông chữ khác",
+        "D. Vì copy-paste làm tốn pin máy tính"
+      ],
+      "correct": "A",
+      "explanation": "Copy-paste nguyên văn output của AI không qua xử lý của não bộ chỉ tạo ra rác thông tin (digital hoarding), không tạo ra sự hiểu biết nội tại hay khả năng lắp ghép luận điểm."
+    },
+    {
+      "id": "aihub-s04-L2-c4-q2",
+      "type": "mc",
+      "question": "Trong hai cách đặt tiêu đề cho một Atomic Note dưới đây, cách nào đúng chuẩn 'Tiêu đề mang tính khẳng định' (Declarative Title) giúp dễ dàng tìm kiếm và lắp ghép luận điểm?",
+      "options": [
+        "A. Ghi chú buổi học ngày 22/11 phần 2",
+        "B. Tỷ lệ trích dẫn bịa của LLM tăng mạnh ở các đề tài ngách ít được nghiên cứu (Linardon, 2025)",
+        "C. Tài liệu tham khảo số 1",
+        "D. Vấn đề về AI"
+      ],
+      "correct": "B",
+      "explanation": "Tiêu đề chuẩn của một Atomic Note phải là một câu khẳng định tóm trọn luận điểm cốt lõi (Declarative Title) giúp nhìn vào hiểu ngay ý chính để lắp ghép khi viết báo cáo."
+    },
+    {
+      "id": "aihub-s04-L2-c4-q3",
+      "type": "mc",
+      "question": "Trong hệ thống PARA của một sinh viên HUB, 'Đề án cuối khóa môn Kỹ năng ứng dụng AI (hạn nộp tuần 10)' và 'Kiến thức chuyên ngành Tài chính - Ngân hàng (duy trì suốt 4 năm đại học)' lần lượt thuộc hai thư mục nào?",
+      "options": [
+        "A. Cả hai đều thuộc Archives (Lưu trữ lạnh)",
+        "B. Đề án cuối khóa thuộc Projects (Dự án có hạn chót); Chuyên ngành Tài chính - Ngân hàng thuộc Areas (Lĩnh vực duy trì dài hạn)",
+        "C. Đề án cuối khóa thuộc Archives; Chuyên ngành thuộc Projects",
+        "D. Cả hai đều không cần lưu trữ"
+      ],
+      "correct": "B",
+      "explanation": "Đề án cuối khóa có hạn chót cụ thể nên thuộc Projects; còn kiến thức chuyên ngành theo đuổi suốt nhiều năm thuộc Areas."
+    },
+    {
+      "id": "aihub-s04-L2-c4-q4",
+      "type": "mc",
+      "question": "Hệ thống Second Brain đóng vai trò gì trong mối quan hệ với việc thiết kế Context & Harness cho AI?",
+      "options": [
+        "A. Không có liên hệ gì với AI",
+        "B. Các Atomic Notes đã được bạn kiểm chứng và chắt lọc trong Second Brain chính là nguồn Context tinh khiết nhất, chất lượng cao nhất để nạp vào AI khi bạn cần phác thảo báo cáo hoặc thiết kế Harness",
+        "C. Second Brain dùng để thay thế hoàn toàn mọi phần mềm trên máy tính",
+        "D. Second Brain chỉ dùng khi không có điện"
+      ],
+      "correct": "B",
+      "explanation": "Các Atomic Notes đã được bạn tinh chế trong Second Brain chính là nguồn Context độc bản, tinh khiết nhất để nạp ngược vào AI khi thiết kế Harness hoặc viết báo cáo."
+    },
+    {
+      "id": "aihub-s04-L3-c4-q1",
+      "type": "mc",
+      "question": "Trong quy định đánh giá cuối khóa (100% điểm) của môn học này, Cấu phần 2 (30% điểm cá nhân) kiểm tra điều gì từ hệ thống Second Brain của từng thành viên?",
+      "options": [
+        "A. Kiểm tra xem sinh viên cài phần mềm giao diện màu tối hay màu sáng",
+        "B. Mỗi thành viên phải tự tay đóng góp tối thiểu 06 Atomic Notes chất lượng cao (viết bằng ngôn từ riêng, có nguồn và liên kết) vào kho tri thức Đề án nhóm kèm nhật ký phản tư 4F trên LMS, để chứng minh năng lực thực chất và chống ăn theo nhóm",
+        "C. Chỉ cần nhóm trưởng viết toàn bộ ghi chú cho cả nhóm là được",
+        "D. Kiểm tra dung lượng ổ cứng còn trống bao nhiêu GB"
+      ],
+      "correct": "B",
+      "explanation": "Cấu phần 2 (30% điểm cá nhân) yêu cầu mỗi thành viên tự đóng góp tối thiểu 6 Atomic Notes viết bằng ngôn từ riêng kèm phản tư 4F trên LMS để chống ăn theo nhóm."
+    },
+    {
+      "id": "aihub-s04-L3-c4-q2",
+      "type": "mc",
+      "question": "Sau khi đọc một bài báo khoa học về 'Ứng dụng AI chấm điểm tín dụng cá nhân', bạn rút ra nhận định: 'Mô hình AI hộp đen tuy dự báo nợ xấu chính xác hơn 8% nhưng bị cơ quan quản lý từ chối vì thiếu khả năng giải thích lý do từ chối khoản vay cho khách hàng'. Nhận định này thuộc chữ F nào trong khung 4F và nên xử lý thế nào?",
+      "options": [
+        "A. Thuộc phần Findings (Bài học/Phát hiện cốt lõi) và nên được tách ra lưu thành một Atomic Note độc lập kèm trích dẫn nguồn bài báo đó",
+        "B. Thuộc phần Feelings và nên xóa đi ngay",
+        "C. Chỉ là thông tin rác không cần ghi chép",
+        "D. Thuộc phần Archives"
+      ],
+      "correct": "A",
+      "explanation": "Phát hiện về sự đánh đổi giữa độ chính xác và khả năng giải thích của mô hình AI thuộc phần Findings (Bài học cốt lõi) và cần được lưu thành một Atomic Note độc lập."
+    }
+  ]
+}

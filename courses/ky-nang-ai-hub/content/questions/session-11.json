@@ -1,0 +1,138 @@
+{
+  "session": 11,
+  "chapter": "Ch.11",
+  "title": "Bảo vệ Đề án cuối khóa (Capstone Showcase), Phản biện & Tổng kết hành trình",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s11-L1-c11-q1",
+      "type": "mc",
+      "question": "Triết lý sư phạm cốt lõi xuyên suốt 11 buổi (44 tiết) của học phần này được sắp xếp theo trật tự ưu tiên nào?",
+      "options": [
+        "A. Công cụ -> Mẹo bấm nút -> Sao chép nhanh",
+        "B. Tư duy (Hiểu bản chất xác suất & vị thế làm chủ) -> Kỹ năng (Prompt-Context-Harness, Second Brain, Kiểm chứng NCKH, Đạo đức & Bảo mật) -> Công cụ (Chọn đúng công cụ cho đúng việc)",
+        "C. Học thuộc lòng tên các phần mềm AI",
+        "D. Giao toàn bộ việc học cho AI tự động hóa"
+      ],
+      "correct": "B",
+      "explanation": "Triết lý xuyên suốt của học phần là Tư duy -> Kỹ năng -> Công cụ: lấy tư duy làm gốc, rèn luyện kỹ năng hệ thống làm trụ cột, và sử dụng công cụ linh hoạt theo đúng tác vụ."
+    },
+    {
+      "id": "aihub-s11-L1-c11-q2",
+      "type": "mc",
+      "question": "Ba thông điệp hành động cốt lõi trong nghiên cứu khoa học có AI đồng hành mà sinh viên cần ghi nhớ suốt đời là gì?",
+      "options": [
+        "A. (1) Nguồn thật trước, AI sau; (2) Chưa kiểm chứng (5 bước + Zotero), chưa vào bài; và (3) Dùng AI thì khai báo (theo Thông tư 49/2026) - Bạn chịu trách nhiệm toàn bộ nội dung",
+        "B. (1) AI tìm nguồn trước; (2) Chép thẳng vào bài; (3) Giấu việc dùng AI",
+        "C. (1) Chỉ dùng 1 công cụ duy nhất; (2) Không cần đọc bài báo gốc; (3) Để AI đứng tên đồng tác giả",
+        "D. Không bao giờ sử dụng máy tính khi làm nghiên cứu"
+      ],
+      "correct": "A",
+      "explanation": "Ba nguyên tắc vàng trong nghiên cứu có AI đồng hành: (1) Nguồn thật trước, AI sau; (2) Chưa kiểm chứng (5 bước + Zotero), chưa vào bài; (3) Dùng AI thì khai báo - Bạn chịu trách nhiệm toàn bộ."
+    },
+    {
+      "id": "aihub-s11-L1-c11-q3",
+      "type": "mc",
+      "question": "Trong phiên Bảo vệ Đề án cuối khóa ở Buổi 11, phần Vấn đáp chỉ định cá nhân (chiếm 30% tổng điểm cuối khóa của từng sinh viên) nhằm mục đích chính là gì?",
+      "options": [
+        "A. Kiểm tra xem sinh viên có thuộc lòng từng dấu chấm phẩy trong báo cáo không",
+        "B. Đánh giá năng lực thực chất của từng cá nhân thông qua hệ thống Atomic Notes trong Second Brain và khả năng thao tác trực tiếp trên bộ Harness/Zotero của nhóm, đảm bảo không ai có thể 'ăn theo nhóm' (free-rider) để lấy chứng chỉ",
+        "C. Chỉ hỏi riêng một mình nhóm trưởng",
+        "D. Hỏi các câu đố vui không liên quan đến môn học"
+      ],
+      "correct": "B",
+      "explanation": "Phần Vấn đáp chỉ định cá nhân (30% điểm) đánh giá trực tiếp trên kho Atomic Notes cá nhân và thao tác live trên Harness/Zotero để đảm bảo mọi sinh viên đạt chứng chỉ đều có năng lực thực chất."
+    },
+    {
+      "id": "aihub-s11-L1-c11-q4",
+      "type": "mc",
+      "question": "Theo định nghĩa 'Làm chủ AI' được đúc kết ở cuối khóa học, người làm chủ AI thực sự là người như thế nào?",
+      "options": [
+        "A. Là người từ chối dùng mọi công nghệ hiện đại",
+        "B. Là người biết rõ mình đang giao việc gì cho AI, thiết lập được bộ khung điều phối (Harness), biết cách kiểm chứng lại kết quả qua nguồn thật, giữ vững tư duy độc lập trong Second Brain và đàng hoàng đứng tên chịu trách nhiệm dưới sản phẩm của mình",
+        "C. Là người đăng ký mua tất cả các gói AI trả phí đắt nhất thế giới",
+        "D. Là người để AI tự quyết định mọi việc thay mình"
+      ],
+      "correct": "B",
+      "explanation": "Làm chủ AI không phải là né tránh dùng AI, mà là biết rõ mình giao việc gì, thiết kế được Harness điều phối, kiểm chứng được đầu ra và đàng hoàng đứng tên chịu trách nhiệm."
+    },
+    {
+      "id": "aihub-s11-L2-c11-q1",
+      "type": "mc",
+      "question": "Bốn trụ cột của môn học (1. Prompt-Context-Harness; 2. Second Brain; 3. Nghiên cứu & Kiểm chứng 5 bước; 4. Đạo đức & Bảo mật dữ liệu) bổ trợ cho nhau như thế nào trong một quy trình làm việc hoàn chỉnh?",
+      "options": [
+        "A. Bốn trụ cột này hoàn toàn tách rời, không liên quan gì đến nhau",
+        "B. Quy trình Nghiên cứu & Kiểm chứng 5 bước giúp lọc lấy 'nguồn tri thức thật'; hệ thống Second Brain giúp bạn tiêu hóa nguồn thật đó thành 'Atomic Notes của riêng mình'; các Atomic Notes này trở thành nguồn 'Context sạch' để nạp vào bộ 'Harness' điều phối AI tạo ra sản phẩm chất lượng cao; và khung 'Đạo đức & Bảo mật' giữ cho toàn bộ quá trình đó an toàn, hợp pháp và minh bạch",
+        "C. Chỉ cần học Trụ cột 1 là có thể bỏ qua 3 trụ cột còn lại",
+        "D. Second Brain chỉ dùng để lưu mật khẩu, còn Harness dùng để thay thế Zotero"
+      ],
+      "correct": "B",
+      "explanation": "Bốn trụ cột liên kết chặt chẽ: Kiểm chứng NCKH lọc nguồn thật -> Second Brain tinh chế thành Atomic Notes -> Atomic Notes làm Context sạch cho bộ Harness -> Đạo đức & Bảo mật giữ toàn bộ quy trình an toàn, hợp pháp."
+    },
+    {
+      "id": "aihub-s11-L2-c11-q2",
+      "type": "mc",
+      "question": "Khi Hội đồng Kiểm toán chéo chỉ ra một điểm hạn chế có thật trong Đề án của nhóm bạn tại buổi bảo vệ, cách phản hồi nào dưới đây thể hiện bản lĩnh học thuật cao nhất?",
+      "options": [
+        "A. Đổ lỗi cho AI: 'Tại hôm qua ChatGPT/Claude nó xuất ra như vậy chứ nhóm em không biết!'",
+        "B. Thẳng thắn ghi nhận phát hiện xác đáng của Hội đồng Kiểm toán, giải thích rõ nguyên nhân kỹ thuật (ví dụ: điều kiện ở cổng GATE 1 chưa bao quát trường hợp ngoại lệ đó), và trình bày ngay phương án điều chỉnh câu lệnh/số liệu mà nhóm đã cập nhật",
+        "C. Cãi chày cãi cối để bảo vệ cái sai bằng mọi giá",
+        "D. Im lặng không trả lời"
+      ],
+      "correct": "B",
+      "explanation": "Khi Hội đồng chỉ ra hạn chế đúng, thái độ học thuật chuẩn mực là thẳng thắn ghi nhận dựa trên bằng chứng, giải thích nguyên nhân kỹ thuật và trình bày phương án khắc phục."
+    },
+    {
+      "id": "aihub-s11-L2-c11-q3",
+      "type": "mc",
+      "question": "Tại sao câu trả lời 'Tại AI làm sai chứ không phải lỗi của em!' lại là câu trả lời bị trừ điểm nặng nhất trong cả môi trường học thuật lẫn môi trường làm việc tại ngân hàng/doanh nghiệp?",
+      "options": [
+        "A. Vì câu nói đó chứng tỏ người nói đã từ bỏ vị thế 'Bạn là Chủ' và vi phạm trực tiếp nguyên tắc chịu trách nhiệm của Thông tư 49/2026/TT-BGDĐT, Luật AI 134/2025 cũng như chuẩn COPE/ICMJE: AI chỉ là công cụ, người sử dụng công cụ và đặt tên mình lên báo cáo phải chịu trách nhiệm 100% về việc kiểm chứng đầu ra",
+        "B. Vì giảng viên không thích nghe nhắc đến tên AI",
+        "C. Vì AI luôn luôn đúng 100%, không bao giờ làm sai",
+        "D. Vì câu trả lời đó quá ngắn"
+      ],
+      "correct": "A",
+      "explanation": "Đổ lỗi 'Tại AI làm sai' là vi phạm trực tiếp nguyên tắc trách nhiệm của Thông tư 49/2026, Luật AI 134/2025 và COPE: người đặt tên mình lên bài phải chịu trách nhiệm 100% về mọi nội dung trong bài."
+    },
+    {
+      "id": "aihub-s11-L2-c11-q4",
+      "type": "mc",
+      "question": "Khi một thế hệ mô hình AI mới (ví dụ GPT-6, Claude 5 hay Gemini 4) ra mắt vào năm sau với nhiều tính năng tự động hóa mạnh hơn, người đã nắm vững phương pháp của môn học này sẽ tiếp cận nó như thế nào?",
+      "options": [
+        "A. Hoang mang vì phải học lại cách bấm nút từ đầu",
+        "B. Bình tĩnh đặt công cụ mới vào đúng vị trí của tầng 'Công cụ': dùng tư duy xác suất để biết nó vẫn có thể bịa ở vùng dữ liệu thưa, tiếp tục dùng kho Second Brain của mình làm Context, dùng kiến trúc Harness (GATE/FALLBACK) để điều phối nó và giữ nguyên kỷ luật kiểm chứng 5 bước + Zotero",
+        "C. Xóa bỏ toàn bộ Second Brain và Zotero vì nghĩ AI mới không bao giờ sai nữa",
+        "D. Ngừng tư duy và giao hết công việc cho mô hình mới"
+      ],
+      "correct": "B",
+      "explanation": "Khi công cụ AI thế hệ mới ra đời, người có nền tảng Tư duy - Kỹ năng (Second Brain, Harness, Kiểm chứng 5 bước) sẽ lập tức làm chủ công cụ mới mà không bao giờ bị lỗi thời hay bị dắt mũi."
+    },
+    {
+      "id": "aihub-s11-L3-c11-q1",
+      "type": "mc",
+      "question": "Học kỳ tới, bạn bắt đầu thực hiện Khóa luận tốt nghiệp ngành Tài chính - Ngân hàng tại HUB. Trình tự khởi đầu nào dưới đây áp dụng chuẩn xác nhất toàn bộ tinh thần của học phần này?",
+      "options": [
+        "A. Mở Chatbot bảo viết hộ đề cương và 50 tài liệu tham khảo trong 5 phút",
+        "B. (1) Tạo thư mục Project cho Khóa luận trong Second Brain; (2) Dùng Phễu thu hẹp để xác định câu hỏi nghiên cứu và tìm 10-15 bài báo gốc thật trên Semantic Scholar/Elicit; (3) Đọc sâu, chạy Prompt 7 mục và 'Soi 3 phút' từng bài; (4) Kiểm chứng qua Checklist 5 bước, lưu vào Zotero 8 và đúc kết các Atomic Notes vào Second Brain; (5) Đóng gói kho RAG trên Gemini Notebook và thiết kế bộ Harness có cổng GATE để đồng hành xuyên suốt khóa luận kèm nhật ký lưu thông tin khai báo AI theo Thông tư 49/2026",
+        "C. Đợi đến tuần cuối cùng trước hạn nộp mới nhờ AI viết toàn bộ khóa luận",
+        "D. Mua một bài khóa luận có sẵn trên mạng"
+      ],
+      "correct": "B",
+      "explanation": "Khi làm Khóa luận tốt nghiệp, hãy bắt đầu từ việc lập Project trong Second Brain, tìm nguồn thật trên Semantic Scholar/Elicit, soi 3 phút, kiểm chứng 5 bước vào Zotero, dựng kho RAG và Harness đồng hành kèm nhật ký khai báo AI."
+    },
+    {
+      "id": "aihub-s11-L3-c11-q2",
+      "type": "mc",
+      "question": "Khi đi thực tập tại phòng Tín dụng hoặc Marketing của một ngân hàng thương mại, bạn muốn đề xuất ứng dụng AI để rút ngắn 50% thời gian tổng hợp báo cáo tuần của phòng. Bước đầu tiên bạn cần làm để thể hiện sự chuyên nghiệp và an toàn là gì?",
+      "options": [
+        "A. Tự ý lấy toàn bộ hồ sơ khách hàng thật của ngân hàng tải lên tài khoản AI cá nhân của mình",
+        "B. Áp dụng khung phân loại dữ liệu và Đèn giao thông: xác định rõ dữ liệu nào là công khai, dữ liệu nào là nội bộ/định danh phải khử mật hoặc chỉ được chạy trên hệ thống được bộ phận An ninh thông tin/Pháp chế của ngân hàng cấp phép; thiết kế bản mẫu Workflow Harness trên dữ liệu giả lập có cổng GATE kiểm chứng số liệu rõ ràng rồi mới trình quản lý phê duyệt",
+        "C. Giấu quản lý, lén dùng AI làm xong rồi nhận là mình tự làm thủ công",
+        "D. Nhờ AI tự ký tên phê duyệt báo cáo gửi Ban Giám đốc"
+      ],
+      "correct": "B",
+      "explanation": "Khi đề xuất ứng dụng AI tại ngân hàng/doanh nghiệp, bước đầu tiên luôn là phân loại mức độ mật của dữ liệu, tuân thủ quy định An ninh thông tin/Luật Bảo vệ dữ liệu cá nhân và thiết kế Harness có cổng GATE trên dữ liệu giả lập."
+    }
+  ]
+}

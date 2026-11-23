@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 7: Trích dẫn bịa, Checklist Kiểm chứng 5 bước, Tomaca & Zotero 8 — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 3: ỨNG DỤNG AI TRONG NGHIÊN CỨU KHOA HỌC & KIỂM CHỨNG</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO4</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 7: Trích dẫn bịa, Checklist Kiểm chứng 5 bước, Tomaca & Zotero 8</h1>
+      <p class="subtitle">Quy tắc 'Chưa kiểm chứng, chưa vào bài', Quy luật Linardon (19.9% / 29%), Thực hành công cụ Tomaca và khóa chốt bằng Zotero 8</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Phân tích được quy luật thực nghiệm của <strong>Linardon và cs. (2025)</strong> về trích dẫn bịa (19.9% bịa hoàn toàn, 56.3% có lỗi, tăng lên 28%-29% ở đề tài ít được nghiên cứu) và nhận diện được cấu trúc 'ghép xác' của một trích dẫn giả (CLO4).</li>
+      <li>Thực hiện thành thạo <strong>Checklist Kiểm chứng một Trích dẫn qua 5 Bước</strong> theo thứ tự từ rẻ đến tốn công (đặc biệt là Bước 3 và Bước 4 trên bản PDF gốc) (CLO4).</li>
+      <li>Sử dụng được công cụ <strong>Tomaca</strong> để rà soát nhanh danh mục tài liệu, đọc hiểu 3 nhóm kết quả và nắm vững giới hạn thật của máy theo nguyên tắc <em>'Máy soát, người quyết'</em> (CLO4).</li>
+      <li>Thiết lập và vận hành thành thạo quy trình 3 bước trên <strong>Zotero 8</strong> (<em>'Nguồn vào Zotero trước, rồi mới vào bài'</em>) cho toàn bộ 9-12 nguồn tài liệu của Đề án nhóm (CLO4).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Khi viết báo cáo nghiên cứu hoặc khóa luận tốt nghiệp, bạn cần khoảng 15-20 tài liệu tham khảo uy tín. Bạn thấy những trích dẫn do AI gợi ý có tên tác giả rất nổi tiếng trong ngành, tên tạp chí đúng chuẩn quốc tế, có cả số tập, số trang và mã DOI đúng cú pháp `10.xxxx/...` nên yên tâm đưa thẳng vào bài.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Nghiên cứu thực nghiệm của Linardon và cộng sự (2025, JMIR Mental Health) trên 176 trích dẫn do GPT-4o tạo ra cho thấy: 19.9% bịa hoàn toàn và tới 56.3% là bịa hoặc sai thông tin thư mục! Nguy hiểm hơn, tỷ lệ bịa tăng vọt từ 6% ở chủ đề phổ biến lên tới 28% - 29% ở các đề tài ít được nghiên cứu (p = .001) - tức là AI bịa nhiều nhất ở đúng những đề tài chuyên sâu mà sinh viên cần nó nhất. Trong một bài báo thực tế (Ren và cs., 2025), tới 18/30 trích dẫn (60%) là bịa và 21/33 mã DOI giả lại dẫn sang một bài báo thật hoàn toàn không liên quan!</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Nếu không thể dựa vào cảm giác 'trông rất giống thật' hay 'có mã DOI', làm thế nào để xây dựng một màng lọc kỹ thuật đảm bảo 100% tài liệu tham khảo trong Đề án của bạn là nguồn thật, đúng ý và sạch lỗi?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Khắc cốt ghi tâm quy tắc 'Chưa kiểm chứng, chưa vào bài': thực thi Checklist kiểm chứng 5 bước từ rẻ đến tốn công, kết hợp công cụ rà soát tự động Tomaca theo nguyên tắc 'Máy soát, người quyết', và khóa chặt đầu vào bằng phần mềm Zotero 8 ('Nguồn vào Zotero trước, vào bài sau').</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 7): Một thành viên trong nhóm của Minh dùng ChatGPT viết nháp một đoạn tổng quan có kèm 5 trích dẫn nhìn cực kỳ uy tín, có đủ tên tác giả lớn, tên tạp chí Q1 và cả mã DOI. Khi Minh đưa danh sách này qua Checklist 5 bước và công cụ Tomaca, cả nhóm bàng hoàng phát hiện: 2 bài hoàn toàn không tồn tại, và 1 bài có mã DOI thật nhưng khi bấm vào lại dẫn sang một bài báo y khoa về phẫu thuật thận chứ không liên quan gì đến ngân hàng! Minh thiết lập kỷ luật thép cho cả nhóm: Mọi tài liệu phải qua 5 bước kiểm chứng và nằm trong Zotero trước khi được phép bước chân vào file Word của Đề án.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Nếu một trích dẫn có tên tác giả thật trong ngành Ngân hàng, tên tạp chí thật, năm 2025 và có cả mã DOI bắt đầu bằng 10.1016/..., theo bạn xác suất nó là một bài báo hoàn toàn không tồn tại là bao nhiêu?</li>
+        <li>Tại sao AI lại bịa tài liệu tham khảo nhiều nhất ở đúng những đề tài mới, ít người nghiên cứu - nơi mà sinh viên làm khóa luận đang cần nó giúp nhất?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Quy luật Linardon (2025) & Giải phẫu một Trích dẫn bịa dạng 'Ghép xác':</strong><br>• Phân tích số liệu thực nghiệm của Linardon và cs. (2025, <em>JMIR Mental Health</em>): 19.9% bịa hoàn toàn, 56.3% bịa hoặc sai; tỷ lệ bịa vọt từ 6% (chủ đề phổ biến) lên <strong>28% - 29% (đề tài ít được nghiên cứu, p = .001)</strong>.<br>• Giải phẫu trích dẫn bịa trong bài <em>Ren và cs. (2025 - bịa 18/30 trích dẫn = 60%)</em> và hiện tượng 21/33 DOI bịa dẫn sang bài báo không liên quan.</td><td>Phân tích ví dụ thật về trích dẫn bịa; nhận diện 5 mảnh ghép mà AI dùng để ngụy tạo một trích dẫn trông như thật.</td><td>Slide Buổi 7; Nghiên cứu Linardon (2025) & Ren (2025)</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Checklist Kiểm chứng một Trích dẫn qua 5 Bước (Từ rẻ đến tốn công):</strong><br>• Hướng dẫn thực hành 5 bước: (1) <em>Có thật không?</em> (Scholar / doi.org) -> (2) <em>Thông tin thư mục khớp không?</em> -> (3) <em>Bài gốc có nói đúng ý đó không?</em> -> (4) <em>Số liệu khớp bảng/hình không?</em> -> (5) <em>Còn hiệu lực trên Retraction Watch không?</em><br>• Nhấn mạnh tầm quan trọng sống còn của Bước 3 và Bước 4.</td><td>Thực hành kiểm chứng trực tiếp 3 trích dẫn mẫu bằng tay qua đủ 5 bước trên Google Scholar, doi.org, PDF gốc và Retraction Watch.</td><td>Poster Checklist 5 bước</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Công cụ Tomaca ('Máy soát, Người quyết') & Khóa chốt bằng Zotero 8:</strong><br>• Demo và thực hành công cụ <strong>Tomaca</strong> (TS. Trần Việt Tâm): cách đọc 3 nhóm kết quả (<code>verified-doi</code>, <code>no-doi/doi-not-found</code>, <code>metadata-mismatch</code>) và bài học từ bộ test thực tế ngày 17/10/2026 (khi máy bỏ lọt 2 trích dẫn giả có DOI trỏ sang bài khác).<br>• Thực hành 3 bước với <strong>Zotero 8</strong>: Lưu qua Connector từ trang gốc -> Chèn vào Word từ thư viện -> Đổi chuẩn APA 7 / IEEE trong 1 cú nhấp.</td><td>Tải danh sách tài liệu lên Tomaca đọc báo cáo; thực hành lưu bài báo thật qua Zotero Connector và chèn trích dẫn tự động vào file báo cáo.</td><td>pro-tomaca.quyentrungga.com & Phần mềm Zotero 8</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Thử thách 'Lọc rác Học thuật' & Kiểm chứng nguồn Đề án nhóm:</strong><br>• Cuộc thi nhóm 20 phút: Lọc sạch 1 danh sách 10 tài liệu tham khảo ngành Tài chính - Ngân hàng có trộn bẫy.<br>• Các nhóm kiểm chứng toàn bộ 9-12 nguồn của Đề án nhóm qua Checklist 5 bước + Tomaca và nạp 100% vào Zotero.</td><td>Hoàn thành bảng kiểm chứng 5 bước + báo cáo Tomaca + thư viện Zotero cho Đề án nhóm; viết phản tư 4F và làm Quiz Buổi 7 trên LMS.</td><td>LMS Hub (Quiz 7, Journal 7)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao một trích dẫn 'có thật 100% trên Google Scholar nhưng bị AI gán cho một ý mà tác giả không hề nói' (vi phạm Bước 3) lại khó phát hiện và nguy hiểm hơn cả một trích dẫn bịa hoàn toàn?</li>
+      <li>Trong thử nghiệm công cụ Tomaca ngày 17/10/2026 với 10 trích dẫn (7 thật, 3 giả), tại sao máy lại báo verified-doi cho 9 mục (bỏ lọt 2 mục giả)? Điều này chứng minh nguyên tắc nào trong làm việc với công cụ kiểm tra tự động?</li>
+      <li>Quy tắc 'Nguồn vào Zotero trước, rồi mới vào bài' thay đổi thói quen viết báo cáo của bạn như thế nào?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 7 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 7</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 7 theo khung 4F)</strong>: Đúc kết quy trình 5 bước kiểm chứng và nguyên tắc 'Máy soát, người quyết'.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Chuẩn bị cho Buổi 8 - Mảnh ghép 3):</h3>
+        <ul>
+          <li>Đảm bảo 100% tài liệu tham khảo của Đề án nhóm (9 - 12 nguồn) đã qua <strong>Checklist 5 bước + có báo cáo PDF từ Tomaca + đã nằm gọn trong thư viện Zotero 8</strong> của nhóm để Buổi 8 lập Ma trận tổng hợp và viết báo cáo.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Theo Linardon và cs. (2025), tỷ lệ trích dẫn bịa hoàn toàn và tổng tỷ lệ trích dẫn có vấn đề của GPT-4o là bao nhiêu?<br><em>Đáp:</em> 19.9% bịa hoàn toàn (35/176); nếu tính cả trích dẫn thật nhưng sai thông tin thư mục là 56.3% (99/176).</li>
+      <li><strong>Hỏi:</strong> Năm bước trong Checklist kiểm chứng trích dẫn là gì?<br><em>Đáp:</em> (1) Có thật không? -> (2) Thông tin khớp không? -> (3) Bài nói đúng ý không? -> (4) Số liệu khớp không? -> (5) Còn hiệu lực trên Retraction Watch không?</li>
+      <li><strong>Hỏi:</strong> Ba bước của quy trình Zotero 8 để chống trích dẫn bịa là gì?<br><em>Đáp:</em> (1) Lưu nguồn thật qua Zotero Connector khi đang mở bài gốc -> (2) Chèn trích dẫn từ thư viện Zotero vào Word (không gõ tay/copy AI) -> (3) Chọn/đổi kiểu trích dẫn APA/IEEE tự động.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Chuẩn bị sẵn file bài tập '10 trích dẫn trộn bẫy ngành Tài chính - Ngân hàng' (gồm 5 bài chuẩn, 2 bài bịa hoàn toàn, 2 bài lấy DOI của bài khác ghép vào, 1 bài gán ngược kết luận của tác giả) cho hoạt động đua nhóm ở Tiết 4.</li>
+      <li>Kiểm tra chắc chắn mỗi nhóm đều xuất được file thư viện Zotero (.bib hoặc .ris) và biết cách chèn citation vào Word/Docs.</li>
+    </ul>
+  </div>
+</body>
+</html>

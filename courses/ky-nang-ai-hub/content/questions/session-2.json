@@ -1,0 +1,138 @@
+{
+  "session": 2,
+  "chapter": "Ch.2",
+  "title": "Từ Prompt Engineering đến Context Engineering: Giao diện của Tư duy",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s02-L1-c2-q1",
+      "type": "mc",
+      "question": "Trong công thức viết câu lệnh CRISP, chữ 'S' (Specifics) đại diện cho yêu cầu nào?",
+      "options": [
+        "A. Các ràng buộc và yêu cầu cụ thể về định dạng, độ dài, văn phong, ngôn ngữ đầu ra",
+        "B. Tên phần mềm AI được sử dụng",
+        "C. Tốc độ phản hồi của máy chủ AI",
+        "D. Số lượng thành viên trong nhóm học tập"
+      ],
+      "correct": "A",
+      "explanation": "Trong khung CRISP, chữ S (Specifics) quy định các yêu cầu và ràng buộc cụ thể về định dạng, độ dài, văn phong và thuật ngữ của đầu ra."
+    },
+    {
+      "id": "aihub-s02-L1-c2-q2",
+      "type": "mc",
+      "question": "Kỹ thuật cung cấp cho AI từ 2 đến 3 ví dụ mẫu về định dạng đầu ra chuẩn trước khi giao nhiệm vụ chính được gọi là gì?",
+      "options": [
+        "A. Zero-shot prompting",
+        "B. Few-shot prompting",
+        "C. Negative prompting",
+        "D. Hallucination prompting"
+      ],
+      "correct": "B",
+      "explanation": "Few-shot prompting là kỹ thuật cung cấp từ 2 đến 3 ví dụ mẫu chuẩn mực để AI học theo cấu trúc và giọng điệu mong muốn."
+    },
+    {
+      "id": "aihub-s02-L1-c2-q3",
+      "type": "mc",
+      "question": "Câu lệnh ràng buộc nào sau đây đóng vai trò là 'chốt chặn sống còn' giúp giảm thiểu nguy cơ AI tự bịa thêm thông tin khi tóm tắt tài liệu khoa học?",
+      "options": [
+        "A. Hãy viết thật hay và sáng tạo hết mức có thể",
+        "B. Chỗ nào tài liệu không nói, ghi rõ 'không nêu trong bài', tuyệt đối không suy đoán",
+        "C. Hãy tìm mọi cách lấp đầy tất cả các ô trong bảng tóm tắt",
+        "D. Hãy viết dài tối thiểu 2.000 chữ"
+      ],
+      "correct": "B",
+      "explanation": "Câu khóa 'Chỗ nào tài liệu không nói, ghi rõ không nêu trong bài, tuyệt đối không suy đoán' là chốt chặn sống còn ngăn AI tự bịa thông tin lấp vào chỗ trống."
+    },
+    {
+      "id": "aihub-s02-L1-c2-q4",
+      "type": "mc",
+      "question": "Context Engineering (Kỹ nghệ thiết kế ngữ cảnh) khác với việc gõ một câu hỏi ngắn thông thường ở điểm nào?",
+      "options": [
+        "A. Chỉ dùng từ khóa tiếng Anh thay vì tiếng Việt",
+        "B. Chủ động tuyển chọn, làm sạch và cấu trúc hóa tài liệu nguồn, ví dụ mẫu cùng bộ quy tắc đưa vào cửa sổ ngữ cảnh cho AI",
+        "C. Hỏi AI càng ít thông tin càng tốt để AI tự đoán",
+        "D. Chỉ áp dụng cho lập trình viên hệ thống"
+      ],
+      "correct": "B",
+      "explanation": "Context Engineering là nghệ thuật tuyển chọn, làm sạch và cấu trúc hóa toàn bộ gói tài liệu nguồn, ví dụ mẫu và quy tắc biên nạp vào cửa sổ ngữ cảnh cho AI."
+    },
+    {
+      "id": "aihub-s02-L2-c2-q1",
+      "type": "mc",
+      "question": "Khi giải một bài toán phân tích tài chính hoặc kiểm định giả thuyết gồm nhiều bước logic phức tạp, kỹ thuật nào giúp AI giảm sai sót tính toán/suy luận nhất?",
+      "options": [
+        "A. Yêu cầu AI trả lời ngay kết quả cuối cùng trong 1 chữ",
+        "B. Chain-of-Thought (Yêu cầu AI suy nghĩ và trình bày rõ từng bước lập luận trước khi kết luận)",
+        "C. Yêu cầu AI viết dưới dạng thơ lục bát",
+        "D. Xóa toàn bộ dữ liệu đầu vào"
+      ],
+      "correct": "B",
+      "explanation": "Chain-of-Thought (Suy luận từng bước) buộc AI phải trình bày các bước lập luận trung gian, giúp giảm thiểu sai sót trong các bài toán logic và phân tích định lượng."
+    },
+    {
+      "id": "aihub-s02-L2-c2-q2",
+      "type": "mc",
+      "question": "Điều gì sẽ xảy ra khi một cuộc hội thoại với AI kéo dài hàng chục lượt với nhiều chủ đề lộn xộn vượt quá khả năng tập trung của Context Window?",
+      "options": [
+        "A. AI tự động nâng cấp lên phiên bản trả phí",
+        "B. Các chỉ thị và ràng buộc quan trọng ở đầu cuộc trò chuyện bị đẩy ra ngoài hoặc bị loãng (Context Rot), làm AI trả lời lệch chuẩn",
+        "C. AI sẽ nhớ chính xác 100% mọi chi tiết mãi mãi",
+        "D. Máy tính sẽ bị khóa ổ cứng"
+      ],
+      "correct": "B",
+      "explanation": "Khi hội thoại quá dài và lộn xộn, các chỉ thị ban đầu bị đẩy ra xa hoặc bị pha loãng trong Context Window (Context Rot), làm giảm độ nhất quán của kết quả."
+    },
+    {
+      "id": "aihub-s02-L2-c2-q3",
+      "type": "mc",
+      "question": "Sau khi AI xuất ra bản nháp đầu tiên đạt 80% ý muốn nhưng giọng văn hơi dài dòng, cách xử lý đúng theo kỹ thuật Iterative Refinement là gì?",
+      "options": [
+        "A. Mở tab mới và gõ lại từ đầu một câu hỏi hoàn toàn khác",
+        "B. Phản hồi ngay trong luồng chat: chỉ rõ phần nội dung cần giữ nguyên và yêu cầu rút gọn độ dài xuống 150 chữ, bỏ các câu mở đầu sáo rỗng",
+        "C. Chấp nhận nộp luôn bản nháp đó mà không sửa",
+        "D. Đổi sang hỏi bằng ngôn ngữ khác"
+      ],
+      "correct": "B",
+      "explanation": "Iterative Refinement (Tinh chỉnh đa vòng) là giữ lại phần đã đúng và chỉ yêu cầu điều chỉnh từng tiêu chí cụ thể (độ dài, giọng văn) qua các lượt kế tiếp."
+    },
+    {
+      "id": "aihub-s02-L2-c2-q4",
+      "type": "mc",
+      "question": "Tại sao nhận định 'Prompt là giao diện của tư duy' lại đúng trong thực tế?",
+      "options": [
+        "A. Vì người dùng chỉ có thể viết được một Prompt rõ bối cảnh, rõ tiêu chí đánh giá (CRISP) khi chính họ đã tư duy rõ về mục tiêu và cấu trúc bài toán",
+        "B. Vì Prompt được thiết kế bằng đồ họa 3D",
+        "C. Vì AI có thể tự đọc suy nghĩ mà không cần gõ chữ",
+        "D. Vì ai gõ bàn phím nhanh hơn sẽ có kết quả tốt hơn"
+      ],
+      "correct": "A",
+      "explanation": "Prompt là giao diện của tư duy: chỉ khi người học hiểu rõ cấu trúc bài toán và tiêu chí đánh giá thì mới viết được một câu lệnh CRISP sắc bén."
+    },
+    {
+      "id": "aihub-s02-L3-c2-q1",
+      "type": "mc",
+      "question": "Câu lệnh nào dưới đây hội tụ đầy đủ nhất khung CRISP + Chốt chặn chống bịa khi nhờ AI hỗ trợ đọc tài liệu?",
+      "options": [
+        "A. Tóm tắt file PDF này giúp tôi cho thật hay nhé.",
+        "B. Bạn là chuyên gia tài chính. Hãy nói cho tôi biết xu hướng ngân hàng số năm 2030.",
+        "C. [Context] Tôi là SV năm 3 ngành Ngân hàng đang làm tổng quan tài liệu. [Role] Bạn là trợ lý nghiên cứu học thuật. [Input] Dựa duy nhất vào file PDF bài báo đính kèm. [Specifics] Hãy tóm tắt thành bảng 5 mục (Câu hỏi NC, Phương pháp, Cỡ mẫu, Kết quả, Hạn chế) tối đa 250 chữ. [Performance/Constraint] Mỗi ý bắt buộc ghi số trang; chỗ nào bài không nêu thì ghi 'không nêu trong bài', tuyệt đối không suy đoán.",
+        "D. Hãy viết bài luận 2000 chữ về ngân hàng số kèm 15 trích dẫn APA."
+      ],
+      "correct": "C",
+      "explanation": "Một câu lệnh đọc tài liệu chuẩn mực phải hội tụ đủ 5 yếu tố CRISP, đính kèm file gốc và có chốt chặn yêu cầu ghi số trang, không suy đoán."
+    },
+    {
+      "id": "aihub-s02-L3-c2-q2",
+      "type": "mc",
+      "question": "Nhóm bạn muốn AI phân tích bảng câu hỏi khảo sát sinh viên HUB theo đúng chuẩn thang đo Likert 5 mức của một bài báo gốc. Gói Context tốt nhất cần nạp cho AI gồm những gì?",
+      "options": [
+        "A. Chỉ cần gõ tên bài báo gốc mà không cần tải file lên",
+        "B. (1) File trích xuất bảng thang đo gốc đã kiểm chứng, (2) Bảng mô tả đối tượng khảo sát tại HUB, (3) 2 ví dụ mẫu biến đổi câu hỏi (Few-shot), và (4) Ràng buộc giữ nguyên ý nghĩa học thuật của biến quan sát",
+        "C. Toàn bộ lịch sử chat linh tinh của nhóm trong 1 tháng qua",
+        "D. Một bức ảnh chụp màn hình trang bìa giáo trình"
+      ],
+      "correct": "B",
+      "explanation": "Gói Context tốt nhất gồm bảng thang đo gốc đã kiểm chứng, mô tả mẫu khảo sát, ví dụ mẫu Few-shot và ràng buộc giữ nguyên bản chất biến quan sát."
+    }
+  ]
+}

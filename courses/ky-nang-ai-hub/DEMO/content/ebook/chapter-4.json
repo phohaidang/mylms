@@ -1,0 +1,231 @@
+{
+  "chapter": 4,
+  "title": "Kiến trúc Second Brain (PARA & CODE) và Nghệ thuật Ghi chú nguyên tử",
+  "sessions": [
+    4
+  ],
+  "scqa": {
+    "situation": "Sau vài học kỳ đại học và hàng trăm giờ sử dụng AI, máy tính của bạn chứa hàng chục thư mục tài liệu tải về chưa từng mở, hàng trăm đoạn lịch sử chat với ChatGPT/Claude trôi tuột vào quên lãng, và các file ghi chú dài hàng chục trang copy-paste từ AI.",
+    "complication": "Khi bắt tay vào làm bài nghiên cứu hay đề án cuối khóa, bạn nhận ra mình không thể tìm lại được một luận điểm hay đã đọc cách đây 2 tháng, cũng không nhớ mình đã tích lũy được gì. Việc copy-paste nguyên khối văn bản do AI sinh ra vào ổ cứng chỉ tạo ra một 'nghĩa địa thông tin số' (digital hoarding): thông tin nằm trong máy của bạn, nhưng chưa bao giờ đi qua bộ não của bạn để trở thành tri thức của bạn.",
+    "question": "Làm thế nào để xây dựng một hệ thống quản trị tri thức cá nhân giúp bạn tiêu hóa thông tin thành năng lực nội tại, đồng thời trở thành kho dữ liệu ngữ cảnh (Context) độc bản để điều phối AI ở đẳng cấp cao nhất?",
+    "answer": "Xây dựng 'Bộ Não Thứ Hai' (Second Brain) theo kiến trúc thư mục hành động PARA, vận hành theo luồng 4 bước CODE (Capture - Organize - Distill - Express), lấy Ghi chú nguyên tử (Atomic Notes - viết bằng chính ngôn từ của bạn) và khung phản tư 4F làm viên gạch nền tảng."
+  },
+  "concepts": [
+    {
+      "id": "c4-second-brain-para",
+      "session": 4,
+      "term": "Triết lý Second Brain & Kiến trúc tổ chức PARA",
+      "definition": "Hệ thống quản trị tri thức cá nhân (Personal Knowledge Management - PKM) giúp ngoại hóa việc lưu trữ thông tin ra khỏi bộ não sinh học và tổ chức mọi tài nguyên số theo mức độ sẵn sàng hành động (PARA).",
+      "key_points": [
+        "<strong>Bộ não để sáng tạo, không phải để làm ổ cứng:</strong> Khi có một hệ thống bên ngoài đáng tin cậy giữ hộ các chi tiết, bộ não sinh học được giải phóng để tập trung vào việc kết nối ý tưởng và tư duy phản biện.",
+        "<strong>P - Projects (Dự án):</strong> Các mục tiêu ngắn hạn đang triển khai và có hạn chót rõ ràng (ví dụ: <em>Đề án cuối khóa môn Kỹ năng AI</em>, <em>Tiểu luận Tài chính doanh nghiệp HK1</em>).",
+        "<strong>A - Areas (Lĩnh vực trách nhiệm):</strong> Các mảng quan trọng cần duy trì tiêu chuẩn liên tục, không có ngày kết thúc (ví dụ: <em>Chuyên ngành Tài chính - Ngân hàng</em>, <em>Phát triển bản thân & Tiếng Anh</em>).",
+        "<strong>R - Resources (Tài nguyên):</strong> Kho học liệu, bài báo, mẫu biểu, chủ đề quan tâm để tham chiếu khi cần.",
+        "<strong>A - Archives (Lưu trữ lạnh):</strong> Các dự án đã hoàn thành hoặc tài nguyên không còn dùng thường xuyên nhưng giữ lại để tra cứu lịch sử."
+      ],
+      "case_study": {
+        "title": "Tìm lại tri thức trong 10 giây",
+        "context": "Thay vì phân loại file theo tên môn học cứng nhắc rồi bỏ quên, sinh viên tổ chức theo PARA: mọi ghi chú phục vụ Đề án đang làm đều được liên kết trực tiếp vào thư mục Project tương ứng.",
+        "analysis": "Tổ chức theo 'nơi bạn sẽ dùng nó' thay vì 'nó thuộc bộ môn nào' giúp giảm 80% thời gian lục tìm tài liệu.",
+        "lesson_learned": "Một hệ thống ghi chú tốt là hệ thống phục vụ trực tiếp cho việc tạo ra sản phẩm đầu ra."
+      },
+      "related_concepts": [
+        "c4-code-atomic",
+        "c4-khung-4f"
+      ]
+    },
+    {
+      "id": "c4-code-atomic",
+      "session": 4,
+      "term": "Luồng vận hành CODE & Ghi chú nguyên tử (Atomic Notes)",
+      "definition": "Quy trình 4 bước chuyển hóa thông tin thô thành sản phẩm sáng tạo (Capture -> Organize -> Distill -> Express) dựa trên các đơn vị tri thức nhỏ gọn, độc lập và có khả năng liên kết đa chiều gọi là Atomic Notes.",
+      "key_points": [
+        "<strong>Luồng CODE:</strong> <em>Capture</em> (Thu nạp có chọn lọc điều thực sự chạm tới mình) -> <em>Organize</em> (Đưa vào đúng chỗ trong PARA) -> <em>Distill</em> (Tinh chế, chắt lọc lấy phần lõi) -> <em>Express</em> (Lắp ghép để viết báo cáo, làm slide, thiết kế Context cho AI).",
+        "<strong>Nguyên tắc vàng của Atomic Note:</strong> <strong>1 ghi chú = 1 ý tưởng/luận điểm cốt lõi duy nhất</strong>. Giống như một viên gạch Lego độc lập, bạn có thể lấy một Atomic Note lắp vào 5 bài tiểu luận hay đề án khác nhau.",
+        "<strong>4 thành phần bắt buộc của một Atomic Note chuẩn:</strong> (1) <em>Tiêu đề dạng câu khẳng định</em> tóm trọn luận điểm (ví dụ: <code>AI bịa trích dẫn nhiều hơn ở các đề tài ít được nghiên cứu</code> thay vì đặt tên chung chung <code>Ghi chú về AI</code>); (2) <em>Nội dung diễn đạt lại bằng 100% ngôn từ của bạn</em> (tuyệt đối không copy-paste nguyên văn output của AI); (3) <em>Nguồn dẫn chứng đã kiểm chứng</em>; (4) <em>Liên kết (Links)</em> tới các Atomic Notes khác trong Second Brain."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-second-brain-para",
+        "c4-khung-4f"
+      ]
+    },
+    {
+      "id": "c4-khung-4f",
+      "session": 4,
+      "term": "Khung phản tư 4F (Fact - Feelings - Findings - Future)",
+      "definition": "Công cụ tư duy phản tư cuối mỗi buổi học hoặc mỗi trải nghiệm thực hành, giúp người học chắt lọc sự kiện khách quan thành bài học nguyên lý và hành động tương lai.",
+      "key_points": [
+        "<strong>1. Fact (Sự kiện):</strong> Điều gì đã thực sự diễn ra hôm nay? Số liệu, thao tác hay kết quả thực tế nào bạn đã quan sát được?",
+        "<strong>2. Feelings (Cảm xúc / Điểm chạm):</strong> Khoảnh khắc nào làm bạn bất ngờ, 'vỡ lẽ' (aha moment) hoặc trăn trở nhất?",
+        "<strong>3. Findings (Bài học / Quy luật đúc kết):</strong> Từ sự kiện và cảm xúc đó, nguyên lý hay bài học cốt lõi nào được rút ra? (Chính phần Findings này sẽ kết tinh thành các Atomic Notes của bạn).",
+        "<strong>4. Future (Ứng dụng tương lai):</strong> Bạn sẽ áp dụng ngay bài học này vào việc học tại HUB hoặc vào Đề án cuối khóa như thế nào trong tuần tới?"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c4-code-atomic"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận diện mô hình PARA, quy trình CODE, cấu trúc Atomic Note và khung 4F.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c4-q1",
+          "type": "mc",
+          "concept_ref": "c4-second-brain-para",
+          "question": "Trong phương pháp tổ chức thông tin PARA của Tiago Forte, bốn chữ cái P - A - R - A lần lượt là viết tắt của những thành phần nào?",
+          "options": [
+            "A. Prompts - AI - Research - Answers",
+            "B. Projects (Dự án) - Areas (Lĩnh vực trách nhiệm) - Resources (Tài nguyên) - Archives (Lưu trữ lạnh)",
+            "C. Papers - Articles - Reports - Appendices",
+            "D. Plan - Act - Review - Adjust"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c4-q2",
+          "type": "mc",
+          "concept_ref": "c4-code-atomic",
+          "question": "Quy trình 4 bước CODE trong xây dựng Bộ Não Thứ Hai (Second Brain) bao gồm các bước theo thứ tự nào?",
+          "options": [
+            "A. Copy -> Open -> Delete -> Export",
+            "B. Capture (Thu nạp) -> Organize (Tổ chức) -> Distill (Tinh chế) -> Express (Diễn đạt)",
+            "C. Create -> Optimize -> Deploy -> Evaluate",
+            "D. Chat -> Order -> Download -> Edit"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c4-q3",
+          "type": "mc",
+          "concept_ref": "c4-code-atomic",
+          "question": "Đặc điểm cốt lõi nhất của một Ghi chú nguyên tử (Atomic Note) là gì?",
+          "options": [
+            "A. Là một file văn bản dài ít nhất 20 trang gộp tất cả các môn học vào chung một chỗ",
+            "B. Mỗi ghi chú chỉ đóng gói duy nhất một ý tưởng/luận điểm cốt lõi, được diễn đạt bằng ngôn từ riêng của người học, có nguồn gốc và có liên kết với các ghi chú khác",
+            "C. Là bản sao chép nguyên văn (copy-paste) toàn bộ đoạn chat của ChatGPT",
+            "D. Là một tệp âm thanh chưa được nghe lại"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c4-q4",
+          "type": "mc",
+          "concept_ref": "c4-khung-4f",
+          "question": "Khung phản tư 4F dùng để viết nhật ký học tập và đúc kết tri thức gồm 4 yếu tố nào?",
+          "options": [
+            "A. Fast - Free - Friendly - Flexible",
+            "B. Fact (Sự kiện) - Feelings (Cảm xúc/Điểm chạm) - Findings (Bài học đúc kết) - Future (Hành động tương lai)",
+            "C. File - Folder - Format - Font",
+            "D. Find - Filter - Fix - Finish"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân biệt Atomic Note chuẩn với việc tích trữ thông tin thụ động.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c4-q1",
+          "type": "mc",
+          "concept_ref": "c4-code-atomic",
+          "question": "Vì sao việc copy-paste nguyên văn câu trả lời dài 1.000 chữ của AI vào ứng dụng ghi chú KHÔNG được coi là bước Distill (Tinh chế) hay tạo Atomic Note?",
+          "options": [
+            "A. Vì khi copy-paste nguyên văn, não bộ bạn chưa hề đọc hiểu, chắt lọc hay tái cấu trúc thông tin bằng ngôn từ của mình; văn bản đó vẫn là sản phẩm xa lạ nên không tạo ra tri thức nội tại và rất khó lắp ghép khi viết bài",
+            "B. Vì ứng dụng ghi chú không cho phép dán quá 500 chữ",
+            "C. Vì chữ của AI có định dạng phông chữ khác",
+            "D. Vì copy-paste làm tốn pin máy tính"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c4-q2",
+          "type": "mc",
+          "concept_ref": "c4-code-atomic",
+          "question": "Trong hai cách đặt tiêu đề cho một Atomic Note dưới đây, cách nào đúng chuẩn 'Tiêu đề mang tính khẳng định' (Declarative Title) giúp dễ dàng tìm kiếm và lắp ghép luận điểm?",
+          "options": [
+            "A. Ghi chú buổi học ngày 22/11 phần 2",
+            "B. Tỷ lệ trích dẫn bịa của LLM tăng mạnh ở các đề tài ngách ít được nghiên cứu (Linardon, 2025)",
+            "C. Tài liệu tham khảo số 1",
+            "D. Vấn đề về AI"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c4-q3",
+          "type": "mc",
+          "concept_ref": "c4-second-brain-para",
+          "question": "Trong hệ thống PARA của một sinh viên HUB, 'Đề án cuối khóa môn Kỹ năng ứng dụng AI (hạn nộp tuần 10)' và 'Kiến thức chuyên ngành Tài chính - Ngân hàng (duy trì suốt 4 năm đại học)' lần lượt thuộc hai thư mục nào?",
+          "options": [
+            "A. Cả hai đều thuộc Archives (Lưu trữ lạnh)",
+            "B. Đề án cuối khóa thuộc Projects (Dự án có hạn chót); Chuyên ngành Tài chính - Ngân hàng thuộc Areas (Lĩnh vực duy trì dài hạn)",
+            "C. Đề án cuối khóa thuộc Archives; Chuyên ngành thuộc Projects",
+            "D. Cả hai đều không cần lưu trữ"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c4-q4",
+          "type": "mc",
+          "concept_ref": "c4-code-atomic",
+          "question": "Hệ thống Second Brain đóng vai trò gì trong mối quan hệ với việc thiết kế Context & Harness cho AI?",
+          "options": [
+            "A. Không có liên hệ gì với AI",
+            "B. Các Atomic Notes đã được bạn kiểm chứng và chắt lọc trong Second Brain chính là nguồn Context tinh khiết nhất, chất lượng cao nhất để nạp vào AI khi bạn cần phác thảo báo cáo hoặc thiết kế Harness",
+            "C. Second Brain dùng để thay thế hoàn toàn mọi phần mềm trên máy tính",
+            "D. Second Brain chỉ dùng khi không có điện"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Thực hành viết Atomic Note và phản tư 4F cho Đề án cuối khóa.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c4-q1",
+          "type": "mc",
+          "concept_ref": "c4-code-atomic",
+          "question": "Trong quy định đánh giá cuối khóa (100% điểm) của môn học này, Cấu phần 2 (30% điểm cá nhân) kiểm tra điều gì từ hệ thống Second Brain của từng thành viên?",
+          "options": [
+            "A. Kiểm tra xem sinh viên cài phần mềm giao diện màu tối hay màu sáng",
+            "B. Mỗi thành viên phải tự tay đóng góp tối thiểu 06 Atomic Notes chất lượng cao (viết bằng ngôn từ riêng, có nguồn và liên kết) vào kho tri thức Đề án nhóm kèm nhật ký phản tư 4F trên LMS, để chứng minh năng lực thực chất và chống ăn theo nhóm",
+            "C. Chỉ cần nhóm trưởng viết toàn bộ ghi chú cho cả nhóm là được",
+            "D. Kiểm tra dung lượng ổ cứng còn trống bao nhiêu GB"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c4-q2",
+          "type": "mc",
+          "concept_ref": "c4-khung-4f",
+          "question": "Sau khi đọc một bài báo khoa học về 'Ứng dụng AI chấm điểm tín dụng cá nhân', bạn rút ra nhận định: 'Mô hình AI hộp đen tuy dự báo nợ xấu chính xác hơn 8% nhưng bị cơ quan quản lý từ chối vì thiếu khả năng giải thích lý do từ chối khoản vay cho khách hàng'. Nhận định này thuộc chữ F nào trong khung 4F và nên xử lý thế nào?",
+          "options": [
+            "A. Thuộc phần Findings (Bài học/Phát hiện cốt lõi) và nên được tách ra lưu thành một Atomic Note độc lập kèm trích dẫn nguồn bài báo đó",
+            "B. Thuộc phần Feelings và nên xóa đi ngay",
+            "C. Chỉ là thông tin rác không cần ghi chép",
+            "D. Thuộc phần Archives"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c4-essay1",
+          "type": "essay",
+          "concept_ref": "c4-code-atomic",
+          "question": "Hãy viết 01 Atomic Note hoàn chỉnh liên quan trực tiếp đến chủ đề Đề án cuối khóa của nhóm bạn theo đúng cấu trúc 4 phần: (1) Tiêu đề dạng câu khẳng định, (2) Nội dung cốt lõi viết bằng ngôn từ của chính bạn (100-150 chữ), (3) Nguồn tham chiếu/bằng chứng, và (4) Ít nhất 2 liên kết [[Tên ghi chú liên quan]] mà bạn sẽ kết nối trong Second Brain.",
+          "rubric": "Tiêu đề là một câu khẳng định sắc bén, tóm đúng luận điểm (25%) · Nội dung cô đọng, diễn đạt bằng ngôn từ riêng, đúng nguyên tắc 1 ý duy nhất (35%) · Nêu rõ nguồn dẫn chứng (20%) · Đề xuất được 2 liên kết [[...]] có ý nghĩa logic (20%)",
+          "max_words": 300
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "chapter": 1,
+  "title": "Bản chất AI & Tư duy người làm chủ: 'AI là Trợ lý, Bạn là Chủ'",
+  "sessions": [
+    1
+  ],
+  "scqa": {
+    "situation": "Mỗi khi nhận đề tiểu luận hay bài tập lớn tại Trường ĐH Ngân hàng TP.HCM, thao tác đầu tiên của hầu hết sinh viên hiện nay là mở ChatGPT, Claude hoặc Gemini, gõ vài dòng yêu cầu và nhận về một bài viết 1.500 chữ trôi chảy chỉ sau 30 giây.",
+    "complication": "Tuy nhiên, khi giảng viên hỏi 'Số liệu tỷ lệ nợ xấu trang 3 em lấy từ báo cáo nào?' hoặc 'Tại sao em chọn mô hình này?', người nộp bài hoàn toàn lúng túng vì không biết AI lấy số đó ở đâu. Nghiêm trọng hơn, nghiên cứu của Topaz và cộng sự trên tạp chí y khoa danh tiếng The Lancet (5/2026) chỉ ra rằng cứ 277 bài báo khoa học trên PubMed đầu năm 2026 thì có 1 bài dính tài liệu tham khảo hoàn toàn không tồn tại do AI bịa ra (tăng gấp 10 lần so với năm 2023). Việc giao phó tư duy cho một cỗ máy xác suất đang âm thầm tạo ra hiện tượng lệ thuộc nhận thức (cognitive offloading) và ảo tưởng trôi chảy (fluency illusion).",
+    "question": "Nếu AI không thực sự 'biết' những gì nó đang viết ra, làm thế nào để sinh viên khai thác sức mạnh của AI mà không bị nó dắt mũi hay làm teo đi năng lực tư duy độc lập của chính mình?",
+    "answer": "Bắt đầu từ triết lý 'Tư duy -> Kỹ năng -> Công cụ': hiểu rõ AI là cỗ máy dự đoán từ tiếp theo dựa trên xác suất, thiết lập nguyên tắc phân vai 'AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm', và chỉ giao cho AI những bước mà chính bạn có đủ năng lực kiểm tra lại."
+  },
+  "concepts": [
+    {
+      "id": "c1-xac-suat-llm",
+      "session": 1,
+      "term": "Bản chất xác suất của Mô hình ngôn ngữ lớn (LLM)",
+      "definition": "Mô hình ngôn ngữ lớn (Large Language Model - LLM) không phải là một kho lưu trữ sự thật hay bộ não có ý thức, mà là một hệ thống toán học dự đoán từ (token) tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh đứng trước nó.",
+      "key_points": [
+        "<strong>Cơ chế vận hành:</strong> Khi bạn nhập câu hỏi, LLM tính toán phân phối xác suất trên hàng tỷ tham số để chọn ra chuỗi từ nghe hợp lý nhất về mặt ngôn ngữ.",
+        "<strong>Khác biệt với Google Search:</strong> Công cụ tìm kiếm tra cứu và trả về đường dẫn tới các văn bản có sẵn trên Internet; ngược lại, LLM <em>tạo sinh (generate)</em> văn bản mới từng chữ một theo thời gian thực.",
+        "<strong>Hệ quả tất yếu:</strong> Vì ưu tiên tính trôi chảy của ngôn ngữ hơn tính xác thực của dữ liệu, một câu trả lời cực kỳ mạch lạc, văn phong học thuật vẫn có thể sai hoàn toàn về mặt sự thật."
+      ],
+      "case_study": {
+        "title": "Bẫy thông tư ngân hàng không tồn tại",
+        "context": "Trong giờ học, giảng viên yêu cầu AI tóm tắt 'Thông tư 99/2025/TT-NHNN về quy định cấp tín dụng xanh cho sinh viên khởi nghiệp' (một văn bản hoàn toàn bịa).",
+        "analysis": "Nếu không có ràng buộc chặt, AI vẫn tự tin liệt kê đủ Điều 1, Điều 2, lãi suất ưu đãi 4.5%/năm với giọng văn hành chính chuẩn mực vì các cụm từ này có xác suất đi cùng nhau rất cao trong tập dữ liệu huấn luyện.",
+        "lesson_learned": "Sự tự tin và trôi chảy của AI không bao giờ là bằng chứng của sự thật."
+      },
+      "related_concepts": [
+        "c1-hallucination",
+        "c1-phan-vai"
+      ]
+    },
+    {
+      "id": "c1-hallucination",
+      "session": 1,
+      "term": "Ảo giác AI (Hallucination) & Bằng chứng thực nghiệm",
+      "definition": "Hiện tượng mô hình AI tạo ra thông tin sai lệch, số liệu giả hoặc tài liệu tham khảo không tồn tại nhưng trình bày với hình thức và giọng điệu vô cùng thuyết phục.",
+      "key_points": [
+        "<strong>Bằng chứng từ The Lancet (Topaz và cs., 5/2026):</strong> Kiểm tra gần 2.5 triệu bài báo trên PubMed (97 triệu tài liệu tham khảo), phát hiện 4.046 trích dẫn bịa trong 2.810 bài báo. Tỷ lệ bài có trích dẫn bịa tăng vọt từ <strong>1/2.828 (năm 2023)</strong> lên <strong>1/458 (năm 2025)</strong> và chạm mức <strong>1/277 (7 tuần đầu năm 2026)</strong>.",
+        "<strong>Nguyên nhân gốc rễ:</strong> Hallucination gắn liền với cơ chế dự đoán xác suất của LLM khi nó cố gắng 'lấp đầy chỗ trống' để chiều lòng người hỏi, đặc biệt ở các chủ đề chuyên sâu hoặc ít dữ liệu.",
+        "<strong>Cách phòng vệ ban đầu:</strong> Không bao giờ dùng Chatbot tổng quát làm nguồn tra cứu danh mục tài liệu tham khảo; luôn yêu cầu đính kèm tài liệu gốc và kiểm chứng độc lập."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-xac-suat-llm"
+      ]
+    },
+    {
+      "id": "c1-cognitive-traps",
+      "session": 1,
+      "term": "Lệ thuộc nhận thức (Cognitive Offloading) & Ảo tưởng trôi chảy (Fluency Illusion)",
+      "definition": "Hai căn bệnh nhận thức nguy hiểm nhất của người học trong kỷ nguyên AI: giao phó hoàn toàn việc suy nghĩ cho máy (làm teo cơ tư duy) và nhầm lẫn giữa việc 'đọc thấy bài AI viết dễ hiểu' với việc 'bản thân đã thực sự hiểu và nắm vững kiến thức đó'.",
+      "key_points": [
+        "<strong>Ảo tưởng trôi chảy (Fluency Illusion):</strong> Não bộ con người chỉ tạo ra liên kết thần kinh bền vững khi phải trải qua <em>ma sát nhận thức (productive struggle)</em>. Khi đọc bản tóm tắt mượt mà của AI, bạn thấy gật gù dễ hiểu nhưng sau 24 giờ sẽ quên tới 80% vì não chưa hề tiêu hóa.",
+        "<strong>Lệ thuộc nhận thức (Cognitive Offloading):</strong> Giống như dùng xe máy để đi quãng đường 100 mét mỗi ngày, việc nhờ AI viết hộ từng đoạn văn ngắn hay giải hộ bài tập cơ bản sẽ làm mất dần khả năng lập luận cấu trúc và viết độc lập.",
+        "<strong>Thuốc giải:</strong> Dùng AI để <em>tạo ma sát có hướng dẫn</em> (hỏi ngược, phản biện dàn ý của bạn) chứ không dùng AI để triệt tiêu ma sát học tập."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-phan-vai"
+      ]
+    },
+    {
+      "id": "c1-phan-vai",
+      "session": 1,
+      "term": "Khung phân vai: 'AI là Trợ lý, Bạn là Chủ'",
+      "definition": "Nguyên tắc định vị quyền hạn và trách nhiệm giữa con người và AI dựa trên 3 động từ cốt lõi: AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm.",
+      "key_points": [
+        "<strong>AI đề xuất (Propose):</strong> Gợi ý từ khóa, tóm lược sơ bộ văn bản đính kèm, dựng dàn ý nháp, phản biện lỗ hổng lập luận, rà soát ngữ pháp.",
+        "<strong>Bạn quyết định (Decide):</strong> Chọn câu hỏi nghiên cứu, thẩm định độ tin cậy của nguồn, chốt cấu trúc lập luận và đưa ra kết luận chuyên môn.",
+        "<strong>Bạn chịu trách nhiệm (Accountable):</strong> Kiểm chứng từng con số và trích dẫn, khai báo việc dùng AI minh bạch. Tên của bạn đứng trên trang bìa báo cáo chứ không phải tên của ChatGPT hay Claude.",
+        "<strong>Phép thử vàng khi giao việc cho AI:</strong> <em>'Nếu AI làm sai ở bước này, mình có đủ kiến thức và công cụ để phát hiện ra không?'</em> Nếu câu trả lời là KHÔNG, tuyệt đối đừng giao bước đó cho AI."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-ban-do-cong-cu"
+      ]
+    },
+    {
+      "id": "c1-ban-do-cong-cu",
+      "session": 1,
+      "term": "Bản đồ hệ sinh thái công cụ AI 2026 theo tác vụ",
+      "definition": "Phân loại các công cụ AI thành 4 nhóm chuyên biệt dựa trên kiến trúc truy xuất dữ liệu, giúp người học chọn đúng công cụ cho đúng mục đích thay vì dùng một Chatbot cho mọi việc.",
+      "key_points": [
+        "<strong>1. Hội thoại đa năng & Suy luận (ChatGPT, Claude, Gemini, DeepSeek):</strong> Mạnh về brainstorm, phân tích logic, giải thích khái niệm, thiết kế quy trình; nhưng <em>tuyệt đối không dùng để lấy danh mục tài liệu tham khảo</em> vì dễ bịa nguồn.",
+        "<strong>2. Tìm kiếm web có trích nguồn (Perplexity, ChatGPT Search):</strong> Hữu ích để tra cứu tin tức, báo cáo thị trường mới; vẫn cần bấm vào link gốc để kiểm tra.",
+        "<strong>3. Tìm kiếm & Tổng hợp học thuật thật (Semantic Scholar, Elicit, Consensus):</strong> Kết nối trực tiếp với kho hơn 200 triệu bài báo khoa học có thật và mã DOI chuẩn.",
+        "<strong>4. Quản trị tri thức & RAG cá nhân (Gemini Notebook / NotebookLM, Claude Projects):</strong> Chỉ trả lời dựa trên tập tài liệu chuẩn mà bạn tải lên và trích dẫn chính xác về đúng đoạn văn gốc."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c1-phan-vai"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết bản chất xác suất của LLM, số liệu thực nghiệm và nguyên tắc phân vai.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-xac-suat-llm",
+          "question": "Cơ chế cốt lõi giúp các Mô hình ngôn ngữ lớn (LLM) như ChatGPT hay Claude tạo ra câu trả lời là gì?",
+          "options": [
+            "A. Tra cứu trực tiếp từ một cơ sở dữ liệu sự thật đã được kiểm duyệt 100%",
+            "B. Dự đoán từ (token) tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh đứng trước",
+            "C. Sao chép nguyên văn các đoạn văn bản từ Google Scholar theo thời gian thực",
+            "D. Sử dụng tư duy nhận thức và sự hiểu biết chuyên môn giống như bộ não chuyên gia"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-hallucination",
+          "question": "Theo nghiên cứu của Topaz và cộng sự đăng trên tạp chí The Lancet (5/2026) khi kiểm tra gần 2.5 triệu bài báo trên PubMed, tỷ lệ bài báo có chứa ít nhất một tài liệu tham khảo bịa trong 7 tuần đầu năm 2026 là bao nhiêu?",
+          "options": [
+            "A. 1/2.828 bài báo",
+            "B. 1/1.000 bài báo",
+            "C. 1/277 bài báo",
+            "D. 1/10 bài báo"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-cognitive-traps",
+          "question": "Hiện tượng sinh viên đọc bản tóm tắt rất mượt mà của AI, cảm thấy mình đã hiểu hết bài nhưng thực chất não bộ chưa hề xử lý sâu và nhanh chóng quên sạch được gọi là gì?",
+          "options": [
+            "A. Ảo giác dữ liệu (Data Hallucination)",
+            "B. Ảo tưởng trôi chảy (Fluency Illusion)",
+            "C. Quá tải ngữ cảnh (Context Overflow)",
+            "D. Học tập chủ động (Active Recall)"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c1-q4",
+          "type": "mc",
+          "concept_ref": "c1-phan-vai",
+          "question": "Trong mô hình 'AI là Trợ lý, Bạn là Chủ', bộ ba động từ nào định vị đúng vai trò của AI và người học?",
+          "options": [
+            "A. AI quyết định - Bạn thực thi - Nhà trường chịu trách nhiệm",
+            "B. AI tìm nguồn - AI viết bài - Bạn đứng tên",
+            "C. AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm",
+            "D. Bạn đề xuất - AI quyết định - Cùng chịu trách nhiệm"
+          ],
+          "correct": "C"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân tích nguyên nhân của Hallucination và ranh giới giao việc cho AI.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-xac-suat-llm",
+          "question": "Vì sao một mô hình AI có thể bịa ra một thông tư ngân hàng hoặc một trích dẫn khoa học không hề tồn tại với giọng văn vô cùng tự tin?",
+          "options": [
+            "A. Vì thuật toán đoán chữ chỉ ưu tiên ghép các cụm từ có xác suất ngôn ngữ hợp lý nhất với câu hỏi, chứ không có cơ chế tự kiểm tra sự thật",
+            "B. Vì nhà phát triển lập trình cho AI tính năng nói dối khi gặp câu hỏi khó",
+            "C. Vì máy tính của người dùng bị nhiễm mã độc làm sai lệch kết quả",
+            "D. Vì AI chỉ bịa khi người dùng sử dụng phiên bản miễn phí"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-phan-vai",
+          "question": "Theo nguyên tắc phân vai 'Việc nào giao, việc nào giữ', câu hỏi tự kiểm tra nào giúp bạn biết có nên giao một bước công việc cho AI hay không?",
+          "options": [
+            "A. Bước này AI làm có nhanh hơn mình làm không?",
+            "B. Nếu AI làm sai ở bước này, mình có đủ khả năng và công cụ phát hiện ra không?",
+            "C. Bước này có tốn nhiều dung lượng token của AI không?",
+            "D. Bạn bè trong lớp có dùng AI cho bước này không?"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c1-q3",
+          "type": "mc",
+          "concept_ref": "c1-ban-do-cong-cu",
+          "question": "Khi bạn cần hỏi đáp và trích xuất thông tin chỉ gói gọn trong 3 cuốn giáo trình PDF của môn học mà không muốn AI suy diễn thêm từ bên ngoài, nhóm công cụ nào là phù hợp nhất?",
+          "options": [
+            "A. Chatbot hội thoại tổng quát không đính kèm tài liệu",
+            "B. Công cụ tạo hình ảnh tự động",
+            "C. Công cụ RAG quản trị tài liệu cá nhân như Gemini Notebook (NotebookLM)",
+            "D. Công cụ kiểm tra đạo văn"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L2-c1-q4",
+          "type": "mc",
+          "concept_ref": "c1-cognitive-traps",
+          "question": "Cách sử dụng AI nào dưới đây giúp RÈN LUYỆN tư duy thay vì rơi vào bẫy lệ thuộc nhận thức (Cognitive Offloading)?",
+          "options": [
+            "A. Nhờ AI viết trọn vẹn bài tiểu luận rồi học thuộc lòng để đi thi",
+            "B. Tự mình phác thảo dàn ý và luận điểm trước, sau đó dùng AI đóng vai người phản biện để chỉ ra các lỗ hổng logic trong dàn ý của mình",
+            "C. Chép đề bài tập lên AI và chép nguyên lời giải vào vở",
+            "D. Nhờ AI đọc hộ toàn bộ bài báo mà không bao giờ mở file PDF gốc"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Áp dụng tư duy làm chủ AI vào tình huống học tập tại ĐH Ngân hàng TP.HCM.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c1-q1",
+          "type": "mc",
+          "concept_ref": "c1-ban-do-cong-cu",
+          "question": "Minh đang làm đề tài về 'Rủi ro tín dụng xanh tại các ngân hàng thương mại Việt Nam'. Minh mở một Chatbot tổng quát và gõ: 'Hãy cho tôi 10 tài liệu tham khảo uy tín kèm DOI về đề tài này'. Hành động này vi phạm nguyên tắc nào?",
+          "options": [
+            "A. Dùng sai công cụ cho tác vụ cần nguồn thật: Chatbot tổng quát sinh văn bản theo xác suất nên rất dễ ghép các mảnh thông tin thành trích dẫn bịa và DOI giả",
+            "B. Xin quá ít tài liệu tham khảo, lẽ ra phải xin 50 tài liệu một lúc",
+            "C. Không vi phạm gì, đây là cách tìm tài liệu chuẩn xác nhất hiện nay",
+            "D. Vi phạm vì không viết câu lệnh bằng tiếng Anh"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c1-q2",
+          "type": "mc",
+          "concept_ref": "c1-phan-vai",
+          "question": "Trong 4 công việc dưới đây khi làm tiểu luận ngành Tài chính - Ngân hàng, công việc nào người học BẮT BUỘC phải tự giữ quyền quyết định cuối cùng, không được giao phó cho AI?",
+          "options": [
+            "A. Gợi ý các từ khóa tiếng Anh tương đương để tra cứu trên Semantic Scholar",
+            "B. Rà soát lỗi chính tả và ngữ pháp của bản thảo",
+            "C. Kiểm chứng độ tin cậy của số liệu gốc và chốt kết luận học thuật của bài viết",
+            "D. Chuyển đổi một đoạn ghi chú nháp thành bảng tóm tắt sơ bộ"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L3-c1-essay1",
+          "type": "essay",
+          "concept_ref": "c1-phan-vai",
+          "question": "Hãy chọn một bài tập lớn hoặc đề tài môn chuyên ngành bạn đang học tại HUB. Chia quy trình làm bài đó thành 4 bước, và lập bảng phân vai rõ ràng: Ở mỗi bước, việc gì bạn giao cho AI đề xuất, việc gì bạn tự quyết định, và bạn sẽ kiểm tra kết quả của AI bằng cách nào?",
+          "rubric": "Nêu rõ tên bài tập/đề tài chuyên ngành tại HUB (20%) · Phân tách quy trình 4 bước mạch lạc (20%) · Phân vai đúng nguyên tắc AI đề xuất - Người quyết định (30%) · Nêu được cơ chế kiểm chứng cụ thể ở từng bước giao cho AI (30%)",
+          "max_words": 300
+        }
+      ]
+    }
+  }
+}

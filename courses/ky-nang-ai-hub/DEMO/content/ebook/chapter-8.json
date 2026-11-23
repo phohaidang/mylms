@@ -1,0 +1,229 @@
+{
+  "chapter": 8,
+  "title": "Quy trình NCKH với AI (Bước 3 & 4): Tổng hợp đa nguồn, Viết học thuật & Trình bày",
+  "sessions": [
+    8
+  ],
+  "scqa": {
+    "situation": "Nhóm của bạn đã tìm được 10 bài báo khoa học thật, đã 'soi' từng bản tóm tắt, kiểm chứng qua 5 bước và nạp toàn bộ vào Zotero cũng như Second Brain. Giờ là lúc phải viết phần Tổng quan tài liệu (Literature Review) dài 1.500 chữ và thiết kế bộ Slide bảo vệ Đề án.",
+    "complication": "Rất nhiều nhóm sinh viên rơi vào cảnh viết 'Tổng quan tài liệu kiểu liệt kê': đoạn 1 tóm tắt bài của tác giả A, đoạn 2 tóm tắt bài của tác giả B, đoạn 3 tóm tắt bài của tác giả C... mà không có bất kỳ sợi dây liên kết hay so sánh nào giữa các bài. Hoặc tệ hơn, nhóm quăng cả 10 bài cho AI viết hộ một mạch rồi dùng công cụ tạo slide tự động (Gamma) xuất ra những trang slide lòe loẹt nhưng rỗng tuếch, làm mất hoàn toàn tiếng nói học thuật và dấu ấn cá nhân của nhóm.",
+    "question": "Làm thế nào để chuyển hóa 10 bài báo rời rạc thành một bức tranh tổng hợp sắc bén chỉ ra được khoảng trống nghiên cứu (Research Gap), viết báo cáo chuẩn mực từ Second Brain + Zotero, và thiết kế bài trình bày mang đậm bản sắc của người làm chủ?",
+    "answer": "Sử dụng Ma trận Tổng hợp (Synthesis Matrix) trên Elicit và Gemini Notebook để so sánh chéo đa nguồn theo chủ đề; thực hiện quy trình viết học thuật 4 nhịp từ Atomic Notes kết hợp chèn trích dẫn Zotero; và áp dụng quy trình 4 lớp làm slide theo nguyên tắc 'AI làm Draft, Người làm Final'."
+  },
+  "concepts": [
+    {
+      "id": "c8-synthesis-matrix",
+      "session": 8,
+      "term": "Phân biệt Tóm tắt (Summary) vs Tổng hợp (Synthesis) & Ma trận Tổng hợp",
+      "definition": "Bước chuyển từ việc kể lại nội dung từng tài liệu riêng lẻ (Summary) sang việc đặt nhiều tài liệu lên cùng một bàn cân theo từng trục chủ đề, phương pháp hoặc biến số để tìm ra điểm đồng thuận, điểm tranh luận và khoảng trống nghiên cứu (Synthesis).",
+      "key_points": [
+        "<strong>Bẫy liệt kê đơn tuyến (A -> B -> C):</strong> Viết theo từng bài báo làm người đọc không thấy được bức tranh chung của lĩnh vực.",
+        "<strong>Ma trận Tổng hợp (Synthesis Matrix):</strong> Bảng hai chiều trong đó <em>hàng ngang là các Bài báo đã kiểm chứng</em> (Nguồn 1, Nguồn 2, Nguồn 3...) và <em>cột dọc là các Khía cạnh/Chủ đề so sánh</em> (Bối cảnh mẫu, Phương pháp/Mô hình, Các yếu tố tác động chính, Hạn chế chưa giải quyết).",
+        "<strong>Cách dùng AI ở Bước 3 (Tổng hợp):</strong> Dùng bảng Elicit và nạp các bài báo đã kiểm chứng vào Gemini Notebook để trích xuất dữ liệu vào từng ô của Ma trận (kèm số trang); sau đó <em>chính con người nhìn vào Ma trận để rút ra nhận định so sánh và phát hiện Research Gap</em>."
+      ],
+      "case_study": {
+        "title": "Tìm ra khoảng trống nghiên cứu từ Ma trận 5 bài báo",
+        "context": "Khi đặt 5 bài báo về hành vi dùng Mobile Banking lên cùng một bảng Synthesis Matrix, nhóm sinh viên nhận thấy cả 5 bài đều khảo sát ở nhóm khách hàng thành thị trẻ, chưa bài nào đo lường yếu tố 'chi phí chuyển đổi nhận thức' ở nhóm khách hàng trung niên.",
+        "analysis": "Khoảng trống nghiên cứu (Research Gap) tự động lộ diện khi các nguồn được đặt cạnh nhau theo cột chuẩn.",
+        "lesson_learned": "AI giúp lập bảng so sánh nhanh, nhưng con mắt phát hiện khoảng trống nghiên cứu là của bạn."
+      },
+      "related_concepts": [
+        "c8-viet-4-nhip",
+        "c8-slide-4-lop"
+      ]
+    },
+    {
+      "id": "c8-viet-4-nhip",
+      "session": 8,
+      "term": "Quy trình Viết học thuật 4 nhịp (Second Brain + AI + Zotero)",
+      "definition": "Phương pháp viết báo cáo nghiên cứu và đề án đảm bảo tính nguyên bản của tư duy, sự chặt chẽ của lập luận và độ chính xác tuyệt đối của trích dẫn.",
+      "key_points": [
+        "<strong>Nhịp 1 - Lắp ghép khung từ Second Brain:</strong> Người học tự sắp xếp các <em>Atomic Notes</em> của mình thành dàn ý chi tiết và chuỗi luận điểm gốc.",
+        "<strong>Nhịp 2 - Nhờ AI phản biện dàn ý (Devil's Advocate):</strong> Yêu cầu AI đóng vai người phản biện khó tính: <em>'Hãy chỉ ra 3 điểm chuyển ý còn yếu hoặc thiếu bằng chứng thực nghiệm trong dàn ý này của tôi.'</em>",
+        "<strong>Nhịp 3 - Tự viết bản thảo & Chèn trích dẫn Zotero 8:</strong> Người học tự viết nội dung từng mục từ Ma trận tổng hợp và bấm chèn trích dẫn trực tiếp từ thư viện <strong>Zotero</strong> (tuyệt đối không để AI tự viết phần Kết quả, Thảo luận hay tự gõ trích dẫn).",
+        "<strong>Nhịp 4 - Biên tập văn phong có ràng buộc:</strong> Nhờ AI rà soát lỗi chính tả, độ mạch lạc và chuẩn hóa thuật ngữ với câu khóa: <em>'Chỉ gợi ý chỉnh sửa diễn đạt câu chữ cho rõ ràng và học thuật hơn; tuyệt đối không thêm bớt số liệu, không thay đổi luận điểm và giữ nguyên các mã trích dẫn Zotero.'</em>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c8-synthesis-matrix"
+      ]
+    },
+    {
+      "id": "c8-slide-4-lop",
+      "session": 8,
+      "term": "Quy trình 4 lớp chuẩn bị Bài trình bày ('AI làm Draft, Người làm Final')",
+      "definition": "Phương pháp ứng dụng AI để tăng tốc việc thiết kế bài thuyết trình học thuật mà không rơi vào căn bệnh 'slide công nghiệp chung chung, thiếu hồn cốt'.",
+      "key_points": [
+        "<strong>Lớp 1 - Cấu trúc thông điệp (Storyline & SCQA):</strong> Xác định rõ khán giả là ai (Hội đồng kiểm toán chéo & Giảng viên), dùng khung SCQA để mở đầu bằng một con số hoặc mâu thuẫn đắt giá thay vì mở đầu nhàm chán.",
+        "<strong>Lớp 2 - Kịch bản thuyết trình (Speaker Script):</strong> AI hỗ trợ chia thời lượng từng phút, nhưng người nói phải đưa trải nghiệm thực nghiệm của chính nhóm mình (ví dụ: câu chuyện nhóm đã phát hiện AI bịa chữ Pearson's R như thế nào) vào lời nói.",
+        "<strong>Lớp 3 - Thiết kế trực quan (Visual Slide):</strong> Có thể dùng Gamma, PowerPoint Copilot hoặc HTML/Claude Artifacts để dựng khung bố cục nhanh, nhưng bắt buộc con người phải tinh chỉnh lại typography, bảng biểu và thay thế các câu chữ sáo rỗng bằng tiêu đề mang tính kết luận (Action Titles).",
+        "<strong>Lớp 4 - Minh họa dữ liệu & Bằng chứng thật:</strong> Đưa ảnh chụp màn hình thực nghiệm thật của nhóm (ảnh chạy bộ Harness, ảnh báo cáo Tomaca, ảnh thư viện Zotero) lên slide làm bằng chứng sống."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c8-viet-4-nhip"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận diện sự khác biệt giữa Summary và Synthesis, quy trình viết 4 nhịp và làm slide 4 lớp.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c8-q1",
+          "type": "mc",
+          "concept_ref": "c8-synthesis-matrix",
+          "question": "Sự khác biệt căn bản giữa 'Tóm tắt từng bài' (Summary) và 'Tổng hợp đa nguồn' (Synthesis) trong nghiên cứu khoa học là gì?",
+          "options": [
+            "A. Tóm tắt là kể lại lần lượt từng bài riêng lẻ; còn Tổng hợp là đặt nhiều bài lên cùng các trục chủ đề/phương pháp để so sánh điểm đồng thuận, điểm mâu thuẫn và tìm ra khoảng trống nghiên cứu",
+            "B. Tóm tắt viết bằng tiếng Việt, còn Tổng hợp viết bằng tiếng Anh",
+            "C. Tóm tắt dài hơn Tổng hợp 10 lần",
+            "D. Hai khái niệm này hoàn toàn giống hệt nhau"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c8-q2",
+          "type": "mc",
+          "concept_ref": "c8-viet-4-nhip",
+          "question": "Trong Quy trình viết học thuật 4 nhịp, việc chèn trích dẫn vào bài báo cáo Đề án ở Nhịp 3 được thực hiện bằng cách nào?",
+          "options": [
+            "A. Nhờ ChatGPT tự gõ danh sách trích dẫn vào cuối đoạn văn",
+            "B. Người học tự viết luận điểm từ Ma trận tổng hợp/Second Brain và chèn trích dẫn trực tiếp từ thư viện phần mềm Zotero 8 (nơi chỉ chứa các nguồn thật đã qua 5 bước kiểm chứng)",
+            "C. Gõ tay tên tác giả theo trí nhớ mang máng",
+            "D. Copy danh mục tài liệu tham khảo từ một bài luận mẫu trên mạng"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c8-q3",
+          "type": "mc",
+          "concept_ref": "c8-slide-4-lop",
+          "question": "Nguyên tắc 'AI làm Draft, Người làm Final' khi thiết kế slide báo cáo Đề án có nghĩa là gì?",
+          "options": [
+            "A. Dùng AI (như Gamma, Copilot, Claude) để dựng nhanh cấu trúc bố cục nháp ban đầu, sau đó con người phải biên tập lại tiêu đề, gọt giũa số liệu chuẩn xác và đưa các minh chứng thực nghiệm thật của nhóm vào bản cuối",
+            "B. Bấm nút cho AI tạo slide trong 1 phút rồi mang thẳng lên hội đồng trình chiếu mà không cần đọc lại",
+            "C. Cấm tuyệt đối việc dùng máy tính làm slide",
+            "D. Để AI tự thuyết trình bằng giọng đọc máy suốt 15 phút"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c8-q4",
+          "type": "mc",
+          "concept_ref": "c8-viet-4-nhip",
+          "question": "Ở Nhịp 4 của quy trình viết học thuật, khi nhờ AI biên tập và nâng cấp văn phong cho bản thảo đã viết, ràng buộc nào sau đây là bắt buộc?",
+          "options": [
+            "A. Cho phép AI tự do sáng tác thêm số liệu mới cho bài viết sinh động",
+            "B. Yêu cầu AI chỉ chỉnh sửa diễn đạt ngữ pháp cho rõ ràng và học thuật hơn, tuyệt đối không thay đổi luận điểm gốc, không tự thêm số liệu và giữ nguyên các mã trích dẫn Zotero",
+            "C. Yêu cầu AI xóa hết các trích dẫn Zotero đi",
+            "D. Yêu cầu AI viết lại thành một chủ đề khác"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân tích cách dùng Synthesis Matrix và lý do không giao phần Kết quả/Thảo luận cho AI viết hộ.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c8-q1",
+          "type": "mc",
+          "concept_ref": "c8-synthesis-matrix",
+          "question": "Tại sao việc lập Ma trận Tổng hợp (Synthesis Matrix) trước khi đặt bút viết lại giúp sinh viên tránh được lỗi đạo văn và lỗi viết rời rạc?",
+          "options": [
+            "A. Vì khi nhìn vào một cột chủ đề trong Ma trận, sinh viên thấy ngay nhóm tác giả nào đồng ý, nhóm tác giả nào phản đối và số liệu chênh nhau ra sao, từ đó tự viết được một đoạn văn đối thoại học thuật đa nguồn thay vì chép lại từng bài đơn lẻ",
+            "B. Vì Ma trận Tổng hợp giúp che giấu nguồn gốc tài liệu",
+            "C. Vì giảng viên không đọc được bảng Ma trận",
+            "D. Vì lập bảng xong thì không cần viết chữ nào nữa"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c8-q2",
+          "type": "mc",
+          "concept_ref": "c8-viet-4-nhip",
+          "question": "Vì sao trong nghiên cứu khoa học và làm Đề án, bạn không bao giờ được để AI tự viết hoàn toàn phần 'Kết quả và Thảo luận' (Results & Discussion)?",
+          "options": [
+            "A. Vì Kết quả và Thảo luận là linh hồn và đóng góp trí tuệ cốt lõi của nhóm tác giả dựa trên dữ liệu thực tế mà nhóm thu thập/phân tích; nếu để AI tự viết, nó sẽ bịa ra các nhận định chung chung không khớp với dữ liệu thật và vi phạm vùng Đỏ của đạo đức học thuật",
+            "B. Vì phần Kết quả thường rất ngắn nên không bõ công dùng AI",
+            "C. Vì AI không biết gõ các con số thập phân",
+            "D. Vì phần Thảo luận không quan trọng trong bài báo"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c8-q3",
+          "type": "mc",
+          "concept_ref": "c8-slide-4-lop",
+          "question": "Nhược điểm dễ nhận biết nhất của một bộ slide do AI (như Gamma hay Tome) tạo tự động 100% mà người học chưa biên tập lại là gì?",
+          "options": [
+            "A. Thiết kế trông có vẻ bóng bẩy ở cái nhìn đầu tiên nhưng nội dung bên trong dàn trải, chữ nghĩa chung chung sáo rỗng, các biểu đồ/hình ảnh minh họa mang tính trang trí vô hồn (stock photos) chứ không chứa bằng chứng dữ liệu thật của đề tài",
+            "B. Phông chữ luôn bị lỗi không đọc được tiếng Việt",
+            "C. Không thể xuất ra màn hình máy chiếu",
+            "D. Có quá nhiều số liệu kiểm chứng chi tiết"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c8-q4",
+          "type": "mc",
+          "concept_ref": "c8-viet-4-nhip",
+          "question": "Việc dùng AI đóng vai 'Người phản biện khó tính' (Devil's Advocate) ở Nhịp 2 để soi dàn ý của bạn trước khi bạn viết chi tiết mang lại lợi ích gì?",
+          "options": [
+            "A. Giúp phát hiện sớm các bước nhảy logic thiếu căn cứ hoặc các khía cạnh bị bỏ sót ngay từ khi còn là dàn ý, giúp bạn tiết kiệm hàng giờ viết đi viết lại mà vẫn giữ trọn quyền làm chủ tư duy",
+            "B. Để AI làm nhụt chí khiến bạn bỏ cuộc",
+            "C. Để copy lời chê của AI nộp thay cho báo cáo",
+            "D. Không mang lại lợi ích gì"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Hoàn thành Mảnh ghép 3 (Ma trận tổng hợp & Bản thảo báo cáo có trích dẫn Zotero).",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c8-q1",
+          "type": "mc",
+          "concept_ref": "c8-synthesis-matrix",
+          "question": "Khi nhóm bạn đã có 3 bài báo thật đã kiểm chứng: Bài 1 (Smith, 2024) và Bài 2 (Lê, 2025) đều kết luận 'Chatbot AI giúp giảm 30% chi phí vận hành ngân hàng', trong khi Bài 3 (Trần, 2026) chỉ ra 'Ở nhóm khách hàng lớn tuổi, Chatbot AI làm giảm 25% mức độ hài lòng vì thiếu sự thấu cảm'. Cách viết đoạn văn tổng hợp (Synthesis) nào dưới đây đạt chuẩn học thuật cao nhất?",
+          "options": [
+            "A. Viết 3 đoạn rời nhau: Đoạn 1 kể về Smith (2024). Đoạn 2 kể về Lê (2025). Đoạn 3 kể về Trần (2026).",
+            "B. Viết thành một luận điểm tổng hợp đối sánh: 'Mặc dù các nghiên cứu gần đây đồng thuận rằng việc triển khai Chatbot AI giúp tối ưu hóa đáng kể chi phí vận hành của ngân hàng (Lê, 2025; Smith, 2024), hiệu quả của công nghệ này không đồng nhất trên mọi phân khúc; cụ thể, ở nhóm khách hàng cao tuổi, sự thiếu hụt tương tác thấu cảm từ AI lại dẫn đến sự sụt giảm rõ rệt về mức độ hài lòng (Trần, 2026).'",
+            "C. Bỏ bài của Trần (2026) đi vì dám kết luận ngược với 2 bài kia",
+            "D. Không trích dẫn tên tác giả nào cả"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c8-q2",
+          "type": "mc",
+          "concept_ref": "c8-slide-4-lop",
+          "question": "Trong bài thuyết trình bảo vệ Đề án cuối khóa ở Buổi 11 (chỉ có 8-10 phút trình bày), những minh chứng trực quan nào nhóm bạn BẮT BUỘC phải đưa lên slide để thuyết phục Hội đồng kiểm toán chéo?",
+          "options": [
+            "A. Chỉ cần đưa các hình vẽ hoạt hình AI đẹp mắt và những câu danh ngôn nổi tiếng",
+            "B. (1) Sơ đồ quy trình GATE/FALLBACK và demo sống Bộ Harness của nhóm, (2) Ma trận tổng hợp & ảnh chụp thư viện Zotero + báo cáo kiểm chứng Tomaca/Checklist 5 bước, (3) Minh chứng mạng lưới Atomic Notes trong Second Brain của từng thành viên, và (4) Bản khai báo AI theo Thông tư 49/2026",
+            "C. Copy nguyên văn 3.000 chữ trong file Word dán kín lên 10 slide chữ nhỏ li ti",
+            "D. Chỉ chiếu trang bìa rồi đọc giấy suốt 10 phút"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c8-essay1",
+          "type": "essay",
+          "concept_ref": "c8-synthesis-matrix",
+          "question": "Hãy trích xuất từ Mảnh ghép 3 của Đề án nhóm bạn: (1) Bảng Ma trận Tổng hợp (Synthesis Matrix) so sánh ít nhất 3 nguồn tài liệu thật đã kiểm chứng của nhóm theo 3 tiêu chí, và (2) Viết 01 đoạn văn tổng hợp học thuật (150-200 chữ) kết nối cả 3 nguồn đó theo chuẩn trích dẫn APA 7 để chỉ ra điểm đồng thuận, khác biệt hoặc khoảng trống nghiệp vụ/nghiên cứu.",
+          "rubric": "Trình bày rõ Ma trận so sánh 3 nguồn thật đã kiểm chứng theo các tiêu chí cụ thể (40%) · Đoạn văn viết có tính tổng hợp (Synthesis) đối sánh chéo các nguồn chứ không liệt kê rời rạc (40%) · Trích dẫn trong bài đúng chuẩn APA 7 và chỉ ra được nhận định của nhóm (20%)",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

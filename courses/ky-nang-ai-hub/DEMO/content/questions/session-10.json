@@ -1,0 +1,138 @@
+{
+  "session": 10,
+  "chapter": "Ch.10",
+  "title": "Project Clinic & Studio Kiểm toán chéo (Peer Audit Studio)",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s10-L1-c10-q1",
+      "type": "mc",
+      "question": "Bộ Hồ sơ Đề án Ứng dụng AI hoàn chỉnh nộp ở Buổi 10 bao gồm 4 Mảnh ghép lũy tiến nào?",
+      "options": [
+        "A. (1) Thiết kế Kiến trúc AI & Bộ Harness nghiệp vụ; (2) Hệ thống Second Brain (Atomic Notes cá nhân) & Kho RAG; (3) Báo cáo nghiên cứu/nghiệp vụ có Ma trận tổng hợp & Trích dẫn Zotero đã kiểm chứng; (4) Hồ sơ An toàn dữ liệu & Bản khai báo AI theo Thông tư 49/2026",
+        "B. Chỉ gồm 1 file trình chiếu PowerPoint 5 trang không có tài liệu tham khảo",
+        "C. Chỉ gồm ảnh chụp màn hình 1 câu hỏi trên ChatGPT",
+        "D. Gồm 1 bài văn chép tay không dùng máy tính"
+      ],
+      "correct": "A",
+      "explanation": "Hồ sơ Đề án 4 mảnh ghép gồm: (1) Bộ Harness nghiệp vụ, (2) Hệ thống Second Brain & RAG, (3) Báo cáo nghiên cứu có Ma trận tổng hợp & Zotero đã kiểm chứng, (4) Hồ sơ An toàn dữ liệu & Khai báo AI theo Thông tư 49/2026."
+    },
+    {
+      "id": "aihub-s10-L1-c10-q2",
+      "type": "mc",
+      "question": "Trong cơ cấu 100% điểm đánh giá cuối khóa của môn học, hoạt động 'Thuyết trình, Phản biện & Kiểm toán chéo giữa các nhóm (Peer Audit)' chiếm tổng trọng số là bao nhiêu?",
+      "options": [
+        "A. 0% (không tính điểm)",
+        "B. 30% tổng điểm cuối khóa (gồm 15% điểm Thuyết trình & trả lời bảo vệ đề án của nhóm mình + 15% điểm năng lực Kiểm toán chéo & phản biện đề án của nhóm bạn)",
+        "C. 5%",
+        "D. 100%"
+      ],
+      "correct": "B",
+      "explanation": "Hoạt động Thuyết trình, Phản biện và Kiểm toán chéo giữa các nhóm (Peer Audit) chiếm 30% tổng điểm cuối khóa (15% trình bày bảo vệ + 15% năng lực kiểm toán nhóm bạn)."
+    },
+    {
+      "id": "aihub-s10-L1-c10-q3",
+      "type": "mc",
+      "question": "Ở Vòng 2 của quy trình Kiểm toán chéo (Kiểm toán Nguồn trích dẫn & Số liệu), bên cạnh việc quét toàn bộ danh mục bằng công cụ Tomaca, Nhóm Kiểm toán bắt buộc phải làm thêm thao tác thủ công nào?",
+      "options": [
+        "A. Không cần làm gì thêm, tin tuyệt đối 100% vào màu xanh của Tomaca",
+        "B. Chọn ít nhất 03 trích dẫn trọng yếu trong bài của nhóm bạn để mở file PDF bản gốc, thực hiện đầy đủ Checklist 5 bước (đặc biệt là Bước 3 và Bước 4 xem bài gốc có nói đúng luận điểm và khớp số liệu bảng/hình hay không)",
+        "C. Xóa bớt tài liệu tham khảo của nhóm bạn",
+        "D. Đổi tên tác giả trong bài của nhóm bạn"
+      ],
+      "correct": "B",
+      "explanation": "Ở Vòng 2 Kiểm toán chéo, ngoài việc quét Tomaca, Nhóm Kiểm toán bắt buộc phải chọn ít nhất 3 trích dẫn trọng yếu để mở PDF gốc kiểm tra đủ 5 bước (đặc biệt là Bước 3 và Bước 4)."
+    },
+    {
+      "id": "aihub-s10-L1-c10-q4",
+      "type": "mc",
+      "question": "Theo 'Quy tắc Điểm liệt Liêm chính' (Zero-Tolerance Integrity Rule) của môn học, hậu quả gì sẽ xảy ra nếu trong Hồ sơ Đề án chính thức bị phát hiện có trích dẫn bịa (fabricated citation) hoặc không khai báo AI theo Thông tư 49/2026?",
+      "options": [
+        "A. Được cộng thêm điểm khuyến khích",
+        "B. Bị trừ thẳng 50% tổng điểm Cấu phần 1 (Hồ sơ Đề án nhóm) và bắt buộc phải rà soát, khắc phục lại toàn bộ phần kiểm chứng mới được xét đạt chứng chỉ",
+        "C. Không bị ảnh hưởng gì đến điểm số",
+        "D. Chỉ bị nhắc nhở nhẹ"
+      ],
+      "correct": "B",
+      "explanation": "Theo Quy tắc Điểm liệt Liêm chính, nếu để lọt trích dẫn bịa hoặc không khai báo AI theo Thông tư 49/2026 vào báo cáo chính thức, nhóm bị trừ thẳng 50% điểm Cấu phần 1 và phải làm lại phần kiểm chứng."
+    },
+    {
+      "id": "aihub-s10-L2-c10-q1",
+      "type": "mc",
+      "question": "Khi Kiểm toán Bộ Harness của nhóm bạn ở Vòng 1, tại sao bạn không nên chỉ thử nghiệm bằng một dữ liệu đẹp và đầy đủ (happy path)?",
+      "options": [
+        "A. Vì một bộ Harness yếu và một câu Prompt sơ sài đều có thể trả lời tốt khi dữ liệu đầu vào hoàn hảo; bản lĩnh thực sự của một bộ Harness chỉ lộ diện khi bị thử thách bằng tình huống biên (thiếu dữ liệu để xem FALLBACK có dừng lại hỏi không, và giục vượt rào xem GATE có giữ vững kỷ luật không)",
+        "B. Vì dữ liệu đầy đủ làm máy tính chạy chậm",
+        "C. Vì mục tiêu của kiểm toán là phá hỏng máy tính của nhóm bạn",
+        "D. Vì AI không đọc được dữ liệu đầy đủ"
+      ],
+      "correct": "A",
+      "explanation": "Kiểm toán bộ Harness phải dùng các tình huống biên (thiếu dữ liệu để thử FALLBACK, giục vượt rào để thử GATE) thì mới đánh giá được độ vững chắc thực sự của thiết kế."
+    },
+    {
+      "id": "aihub-s10-L2-c10-q2",
+      "type": "mc",
+      "question": "Nhận xét kiểm toán chéo nào dưới đây thể hiện đúng nhất tinh thần học thuật chuyên nghiệp, có bằng chứng xác thực và mang tính xây dựng?",
+      "options": [
+        "A. 'Nhóm bạn làm bài tốt lắm, slide đẹp, nhóm mình chấm 10/10 không có góp ý gì thêm.'",
+        "B. 'Bài của nhóm bạn dở quá, chắc chắn là nhờ AI viết hết rồi.'",
+        "C. 'Qua kiểm toán Vòng 2, nhóm mình xác nhận 10/11 trích dẫn của nhóm bạn khớp hoàn toàn trên Tomaca và bản PDF gốc. Tuy nhiên, ở trích dẫn số 7 (Phạm, 2025, tr.12), bảng gốc của tác giả ghi tỷ lệ chấp nhận là 64.2% trên mẫu N=310, nhưng trong trang 8 báo cáo của nhóm bạn đang ghi là 74.2%. Đề nghị nhóm kiểm tra và đính chính lại con số này trước buổi bảo vệ.'",
+        "D. 'Nhóm mình không thích màu xanh trên trang bìa báo cáo của nhóm bạn.'"
+      ],
+      "correct": "C",
+      "explanation": "Một nhận xét kiểm toán chuẩn mực phải chỉ rõ bằng chứng cụ thể (trang mấy, trích dẫn nào, khớp hay lệch bao nhiêu % so với bảng gốc) kèm đề xuất chỉnh sửa mang tính xây dựng."
+    },
+    {
+      "id": "aihub-s10-L2-c10-q3",
+      "type": "mc",
+      "question": "Làm thế nào để Nhóm Kiểm toán phân biệt được một Atomic Note cá nhân do sinh viên tự tư duy đúc kết với một ghi chú do copy-paste đối phó từ AI?",
+      "options": [
+        "A. Atomic Note thực chất có tiêu đề là một câu khẳng định sắc gọn, nội dung cô đọng (100-200 chữ) gắn chặt với bối cảnh bài toán của nhóm, có liên kết [[...]] hợp lý tới các ghi chú khác và người viết có thể giải thích ngay lập tức ý nghĩa của nó mà không cần nhìn màn hình",
+        "B. Ghi chú nào dài trên 3.000 chữ và có nhiều biểu tượng cảm xúc (emoji) đầu dòng của ChatGPT là ghi chú tốt nhất",
+        "C. Không thể phân biệt được bằng bất kỳ cách nào",
+        "D. Chỉ nhìn vào ngày giờ tạo file"
+      ],
+      "correct": "A",
+      "explanation": "Atomic Note thực chất luôn có tiêu đề khẳng định sắc gọn, nội dung viết bằng ngôn từ riêng gắn với đề án, có liên kết [[...]] và tác giả giải thích được ngay bản chất khi vấn đáp."
+    },
+    {
+      "id": "aihub-s10-L2-c10-q4",
+      "type": "mc",
+      "question": "Sau khi nhận được Biên bản Kiểm toán chéo từ nhóm đối tác ở cuối Buổi 10, thái độ và hành động đúng đắn nhất của nhóm sở hữu Đề án là gì?",
+      "options": [
+        "A. Tranh cãi gay gắt để phủ nhận mọi lỗi sai dù bằng chứng PDF gốc đã rõ ràng",
+        "B. Đón nhận các phát hiện kiểm toán như một cơ hội quý báu để hoàn thiện sản phẩm: lập tức đối chiếu lại với nguồn gốc, vá lại các lỗ hổng trong câu lệnh GATE/FALLBACK của bộ Harness, sửa lại các trích dẫn lệch và chuẩn bị slide giải trình rõ những gì nhóm đã nâng cấp cho buổi Bảo vệ ở Buổi 11",
+        "C. Bỏ mặc không sửa gì cả",
+        "D. Tìm cách trả đũa bằng cách chấm điểm thấp vô căn cứ cho nhóm bạn"
+      ],
+      "correct": "B",
+      "explanation": "Nhận được Biên bản Kiểm toán ở Buổi 10 là cơ hội vàng để nhóm vá lại lỗ hổng GATE/FALLBACK và đính chính số liệu/trích dẫn trước khi bước vào buổi Bảo vệ chính thức."
+    },
+    {
+      "id": "aihub-s10-L3-c10-q1",
+      "type": "mc",
+      "question": "Trong lúc kiểm toán Mảnh ghép 3 của nhóm đối tác, bạn thấy nhóm bạn có đính kèm file thư viện Zotero (`.bib`/`.ris`), nhưng trong file Word báo cáo lại có 3 trích dẫn ở phần Thảo luận không hề nằm trong file Zotero đó và cũng không có trong Danh mục tài liệu tham khảo cuối bài. Phát hiện này cho thấy điều gì?",
+      "options": [
+        "A. Nhóm đối tác đã vi phạm quy trình 'Nguồn vào Zotero trước, vào bài sau' ở phần Thảo luận (rất có thể đã copy-paste trực tiếp một đoạn văn do AI sinh ra kèm trích dẫn trôi nổi vào bài mà quên kiểm chứng và nạp Zotero); cần yêu cầu nhóm đối tác kiểm chứng 5 bước hoặc loại bỏ ngay 3 trích dẫn đó",
+        "B. Đó là cách trích dẫn sáng tạo mới, không cần sửa",
+        "C. Chỉ cần xóa file Zotero đi là xong",
+        "D. Không cần ghi vào biên bản kiểm toán"
+      ],
+      "correct": "A",
+      "explanation": "Trích dẫn xuất hiện trong văn bản Word nhưng không nằm trong thư viện Zotero là dấu hiệu vi phạm quy tắc 'Nguồn vào Zotero trước, vào bài sau', cần yêu cầu kiểm chứng 5 bước hoặc loại bỏ ngay."
+    },
+    {
+      "id": "aihub-s10-L3-c10-q2",
+      "type": "mc",
+      "question": "Khi kiểm toán Mảnh ghép 4 (Hồ sơ An toàn dữ liệu & Đạo đức AI) của một nhóm làm đề tài 'Ứng dụng AI phân tích phản hồi khách hàng trên fanpage Ngân hàng X', bạn thấy nhóm đã xóa toàn bộ tên và số điện thoại khách hàng trong file bình luận mẫu trước khi đưa vào Claude Project, đồng thời có Bản khai báo AI nêu rõ phiên bản Claude, thời gian và các prompt đã dùng. Đánh giá kiểm toán đúng cho Mảnh ghép 4 này là gì?",
+      "options": [
+        "A. Đạt mức Xuất sắc (8.5 - 10 điểm): nhóm đã thực hiện đúng kỹ thuật khử định danh dữ liệu cá nhân (Data Anonymization) và tuân thủ đầy đủ nghĩa vụ công bố minh bạch theo Điều 10 Thông tư 49/2026/TT-BGDĐT",
+        "B. Không đạt vì lẽ ra phải giữ nguyên số điện thoại thật của khách hàng",
+        "C. Không đạt vì đã dùng Claude Project",
+        "D. Không đạt vì khai báo quá chi tiết"
+      ],
+      "correct": "A",
+      "explanation": "Xóa sạch thông tin định danh khách hàng trước khi đưa vào Project và viết đầy đủ Bản khai báo AI theo Điều 10 Thông tư 49/2026 là thực hành đạt mức Xuất sắc ở Mảnh ghép 4."
+    }
+  ]
+}

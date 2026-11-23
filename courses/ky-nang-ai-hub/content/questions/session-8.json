@@ -1,0 +1,138 @@
+{
+  "session": 8,
+  "chapter": "Ch.8",
+  "title": "Quy trình NCKH với AI (Bước 3 & 4): Tổng hợp đa nguồn, Viết học thuật & Trình bày",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s08-L1-c8-q1",
+      "type": "mc",
+      "question": "Sự khác biệt căn bản giữa 'Tóm tắt từng bài' (Summary) và 'Tổng hợp đa nguồn' (Synthesis) trong nghiên cứu khoa học là gì?",
+      "options": [
+        "A. Tóm tắt là kể lại lần lượt từng bài riêng lẻ; còn Tổng hợp là đặt nhiều bài lên cùng các trục chủ đề/phương pháp để so sánh điểm đồng thuận, điểm mâu thuẫn và tìm ra khoảng trống nghiên cứu",
+        "B. Tóm tắt viết bằng tiếng Việt, còn Tổng hợp viết bằng tiếng Anh",
+        "C. Tóm tắt dài hơn Tổng hợp 10 lần",
+        "D. Hai khái niệm này hoàn toàn giống hệt nhau"
+      ],
+      "correct": "A",
+      "explanation": "Summary là tóm tắt rời rạc từng bài; Synthesis là tổng hợp đa nguồn trên cùng các trục chủ đề/phương pháp để chỉ ra điểm đồng thuận, mâu thuẫn và khoảng trống nghiên cứu."
+    },
+    {
+      "id": "aihub-s08-L1-c8-q2",
+      "type": "mc",
+      "question": "Trong Quy trình viết học thuật 4 nhịp, việc chèn trích dẫn vào bài báo cáo Đề án ở Nhịp 3 được thực hiện bằng cách nào?",
+      "options": [
+        "A. Nhờ ChatGPT tự gõ danh sách trích dẫn vào cuối đoạn văn",
+        "B. Người học tự viết luận điểm từ Ma trận tổng hợp/Second Brain và chèn trích dẫn trực tiếp từ thư viện phần mềm Zotero 8 (nơi chỉ chứa các nguồn thật đã qua 5 bước kiểm chứng)",
+        "C. Gõ tay tên tác giả theo trí nhớ mang máng",
+        "D. Copy danh mục tài liệu tham khảo từ một bài luận mẫu trên mạng"
+      ],
+      "correct": "B",
+      "explanation": "Trong quy trình viết 4 nhịp, người học tự viết bản thảo từ Ma trận tổng hợp/Second Brain và chỉ chèn trích dẫn trực tiếp từ thư viện Zotero 8."
+    },
+    {
+      "id": "aihub-s08-L1-c8-q3",
+      "type": "mc",
+      "question": "Nguyên tắc 'AI làm Draft, Người làm Final' khi thiết kế slide báo cáo Đề án có nghĩa là gì?",
+      "options": [
+        "A. Dùng AI (như Gamma, Copilot, Claude) để dựng nhanh cấu trúc bố cục nháp ban đầu, sau đó con người phải biên tập lại tiêu đề, gọt giũa số liệu chuẩn xác và đưa các minh chứng thực nghiệm thật của nhóm vào bản cuối",
+        "B. Bấm nút cho AI tạo slide trong 1 phút rồi mang thẳng lên hội đồng trình chiếu mà không cần đọc lại",
+        "C. Cấm tuyệt đối việc dùng máy tính làm slide",
+        "D. Để AI tự thuyết trình bằng giọng đọc máy suốt 15 phút"
+      ],
+      "correct": "A",
+      "explanation": "'AI làm Draft, Người làm Final' nghĩa là AI chỉ hỗ trợ dựng bố cục nháp ban đầu, còn con người phải biên tập lại thông điệp, số liệu và đưa bằng chứng thực nghiệm thật vào bản cuối."
+    },
+    {
+      "id": "aihub-s08-L1-c8-q4",
+      "type": "mc",
+      "question": "Ở Nhịp 4 của quy trình viết học thuật, khi nhờ AI biên tập và nâng cấp văn phong cho bản thảo đã viết, ràng buộc nào sau đây là bắt buộc?",
+      "options": [
+        "A. Cho phép AI tự do sáng tác thêm số liệu mới cho bài viết sinh động",
+        "B. Yêu cầu AI chỉ chỉnh sửa diễn đạt ngữ pháp cho rõ ràng và học thuật hơn, tuyệt đối không thay đổi luận điểm gốc, không tự thêm số liệu và giữ nguyên các mã trích dẫn Zotero",
+        "C. Yêu cầu AI xóa hết các trích dẫn Zotero đi",
+        "D. Yêu cầu AI viết lại thành một chủ đề khác"
+      ],
+      "correct": "B",
+      "explanation": "Ở Nhịp 4 (biên tập văn phong), phải khóa chặt ràng buộc: chỉ sửa diễn đạt ngữ pháp cho học thuật hơn, tuyệt đối không đổi luận điểm, không thêm số liệu và giữ nguyên mã Zotero."
+    },
+    {
+      "id": "aihub-s08-L2-c8-q1",
+      "type": "mc",
+      "question": "Tại sao việc lập Ma trận Tổng hợp (Synthesis Matrix) trước khi đặt bút viết lại giúp sinh viên tránh được lỗi đạo văn và lỗi viết rời rạc?",
+      "options": [
+        "A. Vì khi nhìn vào một cột chủ đề trong Ma trận, sinh viên thấy ngay nhóm tác giả nào đồng ý, nhóm tác giả nào phản đối và số liệu chênh nhau ra sao, từ đó tự viết được một đoạn văn đối thoại học thuật đa nguồn thay vì chép lại từng bài đơn lẻ",
+        "B. Vì Ma trận Tổng hợp giúp che giấu nguồn gốc tài liệu",
+        "C. Vì giảng viên không đọc được bảng Ma trận",
+        "D. Vì lập bảng xong thì không cần viết chữ nào nữa"
+      ],
+      "correct": "A",
+      "explanation": "Ma trận Tổng hợp (Synthesis Matrix) giúp nhìn xuyên suốt nhiều bài báo theo từng cột chủ đề, từ đó viết được đoạn văn đối thoại học thuật đa nguồn thay vì liệt kê từng bài."
+    },
+    {
+      "id": "aihub-s08-L2-c8-q2",
+      "type": "mc",
+      "question": "Vì sao trong nghiên cứu khoa học và làm Đề án, bạn không bao giờ được để AI tự viết hoàn toàn phần 'Kết quả và Thảo luận' (Results & Discussion)?",
+      "options": [
+        "A. Vì Kết quả và Thảo luận là linh hồn và đóng góp trí tuệ cốt lõi của nhóm tác giả dựa trên dữ liệu thực tế mà nhóm thu thập/phân tích; nếu để AI tự viết, nó sẽ bịa ra các nhận định chung chung không khớp với dữ liệu thật và vi phạm vùng Đỏ của đạo đức học thuật",
+        "B. Vì phần Kết quả thường rất ngắn nên không bõ công dùng AI",
+        "C. Vì AI không biết gõ các con số thập phân",
+        "D. Vì phần Thảo luận không quan trọng trong bài báo"
+      ],
+      "correct": "A",
+      "explanation": "Phần Kết quả và Thảo luận là đóng góp trí tuệ cốt lõi dựa trên dữ liệu thực tế của nhóm; giao cho AI viết hộ sẽ dẫn tới nhận định bịa đặt và vi phạm Vùng Đỏ đạo đức học thuật."
+    },
+    {
+      "id": "aihub-s08-L2-c8-q3",
+      "type": "mc",
+      "question": "Nhược điểm dễ nhận biết nhất của một bộ slide do AI (như Gamma hay Tome) tạo tự động 100% mà người học chưa biên tập lại là gì?",
+      "options": [
+        "A. Thiết kế trông có vẻ bóng bẩy ở cái nhìn đầu tiên nhưng nội dung bên trong dàn trải, chữ nghĩa chung chung sáo rỗng, các biểu đồ/hình ảnh minh họa mang tính trang trí vô hồn (stock photos) chứ không chứa bằng chứng dữ liệu thật của đề tài",
+        "B. Phông chữ luôn bị lỗi không đọc được tiếng Việt",
+        "C. Không thể xuất ra màn hình máy chiếu",
+        "D. Có quá nhiều số liệu kiểm chứng chi tiết"
+      ],
+      "correct": "A",
+      "explanation": "Slide do AI tạo tự động 100% thường mắc bệnh thiết kế công nghiệp chung chung (generic), chữ nghĩa sáo rỗng và thiếu hẳn các bằng chứng thực nghiệm thật của đề tài."
+    },
+    {
+      "id": "aihub-s08-L2-c8-q4",
+      "type": "mc",
+      "question": "Việc dùng AI đóng vai 'Người phản biện khó tính' (Devil's Advocate) ở Nhịp 2 để soi dàn ý của bạn trước khi bạn viết chi tiết mang lại lợi ích gì?",
+      "options": [
+        "A. Giúp phát hiện sớm các bước nhảy logic thiếu căn cứ hoặc các khía cạnh bị bỏ sót ngay từ khi còn là dàn ý, giúp bạn tiết kiệm hàng giờ viết đi viết lại mà vẫn giữ trọn quyền làm chủ tư duy",
+        "B. Để AI làm nhụt chí khiến bạn bỏ cuộc",
+        "C. Để copy lời chê của AI nộp thay cho báo cáo",
+        "D. Không mang lại lợi ích gì"
+      ],
+      "correct": "A",
+      "explanation": "Nhờ AI đóng vai 'Người phản biện khó tính' (Devil's Advocate) ở Nhịp 2 giúp phát hiện sớm các lỗ hổng lập luận ngay từ giai đoạn dàn ý."
+    },
+    {
+      "id": "aihub-s08-L3-c8-q1",
+      "type": "mc",
+      "question": "Khi nhóm bạn đã có 3 bài báo thật đã kiểm chứng: Bài 1 (Smith, 2024) và Bài 2 (Lê, 2025) đều kết luận 'Chatbot AI giúp giảm 30% chi phí vận hành ngân hàng', trong khi Bài 3 (Trần, 2026) chỉ ra 'Ở nhóm khách hàng lớn tuổi, Chatbot AI làm giảm 25% mức độ hài lòng vì thiếu sự thấu cảm'. Cách viết đoạn văn tổng hợp (Synthesis) nào dưới đây đạt chuẩn học thuật cao nhất?",
+      "options": [
+        "A. Viết 3 đoạn rời nhau: Đoạn 1 kể về Smith (2024). Đoạn 2 kể về Lê (2025). Đoạn 3 kể về Trần (2026).",
+        "B. Viết thành một luận điểm tổng hợp đối sánh: 'Mặc dù các nghiên cứu gần đây đồng thuận rằng việc triển khai Chatbot AI giúp tối ưu hóa đáng kể chi phí vận hành của ngân hàng (Lê, 2025; Smith, 2024), hiệu quả của công nghệ này không đồng nhất trên mọi phân khúc; cụ thể, ở nhóm khách hàng cao tuổi, sự thiếu hụt tương tác thấu cảm từ AI lại dẫn đến sự sụt giảm rõ rệt về mức độ hài lòng (Trần, 2026).'",
+        "C. Bỏ bài của Trần (2026) đi vì dám kết luận ngược với 2 bài kia",
+        "D. Không trích dẫn tên tác giả nào cả"
+      ],
+      "correct": "B",
+      "explanation": "Một đoạn văn tổng hợp (Synthesis) chuẩn mực phải đặt các nguồn đồng thuận và trái chiều vào cùng một cấu trúc lập luận đối sánh có trích dẫn APA chuẩn xác."
+    },
+    {
+      "id": "aihub-s08-L3-c8-q2",
+      "type": "mc",
+      "question": "Trong bài thuyết trình bảo vệ Đề án cuối khóa ở Buổi 11 (chỉ có 8-10 phút trình bày), những minh chứng trực quan nào nhóm bạn BẮT BUỘC phải đưa lên slide để thuyết phục Hội đồng kiểm toán chéo?",
+      "options": [
+        "A. Chỉ cần đưa các hình vẽ hoạt hình AI đẹp mắt và những câu danh ngôn nổi tiếng",
+        "B. (1) Sơ đồ quy trình GATE/FALLBACK và demo sống Bộ Harness của nhóm, (2) Ma trận tổng hợp & ảnh chụp thư viện Zotero + báo cáo kiểm chứng Tomaca/Checklist 5 bước, (3) Minh chứng mạng lưới Atomic Notes trong Second Brain của từng thành viên, và (4) Bản khai báo AI theo Thông tư 49/2026",
+        "C. Copy nguyên văn 3.000 chữ trong file Word dán kín lên 10 slide chữ nhỏ li ti",
+        "D. Chỉ chiếu trang bìa rồi đọc giấy suốt 10 phút"
+      ],
+      "correct": "B",
+      "explanation": "Slide bảo vệ Đề án cuối khóa bắt buộc phải chứa các bằng chứng sống: sơ đồ và demo bộ Harness, Ma trận tổng hợp, thư viện Zotero + báo cáo Tomaca/5 bước, Atomic Notes và Khai báo AI."
+    }
+  ]
+}

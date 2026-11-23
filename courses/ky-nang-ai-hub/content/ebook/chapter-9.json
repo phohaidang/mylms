@@ -1,0 +1,229 @@
+{
+  "chapter": 9,
+  "title": "Đạo đức học thuật, Pháp lý (Thông tư 49/2026) & An toàn dữ liệu Ngân hàng",
+  "sessions": [
+    9
+  ],
+  "scqa": {
+    "situation": "Trong quá trình hoàn thiện Đề án và đi thực tập tại các ngân hàng, công ty chứng khoán hay doanh nghiệp, sinh viên thường xuyên tiếp xúc với bảng dữ liệu khảo sát, báo cáo nội bộ, danh sách khách hàng và các bản thảo nghiên cứu. Nhiều bạn hồn nhiên tải toàn bộ file Excel dữ liệu thật lên các công cụ AI miễn phí để nhờ vẽ biểu đồ, rồi khi nộp báo cáo cho trường thì giấu nhẹm việc mình đã dùng AI vì sợ bị trừ điểm.",
+    "complication": "Tháng 1/2025, Giáo sư Jeff Hancock của ĐH Stanford (chuyên gia hàng đầu thế giới về thông tin sai lệch, nhận thù lao 600 USD/giờ) đã bị thẩm phán tòa án bang Minnesota loại bỏ toàn bộ bản khai chuyên gia vì để lọt 2 trích dẫn bịa do GPT-4o tạo ra. Tại Việt Nam, kể từ ngày 15/8/2026, Thông tư 49/2026/TT-BGDĐT (Điều 10) của Bộ Giáo dục và Đào tạo chính thức có hiệu lực: quy định rõ hành vi 'không công bố hoặc công bố không đầy đủ việc sử dụng AI khi có yêu cầu' là vi phạm liêm chính học thuật! Đồng thời, việc đưa dữ liệu cá nhân/nội bộ ngân hàng lên AI công cộng có máy chủ nước ngoài có thể vi phạm nghiêm trọng Luật Bảo vệ dữ liệu cá nhân 2025 (91/2025/QH15) và quy định bảo mật ngân hàng.",
+    "question": "Đâu là ranh giới pháp lý và đạo đức rõ ràng giữa việc sử dụng AI hợp pháp và gian lận học thuật? Làm thế nào để khai báo AI đúng chuẩn và bảo vệ tuyệt đối an toàn dữ liệu trong môi trường tài chính - ngân hàng?",
+    "answer": "Tuân thủ nghiêm ngặt Điều 10 Thông tư 49/2026/TT-BGDĐT và 4 nguyên tắc xuất bản quốc tế (COPE/ICMJE); áp dụng Khung Đèn giao thông (Xanh - Vàng - Đỏ) cùng Mẫu câu khai báo AI chuẩn mực; và thực thi Checklist 3 câu hỏi an toàn dữ liệu kèm kỹ thuật khử định danh (Data Anonymization) trước khi chạm vào bất kỳ công cụ AI nào."
+  },
+  "concepts": [
+    {
+      "id": "c9-thong-tu-49-phap-ly",
+      "session": 9,
+      "term": "Thông tư 49/2026/TT-BGDĐT (Điều 10) & Hệ thống Pháp lý AI Việt Nam",
+      "definition": "Khung pháp lý bắt buộc về liêm chính học thuật và trách nhiệm con người khi ứng dụng trí tuệ nhân tạo trong học tập, nghiên cứu và công việc tại Việt Nam.",
+      "key_points": [
+        "<strong>Thông tư 49/2026/TT-BGDĐT (ban hành 30/6/2026, hiệu lực 15/8/2026, Điều 10):</strong> Lần đầu tiên Bộ GD&ĐT quy định cụ thể nguyên tắc: <em>AI chỉ là công cụ hỗ trợ, không thay thế trách nhiệm học thuật của người học, nhà giáo và nhà nghiên cứu</em>.",
+        "<strong>6 nhóm hành vi vi phạm liêm chính học thuật theo Điều 10 Thông tư 49/2026:</strong> (1) Dùng công nghệ, kể cả AI, để gian lận; (2) Đạo văn, sao chép, dùng trái phép dữ liệu; (3) Giả mạo hoặc làm sai lệch dữ liệu, kết quả; (4) Nhờ người khác (hoặc để công cụ) làm thay bài học tập, nghiên cứu; (5) <strong>Không công bố hoặc công bố không đầy đủ việc dùng AI khi có yêu cầu (Khoản 2 Điểm đ)</strong>; (6) Các hành vi khác vi phạm quy chế liêm chính.",
+        "<strong>Các đạo luật liên quan trực tiếp:</strong> <strong>Luật Trí tuệ nhân tạo số 134/2025/QH15 (Điều 4)</strong> khẳng định AI không thay thế trách nhiệm pháp lý của con người; <strong>Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15</strong> kiểm soát chặt hành vi chuyển dữ liệu cá nhân xuyên biên giới khi tải dữ liệu thật lên máy chủ AI nước ngoài; và <strong>Luật Bảo vệ bí mật nhà nước số 117/2025/QH15</strong>."
+      ],
+      "case_study": {
+        "title": "Bài học đắt giá từ vụ Giáo sư Stanford Jeff Hancock (10/01/2025)",
+        "context": "GS. Jeff Hancock (ĐH Stanford) được thuê làm nhân chứng chuyên gia (600 USD/giờ) trong vụ kiện Kohls v. Ellison tại tòa Minnesota. Ông dùng GPT-4o hỗ trợ soạn thảo và để lọt 2 trích dẫn không tồn tại vào bản khai có tuyên thệ.",
+        "analysis": "Dù ông khẳng định mình tự viết nội dung chính và chỉ nhờ AI gợi ý chỗ chèn trích dẫn, thẩm phán vẫn bác bỏ toàn bộ giá trị lời khai chuyên gia của ông vì thiếu kiểm chứng.",
+        "lesson_learned": "Dù bạn là giáo sư đầu ngành hay sinh viên năm nhất, chữ ký của bạn dưới văn bản đồng nghĩa với việc bạn chịu 100% trách nhiệm cho mọi lỗi sai do AI tạo ra."
+      },
+      "related_concepts": [
+        "c9-cope-den-giao-thong",
+        "c9-mau-khai-bao-privacy"
+      ]
+    },
+    {
+      "id": "c9-cope-den-giao-thong",
+      "session": 9,
+      "term": "Bốn nguyên tắc Quốc tế (COPE, ICMJE) & Khung Đèn giao thông (Xanh - Vàng - Đỏ)",
+      "definition": "Chuẩn mực đạo đức xuất bản khoa học toàn cầu (từ COPE, ICMJE, ALLEA, WAME, Elsevier) và bảng phân vùng ranh giới thực hành hàng ngày cho sinh viên.",
+      "key_points": [
+        "<strong>4 nguyên tắc quốc tế bất di bất dịch:</strong> (1) <em>AI không bao giờ được đứng tên là tác giả (No Authorship)</em> và không trích dẫn chatbot như một nguồn tài liệu khoa học vì không thể kiểm chứng; (2) <em>Công khai minh bạch cách dùng</em> ở phần Phương pháp hoặc Lời cảm ơn; (3) <em>Tác giả chịu trách nhiệm toàn bộ</em>; (4) <em>Bảo mật bản thảo khi phản biện</em> (không tải bài của người khác lên AI công cộng để nhờ nhận xét).",
+        "<strong>🟢 Vùng XANH (Nên dùng):</strong> Gợi ý từ khóa và hướng tìm kiếm; giải thích khái niệm khó để tự học; phản biện dàn ý do bạn tự lập; kiểm tra lỗi chính tả, ngữ pháp.",
+        "<strong>🟡 Vùng VÀNG (Dùng có điều kiện - Phải kiểm chứng, tự viết lại & khai báo):</strong> Dịch thuật tài liệu tham khảo (rồi đối chiếu bản gốc); gợi ý cấu trúc nháp từ Atomic Notes của bạn (rồi tự viết lại); hỗ trợ viết code thống kê R/Python/SPSS (rồi tự chạy lại trên dữ liệu thật).",
+        "<strong>🔴 Vùng ĐỎ (Cấm tuyệt đối):</strong> Để AI viết phần Kết quả, Thảo luận, Kết luận; tạo dữ liệu khảo sát giả hoặc dùng trích dẫn chưa qua 5 bước kiểm chứng; nộp văn bản do AI viết như bài của mình mà không khai báo; tải dữ liệu mật của ngân hàng/doanh nghiệp hoặc dữ liệu định danh cá nhân (PII) lên AI công cộng."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c9-thong-tu-49-phap-ly",
+        "c9-mau-khai-bao-privacy"
+      ]
+    },
+    {
+      "id": "c9-mau-khai-bao-privacy",
+      "session": 9,
+      "term": "Mẫu câu Khai báo AI chuẩn mực & Bảo mật Dữ liệu Ngân hàng - Kinh tế",
+      "definition": "Công thức khai báo việc sử dụng AI đáp ứng đầy đủ Điều 10 Thông tư 49/2026/TT-BGDĐT cùng bộ quy tắc bảo vệ dữ liệu nhạy cảm trong lĩnh vực tài chính - ngân hàng.",
+      "key_points": [
+        "<strong>Mẫu câu khai báo việc dùng AI (đặt ở mục Phương pháp, Lời cảm ơn hoặc Phụ lục Đề án):</strong> <em>'Nhóm tác giả đã sử dụng [tên công cụ, phiên bản - ví dụ: Claude 3.7 Sonnet / Gemini Notebook] vào [tháng/năm] để [mục đích cụ thể - ví dụ: gợi ý từ khóa tìm kiếm, tóm tắt sơ bộ các bài báo PDF đã tải về và rà soát lỗi diễn đạt]. Nhóm đã tự kiểm chứng toàn bộ trích dẫn qua 5 bước, tự thực hiện toàn bộ phân tích dữ liệu và chịu trách nhiệm hoàn toàn về nội dung của báo cáo này.'</em>",
+        "<strong>Nguyên tắc vàng về Bảo mật dữ liệu:</strong> <em>'Bất kỳ dữ liệu nào bạn không dám in ra giấy dán lên bảng thông báo công cộng của toàn trường hoặc toàn ngân hàng, thì tuyệt đối không được paste nguyên bản vào các công cụ AI tài khoản cá nhân/miễn phí!'</em>",
+        "<strong>Checklist 3 câu hỏi & Kỹ thuật Khử định danh (Data Anonymization):</strong> Trước khi đưa dữ liệu vào AI, luôn hỏi: (1) Có chứa thông tin định danh cá nhân (họ tên, CCCD, số tài khoản, MSSV, bảng điểm) hay bí mật kinh doanh không? (2) Tài khoản AI đang dùng có đạt chuẩn bảo mật doanh nghiệp và tuân thủ Luật Bảo vệ dữ liệu cá nhân 2025 không? (3) Đã thực hiện <strong>khử định danh</strong> (xóa cột tên/mã số thật, thay bằng mã giả <code>KH_01</code>, hoặc chỉ gửi cấu trúc tên cột <code>schema</code> để nhờ AI viết công thức/code rồi mang công thức về máy mình tự chạy) hay chưa?"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c9-thong-tu-49-phap-ly"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận diện Thông tư 49/2026/TT-BGDĐT, chuẩn COPE/ICMJE, Đèn giao thông và Mẫu khai báo AI.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c9-q1",
+          "type": "mc",
+          "concept_ref": "c9-thong-tu-49-phap-ly",
+          "question": "Theo Điều 10 của Thông tư 49/2026/TT-BGDĐT (ban hành ngày 30/6/2026, có hiệu lực từ 15/8/2026 của Bộ Giáo dục và Đào tạo), việc sinh viên sử dụng AI hỗ trợ làm bài nhưng KHÔNG công bố hoặc công bố không đầy đủ khi có yêu cầu được xếp vào loại hành vi nào?",
+          "options": [
+            "A. Là quyền riêng tư bình thường, được khuyến khích",
+            "B. Là hành vi vi phạm liêm chính học thuật trong hoạt động đào tạo và nghiên cứu khoa học (theo Khoản 2 Điểm đ Điều 10)",
+            "C. Chỉ là thiếu sót nhỏ về trình bày, không ảnh hưởng gì",
+            "D. Chỉ áp dụng cho giảng viên, không áp dụng cho sinh viên"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c9-q2",
+          "type": "mc",
+          "concept_ref": "c9-cope-den-giao-thong",
+          "question": "Theo chuẩn mực của Ủy ban Đạo đức Xuất bản Quốc tế (COPE) và ICMJE, tại sao các công cụ AI (như ChatGPT, Claude, Gemini) KHÔNG BAO GIỜ được phép đứng tên làm đồng tác giả (co-author) của một bài báo hay đề án khoa học?",
+          "options": [
+            "A. Vì các công cụ AI không có tư cách pháp nhân và không thể chịu trách nhiệm pháp lý hay đạo đức về tính trung thực, chính xác của công trình khoa học",
+            "B. Vì tên của các công cụ AI quá ngắn",
+            "C. Vì AI chưa đóng phí xuất bản cho tạp chí",
+            "D. Vì AI không có địa chỉ email cá nhân"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c9-q3",
+          "type": "mc",
+          "concept_ref": "c9-cope-den-giao-thong",
+          "question": "Trong Khung Đèn giao thông cho việc sử dụng AI trong học thuật, hành vi nào dưới đây nằm trong VÙNG ĐỎ (Cấm tuyệt đối)?",
+          "options": [
+            "A. Nhờ AI giải thích một thuật ngữ kinh tế lượng khó hiểu để tự học",
+            "B. Nhờ AI phản biện dàn ý bài viết do chính bạn tự lập",
+            "C. Để AI tự viết phần Kết quả và Thảo luận, dùng trích dẫn chưa qua kiểm chứng hoặc tải dữ liệu mật của khách hàng ngân hàng lên AI công cộng",
+            "D. Nhờ AI kiểm tra lỗi chính tả tiếng Anh sau khi bạn đã tự viết xong đoạn văn"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L1-c9-q4",
+          "type": "mc",
+          "concept_ref": "c9-mau-khai-bao-privacy",
+          "question": "Một Bản khai báo việc sử dụng AI (AI Disclosure Statement) đạt chuẩn trong báo cáo Đề án cần nêu rõ những thông tin tối thiểu nào?",
+          "options": [
+            "A. Chỉ cần ghi một câu 'Bài này có dùng AI'",
+            "B. Nêu rõ: (1) Tên công cụ và phiên bản đã dùng, (2) Thời gian sử dụng (tháng/năm), (3) Mục đích và phạm vi công việc cụ thể đã nhờ AI hỗ trợ, và (4) Cam kết đã tự kiểm chứng toàn bộ trích dẫn/số liệu và chịu trách nhiệm 100% về nội dung bài viết",
+            "C. Nêu cấu hình phần cứng máy tính và giá tiền gói cước Internet",
+            "D. Nêu danh sách tất cả các phần mềm từng cài trong máy tính từ năm nhất"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân tích ranh giới pháp lý bảo vệ dữ liệu cá nhân và nguyên tắc bảo mật khi phản biện chéo.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c9-q1",
+          "type": "mc",
+          "concept_ref": "c9-thong-tu-49-phap-ly",
+          "question": "Tại sao việc một nhân viên ngân hàng hoặc sinh viên thực tập dán bảng Excel chứa Họ tên, Số CCCD, Số điện thoại và Lịch sử nợ của 500 khách hàng thật vào một Chatbot AI nước ngoài để nhờ phân loại rủi ro lại vi phạm pháp luật ngay cả khi tài khoản AI đó đã bật chế độ 'Không dùng dữ liệu để huấn luyện' (Opt-out of training)?",
+          "options": [
+            "A. Vì theo Luật Bảo vệ dữ liệu cá nhân 2025 (số 91/2025/QH15) và quy định bảo mật ngân hàng, ngay khoảnh khắc bạn truyền dữ liệu định danh cá nhân thật của khách hàng ra máy chủ nước ngoài khi chưa được phép và chưa đánh giá tác động chuyển dữ liệu xuyên biên giới, hành vi rò rỉ/chuyển giao trái phép đã xảy ra độc lập với việc hãng AI có dùng để training hay không",
+            "B. Vì bảng Excel 500 dòng quá nhỏ so với khả năng của AI",
+            "C. Vì AI nước ngoài không tính được tiền Việt Nam Đồng",
+            "D. Không hề vi phạm gì nếu đã tắt nút training"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c9-q2",
+          "type": "mc",
+          "concept_ref": "c9-cope-den-giao-thong",
+          "question": "Theo nguyên tắc thứ 4 của COPE/ICMJE/Elsevier về 'Bảo mật bản thảo khi phản biện', điều gì bạn cần lưu ý khi thực hiện Kiểm toán chéo (Peer Audit) đề án của nhóm bạn hoặc khi phản biện bài báo khoa học?",
+          "options": [
+            "A. Không được phép tự ý tải toàn bộ tài liệu chưa công bố hoặc dữ liệu nhạy cảm của tác giả khác lên các công cụ AI công cộng bên ngoài khi chưa có sự đồng ý hoặc chưa khử định danh, nhằm bảo vệ quyền sở hữu trí tuệ và bảo mật của nhóm tác giả",
+            "B. Được phép đăng bài của nhóm bạn lên mạng xã hội để nhờ cư dân mạng chấm hộ",
+            "C. Không cần đọc bài của nhóm bạn mà chỉ cần chấm điểm ngẫu nhiên",
+            "D. Phải xóa tên tác giả của nhóm bạn rồi nộp thành bài của nhóm mình"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c9-q3",
+          "type": "mc",
+          "concept_ref": "c9-cope-den-giao-thong",
+          "question": "Tại sao khuyến nghị của ICMJE lại quy định: 'Không đưa Chatbot tổng quát (như ChatGPT) vào Danh mục tài liệu tham khảo (References) như một nguồn khoa học'?",
+          "options": [
+            "A. Vì văn bản do Chatbot sinh ra biến thiên theo xác suất ở từng phiên chat của từng người, người đọc khác không thể truy xuất và kiểm chứng lại nguồn đó như một bài báo có DOI cố định; do đó việc dùng AI phải được ghi ở mục Phương pháp hoặc Lời cảm ơn/Khai báo AI chứ không phải mục Tài liệu tham khảo",
+            "B. Vì tên ChatGPT khó viết theo chuẩn APA",
+            "C. Vì ICMJE muốn giấu việc các nhà khoa học dùng AI",
+            "D. Vì danh mục tài liệu tham khảo chỉ cho phép tối đa 5 bài"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c9-q4",
+          "type": "mc",
+          "concept_ref": "c9-thong-tu-49-phap-ly",
+          "question": "Sự tương đồng cốt lõi nhất giữa Thông tư 49/2026/TT-BGDĐT của Việt Nam, Luật AI 134/2025/QH15, EU AI Act (Điều 50) và tuyên bố của COPE/ICMJE là gì?",
+          "options": [
+            "A. Tất cả đều cấm sinh viên và nhà nghiên cứu sử dụng AI dưới mọi hình thức",
+            "B. Tất cả đều hội tụ về 2 trụ cột: (1) Minh bạch (dùng AI ở đâu phải công khai, khai báo rõ ràng ở đó) và (2) Trách nhiệm giải trình thuộc về con người (AI chỉ là công cụ hỗ trợ, con người chịu trách nhiệm 100% về tính chính xác và trung thực của sản phẩm)",
+            "C. Tất cả đều cho phép AI đứng tên làm tác giả chính",
+            "D. Tất cả đều quy định chỉ được dùng một hãng AI duy nhất"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Xử lý tình huống khử định danh dữ liệu ngân hàng và viết Bản khai báo AI cho Đề án (Mảnh ghép 4).",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c9-q1",
+          "type": "mc",
+          "concept_ref": "c9-mau-khai-bao-privacy",
+          "question": "Bạn đang có một file Excel dữ liệu thật gồm 2.000 hồ sơ vay vốn tại một chi nhánh ngân hàng (có cột Họ tên, CCCD, Thu nhập, Dư nợ, Nhóm nợ) và bạn muốn nhờ AI viết đoạn code Python/R để chạy mô hình hồi quy Logistic dự báo nợ xấu. Cách làm nào dưới đây vừa khai thác được AI tối đa, vừa đảm bảo AN TOÀN DỮ LIỆU tuyệt đối?",
+          "options": [
+            "A. Tải thẳng file Excel 2.000 khách hàng thật đó lên ChatGPT miễn phí và bảo 'Hãy chạy hồi quy giúp tôi'",
+            "B. Tuyệt đối không tải file dữ liệu thật lên AI; chỉ mô tả cho AI cấu trúc tên các cột (schema) cùng kiểu dữ liệu (hoặc tạo 5 dòng dữ liệu giả lập hoàn toàn), nhờ AI viết đoạn code Python/R, sau đó copy đoạn code đó về máy tính cá nhân của mình để tự chạy offline trên file dữ liệu thật và tự kiểm tra kết quả",
+            "C. Chỉ xóa cột Họ tên, giữ nguyên cột số CCCD và số điện thoại thật rồi tải lên AI công cộng",
+            "D. Chụp ảnh màn hình danh sách khách hàng rồi gửi lên AI"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c9-q2",
+          "type": "mc",
+          "concept_ref": "c9-cope-den-giao-thong",
+          "question": "Nhóm bạn sử dụng công cụ 'AI Detector' (phần mềm phát hiện văn bản do AI viết) để quét thử một đoạn văn của thành viên trong nhóm và thấy máy báo '85% khả năng do AI viết'. Theo tinh thần khoa học và hướng dẫn học thuật hiện đại, nhóm nên xử lý kết quả này như thế nào?",
+          "options": [
+            "A. Kết luận ngay lập tức bạn đó gian lận 100% vì máy quét không bao giờ sai",
+            "B. Hiểu rằng các công cụ AI Detector hiện nay có tỷ lệ dương tính giả và âm tính giả rất cao, không được coi là bằng chứng kết tội duy nhất; thay vào đó, nhóm phải kiểm tra xem thành viên đó có chuỗi Atomic Notes quá trình trong Second Brain không, có hiểu sâu để giải thích miệng được đoạn văn đó không, và các nguồn trích dẫn trong đoạn đó có qua 5 bước kiểm chứng trong Zotero hay không",
+            "C. Dùng một công cụ AI khác để xào nấu chữ nghĩa (paraphrase) nhằm qua mặt máy quét mà không cần hiểu nội dung",
+            "D. Xóa bỏ đoạn văn đó mà không cần hỏi tác giả"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c9-essay1",
+          "type": "essay",
+          "concept_ref": "c9-mau-khai-bao-privacy",
+          "question": "Hãy soạn thảo hoàn chỉnh Mảnh ghép 4 cho Đề án cuối khóa của nhóm bạn gồm 2 phần: (1) Bảng phân loại Đèn giao thông (Xanh - Vàng - Đỏ) và quy trình khử định danh/bảo mật đối với các dữ liệu mà nhóm sử dụng trong Đề án; (2) Bản Khai báo Sử dụng AI (AI Disclosure Statement) chính thức của nhóm tuân thủ đúng Điều 10 Thông tư 49/2026/TT-BGDĐT và chuẩn COPE/ICMJE.",
+          "rubric": "Phân loại rõ 3 vùng Xanh - Vàng - Đỏ gắn sát với dữ liệu và tác vụ thực tế của Đề án nhóm (35%) · Nêu rõ biện pháp khử định danh/bảo mật dữ liệu (25%) · Bản khai báo AI đầy đủ tên công cụ, phiên bản, thời gian, mục đích từng bước và lời cam kết chịu trách nhiệm theo Thông tư 49/2026 (40%)",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

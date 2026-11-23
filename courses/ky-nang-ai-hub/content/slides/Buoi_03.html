@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 3: Kiến trúc Harness & Gia sư Socrates — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <style>
+    :root {
+      --navy: #1B2558; --dark-navy: #111A40; --white: #FFFFFF; --off-white: #F5F6FA;
+      --red: #C62828; --light-red: #FFEBEE; --accent: #1565C0; --light-accent: #E3F2FD;
+      --gold: #F9A825; --green: #2E7D32; --light-green: #E8F5E9; --orange: #E65100;
+      --light-orange: #FFF3E0; --text-dark: #212121; --text-mid: #424242;
+      --text-light: #757575; --border: #E0E0E0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d122a; font-family: 'Calibri', 'Segoe UI', sans-serif; color: var(--text-dark);
+      height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .deck-viewport {
+      width: 1280px; height: 720px; position: relative; background: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6); border-radius: 6px; overflow: hidden; transform-origin: center center;
+    }
+    .slide { width: 1280px; height: 720px; position: absolute; top: 0; left: 0; display: none; flex-direction: column; background: var(--white); }
+    .slide.active { display: flex; }
+    .slide.navy-bg { background: var(--navy); color: var(--white); }
+    .gold-top-bar { width: 100%; height: 9px; background: var(--gold); flex-shrink: 0; }
+    .header-bar {
+      width: 100%; height: 64px; background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 52px;
+      font-family: Georgia, serif; font-size: 15.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; flex-shrink: 0;
+    }
+    .footer-bar {
+      width: 100%; height: 42px; background: var(--navy); color: #D0D5E8;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 52px; font-size: 13px; margin-top: auto; flex-shrink: 0;
+    }
+    .footer-bar .page-num { color: var(--gold); font-weight: 700; font-size: 14px; }
+    .slide-body { padding: 20px 52px 16px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    h1.page-title { font-family: Georgia, serif; font-size: 25px; color: var(--red); font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; }
+    .card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 3px 8px rgba(0,0,0,0.05); }
+    .card-header { padding: 10px 14px; color: var(--white); font-weight: 700; font-size: 14.5px; text-align: center; text-transform: uppercase; }
+    .card-content { padding: 14px 16px; font-size: 14px; line-height: 1.48; flex: 1; }
+    .card-content ul { padding-left: 18px; }
+    .card-content li { margin-bottom: 7px; }
+    .left-card { background: var(--off-white); border: 1px solid var(--border); border-left: 8px solid var(--navy); border-radius: 4px; padding: 12px 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .left-card h3 { font-size: 15px; margin-bottom: 6px; text-transform: uppercase; }
+    .left-card ul { padding-left: 18px; font-size: 13.6px; line-height: 1.45; }
+    .left-card li { margin-bottom: 5px; }
+    .banner { padding: 10px 18px; border-radius: 6px; margin-bottom: 12px; font-size: 14px; line-height: 1.42; text-align: center; font-weight: 600; }
+    table.acad-table { width: 100%; border-collapse: collapse; font-size: 13.2px; }
+    table.acad-table th { background: var(--navy); color: var(--white); padding: 9px 12px; text-align: left; font-weight: 700; }
+    table.acad-table td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: middle; line-height: 1.38; }
+    table.acad-table tr:nth-child(even) { background: var(--off-white); }
+    .controls-bar { margin-top: 10px; display: flex; align-items: center; gap: 14px; color: #cbd5e1; font-size: 13px; }
+    .controls-bar button { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .controls-bar button:hover { background: #334155; }
+  </style>
+</head>
+<body>
+<div class="deck-viewport" id="viewport">
+
+  <section class="slide navy-bg active">
+    <div class="gold-top-bar"></div>
+    <div style="padding: 44px 64px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div style="color: var(--gold); font-size: 17px; font-weight: 700; letter-spacing: 3px; margin-bottom: 6px;">TRƯỜNG ĐẠI HỌC NGÂN HÀNG TP. HỒ CHÍ MINH (HUB)</div>
+      <div style="color: #CBD5E1; font-size: 14.5px; letter-spacing: 2px; margin-bottom: 20px;">MODULE 1 (BUỔI 3 / 11) — BẢN CHẤT AI, PROMPT, CONTEXT & HARNESS</div>
+      <div style="width: 400px; height: 3px; background: var(--gold); margin: 0 auto 24px;"></div>
+      <h1 style="font-family: Georgia, serif; font-size: 34px; line-height: 1.35; color: var(--white); margin-bottom: 16px; white-space: pre-line;">BUỔI 3: KIẾN TRÚC AI HARNESS
+XÂY DỰNG "BỘ DÂY CƯƠNG" ĐIỀU PHỐI AI</h1>
+      <div style="color: var(--gold); font-size: 18px; font-style: italic; margin-bottom: 32px;">Câu hỏi cốt lõi: Làm sao để đóng gói toàn bộ quy tắc, quy trình nhiều bước và chốt chặn kiểm soát thành một hệ thống chạy ổn định mọi lần?</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 960px; margin: 0 auto;"><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">THỜI LƯỢNG: 4 TIẾT (200 PHÚT)
+Cổng dừng GATE & Cơ chế FALLBACK</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">CHUẨN ĐẦU RA: CLO1 & CLO2
+Socratic Harness & 4 Kỹ thuật học sâu</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">CHỐT MẢNH GHÉP 1 ĐỀ ÁN (15%)
+Đóng gói & Stress-test 3 kịch bản Harness</div></div></div>
+    </div>
+    <div style="background: var(--dark-navy); padding: 16px 60px; text-align: center; font-size: 14.5px; color: #E2E8F0; border-top: 1px solid #2D3A7B;">
+      <strong>Giảng viên: ThS. Phó Hải Đăng</strong> &nbsp;|&nbsp; Khoa Hệ thống thông tin quản lý &nbsp;|&nbsp; Email: dangph@hub.edu.vn
+    </div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Buổi 3 — Mục tiêu & Lộ trình 200 phút</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">MỤC TIÊU HỌC TẬP & LỘ TRÌNH 4 TIẾT CỦA BUỔI 3 (KẾT THÚC MODULE 1)</h1>
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;"><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#C62828;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">01</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 1 (50'): Kiến trúc 3 tầng Prompt - Context - Harness & Cơ chế GATE / FALLBACK</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Story Spine nhân vật Minh (Kỳ 3); Ẩn dụ Con ngựa chiến & Bộ dây cương; 7 nguyên tắc thiết kế quy trình AI; Live Demo 4 kịch bản có cổng GATE (🔒) & FALLBACK (❓).</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1B2558;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">02</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 2 (50'): Thiết kế Harness cho Sự học — Biến AI thành Gia sư Socrates (Socratic Tutor)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Tích hợp 4 kỹ thuật học tập hiệu quả dựa trên khoa học thần kinh (Active Recall, Spaced Repetition, Interleaving, Productive Struggle) vào System Instructions.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1565C0;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">03</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 3 (50'): Thực hành Vẽ Sơ đồ Quy trình & Đóng gói Bộ Harness 4 Khối</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Nguyên tắc 'Vẽ cho người trước khi vẽ cho AI'; Thiết kế sơ đồ 3-5 bước có GATE/FALLBACK; Cài đặt lên Claude Projects / Gemini Gems theo Template 4 khối.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#2E7D32;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">04</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 4 (50'): Stress-test 3 Kịch bản (Chốt Mảnh ghép 1 của Đề án) & Khóa chốt LMS</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Chạy kiểm thử chéo 3 kịch bản (Chạy xuôi - Thiếu thông tin test FALLBACK - Giục vượt rào test GATE); Nghiệm thu Mảnh ghép 1; Viết Nhật ký 4F số 3 & làm Quiz Buổi 3.</div></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">2 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Story Spine & Khung SCQA</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CÂU CHUYỆN CỦA MINH (KỲ 3): KHI CON NGỰA CHIẾN AI CHẠY VƯỢT QUYỀN KIỂM SOÁT</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Viết được một câu lệnh CRISP tốt mới chỉ giúp bạn thắng được 1 lượt chat. Muốn làm chủ cả một dự án, bạn cần một Bộ Harness!</div>
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">S & C — SỰ CỐ 'SAI SỐ DÂY CHUYỀN' CỦA NHÓM MINH</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tình huống (Situation):</strong> Nhóm của Minh đã biết viết Prompt CRISP và đính kèm file báo cáo tài chính PDF. Minh giao cho AI một nhiệm vụ lớn gồm 4 bước: (1) Trích xuất số liệu -> (2) Tính chỉ số ROE, NIM -> (3) So sánh trung bình ngành -> (4) Viết báo cáo nhận xét.</li><li><strong style="color:var(--navy);">Biến cố (Complication):</strong> AI chạy tuốt một mạch từ Bước 1 đến Bước 4 chỉ trong 20 giây! Nhưng ở Bước 1, AI đọc nhầm đơn vị 'tỷ đồng' thành 'triệu đồng' ở một dòng nhỏ. Vì AI không dừng lại ở Bước 1 để hỏi Minh xác nhận bảng số liệu, toàn bộ Bước 2, 3 và 4 phía sau đều sai bét theo hiệu ứng domino!</li><li><strong style="color:var(--navy);">Nỗi mệt mỏi lặp lại:</strong> Mỗi lần mở đoạn chat mới cho ngân hàng tiếp theo, Minh lại phải copy-paste lại từ đầu hàng trang quy tắc.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">Q & A — TỪ CHAT TỰ DO ĐẾN KIẾN TRÚC HARNESS</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu hỏi trọng tâm (Question):</strong> Làm thế nào để đóng gói toàn bộ quy tắc, tài liệu nền và luồng công việc nhiều bước thành một hệ thống cố định, buộc AI phải DỪNG LẠI chờ con người kiểm duyệt ở từng trạm quan trọng?</li><li><strong style="color:var(--navy);">Giải pháp cốt lõi (Answer):</strong> Xây dựng một AI HARNESS ('Bộ dây cương điều phối'):
+• Cài đặt cố định System Instructions (Hiến pháp của AI) và Knowledge Base.
+• Chia quy trình thành các bước tuần tự có Cổng xác nhận (GATE 🔒) và Cơ chế xử lý thiếu thông tin (FALLBACK ❓).</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">3 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Kiến trúc 3 Tầng Điều phối AI</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">ẨN DỤ CON NGỰA CHIẾN: PROMPT  -->  CONTEXT  -->  HARNESS</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Hãy hình dung Mô hình ngôn ngữ lớn (LLM) là một con ngựa chiến cực khỏe nhưng chạy theo bản năng xác suất:</div>
+      <div class="grid-3"><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">TẦNG 1: PROMPT (TIẾNG HÔ)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Bản chất:</strong> Là mệnh lệnh kích hoạt tức thời cho từng lượt tương tác (đã học ở Buổi 2 với khung CRISP).</li><li><strong style="color:var(--navy);">Phạm vi tác dụng:</strong> Chỉ có hiệu lực trong đúng 1 lượt hỏi - đáp đó. Nếu hội thoại dài ra, hiệu lực của câu lệnh đầu sẽ mờ dần.</li><li><strong style="color:var(--navy);">Giới hạn:</strong> Không thể tự kiểm soát các quy trình phức tạp gồm nhiều bước phụ thuộc lẫn nhau.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">TẦNG 2: CONTEXT (ĐỊA HÌNH & BẢN ĐỒ)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Bản chất:</strong> Là toàn bộ gói tài liệu nguồn đã làm sạch, dữ liệu tình huống, rubric và ví dụ mẫu (Few-shot) cung cấp cho phiên làm việc.</li><li><strong style="color:var(--navy);">Phạm vi tác dụng:</strong> Cung cấp căn cứ thực tế (Grounding) để ngựa chạy trên đất thật chứ không chạy trên mây (chống Hallucination).</li><li><strong style="color:var(--navy);">Giới hạn:</strong> Có tài liệu tốt nhưng chưa có quy trình từng bước thì AI vẫn có thể làm gộp bước hoặc tự ý quyết định thay bạn.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">TẦNG 3: HARNESS (BỘ DÂY CƯƠNG & ĐƯỜNG RAY)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Bản chất:</strong> Là bộ khung điều phối và kiềm tỏa toàn diện gồm: System Instructions cố định + Kho tri thức nền + Quy trình tuần tự nhiều bước (Workflow) + Cổng dừng (GATE) + Dự phòng (FALLBACK) + Tự kiểm tra (Self-check).</li><li><strong style="color:var(--navy);">Nơi đóng gói:</strong> Claude Projects, Gemini Gems, Custom GPTs hoặc hệ thống Agentic Skills/Rules.</li><li><strong style="color:var(--navy);">Sức mạnh:</strong> Đảm bảo AI chạy 100 lần đều giữ đúng kỷ luật như một!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">4 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Hai Chốt chặn Kỹ thuật Cốt lõi của Harness</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">GIẢI PHẪU HAI CHỐT CHẶN SỐNG CÒN: GATE (🔒) VÀ FALLBACK (❓)</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CHỐT CHẶN 1: GATE (🔒 CỔNG DỪNG XÁC NHẬN)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Định nghĩa:</strong> Là điểm chốt bắt buộc AI phải DỪNG LẠI hoàn toàn sau khi thực hiện xong một bước trung gian quan trọng, xuất kết quả bước đó ra màn hình và chờ con người kiểm tra, phê duyệt mới được đi tiếp.</li><li><strong style="color:var(--navy);">Câu lệnh cài đặt GATE trong Harness:</strong> "Sau khi hoàn thành Bước 2 (Bảng trích xuất số liệu), bạn BẮT BUỘC DỪNG LẠI và hỏi tôi: 'Bạn đã đối chiếu và xác nhận các số liệu trên khớp với bản gốc để chuyển sang Bước 3 chưa?'. Tuyệt đối không tự ý chạy Bước 3 khi tôi chưa gõ xác nhận."</li><li><strong style="color:var(--navy);">Nguyên tắc thiết kế:</strong> Đặt GATE ngay sau các bước trích xuất số liệu, chấm điểm hoặc lập dàn ý — nơi mà nếu sai sẽ làm hỏng toàn bộ các bước sau.</li></ul></div></div><div class="card" style="background:#FFF3E0;border-color:#E65100;"><div class="card-header" style="background:#E65100;">CHỐT CHẶN 2: FALLBACK (❓ XỬ LÝ KHI THIẾU CĂN CỨ)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Định nghĩa:</strong> Là quy tắc dự phòng chỉ định rõ AI phải làm gì khi người dùng cung cấp thiếu dữ liệu đầu vào hoặc khi tìm trong tài liệu không thấy căn cứ.</li><li><strong style="color:var(--navy);">Tại sao phải có FALLBACK?</strong> Nếu không có FALLBACK, bản năng xác suất của LLM sẽ tự động 'đoán mò' hoặc tự bịa ra một con số hợp lý để điền cho đầy bảng!</li><li><strong style="color:var(--navy);">Câu lệnh cài đặt FALLBACK trong Harness:</strong> • FALLBACK 1 (Thiếu đầu vào từ người dùng): "Nếu người dùng chưa cung cấp [Biến số X / Tiêu chí Y], hãy dừng lại và hỏi rõ, không tự giả định."
+• FALLBACK 2 (Thiếu căn cứ trong tài liệu): "Nếu chỉ tiêu nào không có căn cứ trong file đính kèm, bắt buộc ghi rõ '[Chưa đủ căn cứ trong tài liệu]' và báo cho người dùng."</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">5 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Bảy Nguyên tắc Thiết kế Quy trình AI (Workflow Harness)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">7 NGUYÊN TẮC VÀNG KHI VIẾT 'HIẾN PHÁP' (SYSTEM INSTRUCTIONS) CHO HARNESS</h1>
+      
+      <table class="acad-table"><thead><tr><th>#</th><th>Nguyên tắc Thiết kế</th><th>Vì sao bắt buộc phải có?</th><th>Câu lệnh mẫu tiếng Việt đưa vào System Instructions</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>Khởi tạo bắt buộc
+(Context Loading)</td><td>Đảm bảo AI đọc kỹ tài liệu chuẩn trước khi bắt đầu phán đoán.</td><td>"Trước khi bắt đầu Bước 1, hãy đọc toàn bộ tài liệu chuẩn trong Knowledge Base và tóm tắt lại 3 quy tắc chính để tôi xác nhận."</td></tr><tr><td><strong>2</strong></td><td>Quy trình tuần tự có cổng
+(Sequential Gates 🔒)</td><td>Chặn đứng hiệu ứng sai số domino khi AI tự chạy gộp từ đầu đến cuối.</td><td>"Thực hiện tuần tự từng bước. Sau Bước [X], DỪNG LẠI chờ tôi xác nhận rồi mới được chuyển sang Bước [X+1]."</td></tr><tr><td><strong>3</strong></td><td>Xử lý thiếu thông tin
+(Explicit Fallbacks ❓)</td><td>Triệt tiêu hành vi tự suy diễn khi dữ liệu đầu vào bị khuyết.</td><td>"Nếu thiếu thông tin bắt buộc, hãy dừng lại hỏi tôi. Nếu tài liệu không nêu, ghi rõ [Chưa đủ căn cứ], tuyệt đối không tự đoán."</td></tr><tr><td><strong>4</strong></td><td>Phân quyền nguồn tin cậy
+(Source Grounding)</td><td>Tách bạch giữa dữ liệu từ nguồn thật và kiến thức chung ngoài xã hội.</td><td>"Chỉ dùng số liệu từ tài liệu đính kèm kèm số trang. Mọi gợi ý ngoài tài liệu phải gắn nhãn [GỢI Ý CẦN KIỂM CHỨNG]."</td></tr><tr><td><strong>5</strong></td><td>Template đầu ra cố định
+(Strict Output Schema)</td><td>Đảm bảo chạy 10 lần trên 10 bài báo đều ra đúng 1 cấu trúc bảng đồng nhất.</td><td>"Mọi đầu ra ở Bước [X] bắt buộc tuân thủ đúng bảng 5 cột sau đây, không tự ý thêm hoặc bớt cột: [...]."</td></tr><tr><td><strong>6</strong></td><td>Định vị vai trò Cộng sự
+(Human-in-the-Loop)</td><td>Giữ vững ranh giới AI đề xuất - Con người quyết định và chịu trách nhiệm.</td><td>"Bạn chỉ đề xuất phương án kèm ưu/nhược điểm và bằng chứng trang gốc. Quyết định cuối cùng luôn thuộc về tôi."</td></tr><tr><td><strong>7</strong></td><td>Vòng tự kiểm tra & Phản hồi
+(Self-Check Loop)</td><td>Buộc AI tự rà soát lỗi theo checklist trước khi hiển thị kết quả cho người dùng.</td><td>"Trước khi xuất kết quả mỗi bước, hãy tự kiểm tra: (1) Đã ghi số trang chưa? (2) Có suy diễn không? (3) Đã dừng đúng GATE chưa?"</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">6 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Live Demo 4 Kịch bản Kiểm nghiệm Bộ Harness</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">DEMO SỐNG TRÊN CLAUDE PROJECT / GEMINI GEM: 4 KỊCH BẢN THỬ LỬA</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Quan sát cách một Bộ Harness chuẩn mực xử lý 4 tình huống thực tế trên lớp:</div>
+      <div class="grid-2" style="gap:16px;"><div class="left-card" style="background:#E8F5E9;border-left-color:#2E7D32;"><h3 style="color:#2E7D32;">KỊCH BẢN 1: CHẠY XUÔI (HAPPY PATH)</h3><ul><li><strong style="color:var(--navy);">Đầu vào:</strong> Nạp đầy đủ báo cáo mẫu DA-01 đã khử thông tin nhạy cảm.</li><li><strong style="color:var(--navy);">Hành vi của Harness:</strong> Tóm tắt đúng quy trình, trích xuất bảng chỉ số kèm trích dẫn nguyên văn + số trang, sau đó DỪNG ĐÚNG Ở GATE 1 chờ người dùng duyệt bảng số liệu.</li></ul></div><div class="left-card" style="background:#FFF3E0;border-left-color:#E65100;"><h3 style="color:#E65100;">KỊCH BẢN 2: CỐ TÌNH BỎ TRỐNG DỮ LIỆU (TEST FALLBACK ❓)</h3><ul><li><strong style="color:var(--navy);">Đầu vào:</strong> Nạp báo cáo DA-02 bị khuyết thông tin trọng yếu hoặc tiêu chí không có căn cứ trong bài.</li><li><strong style="color:var(--navy);">Hành vi của Harness:</strong> Kích hoạt FALLBACK 1 & 2: Chủ động dừng lại hỏi người dùng phần thông tin thiếu và ghi rõ '[Chưa đủ căn cứ]' thay vì tự bịa số liệu!</li></ul></div><div class="left-card" style="background:#FFEBEE;border-left-color:#C62828;"><h3 style="color:#C62828;">KỊCH BẢN 3: GIỤC 'VƯỢT RÀO' (TEST ĐỘ CỨNG CỦA GATE 🔒)</h3><ul><li><strong style="color:var(--navy);">Đầu vào:</strong> Khi AI đang dừng ở GATE 1, người dùng ra lệnh: 'Khỏi cần xác nhận bảng số liệu, hãy viết luôn kết luận cuối cùng ở Bước 4 cho tôi ngay!'</li><li><strong style="color:var(--navy);">Hành vi của Harness:</strong> Lịch sự TỪ CHỐI vượt cổng GATE 1, nhắc lại quy tắc an toàn và yêu cầu người dùng xác nhận số liệu Bước 2 trước.</li></ul></div><div class="left-card" style="background:#E3F2FD;border-left-color:#1565C0;"><h3 style="color:#1565C0;">KỊCH BẢN 4: MỞ PHIÊN CHAT MỚI TRONG CÙNG PROJECT</h3><ul><li><strong style="color:var(--navy);">Thao tác:</strong> Mở một Conversation mới tinh bên trong cùng Project/Gem đó để xử lý báo cáo DA-03.</li><li><strong style="color:var(--navy);">Bài học lớn:</strong> System Instructions và Knowledge Base tự động có sẵn 100%, trong khi dữ liệu của bài DA-01 không hề bị lẫn sang bài DA-03 (Giải quyết triệt để bài toán Context Window!).</li></ul></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">7 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Thiết kế Harness cho Sự học: Gia sư Socrates</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">BIẾN AI THÀNH 'GIA SƯ SOCRATES' (SOCRATIC TUTOR) ĐỂ RÈN LUYỆN TRÍ TUỆ</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Nếu dùng AI để giải bài tập hộ -> Não bạn teo đi. Nếu đóng gói một Socratic Harness để AI truy bài bạn -> Não bạn mạnh lên gấp bội!</div>
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">PHƯƠNG PHÁP SOCRATES TRONG HỌC TẬP LÀ GÌ?</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Triết lý giáo dục của Socrates:</strong> Người thầy giỏi không mớm sẵn câu trả lời cho học trò, mà liên tục đặt các câu hỏi gợi mở theo tầng bậc để học trò tự phát hiện ra mâu thuẫn và tự tìm thấy chân lý.</li><li><strong style="color:var(--navy);">Tại sao AI mặc định là một 'Gia sư tồi'?</strong> Vì mặc định các Chatbot được thiết kế để chiều lòng khách hàng: bạn quăng đề bài toán tài chính lên, nó giải từ A đến Z ngay lập tức -> cướp mất cơ hội tư duy của bạn.</li><li><strong style="color:var(--navy);">Giải pháp:</strong> Dùng kiến trúc Harness để khóa hành vi giải bài hộ của AI, buộc nó trở thành một Socratic Tutor nghiêm khắc nhưng tận tâm.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">4 KỸ THUẬT HỌC SÂU DỰA TRÊN KHOA HỌC THẦN KINH</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Truy hồi chủ động (Active Recall):</strong> Buộc não bộ tự lục tìm kiến thức để trả lời câu hỏi của AI trước khi được xem tài liệu (giống cơ chế Quiz 5 lượt trên LMS Hub).</li><li><strong style="color:var(--navy);">2. Lặp lại ngắt quãng (Spaced Repetition):</strong> Ôn tập các khái niệm cốt lõi theo chu kỳ thời gian tăng dần (1 ngày - 3 ngày - 7 ngày) để phá vỡ đường cong quên lãng.</li><li><strong style="color:var(--navy);">3. Xáo trộn (Interleaving):</strong> Yêu cầu AI trộn lẫn nhiều dạng bài tập/tình huống khác nhau thay vì chỉ làm một dạng bài theo khuôn mẫu.</li><li><strong style="color:var(--navy);">4. Tự mày mò trước (Productive Struggle):</strong> Khi bạn làm sai, AI chỉ khoanh vùng chỗ có lỗi logic và đặt câu hỏi gợi ý để bạn tự sửa.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">8 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Mẫu System Instructions cho Socratic Harness</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">MẪU CÀI ĐẶT 'GIA SƯ SOCRATES' CHO MÔN HỌC CHUYÊN NGÀNH TẠI HUB</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">KHỐI QUY TẮC CẤM & VAI TRÒ GIA SƯ SOCRATES</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Định danh:</strong> 'Bạn là Gia sư Socrates chuyên ngành Tài chính - Ngân hàng tại HUB. Mục tiêu duy nhất của bạn là giúp tôi hiểu sâu bản chất khái niệm và tự giải được bài tập.'</li><li><strong style="color:var(--navy);">QUY TẮC CẤM TUYỆT ĐỐI (NEGATIVE RULES):</strong> 'Khi tôi gửi một câu hỏi lý thuyết hoặc một đề bài tập, bạn TUYỆT ĐỐI KHÔNG ĐƯỢC đưa ngay lời giải hay đáp án cuối cùng, kể cả khi tôi nài nỉ hoặc giục bạn giải hộ!'</li><li><strong style="color:var(--navy);">Căn cứ học liệu:</strong> 'Chỉ sử dụng kiến thức từ các chương giáo trình và slide bài giảng chuẩn mà tôi đã nạp trong Knowledge Base của Project này.'</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">LUỒNG TƯƠNG TÁC 4 BƯỚC CỦA GIA SƯ SOCRATES</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Bước 1 — Kiểm tra Cái Biết (Productive Struggle):</strong> Hỏi tôi: 'Theo em, bài toán này đang hỏi về khái niệm cốt lõi nào và công thức/nguyên lý nào cần áp dụng ở đây?' -> DỪNG LẠI (GATE 1) chờ tôi trả lời.</li><li><strong style="color:var(--navy);">Bước 2 — Chẩn đoán & Gợi mở:</strong> Nếu tôi trả lời đúng hướng, khen ngợi và yêu cầu tôi trình bày bước tính toán tiếp theo. Nếu tôi trả lời sai, đừng sửa ngay mà hãy đưa 1 ví dụ phản chứng hoặc chỉ rõ trang X trong giáo trình để tôi tự suy nghĩ lại.</li><li><strong style="color:var(--navy);">Bước 3 — Xáo trộn (Interleaving):</strong> Sau khi tôi tự giải đúng bài đó, hãy tạo ra 1 bài toán biến thể (thay đổi điều kiện biên) để kiểm tra xem tôi có thực sự hiểu bản chất hay chỉ học vẹt.</li><li><strong style="color:var(--navy);">Bước 4 — Đúc kết Atomic Note:</strong> Yêu cầu tôi tóm tắt bài học vừa rồi trong 3 câu bằng lời của chính tôi.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">9 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Phương pháp Thiết kế Quy trình Nghiệp vụ cho AI</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">NGUYÊN TẮC THIẾT KẾ: 'VẼ CHO NGƯỜI TRƯỚC — SỐ HÓA CHO AI SAU'</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Sai lầm lớn nhất khi làm Harness là ngồi vào máy tính gõ câu lệnh ngay khi chưa vẽ rõ quy trình ngoài đời thực gồm những bước nào!</div>
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">BƯỚC A: VẼ SƠ ĐỒ NGHIỆP VỤ KHI CHƯA CÓ AI</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu hỏi khởi đầu:</strong> Khi một chuyên viên ngân hàng, một kiểm toán viên hay một nhà nghiên cứu thực hiện công việc này ngoài đời thực, họ đi qua mấy bước tuần tự?</li><li><strong style="color:var(--navy);">Xác định các điểm dừng tự nhiên của con người:</strong> • Ở bước nào ngoài đời thực bạn phải dừng lại để đối chiếu bảng số liệu trước khi viết báo cáo trình sếp?
+• Ở bước nào bạn hay phát hiện hồ sơ khách hàng bị thiếu giấy tờ và phải gọi điện hỏi lại?</li><li><strong style="color:var(--navy);">Quy luật chuyển hóa:</strong> Mỗi chỗ con người phải tự dừng để kiểm tra ngoài đời thực -> sẽ trở thành 1 cổng GATE (🔒) hoặc 1 điểm FALLBACK (❓) trong AI Harness!</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">BƯỚC B: CHUYỂN HÓA THÀNH SƠ ĐỒ CÓ GATE & FALLBACK</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Cấu trúc một Sơ đồ Quy trình AI chuẩn (3 - 5 bước):</strong> </li><li><strong style="color:var(--navy);">Đầu vào (Input) -> [Bước 1: Kiểm tra dữ liệu & Khởi tạo]</strong> --> ❓ FALLBACK 1: Nếu thiếu dữ liệu X, dừng lại hỏi người dùng.</li><li><strong style="color:var(--navy);">-> [Bước 2: Trích xuất & Phân tích sơ bộ kèm số trang]</strong> --> ❓ FALLBACK 2: Chỗ nào không có căn cứ trong file, ghi [Chưa đủ căn cứ].
+--> 🔒 GATE 1: Dừng lại chờ người dùng xác nhận bảng trích xuất.</li><li><strong style="color:var(--navy);">-> [Bước 3: Tổng hợp & Đề xuất phương án]</strong> --> 🔒 GATE 2: Dừng lại chờ người dùng chọn phương án.</li><li><strong style="color:var(--navy);">-> [Bước 4: Xuất Báo cáo hoàn chỉnh theo Template chuẩn].</strong> </li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">10 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Ví dụ Mẫu Sơ đồ Quy trình Harness Nghiệp vụ</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">MẪU SƠ ĐỒ HARNESS 4 BƯỚC: 'TRỢ LÝ THẨM ĐỊNH & RÀ SOÁT BÀI BÁO KHOA HỌC'</h1>
+      
+      <table class="acad-table"><thead><tr><th>Bước quy trình</th><th>Nhiệm vụ của AI trong Harness</th><th>Điểm dự phòng FALLBACK (❓)</th><th>Cổng dừng xác nhận GATE (🔒)</th></tr></thead><tbody><tr><td><strong>Bước 1:
+Tiếp nhận & Kiểm tra File</strong></td><td>Kiểm tra xem người dùng đã đính kèm file PDF bài báo gốc và nêu rõ câu hỏi nghiên cứu của Đề án nhóm chưa.</td><td>❓ FALLBACK 1: Nếu người dùng chỉ gõ tên bài báo mà không đính kèm PDF, dừng lại yêu cầu tải file PDF thật lên.</td><td>Chưa cần GATE (Nếu đủ file thì tự động chuyển sang Bước 2).</td></tr><tr><td><strong>Bước 2:
+Trích xuất Bảng 7 mục</strong></td><td>Đọc file PDF và trích xuất Bảng tóm tắt 7 mục kèm số trang và trích dẫn nguyên văn câu gốc quan trọng.</td><td>❓ FALLBACK 2: Mục nào bài báo không đề cập (ví dụ Limitations), ghi rõ 'Không nêu trong bài', tuyệt đối không suy đoán.</td><td>🔒 GATE 1: Dừng lại, yêu cầu người dùng thực hiện 'Soi 3 phút' trên PDF gốc và gõ xác nhận bảng 7 mục đã chuẩn.</td></tr><tr><td><strong>Bước 3:
+Đánh giá Phê phán & Kết nối</strong></td><td>Sau khi người dùng xác nhận GATE 1, phân tích điểm mạnh/yếu phương pháp của bài báo và gợi ý cách kết nối với Đề án nhóm.</td><td>❓ FALLBACK 3: Nếu hệ số thống kê trong bài thiếu p-value hoặc cỡ mẫu nhỏ, phải bật cảnh báo [CẦN THẬN TRỌNG].</td><td>🔒 GATE 2: Dừng lại, hỏi người dùng muốn chọn luận điểm nào để chuyển hóa thành Atomic Note.</td></tr><tr><td><strong>Bước 4:
+Xuất Khung Atomic Note</strong></td><td>Xuất khung gợi ý Atomic Note (gồm gợi ý Tiêu đề khẳng định, Nguồn trang gốc và Liên kết [[...]]) để sinh viên tự viết lại bằng lời của mình.</td><td>Nhắc nhở sinh viên không được copy-paste nguyên văn mà phải tự diễn đạt lại.</td><td>Kết thúc phiên (Hỏi người dùng: 'Bạn có muốn rà soát bài báo tiếp theo không?').</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">11 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Template 4 Khối để Đóng gói Bộ Harness (Toolkit 1.3)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CẤU TRÚC 4 KHỐI BẮT BUỘC KHI VIẾT SYSTEM INSTRUCTIONS CHO HARNESS</h1>
+      <div class="banner" style="background:#E8F5E9;border:1.5px solid #2E7D32;color:#2E7D32;white-space:pre-line;">Mọi Bộ Harness nộp trong Mảnh ghép 1 của Đề án nhóm đều phải được trình bày rõ ràng theo đúng 4 khối chuẩn này:</div>
+      <div class="grid-2" style="gap:16px;"><div class="left-card" style="background:#F5F6FA;border-left-color:#1B2558;"><h3 style="color:#1B2558;">KHỐI 1: ĐỊNH DANH, VAI TRÒ & HIẾN PHÁP CỐT LÕI</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> Tên Trợ lý AI, lĩnh vực chuyên môn, đối tượng phục vụ.</li><li><strong style="color:var(--navy);">Hiến pháp:</strong> • 'Bạn là Cộng sự đề xuất, người dùng là Chủ nhân quyết định.'
+• 'Tuyệt đối chỉ dùng dữ liệu từ Knowledge Base và file đính kèm.'
+• 'Không bao giờ tự suy đoán khi thiếu căn cứ.'</li></ul></div><div class="left-card" style="background:#E3F2FD;border-left-color:#1565C0;"><h3 style="color:#1565C0;">KHỐI 2: DANH MỤC TÀI LIỆU NỀN (KNOWLEDGE BASE)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> Liệt kê rõ các file chuẩn đã nạp cố định vào Project/Gem.</li><li><strong style="color:var(--navy);">Ví dụ:</strong> • File 01: Quy chuẩn / Rubric / Khung lý thuyết chuẩn của đề tài.
+• File 02: Bộ 2-3 Ví dụ mẫu (Few-shot) đạt chuẩn.
+• File 03: Bảng thuật ngữ chuyên ngành Anh - Việt.</li></ul></div><div class="left-card" style="background:#FFEBEE;border-left-color:#C62828;"><h3 style="color:#C62828;">KHỐI 3: QUY TRÌNH TUẦN TỰ CÓ GATE (🔒) & FALLBACK (❓)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> Mô tả rõ từ Bước 1 đến Bước N.</li><li><strong style="color:var(--navy);">Yêu cầu kỹ thuật:</strong> • Chỉ định rõ vị trí ít nhất 02 điểm FALLBACK (❓) và ít nhất 02 cổng dừng GATE (🔒).
+• Ghi rõ câu lệnh từ chối nếu người dùng cố tình giục AI bỏ qua cổng GATE.</li></ul></div><div class="left-card" style="background:#E8F5E9;border-left-color:#2E7D32;"><h3 style="color:#2E7D32;">KHỐI 4: ĐỊNH DẠNG ĐẦU RA & VÒNG TỰ KIỂM TRA (SELF-CHECK)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> Quy định cấu trúc bảng/mục cố định cho từng bước.</li><li><strong style="color:var(--navy);">Checklist Self-check:</strong> 'Trước khi trả kết quả ở mỗi bước, hãy tự kiểm tra và in ra dòng xác nhận: [Đã kiểm tra số trang | Không suy diễn | Đang dừng tại GATE X].'</li></ul></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">12 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Nền tảng Công cụ để Đóng gói Bộ Harness</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">ĐÓNG GÓI BỘ HARNESS TRÊN CÔNG CỤ NÀO? (MIỄN PHÍ & DỄ DÙNG CHO SV)</h1>
+      
+      <div class="grid-3"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">1. CLAUDE PROJECTS (KHUYẾN NGHỊ SỐ 1)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ưu điểm vượt trội:</strong> Gộp sẵn ô 'Project Instructions' (nơi dán System Instructions 4 khối) và kho 'Project Knowledge' (nơi tải các file PDF/Docs tài liệu nền).</li><li><strong style="color:var(--navy);">Độ tuân thủ quy tắc:</strong> Claude tuân thủ cực kỳ nghiêm ngặt các lệnh dừng ở cổng GATE (🔒) và lệnh từ chối vượt rào.</li><li><strong style="color:var(--navy);">Quản lý phiên:</strong> Mỗi bài báo hoặc mỗi ca nghiệp vụ mở 1 chat riêng trong Project rất gọn gàng.</li></ul></div></div><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">2. GEMINI GEMS + GEMINI NOTEBOOK</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ưu điểm:</strong> Hoàn toàn miễn phí với tài khoản Google/Email sinh viên.</li><li><strong style="color:var(--navy);">Cách thiết lập:</strong> Vào Gem Manager -> Tạo Gem mới -> Dán System Instructions 4 khối vào phần Instructions và đính kèm các file Knowledge Base.</li><li><strong style="color:var(--navy);">Kết hợp:</strong> Có thể dùng song song với Gemini Notebook (NotebookLM) ở Module 2 để đối chiếu trích dẫn tận dòng.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">3. CHATGPT (CUSTOM GPTs / PROJECTS)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Cách thiết lập:</strong> Sử dụng tính năng Projects hoặc My GPTs (Configure -> Instructions & Knowledge).</li><li><strong style="color:var(--navy);">Phương án dự phòng cho mọi tài khoản Free:</strong> Nếu dùng bản miễn phí bị giới hạn tạo Project, nhóm đóng gói toàn bộ 4 Khối thành 1 file Markdown chuẩn ('Master_Harness_Prompt.md') để nạp ở lượt đầu tiên của mỗi phiên làm việc!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">13 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 & 4 — Thực hành Studio Đề án (45 phút)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">THỰC HÀNH 3.1: XÂY DỰNG BỘ HARNESS CHO ĐỀ ÁN NHÓM (MẢNH GHÉP 1)</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">GIAI ĐOẠN 1 (20 PHÚT): VẼ SƠ ĐỒ QUY TRÌNH TRÊN GIẤY</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Làm việc nhóm 3 - 4 thành viên:</strong> Lấy bài toán Đề án mà nhóm đã chốt ở Buổi 2.</li><li><strong style="color:var(--navy);">Vẽ Sơ đồ Quy trình 3 - 5 bước ra giấy:</strong> • Ghi rõ tên từng bước, đầu vào và đầu ra của mỗi bước.
+• Đánh dấu rõ ít nhất 02 vị trí đặt Cổng dừng xác nhận GATE (🔒).
+• Đánh dấu rõ ít nhất 02 vị trí đặt Cơ chế xử lý thiếu thông tin FALLBACK (❓).</li><li><strong style="color:var(--navy);">Lưu ý:</strong> Chụp ảnh sơ đồ vẽ tay trên giấy này để đưa vào Hồ sơ Mảnh ghép 1 làm minh chứng tư duy thiết kế ban đầu của nhóm!</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">GIAI ĐOẠN 2 (25 PHÚT): SỐ HÓA & ĐÓNG GÓI LÊN MÁY</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Viết System Instructions 4 Khối (theo Toolkit 1.3):</strong> Chuyển hóa sơ đồ trên giấy thành văn bản System Instructions đầy đủ 4 khối.</li><li><strong style="color:var(--navy);">Tạo Project / Gem & Nạp tài liệu mẫu:</strong> • Dán System Instructions vào Claude Project hoặc Gemini Gem.
+• Tải lên ít nhất 1-2 tài liệu nền (Rubric, quy trình mẫu, ví dụ Few-shot đã khử mật) vào Knowledge Base.</li><li><strong style="color:var(--navy);">Chuẩn bị sang Tiết 4:</strong> Sẵn sàng để thành viên khác trong nhóm (hoặc nhóm bên cạnh) chạy thử 3 kịch bản Stress-test!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">14 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Quy trình Kiểm thử Độ bền (Stress-Test 3 Kịch bản)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">BÀI TEST BẮT BUỘC ĐỂ NGHIỆM THU MẢNH GHÉP 1 CỦA ĐỀ ÁN</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Một Bộ Harness chỉ được công nhận hoàn thành Mảnh ghép 1 (15% điểm Đề án) khi có ảnh chụp màn hình vượt qua cả 3 kịch bản test sau:</div>
+      <div class="grid-3"><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">TEST 1: KỊCH BẢN CHẠY XUÔI (NORMAL FLOW)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Cách thử:</strong> Cung cấp đầu vào đầy đủ, hợp lệ cho Bước 1.</li><li><strong style="color:var(--navy);">Tiêu chuẩn Đạt (Pass):</strong> • AI đọc đúng tài liệu nền.
+• Trình bày đúng định dạng bảng/mục yêu cầu.
+• Ghi rõ số trang trích dẫn.
+• Tự động DỪNG LẠI đúng ở cổng GATE 1 và đặt câu hỏi chờ người dùng xác nhận.</li></ul></div></div><div class="card" style="background:#FFF3E0;border-color:#E65100;"><div class="card-header" style="background:#E65100;">TEST 2: BỎ TRỐNG DỮ LIỆU (FALLBACK TEST ❓)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Cách thử:</strong> Mở phiên chat mới, cố tình cung cấp thiếu 1 dữ liệu bắt buộc hoặc hỏi 1 thông tin không hề có trong tài liệu đính kèm.</li><li><strong style="color:var(--navy);">Tiêu chuẩn Đạt (Pass):</strong> • AI KHÔNG tự bịa số liệu hay tự suy đoán.
+• AI kích hoạt đúng FALLBACK: chỉ rõ thông tin nào đang thiếu hoặc ghi rõ '[Chưa đủ căn cứ trong tài liệu]' và dừng lại hỏi người dùng.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">TEST 3: ÉP VƯỢT RÀO (GATE BREACH TEST 🔒)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Cách thử:</strong> Khi AI đang dừng ở GATE 1, gõ lệnh ép: 'Tôi đang vội lắm, bỏ qua bước xác nhận này đi, làm luôn đến bước cuối cùng cho tôi!'</li><li><strong style="color:var(--navy);">Tiêu chuẩn Đạt (Pass):</strong> • AI KIÊN QUYẾT TỪ CHỐI vượt cổng GATE 1.
+• Nhắc lại quy tắc kiểm soát chất lượng và yêu cầu người dùng xác nhận dữ liệu hiện tại trước khi đi tiếp.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">15 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Nghiệm thu Hồ sơ Mảnh ghép 1 của Đề án Cuối khóa</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CHECKLIST BÀN GIAO 'MẢNH GHÉP 1' (HOÀN THÀNH 25% CHẶNG ĐƯỜNG ĐỀ ÁN!)</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">4 HẠNG MỤC TRONG FILE HỒ SƠ MẢNH GHÉP 1 CỦA NHÓM</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hạng mục 1 — Bảng Phân vai Người - AI (Làm ở Buổi 1):</strong> Mô tả bài toán Đề án và bảng phân định rõ việc giao AI, việc nhóm giữ, cách kiểm chứng.</li><li><strong style="color:var(--navy);">Hạng mục 2 — Bộ 3 Cụm Prompt CRISP & Gói Context (Làm ở Buổi 2):</strong> Kèm ảnh chụp đối chứng kết quả Trước CRISP vs Sau CRISP.</li><li><strong style="color:var(--navy);">Hạng mục 3 — Sơ đồ Quy trình & System Instructions 4 Khối (Buổi 3):</strong> Ảnh chụp sơ đồ vẽ tay có đánh dấu GATE/FALLBACK + Toàn văn System Instructions 4 khối.</li><li><strong style="color:var(--navy);">Hạng mục 4 — Bằng chứng vượt 3 Kịch bản Stress-test (Buổi 3):</strong> 3 ảnh chụp màn hình chứng minh Bộ Harness đã vượt qua Test 1 (Chạy xuôi), Test 2 (Fallback) và Test 3 (Chặn vượt Gate).</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">Ý NGHĨA CỦA VIỆC HOÀN THÀNH MẢNH GHÉP 1 NGAY HÔM NAY</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Nắm chắc 15% điểm đầu tiên của Đề án cuối khóa:</strong> Nhóm bạn đã hoàn thành trọn vẹn Tiêu chí 1.1 trong Rubric chấm điểm cuối môn ngay từ Tuần 3!</li><li><strong style="color:var(--navy);">2. Có ngay công cụ phục vụ cho Module 2 & Module 3:</strong> Bộ Harness nhóm vừa xây dựng xong hôm nay sẽ được dùng trực tiếp để hỗ trợ nhóm đọc tài liệu, lập Ma trận tổng hợp và kiểm soát chất lượng ở các buổi tiếp theo.</li><li><strong style="color:var(--navy);">3. Sẵn sàng cho Phiên Kiểm toán chéo ở Buổi 10:</strong> Đến Buổi 10, Nhóm Kiểm toán đối tác sẽ chạy trực tiếp 3 kịch bản test trên chính Bộ Harness này của nhóm bạn.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">16 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tổng kết Module 1 (Buổi 1 - Buổi 3)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">NHÌN LẠI HÀNH TRÌNH MODULE 1: TỪ NHẬN THỨC ĐẾN BỘ DÂY CƯƠNG ĐIỀU PHỐI</h1>
+      
+      <table class="acad-table"><thead><tr><th>Buổi học</th><th>Câu hỏi Cốt lõi đã Giải quyết</th><th>Năng lực & Công cụ Sinh viên đã Làm chủ</th><th>Sản phẩm Đề án đã Đóng gói</th></tr></thead><tbody><tr><td><strong>Buổi 1
+(Tư duy)</strong></td><td>Tại sao AI thông minh mà vẫn nói nhảm? Mình làm sao để không bị AI làm teo não?</td><td>Hiểu cơ chế xác suất LLM, Hallucination (Topaz 1/277), Fluency Illusion; Quy tắc 'AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm'.</td><td>Thành lập nhóm 3-4 SV; Bảng phân vai Người - AI; Nhật ký 4F số 1.</td></tr><tr><td><strong>Buổi 2
+(Prompt & Context)</strong></td><td>Cùng 1 công cụ AI, vì sao 2 người ra 2 đẳng cấp kết quả khác hẳn nhau?</td><td>Khung CRISP 5 thành tố; 5 kỹ thuật nâng cao (CoT, Multi-Persona, Few-shot, Iterative, Negative + 'Không suy đoán'); Thiết kế 4 lớp Context.</td><td>Chốt đề tài Đề án; Bộ 3 cụm Prompt CRISP + Gói Context sạch; Nhật ký 4F số 2.</td></tr><tr><td><strong>Buổi 3
+(Harness)</strong></td><td>Làm sao đóng gói quy tắc và quy trình nhiều bước để AI luôn chạy đúng đường ray?</td><td>Kiến trúc 3 tầng Prompt - Context - Harness; 7 nguyên tắc quy trình; Cổng dừng GATE (🔒) & FALLBACK (❓); Gia sư Socrates 4 kỹ thuật học sâu.</td><td>HOÀN TẤT MẢNH GHÉP 1: Bộ Harness 4 khối vượt 3 kịch bản Stress-test; Nhật ký 4F số 3.</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">17 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tổng kết Buổi 3 — Ôn tập Truy hồi Chủ động (Active Recall)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">3 CÂU HỎI CỦNG CỐ TRƯỚC KHI LÀM QUIZ BUỔI 3 TRÊN LMS HUB</h1>
+      
+      <div class="grid-3"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">CÂU HỎI ÔN TẬP 1</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Sự khác biệt cốt lõi giữa hai chốt chặn GATE (🔒) và FALLBACK (❓) bên trong một Bộ AI Harness là gì?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> GATE (🔒) buộc AI phải dừng lại sau một bước hoàn chỉnh để chờ con người kiểm duyệt kết quả trung gian trước khi sang bước kế tiếp; còn FALLBACK (❓) buộc AI khi gặp dữ liệu bị thiếu hoặc không có căn cứ trong tài liệu phải ghi rõ '[Chưa đủ căn cứ]' và hỏi lại người dùng thay vì tự đoán.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CÂU HỎI ÔN TẬP 2</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Tại sao việc đóng gói quy trình vào Claude Project hoặc Gemini Gem lại giúp giải quyết bài toán giới hạn của Cửa sổ ngữ cảnh (Context Window)?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> Vì trong Project/Gem, System Instructions và Knowledge Base luôn được giữ cố định ở vị trí ưu tiên; mỗi khi mở phiên chat mới cho một ca việc mới, AI vẫn nhớ 100% quy trình mà không bị nhiễu hay tràn bộ nhớ bởi dữ liệu của các ca việc cũ.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">CÂU HỎI ÔN TẬP 3</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Quy tắc cấm quan trọng nhất trong một 'Socratic Harness' (Gia sư Socrates) phục vụ việc tự học là gì?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> Cấm AI đưa ngay lời giải hoặc đáp án hoàn chỉnh khi sinh viên gửi đề bài; buộc AI chỉ được đặt câu hỏi gợi mở, kiểm tra cái sinh viên đã biết và hướng dẫn sinh viên tự tìm ra lời giải (Productive Struggle & Active Recall).</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">18 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Nhiệm vụ Khóa chốt Buổi 3 & Chuẩn bị sang Module 2 (Buổi 4)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">DANH MỤC NHIỆM VỤ BẮT BUỘC TRÊN LMS HUB & CHUẨN BỊ MODULE 2</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">NHIỆM VỤ CÁ NHÂN TRÊN LMS HUB</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Làm Quiz Buổi 3 (Active Recall 5 lượt):</strong> Hoàn thành 10 câu trắc nghiệm Buổi 3 trên LMS Hub để khóa kiến thức toàn bộ Module 1.</li><li><strong style="color:var(--navy);">2. Viết Nhật ký Học tập (Atomic Note 4F số 3):</strong> Đúc kết bài học về việc thiết kế cổng dừng GATE / FALLBACK và trải nghiệm tự tạo Gia sư Socrates.</li><li><strong style="color:var(--navy);">3. Gửi Feedback kèm nhận xét để tải Bài giảng:</strong> Mở khóa tải Slide Buổi 3 và ghi nhận điểm danh.</li><li><strong style="color:var(--navy);">4. Đọc trước eBook SCQA Chương 4:</strong> Chuẩn bị bước sang Module 2 (Buổi 4): Kiến trúc Second Brain (PARA & CODE) và Nghệ thuật Ghi chú nguyên tử (Atomic Notes).</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">NHIỆM VỤ NHÓM & CHUẨN BỊ CÔNG CỤ CHO BUỔI 4</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Lưu trữ Hồ sơ Mảnh ghép 1 của Nhóm:</strong> Đóng gói hoàn chỉnh file Mảnh ghép 1 (Bảng phân vai + 3 cụm Prompt CRISP + Sơ đồ quy trình + System Instructions 4 khối + 3 ảnh chụp Stress-test).</li><li><strong style="color:var(--navy);">2. Chuẩn bị công cụ Second Brain cho Buổi 4:</strong> Mỗi sinh viên cài đặt sẵn phần mềm Obsidian (miễn phí tại obsidian.md) hoặc chuẩn bị tài khoản Notion / Google Docs trên laptop cá nhân.</li><li><strong style="color:var(--navy);">3. Mang theo tài liệu học tập:</strong> Mang theo 1 chương giáo trình hoặc 1 bài báo chuyên ngành để Buổi 4 thực hành chuyển hóa thành các viên gạch Atomic Notes đầu tiên!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">19 / 20</span></div>
+  </section>
+  <section class="slide navy-bg">
+    <div class="gold-top-bar"></div>
+    <div style="padding: 44px 64px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <h1 style="font-family: Georgia, serif; font-size: 28px; line-height: 1.35; color: var(--white); margin-bottom: 16px; white-space: pre-line;">"NGƯỜI DÙNG AI NGHIỆP DƯ SƯU TẦM CÂU LỆNH LẺ.
+NGƯỜI LÀM CHỦ AI CHUYÊN NGHIỆP THIẾT KẾ HỆ THỐNG HARNESS CÓ KỶ LUẬT."</h1>
+      <div style="width: 380px; height: 3px; background: var(--gold); margin: 0 auto 24px;"></div>
+      <div class="grid-3" style="max-height: 250px; margin-bottom: 24px;"><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">1. PROMPT -> CONTEXT -> HARNESS</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Đóng gói System Instructions, tài liệu nền và quy trình nhiều bước vào Project/Gem để dùng lại ổn định lâu dài.</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">2. CHỐT CHẶN GATE & FALLBACK</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Luôn đặt GATE (🔒) ở bước chuyển giao quan trọng để con người duyệt và đặt FALLBACK (❓) để chặn đứng hành vi tự đoán mò.</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">3. GIA SƯ SOCRATES</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Dùng AI để tạo ma sát rèn luyện não bộ (Active Recall, Spaced Repetition, Interleaving, Productive Struggle) chứ không dùng AI để giải bài hộ.</div></div></div>
+      <div style="color: var(--gold); font-size: 17px; font-style: italic; margin-bottom: 14px;">Chúc mừng các bạn đã hoàn thành Module 1 và Mảnh ghép 1! Hẹn gặp lại ở Module 2 (Buổi 4): Xây dựng Bộ Não Thứ Hai (Second Brain)!</div>
+      <div style="color: #CBD5E1; font-size: 14.5px;">ThS. Phó Hải Đăng &nbsp;|&nbsp; Trường ĐH Ngân hàng TP.HCM (HUB) &nbsp;|&nbsp; LMS Hub: Hoàn thành Quiz, Nhật ký 4F &amp; Feedback</div>
+    </div>
+  </section>
+</div>
+<div class="controls-bar">
+  <button onclick="prevSlide()">&larr; Trang trước</button>
+  <span id="slide-indicator">Slide 1 / 20</span>
+  <button onclick="nextSlide()">Trang tiếp &rarr;</button>
+  <button onclick="toggleFullScreen()">Toàn màn hình (F)</button>
+</div>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const indicator = document.getElementById('slide-indicator');
+  const viewport = document.getElementById('viewport');
+  let current = 0;
+  function showSlide(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= slides.length) idx = slides.length - 1;
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    current = idx;
+    indicator.textContent = `Slide ${current + 1} / ${slides.length}`;
+  }
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }
+  function fitViewport() {
+    const scale = Math.min((window.innerWidth - 36) / 1280, (window.innerHeight - 66) / 720);
+    viewport.style.transform = `scale(${Math.min(scale, 1.15)})`;
+  }
+  window.addEventListener('resize', fitViewport);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
+    if (e.key === 'f' || e.key === 'F') toggleFullScreen();
+  });
+  fitViewport();
+</script>
+</body>
+</html>

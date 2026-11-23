@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 1: Bản chất AI & Tư duy người làm chủ ('AI là Trợ lý, Bạn là Chủ') — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 1: BẢN CHẤT AI, PROMPT, CONTEXT & HARNESS</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO1, CLO3</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 1: Bản chất AI & Tư duy người làm chủ ('AI là Trợ lý, Bạn là Chủ')</h1>
+      <p class="subtitle">Giải mã cơ chế xác suất của LLM, nhận diện Hallucination (Topaz 1/277) và xác lập ranh giới phân vai Người - AI</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Giải thích được cơ chế dự đoán từ tiếp theo dựa trên xác suất (Next-token Prediction) của Mô hình ngôn ngữ lớn (LLM) và phân biệt rõ LLM với công cụ tìm kiếm truyền thống (CLO1).</li>
+      <li>Phân tích được nguyên nhân gốc rễ của hiện tượng ảo giác AI (Hallucination - với bằng chứng thực nghiệm 1/277 từ The Lancet 5/2026), lệ thuộc nhận thức (Cognitive Offloading) và ảo tưởng trôi chảy (Fluency Illusion) (CLO1).</li>
+      <li>Thiết lập được Bảng phân vai 'Việc nào giao cho AI - Việc nào con người giữ' theo bộ ba động từ: <strong>AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm</strong> (CLO1).</li>
+      <li>Khởi tạo không gian học tập trên hệ thống LMS Hub, thành lập nhóm Đề án cuối khóa và viết được <strong>Atomic Note phản tư 4F</strong> đầu tiên (CLO3).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Mỗi khi nhận đề tiểu luận hay bài tập lớn tại Trường ĐH Ngân hàng TP.HCM, thao tác đầu tiên của hầu hết sinh viên hiện nay là mở ChatGPT, Claude hoặc Gemini, gõ vài dòng yêu cầu và nhận về một bài viết 1.500 chữ trôi chảy chỉ sau 30 giây.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Tuy nhiên, khi giảng viên hỏi 'Số liệu tỷ lệ nợ xấu trang 3 em lấy từ báo cáo nào?' hoặc 'Tại sao em chọn mô hình này?', người nộp bài hoàn toàn lúng túng vì không biết AI lấy số đó ở đâu. Nghiêm trọng hơn, nghiên cứu của Topaz và cộng sự trên tạp chí y khoa danh tiếng The Lancet (5/2026) chỉ ra rằng cứ 277 bài báo khoa học trên PubMed đầu năm 2026 thì có 1 bài dính tài liệu tham khảo hoàn toàn không tồn tại do AI bịa ra (tăng gấp 10 lần so với năm 2023). Việc giao phó tư duy cho một cỗ máy xác suất đang âm thầm tạo ra hiện tượng lệ thuộc nhận thức (cognitive offloading) và ảo tưởng trôi chảy (fluency illusion).</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Nếu AI không thực sự 'biết' những gì nó đang viết ra, làm thế nào để sinh viên khai thác sức mạnh của AI mà không bị nó dắt mũi hay làm teo đi năng lực tư duy độc lập của chính mình?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Bắt đầu từ triết lý 'Tư duy -> Kỹ năng -> Công cụ': hiểu rõ AI là cỗ máy dự đoán từ tiếp theo dựa trên xác suất, thiết lập nguyên tắc phân vai 'AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm', và chỉ giao cho AI những bước mà chính bạn có đủ năng lực kiểm tra lại.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 1): Minh - sinh viên năm 2 ngành Tài chính Ngân hàng tại HUB - dùng ChatGPT viết xong bài tiểu luận trong 30 phút với văn phong cực kỳ trôi chảy. Khi lên lớp, giảng viên chỉ hỏi đúng 2 câu: 'Số liệu nợ xấu trang 3 em lấy từ báo cáo nào?' và 'Tại sao em chọn mô hình này?'. Minh đứng hình không trả lời được vì số liệu đó do AI tự bịa và Minh chưa từng thực sự suy nghĩ về bài viết.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Hai câu hỏi giơ tay không chấm điểm: (1) Bạn nào trong lớp đã từng dùng AI để tìm tài liệu hoặc làm bài tập, tiểu luận? (2) Trong số các bạn vừa giơ tay, bạn nào đã mở từng tài liệu gốc mà AI đưa ra để kiểm tra xem nó có thật không?</li>
+        <li>Nếu AI chỉ đoán chữ theo xác suất chứ không hề 'biết' sự thật, chuyện gì sẽ xảy ra với năng lực chuyên môn của bạn sau 3 năm đại học nếu bạn giao toàn bộ việc suy nghĩ cho nó?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Khởi động & Cú sốc nhận thức về AI:</strong><br>• Kể câu chuyện của Minh (Kỳ 1) và thực hiện khảo sát 2 câu hỏi giơ tay.<br>• Công bố số liệu nghiên cứu của Topaz và cs. trên <em>The Lancet</em> (5/2026): kiểm tra 2.5 triệu bài báo trên PubMed, tỷ lệ bài dính trích dẫn bịa tăng gấp 10 lần từ 1/2.828 (2023) lên <strong>1/277</strong> (đầu 2026).<br>• Giới thiệu lộ trình 11 buổi, hệ thống LMS Hub và quy chế Đề án tích hợp 4 mảnh ghép (100% điểm cuối khóa).</td><td>Trả lời khảo sát trực tiếp; quan sát số liệu thực nghiệm; đăng nhập hệ thống LMS Hub.</td><td>Slide Buổi 1; LMS Hub</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Giải mã Hộp đen: AI không phải phép thuật, AI là xác suất:</strong><br>• Live Demo 'Bẫy AI nói nhảm': hỏi AI về một thông tư ngân hàng hoặc một cuốn sách kinh tế hoàn toàn không tồn tại -> AI trả lời rất tự tin.<br>• Giảng giải cơ chế <em>Next-token Prediction</em> và bảng so sánh LLM vs Google Search.<br>• Tổ chức thảo luận cặp đôi (Think-Pair-Share) so sánh truy vấn trên Google và trên Chatbot.</td><td>Thực hành theo cặp: thử đặt cùng 1 câu hỏi chuyên ngành trên Google và Chatbot để chỉ ra 3 điểm khác biệt cốt lõi.</td><td>Máy chiếu Live Demo; Thiết bị cá nhân</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Hai cái bẫy nhận thức & Bảng phân vai 'Việc nào giao - Việc nào giữ':</strong><br>• Phân tích hiện tượng <em>Cognitive Offloading</em> (Lệ thuộc nhận thức) và <em>Fluency Illusion</em> (Ảo tưởng trôi chảy).<br>• Đúc kết 3 động từ: <strong>AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm</strong> và phép thử vàng khi giao việc.<br>• Giới thiệu Bản đồ hệ sinh thái công cụ AI 2026 theo 4 nhóm tác vụ.</td><td>Thảo luận tình huống phân định ranh giới giao việc trong học tập ngành Ngân hàng, Kế toán, Marketing.</td><td>Sơ đồ Bản đồ công cụ AI 2026</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Thực hành Phân vai, Khởi tạo nhóm Đề án & Khóa chốt LMS:</strong><br>• Hướng dẫn chia nhóm Đề án cuối khóa (3-4 SV cùng chuyên ngành).<br>• Hướng dẫn bài tập phân rã quy trình 1 bài toán nghiệp vụ thành bảng phân vai Người - AI.<br>• Hướng dẫn viết Nhật ký học tập (Atomic Note phản tư 4F) và làm Quiz Active Recall 5 lượt trên LMS.</td><td>Chia nhóm Đề án; lập Bảng phân vai cho 3 ý tưởng đề tài tiềm năng; viết phản tư 4F, gửi Feedback tải slide và hoàn thành Quiz Buổi 1 trên LMS.</td><td>LMS Hub (Quiz 1, Journal 1)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao một bài văn do AI viết đọc lên rất mượt mà, hợp lý nhưng khi gấp máy tính lại bạn hầu như không nhớ được gì (Fluency Illusion)?</li>
+      <li>Hãy áp dụng phép thử: 'Nếu AI làm sai bước này, mình có phát hiện ra không?' vào việc làm khóa luận tốt nghiệp. Những bước nào một sinh viên năm 3-4 có thể kiểm tra được AI, và bước nào tuyệt đối không được giao cho AI?</li>
+      <li>Trong nghiên cứu của Topaz (2026) trên The Lancet, hơn 98% số bài báo chứa trích dẫn bịa vẫn chưa bị nhà xuất bản xử lý tại thời điểm kiểm tra. Điều đó cảnh báo gì cho chúng ta ngay cả khi đọc các bài báo đã xuất bản?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub (Bắt buộc để ghi nhận chuyên cần & tích lũy Cấu phần 2 - 30%):</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 1 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 1</strong> (tối đa 5 lượt làm bài Active Recall để đạt điểm tối đa và mở khóa lời giải chi tiết).</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 1 theo khung 4F)</strong> trên LMS: Đúc kết bằng ngôn từ của chính bạn về bản chất xác suất của AI và 1 việc bạn quyết định sẽ ngừng giao phó mù quáng cho AI từ hôm nay.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Chuẩn bị cho Mảnh ghép 1):</h3>
+        <ul>
+          <li>Chốt danh sách nhóm (3-4 thành viên cùng chuyên ngành) và thảo luận chọn ra <strong>01 bài toán nghiệp vụ hoặc chủ đề nghiên cứu ứng dụng</strong> trong ngành (Tài chính, Ngân hàng, Kế toán, Marketing, Quản trị...).</li>
+          <li>Lập bản nháp <strong>Bảng phân vai Con người - AI</strong> cho bài toán đó (tối thiểu 4 bước công việc) để mang tới Buổi 2 thiết kế bộ Prompt & Context.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Cơ chế cốt lõi của LLM là gì?<br><em>Đáp:</em> Dự đoán từ (token) tiếp theo có xác suất cao nhất dựa trên ngữ cảnh đứng trước.</li>
+      <li><strong>Hỏi:</strong> Tỷ lệ bài báo trên PubMed dính trích dẫn bịa đầu năm 2026 theo Topaz (The Lancet, 5/2026) là bao nhiêu?<br><em>Đáp:</em> 1/277 bài báo (tăng gấp hơn 10 lần so với mức 1/2.828 của năm 2023).</li>
+      <li><strong>Hỏi:</strong> Phép thử vàng trước khi giao một bước công việc cho AI là gì?<br><em>Đáp:</em> Nếu AI làm sai ở bước này, mình có đủ kiến thức và công cụ để phát hiện ra không? Nếu không, đừng giao.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Khi chạy Live Demo 'Bẫy AI nói nhảm' ở Tiết 2, hãy dùng một số hiệu thông tư hoặc tên sách chuyên ngành Ngân hàng do chính giảng viên đặt ra ngay tại lớp để sinh viên thấy rõ AI tự tin bịa điều khoản như thế nào.</li>
+      <li>Nhắc sinh viên: Để được tính hoàn thành buổi học trên LMS Hub, sinh viên cần nộp Feedback có nhận xét để tải bài giảng và làm Quiz đạt yêu cầu.</li>
+    </ul>
+  </div>
+</body>
+</html>

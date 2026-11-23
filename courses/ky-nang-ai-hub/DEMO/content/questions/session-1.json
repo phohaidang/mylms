@@ -1,0 +1,138 @@
+{
+  "session": 1,
+  "chapter": "Ch.1",
+  "title": "Bản chất AI & Tư duy người làm chủ: 'AI là Trợ lý, Bạn là Chủ'",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s01-L1-c1-q1",
+      "type": "mc",
+      "question": "Cơ chế cốt lõi giúp các Mô hình ngôn ngữ lớn (LLM) như ChatGPT hay Claude tạo ra câu trả lời là gì?",
+      "options": [
+        "A. Tra cứu trực tiếp từ một cơ sở dữ liệu sự thật đã được kiểm duyệt 100%",
+        "B. Dự đoán từ (token) tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh đứng trước",
+        "C. Sao chép nguyên văn các đoạn văn bản từ Google Scholar theo thời gian thực",
+        "D. Sử dụng tư duy nhận thức và sự hiểu biết chuyên môn giống như bộ não chuyên gia"
+      ],
+      "correct": "B",
+      "explanation": "Mô hình ngôn ngữ lớn (LLM) hoạt động bằng cách tính toán phân phối xác suất để dự đoán từ (token) tiếp theo hợp lý nhất dựa trên ngữ cảnh đứng trước, chứ không tra cứu cơ sở dữ liệu sự thật."
+    },
+    {
+      "id": "aihub-s01-L1-c1-q2",
+      "type": "mc",
+      "question": "Theo nghiên cứu của Topaz và cộng sự đăng trên tạp chí The Lancet (5/2026) khi kiểm tra gần 2.5 triệu bài báo trên PubMed, tỷ lệ bài báo có chứa ít nhất một tài liệu tham khảo bịa trong 7 tuần đầu năm 2026 là bao nhiêu?",
+      "options": [
+        "A. 1/2.828 bài báo",
+        "B. 1/1.000 bài báo",
+        "C. 1/277 bài báo",
+        "D. 1/10 bài báo"
+      ],
+      "correct": "C",
+      "explanation": "Theo nghiên cứu của Topaz và cộng sự trên The Lancet (5/2026) kiểm tra 2.5 triệu bài trên PubMed, tỷ lệ bài dính trích dẫn bịa tăng từ 1/2.828 (2023) lên 1/458 (2025) và đạt 1/277 trong 7 tuần đầu năm 2026."
+    },
+    {
+      "id": "aihub-s01-L1-c1-q3",
+      "type": "mc",
+      "question": "Hiện tượng sinh viên đọc bản tóm tắt rất mượt mà của AI, cảm thấy mình đã hiểu hết bài nhưng thực chất não bộ chưa hề xử lý sâu và nhanh chóng quên sạch được gọi là gì?",
+      "options": [
+        "A. Ảo giác dữ liệu (Data Hallucination)",
+        "B. Ảo tưởng trôi chảy (Fluency Illusion)",
+        "C. Quá tải ngữ cảnh (Context Overflow)",
+        "D. Học tập chủ động (Active Recall)"
+      ],
+      "correct": "B",
+      "explanation": "Ảo tưởng trôi chảy (Fluency Illusion) xảy ra khi văn bản AI tạo ra quá mượt mà khiến người đọc tưởng mình đã hiểu sâu, nhưng thực chất não bộ chưa trải qua ma sát nhận thức nên sẽ quên rất nhanh."
+    },
+    {
+      "id": "aihub-s01-L1-c1-q4",
+      "type": "mc",
+      "question": "Trong mô hình 'AI là Trợ lý, Bạn là Chủ', bộ ba động từ nào định vị đúng vai trò của AI và người học?",
+      "options": [
+        "A. AI quyết định - Bạn thực thi - Nhà trường chịu trách nhiệm",
+        "B. AI tìm nguồn - AI viết bài - Bạn đứng tên",
+        "C. AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm",
+        "D. Bạn đề xuất - AI quyết định - Cùng chịu trách nhiệm"
+      ],
+      "correct": "C",
+      "explanation": "Ba động từ định vị vị thế làm chủ là: AI đề xuất (Propose) - Bạn quyết định (Decide) - Bạn chịu trách nhiệm (Accountable)."
+    },
+    {
+      "id": "aihub-s01-L2-c1-q1",
+      "type": "mc",
+      "question": "Vì sao một mô hình AI có thể bịa ra một thông tư ngân hàng hoặc một trích dẫn khoa học không hề tồn tại với giọng văn vô cùng tự tin?",
+      "options": [
+        "A. Vì thuật toán đoán chữ chỉ ưu tiên ghép các cụm từ có xác suất ngôn ngữ hợp lý nhất với câu hỏi, chứ không có cơ chế tự kiểm tra sự thật",
+        "B. Vì nhà phát triển lập trình cho AI tính năng nói dối khi gặp câu hỏi khó",
+        "C. Vì máy tính của người dùng bị nhiễm mã độc làm sai lệch kết quả",
+        "D. Vì AI chỉ bịa khi người dùng sử dụng phiên bản miễn phí"
+      ],
+      "correct": "A",
+      "explanation": "Do cơ chế đoán chữ ưu tiên sự hợp lý về mặt ngôn ngữ và không có bước kiểm tra sự thật nội tại, AI dễ ghép các từ có xác suất đi cùng nhau cao thành thông tin bịa (Hallucination) với giọng rất tự tin."
+    },
+    {
+      "id": "aihub-s01-L2-c1-q2",
+      "type": "mc",
+      "question": "Theo nguyên tắc phân vai 'Việc nào giao, việc nào giữ', câu hỏi tự kiểm tra nào giúp bạn biết có nên giao một bước công việc cho AI hay không?",
+      "options": [
+        "A. Bước này AI làm có nhanh hơn mình làm không?",
+        "B. Nếu AI làm sai ở bước này, mình có đủ khả năng và công cụ phát hiện ra không?",
+        "C. Bước này có tốn nhiều dung lượng token của AI không?",
+        "D. Bạn bè trong lớp có dùng AI cho bước này không?"
+      ],
+      "correct": "B",
+      "explanation": "Phép thử vàng trước khi giao việc cho AI: 'Nếu AI làm sai ở bước này, mình có đủ kiến thức và công cụ để phát hiện ra không?' Nếu không phát hiện được thì tuyệt đối không giao."
+    },
+    {
+      "id": "aihub-s01-L2-c1-q3",
+      "type": "mc",
+      "question": "Khi bạn cần hỏi đáp và trích xuất thông tin chỉ gói gọn trong 3 cuốn giáo trình PDF của môn học mà không muốn AI suy diễn thêm từ bên ngoài, nhóm công cụ nào là phù hợp nhất?",
+      "options": [
+        "A. Chatbot hội thoại tổng quát không đính kèm tài liệu",
+        "B. Công cụ tạo hình ảnh tự động",
+        "C. Công cụ RAG quản trị tài liệu cá nhân như Gemini Notebook (NotebookLM)",
+        "D. Công cụ kiểm tra đạo văn"
+      ],
+      "correct": "C",
+      "explanation": "Các công cụ RAG như Gemini Notebook (NotebookLM) chỉ trả lời dựa trên nguồn tài liệu người dùng tải lên và có trích dẫn trỏ về đúng đoạn văn gốc."
+    },
+    {
+      "id": "aihub-s01-L2-c1-q4",
+      "type": "mc",
+      "question": "Cách sử dụng AI nào dưới đây giúp RÈN LUYỆN tư duy thay vì rơi vào bẫy lệ thuộc nhận thức (Cognitive Offloading)?",
+      "options": [
+        "A. Nhờ AI viết trọn vẹn bài tiểu luận rồi học thuộc lòng để đi thi",
+        "B. Tự mình phác thảo dàn ý và luận điểm trước, sau đó dùng AI đóng vai người phản biện để chỉ ra các lỗ hổng logic trong dàn ý của mình",
+        "C. Chép đề bài tập lên AI và chép nguyên lời giải vào vở",
+        "D. Nhờ AI đọc hộ toàn bộ bài báo mà không bao giờ mở file PDF gốc"
+      ],
+      "correct": "B",
+      "explanation": "Tự lập dàn ý trước rồi dùng AI đóng vai người phản biện giúp tạo ra ma sát nhận thức có lợi, tránh lệ thuộc nhận thức (Cognitive Offloading)."
+    },
+    {
+      "id": "aihub-s01-L3-c1-q1",
+      "type": "mc",
+      "question": "Minh đang làm đề tài về 'Rủi ro tín dụng xanh tại các ngân hàng thương mại Việt Nam'. Minh mở một Chatbot tổng quát và gõ: 'Hãy cho tôi 10 tài liệu tham khảo uy tín kèm DOI về đề tài này'. Hành động này vi phạm nguyên tắc nào?",
+      "options": [
+        "A. Dùng sai công cụ cho tác vụ cần nguồn thật: Chatbot tổng quát sinh văn bản theo xác suất nên rất dễ ghép các mảnh thông tin thành trích dẫn bịa và DOI giả",
+        "B. Xin quá ít tài liệu tham khảo, lẽ ra phải xin 50 tài liệu một lúc",
+        "C. Không vi phạm gì, đây là cách tìm tài liệu chuẩn xác nhất hiện nay",
+        "D. Vi phạm vì không viết câu lệnh bằng tiếng Anh"
+      ],
+      "correct": "A",
+      "explanation": "Chatbot tổng quát không phải là kho tài liệu học thuật; dùng nó để xin danh mục tài liệu tham khảo và DOI sẽ dẫn tới trích dẫn bịa dạng ghép xác."
+    },
+    {
+      "id": "aihub-s01-L3-c1-q2",
+      "type": "mc",
+      "question": "Trong 4 công việc dưới đây khi làm tiểu luận ngành Tài chính - Ngân hàng, công việc nào người học BẮT BUỘC phải tự giữ quyền quyết định cuối cùng, không được giao phó cho AI?",
+      "options": [
+        "A. Gợi ý các từ khóa tiếng Anh tương đương để tra cứu trên Semantic Scholar",
+        "B. Rà soát lỗi chính tả và ngữ pháp của bản thảo",
+        "C. Kiểm chứng độ tin cậy của số liệu gốc và chốt kết luận học thuật của bài viết",
+        "D. Chuyển đổi một đoạn ghi chú nháp thành bảng tóm tắt sơ bộ"
+      ],
+      "correct": "C",
+      "explanation": "Việc thẩm định độ tin cậy của số liệu gốc và chốt kết luận học thuật đòi hỏi phán đoán chuyên môn và trách nhiệm cá nhân nên con người bắt buộc phải tự nắm giữ."
+    }
+  ]
+}

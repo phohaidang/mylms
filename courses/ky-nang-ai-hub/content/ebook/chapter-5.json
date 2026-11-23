@@ -1,0 +1,227 @@
+{
+  "chapter": 5,
+  "title": "Tích hợp Second Brain với Công nghệ RAG (Gemini Notebook / Claude Projects)",
+  "sessions": [
+    5
+  ],
+  "scqa": {
+    "situation": "Bạn đã bắt đầu tích lũy được hàng chục Atomic Notes trong Second Brain và tải về nhiều bài báo khoa học, báo cáo ngành ngân hàng dạng PDF. Giờ đây bạn cần đối chiếu xem 5 báo cáo đó có số liệu nào mâu thuẫn nhau không để viết phần cơ sở lý luận cho Đề án.",
+    "complication": "Nếu bạn hỏi một Chatbot LLM thông thường mà không gắn nguồn, nó sẽ trộn lẫn kiến thức chung ngoài Internet và bịa ra số liệu. Ngược lại, nếu bạn tự mở từng file PDF dày 50 trang để dò thủ công từng dòng thì quá tốn thời gian và dễ bỏ sót mối liên hệ chéo giữa các tài liệu.",
+    "question": "Làm thế nào để kết hợp kho tài liệu chuẩn và Second Brain của bạn với trí tuệ nhân tạo sao cho AI chỉ trả lời dựa trên đúng những tài liệu bạn cung cấp, kèm trích dẫn chính xác đến từng đoạn văn gốc?",
+    "answer": "Ứng dụng kiến trúc RAG (Retrieval-Augmented Generation) thông qua các công cụ như Gemini Notebook (NotebookLM) và Claude Projects: biến AI từ một 'chuyên gia biết nhiều nhưng hay bịa' thành một 'người thư ký trung thành' chỉ đọc kho tri thức của bạn, luôn chỉ rõ nguồn trích dẫn và tạo thành vòng lặp bồi đắp ngược lại cho Second Brain."
+  },
+  "concepts": [
+    {
+      "id": "c5-rag-vs-llm",
+      "session": 5,
+      "term": "Bản chất RAG: 'Thư ký trung thành' đối lập với 'Chuyên gia hay bịa'",
+      "definition": "RAG (Retrieval-Augmented Generation - Tạo sinh tăng cường bằng truy xuất) là kiến trúc buộc AI phải tìm kiếm các đoạn văn bản liên quan trực tiếp trong kho tài liệu do người dùng nạp vào trước, rồi mới dùng các đoạn văn đó làm căn cứ để tổng hợp câu trả lời.",
+      "key_points": [
+        "<strong>LLM thuần túy (Chuyên gia đàm đạo):</strong> Trả lời dựa trên trí nhớ xác suất từ dữ liệu huấn luyện tổng quát -> Không chỉ được số trang gốc -> Rất dễ bịa (hallucinate) khi hỏi chi tiết cụ thể.",
+        "<strong>Hệ thống RAG - Gemini Notebook / NotebookLM (Thư ký trung thành):</strong> Chỉ làm việc trên các nguồn (Sources) bạn tải lên -> Mọi câu trả lời đều đính kèm nút trích dẫn (Citation) nhảy thẳng về đúng đoạn văn trong tài liệu gốc -> Sẵn sàng trả lời 'Tài liệu không đề cập' khi thông tin không có trong nguồn.",
+        "<strong>Ứng dụng cốt lõi:</strong> Dùng LLM thuần để mở rộng góc nhìn và brainstorm; dùng RAG (Gemini Notebook) khi cần độ chính xác tuyệt đối trên giáo trình, văn bản pháp luật và bài báo khoa học."
+      ],
+      "case_study": {
+        "title": "Tra cứu quy chế tín dụng trên ChatGPT thuần vs Gemini Notebook",
+        "context": "Cùng hỏi về điều kiện miễn giảm lãi vay theo một quy định cụ thể: ChatGPT thuần tự suy diễn ra mức giảm 2%/năm; trong khi Gemini Notebook (đã nạp file PDF quy định thật) chỉ rõ trang 14, khoản 3 và trích nguyên văn điều kiện áp dụng.",
+        "analysis": "Khả năng neo vào nguồn (Grounding) của RAG giúp giảm thiểu rủi ro bịa thông tin xuống mức thấp nhất.",
+        "lesson_learned": "Khi làm việc với tài liệu học thuật và nghiệp vụ, luôn ưu tiên kiến trúc RAG."
+      },
+      "related_concepts": [
+        "c5-vong-lap-sb-rag",
+        "c5-gioi-han-rag"
+      ]
+    },
+    {
+      "id": "c5-vong-lap-sb-rag",
+      "session": 5,
+      "term": "Vòng lặp cộng hưởng: Second Brain <-> RAG AI",
+      "definition": "Quy trình kết nối hai chiều giữa kho Ghi chú nguyên tử (Second Brain) của con người và hệ thống truy vấn RAG (Gemini Notebook / Claude Projects) để không ngừng nâng cấp chất lượng tri thức.",
+      "key_points": [
+        "<strong>Chiều đi (Second Brain -> RAG):</strong> Bạn nạp các bài báo PDF đã chọn lọc CÙNG VỚI các file Atomic Notes do chính bạn viết vào Gemini Notebook. Nhờ đó, AI không chỉ đọc tài liệu thô mà còn hiểu được góc nhìn và các luận điểm riêng của bạn.",
+        "<strong>Truy vấn chéo đa tài liệu (Cross-Document Querying):</strong> Đặt câu hỏi yêu cầu RAG đối chiếu: <em>'So sánh phương pháp đo lường rủi ro giữa Bài báo A, Bài báo B và Ghi chú cá nhân của tôi; chỉ rõ điểm đồng thuận và mâu thuẫn kèm trích dẫn.'</em>",
+        "<strong>Chiều về (RAG -> Second Brain):</strong> Sau khi kiểm tra các đoạn trích dẫn gốc mà Gemini Notebook chỉ ra, bạn chắt lọc phát hiện mới và tự tay viết thành các Atomic Notes mới lưu về Second Brain."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-rag-vs-llm"
+      ]
+    },
+    {
+      "id": "c5-gioi-han-rag",
+      "session": 5,
+      "term": "Giới hạn của RAG: 'Rác nạp vào -> Rác có trích dẫn đi ra'",
+      "definition": "Nhận thức phản biện quan trọng: RAG chỉ đảm bảo câu trả lời trung thành với tài liệu được nạp vào, chứ không thể biến một tài liệu sai lệch hoặc kém chất lượng thành sự thật khoa học.",
+      "key_points": [
+        "<strong>Grounded Garbage (Rác có trích dẫn):</strong> Nếu bạn tải lên Gemini Notebook một bài báo từ tạp chí săn mồi (predatory journal) hoặc một báo cáo có số liệu sai, Gemini Notebook sẽ trích dẫn rất chính xác cái số liệu sai đó!",
+        "<strong>Diễn giải lệch ngữ cảnh:</strong> Đôi khi RAG vẫn có thể ghép hai đoạn văn ở hai trang khác nhau dẫn đến tóm tắt chưa trọn vẹn bối cảnh. Vì vậy, <em>luôn phải bấm vào con số trích dẫn</em> để đọc đoạn văn gốc xung quanh nó.",
+        "<strong>Kết nối sang Module 3:</strong> Để RAG phát huy sức mạnh, bước đầu tiên bắt buộc phải là kỹ năng <em>Tìm nguồn học thuật thật và Kiểm chứng chất lượng nguồn</em>."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c5-rag-vs-llm"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận biết cơ chế RAG, vai trò của Gemini Notebook và giới hạn của hệ thống.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c5-q1",
+          "type": "mc",
+          "concept_ref": "c5-rag-vs-llm",
+          "question": "Điểm khác biệt cốt lõi nhất của công cụ ứng dụng kiến trúc RAG như Gemini Notebook (NotebookLM) so với Chatbot tổng quát thông thường là gì?",
+          "options": [
+            "A. Gemini Notebook chỉ trả lời dựa trên tập tài liệu nguồn do chính người dùng tải lên và luôn đính kèm trích dẫn trỏ về đúng đoạn văn gốc trong tài liệu đó",
+            "B. Gemini Notebook có thể tự động làm giả số liệu khảo sát",
+            "C. Gemini Notebook không cần tài liệu đầu vào vẫn tự biết mọi thứ",
+            "D. Gemini Notebook chỉ dùng để chỉnh sửa ảnh"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c5-q2",
+          "type": "mc",
+          "concept_ref": "c5-rag-vs-llm",
+          "question": "Trong ẩn dụ sư phạm của môn học, nếu Chatbot LLM thuần túy giống như một 'Chuyên gia biết rộng nhưng đôi khi hay bịa', thì hệ thống RAG như Gemini Notebook đóng vai trò như ai?",
+          "options": [
+            "A. Một người thư ký trung thành: chỉ đọc đúng các hồ sơ bạn giao trên bàn và luôn chỉ rõ thông tin nằm ở trang nào, dòng nào",
+            "B. Một nhà tiên tri dự đoán tương lai không cần dữ liệu",
+            "C. Một tác giả đứng tên thay cho bạn trên bài báo",
+            "D. Một công cụ tìm kiếm mạng xã hội"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c5-q3",
+          "type": "mc",
+          "concept_ref": "c5-vong-lap-sb-rag",
+          "question": "Khi thực hiện 'Truy vấn chéo đa tài liệu' trên Gemini Notebook cho Đề án nhóm, thao tác nào sau đây khai thác tốt nhất sức mạnh của công cụ?",
+          "options": [
+            "A. Chỉ tải lên 1 trang giấy trắng",
+            "B. Tải lên cùng lúc 5-10 bài báo khoa học thật và các Atomic Notes của nhóm, sau đó yêu cầu AI lập bảng so sánh điểm giống/khác nhau về phương pháp và kết quả kèm trích dẫn nguồn",
+            "C. Hỏi AI về dự báo thời tiết ngày mai",
+            "D. Nhờ AI tìm tài liệu mới ngoài Internet mà không nạp nguồn nào"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c5-q4",
+          "type": "mc",
+          "concept_ref": "c5-gioi-han-rag",
+          "question": "Khái niệm 'Grounded Garbage' (Rác có trích dẫn) trong hệ thống RAG cảnh báo người học về rủi ro nào?",
+          "options": [
+            "A. Hệ thống RAG tự động xóa file PDF của người dùng",
+            "B. Nếu tài liệu bạn nạp vào RAG ngay từ đầu là bài báo giả hoặc có số liệu rác, thì RAG sẽ trích dẫn cực kỳ chính xác cái thông tin sai lệch đó",
+            "C. Hệ thống RAG không đọc được tiếng Việt",
+            "D. Hệ thống RAG luôn bịa nguồn bên ngoài"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân tích quy trình kết hợp Second Brain với RAG và kiểm tra trích dẫn.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c5-q1",
+          "type": "mc",
+          "concept_ref": "c5-vong-lap-sb-rag",
+          "question": "Tại sao trong vòng lặp Second Brain <-> RAG, bạn nên nạp cả các file Atomic Notes do chính bạn viết vào cùng với các bài báo PDF gốc?",
+          "options": [
+            "A. Để giúp AI đối chiếu được giữa dữ liệu của các bài báo gốc với chính những ý tưởng, giả thuyết và cấu trúc lập luận cá nhân mà bạn đã chắt lọc trong Second Brain",
+            "B. Để làm cho dung lượng bộ nhớ nặng hơn",
+            "C. Vì Gemini Notebook bắt buộc phải có file ghi chú mới cho phép mở file PDF",
+            "D. Để AI tự động xóa các bài báo PDF đi"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c5-q2",
+          "type": "mc",
+          "concept_ref": "c5-gioi-han-rag",
+          "question": "Ngay cả khi Gemini Notebook đã hiển thị con số trích dẫn [1], [2] ở cuối câu trả lời, người học nghiêm túc vẫn cần thực hiện thao tác nào tiếp theo?",
+          "options": [
+            "A. Copy luôn câu trả lời đó vào báo cáo mà không cần xem lại",
+            "B. Bấm trực tiếp vào con số trích dẫn [1], [2] để đọc đoạn văn gốc được tô sáng trong tài liệu, kiểm tra xem AI có tóm tắt đúng ngữ cảnh của tác giả hay không",
+            "C. Xóa các con số trích dẫn đi rồi nộp bài",
+            "D. Không cần làm gì thêm vì RAG đúng tuyệt đối 100% trong mọi trường hợp"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c5-q3",
+          "type": "mc",
+          "concept_ref": "c5-rag-vs-llm",
+          "question": "Tình huống nào sau đây bạn NÊN dùng Gemini Notebook (RAG) thay vì dùng một cửa sổ chat AI tổng quát không đính kèm tài liệu?",
+          "options": [
+            "A. Khi muốn AI nghĩ ra 10 tên slogan vui nhộn cho câu lạc bộ sinh viên",
+            "B. Khi cần đối chiếu chính xác các điều khoản trong Thông tư 49/2026/TT-BGDĐT và 5 bài báo khoa học PDF đã tải về máy để viết báo cáo Đề án",
+            "C. Khi muốn trò chuyện giải trí cuối tuần",
+            "D. Khi chưa có bất kỳ tài liệu nào và chỉ muốn nảy ý tưởng từ khóa ban đầu"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c5-q4",
+          "type": "mc",
+          "concept_ref": "c5-vong-lap-sb-rag",
+          "question": "Tính năng Audio Overview hoặc Study Guide trên Gemini Notebook hỗ trợ gì cho quá trình học tập của sinh viên?",
+          "options": [
+            "A. Chuyển hóa nội dung từ chính các tài liệu chuẩn bạn đã nạp thành bộ câu hỏi ôn tập, bảng thuật ngữ hoặc đoạn hội thoại âm thanh để bạn ôn bài đa giác quan và tự kiểm tra (Active Recall)",
+            "B. Tự động nộp bài thi cuối kỳ thay cho sinh viên",
+            "C. Thay thế hoàn toàn việc đọc tài liệu gốc",
+            "D. Tự động tải thêm tài liệu chưa kiểm chứng từ mạng xã hội vào bài"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Thiết lập kho RAG và hoàn thiện Mảnh ghép 2 cho Đề án cuối khóa.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c5-q1",
+          "type": "mc",
+          "concept_ref": "c5-vong-lap-sb-rag",
+          "question": "Để hoàn thành Mảnh ghép 2 của Đề án cuối khóa ở Buổi 5, nhóm sinh viên cần chứng minh quy trình kết nối Second Brain và RAG như thế nào?",
+          "options": [
+            "A. Chỉ cần chụp màn hình trang chủ Google",
+            "B. Thiết lập cấu trúc PARA của dự án, mỗi thành viên nạp các tài liệu chuyên ngành đã chọn lọc cùng các Atomic Notes cá nhân vào một Notebook chung, thực hiện truy vấn đối chiếu đa nguồn có trích dẫn và đúc kết thành các Atomic Notes tổng hợp mới",
+            "C. Copy nguyên một bài báo tiếng Anh dán vào Word rồi nộp",
+            "D. Nhờ AI tự tạo ra 10 file PDF giả để nạp vào Notebook"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c5-q2",
+          "type": "mc",
+          "concept_ref": "c5-gioi-han-rag",
+          "question": "Khi bạn hỏi Gemini Notebook một câu hỏi mà cả 5 tài liệu PDF bạn tải lên đều không hề đề cập, phản hồi chuẩn mực của hệ thống RAG là gì và bạn nên làm gì?",
+          "options": [
+            "A. Hệ thống báo rằng thông tin không có trong các nguồn được cung cấp; lúc này bạn biết mình đang thiếu hụt tài liệu ở khía cạnh đó và cần đi tìm thêm bài báo khoa học thật từ Semantic Scholar/Elicit để bổ sung vào kho nguồn",
+            "B. Ép hệ thống phải tự bịa ra câu trả lời bằng mọi giá",
+            "C. Tự viết đại một con số không có nguồn vào báo cáo",
+            "D. Bỏ luôn đề tài đang làm"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c5-essay1",
+          "type": "essay",
+          "concept_ref": "c5-vong-lap-sb-rag",
+          "question": "Hãy mô tả cấu trúc Kho tri thức RAG (trên Gemini Notebook hoặc Claude Project) mà nhóm bạn đã dựng cho Đề án cuối khóa (Mảnh ghép 2): Bạn đã nạp vào đó những nguồn tài liệu nào? Hãy ghi lại 01 câu truy vấn chéo đa tài liệu (Cross-document prompt) mà nhóm đã chạy thử và phát hiện thú vị nhất (kèm nguồn trích dẫn cụ thể) mà nhóm thu được từ câu truy vấn đó.",
+          "rubric": "Liệt kê rõ các nguồn tài liệu thật và Atomic Notes đã nạp vào kho RAG của nhóm (30%) · Câu truy vấn chéo đa tài liệu được thiết kế sắc bén, yêu cầu đối chiếu và trích dẫn rõ ràng (35%) · Trình bày được phát hiện thực tế kèm vị trí trích dẫn đã kiểm tra lại trên bản gốc (35%)",
+          "max_words": 350
+        }
+      ]
+    }
+  }
+}

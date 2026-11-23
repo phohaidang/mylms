@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 6: Quy trình NCKH với AI (Bước 1 & 2) - Tìm nguồn thật & 'Soi 3 phút' — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 3: ỨNG DỤNG AI TRONG NGHIÊN CỨU KHOA HỌC & KIỂM CHỨNG</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO4</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 6: Quy trình NCKH với AI (Bước 1 & 2) - Tìm nguồn thật & 'Soi 3 phút'</h1>
+      <p class="subtitle">Quy tắc 'Nguồn thật trước, AI sau', Semantic Scholar/Elicit/Consensus, Prompt tóm tắt 7 mục và thực nghiệm 'Soi 3 phút' (Case Hemani 2026)</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Vận hành được bức tranh tổng thể <strong>Quy trình NCKH 4 bước có AI đồng hành (Tìm -> Đọc -> Tổng hợp -> Viết)</strong> với kỷ luật Kiểm chứng xuyên suốt cả 4 bước (CLO4).</li>
+      <li>Áp dụng được <strong>Phễu thu hẹp câu hỏi nghiên cứu</strong> và sử dụng đúng bộ 3 công cụ tìm nguồn học thuật thật: <strong>Semantic Scholar, Elicit, Consensus</strong> (hiểu đúng Consensus Meter và chuỗi 5 câu hỏi sau chữ Yes) (CLO4).</li>
+      <li>Sử dụng thành thạo <strong>Prompt tóm tắt bài báo khoa học 7 mục</strong> kèm chốt chặn <em>'Không suy đoán'</em> trên file PDF đính kèm (CLO4).</li>
+      <li>Thực hiện được kỹ năng <strong>'Soi bản tóm tắt trong 3 phút'</strong> (Đối chiếu số liệu - Truy chỗ AI thêm/thiếu bối cảnh - Hỏi ngược về hạn chế) để phát hiện cả lỗi suy diễn của AI (như vụ tự bịa <code>Pearson's R</code>) lẫn lỗi phương pháp của bài báo gốc (CLO4).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Bước vào giai đoạn làm nghiên cứu khoa học hoặc cơ sở lý luận cho Đề án ngành Ngân hàng - Kinh tế, sinh viên đứng trước hàng triệu bài báo học thuật bằng tiếng Anh. Để tiết kiệm thời gian, nhiều bạn nhờ AI tìm tài liệu rồi quăng file PDF bài báo cho AI tóm tắt và chép thẳng bảng tóm tắt đó vào bài làm.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Trong thực nghiệm trực tiếp tại buổi tọa đàm khoa học (với bài báo mẫu Hemani, 2026), ngay cả khi đã dùng Prompt chuẩn yêu cầu tóm tắt file PDF đính kèm, mô hình AI (DeepSeek) vẫn tự ý nâng cấp một kế hoạch tính toán Excel mơ hồ trong bài gốc thành thuật ngữ chuyên môn 'hệ số tương quan Pearson (Pearson's R)' dù chữ 'Pearson' xuất hiện đúng 0 lần trong toàn bộ bài báo! Hơn thế nữa, AI trích đúng con số cỡ mẫu '192 sinh viên' ở trang 4 nhưng không báo cho người đọc biết trang 3 chỉ ghi ước tính '150-200', cũng như không thể thay người đọc phán đoán việc bài báo chỉ ghi số xấp xỉ (~0.62) mà không có bảng hệ số hay p-value.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để tìm đúng nguồn học thuật thật và kiểm soát chặt chẽ bản tóm tắt của AI để không bao giờ bị đánh lừa bởi những chi tiết do AI tự suy diễn thêm hoặc từ chính một bài báo gốc kém chất lượng?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Tuân thủ kỷ luật 'Nguồn thật trước, AI sau': tìm bài trên kho dữ liệu học thuật thật (Semantic Scholar, Elicit, Consensus), dùng Prompt tóm tắt 7 mục có chốt chặn 'Không suy đoán', và bắt buộc thực hiện quy trình 'Soi bản tóm tắt trong 3 phút' (Đối chiếu số liệu - Truy chỗ AI thêm - Hỏi ngược về hạn chế).</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 6): Bắt tay vào viết phần Tổng quan nghiên cứu cho Đề án về Ngân hàng số, Minh tải một bài báo tiếng Anh (bài Hemani, 2026) lên AI để tóm tắt. Nhìn bảng tóm tắt 7 mục chuyên nghiệp có ghi 'Phương pháp: Tương quan Pearson (Pearson's R), mẫu 192 sinh viên, r ~ 0.62', Minh định chép ngay vào bài. Nhưng khi áp dụng kỹ thuật 'Soi 3 phút' của thầy, Minh mở file PDF gốc bấm Ctrl+F tìm chữ 'Pearson' thì kết quả trả về là... 0 lần xuất hiện! Minh bừng tỉnh: AI vừa tự ý nâng cấp một phép tính Excel mơ hồ trong một bài báo kém chất lượng thành thuật ngữ thống kê chuyên ngành nghe cực kỳ kêu!</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Khi bạn đọc một bản tóm tắt bài báo khoa học do AI xuất ra và thấy các con số (như 82%, r = 0.62) khớp y hệt trang 4 của bài báo gốc, bạn đã có thể yên tâm 100% để dùng con số đó làm bằng chứng khoa học chưa? Vì sao?</li>
+        <li>Nếu một bài báo gốc viết rất mơ hồ về phương pháp phân tích dữ liệu, tại sao AI lại có xu hướng 'tự điền thêm tên một phương pháp thống kê chuyên nghiệp' vào bản tóm tắt?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Quy trình NCKH 4 bước & Bước 1 (Tìm nguồn thật):</strong><br>• Bức tranh lớn: <strong>Tìm -> Đọc -> Tổng hợp -> Viết</strong> (Kiểm chứng xuyên suốt). Quy tắc số 1: <em>'Nguồn thật trước, AI sau'</em>.<br>• Phễu thu hẹp chủ đề mơ hồ thành câu hỏi nghiên cứu cụ thể.<br>• Thực hành chọn công cụ có kho nguồn thật: <strong>Semantic Scholar</strong> (>200 triệu bài), <strong>Elicit</strong> (bảng trích xuất theo cột), <strong>Consensus</strong> (hiểu đúng Đồng hồ đo Yes/No thực nghiệm và chuỗi 5 câu hỏi sau chữ Yes).</td><td>Thực hành đi qua Phễu thu hẹp cho đề tài Đề án nhóm; tra cứu trực tiếp trên Semantic Scholar, Elicit và Consensus.</td><td>Slide Buổi 6; Semantic Scholar, Elicit, Consensus</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Bước 2 (Đọc với AI) & Giải phẫu Prompt Tóm tắt 7 mục:</strong><br>• Nguyên tắc bất di bất dịch: Tải file PDF đầy đủ lên AI (DeepSeek / Claude / Gemini Notebook), không gõ tên bài bắt AI nhớ lại.<br>• Giải phẫu Prompt 7 mục (Câu hỏi NC, Phương pháp, Mẫu, Kết quả, Hạn chế, Đóng góp, Điều cần kiểm tra lại) + Ràng buộc số trang + Chốt chặn <em>'Chỗ nào bài không nói, ghi không nêu trong bài, không suy đoán'</em>.</td><td>Lưu mẫu Prompt tóm tắt 7 mục vào Second Brain; tải thử 1 file PDF bài báo mẫu để chuẩn bị thực hành soi.</td><td>Mẫu Prompt Tóm tắt 7 mục</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Thực nghiệm 'Soi bản tóm tắt trong 3 phút' (Case study Hemani 2026):</strong><br>• Phát bài báo mẫu <em>Hemani (2026, IJSDR)</em> và bảng kết quả 7 mục của DeepSeek.<br>• Cả lớp cùng thực hiện 3 thao tác soi trực tiếp trên PDF gốc:<br>  1. <em>Soi 1 (Đối chiếu số liệu):</em> 82%, 41%, r ~ 0.62 khớp tr.4 nhưng bài gốc chỉ cho số xấp xỉ '~', thiếu bảng hệ số và thiếu p-value.<br>  2. <em>Soi 2 (Truy chỗ AI thêm & thiếu bối cảnh):</em> Số 192 ở Kết quả (tr.4) vs dự kiến 150-200 ở Phương pháp (tr.3); và phát hiện chấn động: chữ <strong>'Pearson' xuất hiện 0 lần</strong> trong bài gốc!<br>  3. <em>Soi 3 (Hỏi ngược về Hạn chế):</em> Chữ 'limitation' xuất hiện 0 lần; nhờ câu 'không suy đoán' mà AI tách bạch được phần bài không nêu và phần nhận xét của người đọc.</td><td>Mở trực tiếp file PDF Hemani (2026), bấm Ctrl+F kiểm chứng từng phát hiện; thảo luận về 2 tầng phê phán (soi lỗi của AI và soi chất lượng của chính bài báo).</td><td>PDF bài báo Hemani (2026) & Ảnh chụp bảng 7 mục DeepSeek</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Thực hành Tìm nguồn thật & Lập Biên bản 'Soi 3 phút' cho Đề án:</strong><br>• Mỗi thành viên trong nhóm tìm 3 bài báo khoa học thật (có PDF và DOI) cho Đề án nhóm, chọn 1 bài chạy Prompt 7 mục và lập Biên bản Soi 3 phút.<br>• Hoàn thành phản tư 4F và Quiz Buổi 6.</td><td>Tìm 3 bài báo thật/người; chạy tóm tắt 7 mục và điền Biên bản Soi 3 phút cho Đề án nhóm; làm Quiz Buổi 6 trên LMS.</td><td>LMS Hub (Quiz 6, Journal 6)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao loại lỗi AI tự thêm thuật ngữ chuyên môn (như tự thêm chữ 'Pearson's R' khi thấy ký hiệu r ~ 0.62) lại là loại lỗi nguy hiểm nhất đối với sinh viên làm nghiên cứu?</li>
+      <li>Sự khác biệt giữa 'bản tóm tắt trung thực với bài báo' và 'bài báo có số liệu đáng tin cậy' là gì? Tại sao người nghiên cứu phải kiểm tra cả hai?</li>
+      <li>Nếu trong Prompt tóm tắt 7 mục bạn quên viết câu 'Chỗ nào bài không nói, ghi không nêu trong bài, không suy đoán', AI sẽ làm gì ở ô số 5 (Hạn chế của nghiên cứu) đối với một bài báo không hề có mục Limitations?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 6 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 6</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 6 theo khung 4F)</strong>: Ghi lại bài học lớn nhất của bạn từ màn thực nghiệm 'Soi 3 phút' bài báo Hemani (2026).</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Chuẩn bị cho Buổi 7 - Kiểm chứng 5 bước & Zotero):</h3>
+        <ul>
+          <li>Mỗi thành viên hoàn thành tìm kiếm tối thiểu <strong>03 bài báo/nguồn tài liệu thật</strong> cho Đề án (tổng cộng nhóm có 9 - 12 nguồn) kèm ít nhất 02 Biên bản 'Soi 3 phút'.</li>
+          <li>Cài đặt sẵn phần mềm <strong>Zotero 8</strong> và tiện ích <strong>Zotero Connector</strong> trên trình duyệt máy tính cá nhân trước khi đến lớp Buổi 7.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Quy tắc số 1 trong nghiên cứu khoa học có AI đồng hành là gì?<br><em>Đáp:</em> Nguồn thật trước, AI sau: tìm trong kho tài liệu thật (Semantic Scholar, Elicit, Consensus), đọc có đối chiếu rồi mới nhờ AI dựng khung.</li>
+      <li><strong>Hỏi:</strong> Ba thao tác của quy trình 'Soi bản tóm tắt trong 3 phút' là gì?<br><em>Đáp:</em> (1) Đối chiếu số liệu với bảng/hình gốc, (2) Truy chỗ AI tự thêm hoặc thiếu bối cảnh, (3) Hỏi ngược về hạn chế (Limitations).</li>
+      <li><strong>Hỏi:</strong> Hai loại lỗi tinh vi của AI phát hiện được ở thao tác Soi 2 trong bài Hemani (2026) là gì?<br><em>Đáp:</em> Một là trích đúng chữ nhưng thiếu bối cảnh (cỡ mẫu thực tế 192 ở Kết quả vs dự kiến 150-200 ở Phương pháp); hai là tự suy diễn thêm thuật ngữ chuyên môn không có trong bài (Pearson's R).</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Buổi 6 là một trong những buổi tạo khoảnh khắc 'Aha!' mạnh nhất khóa học nhờ bài báo Hemani (2026). Hãy để sinh viên tự tay bấm Ctrl+F tìm chữ 'Pearson' và chữ 'limitation' trên file PDF để tự chứng nghiệm.</li>
+      <li>Nhắc sinh viên cài sẵn Zotero 8 ở nhà để Tiết 3 Buổi 7 thực hành trôi chảy.</li>
+    </ul>
+  </div>
+</body>
+</html>

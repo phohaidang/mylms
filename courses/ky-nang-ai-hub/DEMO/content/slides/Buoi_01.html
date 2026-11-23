@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 1: Bản chất AI & Tư duy người làm chủ — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <style>
+    :root {
+      --navy: #1B2558; --dark-navy: #111A40; --white: #FFFFFF; --off-white: #F5F6FA;
+      --red: #C62828; --light-red: #FFEBEE; --accent: #1565C0; --light-accent: #E3F2FD;
+      --gold: #F9A825; --green: #2E7D32; --light-green: #E8F5E9; --orange: #E65100;
+      --light-orange: #FFF3E0; --text-dark: #212121; --text-mid: #424242;
+      --text-light: #757575; --border: #E0E0E0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d122a; font-family: 'Calibri', 'Segoe UI', sans-serif; color: var(--text-dark);
+      height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .deck-viewport {
+      width: 1280px; height: 720px; position: relative; background: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6); border-radius: 6px; overflow: hidden; transform-origin: center center;
+    }
+    .slide { width: 1280px; height: 720px; position: absolute; top: 0; left: 0; display: none; flex-direction: column; background: var(--white); }
+    .slide.active { display: flex; }
+    .slide.navy-bg { background: var(--navy); color: var(--white); }
+    .gold-top-bar { width: 100%; height: 9px; background: var(--gold); flex-shrink: 0; }
+    .header-bar {
+      width: 100%; height: 64px; background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 52px;
+      font-family: Georgia, serif; font-size: 15.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; flex-shrink: 0;
+    }
+    .footer-bar {
+      width: 100%; height: 42px; background: var(--navy); color: #D0D5E8;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 52px; font-size: 13px; margin-top: auto; flex-shrink: 0;
+    }
+    .footer-bar .page-num { color: var(--gold); font-weight: 700; font-size: 14px; }
+    .slide-body { padding: 20px 52px 16px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    h1.page-title { font-family: Georgia, serif; font-size: 25px; color: var(--red); font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; }
+    .card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 3px 8px rgba(0,0,0,0.05); }
+    .card-header { padding: 10px 14px; color: var(--white); font-weight: 700; font-size: 14.5px; text-align: center; text-transform: uppercase; }
+    .card-content { padding: 14px 16px; font-size: 14px; line-height: 1.48; flex: 1; }
+    .card-content ul { padding-left: 18px; }
+    .card-content li { margin-bottom: 7px; }
+    .left-card { background: var(--off-white); border: 1px solid var(--border); border-left: 8px solid var(--navy); border-radius: 4px; padding: 12px 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .left-card h3 { font-size: 15px; margin-bottom: 6px; text-transform: uppercase; }
+    .left-card ul { padding-left: 18px; font-size: 13.6px; line-height: 1.45; }
+    .left-card li { margin-bottom: 5px; }
+    .banner { padding: 10px 18px; border-radius: 6px; margin-bottom: 12px; font-size: 14px; line-height: 1.42; text-align: center; font-weight: 600; }
+    table.acad-table { width: 100%; border-collapse: collapse; font-size: 13.2px; }
+    table.acad-table th { background: var(--navy); color: var(--white); padding: 9px 12px; text-align: left; font-weight: 700; }
+    table.acad-table td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: middle; line-height: 1.38; }
+    table.acad-table tr:nth-child(even) { background: var(--off-white); }
+    .controls-bar { margin-top: 10px; display: flex; align-items: center; gap: 14px; color: #cbd5e1; font-size: 13px; }
+    .controls-bar button { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .controls-bar button:hover { background: #334155; }
+  </style>
+</head>
+<body>
+<div class="deck-viewport" id="viewport">
+
+  <section class="slide navy-bg active">
+    <div class="gold-top-bar"></div>
+    <div style="padding: 44px 64px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div style="color: var(--gold); font-size: 17px; font-weight: 700; letter-spacing: 3px; margin-bottom: 6px;">TRƯỜNG ĐẠI HỌC NGÂN HÀNG TP. HỒ CHÍ MINH (HUB)</div>
+      <div style="color: #CBD5E1; font-size: 14.5px; letter-spacing: 2px; margin-bottom: 20px;">MODULE 1 (BUỔI 1 / 11) — BẢN CHẤT AI, PROMPT, CONTEXT & HARNESS</div>
+      <div style="width: 400px; height: 3px; background: var(--gold); margin: 0 auto 24px;"></div>
+      <h1 style="font-family: Georgia, serif; font-size: 34px; line-height: 1.35; color: var(--white); margin-bottom: 16px; white-space: pre-line;">BUỔI 1: BẢN CHẤT AI & TƯ DUY NGƯỜI LÀM CHỦ
+"AI LÀ TRỢ LÝ, BẠN LÀ CHỦ"</h1>
+      <div style="color: var(--gold); font-size: 18px; font-style: italic; margin-bottom: 32px;">Câu hỏi cốt lõi: Tại sao AI thông minh đến vậy mà nhiều khi vẫn tự tin nói nhảm?</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 960px; margin: 0 auto;"><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">THỜI LƯỢNG: 4 TIẾT (200 PHÚT)
+35% Tư duy & Demo - 65% Thực hành</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">CHUẨN ĐẦU RA: CLO1 & CLO3
+Cơ chế Xác suất & Phân vai Người - Máy</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">CỘT MỐC ĐỀ ÁN CUỐI KHÓA
+Lập nhóm 3-4 SV & Bảng phân vai số 1</div></div></div>
+    </div>
+    <div style="background: var(--dark-navy); padding: 16px 60px; text-align: center; font-size: 14.5px; color: #E2E8F0; border-top: 1px solid #2D3A7B;">
+      <strong>Giảng viên: ThS. Phó Hải Đăng</strong> &nbsp;|&nbsp; Khoa Hệ thống thông tin quản lý &nbsp;|&nbsp; Email: dangph@hub.edu.vn
+    </div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Buổi 1 — Mục tiêu & Lộ trình 200 phút</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">MỤC TIÊU HỌC TẬP & LỘ TRÌNH 4 TIẾT CỦA BUỔI 1</h1>
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;"><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#C62828;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">01</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 1 (50'): Cú sốc nhận thức & Khoảng cách kiểm chứng</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Story Spine nhân vật Minh (bài tiểu luận 6/10); Hai câu hỏi giơ tay; Bằng chứng thực nghiệm Topaz (The Lancet, 5/2026: 1/277 bài PubMed dính trích dẫn bịa).</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1B2558;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">02</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 2 (50'): Giải mã Hộp đen — AI không phải phép thuật, AI là xác suất</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Live Demo 'Bẫy AI nói nhảm'; Cơ chế dự đoán từ tiếp theo (Next-token Prediction); So sánh bản chất LLM vs Google Search vs Cơ sở dữ liệu.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1565C0;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">03</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 3 (50'): Hai cái bẫy nhận thức & Khung phân vai 'Việc nào giao - Việc nào giữ'</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Ảo tưởng trôi chảy (Fluency Illusion) & Lệ thuộc nhận thức (Cognitive Offloading); Bộ ba động từ: AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm; Bản đồ công cụ 2026.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#2E7D32;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">04</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 4 (50'): Thực hành Phân vai Đề án & Khóa chốt LMS Hub</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Lập nhóm Đề án (3-4 SV cùng ngành); Phân rã quy trình bài toán chuyên ngành; Viết Nhật ký Atomic Note phản tư 4F số 1 & làm Quiz Buổi 1.</div></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">2 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Story Spine & Khung SCQA</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CÂU CHUYỆN CỦA MINH (KỲ 1): BÀI TIỂU LUẬN 30 PHÚT VÀ CON ĐIỂM 6/10</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Bắt đầu từ trải nghiệm thật: Đã bao giờ bạn nộp một bài viết do AI hỗ trợ mà trong lòng thấp thỏm sợ thầy cô gọi lên hỏi?</div>
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">S & C — TÌNH HUỐNG VÀ CÚ VẤP CỦA MINH</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tình huống (Situation):</strong> Minh (SV năm 2 ngành Tài chính - Ngân hàng tại HUB) nhận đề tiểu luận. Minh mở ChatGPT gõ 2 dòng, sau 30 giây có ngay bài viết 1.500 chữ cực kỳ trôi chảy, có cả số liệu tỷ lệ nợ xấu.</li><li><strong style="color:var(--navy);">Biến cố (Complication):</strong> Tuần sau giảng viên gọi Minh lên hỏi đúng 2 câu: (1) 'Số liệu nợ xấu trang 2 em lấy từ báo cáo nào?' và (2) 'Tại sao em chọn mô hình này?'. Minh đứng hình không trả lời được!</li><li><strong style="color:var(--navy);">Sự thật phũ phàng:</strong> Con số đó do AI tự bịa ra (Hallucination), còn kiến thức bài viết chưa bao giờ đi qua bộ não của Minh.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">Q & A — CÂU HỎI MỞ ĐẦU HÀNH TRÌNH 11 BUỔI</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu hỏi 1:</strong> Nếu AI không thực sự 'biết' những gì nó nói, làm sao để dùng AI mà KHÔNG bị nó dắt mũi?</li><li><strong style="color:var(--navy);">Câu hỏi 2:</strong> Nếu bạn để AI làm thay quá nhiều việc, thì sau 4 năm đại học, cái gì còn lại là năng lực của chính bạn?</li><li><strong style="color:var(--navy);">Định hướng giải quyết (Answer):</strong> Phải hiểu tận gốc cơ chế xác suất của LLM, nắm vững quy tắc phân vai 'AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm' và xây dựng Bộ Não Thứ Hai (Second Brain).</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">3 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Khảo sát & Khoảng cách nhận thức</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">HAI CÂU HỎI GIƠ TAY: KHOẢNG CÁCH GIỮA 'DÙNG AI' VÀ 'KIỂM CHỨNG AI'</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">CÂU HỎI 1: AI ĐÃ TỪNG DÙNG AI LÀM BÀI?</div><div class="card-content"><div style="font-family:Georgia,serif;font-size:23px;font-weight:700;color:#1565C0;text-align:center;margin:4px 0 10px;">~ 95% - 100% Cánh tay giơ lên</div><ul><li><strong style="color:var(--navy);">Thực trạng phổ biến:</strong> Hầu hết sinh viên đã dùng ChatGPT, Claude, Gemini hoặc DeepSeek để tìm tài liệu, tóm tắt giáo trình, viết tiểu luận hoặc giải bài tập.</li><li><strong style="color:var(--navy);">Tâm lý tự nhiên:</strong> Khi thấy AI trả lời bằng giọng văn học thuật trang trọng, chia mục rõ ràng, có tên tác giả và năm xuất bản, con người có xu hướng mặc định tin đó là sự thật.</li><li><strong style="color:var(--navy);">Lợi ích ngắn hạn:</strong> Tiết kiệm thời gian trước mắt, tạo cảm giác hoàn thành công việc rất nhanh.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CÂU HỎI 2: AI ĐÃ KIỂM TRA TỪNG NGUỒN AI ĐƯA RA?</div><div class="card-content"><div style="font-family:Georgia,serif;font-size:23px;font-weight:700;color:#C62828;text-align:center;margin:4px 0 10px;">< 10% Cánh tay còn giữ nguyên</div><ul><li><strong style="color:var(--navy);">Khoảng cách nguy hiểm:</strong> Hơn 90% người dùng chép hoặc tin kết quả của AI mà KHÔNG mở tài liệu gốc để kiểm tra xem bài báo đó có tồn tại hay không, số liệu có khớp bảng gốc không.</li><li><strong style="color:var(--navy);">Hậu quả trực tiếp:</strong> Đưa tài liệu tham khảo giả (fabricated citations) và số liệu bịa vào bài tiểu luận, đề tài nghiên cứu khoa học và khóa luận tốt nghiệp.</li><li><strong style="color:var(--navy);">Mục tiêu của môn học:</strong> Xóa bỏ hoàn toàn khoảng cách giữa Câu hỏi 1 và Câu hỏi 2 bằng kỷ luật và công cụ kiểm chứng.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">4 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Bằng chứng thực nghiệm từ The Lancet (5/2026)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">1/277 BÀI BÁO KHOA HỌC TRÊN PUBMED TRÍCH DẪN TÀI LIỆU KHÔNG TỒN TẠI!</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Nguồn kiểm chứng: Topaz và cộng sự, thư gửi tạp chí y khoa The Lancet (Tập 407, tr.1779-1781, tháng 5/2026), DOI: 10.1016/S0140-6736(26)00603-3</div>
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">SỐ LIỆU TĂNG GẤP 10 LẦN TỪ 2023 ĐẾN ĐẦU 2026</div><div class="card-content"><div style="font-family:Georgia,serif;font-size:23px;font-weight:700;color:#C62828;text-align:center;margin:4px 0 10px;">2023: 1/2.828  -->  2026: 1/277</div><ul><li><strong style="color:var(--navy);">Quy mô kiểm tra khổng lồ:</strong> Nhóm Topaz quét gần 2,5 triệu bài báo trên PubMed, xác minh khoảng 97 triệu tài liệu tham khảo.</li><li><strong style="color:var(--navy);">Phát hiện chấn động:</strong> Tìm thấy 4.046 tài liệu tham khảo hoàn toàn bịa nằm trong 2.810 bài báo khoa học đã xuất bản.</li><li><strong style="color:var(--navy);">Đà tăng theo từng năm:</strong> Năm 2023 là 1/2.828 bài -> Năm 2025 là 1/458 bài -> 7 tuần đầu năm 2026 vọt lên 1/277 bài!</li><li><strong style="color:var(--navy);">Chưa bị xử lý:</strong> Hơn 98,4% số bài chứa trích dẫn bịa này vẫn chưa có hành động thu hồi từ nhà xuất bản tại thời điểm kiểm tra.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">BÀI HỌC VỀ ĐỌC PHÊ PHÁN (CRITICAL READING)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ngay cả nghiên cứu về lỗi AI cũng cần đọc kỹ:</strong> Đại diện Cochrane (Ella Flemyng, qua Retraction Watch) nhận xét phương pháp dùng công cụ tự động kiểm tra của nhóm Topaz cũng cần công bố thêm chi tiết.</li><li><strong style="color:var(--navy);">Phần nổi của tảng băng chìm:</strong> Nhà nghiên cứu đạo đức khoa học Mohammad Hosseini (ĐH Northwestern) chỉ ra: trích dẫn bịa hoàn toàn mới chỉ là phần dễ bắt nhất!</li><li><strong style="color:var(--navy);">Nguy cơ lớn hơn:</strong> Đó là những trích dẫn CÓ THẬT trên Google Scholar nhưng bị AI diễn giải sai lệch, thiên lệch hoặc gán cho một ý mà tác giả bài gốc không hề nói.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">5 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Giải mã Hộp đen của AI tạo sinh</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">AI TẠO SINH (LLM) KHÔNG PHẢI PHÉP THUẬT — NÓ LÀ 'CỖ MÁY ĐOÁN CHỮ'</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">TRÒ CHƠI ĐIỀN VÀO CHỖ TRỐNG & XÁC SUẤT TOKEN</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ví dụ trực quan:</strong> Khi nghe câu: 'Ngân hàng Nhà nước quyết định điều chỉnh lãi suất...', từ tiếp theo bạn đoán là gì? ('điều hành' = 45%, 'tái cấp vốn' = 30%, 'cơ bản' = 15%, còn 'cá heo' = 0,00001%).</li><li><strong style="color:var(--navy);">Cơ chế Next-Token Prediction:</strong> Mô hình ngôn ngữ lớn (Large Language Model) được huấn luyện trên hàng tỷ văn bản để tính phân phối xác suất xem từ (token) nào có khả năng xuất hiện tiếp theo cao nhất.</li><li><strong style="color:var(--navy);">Bản chất cốt lõi:</strong> LLM KHÔNG 'hiểu' ý nghĩa kinh tế hay pháp lý của câu chữ như con người; nó chỉ ghép chuỗi từ nghe hợp lý nhất về mặt thống kê ngôn ngữ.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">HAI HỆ QUẢ TẤT YẾU TỪ CƠ CHẾ XÁC SUẤT</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hệ quả 1 — Trôi chảy KHÔNG đồng nghĩa với Đúng:</strong> Vì ưu tiên câu chữ mượt mà hợp ngữ cảnh, AI có thể ghép một số hiệu thông tư giả hoặc một hệ số hồi quy bịa vào câu văn nghe cực kỳ thuyết phục.</li><li><strong style="color:var(--navy);">Hệ quả 2 — Rác vào thì Rác ra (Garbage In, Garbage Out):</strong> Khi bạn đưa vào một câu hỏi mơ hồ, không gian xác suất bị phân tán rộng -> AI chỉ trả về mức trung bình cộng nhạt nhẽo của dữ liệu Internet.</li><li><strong style="color:var(--navy);">Muốn đầu ra sắc bén:</strong> Người dùng phải kiểm soát chặt ngữ cảnh (Context) và bộ khung điều phối (Harness) đưa vào.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">6 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Phân biệt bản chất công nghệ</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">SO SÁNH: CÔNG CỤ TÌM KIẾM (GOOGLE) vs AI TẠO SINH (LLM) vs RAG AI</h1>
+      
+      <table class="acad-table"><thead><tr><th>Tiêu chí so sánh</th><th>Công cụ Tìm kiếm (Google / Scholar)</th><th>Chatbot LLM thuần (ChatGPT / Claude)</th><th>Hệ thống RAG (Gemini Notebook)</th></tr></thead><tbody><tr><td><strong>Cơ chế cốt lõi</strong></td><td>Tra cứu chỉ mục (Index) và trả về danh sách đường dẫn (links) tới trang web có sẵn.</td><td>Tạo sinh (Generate) văn bản mới từng từ một dựa trên xác suất ngôn ngữ đã huấn luyện.</td><td>Truy xuất đoạn văn từ tài liệu BẠN tải lên trước, rồi mới tổng hợp câu trả lời kèm trích dẫn.</td></tr><tr><td><strong>Nguồn dữ liệu</strong></td><td>Các trang web, bài báo đã đăng tải công khai trên Internet.</td><td>Trí nhớ tham số nén từ tập dữ liệu huấn luyện (có thể mờ hoặc thiếu ở đề tài hẹp).</td><td>Chỉ gói gọn trong các file PDF / Docs / Ghi chú chuẩn mà người dùng nạp vào kho.</td></tr><tr><td><strong>Nguy cơ bịa nguồn (Hallucination)</strong></td><td>Thấp (dẫn tới trang thật, nhưng người đọc phải tự đánh giá uy tín của trang web đó).</td><td>RẤT CAO khi hỏi trích dẫn học thuật, số hiệu văn bản pháp quy hoặc số liệu chi tiết.</td><td>Rất thấp về nguồn bên ngoài; luôn có nút trích dẫn nhảy thẳng về đúng dòng trong bài gốc.</td></tr><tr><td><strong>Ứng dụng đúng trong học tập & NCKH</strong></td><td>Tìm bài báo gốc có thật, kiểm tra tên tác giả, tạp chí và mã DOI.</td><td>Brainstorm ý tưởng, giải thích khái niệm khó, phản biện dàn ý, rà soát diễn đạt.</td><td>Học sâu giáo trình, đối chiếu nhiều bài báo PDF đã kiểm chứng, quản trị Second Brain.</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">7 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Live Demo & Giải phẫu Hallucination</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">LIVE DEMO: TẠI SAO AI TỰ TIN BỊA RA MỘT THÔNG TƯ KHÔNG HỀ TỒN TẠI?</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Thử nghiệm trực tiếp trên màn hình lớp học: Hỏi AI về một văn bản hoặc một cuốn sách do chính giảng viên vừa đặt tên bịa 100%!</div>
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">CÂU HỎI BẪY ĐƯA VÀO CHATBOT</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Prompt thử nghiệm 1 (Ngành Ngân hàng):</strong> 'Hãy tóm tắt nội dung chính của Thông tư 88/2025/TT-NHNN về quy định tỷ lệ dự trữ rủi ro cho vay tín dụng xanh đối với sinh viên khởi nghiệp.' (Văn bản hoàn toàn không tồn tại!).</li><li><strong style="color:var(--navy);">Prompt thử nghiệm 2 (Ngành Marketing):</strong> 'Hãy giới thiệu cuốn sách Marketing Ngân hàng Số hậu AI của tác giả Nguyễn Hoàng Tâm xuất bản năm 2024 tại NXB Tài chính.' (Sách và tác giả hoàn toàn bịa!).</li><li><strong style="color:var(--navy);">Quan sát phản ứng của AI:</strong> Trong nhiều trường hợp, nếu không bật chế độ tra cứu web nghiêm ngặt, AI sẽ tự tin liệt kê đủ Chương 1, Chương 2, Điều 5, mức lãi suất 4,5%/năm như thật!</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">GIẢI PHẪU NGUYÊN NHÂN & BÀI HỌC XƯƠNG MÁU</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tại sao AI không nói 'Tôi không biết'?</strong> Vì trong quá trình huấn luyện, mô hình được thưởng khi tạo ra câu trả lời hoàn chỉnh khớp với cấu trúc yêu cầu của người hỏi.</li><li><strong style="color:var(--navy);">Hiện tượng 'Ghép xác ngôn ngữ':</strong> AI thấy cụm 'Thông tư... TT-NHNN' và 'tín dụng xanh' nên lập tức lấy các điều khoản quen thuộc của các thông tư ngân hàng khác ghép lại thành một văn bản giả hoàn chỉnh.</li><li><strong style="color:var(--navy);">Nguyên tắc bất di bất dịch:</strong> Tuyệt đối KHÔNG dùng giọng điệu tự tin của AI làm thước đo sự thật. Mọi số hiệu văn bản, trích dẫn và số liệu đều phải kiểm tra tại nguồn gốc độc lập.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">8 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Giới hạn của AI tạo sinh hiện nay</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">4 VÙNG GIỚI HẠN MÀ AI TẠO SINH KHÔNG LÀM TỐT (HOẶC DỄ SAI NHẤT)</h1>
+      
+      <div class="grid-2" style="gap:16px;"><div class="left-card" style="background:#FFEBEE;border-left-color:#C62828;"><h3 style="color:#C62828;">1. ĐỀ TÀI CHUYÊN SÂU & ÍT NGƯỜI NGHIÊN CỨU</h3><ul><li><strong style="color:var(--navy);">Quy luật Linardon (2025):</strong> Ở chủ đề ít dữ liệu huấn luyện, xác suất AI bịa trích dẫn vọt lên 28% - 29%.</li><li><strong style="color:var(--navy);">Bối cảnh địa phương Việt Nam:</strong> Các quy định nội bộ, số liệu thị trường ngách tại Việt Nam rất dễ bị AI lấy râu ông nọ chắp cằm bà kia.</li></ul></div><div class="left-card" style="background:#E3F2FD;border-left-color:#1565C0;"><h3 style="color:#1565C0;">2. TRÍCH DẪN HỌC THUẬT & MÃ DOI CHÍNH XÁC</h3><ul><li><strong style="color:var(--navy);">Cơ chế nén có hao hụt:</strong> LLM không lưu nguyên văn từng dòng DOI như cơ sở dữ liệu Crossref.</li><li><strong style="color:var(--navy);">Hệ quả:</strong> Khi được yêu cầu xuất danh mục tài liệu tham khảo, AI sẽ sinh ra mã DOI đúng định dạng '10.1016/...' nhưng trỏ vào hư không hoặc trỏ sang bài báo khác.</li></ul></div><div class="left-card" style="background:#FFF3E0;border-left-color:#E65100;"><h3 style="color:#E65100;">3. PHÁN ĐOÁN GIÁ TRỊ KHOA HỌC CỦA DỮ LIỆU</h3><ul><li><strong style="color:var(--navy);">Tóm tắt đúng chữ # Đáng tin:</strong> AI có thể trích đúng con số từ một bài báo rác hoặc tạp chí săn mồi mà không hề biết phương pháp thu thập số liệu đó bị sai.</li><li><strong style="color:var(--navy);">Trách nhiệm thẩm định:</strong> Đánh giá độ tin cậy của nguồn luôn là việc của con người.</li></ul></div><div class="left-card" style="background:#E8F5E9;border-left-color:#2E7D32;"><h3 style="color:#2E7D32;">4. TRẢI NGHIỆM SỐNG, ĐẠO ĐỨC & TRÁCH NHIỆM PHÁP LÝ</h3><ul><li><strong style="color:var(--navy);">AI là xác suất, Con người là sự tồn tại:</strong> AI không có trải nghiệm thực tế tại doanh nghiệp/ngân hàng, không có lương tâm nghề nghiệp.</li><li><strong style="color:var(--navy);">Không có tư cách pháp nhân:</strong> AI không bao giờ chịu phạt thay bạn trước hội đồng kỷ luật hay tòa án.</li></ul></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">9 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Hai cái bẫy nhận thức trong học tập</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CẢNH GIÁC: ẢO TƯỞNG TRÔI CHẢY & LỆ THUỘC NHẬN THỨC</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFF3E0;border-color:#E65100;"><div class="card-header" style="background:#E65100;">BẪY 1: ẢO TƯỞNG TRÔI CHẢY (FLUENCY ILLUSION)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Định nghĩa khoa học thần kinh:</strong> Là sự nhầm lẫn tai hại giữa việc 'đọc một văn bản thấy trôi chảy, dễ hiểu' với việc 'não bộ của mình đã thực sự nắm vững kiến thức đó'.</li><li><strong style="color:var(--navy);">Tại sao học không gian khổ thì chưa tiêu hóa?</strong> Khi AI tóm tắt sẵn mọi thứ thật mượt mà, não bộ bạn ở trạng thái tiêu thụ thụ động (zero friction), không hề tạo ra liên kết nơ-ron mới.</li><li><strong style="color:var(--navy);">Dấu hiệu nhận biết:</strong> Lúc nhìn màn hình AI thì gật gù 'hay quá, hiểu rồi', nhưng ngay khi đóng máy lại và cầm bút viết ra giấy trắng thì không viết nổi 3 câu hoàn chỉnh!</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">BẪY 2: LỆ THUỘC NHẬN THỨC (COGNITIVE OFFLOADING)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hiện tượng 'Teo cơ tư duy':</strong> Giống như đi xe máy cho cả quãng đường 50 mét mỗi ngày sẽ làm yếu cơ chân; giao toàn bộ việc suy nghĩ, lập luận, viết lách cho AI sẽ làm suy giảm nghiêm trọng năng lực tư duy phản biện.</li><li><strong style="color:var(--navy);">Nguy cơ sau 3 - 4 năm đại học:</strong> Sinh viên có thể nộp những bài tập trông rất đẹp nhờ AI, nhưng khi đi phỏng vấn tuyển dụng tại ngân hàng và bị hỏi tình huống trực tiếp không có AI hỗ trợ thì hoàn toàn bế tắc.</li><li><strong style="color:var(--navy);">Cách hóa giải trong môn học này:</strong> Biến AI thành Gia sư Socrates (tạo ma sát có hướng dẫn) và tự tay viết Atomic Notes vào Second Brain.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">10 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Định vị vị thế Người làm chủ</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">BA VAI TRÒ & BA ĐỘNG TỪ CỐT LÕI: 'AI LÀ TRỢ LÝ, BẠN LÀ CHỦ'</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Câu châm ngôn xuyên suốt 44 tiết học: 'AI có thể làm nhanh hơn, nhưng không bao giờ chịu trách nhiệm thay bạn.'</div>
+      <div class="grid-3"><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">1. AI ĐỀ XUẤT (PROPOSE)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Vai trò của Cộng sự AI:</strong> Mở rộng góc nhìn và tăng tốc các thao tác nháp ban đầu.</li><li><strong style="color:var(--navy);">Các việc AI đề xuất:</strong> • Gợi ý từ khóa tiếng Anh để tra cứu học thuật.
+• Tóm lược sơ bộ bài báo PDF đính kèm theo bảng 7 mục.
+• Dựng dàn ý nháp hoặc đóng vai người phản biện dàn ý của bạn.
+• Rà soát lỗi chính tả, ngữ pháp và gợi ý cách diễn đạt học thuật.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">2. BẠN QUYẾT ĐỊNH (DECIDE)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Vai trò của Người làm chủ (Leader):</strong> Nắm giữ toàn bộ quyền phán đoán chuyên môn và định hướng chiến lược.</li><li><strong style="color:var(--navy);">Các việc BẠN quyết định:</strong> • Chọn câu hỏi nghiên cứu và phạm vi bài toán nghiệp vụ.
+• Thẩm định độ tin cậy của từng bài báo, nguồn dữ liệu.
+• Chốt cấu trúc lập luận, viết phần Kết quả & Thảo luận.
+• Quyết định chấp nhận hay bác bỏ gợi ý của AI ở từng cổng GATE.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">3. BẠN CHỊU TRÁCH NHIỆM (ACCOUNTABLE)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Chữ ký và Danh dự của bạn:</strong> Tên của bạn (chứ không phải tên ChatGPT hay Claude) đứng trên trang bìa Đề án và Khóa luận.</li><li><strong style="color:var(--navy);">Nghĩa vụ bắt buộc:</strong> • Kiểm chứng 100% số liệu và trích dẫn qua 5 bước trước khi đưa vào bài.
+• Bảo mật dữ liệu cá nhân và dữ liệu ngân hàng.
+• Công bố minh bạch việc dùng AI theo đúng Điều 10 Thông tư 49/2026/TT-BGDĐT.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">11 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Quy tắc Phân vai Thực chiến</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">BẢNG PHÂN VAI: VIỆC NÀO GIAO CHO AI — VIỆC NÀO CON NGƯỜI GIỮ?</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">PHÉP THỬ VÀNG: 'Nếu AI làm sai ở bước này, mình có đủ kiến thức và công cụ để phát hiện ra không?' -> Nếu KHÔNG, tuyệt đối đừng giao!</div>
+      <table class="acad-table"><thead><tr><th>Giai đoạn Học tập / Nghiên cứu</th><th>Việc CÓ THỂ GIAO cho AI hỗ trợ (Vì kiểm tra lại được)</th><th>Việc BẮT BUỘC CON NGƯỜI GIỮ (Vì cần phán đoán & chịu trách nhiệm)</th></tr></thead><tbody><tr><td><strong>1. Định hình đề tài & Tìm tài liệu</strong></td><td>Gợi ý các cụm từ khóa đồng nghĩa tiếng Anh; giải thích khái niệm nền tảng để hiểu bức tranh chung.</td><td>Chốt câu hỏi nghiên cứu; trực tiếp tìm bài báo thật trên Semantic Scholar / Elicit / cơ sở dữ liệu chuẩn.</td></tr><tr><td><strong>2. Đọc & Tóm tắt tài liệu</strong></td><td>Tóm tắt sơ bộ file PDF đính kèm thành bảng 7 mục kèm số trang (với chốt chặn 'Không suy đoán').</td><td>Thực hiện 'Soi 3 phút' trên PDF gốc (đối chiếu số liệu, truy chỗ AI tự thêm) và tự viết Atomic Notes vào Second Brain.</td></tr><tr><td><strong>3. Kiểm chứng & Quản lý trích dẫn</strong></td><td>Hỗ trợ quét nhanh mã DOI bước đầu qua công cụ chuyên dụng (như Tomaca).</td><td>Thực hiện đủ Checklist 5 bước (mở bài gốc đọc Bước 3 & 4), lưu nguồn thật vào Zotero 8 và chèn từ Zotero.</td></tr><tr><td><strong>4. Phân tích dữ liệu & Viết báo cáo</strong></td><td>Phản biện dàn ý; viết code mẫu R/Python/Excel trên cấu trúc cột giả lập (Schema); rà soát lỗi chính tả/ngữ pháp.</td><td>Tự chạy phân tích trên dữ liệu thật; tự viết luận điểm cốt lõi, phần Kết quả & Thảo luận; viết Bản khai báo AI.</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">12 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Bản đồ Hệ sinh thái Công cụ AI 2026</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CHỌN CÔNG CỤ THEO ĐÚNG VIỆC (KHÔNG DÙNG 1 CHATBOT CHO MỌI THỨ!)</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Quy tắc chọn công cụ: Việc nào cần nguồn thật thì bắt buộc dùng công cụ có kho nguồn học thuật thật!</div>
+      <div class="grid-2" style="gap:16px;"><div class="left-card" style="background:#F5F6FA;border-left-color:#1B2558;"><h3 style="color:#1B2558;">1. HỘI THOẠI ĐA NĂNG & SUY LUẬN (CHATGPT, CLAUDE, GEMINI, DEEPSEEK)</h3><ul><li><strong style="color:var(--navy);">Sở trường:</strong> Brainstorm từ khóa, giải thích khái niệm khó, phản biện dàn ý, tóm tắt file PDF đính kèm, đóng gói bộ Harness (Claude Projects / Gemini Gems).</li><li><strong style="color:var(--navy);">Cấm kỵ:</strong> Tuyệt đối KHÔNG dùng để xin danh mục tài liệu tham khảo vì sẽ sinh trích dẫn bịa!</li></ul></div><div class="left-card" style="background:#E8F5E9;border-left-color:#2E7D32;"><h3 style="color:#2E7D32;">2. TÌM KIẾM & TỔNG HỢP HỌC THUẬT THẬT (SEMANTIC SCHOLAR, ELICIT, CONSENSUS)</h3><ul><li><strong style="color:var(--navy);">Semantic Scholar:</strong> Tìm kiếm miễn phí trên kho > 200 triệu bài báo khoa học thật có DOI.</li><li><strong style="color:var(--navy);">Elicit & Consensus:</strong> Gom nhiều bài báo thật vào bảng so sánh theo cột (phương pháp, cỡ mẫu, kết quả) và đo mức độ đồng thuận thực nghiệm (Consensus Meter).</li></ul></div><div class="left-card" style="background:#E3F2FD;border-left-color:#1565C0;"><h3 style="color:#1565C0;">3. QUẢN TRỊ TRI THỨC & RAG CÁ NHÂN (GEMINI NOTEBOOK / NOTEBOOKLM)</h3><ul><li><strong style="color:var(--navy);">Sở trường ('Thư ký trung thành'):</strong> Chỉ trả lời dựa trên các file tài liệu và Atomic Notes bạn tải lên, luôn kèm trích dẫn nhảy về đúng đoạn văn gốc.</li><li><strong style="color:var(--navy);">Ứng dụng:</strong> Học sâu giáo trình và đối chiếu đa tài liệu cho Đề án (sẽ học sâu ở Buổi 5).</li></ul></div><div class="left-card" style="background:#FFEBEE;border-left-color:#C62828;"><h3 style="color:#C62828;">4. KIỂM CHỨNG & QUẢN LÝ TRÍCH DẪN (TOMACA, DOI.ORG, ZOTERO 8)</h3><ul><li><strong style="color:var(--navy);">Tomaca & Retraction Watch:</strong> Rà soát chéo mã DOI trên Crossref/OpenAlex/DataCite, cảnh báo tạp chí săn mồi và bài bị rút lại.</li><li><strong style="color:var(--navy);">Zotero 8 + Obsidian/Notion:</strong> Khóa chốt lưu trữ tài liệu tham khảo thật và xây dựng Bộ Não Thứ Hai (Second Brain).</li></ul></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">13 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Xem trước Kiến trúc Tư duy của Module 1 & 2</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">HAI VŨ KHÍ GIÚP BẠN LÀM CHỦ AI: BỘ HARNESS & BỘ NÃO THỨ HAI</h1>
+      
+      <div class="grid-3"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">1. TỪ PROMPT -> CONTEXT -> HARNESS</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ẩn dụ Con ngựa chiến:</strong> AI là con ngựa chiến chạy rất nhanh dựa trên xác suất.</li><li><strong style="color:var(--navy);">Prompt (Buổi 2):</strong> Là tiếng hô ra lệnh tức thời.</li><li><strong style="color:var(--navy);">Context (Buổi 2):</strong> Là bản đồ địa hình và tài liệu chuẩn cung cấp cho ngựa.</li><li><strong style="color:var(--navy);">Harness (Buổi 3):</strong> Là BỘ DÂY CƯƠNG, yên ngựa và các trạm kiểm soát (GATE & FALLBACK) giữ cho AI luôn đi đúng đường ray bạn thiết kế.</li></ul></div></div><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">2. BỘ NÃO THỨ HAI (SECOND BRAIN)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Vấn đề:</strong> Nếu chỉ lưu kết quả trên lịch sử chat của AI, trí tuệ đó thuộc về máy chủ của hãng AI chứ không thuộc về bạn.</li><li><strong style="color:var(--navy);">Phương pháp PARA & CODE (Buổi 4):</strong> Ngoại hóa và tinh chế mọi kiến thức học được thành các Ghi chú nguyên tử (Atomic Notes) viết bằng ngôn từ của chính mình.</li><li><strong style="color:var(--navy);">Giá trị kép:</strong> Vừa rèn luyện tư duy sâu, vừa tạo ra kho Context độc bản để nạp ngược cho AI.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">3. KỶ LUẬT KIỂM CHỨNG & ĐẠO ĐỨC</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ba quy tắc vàng (Buổi 6 - 9):</strong> 1. Nguồn thật trước, AI sau.
+2. Chưa kiểm chứng (5 bước + Zotero), chưa vào bài.
+3. Dùng AI thì khai báo (theo Thông tư 49/2026/TT-BGDĐT).</li><li><strong style="color:var(--navy);">Kết quả ở Buổi 10 & 11:</strong> Tự tin vượt qua Hội đồng Kiểm toán chéo (Peer Audit) và làm chủ hoàn toàn Đề án cuối khóa.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">14 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Hướng dẫn Viết Atomic Note & Phản tư 4F đầu tiên</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">VIÊN GẠCH ĐẦU TIÊN CỦA SECOND BRAIN: GHI CHÚ NGUYÊN TỬ & KHUNG 4F</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1565C0;color:#1565C0;white-space:pre-line;">Cuối mỗi buổi học, bạn dành 15 phút viết Nhật ký phản tư 4F trên LMS Hub — đây là nguyên liệu tính vào 30% điểm cá nhân cuối khóa!</div>
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">KHUNG PHẢN TƯ 4F TRÊN HỆ THỐNG LMS HUB</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Fact (Sự kiện & Dữ liệu):</strong> Hôm nay bạn đã chứng kiến số liệu hay thực nghiệm gì? (Ví dụ: Tỷ lệ 1/277 bài báo PubMed dính trích dẫn bịa; màn demo AI tự bịa Thông tư ngân hàng).</li><li><strong style="color:var(--navy);">2. Feelings (Cảm xúc & Điểm chạm):</strong> Khoảnh khắc nào trong buổi học làm bạn giật mình hoặc nhận ra sai lầm trong cách dùng AI trước đây của mình?</li><li><strong style="color:var(--navy);">3. Findings (Bài học & Nguyên lý cốt lõi):</strong> Quy luật quan trọng nhất bạn đúc kết được bằng ngôn từ của riêng mình là gì?</li><li><strong style="color:var(--navy);">4. Future (Hành động ngay tuần tới):</strong> Bạn sẽ thay đổi ngay thói quen nào khi dùng AI cho các môn học tại HUB trong tuần này?</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">VÍ DỤ MỘT ATOMIC NOTE ĐẠT CHUẨN CỦA BUỔI 1</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tiêu đề dạng câu khẳng định (Declarative Title):</strong> 'Sự trôi chảy của văn bản AI là kết quả của xác suất ngôn ngữ chứ không phải bằng chứng của sự thật khoa học'</li><li><strong style="color:var(--navy);">Nội dung cốt lõi (Viết bằng ngôn từ riêng):</strong> Vì LLM hoạt động bằng cách đoán từ tiếp theo có xác suất cao nhất, nó có thể ghép các thuật ngữ chuyên ngành thành một thông tư hoặc trích dẫn giả hoàn chỉnh (Topaz, 2026: 1/277 bài PubMed dính trích dẫn bịa). Do đó, tôi chỉ giao cho AI những bước mà tôi có công cụ kiểm tra lại được.</li><li><strong style="color:var(--navy);">Liên kết (Links):</strong> [[Quy tắc Phân vai Người - AI]], [[Checklist Kiểm chứng 5 bước]]</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">15 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Hoạt động Thực hành Nhóm tại lớp (30 phút)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">THỰC HÀNH 1.1: LẬP NHÓM ĐỀ ÁN & THIẾT LẬP BẢNG PHÂN VAI NGƯỜI - AI</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">BƯỚC 1: THÀNH LẬP NHÓM & CHỌN BÀI TOÁN NGÀNH</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Quy mô nhóm:</strong> 3 - 4 sinh viên (ưu tiên cùng chuyên ngành đào tạo tại HUB để làm sâu một bài toán thực tế).</li><li><strong style="color:var(--navy);">Gợi ý chủ đề theo ngành:</strong> • Tài chính - Ngân hàng: Phân tích rủi ro tín dụng doanh nghiệp SME / Đánh giá hành vi dùng Digital Banking.
+• Kế toán - Kiểm toán: Rà soát sai sót báo cáo tài chính / Kiểm soát nội bộ.
+• Marketing / QTKD: Nghiên cứu hành vi tiêu dùng Gen Z / Thiết kế chiến dịch truyền thông số có kiểm chứng.</li><li><strong style="color:var(--navy);">Yêu cầu:</strong> Thảo luận nhanh và ghi ra 1-2 bài toán mà nhóm quan tâm nhất.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">BƯỚC 2: LẬP BẢNG PHÂN VAI 4 BƯỚC (THEO TOOLKIT 1)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Chia bài toán của nhóm thành 4 bước công việc cụ thể</strong> và trả lời 3 câu hỏi cho mỗi bước:</li><li><strong style="color:var(--navy);">Câu hỏi A:</strong> Ở bước này, việc gì giao cho AI đề xuất? Việc gì nhóm tự quyết định?</li><li><strong style="color:var(--navy);">Câu hỏi B (Phép thử vàng):</strong> Nếu AI làm sai hoặc bịa ở bước này, nhóm sẽ dùng nguồn nào hoặc công cụ nào để phát hiện ra?</li><li><strong style="color:var(--navy);">Câu hỏi C:</strong> Bước nào nhóm dự kiến sẽ phải đặt cổng dừng xác nhận (GATE 🔒) ở Buổi 3?</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">16 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Ví dụ Mẫu cho Bài Thực hành 1.1</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">MẪU BẢNG PHÂN VAI: ĐỀ ÁN 'NGHIÊN CỨU RỦI RO TÍN DỤNG XANH TẠI NHTM VIỆT NAM'</h1>
+      
+      <table class="acad-table"><thead><tr><th>Bước công việc trong Đề án</th><th>Việc giao AI Đề xuất (Propose)</th><th>Việc Nhóm Quyết định & Giữ (Decide)</th><th>Cách Nhóm Kiểm chứng lỗi của AI (Verify)</th></tr></thead><tbody><tr><td><strong>Bước 1: Xác định câu hỏi & Tìm tài liệu gốc</strong></td><td>Gợi ý các thuật ngữ tiếng Anh chuyên ngành (Green Credit Risk, ESG Banking) để mở rộng từ khóa.</td><td>Chốt câu hỏi nghiên cứu; trực tiếp tra cứu và tải 10 bài báo PDF thật trên Semantic Scholar & Elicit.</td><td>Kiểm tra trực tiếp mã DOI trên doi.org và trang gốc nhà xuất bản (Không xin nguồn từ Chatbot).</td></tr><tr><td><strong>Bước 2: Đọc & Trích xuất thông tin bài báo</strong></td><td>Chạy Prompt tóm tắt bảng 7 mục trên từng file PDF đính kèm (có cài chốt chặn 'Không suy đoán').</td><td>Tự đọc phần Phương pháp & Kết quả; đánh giá chất lượng mẫu khảo sát và mô hình của bài báo.</td><td>Thực hiện 'Soi 3 phút': đối chiếu ít nhất 2 số liệu với bảng gốc và bấm Ctrl+F truy thuật ngữ phương pháp.</td></tr><tr><td><strong>Bước 3: Tổng hợp đa nguồn & Viết cơ sở lý luận</strong></td><td>Hỗ trợ lập bảng đối chiếu sơ bộ các biến số giữa 10 bài báo trên kho RAG (Gemini Notebook).</td><td>Tự viết các Atomic Notes vào Second Brain; tự viết đoạn tổng hợp (Synthesis) và chèn trích dẫn từ Zotero 8.</td><td>Bấm kiểm tra từng thẻ trích dẫn [1], [2] trong Gemini Notebook và chạy Checklist 5 bước + Tomaca.</td></tr><tr><td><strong>Bước 4: Đề xuất giải pháp & Hoàn thiện báo cáo</strong></td><td>Đóng vai người phản biện chỉ ra lỗ hổng của giải pháp; rà soát lỗi chính tả và ngữ pháp bản thảo.</td><td>Chốt các kiến nghị nghiệp vụ sát thực tế ngân hàng Việt Nam; viết Bản khai báo AI theo Thông tư 49/2026.</td><td>Kiểm tra chéo toàn bộ danh mục Zotero lần cuối và khử định danh mọi dữ liệu mẫu trước khi nộp.</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">17 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tổng kết Buổi 1 — Ôn tập Truy hồi Chủ động (Active Recall)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">3 CÂU HỎI CỦNG CỐ TRƯỚC KHI LÀM QUIZ BUỔI 1 TRÊN LMS HUB</h1>
+      
+      <div class="grid-3"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">CÂU HỎI ÔN TẬP 1</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Vì sao một mô hình ngôn ngữ lớn (LLM) có thể bịa ra một số hiệu thông tư ngân hàng hoặc một bài báo khoa học không tồn tại với giọng văn vô cùng tự tin?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> Vì LLM hoạt động bằng cách dự đoán từ (token) tiếp theo có xác suất ngôn ngữ cao nhất dựa trên ngữ cảnh đứng trước, chứ không phải là cơ sở dữ liệu tra cứu sự thật.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CÂU HỎI ÔN TẬP 2</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Theo nghiên cứu của Topaz và cộng sự trên tạp chí The Lancet (5/2026), tỷ lệ bài báo trên PubMed dính ít nhất 1 trích dẫn bịa trong 7 tuần đầu năm 2026 là bao nhiêu?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> 1 / 277 bài báo (tăng gấp hơn 10 lần so với mức 1/2.828 của năm 2023). Đó là lý do tuyệt đối không xin tài liệu tham khảo từ Chatbot tổng quát.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">CÂU HỎI ÔN TẬP 3</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Khi nào hiện tượng 'Ảo tưởng trôi chảy' (Fluency Illusion) xảy ra và làm sao để khắc phục?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> Xảy ra khi đọc văn bản mượt mà của AI rồi tưởng mình đã hiểu nhưng não không có ma sát nên quên ngay. Khắc phục bằng cách tự tóm tắt lại thành Atomic Note bằng ngôn từ của chính mình.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">18 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Nhiệm vụ Khóa chốt Buổi 1 & Chuẩn bị Buổi 2</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">DANH MỤC NHIỆM VỤ BẮT BUỘC TRÊN LMS HUB & CHUẨN BỊ BUỔI 2</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">NHIỆM VỤ CÁ NHÂN TRÊN LMS HUB (ĐIỂM DANH & TÍCH LŨY 30%)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Làm Quiz Buổi 1 (Active Recall 5 lượt):</strong> Hoàn thành 10 câu trắc nghiệm Buổi 1 trên LMS Hub (hệ thống lấy điểm cao nhất và mở khóa giải thích chi tiết ở lượt thứ 5).</li><li><strong style="color:var(--navy);">2. Viết Nhật ký Học tập (Atomic Note 4F số 1):</strong> Vào mục Nhật ký học tập của Buổi 1, viết phản tư theo 4F (Fact - Feelings - Findings - Future) bằng ngôn từ riêng.</li><li><strong style="color:var(--navy);">3. Gửi Feedback kèm nhận xét để tải Bài giảng:</strong> Hoàn thành khảo sát ẩn danh có nhập bình luận/góp ý để hệ thống mở khóa nút tải Slide và ghi nhận Điểm danh Buổi 1.</li><li><strong style="color:var(--navy);">4. Đọc trước eBook SCQA Chương 2:</strong> Chuẩn bị cho Buổi 2: Từ Prompt Engineering đến Context Engineering.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">NHIỆM VỤ NHÓM ĐỀ ÁN (CHUẨN BỊ CHO BUỔI 2)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Chốt danh sách nhóm (3 - 4 thành viên):</strong> Thống nhất tên đề tài / bài toán nghiệp vụ ứng dụng AI trong ngành của nhóm.</li><li><strong style="color:var(--navy);">2. Hoàn thiện Bảng phân vai Người - AI (Toolkit 1.1):</strong> Lưu Bảng phân vai của nhóm vào thư mục dự án để làm phần mở đầu cho Mảnh ghép 1.</li><li><strong style="color:var(--navy);">3. Chuẩn bị cho Studio Buổi 2:</strong> Mỗi nhóm mang theo 1 bài tập lớn hoặc 1 tài liệu nghiệp vụ thực tế của ngành mình để Buổi 2 thực hành thiết kế bộ Prompt CRISP + Gói Context chuẩn hóa.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">19 / 20</span></div>
+  </section>
+  <section class="slide navy-bg">
+    <div class="gold-top-bar"></div>
+    <div style="padding: 44px 64px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <h1 style="font-family: Georgia, serif; font-size: 28px; line-height: 1.35; color: var(--white); margin-bottom: 16px; white-space: pre-line;">"AI KHÔNG THAY THẾ TƯ DUY CỦA BẠN — AI KHUẾCH ĐẠI TƯ DUY CỦA BẠN.
+NGƯỜI CÓ TƯ DUY RÕ DÙNG AI ĐỂ BỨT PHÁ; NGƯỜI TƯ DUY MƠ HỒ DÙNG AI ĐỂ TẠO RÁC NHANH HƠN."</h1>
+      <div style="width: 380px; height: 3px; background: var(--gold); margin: 0 auto 24px;"></div>
+      <div class="grid-3" style="max-height: 250px; margin-bottom: 24px;"><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">1. AI LÀ XÁC SUẤT</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">LLM là cỗ máy đoán từ tiếp theo dựa trên thống kê ngôn ngữ. Trôi chảy không bao giờ đồng nghĩa với đúng sự thật.</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">2. BẠN LÀ CHỦ NHÂN</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm. Nếu AI làm sai ở bước nào mà bạn không phát hiện ra được, đừng giao bước đó.</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">3. VIÊN GẠCH SECOND BRAIN</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Hãy viết Atomic Note đầu tiên hôm nay bằng chính ngôn từ của bạn để chống lại ảo tưởng trôi chảy và lệ thuộc nhận thức.</div></div></div>
+      <div style="color: var(--gold); font-size: 17px; font-style: italic; margin-bottom: 14px;">Hẹn gặp lại các bạn ở Buổi 2: Từ Prompt Engineering đến Context Engineering — Giao diện của Tư duy!</div>
+      <div style="color: #CBD5E1; font-size: 14.5px;">ThS. Phó Hải Đăng &nbsp;|&nbsp; Trường ĐH Ngân hàng TP.HCM (HUB) &nbsp;|&nbsp; LMS Hub: Hoàn thành Quiz, Nhật ký 4F &amp; Feedback</div>
+    </div>
+  </section>
+</div>
+<div class="controls-bar">
+  <button onclick="prevSlide()">&larr; Trang trước</button>
+  <span id="slide-indicator">Slide 1 / 20</span>
+  <button onclick="nextSlide()">Trang tiếp &rarr;</button>
+  <button onclick="toggleFullScreen()">Toàn màn hình (F)</button>
+</div>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const indicator = document.getElementById('slide-indicator');
+  const viewport = document.getElementById('viewport');
+  let current = 0;
+  function showSlide(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= slides.length) idx = slides.length - 1;
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    current = idx;
+    indicator.textContent = `Slide ${current + 1} / ${slides.length}`;
+  }
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }
+  function fitViewport() {
+    const scale = Math.min((window.innerWidth - 36) / 1280, (window.innerHeight - 66) / 720);
+    viewport.style.transform = `scale(${Math.min(scale, 1.15)})`;
+  }
+  window.addEventListener('resize', fitViewport);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
+    if (e.key === 'f' || e.key === 'F') toggleFullScreen();
+  });
+  fitViewport();
+</script>
+</body>
+</html>

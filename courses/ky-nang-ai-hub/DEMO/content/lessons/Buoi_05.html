@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 5: Tích hợp Second Brain với Công nghệ RAG (Gemini Notebook) — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 2: XÂY DỰNG SECOND BRAIN ĐỂ PHÁT TRIỂN SỰ HỌC</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO2, CLO3</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 5: Tích hợp Second Brain với Công nghệ RAG (Gemini Notebook)</h1>
+      <p class="subtitle">Phân biệt 'Chuyên gia hay bịa' (LLM) với 'Thư ký trung thành' (RAG), truy vấn chéo đa tài liệu và hoàn thành Mảnh ghép 2</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Giải thích được sự khác biệt về bản chất kỹ thuật giữa <strong>Mô hình ngôn ngữ thuần túy (LLM)</strong> và <strong>Hệ thống tạo sinh tăng cường bằng truy xuất (RAG - như Gemini Notebook / NotebookLM)</strong> (CLO2, CLO3).</li>
+      <li>Sử dụng thành thạo Gemini Notebook và Claude Projects để nạp đa tài liệu, thực hiện <strong>truy vấn chéo đa nguồn (Cross-document querying)</strong> và kiểm tra trích dẫn tận đoạn văn gốc (CLO3).</li>
+      <li>Vận hành được vòng lặp cộng hưởng <strong>Second Brain <-> RAG AI</strong> và nhận diện được giới hạn <em>'Grounded Garbage' (Rác nạp vào -> Rác có trích dẫn đi ra)</em> (CLO3).</li>
+      <li>Hoàn thành và nghiệm thu <strong>Mảnh ghép 2 của Đề án cuối khóa</strong> (Kiến trúc Second Brain + Kho RAG dự án + Tiến độ Atomic Notes cá nhân) (CLO3).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Bạn đã bắt đầu tích lũy được hàng chục Atomic Notes trong Second Brain và tải về nhiều bài báo khoa học, báo cáo ngành ngân hàng dạng PDF. Giờ đây bạn cần đối chiếu xem 5 báo cáo đó có số liệu nào mâu thuẫn nhau không để viết phần cơ sở lý luận cho Đề án.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Nếu bạn hỏi một Chatbot LLM thông thường mà không gắn nguồn, nó sẽ trộn lẫn kiến thức chung ngoài Internet và bịa ra số liệu. Ngược lại, nếu bạn tự mở từng file PDF dày 50 trang để dò thủ công từng dòng thì quá tốn thời gian và dễ bỏ sót mối liên hệ chéo giữa các tài liệu.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để kết hợp kho tài liệu chuẩn và Second Brain của bạn với trí tuệ nhân tạo sao cho AI chỉ trả lời dựa trên đúng những tài liệu bạn cung cấp, kèm trích dẫn chính xác đến từng đoạn văn gốc?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Ứng dụng kiến trúc RAG (Retrieval-Augmented Generation) thông qua các công cụ như Gemini Notebook (NotebookLM) và Claude Projects: biến AI từ một 'chuyên gia biết nhiều nhưng hay bịa' thành một 'người thư ký trung thành' chỉ đọc kho tri thức của bạn, luôn chỉ rõ nguồn trích dẫn và tạo thành vòng lặp bồi đắp ngược lại cho Second Brain.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 5): Khi đã có 15 Atomic Notes và 5 báo cáo ngành ngân hàng trong tay, Minh cần đối chiếu xem các báo cáo đó nói gì về rủi ro thanh khoản. Lần này Minh không hỏi khơi khơi trên ChatGPT nữa mà đưa toàn bộ 5 báo cáo cùng các Atomic Notes của mình vào Gemini Notebook (NotebookLM). Ngay lập tức, 'người thư ký trung thành' trả lời kèm các nút trích dẫn [1], [2], [3] nhảy thẳng tới đúng trang 18 và trang 42 của từng báo cáo gốc. Minh đã tìm thấy mảnh ghép kết nối Bộ Não Thứ Hai với sức mạnh xử lý của AI.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Nếu bạn giao cho một người thư ký 3 cuốn tài liệu trên bàn và dặn: 'Chỉ được trả lời dựa trên 3 cuốn này và phải chỉ rõ trang mấy', người thư ký đó khác gì với một vị khách chém gió ngoài quán cà phê?</li>
+        <li>Liệu một hệ thống RAG chỉ đọc tài liệu bạn đưa và luôn trích dẫn đúng số trang có bao giờ đưa ra thông tin sai sự thật không? Khi nào điều đó xảy ra?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Bản chất RAG: 'Thư ký trung thành' vs 'Chuyên gia hay bịa':</strong><br>• Giảng giải cơ chế <em>Retrieval-Augmented Generation (RAG)</em> và bảng so sánh 4 tiêu chí giữa LLM thuần và Gemini Notebook.<br>• Live Demo đối đầu trực tiếp: Cùng một câu hỏi chuyên sâu về quy định ngân hàng, so sánh câu trả lời tự suy diễn của Chatbot thuần với câu trả lời có trích dẫn tận dòng của Gemini Notebook.</td><td>Quan sát Live Demo; ghi nhận cơ chế neo vào nguồn (Grounding) và cách bấm kiểm tra thẻ trích dẫn.</td><td>Slide Buổi 5; Gemini Notebook vs Chatbot</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Vòng lặp Second Brain <-> RAG & Cảnh báo 'Grounded Garbage':</strong><br>• Kỹ thuật nạp đồng thời <em>Tài liệu PDF gốc + Atomic Notes cá nhân</em> vào Gemini Notebook.<br>• Kỹ thuật đặt câu hỏi truy vấn chéo đa tài liệu (so sánh, tìm mâu thuẫn, lập bảng tổng hợp) và khai thác Study Guide / Audio Overview.<br>• Phân tích giới hạn của RAG: <em>'Rác nạp vào -> Rác có trích dẫn đi ra'</em> để dẫn dắt sang Module 3.</td><td>Thực hành kỹ thuật viết câu lệnh truy vấn chéo đa tài liệu và kiểm chứng ngược từng nút trích dẫn [1], [2] trên màn hình.</td><td>Gemini Notebook (notebooklm.google.com)</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Thực hành Xây dựng Kho RAG cho Đề án nhóm:</strong><br>• Mỗi nhóm khởi tạo Kho tri thức RAG cho Đề án cuối khóa, nạp vào các tài liệu chuyên ngành đã thu thập và các Atomic Notes của các thành viên.<br>• Thực hành chạy 3 câu truy vấn đối chiếu đa nguồn và chắt lọc kết quả thành các Atomic Notes mới lưu về Second Brain.</td><td>Làm việc nhóm trên máy tính: dựng kho RAG, chạy truy vấn chéo, bấm kiểm tra từng trích dẫn và viết thêm 2 Atomic Notes mới.</td><td>Thiết bị cá nhân; Kho tài liệu nhóm</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Nghiệm thu Mảnh ghép 2 (Rà soát giữa kỳ) & Khóa chốt LMS:</strong><br>• Giảng viên kiểm tra trực tiếp tiến độ <strong>Mảnh ghép 1 & Mảnh ghép 2</strong> của từng nhóm và rà soát số lượng Atomic Notes cá nhân trên LMS Hub.<br>• Hoàn thành phản tư 4F và Quiz Buổi 5.</td><td>Trình diện cấu trúc PARA, kho RAG và nhật ký Atomic Notes cá nhân để giảng viên rà soát giữa kỳ; làm Quiz Buổi 5 trên LMS.</td><td>LMS Hub (Quiz 5, Journal 5)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao khi bạn nạp chính các Atomic Notes do bạn viết vào chung với các bài báo khoa học trong Gemini Notebook, kết quả trả về lại sâu sắc và sát với đề tài của bạn hơn hẳn việc chỉ nạp bài báo thô?</li>
+      <li>Hãy lấy một ví dụ trong ngành Ngân hàng - Tài chính cho thấy hiện tượng 'Grounded Garbage': tài liệu nạp vào có vấn đề dẫn đến câu trả lời của RAG tuy trích dẫn đúng trang nhưng vẫn sai về bản chất khoa học.</li>
+      <li>Khi nào bạn nên dùng Gemini Notebook, và khi nào bạn nên dùng Claude Projects?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 5 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 5</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 5 theo khung 4F)</strong>: Đúc kết quy trình phối hợp giữa Second Brain và RAG AI của riêng bạn.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Hoàn tất Mảnh ghép 2 & Chuẩn bị sang Module 3 - NCKH):</h3>
+        <ul>
+          <li>Hoàn thiện hồ sơ <strong>Mảnh ghép 2</strong> (Sơ đồ PARA, Minh chứng kho RAG và tối thiểu 3-4 Atomic Notes đầu tiên của mỗi thành viên).</li>
+          <li>Tạo tài khoản miễn phí trên <strong>Semantic Scholar, Elicit và Consensus</strong> để sẵn sàng bước vào Module 3 (Nghiên cứu khoa học & Kiểm chứng) ở Buổi 6.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> RAG là viết tắt của cụm từ nào và nguyên lý cốt lõi của nó là gì?<br><em>Đáp:</em> Retrieval-Augmented Generation: truy xuất các đoạn văn bản liên quan từ kho tài liệu do người dùng nạp vào trước, rồi mới dùng đó làm căn cứ trả lời kèm trích dẫn.</li>
+      <li><strong>Hỏi:</strong> Trong ẩn dụ sư phạm, Gemini Notebook đóng vai trò gì so với Chatbot LLM thuần?<br><em>Đáp:</em> Đóng vai trò 'Người thư ký trung thành' chỉ đọc tài liệu được giao và chỉ rõ số trang/đoạn gốc.</li>
+      <li><strong>Hỏi:</strong> Hiện tượng 'Grounded Garbage' trong RAG nhắc nhở chúng ta điều gì?<br><em>Đáp:</em> RAG không thể biến tài liệu rác thành vàng; nếu nạp nguồn giả hoặc nguồn kém chất lượng thì RAG sẽ trích dẫn rất trung thành cái sai đó.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Buổi 5 là cột mốc giữa khóa (5/11 buổi): giảng viên dành Tiết 4 để rà soát bảng điều khiển Admin trên LMS Hub, nhắc nhở kịp thời những sinh viên chưa làm đủ Quiz hoặc chưa viết đủ Atomic Notes.</li>
+      <li>Nhấn mạnh hạn chế 'Grounded Garbage' của RAG ở cuối buổi để tạo động lực tự nhiên cho Buổi 6: Làm sao để tìm và thẩm định được nguồn học thuật thật?</li>
+    </ul>
+  </div>
+</body>
+</html>

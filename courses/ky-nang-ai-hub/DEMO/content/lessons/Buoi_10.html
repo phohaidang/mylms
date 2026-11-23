@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 10: Project Clinic & Studio Kiểm toán chéo (Peer Audit Studio) — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 4: AN TOÀN, ĐẠO ĐỨC, PHÁP LÝ & ĐỒ ÁN TỔNG HỢP</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO1, CLO2, CLO3, CLO4, CLO5</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 10: Project Clinic & Studio Kiểm toán chéo (Peer Audit Studio)</h1>
+      <p class="subtitle">Nộp trọn bộ Hồ sơ Đề án 4 mảnh ghép và thực hiện 3 vòng Kiểm toán Học thuật chéo giữa các nhóm (Stress-test Harness + Tomaca + Checklist 5 bước)</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Hoàn thiện và nộp đúng hạn trọn bộ <strong>Hồ sơ Đề án Ứng dụng AI (4 Mảnh ghép lũy tiến)</strong> đáp ứng toàn bộ tiêu chuẩn của Rubric đánh giá cuối khóa (CLO1 -> CLO5).</li>
+      <li>Đóng vai trò <strong>'Kiểm toán viên Học thuật' (Academic Auditor / Red Team)</strong> để thực hiện 3 vòng kiểm toán kỹ thuật độc lập đối với Đề án của nhóm đối tác (CLO2, CLO4, CLO5).</li>
+      <li>Thực hiện <strong>Stress-test 3 kịch bản</strong> trên bộ Harness của nhóm bạn và kiểm chứng trực tiếp danh mục tài liệu tham khảo của nhóm bạn bằng <strong>Tomaca + Checklist 5 bước trên bản PDF gốc</strong> (CLO2, CLO4).</li>
+      <li>Lập được <strong>Biên bản Kiểm toán Học thuật (Peer Audit Report)</strong> sắc bén, dựa trên bằng chứng xác thực và văn minh (chiếm 15% tổng điểm cuối khóa của nhóm kiểm toán) (CLO4, CLO5).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Sau 9 buổi học, các nhóm đều đã lắp ghép đủ 4 Mảnh ghép của Hồ sơ Đề án cuối khóa (Bộ Harness nghiệp vụ, Kho Second Brain + RAG, Báo cáo nghiên cứu có Zotero đã kiểm chứng, và Bản khai báo AI theo Thông tư 49/2026). Ai cũng tin rằng hồ sơ của nhóm mình đã hoàn hảo.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Trong thực tế nghiên cứu và làm việc, 'điểm mù của tác giả' khiến chúng ta rất dễ bỏ sót một lỗi suy diễn tinh vi của AI, một lỗ hổng trong cổng dừng GATE của bộ Harness, hoặc một trích dẫn bị lệch năm xuất bản. Mặt khác, ở các lớp học thông thường, hoạt động 'nhận xét chéo giữa các nhóm' thường diễn ra rất hình thức: sinh viên chỉ khen nhau xã giao ('Nhóm bạn làm đẹp lắm') để cả làng cùng vui, khiến hoạt động phản biện mất đi giá trị học thuật.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để biến buổi rà soát cuối khóa thành một 'Phiên Kiểm toán Học thuật' (Academic Red-Teaming / Peer Audit) thực chất, giúp từng nhóm phát hiện và vá sạch mọi lỗ hổng trước giờ bảo vệ, đồng thời đo lường chính xác năng lực thẩm định AI của sinh viên?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Áp dụng cơ chế Kiểm toán chéo có tính điểm (15% trọng số cuối khóa tính vào năng lực 'soi' lỗi của Hội đồng Kiểm toán): mỗi nhóm dùng chính bộ công cụ đã học (Stress-test 3 kịch bản cho Harness, Tomaca + Checklist 5 bước + Kỹ thuật Soi 3 phút cho danh mục trích dẫn, và Rubric Thông tư 49/2026) để lập Báo cáo Kiểm toán độc lập cho nhóm đối tác.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 10): Bước vào Buổi 10, nhóm của Minh được phân công làm Hội đồng Kiểm toán cho Đề án của Nhóm 4. Thay vì nhận xét qua loa cho xong, nhóm Minh chạy thử 1 tình huống thiếu dữ liệu trên bộ Harness của Nhóm 4 và phát hiện FALLBACK chưa hoạt động; tiếp đó, khi mở file PDF gốc của trích dẫn số 6 trong bài Nhóm 4 để đối chiếu Bước 4, Minh phát hiện một con số bị gõ lệch từ 14.5% thành 41.5%! Nhóm 4 vô cùng biết ơn vì nhờ Biên bản Kiểm toán của nhóm Minh mà họ kịp sửa sạch lỗi trước ngày Bảo vệ chính thức, còn nhóm Minh nhận trọn vẹn 15/15 điểm năng lực Kiểm toán!</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Tại sao một người kiểm toán chỉ ra đúng lỗi sai kèm bằng chứng trang gốc ở Buổi 10 lại là 'người bạn tốt nhất' của nhóm bạn trước ngày bảo vệ Buổi 11?</li>
+        <li>Nếu điểm số của chính nhóm bạn (15% tổng điểm môn học) được chấm dựa trên độ sắc bén và chính xác của Biên bản Kiểm toán mà nhóm bạn lập ra khi soi bài nhóm khác, bạn sẽ kiểm tra những gì đầu tiên?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Khóa cổng nộp Hồ sơ Đề án 4 Mảnh ghép & Phân cặp Kiểm toán chéo:</strong><br>• Các nhóm nộp trọn bộ Hồ sơ Đề án (4 mảnh ghép + file Zotero + link Harness + danh sách Atomic Notes) lên hệ thống.<br>• Giảng viên phổ biến quy chế Kiểm toán chéo 3 vòng, phát biểu mẫu <em>Peer Audit Rubric</em> và phân cặp các nhóm kiểm toán.</td><td>Nộp Hồ sơ Đề án chính thức; nhận hồ sơ của nhóm đối tác được phân công kiểm toán và phân chia nhiệm vụ 3 vòng trong nhóm.</td><td>LMS Hub; Biểu mẫu Peer Audit Rubric</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Kiểm toán Vòng 1: Stress-test Bộ Harness & Thẩm định Second Brain (Mảnh ghép 1 & 2):</strong><br>• Nhóm Kiểm toán chạy thử 3 kịch bản (Chạy xuôi - Thiếu thông tin test FALLBACK - Giục vượt rào test GATE) trên bộ Harness của nhóm bạn.<br>• Kiểm tra cấu trúc PARA, kho RAG và tính nguyên bản của các Atomic Notes cá nhân.</td><td>Thực hiện Stress-test trực tiếp trên bộ Harness của nhóm đối tác; chụp màn hình bằng chứng kết quả test để đưa vào Biên bản Kiểm toán.</td><td>Claude Project / Gemini Gem của nhóm đối tác</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Kiểm toán Vòng 2 & Vòng 3: Kiểm toán Nguồn trích dẫn (Tomaca + 5 bước) & Đạo đức AI (Mảnh ghép 3 & 4):</strong><br>• Quét toàn bộ danh mục tài liệu của nhóm bạn trên <strong>Tomaca</strong>.<br>• Bốc ngẫu nhiên <strong>03 trích dẫn trọng yếu</strong>, mở file PDF gốc kiểm tra đủ <strong>Checklist 5 bước</strong> và <strong>Soi 3 phút</strong>.<br>• Kiểm tra việc khử định danh dữ liệu và Bản khai báo AI theo Điều 10 Thông tư 49/2026.</td><td>Quét Tomaca, mở 3 bài báo PDF gốc đối chiếu từng dòng luận điểm và bảng số liệu; rà soát Bản khai báo AI của nhóm đối tác.</td><td>Tomaca, Google Scholar, doi.org, Zotero</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Bàn giao Biên bản Kiểm toán chéo, Vá lỗi Đề án & Khóa chốt LMS:</strong><br>• Các nhóm Kiểm toán hoàn thiện và nộp <strong>Biên bản Kiểm toán Học thuật (Peer Audit Report)</strong> lên LMS Hub.<br>• Các nhóm nhận lại phản hồi kiểm toán, tiến hành vá lỗi nóng (hotfix) và hoàn thiện Slide bảo vệ cho Buổi 11.</td><td>Nộp Biên bản Kiểm toán chéo lên LMS; thảo luận nhanh với nhóm đối tác để ghi nhận các điểm cần nâng cấp cho buổi bảo vệ; làm Quiz Buổi 10.</td><td>LMS Hub (Quiz 10, Journal 10, Peer Audit Report)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Qua quá trình trực tiếp đi kiểm toán bộ Harness và danh mục trích dẫn của nhóm bạn, lỗi sai nào bạn thấy các nhóm dễ mắc phải nhất?</li>
+      <li>Nếu Tomaca báo xanh (verified-doi) cho toàn bộ danh mục tài liệu của nhóm bạn, nhưng khi mở PDF gốc ở Bước 3 bạn phát hiện đoạn văn trong bài gốc nói về 'ngân hàng trung ương' chứ không phải 'ngân hàng thương mại' như nhóm bạn viết, bạn sẽ ghi nhận và chấm điểm thế nào trong Biên bản Kiểm toán?</li>
+      <li>Làm thế nào để trình bày một phát hiện lỗi sai nghiêm trọng của nhóm bạn với thái độ tôn trọng, khách quan và giúp nhóm bạn tâm phục khẩu phục?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 10 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 10</strong> (Active Recall 5 lượt) và viết <strong>Nhật ký học tập (Atomic Note số 10 theo khung 4F)</strong>.</li>
+          <li>Rà soát lại toàn bộ kho <strong>Atomic Notes cá nhân</strong> của mình để sẵn sàng cho phần <strong>Vấn đáp chỉ định cá nhân (30% điểm)</strong> ở Buổi 11.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Sẵn sàng 100% cho Lễ Bảo vệ Buổi 11):</h3>
+        <ul>
+          <li>Khắc phục triệt để các điểm hạn chế đã được chỉ ra trong Biên bản Kiểm toán chéo của Buổi 10.</li>
+          <li>Hoàn thiện bộ <strong>Slide Bảo vệ Đề án (8-10 phút trình bày)</strong> có kèm 1 slide tóm tắt <em>'Những điểm nhóm đã nâng cấp sau phiên Kiểm toán chéo'</em> và tập dượt thao tác Live Demo bộ Harness.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Ba vòng của quy trình Kiểm toán chéo (Peer Audit) tại Buổi 10 là gì?<br><em>Đáp:</em> Vòng 1: Stress-test Bộ Harness & thẩm định Second Brain -> Vòng 2: Kiểm toán nguồn trích dẫn bằng Tomaca + Checklist 5 bước trên PDF gốc -> Vòng 3: Kiểm toán an toàn dữ liệu & Bản khai báo AI theo Thông tư 49/2026.</li>
+      <li><strong>Hỏi:</strong> Trọng số điểm của phần Thuyết trình bảo vệ và Kiểm toán chéo trong tổng điểm cuối khóa là bao nhiêu?<br><em>Đáp:</em> 30% tổng điểm cuối khóa (15% trình bày & trả lời bảo vệ đề án nhóm mình + 15% chất lượng Biên bản Kiểm toán & phản biện nhóm bạn).</li>
+      <li><strong>Hỏi:</strong> Nguyên tắc bảo mật nào theo chuẩn COPE phải được giữ vững trong suốt quá trình Kiểm toán chéo?<br><em>Đáp:</em> Không tự ý tải toàn bộ hồ sơ hoặc dữ liệu chưa công bố của nhóm bạn lên các công cụ AI công cộng bên ngoài khi chưa được phép.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Phân cặp kiểm toán chéo sao cho các nhóm có cùng lĩnh vực ngành nghề (ví dụ hai nhóm cùng làm về Ngân hàng hoặc hai nhóm cùng làm về Marketing) kiểm toán nhau để tăng chiều sâu chuyên môn.</li>
+      <li>Giảng viên đọc nhanh các Biên bản Kiểm toán cuối Tiết 4 để nắm sẵn các điểm nóng cần hỏi xoáy trong buổi Bảo vệ ở Buổi 11.</li>
+    </ul>
+  </div>
+</body>
+</html>

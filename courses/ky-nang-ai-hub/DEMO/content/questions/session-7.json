@@ -1,0 +1,138 @@
+{
+  "session": 7,
+  "chapter": "Ch.7",
+  "title": "Trích dẫn bịa, Checklist Kiểm chứng 5 bước, Công cụ Tomaca & Zotero 8",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s07-L1-c7-q1",
+      "type": "mc",
+      "question": "Theo nghiên cứu của Linardon và cộng sự (2025) trên tạp chí JMIR Mental Health khi kiểm tra 176 trích dẫn do GPT-4o tạo ra, tổng tỷ lệ trích dẫn bịa hoàn toàn (19.9%) cộng với trích dẫn có thật nhưng sai thông tin thư mục là bao nhiêu?",
+      "options": [
+        "A. Chỉ khoảng 2%",
+        "B. 56.3% (99 trên 176 trích dẫn có vấn đề)",
+        "C. 10%",
+        "D. 0%"
+      ],
+      "correct": "B",
+      "explanation": "Theo nghiên cứu của Linardon và cs. (2025, JMIR Mental Health), có 19.9% (35/176) trích dẫn bịa hoàn toàn, và nếu gộp cả trích dẫn sai thông tin thư mục thì lên tới 56.3% (99/176)."
+    },
+    {
+      "id": "aihub-s07-L1-c7-q2",
+      "type": "mc",
+      "question": "Cũng theo nghiên cứu của Linardon và cộng sự (2025), yếu tố nào quyết định việc AI bịa trích dẫn nhiều hơn (tăng từ 6% lên tới 28%-29%, với p = .001)?",
+      "options": [
+        "A. Mức độ chủ đề đó đã được nghiên cứu kỹ hay ít được nghiên cứu (AI bịa nhiều hơn ở các đề tài ít được nghiên cứu)",
+        "B. Thời tiết vào ngày người dùng đặt câu hỏi",
+        "C. Độ dài của tên tác giả",
+        "D. Màu sắc giao diện của phần mềm AI"
+      ],
+      "correct": "A",
+      "explanation": "Linardon và cs. (2025) chứng minh tỷ lệ bịa trích dẫn tăng mạnh theo mức độ chủ đề ít được nghiên cứu (từ 6% lên 28%-29%, p = .001): AI bịa nhiều nhất ở chỗ nó biết ít nhất."
+    },
+    {
+      "id": "aihub-s07-L1-c7-q3",
+      "type": "mc",
+      "question": "Năm bước trong Checklist kiểm chứng một trích dẫn khoa học theo thứ tự từ rẻ đến tốn công là gì?",
+      "options": [
+        "A. (1) Có thật không? -> (2) Thông tin thư mục khớp không? -> (3) Bài gốc có nói đúng ý đó không? -> (4) Số liệu khớp bảng/hình không? -> (5) Còn hiệu lực trên Retraction Watch không?",
+        "B. Copy -> Paste -> Đổi phông chữ -> Căn lề -> Nộp bài",
+        "C. Hỏi ChatGPT -> Hỏi Claude -> Hỏi Gemini -> Lấy trung bình cộng",
+        "D. Chỉ cần kiểm tra xem mã DOI có bắt đầu bằng số 10 hay không"
+      ],
+      "correct": "A",
+      "explanation": "Checklist 5 bước kiểm chứng từ rẻ đến tốn công: (1) Có thật không? -> (2) Thông tin thư mục khớp không? -> (3) Bài gốc nói đúng ý không? -> (4) Số liệu khớp bảng/hình không? -> (5) Còn hiệu lực trên Retraction Watch không?"
+    },
+    {
+      "id": "aihub-s07-L1-c7-q4",
+      "type": "mc",
+      "question": "Khi sử dụng công cụ kiểm tra trích dẫn Tomaca, nhãn kết quả `metadata-mismatch` thuộc nhóm 'Chưa nêu rõ' có ý nghĩa là gì?",
+      "options": [
+        "A. Mã DOI có tồn tại trên cơ sở dữ liệu nhưng thông tin năm xuất bản, tiêu đề hoặc tên tác giả trong bài của bạn bị lệch so với bản gốc, bắt buộc con người phải mở ra kiểm tra lại",
+        "B. Trích dẫn đã hoàn hảo 100%, không cần xem lại",
+        "C. Máy chủ đang bảo trì",
+        "D. Bài báo được viết bằng tiếng Pháp"
+      ],
+      "correct": "A",
+      "explanation": "Nhãn `metadata-mismatch` trên Tomaca báo hiệu mã DOI có tồn tại nhưng thông tin tên tác giả, năm hoặc tiêu đề bị lệch, bắt buộc con người phải mở nguồn gốc kiểm tra."
+    },
+    {
+      "id": "aihub-s07-L2-c7-q1",
+      "type": "mc",
+      "question": "Tại sao trong Checklist 5 bước, Bước 3 ('Mở bản gốc kiểm tra xem bài báo có thực sự nói đúng ý đó không') lại là bước quan trọng để chống lại loại lỗi nguy hiểm hơn cả trích dẫn bịa hoàn toàn?",
+      "options": [
+        "A. Vì rất nhiều trường hợp bài báo, tên tác giả và mã DOI đều có thật 100% (vượt qua Bước 1 và 2 dễ dàng), nhưng AI lại gán cho bài báo đó một kết luận hoặc số liệu mà tác giả bài gốc không hề nói tới, hoặc nói ngược lại!",
+        "B. Vì Bước 1 và Bước 2 không cần làm",
+        "C. Vì mở file PDF giúp máy tính chạy nhanh hơn",
+        "D. Vì Bước 3 giúp tự động dịch bài báo"
+      ],
+      "correct": "A",
+      "explanation": "Bước 3 (mở bài gốc xem có nói đúng ý đó không) giúp chặn đứng loại lỗi rất phổ biến: bài báo và DOI có thật 100%, nhưng bị AI gán cho một luận điểm mà tác giả không hề nói."
+    },
+    {
+      "id": "aihub-s07-L2-c7-q2",
+      "type": "mc",
+      "question": "Trong thử nghiệm thực tế ngày 17/10/2026 trên bộ test 10 trích dẫn (7 thật, 3 giả), tại sao công cụ Tomaca lại báo `verified-doi` cho cả 2 trích dẫn giả và bài học rút ra là gì?",
+      "options": [
+        "A. Vì AI khi bịa trích dẫn đã lấy một mã DOI có thật của một bài báo khác không liên quan ghép vào tiêu đề bịa; máy kiểm tra thấy DOI tồn tại nên báo đạt. Bài học: 'Máy soát, người quyết' - con người luôn phải mở nguồn gốc để đối chiếu tiêu đề và nội dung",
+        "B. Vì không bao giờ nên dùng bất kỳ công cụ kiểm tra nào",
+        "C. Vì trích dẫn giả đó đã tự động biến thành bài báo thật",
+        "D. Vì chỉ cần máy báo verified-doi là được miễn trách nhiệm học thuật"
+      ],
+      "correct": "A",
+      "explanation": "Khi AI ghép một mã DOI có thật của bài báo khác vào một tiêu đề bịa, công cụ tự động có thể báo `verified-doi` và bỏ lọt; vì vậy luôn phải giữ nguyên tắc 'Máy soát, người quyết'."
+    },
+    {
+      "id": "aihub-s07-L2-c7-q3",
+      "type": "mc",
+      "question": "Vì sao việc tuân thủ nghiêm ngặt quy trình 'Nguồn vào Zotero trước, rồi mới vào bài' lại giúp loại bỏ tận gốc nguy cơ lọt trích dẫn do AI bịa vào báo cáo Đề án?",
+      "options": [
+        "A. Vì bạn chỉ bấm nút Zotero Connector để lưu tài liệu khi chính mắt bạn đang mở trang bài báo thật của nhà xuất bản (sau khi đã kiểm chứng), và trong Word bạn chỉ chèn trích dẫn từ thư viện Zotero đó chứ không bao giờ copy-paste dòng trích dẫn từ cửa sổ chat của AI",
+        "B. Vì Zotero là một trí tuệ nhân tạo biết tự viết báo cáo",
+        "C. Vì Zotero cấm người dùng gõ tiếng Việt",
+        "D. Vì Zotero tự động xóa mọi bài báo xuất bản trước năm 2025"
+      ],
+      "correct": "A",
+      "explanation": "Quy trình 'Nguồn vào Zotero trước, rồi mới vào bài' đảm bảo mọi tài liệu trong thư viện Zotero đều là bài bạn đã tự tay mở trang gốc kiểm chứng, triệt tiêu hoàn toàn trích dẫn bịa của AI."
+    },
+    {
+      "id": "aihub-s07-L2-c7-q4",
+      "type": "mc",
+      "question": "Khi giảng viên nói 'AI bịa nhiều hơn ở đề tài ít được nghiên cứu chứ không phải đề tài hẹp', điều này cảnh báo gì cho sinh viên ngành Ngân hàng - Kinh tế khi làm đề tài mới tại Việt Nam?",
+      "options": [
+        "A. Những đề tài mang tính địa phương hoặc bối cảnh mới tại Việt Nam có ít dữ liệu học thuật quốc tế trong tập huấn luyện của LLM, nên nếu sinh viên nhờ Chatbot viết tổng quan tài liệu cho các đề tài này, tỷ lệ AI bịa trích dẫn sẽ ở mức cao nhất",
+        "B. Sinh viên không được phép chọn đề tài mới tại Việt Nam",
+        "C. Đề tài tại Việt Nam thì AI không bao giờ bịa",
+        "D. Chỉ cần viết câu hỏi ngắn lại là AI sẽ không bịa"
+      ],
+      "correct": "A",
+      "explanation": "Đề tài mới hoặc bối cảnh đặc thù tại Việt Nam thường có ít dữ liệu trong tập huấn luyện của LLM, nên nếu nhờ Chatbot sinh trích dẫn ở vùng này thì nguy cơ bịa sẽ cao nhất."
+    },
+    {
+      "id": "aihub-s07-L3-c7-q1",
+      "type": "mc",
+      "question": "Trong khi Kiểm toán chéo (Peer Audit) báo cáo của nhóm bạn, bạn thấy câu: 'Theo Nguyễn và Trần (2025, Journal of Banking & Finance, DOI: 10.1016/j.jbankfin.2024.107111), 74% ngân hàng Việt Nam đã dùng AI duyệt vay'. Khi bạn bấm vào link DOI đó trên doi.org, trang web mở ra một bài báo năm 2024 của tác giả Smith về thị trường chứng khoán Mỹ. Kết luận kiểm toán của bạn là gì?",
+      "options": [
+        "A. Trích dẫn đạt chuẩn vì mã DOI có hoạt động và dẫn tới tạp chí Journal of Banking & Finance thật",
+        "B. Đây là một trích dẫn bịa điển hình dạng 'ghép xác' (ghép tác giả Việt Nam và luận điểm bịa vào một mã DOI có thật của bài báo khác); nhóm bạn đã không thực hiện Bước 2 và Bước 3 của Checklist 5 bước nên đã vi phạm Điểm liệt Liêm chính",
+        "C. Chỉ là lỗi đánh máy nhỏ, không cần sửa",
+        "D. Lỗi do trang web doi.org bị hỏng"
+      ],
+      "correct": "B",
+      "explanation": "Mã DOI trỏ sang một bài báo khác không liên quan là dấu hiệu kinh điển của trích dẫn bịa dạng 'ghép xác'; hành vi này vi phạm Điểm liệt Liêm chính của môn học."
+    },
+    {
+      "id": "aihub-s07-L3-c7-q2",
+      "type": "mc",
+      "question": "Khi chạy danh mục 12 tài liệu tham khảo của Đề án nhóm trên Tomaca, có 1 báo cáo thường niên của Ngân hàng Nhà nước Việt Nam bị báo nhãn `no-doi` (Không có DOI). Cách xử lý đúng chuẩn 'Máy soát, người quyết' là gì?",
+      "options": [
+        "A. Tự chế ra một mã DOI giả điền vào để Tomaca báo xanh",
+        "B. Hiểu rằng các báo cáo ngành, văn bản pháp quy hoặc sách chuyên khảo trong nước thường không đăng ký mã DOI; nhóm tự kiểm chứng thủ công đường dẫn URL chính thức trên cổng thông tin Ngân hàng Nhà nước, lưu metadata chuẩn vào Zotero và ghi chú rõ trong biên bản kiểm chứng",
+        "C. Xóa bỏ hoàn toàn mọi báo cáo của Ngân hàng Nhà nước khỏi đề án",
+        "D. Nhờ ChatGPT cấp mã DOI cho báo cáo đó"
+      ],
+      "correct": "B",
+      "explanation": "Với các văn bản pháp quy hoặc báo cáo ngành trong nước không có mã DOI (`no-doi`), nhóm cần kiểm chứng thủ công tại cổng thông tin chính thức của cơ quan ban hành rồi lưu vào Zotero."
+    }
+  ]
+}
