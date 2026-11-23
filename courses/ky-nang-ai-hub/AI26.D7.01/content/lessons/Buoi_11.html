@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 11: Bảo vệ Đề án cuối khóa (Capstone Showcase), Phản biện & Tổng kết — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 4: AN TOÀN, ĐẠO ĐỨC, PHÁP LÝ & ĐỒ ÁN TỔNG HỢP</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO1, CLO2, CLO3, CLO4, CLO5</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 11: Bảo vệ Đề án cuối khóa (Capstone Showcase), Phản biện & Tổng kết</h1>
+      <p class="subtitle">Hội đồng Bảo vệ Đề án, Tranh biện Kiểm toán chéo, Vấn đáp cá nhân trên Second Brain (Chấm 100% điểm cuối khóa) & Lễ Cam kết Người làm chủ AI</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Trình bày và bảo vệ thuyết phục <strong>Đề án Ứng dụng AI cuối khóa</strong> thông qua cấu trúc Storyline SCQA và màn <strong>Live Demo bộ Harness</strong> ngay trước Hội đồng (CLO1, CLO2, CLO4).</li>
+      <li>Tranh biện khoa học, cầu thị và dựa trên bằng chứng với <strong>Hội đồng Kiểm toán chéo</strong> về chất lượng nguồn trích dẫn Zotero, Ma trận tổng hợp và tuân thủ Thông tư 49/2026 (CLO4, CLO5).</li>
+      <li>Chứng minh năng lực làm chủ cá nhân (30% điểm cá nhân) qua phần <strong>Vấn đáp chỉ định trực tiếp</strong> trên hệ thống Second Brain Atomic Notes, thao tác Soi 3 phút và kiểm chứng nguồn (CLO1 -> CLO5).</li>
+      <li>Đúc kết trọn vẹn hành trình 44 tiết học qua <strong>Atomic Note phản tư tổng kết cuối khóa</strong> và xác lập bộ nguyên tắc sử dụng AI có trách nhiệm cho Khóa luận tốt nghiệp và sự nghiệp tương lai (CLO1 -> CLO5).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Hôm nay là Buổi 11 - buổi học cuối cùng khép lại chặng đường 44 tiết của học phần 'Kỹ năng ứng dụng AI trong học tập và nghiên cứu'. Các nhóm bước lên bục bảo vệ Đề án cuối khóa trước Giảng viên và Hội đồng Kiểm toán chéo để nhận đánh giá tổng kết 100% điểm công nhận Chứng chỉ chuẩn đầu ra.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Một tấm chứng chỉ in trên giấy chỉ giúp bạn đủ điều kiện hành chính để tốt nghiệp. Nhưng ngay ngày mai, khi bạn bước ra khỏi giảng đường để làm khóa luận tốt nghiệp hay đi làm tại các ngân hàng, định chế tài chính, các mô hình AI sẽ lại tiếp tục nâng cấp lên những phiên bản mới mạnh hơn, cám dỗ làm thay con người sẽ càng lớn hơn, và rủi ro đánh mất năng lực tư duy độc lập vẫn luôn rình rập.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để phần bảo vệ Đề án hôm nay thực sự tỏa sáng bản lĩnh của một 'Người làm chủ AI', và đâu là hệ thống nguyên tắc cốt lõi bạn sẽ mang theo suốt sự nghiệp sau khi khóa học này khép lại?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Tự tin chứng minh sự kết hợp nhuần nhuyễn giữa Tư duy - Kỹ năng - Công cụ qua màn Live Demo bộ Harness, hệ thống Second Brain và hồ sơ nghiên cứu 100% nguồn thật trong Zotero; đồng thời khắc sâu 3 nguyên tắc trọn đời: 'Nguồn thật trước, AI sau', 'Chưa kiểm chứng, chưa vào bài', và 'Dùng AI thì khai báo - AI là trợ lý, bạn là chủ'.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ cuối - Kỳ 11): Đứng trên bục giảng của Buổi 11 tại Trường ĐH Ngân hàng TP.HCM, Minh không còn là cậu sinh viên năm 2 ấp úng vì bài tiểu luận chép từ ChatGPT của 11 tuần trước. Khi giảng viên chỉ định ngẫu nhiên Minh thao tác trực tiếp, Minh mở ngay mạng lưới Atomic Notes trong Second Brain, chạy Live Demo bộ Harness phân tích tín dụng dừng đúng ở cổng GATE 1, và mở Zotero chỉ rõ trang 12 của bài báo gốc đã kiểm chứng qua 5 bước. Minh nhận ra: tấm chứng chỉ hôm nay là kết quả tất yếu, nhưng phần thưởng lớn nhất chính là một Bộ Não Thứ Hai vững chãi và bản lĩnh của một người làm chủ công nghệ.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Nhìn lại bản thân bạn ở Buổi 1 và ngày hôm nay (Buổi 11), thói quen nào khi dùng AI bạn đã thay đổi triệt để nhất?</li>
+        <li>Trong 20 phút đứng trước Hội đồng hôm nay, điều gì sẽ chứng minh rõ nhất rằng nhóm bạn là 'Chủ nhân' còn AI là 'Trợ lý'?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 & Tiết 2 (00' - 100')</strong></td><td><strong>Hội đồng Bảo vệ Đề án Cuối khóa (Đợt 1 - Các cặp nhóm 1, 2, 3, 4):</strong><br>• Mỗi nhóm 20 phút theo cấu trúc 3 phần:<br>  1. <em>Trình bày & Live Demo Harness (8-10 phút)</em>.<br>  2. <em>Hội đồng Kiểm toán chéo công bố kết quả Audit & Chất vấn (5-6 phút)</em>.<br>  3. <em>Giảng viên vấn đáp chỉ định từng cá nhân trên Second Brain & Zotero (5-6 phút)</em>.<br>• Chấm điểm trực tiếp 3 cấu phần (40% Hồ sơ nhóm + 30% Cá nhân + 30% Thuyết trình & Kiểm toán chéo).</td><td>Các nhóm trình bày, demo sống bộ Harness, chất vấn chéo và trả lời vấn đáp cá nhân; cả lớp lắng nghe và ghi nhận bài học từ đề án các ngành.</td><td>Slide Bảo vệ; Bộ Harness; Thư viện Zotero; Rubric 100%</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Hội đồng Bảo vệ Đề án Cuối khóa (Đợt 2 - Các cặp nhóm còn lại):</strong><br>• Tiếp tục quy trình bảo vệ, phản biện kiểm toán chéo và vấn đáp cá nhân cho các nhóm còn lại.<br>• Giảng viên nhận xét tổng hợp chất lượng Đề án và công bố kết quả đánh giá sơ bộ của các nhóm.</td><td>Hoàn tất toàn bộ các phiên bảo vệ và phản biện chéo; đối chiếu điểm số trên hệ thống LMS Hub.</td><td>LMS Hub Gradebook</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Phản tư Tổng kết Hành trình 44 tiết & Lễ Cam kết Người làm chủ AI:</strong><br>• Sinh viên viết <strong>Atomic Note phản tư tổng kết cuối khóa</strong> và hoàn thành Quiz tổng kết Buổi 11 trên LMS.<br>• Giảng viên đúc kết 3 thông điệp mang về suốt đời:<br>  1. <em>Tư duy -> Kỹ năng -> Công cụ (Second Brain & Harness là bệ phóng)</em>.<br>  2. <em>Nguồn thật trước, AI sau - Chưa kiểm chứng (5 bước + Zotero), chưa vào bài</em>.<br>  3. <em>Dùng AI thì khai báo (Thông tư 49/2026) - AI là trợ lý, bạn là chủ</em>.</td><td>Viết Atomic Note tổng kết khóa học & Cam kết danh dự trên LMS Hub; hoàn thành Quiz Buổi 11; chia sẻ cảm nhận cuối khóa.</td><td>LMS Hub (Quiz 11, Final Journal)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Sau khi khóa học này kết thúc, làm thế nào để bạn duy trì thói quen viết Atomic Notes vào Second Brain mỗi tuần mà không bị bỏ cuộc giữa chừng?</li>
+      <li>Nếu ngày mai bạn hướng dẫn một sinh viên khóa dưới cách dùng AI để làm nghiên cứu khoa học tại HUB, đâu là 3 điều quan trọng nhất bạn sẽ truyền lại cho em ấy?</li>
+      <li>Bạn sẽ ứng dụng Bộ Harness và Kho RAG mà nhóm vừa xây dựng trong môn học này vào Khóa luận tốt nghiệp hoặc kỳ thực tập sắp tới tại ngân hàng/doanh nghiệp như thế nào?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>Nhiệm vụ Khóa chốt Toàn khóa học (Để hoàn tất hồ sơ cấp Chứng chỉ):</h3>
+        <ul>
+          <li>Kiểm tra trên <strong>Bảng điểm & Tiến độ LMS Hub</strong> để chắc chắn bạn đã hoàn thành đủ >= 80% các bài Quiz Active Recall, Nhật ký học tập (Atomic Notes 4F) và Phản hồi buổi học.</li>
+          <li>Hoàn thành <strong>Quiz Tổng kết Buổi 11</strong> và <strong>Atomic Note Phản tư cuối khóa</strong> ngay tại Tiết 4.</li>
+          <li>Lưu trữ (Export) bản sao thư viện <strong>Zotero</strong>, bộ <strong>System Instructions của Harness</strong> và thư mục <strong>Second Brain</strong> của Đề án sang thư mục <code>Areas</code> hoặc <code>Archives</code> trong máy tính cá nhân để tiếp tục phát triển cho Khóa luận tốt nghiệp!</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Ba cấu phần tạo nên 100% điểm đánh giá cuối khóa của môn học là gì?<br><em>Đáp:</em> Cấu phần 1: Hồ sơ Đề án 4 mảnh ghép của nhóm (40%) + Cấu phần 2: Dấu ấn cá nhân Second Brain Atomic Notes & Vấn đáp chỉ định (30%) + Cấu phần 3: Thuyết trình bảo vệ & Kiểm toán chéo nhóm bạn (30%).</li>
+      <li><strong>Hỏi:</strong> Ba điều cốt lõi nhất sinh viên mang về từ quy trình nghiên cứu có AI đồng hành là gì?<br><em>Đáp:</em> (1) Nguồn thật trước, AI sau; (2) Chưa kiểm chứng (5 bước + Zotero), chưa vào bài; (3) Dùng AI thì khai báo (Thông tư 49/2026) - Bạn chịu trách nhiệm toàn bộ nội dung.</li>
+      <li><strong>Hỏi:</strong> Ý nghĩa sâu xa nhất của câu 'AI là trợ lý, bạn là chủ' là gì?<br><em>Đáp:</em> Làm chủ không có nghĩa là không dùng AI, mà là biết rõ mình đang giao việc gì, điều phối bằng Harness thế nào, kiểm tra lại qua nguồn thật ra sao và luôn sẵn sàng đàng hoàng đứng tên chịu trách nhiệm dưới kết quả.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Trong phần Vấn đáp chỉ định (5-6 phút/nhóm), hãy ưu tiên đặt câu hỏi cho những thành viên ít nói nhất trong lúc thuyết trình để đánh giá công bằng Cấu phần 2 (30% điểm cá nhân).</li>
+      <li>Khép lại tiết cuối cùng bằng sự lắng đọng và truyền cảm hứng theo đúng triết lý 'Dạy bằng TÂM - Dẫn lối bằng TRI THỨC'.</li>
+    </ul>
+  </div>
+</body>
+</html>

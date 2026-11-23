@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 2: Từ Prompt Engineering đến Context Engineering — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <style>
+    :root {
+      --navy: #1B2558; --dark-navy: #111A40; --white: #FFFFFF; --off-white: #F5F6FA;
+      --red: #C62828; --light-red: #FFEBEE; --accent: #1565C0; --light-accent: #E3F2FD;
+      --gold: #F9A825; --green: #2E7D32; --light-green: #E8F5E9; --orange: #E65100;
+      --light-orange: #FFF3E0; --text-dark: #212121; --text-mid: #424242;
+      --text-light: #757575; --border: #E0E0E0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d122a; font-family: 'Calibri', 'Segoe UI', sans-serif; color: var(--text-dark);
+      height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .deck-viewport {
+      width: 1280px; height: 720px; position: relative; background: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6); border-radius: 6px; overflow: hidden; transform-origin: center center;
+    }
+    .slide { width: 1280px; height: 720px; position: absolute; top: 0; left: 0; display: none; flex-direction: column; background: var(--white); }
+    .slide.active { display: flex; }
+    .slide.navy-bg { background: var(--navy); color: var(--white); }
+    .gold-top-bar { width: 100%; height: 9px; background: var(--gold); flex-shrink: 0; }
+    .header-bar {
+      width: 100%; height: 64px; background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 52px;
+      font-family: Georgia, serif; font-size: 15.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; flex-shrink: 0;
+    }
+    .footer-bar {
+      width: 100%; height: 42px; background: var(--navy); color: #D0D5E8;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 52px; font-size: 13px; margin-top: auto; flex-shrink: 0;
+    }
+    .footer-bar .page-num { color: var(--gold); font-weight: 700; font-size: 14px; }
+    .slide-body { padding: 20px 52px 16px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    h1.page-title { font-family: Georgia, serif; font-size: 25px; color: var(--red); font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; }
+    .card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 3px 8px rgba(0,0,0,0.05); }
+    .card-header { padding: 10px 14px; color: var(--white); font-weight: 700; font-size: 14.5px; text-align: center; text-transform: uppercase; }
+    .card-content { padding: 14px 16px; font-size: 14px; line-height: 1.48; flex: 1; }
+    .card-content ul { padding-left: 18px; }
+    .card-content li { margin-bottom: 7px; }
+    .left-card { background: var(--off-white); border: 1px solid var(--border); border-left: 8px solid var(--navy); border-radius: 4px; padding: 12px 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .left-card h3 { font-size: 15px; margin-bottom: 6px; text-transform: uppercase; }
+    .left-card ul { padding-left: 18px; font-size: 13.6px; line-height: 1.45; }
+    .left-card li { margin-bottom: 5px; }
+    .banner { padding: 10px 18px; border-radius: 6px; margin-bottom: 12px; font-size: 14px; line-height: 1.42; text-align: center; font-weight: 600; }
+    table.acad-table { width: 100%; border-collapse: collapse; font-size: 13.2px; }
+    table.acad-table th { background: var(--navy); color: var(--white); padding: 9px 12px; text-align: left; font-weight: 700; }
+    table.acad-table td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: middle; line-height: 1.38; }
+    table.acad-table tr:nth-child(even) { background: var(--off-white); }
+    .controls-bar { margin-top: 10px; display: flex; align-items: center; gap: 14px; color: #cbd5e1; font-size: 13px; }
+    .controls-bar button { background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .controls-bar button:hover { background: #334155; }
+  </style>
+</head>
+<body>
+<div class="deck-viewport" id="viewport">
+
+  <section class="slide navy-bg active">
+    <div class="gold-top-bar"></div>
+    <div style="padding: 44px 64px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div style="color: var(--gold); font-size: 17px; font-weight: 700; letter-spacing: 3px; margin-bottom: 6px;">TRƯỜNG ĐẠI HỌC NGÂN HÀNG TP. HỒ CHÍ MINH (HUB)</div>
+      <div style="color: #CBD5E1; font-size: 14.5px; letter-spacing: 2px; margin-bottom: 20px;">MODULE 1 (BUỔI 2 / 11) — BẢN CHẤT AI, PROMPT, CONTEXT & HARNESS</div>
+      <div style="width: 400px; height: 3px; background: var(--gold); margin: 0 auto 24px;"></div>
+      <h1 style="font-family: Georgia, serif; font-size: 34px; line-height: 1.35; color: var(--white); margin-bottom: 16px; white-space: pre-line;">BUỔI 2: TỪ PROMPT ĐẾN CONTEXT ENGINEERING
+"GIAO DIỆN CỦA TƯ DUY"</h1>
+      <div style="color: var(--gold); font-size: 18px; font-style: italic; margin-bottom: 32px;">Câu hỏi cốt lõi: Cùng một mô hình AI, vì sao 2 người dùng lại nhận về 2 đẳng cấp kết quả khác hẳn nhau?</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 960px; margin: 0 auto;"><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">THỜI LƯỢNG: 4 TIẾT (200 PHÚT)
+Khung CRISP & 5 Kỹ thuật nâng cao</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">CHUẨN ĐẦU RA: CLO2
+Thiết kế Gói Ngữ cảnh & Chốt chặn chống bịa</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); padding: 14px; border-radius: 6px;"><div style="color: var(--white); font-weight: 700; font-size: 15px; white-space: pre-line;">CỘT MỐC ĐỀ ÁN CUỐI KHÓA
+Chốt đề tài & Viết 3 cụm Prompt + Context</div></div></div>
+    </div>
+    <div style="background: var(--dark-navy); padding: 16px 60px; text-align: center; font-size: 14.5px; color: #E2E8F0; border-top: 1px solid #2D3A7B;">
+      <strong>Giảng viên: ThS. Phó Hải Đăng</strong> &nbsp;|&nbsp; Khoa Hệ thống thông tin quản lý &nbsp;|&nbsp; Email: dangph@hub.edu.vn
+    </div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Buổi 2 — Mục tiêu & Lộ trình 200 phút</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">MỤC TIÊU HỌC TẬP & LỘ TRÌNH 4 TIẾT CỦA BUỔI 2</h1>
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;"><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#C62828;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">01</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 1 (50'): Prompt là tấm gương phản chiếu tư duy & Công thức nền tảng CRISP</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Story Spine nhân vật Minh (Kỳ 2); Giải phẫu 5 thành tố C - R - I - S - P; Live Demo đối chứng 'Trước CRISP vs Sau CRISP' trên bài toán ngành Ngân hàng.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1B2558;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">02</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 2 (50'): Năm kỹ thuật điều khiển suy luận nâng cao & Chốt chặn 'Không suy đoán'</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Chain-of-Thought (CoT), Role-based / Multi-Persona, Few-shot, Iterative Refinement, Negative Prompt & Câu khóa sống còn chống Hallucination.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1565C0;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">03</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 3 (50'): Bước chuyển từ Prompt sang Context Engineering (Kỹ nghệ Thiết kế Ngữ cảnh)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Cơ chế Cửa sổ ngữ cảnh (Context Window) & hiện tượng Context Rot; 4 thành phần của một gói Context sạch; Thực hành va chạm '1 Bài toán - 3 Cấp độ'.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#2E7D32;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">04</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Tiết 4 (50'): Studio Đề án (Thiết kế Bộ 3 cụm Prompt & Context) & Khóa chốt LMS</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Chốt tên đề tài Đề án nhóm; Soạn thảo 3 cụm Prompt CRISP + danh mục Context chuẩn bị cho Buổi 3 đóng gói Harness; Viết Nhật ký 4F số 2 & làm Quiz Buổi 2.</div></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">2 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Story Spine & Khung SCQA</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CÂU CHUYỆN CỦA MINH (KỲ 2): 'SAO AI CỦA BẠN THÔNG MINH HƠN AI CỦA TÔI?'</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Ngộ nhận phổ biến nhất của người mới: Tưởng rằng ai dùng AI giỏi là nhờ sưu tầm được danh sách '100 câu thần chú bí mật' trên mạng!</div>
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">S & C — NỖI THẤT VỌNG CỦA MINH KHI PHÂN TÍCH NGÂN HÀNG</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tình huống (Situation):</strong> Minh được giao phân tích rủi ro khoản vay của một doanh nghiệp SME từ báo cáo tài chính. Minh mở Claude/ChatGPT và gõ: 'Hãy phân tích rủi ro tín dụng cho doanh nghiệp này giúp tôi'.</li><li><strong style="color:var(--navy);">Biến cố (Complication):</strong> AI trả về 2 trang lý thuyết sách giáo khoa chung chung ('cần xem xét dòng tiền, tài sản đảm bảo...'). Trong khi đó, bạn Lan ngồi cạnh cũng dùng đúng công cụ miễn phí đó nhưng chỉ sau 10 phút đã có một bảng phân tích 5 chỉ số tài chính sắc bén sát thực tế!</li><li><strong style="color:var(--navy);">Sự khác biệt nằm ở đâu?</strong> Không nằm ở công cụ AI, mà nằm ở lượng thông tin, cấu trúc yêu cầu và gói ngữ cảnh (Context) mà Lan đã thiết kế trước khi bấm Enter.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">Q & A — PROMPT LÀ GIAO DIỆN CỦA TƯ DUY</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu hỏi trọng tâm (Question):</strong> Làm thế nào để chuyển hóa tư duy chuyên môn trong đầu bạn thành một hệ thống chỉ thị và ngữ cảnh giúp AI làm việc đúng chuẩn chuyên gia ngay từ đầu?</li><li><strong style="color:var(--navy);">Nguyên lý cốt lõi (Answer):</strong> • AI không đọc được suy nghĩ của bạn. Tư duy mơ hồ -> Prompt mơ hồ -> Output rác.
+• 10 phút đầu tư viết Prompt & chuẩn bị Context trên giấy giúp tiết kiệm 2 giờ ngồi sửa một kết quả lệch hướng.
+• Chuyển từ hỏi tự phát sang công thức CRISP + 5 kỹ thuật nâng cao + Context Engineering.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">3 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Bản chất Giao tiếp với Mô hình Xác suất</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">TẠI SAO CÂU LỆNH NGẮN GỌN LẠI DẪN ĐẾN KẾT QUẢ RÁC?</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFF3E0;border-color:#E65100;"><div class="card-header" style="background:#E65100;">KHI BẠN HỎI MƠ HỒ: KHÔNG GIAN XÁC SUẤT BỊ PHÂN TÁN</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu lệnh kiểu cũ:</strong> 'Viết giúp tôi một bài về chuyển đổi số ngân hàng.' (9 chữ).</li><li><strong style="color:var(--navy);">Điều gì diễn ra bên trong LLM?</strong> Khi không biết bạn là sinh viên hay giám đốc, đối tượng đọc là ai, phạm vi ở Việt Nam hay thế giới, độ dài bao nhiêu, mô hình xác suất buộc phải chọn những câu chữ có tần suất trung bình cao nhất trên Internet.</li><li><strong style="color:var(--navy);">Kết quả:</strong> Một bài viết vô thưởng vô phạt, đầy những từ ngữ sáo rỗng ('Trong kỷ nguyên số phát triển vũ bão...'), không có số liệu gốc và rất dễ kèm theo trích dẫn bịa.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">KHI BẠN CẤU TRÚC HÓA: THU HẸP KHÔNG GIAN XÁC SUẤT</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Bản chất của Prompt & Context tốt:</strong> Là việc dựng lên các 'bức tường rào' thu hẹp không gian xác suất của LLM vào đúng vùng kiến thức chuyên môn, đúng định dạng và đúng tài liệu nguồn mà bạn cung cấp.</li><li><strong style="color:var(--navy);">Tư duy như một Giám đốc giao việc cho Trợ lý mới:</strong> Nếu bạn giao việc cho một nhân viên thực tập mới vào phòng ngày đầu tiên mà chỉ nói 1 câu cụt lủn, nhân viên đó chắc chắn làm sai.</li><li><strong style="color:var(--navy);">Bạn cần giao đủ 5 yếu tố:</strong> Bối cảnh (Context) - Vai trò (Role) - Đầu vào & Nhiệm vụ (Input/Instruction) - Ràng buộc cụ thể (Specifics) - Tiêu chuẩn đầu ra (Performance/Preview).</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">4 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Công thức Nền tảng CRISP</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">GIẢI PHẪU KHUNG CRISP: 5 THÀNH TỐ CỦA MỘT CHỈ THỊ CHUẨN MỰC</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Quy tắc thực hành: Luôn phác thảo đủ 5 chữ C - R - I - S - P trước khi giao bất kỳ tác vụ học thuật hay nghiệp vụ nào cho AI!</div>
+      <table class="acad-table"><thead><tr><th>Thành tố CRISP</th><th>Câu hỏi cần trả lời</th><th>Ví dụ thực tế (Ngành Tài chính - Ngân hàng tại HUB)</th></tr></thead><tbody><tr><td><strong>C — Context
+(Bối cảnh)</strong></td><td>Bạn là ai? Đang giải quyết bài toán gì? Trong bối cảnh/môi trường nào?</td><td>Tôi là sinh viên năm 3 ngành Tài chính - Ngân hàng tại ĐH Ngân hàng TP.HCM, đang làm báo cáo phân tích rủi ro tín dụng của nhóm doanh nghiệp vừa và nhỏ (SME) ngành xuất khẩu thủy sản tại Việt Nam giai đoạn 2024 - 2026.</td></tr><tr><td><strong>R — Role
+(Vai trò chuyên môn)</strong></td><td>AI cần đóng vai chuyên gia nào, với góc nhìn và tiêu chuẩn khắt khe gì?</td><td>Bạn đóng vai là Chuyên gia Thẩm định Rủi ro Tín dụng cao cấp tại một Ngân hàng Thương mại cổ phần, có phong cách phân tích thận trọng, dựa hoàn toàn trên bằng chứng số liệu.</td></tr><tr><td><strong>I — Input / Instruction
+(Đầu vào & Nhiệm vụ)</strong></td><td>Tài liệu/dữ liệu cụ thể đính kèm là gì và nhiệm vụ chính cần làm là gì?</td><td>Dựa DUY NHẤT vào báo cáo tài chính và thuyết minh PDF tôi đính kèm, hãy phân tích 4 nhóm chỉ số: Thanh khoản, Đòn bẩy tài chính, Khả năng trả lãi và Vòng quay khoản phải thu.</td></tr><tr><td><strong>S — Specifics
+(Ràng buộc cụ thể)</strong></td><td>Định dạng gì? Độ dài bao nhiêu? Văn phong, ngôn ngữ, thuật ngữ thế nào?</td><td>Trình bày dưới dạng bảng 4 cột (Nhóm chỉ số | Công thức & Giá trị | Nhận xét xu hướng | Cảnh báo rủi ro). Độ dài tối đa 350 chữ, giữ thuật ngữ tiếng Anh trong ngoặc đơn.</td></tr><tr><td><strong>P — Performance / Preview
+(Tiêu chí & Chốt chặn)</strong></td><td>Ai đọc? Tiêu chuẩn đạt là gì? Ràng buộc cấm suy diễn nào phải tuân thủ?</td><td>Báo cáo dùng để bảo vệ trước Hội đồng. Mỗi con số bắt buộc ghi rõ lấy từ trang mấy của PDF. Chỗ nào báo cáo không có số liệu, ghi rõ 'Không nêu trong báo cáo', tuyệt đối không tự suy đoán.</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">5 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 1 — Live Demo Đối chứng</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">ĐỐI CHỨNG TRỰC TIẾP: PROMPT TỰ PHÁT vs PROMPT CHUẨN CRISP</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CÁCH 1: PROMPT TỰ PHÁT (KIỂU CŨ)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu lệnh gõ vào AI:</strong> 'Viết email xin thầy gia hạn nộp bài tập lớn môn Tài chính doanh nghiệp.'</li><li><strong style="color:var(--navy);">Đầu ra của AI:</strong> • Dài dòng, sáo rỗng, dịch từ văn phong phương Tây ('Tôi hy vọng email này tìm thấy thầy trong trạng thái sức khỏe tốt nhất...').
+• Không có mã lớp, không có lý do học thuật thuyết phục, không có ngày cam kết nộp mới cụ thể, không nói rõ đã hoàn thành được bao nhiêu %.</li><li><strong style="color:var(--navy);">Hệ quả:</strong> Sinh viên phải ngồi xóa đi viết lại gần hết, hoặc nếu copy gửi thẳng sẽ gây phản cảm lớn với giảng viên.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">CÁCH 2: PROMPT ĐẦY ĐỦ 5 THÀNH TỐ CRISP</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Câu lệnh CRISP:</strong> • [C] Tôi là nhóm trưởng Nhóm 3 lớp TCDN_D01 tại HUB, hạn nộp báo cáo là 20h ngày 25/11. Nhóm đã xong 80% nhưng đang chờ số liệu báo cáo kiểm toán quý 3 của doanh nghiệp mẫu công bố ngày 26/11.
+• [R] Trợ lý soạn thảo văn bản học thuật lịch sự, cầu thị, ngắn gọn.
+• [I] Viết email gửi giảng viên xin gia hạn nộp bài thêm 48 giờ (đến 20h ngày 27/11).
+• [S] Tối đa 130 chữ, đính kèm link bản thảo 80% đã làm được, không dùng lời lẽ than vãn.
+• [P] Gồm: Tiêu đề chuẩn [Mã lớp - Nhóm 3], Lời chào, Lý do & tiến độ hiện tại, Mốc cam kết mới, Lời cảm ơn.</li><li><strong style="color:var(--navy);">Đầu ra của AI:</strong> Chuyên nghiệp, đúng trọng tâm, dùng được ngay lập tức!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">6 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Năm Kỹ thuật Điều khiển Suy luận Nâng cao</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">5 KỸ THUẬT PROMPT NÂNG CAO GIÚP KHAI THÁC SÂU MÔ HÌNH AI</h1>
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;"><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1B2558;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">01</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Chain-of-Thought (CoT — Suy luận từng bước)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Yêu cầu AI trình bày rõ từng bước lập luận trung gian trước khi đưa ra kết luận cuối cùng (Dùng cho bài toán tính toán tài chính, phân tích logic, chẩn đoán tình huống).</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#1565C0;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">02</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Role-based & Multi-Persona (Đóng vai & Phản biện đa góc nhìn)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Đặt AI vào vai chuyên gia cụ thể hoặc cho 2-3 chuyên gia có góc nhìn đối lập cùng tranh biện trên 1 phương án của bạn (ví dụ: Giám đốc Kinh doanh vs Giám đốc Quản trị Rủi ro).</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#2E7D32;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">03</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Few-shot Prompting (Học qua 2 - 3 ví dụ mẫu chuẩn mực)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Đưa cho AI xem trước 2-3 ví dụ mẫu đạt chuẩn (về cấu trúc bảng, cách viết Atomic Note, cách trích xuất biến số) để khóa chặt định dạng và giọng văn đầu ra.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#E65100;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">04</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Iterative Refinement (Tinh chỉnh đa vòng có kiểm soát)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Không kỳ vọng câu lệnh đầu tiên hoàn hảo 100%; giữ lại phần đã đúng và chỉ yêu cầu sửa đúng 1-2 tiêu chí cụ thể qua từng lượt đối thoại tiếp theo.</div></div></div><div style="display:flex;align-items:center;gap:16px;background:var(--off-white);padding:12px 18px;border-radius:6px;border:1px solid var(--border);"><div style="width:44px;height:44px;border-radius:50%;background:#C62828;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">05</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);">Negative Prompt & Chốt chặn 'Không suy đoán' (Chống Hallucination)</div><div style="font-size:13.8px;color:var(--text-dark);margin-top:2px;">Chỉ định rõ những điều CẤM AI làm và cài câu khóa bắt buộc: 'Mỗi ý ghi rõ số trang/mục. Chỗ nào tài liệu không nói, ghi không nêu trong bài, tuyệt đối không suy đoán'.</div></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">7 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Kỹ thuật 1 & 2: Chain-of-Thought & Multi-Persona</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">ĐIỀU KHIỂN LUỒNG SUY LUẬN LOGIC & PHẢN BIỆN ĐA GÓC NHÌN</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">1. CHAIN-OF-THOUGHT (CoT): BUỘC AI 'NGHĨ TỪNG BƯỚC'</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tại sao LLM hay tính sai khi trả lời ngay?</strong> Vì nếu bắt AI xuất kết quả ở dòng đầu tiên, nó chỉ đoán con số có xác suất bề mặt cao nhất mà chưa qua các bước biến đổi trung gian.</li><li><strong style="color:var(--navy);">Cách kích hoạt CoT chuẩn:</strong> 'Trước khi đưa ra kết luận cuối cùng, hãy thực hiện tuần tự 4 bước suy luận sau: (Bước 1) Trích xuất các biến số đầu vào từ đề bài; (Bước 2) Nêu công thức tài chính áp dụng; (Bước 3) Thay số và kiểm tra đơn vị tính; (Bước 4) Đưa ra kết luận và kiểm tra tính hợp lý.'</li><li><strong style="color:var(--navy);">Giá trị cho người học:</strong> Giúp bạn nhìn thấy toàn bộ quá trình suy luận của AI để biết chính xác nó đúng hay sai ở bước nào!</li></ul></div></div><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">2. MULTI-PERSONA: THUÊ 'HỘI ĐỒNG PHẢN BIỆN' CHO ĐỀ ÁN</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Ứng dụng thực chiến cho Đề án nhóm:</strong> Khi nhóm bạn vừa đề xuất một giải pháp ứng dụng AI cho ngân hàng, đừng hỏi AI 'Giải pháp này có hay không?' (AI sẽ khen bạn!).</li><li><strong style="color:var(--navy);">Mẫu Prompt Multi-Persona:</strong> 'Đây là đề xuất giải pháp của nhóm tôi: [...]. Hãy đóng vai một hội đồng gồm 3 người cùng phản biện gay gắt đề xuất này:
+1. Giám đốc Rủi ro & Pháp chế Ngân hàng (soi lỗ hổng bảo mật dữ liệu & Thông tư).
+2. Giảng viên Phương pháp NCKH (soi tính khả thi và căn cứ dữ liệu).
+3. Khách hàng cá nhân khó tính (soi trải nghiệm thực tế).'</li><li><strong style="color:var(--navy);">Kết quả:</strong> Nhóm phát hiện trước mọi điểm yếu trước ngày bảo vệ!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">8 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Kỹ thuật 3 & 4: Few-shot & Iterative Refinement</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">KHÓA CHẶT ĐỊNH DẠNG BẰNG VÍ DỤ MẪU & TINH CHỈNH ĐA VÒNG</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">3. FEW-SHOT PROMPTING: 'TRĂM NGHE KHÔNG BẰNG MỘT THẤY'</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Nguyên lý:</strong> Mô tả bằng lời dài 10 dòng về định dạng bạn muốn vẫn không hiệu quả bằng việc đưa thẳng cho AI xem 2 ví dụ mẫu (shots) hoàn chỉnh.</li><li><strong style="color:var(--navy);">Ví dụ áp dụng:</strong> Khi cần AI chuyển hóa các ghi chú thô thành bảng Ma trận biến số nghiên cứu, hãy dán 2 dòng mẫu bạn đã tự làm chuẩn:
+• Mẫu 1: [Tên biến: Rủi ro bảo mật cảm nhận (PSR)] | [Định nghĩa: ...] | [Nguồn gốc: Featherman & Pavlou (2003), tr.454]
+• Mẫu 2: [Tên biến: ...] | [Định nghĩa: ...] | [Nguồn gốc: ...]
+• Yêu cầu: Hãy trích xuất 3 biến tiếp theo trong bài báo PDF đính kèm theo ĐÚNG cấu trúc của 2 mẫu trên.</li><li><strong style="color:var(--navy);">Lưu ý vàng:</strong> Ví dụ mẫu phải thật chuẩn và đã khử thông tin nhạy cảm.</li></ul></div></div><div class="card" style="background:#FFF3E0;border-color:#E65100;"><div class="card-header" style="background:#E65100;">4. ITERATIVE REFINEMENT: NGHỆ THUẬT SỬA DẦN QUA NHIỀU LƯỢT</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Sai lầm thường gặp:</strong> Thấy bản nháp đầu tiên của AI chưa ưng ý là xóa hết gõ lại câu mới, hoặc bắt AI sửa 10 thứ cùng một lúc khiến AI sửa được chỗ này lại làm hỏng chỗ kia.</li><li><strong style="color:var(--navy);">Quy tắc Iterative chuẩn:</strong> • Lượt 1: Dựng khung cấu trúc và kiểm tra độ chính xác của dữ liệu.
+• Lượt 2: 'Giữ nguyên toàn bộ số liệu ở bảng trên. Hãy bổ sung thêm cột Số trang trích dẫn ở ngoài cùng bên phải.'
+• Lượt 3: 'Giữ nguyên bảng. Hãy rút gọn phần nhận xét bên dưới xuống còn đúng 120 chữ, bỏ các tính từ cảm thán.'</li><li><strong style="color:var(--navy);">Khi nào nên dừng Iterative?</strong> Nếu sau 3-4 lượt mà AI vẫn lệch hướng, hãy quay lại sửa thẳng vào Prompt CRISP gốc!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">9 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 2 — Kỹ thuật 5: Negative Prompt & Chốt chặn Chống bịa</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CHỐT CHẶN SỐNG CÒN TRONG HỌC THUẬT: 'KHÔNG SUY ĐOÁN'</h1>
+      <div class="banner" style="background:#FFEBEE;border:1.5px solid #C62828;color:#C62828;white-space:pre-line;">Đây là câu lệnh bắt buộc phải có trong mọi Prompt đọc tài liệu và trong mọi Bộ Harness của môn học này!</div>
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">NEGATIVE PROMPT (NÓI RÕ ĐIỀU CẤM AI LÀM)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Tại sao phải có Negative Prompt?</strong> Để chặn trước các thói quen xấu mặc định của LLM (hay viết mở bài sáo rỗng, hay tự ý làm tròn số, hay thêm lời khuyên đạo lý chung chung).</li><li><strong style="color:var(--navy);">Nguyên tắc viết Negative Prompt:</strong> Phải định lượng cụ thể thay vì nói chung chung:
+• Kém hiệu quả: 'Đừng viết dài dòng, đừng dùng văn phong quảng cáo.'
+• Hiệu quả cao: 'KHÔNG viết đoạn mở đầu và kết luận xã giao; KHÔNG dùng các từ ngữ cảm thán (tuyệt vời, đột phá, hoàn hảo); KHÔNG vượt quá 200 chữ; KHÔNG tự ý thay đổi thuật ngữ trong ngoặc đơn.'</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CHỐT CHẶN CHỐNG HALLUCINATION KHI ĐỌC TÀI LIỆU</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Vấn đề khi yêu cầu AI điền bảng:</strong> Khi bạn yêu cầu AI tóm tắt bài báo thành bảng 7 mục, nếu bài báo gốc bỏ trống mục 'Hạn chế của nghiên cứu', AI sẽ có xu hướng tự sáng tác ra hạn chế rồi gán như thể tác giả bài báo đã nói!</li><li><strong style="color:var(--navy);">CÂU KHÓA BẮT BUỘC CHÉP VÀO SỔ TAY:</strong> "Mỗi ý trong bảng bắt buộc phải ghi rõ số trang hoặc tên mục trong bài báo gốc. Chỗ nào bài báo không đề cập, bắt buộc ghi rõ 'Không nêu trong bài', tuyệt đối không tự suy đoán hay lấy kiến thức bên ngoài điền vào."</li><li><strong style="color:var(--navy);">Kết nối sang Buổi 6:</strong> Chính câu khóa này đã giúp chúng ta bắt sống lỗi của bài báo Hemani (2026) trong thực nghiệm NCKH!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">10 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Bước chuyển lên Context Engineering</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">TỪ PROMPT ENGINEERING ĐẾN CONTEXT ENGINEERING (KỸ NGHỆ NGỮ CẢNH)</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Năm 2023-2024 người ta nói về Prompt Engineering (gọt câu chữ). Từ 2025-2026, năng lực quyết định là Context Engineering (thiết kế gói tri thức đầu vào)!</div>
+      <div class="grid-2"><div class="card" style="background:#E3F2FD;border-color:#1565C0;"><div class="card-header" style="background:#1565C0;">PROMPT ENGINEERING (CÂU LỆNH ĐƠN LẺ)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Trọng tâm:</strong> Tập trung vào cách diễn đạt câu hỏi và yêu cầu trong khung chat.</li><li><strong style="color:var(--navy);">Giới hạn:</strong> Dù câu lệnh của bạn có viết theo chuẩn CRISP hay đến mấy, nhưng nếu bạn bắt AI phân tích quy chế tín dụng của Ngân hàng X hoặc tóm tắt một bài báo mới mà KHÔNG nạp văn bản thật vào cho nó, thì AI vẫn chỉ đoán mò dựa trên trí nhớ xác suất cũ.</li><li><strong style="color:var(--navy);">Ví von:</strong> Giống như thuê một đầu bếp giỏi (Prompt hay) nhưng đưa vào một gian bếp trống rỗng không có nguyên liệu tươi (Thiếu Context).</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">CONTEXT ENGINEERING (THIẾT KẾ GÓI NGỮ CẢNH)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Định nghĩa:</strong> Là nghệ thuật và kỹ thuật tuyển chọn, làm sạch, cấu trúc hóa toàn bộ gói thông tin, tài liệu nguồn, dữ liệu mẫu và quy tắc biên để nạp vào Cửa sổ ngữ cảnh (Context Window) của AI trước khi nó suy luận.</li><li><strong style="color:var(--navy);">Câu hỏi cốt lõi của Context Engineer:</strong> 'Để giải quyết chính xác bài toán này mà không phải đoán mò một chi tiết nào, AI cần được nhìn thấy những tài liệu, bảng biểu và quy chuẩn nào ngay trước mắt nó?'</li><li><strong style="color:var(--navy);">Vai trò của Second Brain (Module 2):</strong> Chính kho Atomic Notes của bạn sẽ là nguồn nguyên liệu Context đắt giá nhất!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">11 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Cơ chế Cửa sổ Ngữ cảnh (Context Window)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">CỬA SỔ NGỮ CẢNH (CONTEXT WINDOW) & HIỆN TƯỢNG 'LOÃNG NGỮ CẢNH' (CONTEXT ROT)</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">CỬA SỔ NGỮ CẢNH TRƯỢT (SLIDING CONTEXT WINDOW)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Context Window là gì?</strong> Là 'bộ nhớ làm việc ngắn hạn' (RAM) của AI trong một phiên trò chuyện, được đo bằng số lượng Token (1.000 tokens tiếng Việt tương đương khoảng 400 - 500 chữ).</li><li><strong style="color:var(--navy);">Cơ chế cửa sổ trượt:</strong> • Lúc mới mở phiên chat: Toàn bộ chỉ thị và tài liệu bạn đưa đều nằm gọn trong tầm mắt của AI.
+• Khi cuộc trò chuyện kéo dài hàng chục lượt: Nội dung mới liên tục đẩy nội dung cũ về phía sau.</li><li><strong style="color:var(--navy);">Hai hệ quả tất yếu:</strong> (1) AI dần quên mất các ràng buộc quan trọng bạn dặn ở đầu buổi; (2) Cùng một yêu cầu nhưng chạy ở đầu phiên chat và cuối phiên chat dài cho ra kết quả không nhất quán.</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">HIỆN TƯỢNG 'CONTEXT ROT' (THỐI RỮA / LOÃNG NGỮ CẢNH)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Nhiều hơn KHÔNG phải lúc nào cũng tốt hơn:</strong> Dù các mô hình năm 2026 có Context Window lớn (200K - 1M tokens), nghiên cứu chỉ ra rằng nếu bạn quăng vào đó hàng trăm trang tài liệu rác, lộn xộn hoặc không liên quan, sự chú ý của AI sẽ bị phân tán (Lost in the Middle).</li><li><strong style="color:var(--navy);">3 Quy tắc Vệ sinh Ngữ cảnh (Context Hygiene):</strong> 1. Chỉ nạp tài liệu thật sự liên quan và đã kiểm chứng.
+2. Ưu tiên nạp các bản tinh chế (Atomic Notes, bảng trích xuất sạch) thay vì văn bản rác.
+3. Khi chuyển sang một nhiệm vụ hoặc một bài báo mới, hãy mở phiên chat mới (hoặc đóng gói vào Project/Harness ở Buổi 3).</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">12 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Cấu trúc một Gói Context Chuẩn mực</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">4 THÀNH PHẦN CỦA MỘT 'GÓI NGỮ CẢNH' (CONTEXT PACKAGE) CHẤT LƯỢNG CAO</h1>
+      <div class="banner" style="background:#E8F5E9;border:1.5px solid #2E7D32;color:#2E7D32;white-space:pre-line;">Khi làm Đề án cuối khóa, mỗi lần giao nhiệm vụ lớn cho AI, nhóm bạn hãy kiểm tra xem đã nạp đủ 4 lớp Context này chưa:</div>
+      <div class="grid-2" style="gap:16px;"><div class="left-card" style="background:#F5F6FA;border-left-color:#1B2558;"><h3 style="color:#1B2558;">LỚP 1: TÀI LIỆU NGUỒN ĐÃ LÀM SẠCH (SOURCE DATA)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> File PDF bài báo khoa học gốc, báo cáo tài chính thật, văn bản thông tư hoặc bảng số liệu đã khử định danh.</li><li><strong style="color:var(--navy);">Nguyên tắc:</strong> Tải file trực tiếp lên phiên làm việc, đánh tên file rõ ràng (ví dụ: 'Bai_01_Linardon_2025.pdf').</li></ul></div><div class="left-card" style="background:#E3F2FD;border-left-color:#1565C0;"><h3 style="color:#1565C0;">LỚP 2: TIÊU CHUẨN & RUBRIC ĐÁNH GIÁ (DOMAIN RULES)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> Rubric chấm điểm của môn học, quy chuẩn trích dẫn APA 7, hoặc bộ tiêu chí phân tích nghiệp vụ ngân hàng.</li><li><strong style="color:var(--navy);">Tác dụng:</strong> Giúp AI biết thước đo nào để phân biệt một kết quả đạt chuẩn với một kết quả trung bình.</li></ul></div><div class="left-card" style="background:#E8F5E9;border-left-color:#2E7D32;"><h3 style="color:#2E7D32;">LỚP 3: VÍ DỤ MẪU CHUẨN MỰC (FEW-SHOT EXAMPLES)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> 1 đến 2 mẫu đầu ra hoàn chỉnh do chính bạn đã làm và kiểm chứng (ví dụ: 1 mẫu Biên bản Soi 3 phút, 1 mẫu Atomic Note).</li><li><strong style="color:var(--navy);">Tác dụng:</strong> Khóa chặt định dạng, độ sâu phân tích và giọng văn học thuật.</li></ul></div><div class="left-card" style="background:#FFEBEE;border-left-color:#C62828;"><h3 style="color:#C62828;">LỚP 4: RÀNG BUỘC BIÊN & CHỐT CHẶN (GUARDRAILS)</h3><ul><li><strong style="color:var(--navy);">Nội dung:</strong> Các quy tắc Negative Prompt và câu khóa chống suy diễn.</li><li><strong style="color:var(--navy);">Câu lệnh bắt buộc:</strong> 'Chỉ dùng dữ liệu từ Lớp 1. Mọi nhận định phải kèm số trang. Chỗ nào không có trong Lớp 1 thì ghi rõ [Không nêu trong tài liệu], tuyệt đối không suy đoán.'</li></ul></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">13 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Thực hành Va chạm tại Lớp (30 phút)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">THỰC HÀNH 2.1: 'CÙNG 1 BÀI TOÁN CHUYÊN NGÀNH — 3 CẤP ĐỘ ĐẦU VÀO'</h1>
+      <div class="banner" style="background:#E3F2FD;border:1.5px solid #1B2558;color:#1B2558;white-space:pre-line;">Mỗi nhóm lấy đúng bài toán Đề án của nhóm mình và chạy thử nghiệm đối chứng ở 3 cấp độ trên Claude / ChatGPT / Gemini:</div>
+      <div class="grid-3"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CẤP ĐỘ 1: HỎI MƠ HỒ (ZERO-CONTEXT)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Thao tác:</strong> Chỉ gõ 1 câu hỏi ngắn tự phát (1-2 dòng), không nêu bối cảnh, không đính kèm tài liệu, không có ràng buộc.</li><li><strong style="color:var(--navy);">Ví dụ:</strong> 'Hãy phân tích các yếu tố ảnh hưởng đến ý định sử dụng ngân hàng số của Gen Z.'</li><li><strong style="color:var(--navy);">Quan sát & Ghi nhận:</strong> AI trả lời chung chung thế nào? Có bịa số liệu hay nguồn trích dẫn không?</li></ul></div></div><div class="card" style="background:#FFF3E0;border-color:#E65100;"><div class="card-header" style="background:#E65100;">CẤP ĐỘ 2: DÙNG KHUNG CRISP CƠ BẢN</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Thao tác:</strong> Viết lại yêu cầu đó với đầy đủ 5 thành phần C - R - I - S - P (nêu rõ bối cảnh SV HUB, vai trò trợ lý nghiên cứu, yêu cầu lập bảng 4 cột, độ dài 250 chữ).</li><li><strong style="color:var(--navy);">Quan sát & Ghi nhận:</strong> Cấu trúc đầu ra đã thay đổi ra sao so với Cấp độ 1? Nhưng khi chưa có tài liệu PDF thật thì các con số/trích dẫn đã dùng được chưa?</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">CẤP ĐỘ 3: CRISP + CONTEXT SẠCH + CHỐT CHẶN</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Thao tác:</strong> Đính kèm 1 tài liệu PDF thật + Khung CRISP + 1 Ví dụ mẫu (Few-shot) + Câu khóa: 'Mỗi ý ghi rõ số trang; chỗ nào bài không nói thì ghi không nêu trong bài, không suy đoán'.</li><li><strong style="color:var(--navy);">Quan sát & Đúc kết:</strong> So sánh độ chính xác, khả năng kiểm chứng tận dòng của Cấp độ 3 so với Cấp độ 1 và 2!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">14 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 3 — Bản đồ 4 Tầng tiến tới Buổi 3</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">BẢN ĐỒ TIẾN HÓA: DATA  -->  CONTEXT  -->  KNOWLEDGE  -->  HARNESS (WORKFLOW)</h1>
+      
+      <table class="acad-table"><thead><tr><th>Tầng Kiến trúc</th><th>Định nghĩa bản chất</th><th>Ví dụ thực tế trong Đề án của Sinh viên HUB</th><th>Học ở Buổi nào?</th></tr></thead><tbody><tr><td><strong>1. DATA
+(Dữ liệu thô)</strong></td><td>Các mảnh thông tin rời rạc, chưa gắn mục đích sử dụng cụ thể.</td><td>Một file PDF bài báo tải về, một bảng số liệu Excel, một văn bản thông tư của Ngân hàng Nhà nước.</td><td>Buổi 1 & Buổi 6</td></tr><tr><td><strong>2. CONTEXT
+(Ngữ cảnh có cấu trúc)</strong></td><td>Data được làm sạch và gắn thêm: Ai dùng, cho bài toán nào, theo tiêu chí gì (CRISP + 4 lớp Context).</td><td>Gói tài liệu PDF đính kèm + Khung CRISP + Ví dụ mẫu Few-shot + Chốt chặn 'Không suy đoán' cho 1 phiên hỏi đáp.</td><td>Buổi 2 (Hôm nay)</td></tr><tr><td><strong>3. KNOWLEDGE
+(Tri thức tái sử dụng)</strong></td><td>Khi Data + Context được bạn tinh chế qua não bộ thành quy tắc, mô hình và luận điểm dùng lại được nhiều lần.</td><td>Hệ thống Ghi chú nguyên tử (Atomic Notes) trong Second Brain và bộ Rubric/Thang đo chuẩn của nhóm.</td><td>Buổi 4 & Buổi 5</td></tr><tr><td><strong>4. HARNESS / WORKFLOW
+(Bộ dây cương điều phối)</strong></td><td>Knowledge và quy tắc được đóng gói thành quy trình nhiều bước có cổng dừng GATE (🔒) & FALLBACK (❓) chạy lặp lại ổn định.</td><td>Một Claude Project hoặc Gemini Gem chuyên biệt cho Đề án của nhóm, tự động chạy đúng 4 bước và dừng chờ nhóm duyệt ở từng cổng.</td><td>Buổi 3 (Tuần tới)</td></tr></tbody></table>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">15 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Studio Đề án Cuối khóa (30 phút)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">STUDIO ĐỀ ÁN: CHỐT ĐỀ TÀI & SOẠN BỘ 3 CỤM PROMPT + CONTEXT (MẢNH GHÉP 1)</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">NHIỆM VỤ 1: ĐĂNG KÝ CHÍNH THỨC ĐỀ TÀI ĐỀ ÁN NHÓM</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Yêu cầu tên Đề án:</strong> Rõ bài toán nghiệp vụ hoặc câu hỏi nghiên cứu ứng dụng + Rõ lĩnh vực chuyên ngành (Tài chính, Ngân hàng, Kế toán, Kiểm toán, QTKD, Marketing, MIS, Luật kinh tế...) + Rõ đối tượng/phạm vi.</li><li><strong style="color:var(--navy);">Ví dụ tên Đề án tốt:</strong> • 'Ứng dụng AI và quy trình kiểm chứng 5 bước trong phân tích các nhân tố ảnh hưởng đến rủi ro tín dụng xanh tại các NHTM Việt Nam.'
+• 'Xây dựng hệ thống AI Harness hỗ trợ kiểm soát chất lượng và rà soát sai sót thuyết minh Báo cáo tài chính doanh nghiệp niêm yết.'</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">NHIỆM VỤ 2: THIẾT KẾ 3 CỤM PROMPT CRISP + CONTEXT</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Mỗi nhóm soạn thảo 3 cụm Prompt chuẩn CRISP (theo Toolkit 1.2):</strong> </li><li><strong style="color:var(--navy);">Cụm Prompt 1 (Khám phá & Thu hẹp câu hỏi):</strong> Dùng Role-based + CoT để phân rã bài toán và xây dựng phễu từ khóa tra cứu học thuật.</li><li><strong style="color:var(--navy);">Cụm Prompt 2 (Đọc sâu & Trích xuất tài liệu nguồn):</strong> Dùng CRISP + Few-shot + Chốt chặn 'Không suy đoán, ghi rõ số trang' trên file PDF đính kèm.</li><li><strong style="color:var(--navy);">Cụm Prompt 3 (Phản biện đa góc nhìn - Multi-Persona):</strong> Thiết lập hội đồng 3 chuyên gia phản biện chéo dàn ý và giải pháp của nhóm.</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">16 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tiết 4 — Checklist Tự chấm Điểm Prompt & Context</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">RUBRIC TỰ KIỂM TRA CHẤT LƯỢNG PROMPT & CONTEXT CỦA NHÓM</h1>
+      
+      <div class="grid-3"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">KIỂM TRA 1: ĐỦ 5 THÀNH TỐ CRISP CHƯA?</div><div class="card-content"><ul><li>[  ] Có Context (Bối cảnh ngành, mục tiêu đề án) rõ ràng?</li><li>[  ] Có Role (Vai trò chuyên gia cụ thể)?</li><li>[  ] Có Input & Instruction (Tài liệu đính kèm & nhiệm vụ rõ)?</li><li>[  ] Có Specifics (Định dạng bảng/mục, giới hạn số chữ, thuật ngữ)?</li><li>[  ] Có Performance Criteria (Tiêu chí đánh giá đầu ra)?</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">KIỂM TRA 2: KỸ THUẬT NÂNG CAO & CHỐT CHẶN?</div><div class="card-content"><ul><li>[  ] Đã tích hợp ít nhất 2 kỹ thuật nâng cao (CoT, Few-shot, Multi-Persona, Iterative, Negative Prompt)?</li><li>[  ] ĐÃ CÓ CÂU KHÓA CHỐNG BỊA: 'Mỗi ý ghi rõ số trang/mục; chỗ nào tài liệu không nói thì ghi không nêu trong bài, tuyệt đối không suy đoán'?</li><li>[  ] Đã loại bỏ hoàn toàn các yêu cầu xin danh mục trích dẫn tự do từ Chatbot?</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">KIỂM TRA 3: VỆ SINH GÓI CONTEXT?</div><div class="card-content"><ul><li>[  ] Tài liệu đưa vào làm Context có phải là nguồn thật, chất lượng cao không?</li><li>[  ] Đã khử sạch thông tin định danh cá nhân (PII) hoặc dữ liệu mật trong các ví dụ Few-shot chưa?</li><li>[  ] Đã chạy thử đối chứng (Trước CRISP vs Sau CRISP) và lưu ảnh chụp kết quả vào hồ sơ Mảnh ghép 1 chưa?</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">17 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Tổng kết Buổi 2 — Ôn tập Truy hồi Chủ động (Active Recall)</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">3 CÂU HỎI CỦNG CỐ TRƯỚC KHI LÀM QUIZ BUỔI 2 TRÊN LMS HUB</h1>
+      
+      <div class="grid-3"><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">CÂU HỎI ÔN TẬP 1</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Năm chữ cái C - R - I - S - P trong khung viết câu lệnh chuẩn mực đại diện cho những thành phần nào?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> Context (Bối cảnh) - Role (Vai trò) - Input/Instruction (Đầu vào & Nhiệm vụ) - Specifics (Ràng buộc cụ thể) - Performance Criteria / Preview (Tiêu chí đánh giá & Hình dung kết quả).</li></ul></div></div><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">CÂU HỎI ÔN TẬP 2</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Khi một cuộc hội thoại với AI kéo dài quá nhiều lượt với đủ thứ chủ đề lộn xộn, hiện tượng gì sẽ xảy ra với Cửa sổ ngữ cảnh (Context Window)?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> Xảy ra hiện tượng loãng/trôi ngữ cảnh (Context Rot): các ràng buộc và chỉ thị quan trọng ở đầu buổi bị đẩy ra xa hoặc bị nhiễu, khiến AI trả lời mất nhất quán và dễ quên quy tắc.</li></ul></div></div><div class="card" style="background:#E8F5E9;border-color:#2E7D32;"><div class="card-header" style="background:#2E7D32;">CÂU HỎI ÔN TẬP 3</div><div class="card-content"><ul><li><strong style="color:var(--navy);">Hỏi:</strong> Câu lệnh chốt chặn nào bắt buộc phải cài vào Prompt khi yêu cầu AI tóm tắt hoặc trích xuất thông tin từ tài liệu khoa học?</li><li><strong style="color:var(--navy);">Đáp án cốt lõi:</strong> 'Mỗi ý bắt buộc ghi rõ số trang hoặc tên mục. Chỗ nào tài liệu không nói, ghi rõ không nêu trong bài, tuyệt đối không suy đoán.'</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">18 / 20</span></div>
+  </section>
+  <section class="slide">
+    <div class="header-bar"><span>Nhiệm vụ Khóa chốt Buổi 2 & Chuẩn bị Buổi 3</span><span>HUB_AI_CERT</span></div>
+    <div class="slide-body">
+      <h1 class="page-title">DANH MỤC NHIỆM VỤ BẮT BUỘC TRÊN LMS HUB & CHUẨN BỊ BUỔI 3</h1>
+      
+      <div class="grid-2"><div class="card" style="background:#FFEBEE;border-color:#C62828;"><div class="card-header" style="background:#C62828;">NHIỆM VỤ CÁ NHÂN TRÊN LMS HUB</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Làm Quiz Buổi 2 (Active Recall 5 lượt):</strong> Hoàn thành 10 câu trắc nghiệm Buổi 2 trên LMS Hub để kiểm tra độ hiểu về CRISP, 5 kỹ thuật nâng cao và Context Engineering.</li><li><strong style="color:var(--navy);">2. Viết Nhật ký Học tập (Atomic Note 4F số 2):</strong> Đúc kết bài học từ trải nghiệm so sánh 3 cấp độ Prompt & Context hôm nay và lưu lại mẫu Prompt CRISP tâm đắc nhất của bạn.</li><li><strong style="color:var(--navy);">3. Gửi Feedback kèm nhận xét để tải Bài giảng:</strong> Mở khóa tải Slide Buổi 2 và ghi nhận điểm danh.</li><li><strong style="color:var(--navy);">4. Đọc trước eBook SCQA Chương 3:</strong> Chuẩn bị cho Buổi 3: Kiến trúc Harness — Xây dựng 'Bộ dây cương' điều phối AI.</li></ul></div></div><div class="card" style="background:#F5F6FA;border-color:#1B2558;"><div class="card-header" style="background:#1B2558;">NHIỆM VỤ NHÓM ĐỀ ÁN (CHUẨN BỊ CHỐT MẢNH GHÉP 1 Ở BUỔI 3)</div><div class="card-content"><ul><li><strong style="color:var(--navy);">1. Hoàn thiện bản viết 3 cụm Prompt CRISP + Context:</strong> Lưu kết quả chạy thử nghiệm đối chứng (Trước vs Sau CRISP) vào file hồ sơ nhóm.</li><li><strong style="color:var(--navy);">2. Chuẩn bị nguyên liệu cho Studio Buổi 3:</strong> Mang theo 1-2 tài liệu chuẩn của đề tài (đã khử thông tin nhạy cảm) và phác thảo quy trình 3-5 bước xử lý bài toán của nhóm.</li><li><strong style="color:var(--navy);">3. Tài khoản thực hành Buổi 3:</strong> Đảm bảo mỗi nhóm có sẵn tài khoản Claude (để dùng Claude Projects) hoặc Gemini (để dùng Gems / Gemini Notebook) sẵn sàng đóng gói Bộ Harness ở Buổi 3!</li></ul></div></div></div>
+    </div>
+    <div class="footer-bar"><span>Trường ĐH Ngân hàng TP.HCM (HUB) | Kỹ năng ứng dụng AI trong học tập và nghiên cứu | ThS. Phó Hải Đăng</span><span class="page-num">19 / 20</span></div>
+  </section>
+  <section class="slide navy-bg">
+    <div class="gold-top-bar"></div>
+    <div style="padding: 44px 64px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <h1 style="font-family: Georgia, serif; font-size: 28px; line-height: 1.35; color: var(--white); margin-bottom: 16px; white-space: pre-line;">"PROMPT LÀ GIAO DIỆN CỦA TƯ DUY.
+10 PHÚT THIẾT KẾ NGỮ CẢNH VÀ RÀNG BUỘC CHUẨN XÁC SẼ TIẾT KIỆM 2 GIỜ SỬA CHỮA MỘT KẾT QUẢ RÁC."</h1>
+      <div style="width: 380px; height: 3px; background: var(--gold); margin: 0 auto 24px;"></div>
+      <div class="grid-3" style="max-height: 250px; margin-bottom: 24px;"><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">1. CÔNG THỨC CRISP</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Luôn cung cấp đủ Context, Role, Input/Instruction, Specifics và Performance Criteria thay vì hỏi một câu cụt lủn.</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">2. CHỐT CHẶN KHÔNG SUY ĐOÁN</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Kết hợp CoT, Few-shot, Iterative, Negative Prompt và luôn bắt AI ghi rõ số trang, chỗ nào không có phải ghi 'Không nêu trong bài'.</div></div><div style="background: var(--dark-navy); border: 1.5px solid var(--gold); border-radius: 6px; padding: 18px;"><div style="color: var(--gold); font-weight: 700; font-size: 15.5px; margin-bottom: 8px;">3. CONTEXT ENGINEERING</div><div style="font-size: 14px; color: #E2E8F0; line-height: 1.5;">Giữ vệ sinh cửa sổ ngữ cảnh (Context Hygiene): nạp tài liệu nguồn sạch, rubric rõ ràng và ví dụ mẫu chuẩn mực.</div></div></div>
+      <div style="color: var(--gold); font-size: 17px; font-style: italic; margin-bottom: 14px;">Hẹn gặp lại các bạn ở Buổi 3: Đóng gói toàn bộ Prompt & Context thành Bộ AI Harness (Cổng GATE & FALLBACK) và chốt Mảnh ghép 1!</div>
+      <div style="color: #CBD5E1; font-size: 14.5px;">ThS. Phó Hải Đăng &nbsp;|&nbsp; Trường ĐH Ngân hàng TP.HCM (HUB) &nbsp;|&nbsp; LMS Hub: Hoàn thành Quiz, Nhật ký 4F &amp; Feedback</div>
+    </div>
+  </section>
+</div>
+<div class="controls-bar">
+  <button onclick="prevSlide()">&larr; Trang trước</button>
+  <span id="slide-indicator">Slide 1 / 20</span>
+  <button onclick="nextSlide()">Trang tiếp &rarr;</button>
+  <button onclick="toggleFullScreen()">Toàn màn hình (F)</button>
+</div>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const indicator = document.getElementById('slide-indicator');
+  const viewport = document.getElementById('viewport');
+  let current = 0;
+  function showSlide(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= slides.length) idx = slides.length - 1;
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    current = idx;
+    indicator.textContent = `Slide ${current + 1} / ${slides.length}`;
+  }
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }
+  function fitViewport() {
+    const scale = Math.min((window.innerWidth - 36) / 1280, (window.innerHeight - 66) / 720);
+    viewport.style.transform = `scale(${Math.min(scale, 1.15)})`;
+  }
+  window.addEventListener('resize', fitViewport);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
+    if (e.key === 'f' || e.key === 'F') toggleFullScreen();
+  });
+  fitViewport();
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 4: Kiến trúc Second Brain (PARA & CODE) và Ghi chú nguyên tử — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 2: XÂY DỰNG SECOND BRAIN ĐỂ PHÁT TRIỂN SỰ HỌC</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO3</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 4: Kiến trúc Second Brain (PARA & CODE) và Ghi chú nguyên tử</h1>
+      <p class="subtitle">Ngoại hóa tri thức, tổ chức thông tin theo hành động (PARA), luồng tinh chế CODE và kỹ thuật viết Atomic Notes + 4F</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Giải thích được lý do tại sao người học trong kỷ nguyên AI bắt buộc phải có <strong>Bộ Não Thứ Hai (Second Brain / PKM)</strong> để chống lại sự xói mòn trí nhớ và tạo nguồn Context độc bản (CLO3).</li>
+      <li>Thiết lập được cấu trúc thư mục quản trị tri thức theo mô hình <strong>PARA (Projects - Areas - Resources - Archives)</strong> và vận hành luồng <strong>CODE (Capture - Organize - Distill - Express)</strong> (CLO3).</li>
+      <li>Viết được các <strong>Ghi chú nguyên tử (Atomic Notes)</strong> chuẩn mực: 1 ghi chú = 1 luận điểm cốt lõi, tiêu đề khẳng định, diễn đạt 100% bằng ngôn từ của chính mình (không copy-paste AI), có nguồn và liên kết mạng lưới (CLO3).</li>
+      <li>Khởi tạo kho Second Brain chung cho Đề án nhóm và bắt đầu tích lũy tối thiểu <strong>06 Atomic Notes cá nhân</strong> (chiếm 30% điểm cá nhân cuối khóa) (CLO3).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Sau vài học kỳ đại học và hàng trăm giờ sử dụng AI, máy tính của bạn chứa hàng chục thư mục tài liệu tải về chưa từng mở, hàng trăm đoạn lịch sử chat với ChatGPT/Claude trôi tuột vào quên lãng, và các file ghi chú dài hàng chục trang copy-paste từ AI.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Khi bắt tay vào làm bài nghiên cứu hay đề án cuối khóa, bạn nhận ra mình không thể tìm lại được một luận điểm hay đã đọc cách đây 2 tháng, cũng không nhớ mình đã tích lũy được gì. Việc copy-paste nguyên khối văn bản do AI sinh ra vào ổ cứng chỉ tạo ra một 'nghĩa địa thông tin số' (digital hoarding): thông tin nằm trong máy của bạn, nhưng chưa bao giờ đi qua bộ não của bạn để trở thành tri thức của bạn.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để xây dựng một hệ thống quản trị tri thức cá nhân giúp bạn tiêu hóa thông tin thành năng lực nội tại, đồng thời trở thành kho dữ liệu ngữ cảnh (Context) độc bản để điều phối AI ở đẳng cấp cao nhất?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Xây dựng 'Bộ Não Thứ Hai' (Second Brain) theo kiến trúc thư mục hành động PARA, vận hành theo luồng 4 bước CODE (Capture - Organize - Distill - Express), lấy Ghi chú nguyên tử (Atomic Notes - viết bằng chính ngôn từ của bạn) và khung phản tư 4F làm viên gạch nền tảng.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 4): Sau 3 tuần dùng AI rất mượt, Minh chợt nhận ra ổ cứng của mình có hơn 40 file tài liệu tải về và hàng chục đoạn chat dài với AI, nhưng khi cần viết một trang đề cương nghiên cứu, đầu Minh hoàn toàn trống rỗng. Minh đã mắc chứng 'tích trữ rác số' (digital hoarding): thông tin đi từ AI thẳng vào ổ cứng mà chưa bao giờ đi qua bộ não của Minh. Buổi học thứ 4 giúp Minh đập đi xây lại toàn bộ hệ thống tri thức bằng PARA và những viên gạch Atomic Notes đầu tiên.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Thử thách 60 giây: Hãy mở máy tính hoặc điện thoại của bạn và tìm lại một ý tưởng hoặc một kiến thức tâm đắc nhất bạn đã học từ học kỳ trước. Bạn mất bao lâu để tìm ra, hay không thể nhớ nó nằm ở đâu?</li>
+        <li>Sự khác biệt giữa việc 'lưu một đoạn văn hay của AI vào máy' và việc 'biến kiến thức đó thành tài sản trí tuệ của chính bạn' nằm ở thao tác nào?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Tại sao cần Second Brain trong kỷ nguyên AI & Kiến trúc PARA:</strong><br>• Thử thách tìm lại kiến thức cũ trong 60 giây và phân tích căn bệnh <em>Digital Hoarding</em>.<br>• Triết lý Tiago Forte: <em>'Bộ não sinh ra để nảy sinh ý tưởng, không phải để làm ổ cứng lưu trữ'</em>.<br>• Giải thích mô hình <strong>PARA (Projects - Areas - Resources - Archives)</strong>: nguyên tắc phân loại thông tin theo <em>nơi sẽ hành động</em> thay vì phân loại theo chủ đề tĩnh.</td><td>Kiểm tra lại cách lưu trữ file hiện tại của bản thân; vẽ sơ đồ cây thư mục PARA cho việc học tập và nghiên cứu tại HUB.</td><td>Slide Buổi 4; Sơ đồ PARA</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Luồng vận hành CODE, Giải phẫu Atomic Note & Khung phản tư 4F:</strong><br>• Quy trình 4 bước <strong>C - O - D - E</strong>.<br>• Giải phẫu 4 thành phần của một <strong>Atomic Note</strong> chuẩn: (1) Tiêu đề dạng câu khẳng định (Declarative Title), (2) Nội dung 100-200 chữ bằng ngôn từ riêng, (3) Nguồn tham chiếu chuẩn, (4) Liên kết hai chiều <code>[[Links]]</code>.<br>• Tích hợp khung phản tư <strong>4F (Fact - Feelings - Findings - Future)</strong>.</td><td>So sánh trực diện một bản copy-paste từ AI (Ghi chú rác) và một Atomic Note đã qua tinh chế (Tri thức sống).</td><td>Template Atomic Note & 4F</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Thực hành Dựng không gian Second Brain & Rèn luyện viết Atomic Notes:</strong><br>• Hướng dẫn thiết lập nhanh trên công cụ tự chọn (Obsidian / Notion / Google Docs có cấu trúc liên kết).<br>• Bài tập thực hành: Từ 1 chương tài liệu chuyên ngành, sinh viên đọc hiểu và tự tay viết <strong>03 Atomic Notes</strong> có liên kết chéo với nhau.</td><td>Thực hành cá nhân trên máy tính: dựng PARA và viết 3 Atomic Notes đầu tiên; giảng viên đi từng bàn sửa cách đặt tiêu đề khẳng định.</td><td>Obsidian / Notion / Google Docs</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Studio Đề án (Thiết lập Second Brain dự án) & Khóa chốt LMS:</strong><br>• Hướng dẫn các nhóm thiết lập kho Second Brain cho Đề án và phân công mảng chủ đề để mỗi thành viên tích lũy đủ >= 6 Atomic Notes cá nhân.<br>• Hoàn thành phản tư 4F và Quiz trên LMS.</td><td>Thiết lập quy ước đặt tên và liên kết Atomic Notes trong nhóm Đề án; nộp bài phản tư 4F và hoàn thành Quiz Buổi 4 trên LMS.</td><td>LMS Hub (Quiz 4, Journal 4)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao cách đặt tiêu đề Atomic Note dạng câu khẳng định hoàn chỉnh (ví dụ: 'Tỷ lệ trích dẫn bịa của LLM tăng mạnh ở các đề tài ít được nghiên cứu') lại vượt trội hơn hẳn cách đặt tiêu đề kiểu nhãn danh từ ('Trích dẫn bịa của AI')?</li>
+      <li>Làm thế nào một mạng lưới gồm 30 Atomic Notes ngắn gọn lại giúp bạn viết một bài tiểu luận 3.000 chữ nhanh hơn gấp 5 lần so với việc bắt đầu từ một trang Word trắng?</li>
+      <li>Nếu bạn dùng AI để giải thích một khái niệm khó trong sách, bạn cần làm gì tiếp theo để biến lời giải thích đó thành một Atomic Note hợp lệ của riêng bạn?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 4 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 4</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 4 theo khung 4F)</strong> và bổ sung tối thiểu <strong>03 Atomic Notes chuyên môn</strong> mới vào thư mục Project Đề án của bạn.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Chuẩn bị cho Buổi 5 - Mảnh ghép 2):</h3>
+        <ul>
+          <li>Mỗi thành viên chuẩn bị sẵn các file tài liệu PDF chuyên ngành và các file Atomic Notes cá nhân của mình để Buổi 5 nạp vào hệ thống <strong>RAG (Gemini Notebook)</strong>.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Bốn thành phần của cấu trúc PARA là gì?<br><em>Đáp:</em> Projects (Dự án có hạn chót) - Areas (Lĩnh vực trách nhiệm dài hạn) - Resources (Tài nguyên tham khảo) - Archives (Lưu trữ lạnh).</li>
+      <li><strong>Hỏi:</strong> Bốn bước của luồng CODE là gì?<br><em>Đáp:</em> Capture (Thu nạp) -> Organize (Tổ chức) -> Distill (Tinh chế) -> Express (Diễn đạt).</li>
+      <li><strong>Hỏi:</strong> Nguyên tắc cốt lõi nhất khi viết nội dung của một Atomic Note là gì?<br><em>Đáp:</em> Mỗi ghi chú chỉ chứa 1 luận điểm duy nhất, tiêu đề dạng câu khẳng định, được diễn đạt lại bằng 100% ngôn từ và sự hiểu biết của chính mình kèm nguồn và liên kết.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Nhấn mạnh với sinh viên: Công cụ (Obsidian, Notion hay Google Docs) chỉ chiếm 10%, phương pháp viết Atomic Note bằng ngôn từ riêng mới chiếm 90% giá trị.</li>
+      <li>Nhắc sinh viên đây chính là cấu phần chấm 30% điểm cá nhân ở buổi bảo vệ cuối khóa để mọi thành viên đều tự giác tích lũy ghi chú từ hôm nay.</li>
+    </ul>
+  </div>
+</body>
+</html>

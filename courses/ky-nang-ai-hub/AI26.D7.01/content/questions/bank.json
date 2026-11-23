@@ -1,0 +1,1762 @@
+[
+  {
+    "id": "aihub-s01-L1-c1-q1",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Cơ chế cốt lõi giúp các Mô hình ngôn ngữ lớn (LLM) như ChatGPT hay Claude tạo ra câu trả lời là gì?",
+    "options": [
+      "A. Tra cứu trực tiếp từ một cơ sở dữ liệu sự thật đã được kiểm duyệt 100%",
+      "B. Dự đoán từ (token) tiếp theo có xác suất xuất hiện cao nhất dựa trên ngữ cảnh đứng trước",
+      "C. Sao chép nguyên văn các đoạn văn bản từ Google Scholar theo thời gian thực",
+      "D. Sử dụng tư duy nhận thức và sự hiểu biết chuyên môn giống như bộ não chuyên gia"
+    ],
+    "correct": "B",
+    "explanation": "Mô hình ngôn ngữ lớn (LLM) hoạt động bằng cách tính toán phân phối xác suất để dự đoán từ (token) tiếp theo hợp lý nhất dựa trên ngữ cảnh đứng trước, chứ không tra cứu cơ sở dữ liệu sự thật."
+  },
+  {
+    "id": "aihub-s01-L1-c1-q2",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Theo nghiên cứu của Topaz và cộng sự đăng trên tạp chí The Lancet (5/2026) khi kiểm tra gần 2.5 triệu bài báo trên PubMed, tỷ lệ bài báo có chứa ít nhất một tài liệu tham khảo bịa trong 7 tuần đầu năm 2026 là bao nhiêu?",
+    "options": [
+      "A. 1/2.828 bài báo",
+      "B. 1/1.000 bài báo",
+      "C. 1/277 bài báo",
+      "D. 1/10 bài báo"
+    ],
+    "correct": "C",
+    "explanation": "Theo nghiên cứu của Topaz và cộng sự trên The Lancet (5/2026) kiểm tra 2.5 triệu bài trên PubMed, tỷ lệ bài dính trích dẫn bịa tăng từ 1/2.828 (2023) lên 1/458 (2025) và đạt 1/277 trong 7 tuần đầu năm 2026."
+  },
+  {
+    "id": "aihub-s01-L1-c1-q3",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Hiện tượng sinh viên đọc bản tóm tắt rất mượt mà của AI, cảm thấy mình đã hiểu hết bài nhưng thực chất não bộ chưa hề xử lý sâu và nhanh chóng quên sạch được gọi là gì?",
+    "options": [
+      "A. Ảo giác dữ liệu (Data Hallucination)",
+      "B. Ảo tưởng trôi chảy (Fluency Illusion)",
+      "C. Quá tải ngữ cảnh (Context Overflow)",
+      "D. Học tập chủ động (Active Recall)"
+    ],
+    "correct": "B",
+    "explanation": "Ảo tưởng trôi chảy (Fluency Illusion) xảy ra khi văn bản AI tạo ra quá mượt mà khiến người đọc tưởng mình đã hiểu sâu, nhưng thực chất não bộ chưa trải qua ma sát nhận thức nên sẽ quên rất nhanh."
+  },
+  {
+    "id": "aihub-s01-L1-c1-q4",
+    "chapter": 1,
+    "level": 1,
+    "session": 1,
+    "type": "mc",
+    "question": "Trong mô hình 'AI là Trợ lý, Bạn là Chủ', bộ ba động từ nào định vị đúng vai trò của AI và người học?",
+    "options": [
+      "A. AI quyết định - Bạn thực thi - Nhà trường chịu trách nhiệm",
+      "B. AI tìm nguồn - AI viết bài - Bạn đứng tên",
+      "C. AI đề xuất - Bạn quyết định - Bạn chịu trách nhiệm",
+      "D. Bạn đề xuất - AI quyết định - Cùng chịu trách nhiệm"
+    ],
+    "correct": "C",
+    "explanation": "Ba động từ định vị vị thế làm chủ là: AI đề xuất (Propose) - Bạn quyết định (Decide) - Bạn chịu trách nhiệm (Accountable)."
+  },
+  {
+    "id": "aihub-s01-L2-c1-q1",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Vì sao một mô hình AI có thể bịa ra một thông tư ngân hàng hoặc một trích dẫn khoa học không hề tồn tại với giọng văn vô cùng tự tin?",
+    "options": [
+      "A. Vì thuật toán đoán chữ chỉ ưu tiên ghép các cụm từ có xác suất ngôn ngữ hợp lý nhất với câu hỏi, chứ không có cơ chế tự kiểm tra sự thật",
+      "B. Vì nhà phát triển lập trình cho AI tính năng nói dối khi gặp câu hỏi khó",
+      "C. Vì máy tính của người dùng bị nhiễm mã độc làm sai lệch kết quả",
+      "D. Vì AI chỉ bịa khi người dùng sử dụng phiên bản miễn phí"
+    ],
+    "correct": "A",
+    "explanation": "Do cơ chế đoán chữ ưu tiên sự hợp lý về mặt ngôn ngữ và không có bước kiểm tra sự thật nội tại, AI dễ ghép các từ có xác suất đi cùng nhau cao thành thông tin bịa (Hallucination) với giọng rất tự tin."
+  },
+  {
+    "id": "aihub-s01-L2-c1-q2",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Theo nguyên tắc phân vai 'Việc nào giao, việc nào giữ', câu hỏi tự kiểm tra nào giúp bạn biết có nên giao một bước công việc cho AI hay không?",
+    "options": [
+      "A. Bước này AI làm có nhanh hơn mình làm không?",
+      "B. Nếu AI làm sai ở bước này, mình có đủ khả năng và công cụ phát hiện ra không?",
+      "C. Bước này có tốn nhiều dung lượng token của AI không?",
+      "D. Bạn bè trong lớp có dùng AI cho bước này không?"
+    ],
+    "correct": "B",
+    "explanation": "Phép thử vàng trước khi giao việc cho AI: 'Nếu AI làm sai ở bước này, mình có đủ kiến thức và công cụ để phát hiện ra không?' Nếu không phát hiện được thì tuyệt đối không giao."
+  },
+  {
+    "id": "aihub-s01-L2-c1-q3",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Khi bạn cần hỏi đáp và trích xuất thông tin chỉ gói gọn trong 3 cuốn giáo trình PDF của môn học mà không muốn AI suy diễn thêm từ bên ngoài, nhóm công cụ nào là phù hợp nhất?",
+    "options": [
+      "A. Chatbot hội thoại tổng quát không đính kèm tài liệu",
+      "B. Công cụ tạo hình ảnh tự động",
+      "C. Công cụ RAG quản trị tài liệu cá nhân như Gemini Notebook (NotebookLM)",
+      "D. Công cụ kiểm tra đạo văn"
+    ],
+    "correct": "C",
+    "explanation": "Các công cụ RAG như Gemini Notebook (NotebookLM) chỉ trả lời dựa trên nguồn tài liệu người dùng tải lên và có trích dẫn trỏ về đúng đoạn văn gốc."
+  },
+  {
+    "id": "aihub-s01-L2-c1-q4",
+    "chapter": 1,
+    "level": 2,
+    "session": 1,
+    "type": "mc",
+    "question": "Cách sử dụng AI nào dưới đây giúp RÈN LUYỆN tư duy thay vì rơi vào bẫy lệ thuộc nhận thức (Cognitive Offloading)?",
+    "options": [
+      "A. Nhờ AI viết trọn vẹn bài tiểu luận rồi học thuộc lòng để đi thi",
+      "B. Tự mình phác thảo dàn ý và luận điểm trước, sau đó dùng AI đóng vai người phản biện để chỉ ra các lỗ hổng logic trong dàn ý của mình",
+      "C. Chép đề bài tập lên AI và chép nguyên lời giải vào vở",
+      "D. Nhờ AI đọc hộ toàn bộ bài báo mà không bao giờ mở file PDF gốc"
+    ],
+    "correct": "B",
+    "explanation": "Tự lập dàn ý trước rồi dùng AI đóng vai người phản biện giúp tạo ra ma sát nhận thức có lợi, tránh lệ thuộc nhận thức (Cognitive Offloading)."
+  },
+  {
+    "id": "aihub-s01-L3-c1-q1",
+    "chapter": 1,
+    "level": 3,
+    "session": 1,
+    "type": "mc",
+    "question": "Minh đang làm đề tài về 'Rủi ro tín dụng xanh tại các ngân hàng thương mại Việt Nam'. Minh mở một Chatbot tổng quát và gõ: 'Hãy cho tôi 10 tài liệu tham khảo uy tín kèm DOI về đề tài này'. Hành động này vi phạm nguyên tắc nào?",
+    "options": [
+      "A. Dùng sai công cụ cho tác vụ cần nguồn thật: Chatbot tổng quát sinh văn bản theo xác suất nên rất dễ ghép các mảnh thông tin thành trích dẫn bịa và DOI giả",
+      "B. Xin quá ít tài liệu tham khảo, lẽ ra phải xin 50 tài liệu một lúc",
+      "C. Không vi phạm gì, đây là cách tìm tài liệu chuẩn xác nhất hiện nay",
+      "D. Vi phạm vì không viết câu lệnh bằng tiếng Anh"
+    ],
+    "correct": "A",
+    "explanation": "Chatbot tổng quát không phải là kho tài liệu học thuật; dùng nó để xin danh mục tài liệu tham khảo và DOI sẽ dẫn tới trích dẫn bịa dạng ghép xác."
+  },
+  {
+    "id": "aihub-s01-L3-c1-q2",
+    "chapter": 1,
+    "level": 3,
+    "session": 1,
+    "type": "mc",
+    "question": "Trong 4 công việc dưới đây khi làm tiểu luận ngành Tài chính - Ngân hàng, công việc nào người học BẮT BUỘC phải tự giữ quyền quyết định cuối cùng, không được giao phó cho AI?",
+    "options": [
+      "A. Gợi ý các từ khóa tiếng Anh tương đương để tra cứu trên Semantic Scholar",
+      "B. Rà soát lỗi chính tả và ngữ pháp của bản thảo",
+      "C. Kiểm chứng độ tin cậy của số liệu gốc và chốt kết luận học thuật của bài viết",
+      "D. Chuyển đổi một đoạn ghi chú nháp thành bảng tóm tắt sơ bộ"
+    ],
+    "correct": "C",
+    "explanation": "Việc thẩm định độ tin cậy của số liệu gốc và chốt kết luận học thuật đòi hỏi phán đoán chuyên môn và trách nhiệm cá nhân nên con người bắt buộc phải tự nắm giữ."
+  },
+  {
+    "id": "aihub-s02-L1-c2-q1",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Trong công thức viết câu lệnh CRISP, chữ 'S' (Specifics) đại diện cho yêu cầu nào?",
+    "options": [
+      "A. Các ràng buộc và yêu cầu cụ thể về định dạng, độ dài, văn phong, ngôn ngữ đầu ra",
+      "B. Tên phần mềm AI được sử dụng",
+      "C. Tốc độ phản hồi của máy chủ AI",
+      "D. Số lượng thành viên trong nhóm học tập"
+    ],
+    "correct": "A",
+    "explanation": "Trong khung CRISP, chữ S (Specifics) quy định các yêu cầu và ràng buộc cụ thể về định dạng, độ dài, văn phong và thuật ngữ của đầu ra."
+  },
+  {
+    "id": "aihub-s02-L1-c2-q2",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Kỹ thuật cung cấp cho AI từ 2 đến 3 ví dụ mẫu về định dạng đầu ra chuẩn trước khi giao nhiệm vụ chính được gọi là gì?",
+    "options": [
+      "A. Zero-shot prompting",
+      "B. Few-shot prompting",
+      "C. Negative prompting",
+      "D. Hallucination prompting"
+    ],
+    "correct": "B",
+    "explanation": "Few-shot prompting là kỹ thuật cung cấp từ 2 đến 3 ví dụ mẫu chuẩn mực để AI học theo cấu trúc và giọng điệu mong muốn."
+  },
+  {
+    "id": "aihub-s02-L1-c2-q3",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Câu lệnh ràng buộc nào sau đây đóng vai trò là 'chốt chặn sống còn' giúp giảm thiểu nguy cơ AI tự bịa thêm thông tin khi tóm tắt tài liệu khoa học?",
+    "options": [
+      "A. Hãy viết thật hay và sáng tạo hết mức có thể",
+      "B. Chỗ nào tài liệu không nói, ghi rõ 'không nêu trong bài', tuyệt đối không suy đoán",
+      "C. Hãy tìm mọi cách lấp đầy tất cả các ô trong bảng tóm tắt",
+      "D. Hãy viết dài tối thiểu 2.000 chữ"
+    ],
+    "correct": "B",
+    "explanation": "Câu khóa 'Chỗ nào tài liệu không nói, ghi rõ không nêu trong bài, tuyệt đối không suy đoán' là chốt chặn sống còn ngăn AI tự bịa thông tin lấp vào chỗ trống."
+  },
+  {
+    "id": "aihub-s02-L1-c2-q4",
+    "chapter": 2,
+    "level": 1,
+    "session": 2,
+    "type": "mc",
+    "question": "Context Engineering (Kỹ nghệ thiết kế ngữ cảnh) khác với việc gõ một câu hỏi ngắn thông thường ở điểm nào?",
+    "options": [
+      "A. Chỉ dùng từ khóa tiếng Anh thay vì tiếng Việt",
+      "B. Chủ động tuyển chọn, làm sạch và cấu trúc hóa tài liệu nguồn, ví dụ mẫu cùng bộ quy tắc đưa vào cửa sổ ngữ cảnh cho AI",
+      "C. Hỏi AI càng ít thông tin càng tốt để AI tự đoán",
+      "D. Chỉ áp dụng cho lập trình viên hệ thống"
+    ],
+    "correct": "B",
+    "explanation": "Context Engineering là nghệ thuật tuyển chọn, làm sạch và cấu trúc hóa toàn bộ gói tài liệu nguồn, ví dụ mẫu và quy tắc biên nạp vào cửa sổ ngữ cảnh cho AI."
+  },
+  {
+    "id": "aihub-s02-L2-c2-q1",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Khi giải một bài toán phân tích tài chính hoặc kiểm định giả thuyết gồm nhiều bước logic phức tạp, kỹ thuật nào giúp AI giảm sai sót tính toán/suy luận nhất?",
+    "options": [
+      "A. Yêu cầu AI trả lời ngay kết quả cuối cùng trong 1 chữ",
+      "B. Chain-of-Thought (Yêu cầu AI suy nghĩ và trình bày rõ từng bước lập luận trước khi kết luận)",
+      "C. Yêu cầu AI viết dưới dạng thơ lục bát",
+      "D. Xóa toàn bộ dữ liệu đầu vào"
+    ],
+    "correct": "B",
+    "explanation": "Chain-of-Thought (Suy luận từng bước) buộc AI phải trình bày các bước lập luận trung gian, giúp giảm thiểu sai sót trong các bài toán logic và phân tích định lượng."
+  },
+  {
+    "id": "aihub-s02-L2-c2-q2",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Điều gì sẽ xảy ra khi một cuộc hội thoại với AI kéo dài hàng chục lượt với nhiều chủ đề lộn xộn vượt quá khả năng tập trung của Context Window?",
+    "options": [
+      "A. AI tự động nâng cấp lên phiên bản trả phí",
+      "B. Các chỉ thị và ràng buộc quan trọng ở đầu cuộc trò chuyện bị đẩy ra ngoài hoặc bị loãng (Context Rot), làm AI trả lời lệch chuẩn",
+      "C. AI sẽ nhớ chính xác 100% mọi chi tiết mãi mãi",
+      "D. Máy tính sẽ bị khóa ổ cứng"
+    ],
+    "correct": "B",
+    "explanation": "Khi hội thoại quá dài và lộn xộn, các chỉ thị ban đầu bị đẩy ra xa hoặc bị pha loãng trong Context Window (Context Rot), làm giảm độ nhất quán của kết quả."
+  },
+  {
+    "id": "aihub-s02-L2-c2-q3",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Sau khi AI xuất ra bản nháp đầu tiên đạt 80% ý muốn nhưng giọng văn hơi dài dòng, cách xử lý đúng theo kỹ thuật Iterative Refinement là gì?",
+    "options": [
+      "A. Mở tab mới và gõ lại từ đầu một câu hỏi hoàn toàn khác",
+      "B. Phản hồi ngay trong luồng chat: chỉ rõ phần nội dung cần giữ nguyên và yêu cầu rút gọn độ dài xuống 150 chữ, bỏ các câu mở đầu sáo rỗng",
+      "C. Chấp nhận nộp luôn bản nháp đó mà không sửa",
+      "D. Đổi sang hỏi bằng ngôn ngữ khác"
+    ],
+    "correct": "B",
+    "explanation": "Iterative Refinement (Tinh chỉnh đa vòng) là giữ lại phần đã đúng và chỉ yêu cầu điều chỉnh từng tiêu chí cụ thể (độ dài, giọng văn) qua các lượt kế tiếp."
+  },
+  {
+    "id": "aihub-s02-L2-c2-q4",
+    "chapter": 2,
+    "level": 2,
+    "session": 2,
+    "type": "mc",
+    "question": "Tại sao nhận định 'Prompt là giao diện của tư duy' lại đúng trong thực tế?",
+    "options": [
+      "A. Vì người dùng chỉ có thể viết được một Prompt rõ bối cảnh, rõ tiêu chí đánh giá (CRISP) khi chính họ đã tư duy rõ về mục tiêu và cấu trúc bài toán",
+      "B. Vì Prompt được thiết kế bằng đồ họa 3D",
+      "C. Vì AI có thể tự đọc suy nghĩ mà không cần gõ chữ",
+      "D. Vì ai gõ bàn phím nhanh hơn sẽ có kết quả tốt hơn"
+    ],
+    "correct": "A",
+    "explanation": "Prompt là giao diện của tư duy: chỉ khi người học hiểu rõ cấu trúc bài toán và tiêu chí đánh giá thì mới viết được một câu lệnh CRISP sắc bén."
+  },
+  {
+    "id": "aihub-s02-L3-c2-q1",
+    "chapter": 2,
+    "level": 3,
+    "session": 2,
+    "type": "mc",
+    "question": "Câu lệnh nào dưới đây hội tụ đầy đủ nhất khung CRISP + Chốt chặn chống bịa khi nhờ AI hỗ trợ đọc tài liệu?",
+    "options": [
+      "A. Tóm tắt file PDF này giúp tôi cho thật hay nhé.",
+      "B. Bạn là chuyên gia tài chính. Hãy nói cho tôi biết xu hướng ngân hàng số năm 2030.",
+      "C. [Context] Tôi là SV năm 3 ngành Ngân hàng đang làm tổng quan tài liệu. [Role] Bạn là trợ lý nghiên cứu học thuật. [Input] Dựa duy nhất vào file PDF bài báo đính kèm. [Specifics] Hãy tóm tắt thành bảng 5 mục (Câu hỏi NC, Phương pháp, Cỡ mẫu, Kết quả, Hạn chế) tối đa 250 chữ. [Performance/Constraint] Mỗi ý bắt buộc ghi số trang; chỗ nào bài không nêu thì ghi 'không nêu trong bài', tuyệt đối không suy đoán.",
+      "D. Hãy viết bài luận 2000 chữ về ngân hàng số kèm 15 trích dẫn APA."
+    ],
+    "correct": "C",
+    "explanation": "Một câu lệnh đọc tài liệu chuẩn mực phải hội tụ đủ 5 yếu tố CRISP, đính kèm file gốc và có chốt chặn yêu cầu ghi số trang, không suy đoán."
+  },
+  {
+    "id": "aihub-s02-L3-c2-q2",
+    "chapter": 2,
+    "level": 3,
+    "session": 2,
+    "type": "mc",
+    "question": "Nhóm bạn muốn AI phân tích bảng câu hỏi khảo sát sinh viên HUB theo đúng chuẩn thang đo Likert 5 mức của một bài báo gốc. Gói Context tốt nhất cần nạp cho AI gồm những gì?",
+    "options": [
+      "A. Chỉ cần gõ tên bài báo gốc mà không cần tải file lên",
+      "B. (1) File trích xuất bảng thang đo gốc đã kiểm chứng, (2) Bảng mô tả đối tượng khảo sát tại HUB, (3) 2 ví dụ mẫu biến đổi câu hỏi (Few-shot), và (4) Ràng buộc giữ nguyên ý nghĩa học thuật của biến quan sát",
+      "C. Toàn bộ lịch sử chat linh tinh của nhóm trong 1 tháng qua",
+      "D. Một bức ảnh chụp màn hình trang bìa giáo trình"
+    ],
+    "correct": "B",
+    "explanation": "Gói Context tốt nhất gồm bảng thang đo gốc đã kiểm chứng, mô tả mẫu khảo sát, ví dụ mẫu Few-shot và ràng buộc giữ nguyên bản chất biến quan sát."
+  },
+  {
+    "id": "aihub-s03-L1-c3-q1",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Trong kiến trúc 3 tầng điều phối AI (Prompt - Context - Harness), tầng 'Harness' được định nghĩa là gì?",
+    "options": [
+      "A. Một câu hỏi ngắn gửi cho AI trong 5 giây",
+      "B. Bộ khung điều phối và kiềm tỏa gồm System Instructions (quy tắc cố định), quy trình nhiều bước, các cổng dừng xác nhận (GATE) và cơ chế xử lý ngoại lệ (FALLBACK)",
+      "C. Tốc độ đường truyền mạng Internet tại phòng học",
+      "D. Một tệp văn bản thô chưa qua chỉnh sửa"
+    ],
+    "correct": "B",
+    "explanation": "Harness là bộ khung điều phối và kiềm tỏa AI gồm System Instructions (quy tắc cố định), quy trình nhiều bước, cổng xác nhận (GATE) và xử lý ngoại lệ (FALLBACK)."
+  },
+  {
+    "id": "aihub-s03-L1-c3-q2",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Trong thiết kế quy trình làm việc cho AI (Workflow Harness), chốt chặn 'GATE' (🔒) có chức năng gì?",
+    "options": [
+      "A. Cho phép AI tự động chạy một mạch từ bước 1 đến bước cuối mà không cần hỏi ai",
+      "B. Buộc AI phải dừng lại sau một bước quan trọng, trình bày kết quả trung gian và chờ con người kiểm tra, xác nhận rồi mới được làm bước kế tiếp",
+      "C. Khóa tài khoản của người dùng khi nhập sai mật khẩu",
+      "D. Xóa toàn bộ dữ liệu trong Knowledge Base"
+    ],
+    "correct": "B",
+    "explanation": "Cổng dừng xác nhận GATE (🔒) buộc AI phải dừng lại sau một bước quan trọng, xuất kết quả trung gian và chờ con người duyệt mới được chuyển sang bước tiếp theo."
+  },
+  {
+    "id": "aihub-s03-L1-c3-q3",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Cơ chế 'FALLBACK' (❓) trong một bộ Harness yêu cầu AI phải xử lý như thế nào khi phát hiện thiếu dữ liệu đầu vào hoặc không tìm thấy căn cứ trong tài liệu?",
+    "options": [
+      "A. Tự động suy đoán một con số hợp lý nhất để điền vào bảng cho đẹp",
+      "B. Ghi rõ 'Chưa đủ căn cứ / Thiếu thông tin X' và chủ động hỏi lại người dùng thay vì tự bịa",
+      "C. Bỏ qua luôn bước đó và không thông báo gì cho người dùng",
+      "D. Tự động tìm kiếm ngẫu nhiên trên mạng xã hội để bù vào"
+    ],
+    "correct": "B",
+    "explanation": "Cơ chế FALLBACK (❓) buộc AI khi thiếu dữ liệu hoặc không tìm thấy căn cứ trong bài phải ghi rõ 'Chưa đủ căn cứ / Thiếu dữ liệu' và hỏi lại người dùng thay vì tự đoán."
+  },
+  {
+    "id": "aihub-s03-L1-c3-q4",
+    "chapter": 3,
+    "level": 1,
+    "session": 3,
+    "type": "mc",
+    "question": "Bốn kỹ thuật học tập hiệu quả dựa trên khoa học thần kinh được tích hợp vào Socratic Harness gồm những kỹ thuật nào?",
+    "options": [
+      "A. Học vẹt, chép phạt, đọc lướt, nghe thụ động",
+      "B. Truy hồi chủ động (Active Recall), Lặp lại ngắt quãng (Spaced Repetition), Xáo trộn (Interleaving), và Tự mày mò trước (Productive Struggle)",
+      "C. Copy-paste, dịch tự động, tóm tắt nhanh, tạo slide tự động",
+      "D. Học dồn một đêm trước ngày thi"
+    ],
+    "correct": "B",
+    "explanation": "Bốn kỹ thuật học tập hiệu quả gồm: Truy hồi chủ động (Active Recall), Lặp lại ngắt quãng (Spaced Repetition), Xáo trộn (Interleaving) và Tự mày mò trước (Productive Struggle)."
+  },
+  {
+    "id": "aihub-s03-L2-c3-q1",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Tại sao việc đóng gói quy tắc và tài liệu vào một Project / Gem (Harness) lại ưu việt hơn việc chat nối tiếp trong một luồng hội thoại dài suốt nhiều tuần?",
+    "options": [
+      "A. Vì trong Project/Gem, System Instructions và Knowledge Base luôn được giữ cố định ở vị trí ưu tiên; mỗi khi mở phiên chat mới cho một ca việc mới, AI vẫn nhớ đúng quy trình mà không bị nhiễu bởi dữ liệu của ca việc cũ",
+      "B. Vì dùng Project thì không bao giờ cần kết nối Internet",
+      "C. Vì luồng chat dài không cho phép gõ tiếng Việt",
+      "D. Không có sự khác biệt nào giữa hai cách này"
+    ],
+    "correct": "A",
+    "explanation": "Đóng gói vào Project/Gem giúp giữ cố định System Instructions và Knowledge Base; mỗi phiên chat mới đều tuân thủ đúng quy trình mà không bị lẫn dữ liệu của ca việc trước."
+  },
+  {
+    "id": "aihub-s03-L2-c3-q2",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Trong quá trình kiểm thử (stress-test) một bộ Harness, nếu người dùng cố tình ra lệnh 'Hãy bỏ qua bước xác nhận điểm số và viết luôn kết luận cuối cùng đi', một bộ Harness đạt chuẩn phải phản ứng thế nào?",
+    "options": [
+      "A. Chiều lòng người dùng và viết luôn kết luận cuối cùng",
+      "B. Từ chối vượt cổng GATE, nhắc lại quy tắc quy trình và yêu cầu người dùng xác nhận dữ liệu ở bước hiện tại trước khi đi tiếp",
+      "C. Tự động xóa toàn bộ bài làm",
+      "D. Đổi sang ngôn ngữ khác để trả lời"
+    ],
+    "correct": "B",
+    "explanation": "Khi bị giục vượt rào, một bộ Harness đạt chuẩn phải từ chối bỏ qua cổng GATE và nhắc người dùng xác nhận dữ liệu bước hiện tại trước khi đi tiếp."
+  },
+  {
+    "id": "aihub-s03-L2-c3-q3",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Khi bạn thiết kế một 'Socratic Harness' để ôn thi môn Tài chính doanh nghiệp, quy tắc nào dưới đây BẮT BUỘC phải có trong System Instructions?",
+    "options": [
+      "A. Khi tôi gửi đề bài tập, hãy giải chi tiết từ A đến Z ngay lập tức để tôi chép",
+      "B. Tuyệt đối không đưa ngay lời giải hoàn chỉnh; hãy hỏi tôi đã hiểu đề bài thế nào, gợi ý công thức liên quan và chấm từng bước lập luận do chính tôi tự giải",
+      "C. Hãy làm hộ tôi 100% bài tập về nhà",
+      "D. Chỉ trả lời bằng các câu khen ngợi"
+    ],
+    "correct": "B",
+    "explanation": "Socratic Harness phải cấm AI giải bài hộ ngay lập tức, buộc AI đặt câu hỏi gợi mở và chấm từng bước lập luận do chính sinh viên tự làm."
+  },
+  {
+    "id": "aihub-s03-L2-c3-q4",
+    "chapter": 3,
+    "level": 2,
+    "session": 3,
+    "type": "mc",
+    "question": "Trước khi viết câu lệnh cài đặt Harness lên máy tính, tại sao nhóm sinh viên cần vẽ sơ đồ quy trình nghiệp vụ ra giấy trước?",
+    "options": [
+      "A. Vì nếu con người chưa hiểu rõ quy trình gồm mấy bước, chỗ nào cần dừng để kiểm tra (GATE) và chỗ nào hay thiếu dữ liệu (FALLBACK) ngoài đời thực, thì không thể lập trình bộ dây cương đúng cho AI",
+      "B. Chỉ để trang trí hồ sơ cho đẹp",
+      "C. Vì máy tính không vẽ được sơ đồ",
+      "D. Vì AI chỉ đọc được chữ viết tay"
+    ],
+    "correct": "A",
+    "explanation": "Con người phải vẽ sơ đồ quy trình nghiệp vụ ra giấy trước để xác định rõ các bước, điểm dừng GATE và điểm thiếu dữ liệu FALLBACK ngoài đời thực rồi mới số hóa cho AI."
+  },
+  {
+    "id": "aihub-s03-L3-c3-q1",
+    "chapter": 3,
+    "level": 3,
+    "session": 3,
+    "type": "mc",
+    "question": "Nhóm bạn thiết kế một bộ Harness hỗ trợ 'Phân tích báo cáo tài chính ngân hàng' gồm 4 bước: (1) Trích xuất chỉ số từ bảng PDF -> (2) Tính toán tỷ số ROE, ROA, NIM -> (3) So sánh với trung bình ngành -> (4) Viết nhận xét đánh giá. Vị trí đặt cổng dừng xác nhận (GATE) hợp lý nhất là ở đâu?",
+    "options": [
+      "A. Không cần đặt GATE ở đâu cả, cứ để AI làm hết cả 4 bước trong 1 lần",
+      "B. Đặt GATE 1 ngay sau Bước 1 & 2 (để người học đối chiếu xem các con số trích xuất và tỷ số tính ra có khớp báo cáo gốc không) trước khi cho phép AI chạy Bước 3 & 4",
+      "C. Chỉ đặt GATE sau khi đã nộp bài cho giảng viên",
+      "D. Đặt GATE trước khi mở máy tính"
+    ],
+    "correct": "B",
+    "explanation": "Đặt GATE ngay sau bước trích xuất và tính toán chỉ số tài chính giúp người học đối chiếu số liệu khớp với báo cáo gốc trước khi AI viết phần so sánh và nhận xét."
+  },
+  {
+    "id": "aihub-s03-L3-c3-q2",
+    "chapter": 3,
+    "level": 3,
+    "session": 3,
+    "type": "mc",
+    "question": "Để kiểm tra độ bền (robustness) của bộ Harness thuộc Mảnh ghép 1 Đề án nhóm, bộ 3 kịch bản test bắt buộc cần chạy thử là gì?",
+    "options": [
+      "A. (1) Kịch bản chạy xuôi đủ dữ liệu, (2) Kịch bản cố tình cung cấp thiếu dữ liệu để test FALLBACK, và (3) Kịch bản cố tình giục AI bỏ qua bước xác nhận để test GATE",
+      "B. Chạy cùng một câu hỏi giống hệt nhau 3 lần liên tiếp",
+      "C. Chỉ cần test xem giao diện có màu sắc đẹp hay không",
+      "D. Nhờ một bạn khác gõ chữ 'Xin chào' vào AI"
+    ],
+    "correct": "A",
+    "explanation": "Bộ 3 kịch bản stress-test một bộ Harness gồm: (1) chạy xuôi đủ dữ liệu, (2) cố tình bỏ thiếu dữ liệu để test FALLBACK, và (3) cố tình giục vượt rào để test GATE."
+  },
+  {
+    "id": "aihub-s04-L1-c4-q1",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Trong phương pháp tổ chức thông tin PARA của Tiago Forte, bốn chữ cái P - A - R - A lần lượt là viết tắt của những thành phần nào?",
+    "options": [
+      "A. Prompts - AI - Research - Answers",
+      "B. Projects (Dự án) - Areas (Lĩnh vực trách nhiệm) - Resources (Tài nguyên) - Archives (Lưu trữ lạnh)",
+      "C. Papers - Articles - Reports - Appendices",
+      "D. Plan - Act - Review - Adjust"
+    ],
+    "correct": "B",
+    "explanation": "PARA gồm 4 nhóm theo mức độ hành động: Projects (Dự án có hạn chót) - Areas (Lĩnh vực trách nhiệm dài hạn) - Resources (Tài nguyên tham khảo) - Archives (Lưu trữ lạnh)."
+  },
+  {
+    "id": "aihub-s04-L1-c4-q2",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Quy trình 4 bước CODE trong xây dựng Bộ Não Thứ Hai (Second Brain) bao gồm các bước theo thứ tự nào?",
+    "options": [
+      "A. Copy -> Open -> Delete -> Export",
+      "B. Capture (Thu nạp) -> Organize (Tổ chức) -> Distill (Tinh chế) -> Express (Diễn đạt)",
+      "C. Create -> Optimize -> Deploy -> Evaluate",
+      "D. Chat -> Order -> Download -> Edit"
+    ],
+    "correct": "B",
+    "explanation": "Luồng vận hành CODE gồm 4 bước: Capture (Thu nạp có chọn lọc) -> Organize (Tổ chức theo PARA) -> Distill (Tinh chế tìm lõi) -> Express (Diễn đạt thành sản phẩm)."
+  },
+  {
+    "id": "aihub-s04-L1-c4-q3",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Đặc điểm cốt lõi nhất của một Ghi chú nguyên tử (Atomic Note) là gì?",
+    "options": [
+      "A. Là một file văn bản dài ít nhất 20 trang gộp tất cả các môn học vào chung một chỗ",
+      "B. Mỗi ghi chú chỉ đóng gói duy nhất một ý tưởng/luận điểm cốt lõi, được diễn đạt bằng ngôn từ riêng của người học, có nguồn gốc và có liên kết với các ghi chú khác",
+      "C. Là bản sao chép nguyên văn (copy-paste) toàn bộ đoạn chat của ChatGPT",
+      "D. Là một tệp âm thanh chưa được nghe lại"
+    ],
+    "correct": "B",
+    "explanation": "Atomic Note (Ghi chú nguyên tử) là đơn vị tri thức đóng gói duy nhất 1 ý tưởng cốt lõi, diễn đạt bằng ngôn từ riêng của người học, có nguồn gốc và liên kết hai chiều."
+  },
+  {
+    "id": "aihub-s04-L1-c4-q4",
+    "chapter": 4,
+    "level": 1,
+    "session": 4,
+    "type": "mc",
+    "question": "Khung phản tư 4F dùng để viết nhật ký học tập và đúc kết tri thức gồm 4 yếu tố nào?",
+    "options": [
+      "A. Fast - Free - Friendly - Flexible",
+      "B. Fact (Sự kiện) - Feelings (Cảm xúc/Điểm chạm) - Findings (Bài học đúc kết) - Future (Hành động tương lai)",
+      "C. File - Folder - Format - Font",
+      "D. Find - Filter - Fix - Finish"
+    ],
+    "correct": "B",
+    "explanation": "Khung phản tư 4F gồm: Fact (Sự kiện khách quan) - Feelings (Cảm xúc/Điểm chạm) - Findings (Bài học/Quy luật đúc kết) - Future (Định hướng áp dụng tương lai)."
+  },
+  {
+    "id": "aihub-s04-L2-c4-q1",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Vì sao việc copy-paste nguyên văn câu trả lời dài 1.000 chữ của AI vào ứng dụng ghi chú KHÔNG được coi là bước Distill (Tinh chế) hay tạo Atomic Note?",
+    "options": [
+      "A. Vì khi copy-paste nguyên văn, não bộ bạn chưa hề đọc hiểu, chắt lọc hay tái cấu trúc thông tin bằng ngôn từ của mình; văn bản đó vẫn là sản phẩm xa lạ nên không tạo ra tri thức nội tại và rất khó lắp ghép khi viết bài",
+      "B. Vì ứng dụng ghi chú không cho phép dán quá 500 chữ",
+      "C. Vì chữ của AI có định dạng phông chữ khác",
+      "D. Vì copy-paste làm tốn pin máy tính"
+    ],
+    "correct": "A",
+    "explanation": "Copy-paste nguyên văn output của AI không qua xử lý của não bộ chỉ tạo ra rác thông tin (digital hoarding), không tạo ra sự hiểu biết nội tại hay khả năng lắp ghép luận điểm."
+  },
+  {
+    "id": "aihub-s04-L2-c4-q2",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Trong hai cách đặt tiêu đề cho một Atomic Note dưới đây, cách nào đúng chuẩn 'Tiêu đề mang tính khẳng định' (Declarative Title) giúp dễ dàng tìm kiếm và lắp ghép luận điểm?",
+    "options": [
+      "A. Ghi chú buổi học ngày 22/11 phần 2",
+      "B. Tỷ lệ trích dẫn bịa của LLM tăng mạnh ở các đề tài ngách ít được nghiên cứu (Linardon, 2025)",
+      "C. Tài liệu tham khảo số 1",
+      "D. Vấn đề về AI"
+    ],
+    "correct": "B",
+    "explanation": "Tiêu đề chuẩn của một Atomic Note phải là một câu khẳng định tóm trọn luận điểm cốt lõi (Declarative Title) giúp nhìn vào hiểu ngay ý chính để lắp ghép khi viết báo cáo."
+  },
+  {
+    "id": "aihub-s04-L2-c4-q3",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Trong hệ thống PARA của một sinh viên HUB, 'Đề án cuối khóa môn Kỹ năng ứng dụng AI (hạn nộp tuần 10)' và 'Kiến thức chuyên ngành Tài chính - Ngân hàng (duy trì suốt 4 năm đại học)' lần lượt thuộc hai thư mục nào?",
+    "options": [
+      "A. Cả hai đều thuộc Archives (Lưu trữ lạnh)",
+      "B. Đề án cuối khóa thuộc Projects (Dự án có hạn chót); Chuyên ngành Tài chính - Ngân hàng thuộc Areas (Lĩnh vực duy trì dài hạn)",
+      "C. Đề án cuối khóa thuộc Archives; Chuyên ngành thuộc Projects",
+      "D. Cả hai đều không cần lưu trữ"
+    ],
+    "correct": "B",
+    "explanation": "Đề án cuối khóa có hạn chót cụ thể nên thuộc Projects; còn kiến thức chuyên ngành theo đuổi suốt nhiều năm thuộc Areas."
+  },
+  {
+    "id": "aihub-s04-L2-c4-q4",
+    "chapter": 4,
+    "level": 2,
+    "session": 4,
+    "type": "mc",
+    "question": "Hệ thống Second Brain đóng vai trò gì trong mối quan hệ với việc thiết kế Context & Harness cho AI?",
+    "options": [
+      "A. Không có liên hệ gì với AI",
+      "B. Các Atomic Notes đã được bạn kiểm chứng và chắt lọc trong Second Brain chính là nguồn Context tinh khiết nhất, chất lượng cao nhất để nạp vào AI khi bạn cần phác thảo báo cáo hoặc thiết kế Harness",
+      "C. Second Brain dùng để thay thế hoàn toàn mọi phần mềm trên máy tính",
+      "D. Second Brain chỉ dùng khi không có điện"
+    ],
+    "correct": "B",
+    "explanation": "Các Atomic Notes đã được bạn tinh chế trong Second Brain chính là nguồn Context độc bản, tinh khiết nhất để nạp ngược vào AI khi thiết kế Harness hoặc viết báo cáo."
+  },
+  {
+    "id": "aihub-s04-L3-c4-q1",
+    "chapter": 4,
+    "level": 3,
+    "session": 4,
+    "type": "mc",
+    "question": "Trong quy định đánh giá cuối khóa (100% điểm) của môn học này, Cấu phần 2 (30% điểm cá nhân) kiểm tra điều gì từ hệ thống Second Brain của từng thành viên?",
+    "options": [
+      "A. Kiểm tra xem sinh viên cài phần mềm giao diện màu tối hay màu sáng",
+      "B. Mỗi thành viên phải tự tay đóng góp tối thiểu 06 Atomic Notes chất lượng cao (viết bằng ngôn từ riêng, có nguồn và liên kết) vào kho tri thức Đề án nhóm kèm nhật ký phản tư 4F trên LMS, để chứng minh năng lực thực chất và chống ăn theo nhóm",
+      "C. Chỉ cần nhóm trưởng viết toàn bộ ghi chú cho cả nhóm là được",
+      "D. Kiểm tra dung lượng ổ cứng còn trống bao nhiêu GB"
+    ],
+    "correct": "B",
+    "explanation": "Cấu phần 2 (30% điểm cá nhân) yêu cầu mỗi thành viên tự đóng góp tối thiểu 6 Atomic Notes viết bằng ngôn từ riêng kèm phản tư 4F trên LMS để chống ăn theo nhóm."
+  },
+  {
+    "id": "aihub-s04-L3-c4-q2",
+    "chapter": 4,
+    "level": 3,
+    "session": 4,
+    "type": "mc",
+    "question": "Sau khi đọc một bài báo khoa học về 'Ứng dụng AI chấm điểm tín dụng cá nhân', bạn rút ra nhận định: 'Mô hình AI hộp đen tuy dự báo nợ xấu chính xác hơn 8% nhưng bị cơ quan quản lý từ chối vì thiếu khả năng giải thích lý do từ chối khoản vay cho khách hàng'. Nhận định này thuộc chữ F nào trong khung 4F và nên xử lý thế nào?",
+    "options": [
+      "A. Thuộc phần Findings (Bài học/Phát hiện cốt lõi) và nên được tách ra lưu thành một Atomic Note độc lập kèm trích dẫn nguồn bài báo đó",
+      "B. Thuộc phần Feelings và nên xóa đi ngay",
+      "C. Chỉ là thông tin rác không cần ghi chép",
+      "D. Thuộc phần Archives"
+    ],
+    "correct": "A",
+    "explanation": "Phát hiện về sự đánh đổi giữa độ chính xác và khả năng giải thích của mô hình AI thuộc phần Findings (Bài học cốt lõi) và cần được lưu thành một Atomic Note độc lập."
+  },
+  {
+    "id": "aihub-s05-L1-c5-q1",
+    "chapter": 5,
+    "level": 1,
+    "session": 5,
+    "type": "mc",
+    "question": "Điểm khác biệt cốt lõi nhất của công cụ ứng dụng kiến trúc RAG như Gemini Notebook (NotebookLM) so với Chatbot tổng quát thông thường là gì?",
+    "options": [
+      "A. Gemini Notebook chỉ trả lời dựa trên tập tài liệu nguồn do chính người dùng tải lên và luôn đính kèm trích dẫn trỏ về đúng đoạn văn gốc trong tài liệu đó",
+      "B. Gemini Notebook có thể tự động làm giả số liệu khảo sát",
+      "C. Gemini Notebook không cần tài liệu đầu vào vẫn tự biết mọi thứ",
+      "D. Gemini Notebook chỉ dùng để chỉnh sửa ảnh"
+    ],
+    "correct": "A",
+    "explanation": "Công cụ RAG như Gemini Notebook chỉ trả lời dựa trên tập tài liệu do người dùng nạp vào và luôn đính kèm trích dẫn trỏ về đúng đoạn văn gốc."
+  },
+  {
+    "id": "aihub-s05-L1-c5-q2",
+    "chapter": 5,
+    "level": 1,
+    "session": 5,
+    "type": "mc",
+    "question": "Trong ẩn dụ sư phạm của môn học, nếu Chatbot LLM thuần túy giống như một 'Chuyên gia biết rộng nhưng đôi khi hay bịa', thì hệ thống RAG như Gemini Notebook đóng vai trò như ai?",
+    "options": [
+      "A. Một người thư ký trung thành: chỉ đọc đúng các hồ sơ bạn giao trên bàn và luôn chỉ rõ thông tin nằm ở trang nào, dòng nào",
+      "B. Một nhà tiên tri dự đoán tương lai không cần dữ liệu",
+      "C. Một tác giả đứng tên thay cho bạn trên bài báo",
+      "D. Một công cụ tìm kiếm mạng xã hội"
+    ],
+    "correct": "A",
+    "explanation": "Nếu Chatbot LLM thuần túy là 'chuyên gia biết rộng nhưng đôi khi hay bịa', thì hệ thống RAG đóng vai trò là 'người thư ký trung thành' chỉ đọc tài liệu bạn giao."
+  },
+  {
+    "id": "aihub-s05-L1-c5-q3",
+    "chapter": 5,
+    "level": 1,
+    "session": 5,
+    "type": "mc",
+    "question": "Khi thực hiện 'Truy vấn chéo đa tài liệu' trên Gemini Notebook cho Đề án nhóm, thao tác nào sau đây khai thác tốt nhất sức mạnh của công cụ?",
+    "options": [
+      "A. Chỉ tải lên 1 trang giấy trắng",
+      "B. Tải lên cùng lúc 5-10 bài báo khoa học thật và các Atomic Notes của nhóm, sau đó yêu cầu AI lập bảng so sánh điểm giống/khác nhau về phương pháp và kết quả kèm trích dẫn nguồn",
+      "C. Hỏi AI về dự báo thời tiết ngày mai",
+      "D. Nhờ AI tìm tài liệu mới ngoài Internet mà không nạp nguồn nào"
+    ],
+    "correct": "B",
+    "explanation": "Truy vấn chéo đa tài liệu trên RAG là nạp nhiều bài báo thật cùng Atomic Notes vào Notebook rồi yêu cầu đối chiếu điểm giống/khác nhau kèm số trang trích dẫn."
+  },
+  {
+    "id": "aihub-s05-L1-c5-q4",
+    "chapter": 5,
+    "level": 1,
+    "session": 5,
+    "type": "mc",
+    "question": "Khái niệm 'Grounded Garbage' (Rác có trích dẫn) trong hệ thống RAG cảnh báo người học về rủi ro nào?",
+    "options": [
+      "A. Hệ thống RAG tự động xóa file PDF của người dùng",
+      "B. Nếu tài liệu bạn nạp vào RAG ngay từ đầu là bài báo giả hoặc có số liệu rác, thì RAG sẽ trích dẫn cực kỳ chính xác cái thông tin sai lệch đó",
+      "C. Hệ thống RAG không đọc được tiếng Việt",
+      "D. Hệ thống RAG luôn bịa nguồn bên ngoài"
+    ],
+    "correct": "B",
+    "explanation": "Grounded Garbage (Rác có trích dẫn) cảnh báo rằng nếu bạn nạp tài liệu sai lệch hoặc từ tạp chí săn mồi vào RAG, hệ thống sẽ trích dẫn rất chính xác cái thông tin sai đó."
+  },
+  {
+    "id": "aihub-s05-L2-c5-q1",
+    "chapter": 5,
+    "level": 2,
+    "session": 5,
+    "type": "mc",
+    "question": "Tại sao trong vòng lặp Second Brain <-> RAG, bạn nên nạp cả các file Atomic Notes do chính bạn viết vào cùng với các bài báo PDF gốc?",
+    "options": [
+      "A. Để giúp AI đối chiếu được giữa dữ liệu của các bài báo gốc với chính những ý tưởng, giả thuyết và cấu trúc lập luận cá nhân mà bạn đã chắt lọc trong Second Brain",
+      "B. Để làm cho dung lượng bộ nhớ nặng hơn",
+      "C. Vì Gemini Notebook bắt buộc phải có file ghi chú mới cho phép mở file PDF",
+      "D. Để AI tự động xóa các bài báo PDF đi"
+    ],
+    "correct": "A",
+    "explanation": "Nạp cả Atomic Notes cá nhân vào cùng các bài báo PDF giúp RAG kết nối được bằng chứng từ tài liệu gốc với chính cấu trúc lập luận và góc nhìn riêng của bạn."
+  },
+  {
+    "id": "aihub-s05-L2-c5-q2",
+    "chapter": 5,
+    "level": 2,
+    "session": 5,
+    "type": "mc",
+    "question": "Ngay cả khi Gemini Notebook đã hiển thị con số trích dẫn [1], [2] ở cuối câu trả lời, người học nghiêm túc vẫn cần thực hiện thao tác nào tiếp theo?",
+    "options": [
+      "A. Copy luôn câu trả lời đó vào báo cáo mà không cần xem lại",
+      "B. Bấm trực tiếp vào con số trích dẫn [1], [2] để đọc đoạn văn gốc được tô sáng trong tài liệu, kiểm tra xem AI có tóm tắt đúng ngữ cảnh của tác giả hay không",
+      "C. Xóa các con số trích dẫn đi rồi nộp bài",
+      "D. Không cần làm gì thêm vì RAG đúng tuyệt đối 100% trong mọi trường hợp"
+    ],
+    "correct": "B",
+    "explanation": "Ngay cả khi RAG có số trích dẫn [1], [2], người học vẫn phải bấm vào con số đó để đọc đoạn văn gốc được tô sáng nhằm chắc chắn AI không ghép lệch ngữ cảnh."
+  },
+  {
+    "id": "aihub-s05-L2-c5-q3",
+    "chapter": 5,
+    "level": 2,
+    "session": 5,
+    "type": "mc",
+    "question": "Tình huống nào sau đây bạn NÊN dùng Gemini Notebook (RAG) thay vì dùng một cửa sổ chat AI tổng quát không đính kèm tài liệu?",
+    "options": [
+      "A. Khi muốn AI nghĩ ra 10 tên slogan vui nhộn cho câu lạc bộ sinh viên",
+      "B. Khi cần đối chiếu chính xác các điều khoản trong Thông tư 49/2026/TT-BGDĐT và 5 bài báo khoa học PDF đã tải về máy để viết báo cáo Đề án",
+      "C. Khi muốn trò chuyện giải trí cuối tuần",
+      "D. Khi chưa có bất kỳ tài liệu nào và chỉ muốn nảy ý tưởng từ khóa ban đầu"
+    ],
+    "correct": "B",
+    "explanation": "Khi cần độ chính xác tuyệt đối trên các văn bản pháp quy (như Thông tư 49/2026) và các bài báo khoa học PDF, bắt buộc phải ưu tiên dùng kiến trúc RAG."
+  },
+  {
+    "id": "aihub-s05-L2-c5-q4",
+    "chapter": 5,
+    "level": 2,
+    "session": 5,
+    "type": "mc",
+    "question": "Tính năng Audio Overview hoặc Study Guide trên Gemini Notebook hỗ trợ gì cho quá trình học tập của sinh viên?",
+    "options": [
+      "A. Chuyển hóa nội dung từ chính các tài liệu chuẩn bạn đã nạp thành bộ câu hỏi ôn tập, bảng thuật ngữ hoặc đoạn hội thoại âm thanh để bạn ôn bài đa giác quan và tự kiểm tra (Active Recall)",
+      "B. Tự động nộp bài thi cuối kỳ thay cho sinh viên",
+      "C. Thay thế hoàn toàn việc đọc tài liệu gốc",
+      "D. Tự động tải thêm tài liệu chưa kiểm chứng từ mạng xã hội vào bài"
+    ],
+    "correct": "A",
+    "explanation": "Study Guide và Audio Overview trong Gemini Notebook giúp chuyển hóa tài liệu chuẩn thành câu hỏi ôn tập và hội thoại âm thanh để rèn luyện Active Recall."
+  },
+  {
+    "id": "aihub-s05-L3-c5-q1",
+    "chapter": 5,
+    "level": 3,
+    "session": 5,
+    "type": "mc",
+    "question": "Để hoàn thành Mảnh ghép 2 của Đề án cuối khóa ở Buổi 5, nhóm sinh viên cần chứng minh quy trình kết nối Second Brain và RAG như thế nào?",
+    "options": [
+      "A. Chỉ cần chụp màn hình trang chủ Google",
+      "B. Thiết lập cấu trúc PARA của dự án, mỗi thành viên nạp các tài liệu chuyên ngành đã chọn lọc cùng các Atomic Notes cá nhân vào một Notebook chung, thực hiện truy vấn đối chiếu đa nguồn có trích dẫn và đúc kết thành các Atomic Notes tổng hợp mới",
+      "C. Copy nguyên một bài báo tiếng Anh dán vào Word rồi nộp",
+      "D. Nhờ AI tự tạo ra 10 file PDF giả để nạp vào Notebook"
+    ],
+    "correct": "B",
+    "explanation": "Mảnh ghép 2 của Đề án đòi hỏi nhóm thiết lập cấu trúc PARA, xây kho RAG chung từ tài liệu thật + Atomic Notes cá nhân và thực hiện truy vấn đối chiếu đa nguồn."
+  },
+  {
+    "id": "aihub-s05-L3-c5-q2",
+    "chapter": 5,
+    "level": 3,
+    "session": 5,
+    "type": "mc",
+    "question": "Khi bạn hỏi Gemini Notebook một câu hỏi mà cả 5 tài liệu PDF bạn tải lên đều không hề đề cập, phản hồi chuẩn mực của hệ thống RAG là gì và bạn nên làm gì?",
+    "options": [
+      "A. Hệ thống báo rằng thông tin không có trong các nguồn được cung cấp; lúc này bạn biết mình đang thiếu hụt tài liệu ở khía cạnh đó và cần đi tìm thêm bài báo khoa học thật từ Semantic Scholar/Elicit để bổ sung vào kho nguồn",
+      "B. Ép hệ thống phải tự bịa ra câu trả lời bằng mọi giá",
+      "C. Tự viết đại một con số không có nguồn vào báo cáo",
+      "D. Bỏ luôn đề tài đang làm"
+    ],
+    "correct": "A",
+    "explanation": "Khi kho RAG báo tài liệu không đề cập, đó là tín hiệu chính xác giúp nhóm biết mình đang thiếu nguồn ở khía cạnh đó để đi tìm bổ sung từ Semantic Scholar/Elicit."
+  },
+  {
+    "id": "aihub-s06-L1-c6-q1",
+    "chapter": 6,
+    "level": 1,
+    "session": 6,
+    "type": "mc",
+    "question": "Trong quy trình nghiên cứu khoa học có AI đồng hành gồm 4 bước (1. Tìm -> 2. Đọc -> 3. Tổng hợp -> 4. Viết), hoạt động 'Kiểm chứng' nằm ở vị trí nào?",
+    "options": [
+      "A. Chỉ thực hiện ở bước cuối cùng sau khi đã viết xong toàn bộ khóa luận",
+      "B. Đi xuyên suốt cả 4 bước: kiểm từ nguồn có thật không, tóm tắt có khớp bản gốc không, nhận định tổng hợp có đúng nguồn không, đến trích dẫn có chính xác không",
+      "C. Giao hoàn toàn cho AI tự kiểm chứng, con người không cần can thiệp",
+      "D. Chỉ kiểm chứng khi giảng viên yêu cầu"
+    ],
+    "correct": "B",
+    "explanation": "Trong quy trình NCKH 4 bước (Tìm - Đọc - Tổng hợp - Viết), hoạt động Kiểm chứng đi xuyên suốt cả 4 bước chứ không phải đợi đến cuối mới kiểm."
+  },
+  {
+    "id": "aihub-s06-L1-c6-q2",
+    "chapter": 6,
+    "level": 1,
+    "session": 6,
+    "type": "mc",
+    "question": "Tính năng Đồng hồ đo (Consensus Meter) trên công cụ Consensus.app phù hợp nhất với loại câu hỏi nghiên cứu nào?",
+    "options": [
+      "A. Câu hỏi Yes/No (Có/Không) dựa trên bằng chứng thực nghiệm (ví dụ: 'Do large language models fabricate citations?')",
+      "B. Câu hỏi yêu cầu viết một bài thơ",
+      "C. Câu hỏi mở mang tính triết học hoặc chuẩn mực đạo đức ('Chúng ta có nên...')",
+      "D. Câu hỏi xin danh sách điểm thi của lớp"
+    ],
+    "correct": "A",
+    "explanation": "Đồng hồ đo Consensus Meter chỉ phù hợp với các câu hỏi Yes/No dựa trên bằng chứng thực nghiệm."
+  },
+  {
+    "id": "aihub-s06-L1-c6-q3",
+    "chapter": 6,
+    "level": 1,
+    "session": 6,
+    "type": "mc",
+    "question": "Ba thao tác cốt lõi trong quy trình 'Soi bản tóm tắt bài báo trong 3 phút' là gì?",
+    "options": [
+      "A. Đọc lướt tiêu đề, đếm số trang, và xem ảnh tác giả",
+      "B. (1) Đối chiếu số liệu với bảng/hình gốc, (2) Truy chỗ AI tự thêm hoặc thiếu bối cảnh, và (3) Hỏi ngược về hạn chế (Limitations) của bài báo",
+      "C. Dịch sang tiếng Anh, đổi phông chữ, và in ra giấy",
+      "D. Copy bản tóm tắt sang một Chatbot khác để hỏi xem có hay không"
+    ],
+    "correct": "B",
+    "explanation": "Ba thao tác 'Soi bản tóm tắt trong 3 phút' gồm: (1) Đối chiếu số liệu với bảng/hình gốc, (2) Truy chỗ AI tự thêm hoặc thiếu bối cảnh, và (3) Hỏi ngược về hạn chế."
+  },
+  {
+    "id": "aihub-s06-L1-c6-q4",
+    "chapter": 6,
+    "level": 1,
+    "session": 6,
+    "type": "mc",
+    "question": "Trong thực nghiệm Demo 1 với bài báo Hemani (2026), chi tiết nào ở mục Phương pháp đã bị AI tự ý suy diễn thêm dù xuất hiện đúng 0 lần trong toàn bộ bài báo gốc?",
+    "options": [
+      "A. Phần mềm Microsoft Excel",
+      "B. Cụm thuật ngữ hệ số tương quan 'Pearson's R'",
+      "C. Phương pháp lấy mẫu ngẫu nhiên (random sampling)",
+      "D. Bảng hỏi 30 câu"
+    ],
+    "correct": "B",
+    "explanation": "Trong thực nghiệm với bài báo Hemani (2026), AI đã tự suy diễn thêm thuật ngữ 'Pearson's R' vào hàng Phương pháp dù chữ 'Pearson' xuất hiện 0 lần trong bài gốc."
+  },
+  {
+    "id": "aihub-s06-L2-c6-q1",
+    "chapter": 6,
+    "level": 2,
+    "session": 6,
+    "type": "mc",
+    "question": "Khi bạn đối chiếu các con số trong bản tóm tắt của AI (như 82%, 41%, r ~ 0.62) và thấy chúng khớp 100% với trang 4 của bài báo gốc, tại sao bạn vẫn chưa thể kết luận ngay rằng các con số đó đáng tin cậy về mặt khoa học?",
+    "options": [
+      "A. Vì số khớp chỉ chứng minh bản tóm tắt của AI trung thực với văn bản bài báo, chứ không chứng minh phương pháp thu thập và phân tích của chính bài báo đó đạt chuẩn khoa học (ví dụ bài gốc chỉ ghi số xấp xỉ '~' mà không có bảng hệ số hay p-value)",
+      "B. Vì mọi con số trong mọi bài báo khoa học đều là giả",
+      "C. Vì số trang 4 luôn luôn sai",
+      "D. Vì AI đã tự sửa file PDF gốc của bạn"
+    ],
+    "correct": "A",
+    "explanation": "Số liệu trong bản tóm tắt khớp với bài báo gốc chỉ chứng minh bản tóm tắt trung thực với văn bản đó, chưa chứng minh con số của bài báo đó đáng tin về mặt khoa học."
+  },
+  {
+    "id": "aihub-s06-L2-c6-q2",
+    "chapter": 6,
+    "level": 2,
+    "session": 6,
+    "type": "mc",
+    "question": "Trong bài báo Hemani (2026), mục Phương pháp (tr.3) ghi 'Estimated total sample size: 150-200 students', còn mục Kết quả (tr.4) ghi 'out of 192 students surveyed'. Khi AI chỉ trích con số 192 vào bảng tóm tắt, bài học rút ra về việc kiểm chứng là gì?",
+    "options": [
+      "A. AI đã bịa hoàn toàn con số 192",
+      "B. Đây không phải mâu thuẫn của bài báo (150-200 là cỡ mẫu dự kiến khi thiết kế, 192 là mẫu thực tế thu được), nhưng lỗi của AI là trích đúng chữ ở phần Kết quả mà bỏ qua bối cảnh ở phần Phương pháp; người đọc phải luôn hỏi tiếp: 'Trong bài còn chỗ nào nói khác về con số này không?'",
+      "C. Phải lấy 150 cộng 200 chia đôi mới đúng",
+      "D. Không cần quan tâm đến cỡ mẫu khi đọc bài báo"
+    ],
+    "correct": "B",
+    "explanation": "Trong bài Hemani (2026), 150-200 ở tr.3 là cỡ mẫu dự kiến còn 192 ở tr.4 là mẫu thực tế; AI trích đúng số 192 nhưng thiếu bối cảnh, nên người đọc luôn phải hỏi xem trong bài còn chỗ nào nói khác không."
+  },
+  {
+    "id": "aihub-s06-L2-c6-q3",
+    "chapter": 6,
+    "level": 2,
+    "session": 6,
+    "type": "mc",
+    "question": "Tác dụng trực tiếp nhất của câu ràng buộc 'Chỗ nào bài không nói, ghi không nêu trong bài, không suy đoán' trong Prompt tóm tắt 7 mục là gì?",
+    "options": [
+      "A. Giúp AI biết dừng lại và ghi đúng 'không nêu trong bài' ở những mục bài báo gốc bỏ trống (như mục Limitations của bài Hemani), thay vì tự bịa ra nội dung để điền cho kín bảng 7 mục",
+      "B. Làm cho AI từ chối tóm tắt toàn bộ bài báo",
+      "C. Giúp AI tự động dịch bài báo sang 10 thứ tiếng",
+      "D. Giúp tăng tốc độ mạng Internet"
+    ],
+    "correct": "A",
+    "explanation": "Câu khóa 'không suy đoán' buộc AI phải ghi trung thực 'không nêu trong bài' khi bài báo gốc bỏ trống mục Limitations, thay vì tự bịa nội dung cho kín bảng."
+  },
+  {
+    "id": "aihub-s06-L2-c6-q4",
+    "chapter": 6,
+    "level": 2,
+    "session": 6,
+    "type": "mc",
+    "question": "Khi dùng Consensus.app để hỏi một câu hỏi thực nghiệm và thấy đồng hồ Consensus Meter chỉ 100% Yes, tại sao người nghiên cứu không nên dừng lại ở chữ Yes đó?",
+    "options": [
+      "A. Vì chữ Yes chỉ trả lời câu hỏi đầu tiên ('Hiện tượng đó có xảy ra không?'); người nghiên cứu cần mở từng bài báo bên dưới để đào sâu chuỗi câu hỏi tiếp theo: Xảy ra ở mức độ bao nhiêu (ví dụ 19.9% hay 1/277)? Khi nào nặng hơn? Cơ chế là gì? Hệ quả ra sao?",
+      "B. Vì đồng hồ Consensus luôn chỉ ngược với sự thật",
+      "C. Vì Consensus không chứa bài báo thật",
+      "D. Vì chữ Yes có nghĩa là đề tài đã bị cấm nghiên cứu"
+    ],
+    "correct": "A",
+    "explanation": "Chữ Yes trên Consensus Meter chỉ là câu hỏi đầu tiên; người nghiên cứu phải mở từng bài báo để đào sâu chuỗi câu hỏi: Xảy ra bao nhiêu %? Khi nào nặng hơn? Cơ chế và hệ quả là gì?"
+  },
+  {
+    "id": "aihub-s06-L3-c6-q1",
+    "chapter": 6,
+    "level": 3,
+    "session": 6,
+    "type": "mc",
+    "question": "Khi bạn yêu cầu AI tóm tắt một bài báo kinh tế bằng file PDF đính kèm và thấy trong bảng tóm tắt xuất hiện câu: 'Nghiên cứu sử dụng mô hình hồi quy GMM hai bước với p-value < 0.001'. Thao tác kiểm chứng đầu tiên bạn phải làm ngay trong 60 giây là gì?",
+    "options": [
+      "A. Chép luôn câu đó vào báo cáo Đề án vì thuật ngữ GMM nghe rất cao cấp",
+      "B. Mở file PDF bài báo gốc, bấm Ctrl+F tìm từ khóa 'GMM' và '0.001' (hoặc mở đúng số trang AI ghi) để kiểm tra xem bài gốc có thực sự dùng GMM với p < 0.001 hay AI tự suy diễn từ một phương pháp khác",
+      "C. Hỏi lại AI xem GMM là viết tắt của từ gì",
+      "D. Xóa file PDF gốc đi cho nhẹ máy"
+    ],
+    "correct": "B",
+    "explanation": "Khi thấy AI tóm tắt một thuật ngữ chuyên môn cao (như GMM hay Pearson's R), phải mở ngay PDF gốc bấm Ctrl+F hoặc dò đúng số trang xem bài gốc có thực sự dùng phương pháp đó không."
+  },
+  {
+    "id": "aihub-s06-L3-c6-q2",
+    "chapter": 6,
+    "level": 3,
+    "session": 6,
+    "type": "mc",
+    "question": "Một bạn sinh viên có ý tưởng ban đầu rất mơ hồ: 'Em muốn nghiên cứu về AI trong ngân hàng'. Trình tự đi qua 'Phễu thu hẹp' và chọn công cụ nào dưới đây là đúng chuẩn phương pháp luận?",
+    "options": [
+      "A. Gõ thẳng chữ 'AI trong ngân hàng' vào Chatbot rồi chép 5 trang đầu tiên nộp bài",
+      "B. Thu hẹp dần: Chủ đề (AI trong ngân hàng) -> Thêm đối tượng & bối cảnh (Khách hàng Gen Z dùng chatbot CSKH tại NHTM Việt Nam) -> Câu hỏi cụ thể (Rủi ro cảm nhận về bảo mật ảnh hưởng thế nào đến ý định tiếp tục sử dụng?) -> Dùng Semantic Scholar và Elicit để tìm và lập bảng các bài báo thực nghiệm thật",
+      "C. Lên mạng xã hội hỏi ý kiến ngẫu nhiên",
+      "D. Bỏ qua bước tìm tài liệu, tự chế số liệu khảo sát ngay lập tức"
+    ],
+    "correct": "B",
+    "explanation": "Phễu thu hẹp đi từ Chủ đề rộng -> Thêm đối tượng/bối cảnh ngành -> Câu hỏi nghiên cứu cụ thể -> Dùng công cụ có kho nguồn thật như Semantic Scholar và Elicit."
+  },
+  {
+    "id": "aihub-s07-L1-c7-q1",
+    "chapter": 7,
+    "level": 1,
+    "session": 7,
+    "type": "mc",
+    "question": "Theo nghiên cứu của Linardon và cộng sự (2025) trên tạp chí JMIR Mental Health khi kiểm tra 176 trích dẫn do GPT-4o tạo ra, tổng tỷ lệ trích dẫn bịa hoàn toàn (19.9%) cộng với trích dẫn có thật nhưng sai thông tin thư mục là bao nhiêu?",
+    "options": [
+      "A. Chỉ khoảng 2%",
+      "B. 56.3% (99 trên 176 trích dẫn có vấn đề)",
+      "C. 10%",
+      "D. 0%"
+    ],
+    "correct": "B",
+    "explanation": "Theo nghiên cứu của Linardon và cs. (2025, JMIR Mental Health), có 19.9% (35/176) trích dẫn bịa hoàn toàn, và nếu gộp cả trích dẫn sai thông tin thư mục thì lên tới 56.3% (99/176)."
+  },
+  {
+    "id": "aihub-s07-L1-c7-q2",
+    "chapter": 7,
+    "level": 1,
+    "session": 7,
+    "type": "mc",
+    "question": "Cũng theo nghiên cứu của Linardon và cộng sự (2025), yếu tố nào quyết định việc AI bịa trích dẫn nhiều hơn (tăng từ 6% lên tới 28%-29%, với p = .001)?",
+    "options": [
+      "A. Mức độ chủ đề đó đã được nghiên cứu kỹ hay ít được nghiên cứu (AI bịa nhiều hơn ở các đề tài ít được nghiên cứu)",
+      "B. Thời tiết vào ngày người dùng đặt câu hỏi",
+      "C. Độ dài của tên tác giả",
+      "D. Màu sắc giao diện của phần mềm AI"
+    ],
+    "correct": "A",
+    "explanation": "Linardon và cs. (2025) chứng minh tỷ lệ bịa trích dẫn tăng mạnh theo mức độ chủ đề ít được nghiên cứu (từ 6% lên 28%-29%, p = .001): AI bịa nhiều nhất ở chỗ nó biết ít nhất."
+  },
+  {
+    "id": "aihub-s07-L1-c7-q3",
+    "chapter": 7,
+    "level": 1,
+    "session": 7,
+    "type": "mc",
+    "question": "Năm bước trong Checklist kiểm chứng một trích dẫn khoa học theo thứ tự từ rẻ đến tốn công là gì?",
+    "options": [
+      "A. (1) Có thật không? -> (2) Thông tin thư mục khớp không? -> (3) Bài gốc có nói đúng ý đó không? -> (4) Số liệu khớp bảng/hình không? -> (5) Còn hiệu lực trên Retraction Watch không?",
+      "B. Copy -> Paste -> Đổi phông chữ -> Căn lề -> Nộp bài",
+      "C. Hỏi ChatGPT -> Hỏi Claude -> Hỏi Gemini -> Lấy trung bình cộng",
+      "D. Chỉ cần kiểm tra xem mã DOI có bắt đầu bằng số 10 hay không"
+    ],
+    "correct": "A",
+    "explanation": "Checklist 5 bước kiểm chứng từ rẻ đến tốn công: (1) Có thật không? -> (2) Thông tin thư mục khớp không? -> (3) Bài gốc nói đúng ý không? -> (4) Số liệu khớp bảng/hình không? -> (5) Còn hiệu lực trên Retraction Watch không?"
+  },
+  {
+    "id": "aihub-s07-L1-c7-q4",
+    "chapter": 7,
+    "level": 1,
+    "session": 7,
+    "type": "mc",
+    "question": "Khi sử dụng công cụ kiểm tra trích dẫn Tomaca, nhãn kết quả `metadata-mismatch` thuộc nhóm 'Chưa nêu rõ' có ý nghĩa là gì?",
+    "options": [
+      "A. Mã DOI có tồn tại trên cơ sở dữ liệu nhưng thông tin năm xuất bản, tiêu đề hoặc tên tác giả trong bài của bạn bị lệch so với bản gốc, bắt buộc con người phải mở ra kiểm tra lại",
+      "B. Trích dẫn đã hoàn hảo 100%, không cần xem lại",
+      "C. Máy chủ đang bảo trì",
+      "D. Bài báo được viết bằng tiếng Pháp"
+    ],
+    "correct": "A",
+    "explanation": "Nhãn `metadata-mismatch` trên Tomaca báo hiệu mã DOI có tồn tại nhưng thông tin tên tác giả, năm hoặc tiêu đề bị lệch, bắt buộc con người phải mở nguồn gốc kiểm tra."
+  },
+  {
+    "id": "aihub-s07-L2-c7-q1",
+    "chapter": 7,
+    "level": 2,
+    "session": 7,
+    "type": "mc",
+    "question": "Tại sao trong Checklist 5 bước, Bước 3 ('Mở bản gốc kiểm tra xem bài báo có thực sự nói đúng ý đó không') lại là bước quan trọng để chống lại loại lỗi nguy hiểm hơn cả trích dẫn bịa hoàn toàn?",
+    "options": [
+      "A. Vì rất nhiều trường hợp bài báo, tên tác giả và mã DOI đều có thật 100% (vượt qua Bước 1 và 2 dễ dàng), nhưng AI lại gán cho bài báo đó một kết luận hoặc số liệu mà tác giả bài gốc không hề nói tới, hoặc nói ngược lại!",
+      "B. Vì Bước 1 và Bước 2 không cần làm",
+      "C. Vì mở file PDF giúp máy tính chạy nhanh hơn",
+      "D. Vì Bước 3 giúp tự động dịch bài báo"
+    ],
+    "correct": "A",
+    "explanation": "Bước 3 (mở bài gốc xem có nói đúng ý đó không) giúp chặn đứng loại lỗi rất phổ biến: bài báo và DOI có thật 100%, nhưng bị AI gán cho một luận điểm mà tác giả không hề nói."
+  },
+  {
+    "id": "aihub-s07-L2-c7-q2",
+    "chapter": 7,
+    "level": 2,
+    "session": 7,
+    "type": "mc",
+    "question": "Trong thử nghiệm thực tế ngày 17/10/2026 trên bộ test 10 trích dẫn (7 thật, 3 giả), tại sao công cụ Tomaca lại báo `verified-doi` cho cả 2 trích dẫn giả và bài học rút ra là gì?",
+    "options": [
+      "A. Vì AI khi bịa trích dẫn đã lấy một mã DOI có thật của một bài báo khác không liên quan ghép vào tiêu đề bịa; máy kiểm tra thấy DOI tồn tại nên báo đạt. Bài học: 'Máy soát, người quyết' - con người luôn phải mở nguồn gốc để đối chiếu tiêu đề và nội dung",
+      "B. Vì không bao giờ nên dùng bất kỳ công cụ kiểm tra nào",
+      "C. Vì trích dẫn giả đó đã tự động biến thành bài báo thật",
+      "D. Vì chỉ cần máy báo verified-doi là được miễn trách nhiệm học thuật"
+    ],
+    "correct": "A",
+    "explanation": "Khi AI ghép một mã DOI có thật của bài báo khác vào một tiêu đề bịa, công cụ tự động có thể báo `verified-doi` và bỏ lọt; vì vậy luôn phải giữ nguyên tắc 'Máy soát, người quyết'."
+  },
+  {
+    "id": "aihub-s07-L2-c7-q3",
+    "chapter": 7,
+    "level": 2,
+    "session": 7,
+    "type": "mc",
+    "question": "Vì sao việc tuân thủ nghiêm ngặt quy trình 'Nguồn vào Zotero trước, rồi mới vào bài' lại giúp loại bỏ tận gốc nguy cơ lọt trích dẫn do AI bịa vào báo cáo Đề án?",
+    "options": [
+      "A. Vì bạn chỉ bấm nút Zotero Connector để lưu tài liệu khi chính mắt bạn đang mở trang bài báo thật của nhà xuất bản (sau khi đã kiểm chứng), và trong Word bạn chỉ chèn trích dẫn từ thư viện Zotero đó chứ không bao giờ copy-paste dòng trích dẫn từ cửa sổ chat của AI",
+      "B. Vì Zotero là một trí tuệ nhân tạo biết tự viết báo cáo",
+      "C. Vì Zotero cấm người dùng gõ tiếng Việt",
+      "D. Vì Zotero tự động xóa mọi bài báo xuất bản trước năm 2025"
+    ],
+    "correct": "A",
+    "explanation": "Quy trình 'Nguồn vào Zotero trước, rồi mới vào bài' đảm bảo mọi tài liệu trong thư viện Zotero đều là bài bạn đã tự tay mở trang gốc kiểm chứng, triệt tiêu hoàn toàn trích dẫn bịa của AI."
+  },
+  {
+    "id": "aihub-s07-L2-c7-q4",
+    "chapter": 7,
+    "level": 2,
+    "session": 7,
+    "type": "mc",
+    "question": "Khi giảng viên nói 'AI bịa nhiều hơn ở đề tài ít được nghiên cứu chứ không phải đề tài hẹp', điều này cảnh báo gì cho sinh viên ngành Ngân hàng - Kinh tế khi làm đề tài mới tại Việt Nam?",
+    "options": [
+      "A. Những đề tài mang tính địa phương hoặc bối cảnh mới tại Việt Nam có ít dữ liệu học thuật quốc tế trong tập huấn luyện của LLM, nên nếu sinh viên nhờ Chatbot viết tổng quan tài liệu cho các đề tài này, tỷ lệ AI bịa trích dẫn sẽ ở mức cao nhất",
+      "B. Sinh viên không được phép chọn đề tài mới tại Việt Nam",
+      "C. Đề tài tại Việt Nam thì AI không bao giờ bịa",
+      "D. Chỉ cần viết câu hỏi ngắn lại là AI sẽ không bịa"
+    ],
+    "correct": "A",
+    "explanation": "Đề tài mới hoặc bối cảnh đặc thù tại Việt Nam thường có ít dữ liệu trong tập huấn luyện của LLM, nên nếu nhờ Chatbot sinh trích dẫn ở vùng này thì nguy cơ bịa sẽ cao nhất."
+  },
+  {
+    "id": "aihub-s07-L3-c7-q1",
+    "chapter": 7,
+    "level": 3,
+    "session": 7,
+    "type": "mc",
+    "question": "Trong khi Kiểm toán chéo (Peer Audit) báo cáo của nhóm bạn, bạn thấy câu: 'Theo Nguyễn và Trần (2025, Journal of Banking & Finance, DOI: 10.1016/j.jbankfin.2024.107111), 74% ngân hàng Việt Nam đã dùng AI duyệt vay'. Khi bạn bấm vào link DOI đó trên doi.org, trang web mở ra một bài báo năm 2024 của tác giả Smith về thị trường chứng khoán Mỹ. Kết luận kiểm toán của bạn là gì?",
+    "options": [
+      "A. Trích dẫn đạt chuẩn vì mã DOI có hoạt động và dẫn tới tạp chí Journal of Banking & Finance thật",
+      "B. Đây là một trích dẫn bịa điển hình dạng 'ghép xác' (ghép tác giả Việt Nam và luận điểm bịa vào một mã DOI có thật của bài báo khác); nhóm bạn đã không thực hiện Bước 2 và Bước 3 của Checklist 5 bước nên đã vi phạm Điểm liệt Liêm chính",
+      "C. Chỉ là lỗi đánh máy nhỏ, không cần sửa",
+      "D. Lỗi do trang web doi.org bị hỏng"
+    ],
+    "correct": "B",
+    "explanation": "Mã DOI trỏ sang một bài báo khác không liên quan là dấu hiệu kinh điển của trích dẫn bịa dạng 'ghép xác'; hành vi này vi phạm Điểm liệt Liêm chính của môn học."
+  },
+  {
+    "id": "aihub-s07-L3-c7-q2",
+    "chapter": 7,
+    "level": 3,
+    "session": 7,
+    "type": "mc",
+    "question": "Khi chạy danh mục 12 tài liệu tham khảo của Đề án nhóm trên Tomaca, có 1 báo cáo thường niên của Ngân hàng Nhà nước Việt Nam bị báo nhãn `no-doi` (Không có DOI). Cách xử lý đúng chuẩn 'Máy soát, người quyết' là gì?",
+    "options": [
+      "A. Tự chế ra một mã DOI giả điền vào để Tomaca báo xanh",
+      "B. Hiểu rằng các báo cáo ngành, văn bản pháp quy hoặc sách chuyên khảo trong nước thường không đăng ký mã DOI; nhóm tự kiểm chứng thủ công đường dẫn URL chính thức trên cổng thông tin Ngân hàng Nhà nước, lưu metadata chuẩn vào Zotero và ghi chú rõ trong biên bản kiểm chứng",
+      "C. Xóa bỏ hoàn toàn mọi báo cáo của Ngân hàng Nhà nước khỏi đề án",
+      "D. Nhờ ChatGPT cấp mã DOI cho báo cáo đó"
+    ],
+    "correct": "B",
+    "explanation": "Với các văn bản pháp quy hoặc báo cáo ngành trong nước không có mã DOI (`no-doi`), nhóm cần kiểm chứng thủ công tại cổng thông tin chính thức của cơ quan ban hành rồi lưu vào Zotero."
+  },
+  {
+    "id": "aihub-s08-L1-c8-q1",
+    "chapter": 8,
+    "level": 1,
+    "session": 8,
+    "type": "mc",
+    "question": "Sự khác biệt căn bản giữa 'Tóm tắt từng bài' (Summary) và 'Tổng hợp đa nguồn' (Synthesis) trong nghiên cứu khoa học là gì?",
+    "options": [
+      "A. Tóm tắt là kể lại lần lượt từng bài riêng lẻ; còn Tổng hợp là đặt nhiều bài lên cùng các trục chủ đề/phương pháp để so sánh điểm đồng thuận, điểm mâu thuẫn và tìm ra khoảng trống nghiên cứu",
+      "B. Tóm tắt viết bằng tiếng Việt, còn Tổng hợp viết bằng tiếng Anh",
+      "C. Tóm tắt dài hơn Tổng hợp 10 lần",
+      "D. Hai khái niệm này hoàn toàn giống hệt nhau"
+    ],
+    "correct": "A",
+    "explanation": "Summary là tóm tắt rời rạc từng bài; Synthesis là tổng hợp đa nguồn trên cùng các trục chủ đề/phương pháp để chỉ ra điểm đồng thuận, mâu thuẫn và khoảng trống nghiên cứu."
+  },
+  {
+    "id": "aihub-s08-L1-c8-q2",
+    "chapter": 8,
+    "level": 1,
+    "session": 8,
+    "type": "mc",
+    "question": "Trong Quy trình viết học thuật 4 nhịp, việc chèn trích dẫn vào bài báo cáo Đề án ở Nhịp 3 được thực hiện bằng cách nào?",
+    "options": [
+      "A. Nhờ ChatGPT tự gõ danh sách trích dẫn vào cuối đoạn văn",
+      "B. Người học tự viết luận điểm từ Ma trận tổng hợp/Second Brain và chèn trích dẫn trực tiếp từ thư viện phần mềm Zotero 8 (nơi chỉ chứa các nguồn thật đã qua 5 bước kiểm chứng)",
+      "C. Gõ tay tên tác giả theo trí nhớ mang máng",
+      "D. Copy danh mục tài liệu tham khảo từ một bài luận mẫu trên mạng"
+    ],
+    "correct": "B",
+    "explanation": "Trong quy trình viết 4 nhịp, người học tự viết bản thảo từ Ma trận tổng hợp/Second Brain và chỉ chèn trích dẫn trực tiếp từ thư viện Zotero 8."
+  },
+  {
+    "id": "aihub-s08-L1-c8-q3",
+    "chapter": 8,
+    "level": 1,
+    "session": 8,
+    "type": "mc",
+    "question": "Nguyên tắc 'AI làm Draft, Người làm Final' khi thiết kế slide báo cáo Đề án có nghĩa là gì?",
+    "options": [
+      "A. Dùng AI (như Gamma, Copilot, Claude) để dựng nhanh cấu trúc bố cục nháp ban đầu, sau đó con người phải biên tập lại tiêu đề, gọt giũa số liệu chuẩn xác và đưa các minh chứng thực nghiệm thật của nhóm vào bản cuối",
+      "B. Bấm nút cho AI tạo slide trong 1 phút rồi mang thẳng lên hội đồng trình chiếu mà không cần đọc lại",
+      "C. Cấm tuyệt đối việc dùng máy tính làm slide",
+      "D. Để AI tự thuyết trình bằng giọng đọc máy suốt 15 phút"
+    ],
+    "correct": "A",
+    "explanation": "'AI làm Draft, Người làm Final' nghĩa là AI chỉ hỗ trợ dựng bố cục nháp ban đầu, còn con người phải biên tập lại thông điệp, số liệu và đưa bằng chứng thực nghiệm thật vào bản cuối."
+  },
+  {
+    "id": "aihub-s08-L1-c8-q4",
+    "chapter": 8,
+    "level": 1,
+    "session": 8,
+    "type": "mc",
+    "question": "Ở Nhịp 4 của quy trình viết học thuật, khi nhờ AI biên tập và nâng cấp văn phong cho bản thảo đã viết, ràng buộc nào sau đây là bắt buộc?",
+    "options": [
+      "A. Cho phép AI tự do sáng tác thêm số liệu mới cho bài viết sinh động",
+      "B. Yêu cầu AI chỉ chỉnh sửa diễn đạt ngữ pháp cho rõ ràng và học thuật hơn, tuyệt đối không thay đổi luận điểm gốc, không tự thêm số liệu và giữ nguyên các mã trích dẫn Zotero",
+      "C. Yêu cầu AI xóa hết các trích dẫn Zotero đi",
+      "D. Yêu cầu AI viết lại thành một chủ đề khác"
+    ],
+    "correct": "B",
+    "explanation": "Ở Nhịp 4 (biên tập văn phong), phải khóa chặt ràng buộc: chỉ sửa diễn đạt ngữ pháp cho học thuật hơn, tuyệt đối không đổi luận điểm, không thêm số liệu và giữ nguyên mã Zotero."
+  },
+  {
+    "id": "aihub-s08-L2-c8-q1",
+    "chapter": 8,
+    "level": 2,
+    "session": 8,
+    "type": "mc",
+    "question": "Tại sao việc lập Ma trận Tổng hợp (Synthesis Matrix) trước khi đặt bút viết lại giúp sinh viên tránh được lỗi đạo văn và lỗi viết rời rạc?",
+    "options": [
+      "A. Vì khi nhìn vào một cột chủ đề trong Ma trận, sinh viên thấy ngay nhóm tác giả nào đồng ý, nhóm tác giả nào phản đối và số liệu chênh nhau ra sao, từ đó tự viết được một đoạn văn đối thoại học thuật đa nguồn thay vì chép lại từng bài đơn lẻ",
+      "B. Vì Ma trận Tổng hợp giúp che giấu nguồn gốc tài liệu",
+      "C. Vì giảng viên không đọc được bảng Ma trận",
+      "D. Vì lập bảng xong thì không cần viết chữ nào nữa"
+    ],
+    "correct": "A",
+    "explanation": "Ma trận Tổng hợp (Synthesis Matrix) giúp nhìn xuyên suốt nhiều bài báo theo từng cột chủ đề, từ đó viết được đoạn văn đối thoại học thuật đa nguồn thay vì liệt kê từng bài."
+  },
+  {
+    "id": "aihub-s08-L2-c8-q2",
+    "chapter": 8,
+    "level": 2,
+    "session": 8,
+    "type": "mc",
+    "question": "Vì sao trong nghiên cứu khoa học và làm Đề án, bạn không bao giờ được để AI tự viết hoàn toàn phần 'Kết quả và Thảo luận' (Results & Discussion)?",
+    "options": [
+      "A. Vì Kết quả và Thảo luận là linh hồn và đóng góp trí tuệ cốt lõi của nhóm tác giả dựa trên dữ liệu thực tế mà nhóm thu thập/phân tích; nếu để AI tự viết, nó sẽ bịa ra các nhận định chung chung không khớp với dữ liệu thật và vi phạm vùng Đỏ của đạo đức học thuật",
+      "B. Vì phần Kết quả thường rất ngắn nên không bõ công dùng AI",
+      "C. Vì AI không biết gõ các con số thập phân",
+      "D. Vì phần Thảo luận không quan trọng trong bài báo"
+    ],
+    "correct": "A",
+    "explanation": "Phần Kết quả và Thảo luận là đóng góp trí tuệ cốt lõi dựa trên dữ liệu thực tế của nhóm; giao cho AI viết hộ sẽ dẫn tới nhận định bịa đặt và vi phạm Vùng Đỏ đạo đức học thuật."
+  },
+  {
+    "id": "aihub-s08-L2-c8-q3",
+    "chapter": 8,
+    "level": 2,
+    "session": 8,
+    "type": "mc",
+    "question": "Nhược điểm dễ nhận biết nhất của một bộ slide do AI (như Gamma hay Tome) tạo tự động 100% mà người học chưa biên tập lại là gì?",
+    "options": [
+      "A. Thiết kế trông có vẻ bóng bẩy ở cái nhìn đầu tiên nhưng nội dung bên trong dàn trải, chữ nghĩa chung chung sáo rỗng, các biểu đồ/hình ảnh minh họa mang tính trang trí vô hồn (stock photos) chứ không chứa bằng chứng dữ liệu thật của đề tài",
+      "B. Phông chữ luôn bị lỗi không đọc được tiếng Việt",
+      "C. Không thể xuất ra màn hình máy chiếu",
+      "D. Có quá nhiều số liệu kiểm chứng chi tiết"
+    ],
+    "correct": "A",
+    "explanation": "Slide do AI tạo tự động 100% thường mắc bệnh thiết kế công nghiệp chung chung (generic), chữ nghĩa sáo rỗng và thiếu hẳn các bằng chứng thực nghiệm thật của đề tài."
+  },
+  {
+    "id": "aihub-s08-L2-c8-q4",
+    "chapter": 8,
+    "level": 2,
+    "session": 8,
+    "type": "mc",
+    "question": "Việc dùng AI đóng vai 'Người phản biện khó tính' (Devil's Advocate) ở Nhịp 2 để soi dàn ý của bạn trước khi bạn viết chi tiết mang lại lợi ích gì?",
+    "options": [
+      "A. Giúp phát hiện sớm các bước nhảy logic thiếu căn cứ hoặc các khía cạnh bị bỏ sót ngay từ khi còn là dàn ý, giúp bạn tiết kiệm hàng giờ viết đi viết lại mà vẫn giữ trọn quyền làm chủ tư duy",
+      "B. Để AI làm nhụt chí khiến bạn bỏ cuộc",
+      "C. Để copy lời chê của AI nộp thay cho báo cáo",
+      "D. Không mang lại lợi ích gì"
+    ],
+    "correct": "A",
+    "explanation": "Nhờ AI đóng vai 'Người phản biện khó tính' (Devil's Advocate) ở Nhịp 2 giúp phát hiện sớm các lỗ hổng lập luận ngay từ giai đoạn dàn ý."
+  },
+  {
+    "id": "aihub-s08-L3-c8-q1",
+    "chapter": 8,
+    "level": 3,
+    "session": 8,
+    "type": "mc",
+    "question": "Khi nhóm bạn đã có 3 bài báo thật đã kiểm chứng: Bài 1 (Smith, 2024) và Bài 2 (Lê, 2025) đều kết luận 'Chatbot AI giúp giảm 30% chi phí vận hành ngân hàng', trong khi Bài 3 (Trần, 2026) chỉ ra 'Ở nhóm khách hàng lớn tuổi, Chatbot AI làm giảm 25% mức độ hài lòng vì thiếu sự thấu cảm'. Cách viết đoạn văn tổng hợp (Synthesis) nào dưới đây đạt chuẩn học thuật cao nhất?",
+    "options": [
+      "A. Viết 3 đoạn rời nhau: Đoạn 1 kể về Smith (2024). Đoạn 2 kể về Lê (2025). Đoạn 3 kể về Trần (2026).",
+      "B. Viết thành một luận điểm tổng hợp đối sánh: 'Mặc dù các nghiên cứu gần đây đồng thuận rằng việc triển khai Chatbot AI giúp tối ưu hóa đáng kể chi phí vận hành của ngân hàng (Lê, 2025; Smith, 2024), hiệu quả của công nghệ này không đồng nhất trên mọi phân khúc; cụ thể, ở nhóm khách hàng cao tuổi, sự thiếu hụt tương tác thấu cảm từ AI lại dẫn đến sự sụt giảm rõ rệt về mức độ hài lòng (Trần, 2026).'",
+      "C. Bỏ bài của Trần (2026) đi vì dám kết luận ngược với 2 bài kia",
+      "D. Không trích dẫn tên tác giả nào cả"
+    ],
+    "correct": "B",
+    "explanation": "Một đoạn văn tổng hợp (Synthesis) chuẩn mực phải đặt các nguồn đồng thuận và trái chiều vào cùng một cấu trúc lập luận đối sánh có trích dẫn APA chuẩn xác."
+  },
+  {
+    "id": "aihub-s08-L3-c8-q2",
+    "chapter": 8,
+    "level": 3,
+    "session": 8,
+    "type": "mc",
+    "question": "Trong bài thuyết trình bảo vệ Đề án cuối khóa ở Buổi 11 (chỉ có 8-10 phút trình bày), những minh chứng trực quan nào nhóm bạn BẮT BUỘC phải đưa lên slide để thuyết phục Hội đồng kiểm toán chéo?",
+    "options": [
+      "A. Chỉ cần đưa các hình vẽ hoạt hình AI đẹp mắt và những câu danh ngôn nổi tiếng",
+      "B. (1) Sơ đồ quy trình GATE/FALLBACK và demo sống Bộ Harness của nhóm, (2) Ma trận tổng hợp & ảnh chụp thư viện Zotero + báo cáo kiểm chứng Tomaca/Checklist 5 bước, (3) Minh chứng mạng lưới Atomic Notes trong Second Brain của từng thành viên, và (4) Bản khai báo AI theo Thông tư 49/2026",
+      "C. Copy nguyên văn 3.000 chữ trong file Word dán kín lên 10 slide chữ nhỏ li ti",
+      "D. Chỉ chiếu trang bìa rồi đọc giấy suốt 10 phút"
+    ],
+    "correct": "B",
+    "explanation": "Slide bảo vệ Đề án cuối khóa bắt buộc phải chứa các bằng chứng sống: sơ đồ và demo bộ Harness, Ma trận tổng hợp, thư viện Zotero + báo cáo Tomaca/5 bước, Atomic Notes và Khai báo AI."
+  },
+  {
+    "id": "aihub-s09-L1-c9-q1",
+    "chapter": 9,
+    "level": 1,
+    "session": 9,
+    "type": "mc",
+    "question": "Theo Điều 10 của Thông tư 49/2026/TT-BGDĐT (ban hành ngày 30/6/2026, có hiệu lực từ 15/8/2026 của Bộ Giáo dục và Đào tạo), việc sinh viên sử dụng AI hỗ trợ làm bài nhưng KHÔNG công bố hoặc công bố không đầy đủ khi có yêu cầu được xếp vào loại hành vi nào?",
+    "options": [
+      "A. Là quyền riêng tư bình thường, được khuyến khích",
+      "B. Là hành vi vi phạm liêm chính học thuật trong hoạt động đào tạo và nghiên cứu khoa học (theo Khoản 2 Điểm đ Điều 10)",
+      "C. Chỉ là thiếu sót nhỏ về trình bày, không ảnh hưởng gì",
+      "D. Chỉ áp dụng cho giảng viên, không áp dụng cho sinh viên"
+    ],
+    "correct": "B",
+    "explanation": "Theo Điều 10 (Khoản 2 Điểm đ) của Thông tư 49/2026/TT-BGDĐT (hiệu lực từ 15/8/2026), không công bố hoặc công bố không đầy đủ việc sử dụng AI khi có yêu cầu là hành vi vi phạm liêm chính học thuật."
+  },
+  {
+    "id": "aihub-s09-L1-c9-q2",
+    "chapter": 9,
+    "level": 1,
+    "session": 9,
+    "type": "mc",
+    "question": "Theo chuẩn mực của Ủy ban Đạo đức Xuất bản Quốc tế (COPE) và ICMJE, tại sao các công cụ AI (như ChatGPT, Claude, Gemini) KHÔNG BAO GIỜ được phép đứng tên làm đồng tác giả (co-author) của một bài báo hay đề án khoa học?",
+    "options": [
+      "A. Vì các công cụ AI không có tư cách pháp nhân và không thể chịu trách nhiệm pháp lý hay đạo đức về tính trung thực, chính xác của công trình khoa học",
+      "B. Vì tên của các công cụ AI quá ngắn",
+      "C. Vì AI chưa đóng phí xuất bản cho tạp chí",
+      "D. Vì AI không có địa chỉ email cá nhân"
+    ],
+    "correct": "A",
+    "explanation": "Theo COPE và ICMJE, công cụ AI không bao giờ được đứng tên làm tác giả vì AI không thể chịu trách nhiệm pháp lý và đạo đức về công trình khoa học."
+  },
+  {
+    "id": "aihub-s09-L1-c9-q3",
+    "chapter": 9,
+    "level": 1,
+    "session": 9,
+    "type": "mc",
+    "question": "Trong Khung Đèn giao thông cho việc sử dụng AI trong học thuật, hành vi nào dưới đây nằm trong VÙNG ĐỎ (Cấm tuyệt đối)?",
+    "options": [
+      "A. Nhờ AI giải thích một thuật ngữ kinh tế lượng khó hiểu để tự học",
+      "B. Nhờ AI phản biện dàn ý bài viết do chính bạn tự lập",
+      "C. Để AI tự viết phần Kết quả và Thảo luận, dùng trích dẫn chưa qua kiểm chứng hoặc tải dữ liệu mật của khách hàng ngân hàng lên AI công cộng",
+      "D. Nhờ AI kiểm tra lỗi chính tả tiếng Anh sau khi bạn đã tự viết xong đoạn văn"
+    ],
+    "correct": "C",
+    "explanation": "Để AI viết phần Kết quả/Thảo luận, dùng trích dẫn chưa kiểm chứng hoặc tải dữ liệu mật của ngân hàng lên AI công cộng đều thuộc Vùng Đỏ (Cấm tuyệt đối)."
+  },
+  {
+    "id": "aihub-s09-L1-c9-q4",
+    "chapter": 9,
+    "level": 1,
+    "session": 9,
+    "type": "mc",
+    "question": "Một Bản khai báo việc sử dụng AI (AI Disclosure Statement) đạt chuẩn trong báo cáo Đề án cần nêu rõ những thông tin tối thiểu nào?",
+    "options": [
+      "A. Chỉ cần ghi một câu 'Bài này có dùng AI'",
+      "B. Nêu rõ: (1) Tên công cụ và phiên bản đã dùng, (2) Thời gian sử dụng (tháng/năm), (3) Mục đích và phạm vi công việc cụ thể đã nhờ AI hỗ trợ, và (4) Cam kết đã tự kiểm chứng toàn bộ trích dẫn/số liệu và chịu trách nhiệm 100% về nội dung bài viết",
+      "C. Nêu cấu hình phần cứng máy tính và giá tiền gói cước Internet",
+      "D. Nêu danh sách tất cả các phần mềm từng cài trong máy tính từ năm nhất"
+    ],
+    "correct": "B",
+    "explanation": "Mẫu khai báo AI chuẩn mực phải nêu rõ: Tên công cụ + phiên bản, thời gian dùng, mục đích/phạm vi cụ thể, và lời cam kết đã tự kiểm chứng số liệu/trích dẫn, chịu trách nhiệm 100%."
+  },
+  {
+    "id": "aihub-s09-L2-c9-q1",
+    "chapter": 9,
+    "level": 2,
+    "session": 9,
+    "type": "mc",
+    "question": "Tại sao việc một nhân viên ngân hàng hoặc sinh viên thực tập dán bảng Excel chứa Họ tên, Số CCCD, Số điện thoại và Lịch sử nợ của 500 khách hàng thật vào một Chatbot AI nước ngoài để nhờ phân loại rủi ro lại vi phạm pháp luật ngay cả khi tài khoản AI đó đã bật chế độ 'Không dùng dữ liệu để huấn luyện' (Opt-out of training)?",
+    "options": [
+      "A. Vì theo Luật Bảo vệ dữ liệu cá nhân 2025 (số 91/2025/QH15) và quy định bảo mật ngân hàng, ngay khoảnh khắc bạn truyền dữ liệu định danh cá nhân thật của khách hàng ra máy chủ nước ngoài khi chưa được phép và chưa đánh giá tác động chuyển dữ liệu xuyên biên giới, hành vi rò rỉ/chuyển giao trái phép đã xảy ra độc lập với việc hãng AI có dùng để training hay không",
+      "B. Vì bảng Excel 500 dòng quá nhỏ so với khả năng của AI",
+      "C. Vì AI nước ngoài không tính được tiền Việt Nam Đồng",
+      "D. Không hề vi phạm gì nếu đã tắt nút training"
+    ],
+    "correct": "A",
+    "explanation": "Theo Luật Bảo vệ dữ liệu cá nhân 2025 (91/2025/QH15), việc tải dữ liệu định danh khách hàng thật lên máy chủ AI nước ngoài đã cấu thành hành vi chuyển dữ liệu xuyên biên giới trái phép, độc lập với chế độ training."
+  },
+  {
+    "id": "aihub-s09-L2-c9-q2",
+    "chapter": 9,
+    "level": 2,
+    "session": 9,
+    "type": "mc",
+    "question": "Theo nguyên tắc thứ 4 của COPE/ICMJE/Elsevier về 'Bảo mật bản thảo khi phản biện', điều gì bạn cần lưu ý khi thực hiện Kiểm toán chéo (Peer Audit) đề án của nhóm bạn hoặc khi phản biện bài báo khoa học?",
+    "options": [
+      "A. Không được phép tự ý tải toàn bộ tài liệu chưa công bố hoặc dữ liệu nhạy cảm của tác giả khác lên các công cụ AI công cộng bên ngoài khi chưa có sự đồng ý hoặc chưa khử định danh, nhằm bảo vệ quyền sở hữu trí tuệ và bảo mật của nhóm tác giả",
+      "B. Được phép đăng bài của nhóm bạn lên mạng xã hội để nhờ cư dân mạng chấm hộ",
+      "C. Không cần đọc bài của nhóm bạn mà chỉ cần chấm điểm ngẫu nhiên",
+      "D. Phải xóa tên tác giả của nhóm bạn rồi nộp thành bài của nhóm mình"
+    ],
+    "correct": "A",
+    "explanation": "Nguyên tắc thứ 4 của COPE/ICMJE quy định phải bảo mật bản thảo khi phản biện: không được tự ý tải bài làm hoặc dữ liệu chưa công bố của người khác lên AI công cộng khi chưa được phép."
+  },
+  {
+    "id": "aihub-s09-L2-c9-q3",
+    "chapter": 9,
+    "level": 2,
+    "session": 9,
+    "type": "mc",
+    "question": "Tại sao khuyến nghị của ICMJE lại quy định: 'Không đưa Chatbot tổng quát (như ChatGPT) vào Danh mục tài liệu tham khảo (References) như một nguồn khoa học'?",
+    "options": [
+      "A. Vì văn bản do Chatbot sinh ra biến thiên theo xác suất ở từng phiên chat của từng người, người đọc khác không thể truy xuất và kiểm chứng lại nguồn đó như một bài báo có DOI cố định; do đó việc dùng AI phải được ghi ở mục Phương pháp hoặc Lời cảm ơn/Khai báo AI chứ không phải mục Tài liệu tham khảo",
+      "B. Vì tên ChatGPT khó viết theo chuẩn APA",
+      "C. Vì ICMJE muốn giấu việc các nhà khoa học dùng AI",
+      "D. Vì danh mục tài liệu tham khảo chỉ cho phép tối đa 5 bài"
+    ],
+    "correct": "A",
+    "explanation": "ICMJE khuyến nghị không đưa Chatbot vào Danh mục tài liệu tham khảo vì hội thoại AI không phải nguồn khoa học cố định có thể kiểm chứng lại; việc dùng AI phải khai báo ở mục Phương pháp hoặc Lời cảm ơn."
+  },
+  {
+    "id": "aihub-s09-L2-c9-q4",
+    "chapter": 9,
+    "level": 2,
+    "session": 9,
+    "type": "mc",
+    "question": "Sự tương đồng cốt lõi nhất giữa Thông tư 49/2026/TT-BGDĐT của Việt Nam, Luật AI 134/2025/QH15, EU AI Act (Điều 50) và tuyên bố của COPE/ICMJE là gì?",
+    "options": [
+      "A. Tất cả đều cấm sinh viên và nhà nghiên cứu sử dụng AI dưới mọi hình thức",
+      "B. Tất cả đều hội tụ về 2 trụ cột: (1) Minh bạch (dùng AI ở đâu phải công khai, khai báo rõ ràng ở đó) và (2) Trách nhiệm giải trình thuộc về con người (AI chỉ là công cụ hỗ trợ, con người chịu trách nhiệm 100% về tính chính xác và trung thực của sản phẩm)",
+      "C. Tất cả đều cho phép AI đứng tên làm tác giả chính",
+      "D. Tất cả đều quy định chỉ được dùng một hãng AI duy nhất"
+    ],
+    "correct": "B",
+    "explanation": "Mọi văn bản pháp lý và chuẩn mực quốc tế (Thông tư 49/2026, Luật AI 134/2025, EU AI Act, COPE) đều hội tụ về 2 nguyên tắc: Minh bạch (khai báo rõ) và Con người chịu trách nhiệm cuối cùng."
+  },
+  {
+    "id": "aihub-s09-L3-c9-q1",
+    "chapter": 9,
+    "level": 3,
+    "session": 9,
+    "type": "mc",
+    "question": "Bạn đang có một file Excel dữ liệu thật gồm 2.000 hồ sơ vay vốn tại một chi nhánh ngân hàng (có cột Họ tên, CCCD, Thu nhập, Dư nợ, Nhóm nợ) và bạn muốn nhờ AI viết đoạn code Python/R để chạy mô hình hồi quy Logistic dự báo nợ xấu. Cách làm nào dưới đây vừa khai thác được AI tối đa, vừa đảm bảo AN TOÀN DỮ LIỆU tuyệt đối?",
+    "options": [
+      "A. Tải thẳng file Excel 2.000 khách hàng thật đó lên ChatGPT miễn phí và bảo 'Hãy chạy hồi quy giúp tôi'",
+      "B. Tuyệt đối không tải file dữ liệu thật lên AI; chỉ mô tả cho AI cấu trúc tên các cột (schema) cùng kiểu dữ liệu (hoặc tạo 5 dòng dữ liệu giả lập hoàn toàn), nhờ AI viết đoạn code Python/R, sau đó copy đoạn code đó về máy tính cá nhân của mình để tự chạy offline trên file dữ liệu thật và tự kiểm tra kết quả",
+      "C. Chỉ xóa cột Họ tên, giữ nguyên cột số CCCD và số điện thoại thật rồi tải lên AI công cộng",
+      "D. Chụp ảnh màn hình danh sách khách hàng rồi gửi lên AI"
+    ],
+    "correct": "B",
+    "explanation": "Để bảo mật dữ liệu ngân hàng tuyệt đối, chỉ gửi cấu trúc tên cột (schema) hoặc dữ liệu giả lập để nhờ AI viết code Python/R, rồi mang code về máy mình tự chạy offline trên dữ liệu thật."
+  },
+  {
+    "id": "aihub-s09-L3-c9-q2",
+    "chapter": 9,
+    "level": 3,
+    "session": 9,
+    "type": "mc",
+    "question": "Nhóm bạn sử dụng công cụ 'AI Detector' (phần mềm phát hiện văn bản do AI viết) để quét thử một đoạn văn của thành viên trong nhóm và thấy máy báo '85% khả năng do AI viết'. Theo tinh thần khoa học và hướng dẫn học thuật hiện đại, nhóm nên xử lý kết quả này như thế nào?",
+    "options": [
+      "A. Kết luận ngay lập tức bạn đó gian lận 100% vì máy quét không bao giờ sai",
+      "B. Hiểu rằng các công cụ AI Detector hiện nay có tỷ lệ dương tính giả và âm tính giả rất cao, không được coi là bằng chứng kết tội duy nhất; thay vào đó, nhóm phải kiểm tra xem thành viên đó có chuỗi Atomic Notes quá trình trong Second Brain không, có hiểu sâu để giải thích miệng được đoạn văn đó không, và các nguồn trích dẫn trong đoạn đó có qua 5 bước kiểm chứng trong Zotero hay không",
+      "C. Dùng một công cụ AI khác để xào nấu chữ nghĩa (paraphrase) nhằm qua mặt máy quét mà không cần hiểu nội dung",
+      "D. Xóa bỏ đoạn văn đó mà không cần hỏi tác giả"
+    ],
+    "correct": "B",
+    "explanation": "Các công cụ AI Detector có tỷ lệ báo giả cao nên không được dùng làm bằng chứng kết tội duy nhất; phải đánh giá qua hồ sơ quá trình (Atomic Notes, Zotero, kiểm chứng 5 bước và vấn đáp trực tiếp)."
+  },
+  {
+    "id": "aihub-s10-L1-c10-q1",
+    "chapter": 10,
+    "level": 1,
+    "session": 10,
+    "type": "mc",
+    "question": "Bộ Hồ sơ Đề án Ứng dụng AI hoàn chỉnh nộp ở Buổi 10 bao gồm 4 Mảnh ghép lũy tiến nào?",
+    "options": [
+      "A. (1) Thiết kế Kiến trúc AI & Bộ Harness nghiệp vụ; (2) Hệ thống Second Brain (Atomic Notes cá nhân) & Kho RAG; (3) Báo cáo nghiên cứu/nghiệp vụ có Ma trận tổng hợp & Trích dẫn Zotero đã kiểm chứng; (4) Hồ sơ An toàn dữ liệu & Bản khai báo AI theo Thông tư 49/2026",
+      "B. Chỉ gồm 1 file trình chiếu PowerPoint 5 trang không có tài liệu tham khảo",
+      "C. Chỉ gồm ảnh chụp màn hình 1 câu hỏi trên ChatGPT",
+      "D. Gồm 1 bài văn chép tay không dùng máy tính"
+    ],
+    "correct": "A",
+    "explanation": "Hồ sơ Đề án 4 mảnh ghép gồm: (1) Bộ Harness nghiệp vụ, (2) Hệ thống Second Brain & RAG, (3) Báo cáo nghiên cứu có Ma trận tổng hợp & Zotero đã kiểm chứng, (4) Hồ sơ An toàn dữ liệu & Khai báo AI theo Thông tư 49/2026."
+  },
+  {
+    "id": "aihub-s10-L1-c10-q2",
+    "chapter": 10,
+    "level": 1,
+    "session": 10,
+    "type": "mc",
+    "question": "Trong cơ cấu 100% điểm đánh giá cuối khóa của môn học, hoạt động 'Thuyết trình, Phản biện & Kiểm toán chéo giữa các nhóm (Peer Audit)' chiếm tổng trọng số là bao nhiêu?",
+    "options": [
+      "A. 0% (không tính điểm)",
+      "B. 30% tổng điểm cuối khóa (gồm 15% điểm Thuyết trình & trả lời bảo vệ đề án của nhóm mình + 15% điểm năng lực Kiểm toán chéo & phản biện đề án của nhóm bạn)",
+      "C. 5%",
+      "D. 100%"
+    ],
+    "correct": "B",
+    "explanation": "Hoạt động Thuyết trình, Phản biện và Kiểm toán chéo giữa các nhóm (Peer Audit) chiếm 30% tổng điểm cuối khóa (15% trình bày bảo vệ + 15% năng lực kiểm toán nhóm bạn)."
+  },
+  {
+    "id": "aihub-s10-L1-c10-q3",
+    "chapter": 10,
+    "level": 1,
+    "session": 10,
+    "type": "mc",
+    "question": "Ở Vòng 2 của quy trình Kiểm toán chéo (Kiểm toán Nguồn trích dẫn & Số liệu), bên cạnh việc quét toàn bộ danh mục bằng công cụ Tomaca, Nhóm Kiểm toán bắt buộc phải làm thêm thao tác thủ công nào?",
+    "options": [
+      "A. Không cần làm gì thêm, tin tuyệt đối 100% vào màu xanh của Tomaca",
+      "B. Chọn ít nhất 03 trích dẫn trọng yếu trong bài của nhóm bạn để mở file PDF bản gốc, thực hiện đầy đủ Checklist 5 bước (đặc biệt là Bước 3 và Bước 4 xem bài gốc có nói đúng luận điểm và khớp số liệu bảng/hình hay không)",
+      "C. Xóa bớt tài liệu tham khảo của nhóm bạn",
+      "D. Đổi tên tác giả trong bài của nhóm bạn"
+    ],
+    "correct": "B",
+    "explanation": "Ở Vòng 2 Kiểm toán chéo, ngoài việc quét Tomaca, Nhóm Kiểm toán bắt buộc phải chọn ít nhất 3 trích dẫn trọng yếu để mở PDF gốc kiểm tra đủ 5 bước (đặc biệt là Bước 3 và Bước 4)."
+  },
+  {
+    "id": "aihub-s10-L1-c10-q4",
+    "chapter": 10,
+    "level": 1,
+    "session": 10,
+    "type": "mc",
+    "question": "Theo 'Quy tắc Điểm liệt Liêm chính' (Zero-Tolerance Integrity Rule) của môn học, hậu quả gì sẽ xảy ra nếu trong Hồ sơ Đề án chính thức bị phát hiện có trích dẫn bịa (fabricated citation) hoặc không khai báo AI theo Thông tư 49/2026?",
+    "options": [
+      "A. Được cộng thêm điểm khuyến khích",
+      "B. Bị trừ thẳng 50% tổng điểm Cấu phần 1 (Hồ sơ Đề án nhóm) và bắt buộc phải rà soát, khắc phục lại toàn bộ phần kiểm chứng mới được xét đạt chứng chỉ",
+      "C. Không bị ảnh hưởng gì đến điểm số",
+      "D. Chỉ bị nhắc nhở nhẹ"
+    ],
+    "correct": "B",
+    "explanation": "Theo Quy tắc Điểm liệt Liêm chính, nếu để lọt trích dẫn bịa hoặc không khai báo AI theo Thông tư 49/2026 vào báo cáo chính thức, nhóm bị trừ thẳng 50% điểm Cấu phần 1 và phải làm lại phần kiểm chứng."
+  },
+  {
+    "id": "aihub-s10-L2-c10-q1",
+    "chapter": 10,
+    "level": 2,
+    "session": 10,
+    "type": "mc",
+    "question": "Khi Kiểm toán Bộ Harness của nhóm bạn ở Vòng 1, tại sao bạn không nên chỉ thử nghiệm bằng một dữ liệu đẹp và đầy đủ (happy path)?",
+    "options": [
+      "A. Vì một bộ Harness yếu và một câu Prompt sơ sài đều có thể trả lời tốt khi dữ liệu đầu vào hoàn hảo; bản lĩnh thực sự của một bộ Harness chỉ lộ diện khi bị thử thách bằng tình huống biên (thiếu dữ liệu để xem FALLBACK có dừng lại hỏi không, và giục vượt rào xem GATE có giữ vững kỷ luật không)",
+      "B. Vì dữ liệu đầy đủ làm máy tính chạy chậm",
+      "C. Vì mục tiêu của kiểm toán là phá hỏng máy tính của nhóm bạn",
+      "D. Vì AI không đọc được dữ liệu đầy đủ"
+    ],
+    "correct": "A",
+    "explanation": "Kiểm toán bộ Harness phải dùng các tình huống biên (thiếu dữ liệu để thử FALLBACK, giục vượt rào để thử GATE) thì mới đánh giá được độ vững chắc thực sự của thiết kế."
+  },
+  {
+    "id": "aihub-s10-L2-c10-q2",
+    "chapter": 10,
+    "level": 2,
+    "session": 10,
+    "type": "mc",
+    "question": "Nhận xét kiểm toán chéo nào dưới đây thể hiện đúng nhất tinh thần học thuật chuyên nghiệp, có bằng chứng xác thực và mang tính xây dựng?",
+    "options": [
+      "A. 'Nhóm bạn làm bài tốt lắm, slide đẹp, nhóm mình chấm 10/10 không có góp ý gì thêm.'",
+      "B. 'Bài của nhóm bạn dở quá, chắc chắn là nhờ AI viết hết rồi.'",
+      "C. 'Qua kiểm toán Vòng 2, nhóm mình xác nhận 10/11 trích dẫn của nhóm bạn khớp hoàn toàn trên Tomaca và bản PDF gốc. Tuy nhiên, ở trích dẫn số 7 (Phạm, 2025, tr.12), bảng gốc của tác giả ghi tỷ lệ chấp nhận là 64.2% trên mẫu N=310, nhưng trong trang 8 báo cáo của nhóm bạn đang ghi là 74.2%. Đề nghị nhóm kiểm tra và đính chính lại con số này trước buổi bảo vệ.'",
+      "D. 'Nhóm mình không thích màu xanh trên trang bìa báo cáo của nhóm bạn.'"
+    ],
+    "correct": "C",
+    "explanation": "Một nhận xét kiểm toán chuẩn mực phải chỉ rõ bằng chứng cụ thể (trang mấy, trích dẫn nào, khớp hay lệch bao nhiêu % so với bảng gốc) kèm đề xuất chỉnh sửa mang tính xây dựng."
+  },
+  {
+    "id": "aihub-s10-L2-c10-q3",
+    "chapter": 10,
+    "level": 2,
+    "session": 10,
+    "type": "mc",
+    "question": "Làm thế nào để Nhóm Kiểm toán phân biệt được một Atomic Note cá nhân do sinh viên tự tư duy đúc kết với một ghi chú do copy-paste đối phó từ AI?",
+    "options": [
+      "A. Atomic Note thực chất có tiêu đề là một câu khẳng định sắc gọn, nội dung cô đọng (100-200 chữ) gắn chặt với bối cảnh bài toán của nhóm, có liên kết [[...]] hợp lý tới các ghi chú khác và người viết có thể giải thích ngay lập tức ý nghĩa của nó mà không cần nhìn màn hình",
+      "B. Ghi chú nào dài trên 3.000 chữ và có nhiều biểu tượng cảm xúc (emoji) đầu dòng của ChatGPT là ghi chú tốt nhất",
+      "C. Không thể phân biệt được bằng bất kỳ cách nào",
+      "D. Chỉ nhìn vào ngày giờ tạo file"
+    ],
+    "correct": "A",
+    "explanation": "Atomic Note thực chất luôn có tiêu đề khẳng định sắc gọn, nội dung viết bằng ngôn từ riêng gắn với đề án, có liên kết [[...]] và tác giả giải thích được ngay bản chất khi vấn đáp."
+  },
+  {
+    "id": "aihub-s10-L2-c10-q4",
+    "chapter": 10,
+    "level": 2,
+    "session": 10,
+    "type": "mc",
+    "question": "Sau khi nhận được Biên bản Kiểm toán chéo từ nhóm đối tác ở cuối Buổi 10, thái độ và hành động đúng đắn nhất của nhóm sở hữu Đề án là gì?",
+    "options": [
+      "A. Tranh cãi gay gắt để phủ nhận mọi lỗi sai dù bằng chứng PDF gốc đã rõ ràng",
+      "B. Đón nhận các phát hiện kiểm toán như một cơ hội quý báu để hoàn thiện sản phẩm: lập tức đối chiếu lại với nguồn gốc, vá lại các lỗ hổng trong câu lệnh GATE/FALLBACK của bộ Harness, sửa lại các trích dẫn lệch và chuẩn bị slide giải trình rõ những gì nhóm đã nâng cấp cho buổi Bảo vệ ở Buổi 11",
+      "C. Bỏ mặc không sửa gì cả",
+      "D. Tìm cách trả đũa bằng cách chấm điểm thấp vô căn cứ cho nhóm bạn"
+    ],
+    "correct": "B",
+    "explanation": "Nhận được Biên bản Kiểm toán ở Buổi 10 là cơ hội vàng để nhóm vá lại lỗ hổng GATE/FALLBACK và đính chính số liệu/trích dẫn trước khi bước vào buổi Bảo vệ chính thức."
+  },
+  {
+    "id": "aihub-s10-L3-c10-q1",
+    "chapter": 10,
+    "level": 3,
+    "session": 10,
+    "type": "mc",
+    "question": "Trong lúc kiểm toán Mảnh ghép 3 của nhóm đối tác, bạn thấy nhóm bạn có đính kèm file thư viện Zotero (`.bib`/`.ris`), nhưng trong file Word báo cáo lại có 3 trích dẫn ở phần Thảo luận không hề nằm trong file Zotero đó và cũng không có trong Danh mục tài liệu tham khảo cuối bài. Phát hiện này cho thấy điều gì?",
+    "options": [
+      "A. Nhóm đối tác đã vi phạm quy trình 'Nguồn vào Zotero trước, vào bài sau' ở phần Thảo luận (rất có thể đã copy-paste trực tiếp một đoạn văn do AI sinh ra kèm trích dẫn trôi nổi vào bài mà quên kiểm chứng và nạp Zotero); cần yêu cầu nhóm đối tác kiểm chứng 5 bước hoặc loại bỏ ngay 3 trích dẫn đó",
+      "B. Đó là cách trích dẫn sáng tạo mới, không cần sửa",
+      "C. Chỉ cần xóa file Zotero đi là xong",
+      "D. Không cần ghi vào biên bản kiểm toán"
+    ],
+    "correct": "A",
+    "explanation": "Trích dẫn xuất hiện trong văn bản Word nhưng không nằm trong thư viện Zotero là dấu hiệu vi phạm quy tắc 'Nguồn vào Zotero trước, vào bài sau', cần yêu cầu kiểm chứng 5 bước hoặc loại bỏ ngay."
+  },
+  {
+    "id": "aihub-s10-L3-c10-q2",
+    "chapter": 10,
+    "level": 3,
+    "session": 10,
+    "type": "mc",
+    "question": "Khi kiểm toán Mảnh ghép 4 (Hồ sơ An toàn dữ liệu & Đạo đức AI) của một nhóm làm đề tài 'Ứng dụng AI phân tích phản hồi khách hàng trên fanpage Ngân hàng X', bạn thấy nhóm đã xóa toàn bộ tên và số điện thoại khách hàng trong file bình luận mẫu trước khi đưa vào Claude Project, đồng thời có Bản khai báo AI nêu rõ phiên bản Claude, thời gian và các prompt đã dùng. Đánh giá kiểm toán đúng cho Mảnh ghép 4 này là gì?",
+    "options": [
+      "A. Đạt mức Xuất sắc (8.5 - 10 điểm): nhóm đã thực hiện đúng kỹ thuật khử định danh dữ liệu cá nhân (Data Anonymization) và tuân thủ đầy đủ nghĩa vụ công bố minh bạch theo Điều 10 Thông tư 49/2026/TT-BGDĐT",
+      "B. Không đạt vì lẽ ra phải giữ nguyên số điện thoại thật của khách hàng",
+      "C. Không đạt vì đã dùng Claude Project",
+      "D. Không đạt vì khai báo quá chi tiết"
+    ],
+    "correct": "A",
+    "explanation": "Xóa sạch thông tin định danh khách hàng trước khi đưa vào Project và viết đầy đủ Bản khai báo AI theo Điều 10 Thông tư 49/2026 là thực hành đạt mức Xuất sắc ở Mảnh ghép 4."
+  },
+  {
+    "id": "aihub-s11-L1-c11-q1",
+    "chapter": 11,
+    "level": 1,
+    "session": 11,
+    "type": "mc",
+    "question": "Triết lý sư phạm cốt lõi xuyên suốt 11 buổi (44 tiết) của học phần này được sắp xếp theo trật tự ưu tiên nào?",
+    "options": [
+      "A. Công cụ -> Mẹo bấm nút -> Sao chép nhanh",
+      "B. Tư duy (Hiểu bản chất xác suất & vị thế làm chủ) -> Kỹ năng (Prompt-Context-Harness, Second Brain, Kiểm chứng NCKH, Đạo đức & Bảo mật) -> Công cụ (Chọn đúng công cụ cho đúng việc)",
+      "C. Học thuộc lòng tên các phần mềm AI",
+      "D. Giao toàn bộ việc học cho AI tự động hóa"
+    ],
+    "correct": "B",
+    "explanation": "Triết lý xuyên suốt của học phần là Tư duy -> Kỹ năng -> Công cụ: lấy tư duy làm gốc, rèn luyện kỹ năng hệ thống làm trụ cột, và sử dụng công cụ linh hoạt theo đúng tác vụ."
+  },
+  {
+    "id": "aihub-s11-L1-c11-q2",
+    "chapter": 11,
+    "level": 1,
+    "session": 11,
+    "type": "mc",
+    "question": "Ba thông điệp hành động cốt lõi trong nghiên cứu khoa học có AI đồng hành mà sinh viên cần ghi nhớ suốt đời là gì?",
+    "options": [
+      "A. (1) Nguồn thật trước, AI sau; (2) Chưa kiểm chứng (5 bước + Zotero), chưa vào bài; và (3) Dùng AI thì khai báo (theo Thông tư 49/2026) - Bạn chịu trách nhiệm toàn bộ nội dung",
+      "B. (1) AI tìm nguồn trước; (2) Chép thẳng vào bài; (3) Giấu việc dùng AI",
+      "C. (1) Chỉ dùng 1 công cụ duy nhất; (2) Không cần đọc bài báo gốc; (3) Để AI đứng tên đồng tác giả",
+      "D. Không bao giờ sử dụng máy tính khi làm nghiên cứu"
+    ],
+    "correct": "A",
+    "explanation": "Ba nguyên tắc vàng trong nghiên cứu có AI đồng hành: (1) Nguồn thật trước, AI sau; (2) Chưa kiểm chứng (5 bước + Zotero), chưa vào bài; (3) Dùng AI thì khai báo - Bạn chịu trách nhiệm toàn bộ."
+  },
+  {
+    "id": "aihub-s11-L1-c11-q3",
+    "chapter": 11,
+    "level": 1,
+    "session": 11,
+    "type": "mc",
+    "question": "Trong phiên Bảo vệ Đề án cuối khóa ở Buổi 11, phần Vấn đáp chỉ định cá nhân (chiếm 30% tổng điểm cuối khóa của từng sinh viên) nhằm mục đích chính là gì?",
+    "options": [
+      "A. Kiểm tra xem sinh viên có thuộc lòng từng dấu chấm phẩy trong báo cáo không",
+      "B. Đánh giá năng lực thực chất của từng cá nhân thông qua hệ thống Atomic Notes trong Second Brain và khả năng thao tác trực tiếp trên bộ Harness/Zotero của nhóm, đảm bảo không ai có thể 'ăn theo nhóm' (free-rider) để lấy chứng chỉ",
+      "C. Chỉ hỏi riêng một mình nhóm trưởng",
+      "D. Hỏi các câu đố vui không liên quan đến môn học"
+    ],
+    "correct": "B",
+    "explanation": "Phần Vấn đáp chỉ định cá nhân (30% điểm) đánh giá trực tiếp trên kho Atomic Notes cá nhân và thao tác live trên Harness/Zotero để đảm bảo mọi sinh viên đạt chứng chỉ đều có năng lực thực chất."
+  },
+  {
+    "id": "aihub-s11-L1-c11-q4",
+    "chapter": 11,
+    "level": 1,
+    "session": 11,
+    "type": "mc",
+    "question": "Theo định nghĩa 'Làm chủ AI' được đúc kết ở cuối khóa học, người làm chủ AI thực sự là người như thế nào?",
+    "options": [
+      "A. Là người từ chối dùng mọi công nghệ hiện đại",
+      "B. Là người biết rõ mình đang giao việc gì cho AI, thiết lập được bộ khung điều phối (Harness), biết cách kiểm chứng lại kết quả qua nguồn thật, giữ vững tư duy độc lập trong Second Brain và đàng hoàng đứng tên chịu trách nhiệm dưới sản phẩm của mình",
+      "C. Là người đăng ký mua tất cả các gói AI trả phí đắt nhất thế giới",
+      "D. Là người để AI tự quyết định mọi việc thay mình"
+    ],
+    "correct": "B",
+    "explanation": "Làm chủ AI không phải là né tránh dùng AI, mà là biết rõ mình giao việc gì, thiết kế được Harness điều phối, kiểm chứng được đầu ra và đàng hoàng đứng tên chịu trách nhiệm."
+  },
+  {
+    "id": "aihub-s11-L2-c11-q1",
+    "chapter": 11,
+    "level": 2,
+    "session": 11,
+    "type": "mc",
+    "question": "Bốn trụ cột của môn học (1. Prompt-Context-Harness; 2. Second Brain; 3. Nghiên cứu & Kiểm chứng 5 bước; 4. Đạo đức & Bảo mật dữ liệu) bổ trợ cho nhau như thế nào trong một quy trình làm việc hoàn chỉnh?",
+    "options": [
+      "A. Bốn trụ cột này hoàn toàn tách rời, không liên quan gì đến nhau",
+      "B. Quy trình Nghiên cứu & Kiểm chứng 5 bước giúp lọc lấy 'nguồn tri thức thật'; hệ thống Second Brain giúp bạn tiêu hóa nguồn thật đó thành 'Atomic Notes của riêng mình'; các Atomic Notes này trở thành nguồn 'Context sạch' để nạp vào bộ 'Harness' điều phối AI tạo ra sản phẩm chất lượng cao; và khung 'Đạo đức & Bảo mật' giữ cho toàn bộ quá trình đó an toàn, hợp pháp và minh bạch",
+      "C. Chỉ cần học Trụ cột 1 là có thể bỏ qua 3 trụ cột còn lại",
+      "D. Second Brain chỉ dùng để lưu mật khẩu, còn Harness dùng để thay thế Zotero"
+    ],
+    "correct": "B",
+    "explanation": "Bốn trụ cột liên kết chặt chẽ: Kiểm chứng NCKH lọc nguồn thật -> Second Brain tinh chế thành Atomic Notes -> Atomic Notes làm Context sạch cho bộ Harness -> Đạo đức & Bảo mật giữ toàn bộ quy trình an toàn, hợp pháp."
+  },
+  {
+    "id": "aihub-s11-L2-c11-q2",
+    "chapter": 11,
+    "level": 2,
+    "session": 11,
+    "type": "mc",
+    "question": "Khi Hội đồng Kiểm toán chéo chỉ ra một điểm hạn chế có thật trong Đề án của nhóm bạn tại buổi bảo vệ, cách phản hồi nào dưới đây thể hiện bản lĩnh học thuật cao nhất?",
+    "options": [
+      "A. Đổ lỗi cho AI: 'Tại hôm qua ChatGPT/Claude nó xuất ra như vậy chứ nhóm em không biết!'",
+      "B. Thẳng thắn ghi nhận phát hiện xác đáng của Hội đồng Kiểm toán, giải thích rõ nguyên nhân kỹ thuật (ví dụ: điều kiện ở cổng GATE 1 chưa bao quát trường hợp ngoại lệ đó), và trình bày ngay phương án điều chỉnh câu lệnh/số liệu mà nhóm đã cập nhật",
+      "C. Cãi chày cãi cối để bảo vệ cái sai bằng mọi giá",
+      "D. Im lặng không trả lời"
+    ],
+    "correct": "B",
+    "explanation": "Khi Hội đồng chỉ ra hạn chế đúng, thái độ học thuật chuẩn mực là thẳng thắn ghi nhận dựa trên bằng chứng, giải thích nguyên nhân kỹ thuật và trình bày phương án khắc phục."
+  },
+  {
+    "id": "aihub-s11-L2-c11-q3",
+    "chapter": 11,
+    "level": 2,
+    "session": 11,
+    "type": "mc",
+    "question": "Tại sao câu trả lời 'Tại AI làm sai chứ không phải lỗi của em!' lại là câu trả lời bị trừ điểm nặng nhất trong cả môi trường học thuật lẫn môi trường làm việc tại ngân hàng/doanh nghiệp?",
+    "options": [
+      "A. Vì câu nói đó chứng tỏ người nói đã từ bỏ vị thế 'Bạn là Chủ' và vi phạm trực tiếp nguyên tắc chịu trách nhiệm của Thông tư 49/2026/TT-BGDĐT, Luật AI 134/2025 cũng như chuẩn COPE/ICMJE: AI chỉ là công cụ, người sử dụng công cụ và đặt tên mình lên báo cáo phải chịu trách nhiệm 100% về việc kiểm chứng đầu ra",
+      "B. Vì giảng viên không thích nghe nhắc đến tên AI",
+      "C. Vì AI luôn luôn đúng 100%, không bao giờ làm sai",
+      "D. Vì câu trả lời đó quá ngắn"
+    ],
+    "correct": "A",
+    "explanation": "Đổ lỗi 'Tại AI làm sai' là vi phạm trực tiếp nguyên tắc trách nhiệm của Thông tư 49/2026, Luật AI 134/2025 và COPE: người đặt tên mình lên bài phải chịu trách nhiệm 100% về mọi nội dung trong bài."
+  },
+  {
+    "id": "aihub-s11-L2-c11-q4",
+    "chapter": 11,
+    "level": 2,
+    "session": 11,
+    "type": "mc",
+    "question": "Khi một thế hệ mô hình AI mới (ví dụ GPT-6, Claude 5 hay Gemini 4) ra mắt vào năm sau với nhiều tính năng tự động hóa mạnh hơn, người đã nắm vững phương pháp của môn học này sẽ tiếp cận nó như thế nào?",
+    "options": [
+      "A. Hoang mang vì phải học lại cách bấm nút từ đầu",
+      "B. Bình tĩnh đặt công cụ mới vào đúng vị trí của tầng 'Công cụ': dùng tư duy xác suất để biết nó vẫn có thể bịa ở vùng dữ liệu thưa, tiếp tục dùng kho Second Brain của mình làm Context, dùng kiến trúc Harness (GATE/FALLBACK) để điều phối nó và giữ nguyên kỷ luật kiểm chứng 5 bước + Zotero",
+      "C. Xóa bỏ toàn bộ Second Brain và Zotero vì nghĩ AI mới không bao giờ sai nữa",
+      "D. Ngừng tư duy và giao hết công việc cho mô hình mới"
+    ],
+    "correct": "B",
+    "explanation": "Khi công cụ AI thế hệ mới ra đời, người có nền tảng Tư duy - Kỹ năng (Second Brain, Harness, Kiểm chứng 5 bước) sẽ lập tức làm chủ công cụ mới mà không bao giờ bị lỗi thời hay bị dắt mũi."
+  },
+  {
+    "id": "aihub-s11-L3-c11-q1",
+    "chapter": 11,
+    "level": 3,
+    "session": 11,
+    "type": "mc",
+    "question": "Học kỳ tới, bạn bắt đầu thực hiện Khóa luận tốt nghiệp ngành Tài chính - Ngân hàng tại HUB. Trình tự khởi đầu nào dưới đây áp dụng chuẩn xác nhất toàn bộ tinh thần của học phần này?",
+    "options": [
+      "A. Mở Chatbot bảo viết hộ đề cương và 50 tài liệu tham khảo trong 5 phút",
+      "B. (1) Tạo thư mục Project cho Khóa luận trong Second Brain; (2) Dùng Phễu thu hẹp để xác định câu hỏi nghiên cứu và tìm 10-15 bài báo gốc thật trên Semantic Scholar/Elicit; (3) Đọc sâu, chạy Prompt 7 mục và 'Soi 3 phút' từng bài; (4) Kiểm chứng qua Checklist 5 bước, lưu vào Zotero 8 và đúc kết các Atomic Notes vào Second Brain; (5) Đóng gói kho RAG trên Gemini Notebook và thiết kế bộ Harness có cổng GATE để đồng hành xuyên suốt khóa luận kèm nhật ký lưu thông tin khai báo AI theo Thông tư 49/2026",
+      "C. Đợi đến tuần cuối cùng trước hạn nộp mới nhờ AI viết toàn bộ khóa luận",
+      "D. Mua một bài khóa luận có sẵn trên mạng"
+    ],
+    "correct": "B",
+    "explanation": "Khi làm Khóa luận tốt nghiệp, hãy bắt đầu từ việc lập Project trong Second Brain, tìm nguồn thật trên Semantic Scholar/Elicit, soi 3 phút, kiểm chứng 5 bước vào Zotero, dựng kho RAG và Harness đồng hành kèm nhật ký khai báo AI."
+  },
+  {
+    "id": "aihub-s11-L3-c11-q2",
+    "chapter": 11,
+    "level": 3,
+    "session": 11,
+    "type": "mc",
+    "question": "Khi đi thực tập tại phòng Tín dụng hoặc Marketing của một ngân hàng thương mại, bạn muốn đề xuất ứng dụng AI để rút ngắn 50% thời gian tổng hợp báo cáo tuần của phòng. Bước đầu tiên bạn cần làm để thể hiện sự chuyên nghiệp và an toàn là gì?",
+    "options": [
+      "A. Tự ý lấy toàn bộ hồ sơ khách hàng thật của ngân hàng tải lên tài khoản AI cá nhân của mình",
+      "B. Áp dụng khung phân loại dữ liệu và Đèn giao thông: xác định rõ dữ liệu nào là công khai, dữ liệu nào là nội bộ/định danh phải khử mật hoặc chỉ được chạy trên hệ thống được bộ phận An ninh thông tin/Pháp chế của ngân hàng cấp phép; thiết kế bản mẫu Workflow Harness trên dữ liệu giả lập có cổng GATE kiểm chứng số liệu rõ ràng rồi mới trình quản lý phê duyệt",
+      "C. Giấu quản lý, lén dùng AI làm xong rồi nhận là mình tự làm thủ công",
+      "D. Nhờ AI tự ký tên phê duyệt báo cáo gửi Ban Giám đốc"
+    ],
+    "correct": "B",
+    "explanation": "Khi đề xuất ứng dụng AI tại ngân hàng/doanh nghiệp, bước đầu tiên luôn là phân loại mức độ mật của dữ liệu, tuân thủ quy định An ninh thông tin/Luật Bảo vệ dữ liệu cá nhân và thiết kế Harness có cổng GATE trên dữ liệu giả lập."
+  }
+]

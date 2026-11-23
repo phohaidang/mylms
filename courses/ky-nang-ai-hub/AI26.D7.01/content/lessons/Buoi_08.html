@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 8: Quy trình NCKH với AI (Bước 3 & 4) - Tổng hợp, Viết & Trình bày — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 3: ỨNG DỤNG AI TRONG NGHIÊN CỨU KHOA HỌC & KIỂM CHỨNG</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO3, CLO4</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 8: Quy trình NCKH với AI (Bước 3 & 4) - Tổng hợp, Viết & Trình bày</h1>
+      <p class="subtitle">Lập Ma trận Tổng hợp (Synthesis Matrix), Quy trình viết học thuật 4 nhịp từ Second Brain + Zotero và Làm slide 4 lớp (Chốt Mảnh ghép 3)</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Phân biệt rõ <strong>Tóm tắt rời rạc (Summary)</strong> với <strong>Tổng hợp đối sánh đa nguồn (Synthesis)</strong> và lập được <strong>Ma trận Tổng hợp (Synthesis Matrix)</strong> cho 9-12 nguồn tài liệu của Đề án (CLO4).</li>
+      <li>Thực hiện được <strong>Quy trình viết học thuật 4 nhịp</strong> kết hợp giữa Atomic Notes trong Second Brain, sự phản biện dàn ý của AI và thao tác chèn trích dẫn chuẩn từ <strong>Zotero 8</strong> (CLO3, CLO4).</li>
+      <li>Áp dụng được <strong>Quy trình 4 lớp thiết kế bài trình bày khoa học</strong> theo nguyên tắc <em>'AI làm Draft, Người làm Final'</em> (CLO3, CLO4).</li>
+      <li>Hoàn thành <strong>Mảnh ghép 3 của Đề án cuối khóa</strong> (Bản thảo Báo cáo nghiên cứu/giải pháp nghiệp vụ có Ma trận tổng hợp và trích dẫn Zotero chuẩn APA 7) (CLO4).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Nhóm của bạn đã tìm được 10 bài báo khoa học thật, đã 'soi' từng bản tóm tắt, kiểm chứng qua 5 bước và nạp toàn bộ vào Zotero cũng như Second Brain. Giờ là lúc phải viết phần Tổng quan tài liệu (Literature Review) dài 1.500 chữ và thiết kế bộ Slide bảo vệ Đề án.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Rất nhiều nhóm sinh viên rơi vào cảnh viết 'Tổng quan tài liệu kiểu liệt kê': đoạn 1 tóm tắt bài của tác giả A, đoạn 2 tóm tắt bài của tác giả B, đoạn 3 tóm tắt bài của tác giả C... mà không có bất kỳ sợi dây liên kết hay so sánh nào giữa các bài. Hoặc tệ hơn, nhóm quăng cả 10 bài cho AI viết hộ một mạch rồi dùng công cụ tạo slide tự động (Gamma) xuất ra những trang slide lòe loẹt nhưng rỗng tuếch, làm mất hoàn toàn tiếng nói học thuật và dấu ấn cá nhân của nhóm.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để chuyển hóa 10 bài báo rời rạc thành một bức tranh tổng hợp sắc bén chỉ ra được khoảng trống nghiên cứu (Research Gap), viết báo cáo chuẩn mực từ Second Brain + Zotero, và thiết kế bài trình bày mang đậm bản sắc của người làm chủ?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Sử dụng Ma trận Tổng hợp (Synthesis Matrix) trên Elicit và Gemini Notebook để so sánh chéo đa nguồn theo chủ đề; thực hiện quy trình viết học thuật 4 nhịp từ Atomic Notes kết hợp chèn trích dẫn Zotero; và áp dụng quy trình 4 lớp làm slide theo nguyên tắc 'AI làm Draft, Người làm Final'.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 8): Có 10 bài báo thật trong Zotero rồi, nhưng khi ghép lại, bản nháp đầu tiên của nhóm Minh trông giống như 10 đoạn tóm tắt rời rạc dán nối đuôi nhau: 'Tác giả A nói..., Tác giả B nói...'. Giảng viên hướng dẫn nhóm Minh kẻ một bảng Ma trận Tổng hợp (Synthesis Matrix) theo 4 cột chủ đề trên Gemini Notebook + Elicit. Ngay khi nhìn vào bảng, cả nhóm thấy rõ 4 tác giả đồng thuận ở điểm nào, 2 tác giả mâu thuẫn ở đâu và phát hiện ra đúng khoảng trống nghiên cứu cho Đề án của nhóm!</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Khi đọc phần Tổng quan tài liệu của một bài tiểu luận, làm sao người chấm nhận ra ngay bài đó chỉ là '10 đoạn tóm tắt xếp cạnh nhau' chứ chưa hề có sự 'tổng hợp' (Synthesis)?</li>
+        <li>Nếu bạn dùng các công cụ như Gamma hay Copilot để tạo 10 trang slide chỉ bằng 1 cú nhấp chuột, điều gì sẽ thiếu vắng trên những trang slide đó khiến Hội đồng chấm điểm không bị thuyết phục?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Bước 3 (Tổng hợp đa nguồn): Lập Ma trận Tổng hợp (Synthesis Matrix):</strong><br>• Phân biệt <em>Summary</em> (kể từng bài A -> B -> C) vs <em>Synthesis</em> (đặt A, B, C lên cùng bàn cân theo biến số/chủ đề để tìm đồng thuận, mâu thuẫn và Research Gap).<br>• Hướng dẫn kết hợp bảng trích xuất của <strong>Elicit</strong> và kho <strong>Gemini Notebook</strong> để lập Synthesis Matrix có gắn số trang kiểm chứng.</td><td>Thực hành nhóm: Thiết kế các cột tiêu chí và lập Ma trận Tổng hợp cho 9-12 nguồn tài liệu đã kiểm chứng của Đề án nhóm.</td><td>Slide Buổi 8; Elicit & Gemini Notebook</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Bước 4 (Viết học thuật 4 nhịp): Second Brain + AI Phản biện + Zotero 8:</strong><br>• Giảng và demo 4 nhịp viết: (1) Sắp xếp <em>Atomic Notes</em> thành dàn ý -> (2) Nhờ AI đóng vai <em>Devil's Advocate</em> phản biện dàn ý -> (3) Người học tự viết bản thảo từ Ma trận tổng hợp và chèn trích dẫn từ <strong>Zotero 8</strong> -> (4) Dùng AI biên tập văn phong với chốt chặn giữ nguyên luận điểm và mã Zotero.</td><td>Thực hành viết 1 mục Tổng quan & Phân tích (300-500 chữ) từ Ma trận tổng hợp của nhóm, thực hành chèn trích dẫn Zotero theo chuẩn APA 7.</td><td>Word / Google Docs + Zotero 8 Plugin</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Quy trình 4 lớp Chuẩn bị Bài trình bày Khoa học ('AI làm Draft, Người làm Final'):</strong><br>• Lớp 1: Cấu trúc Storyline & SCQA.<br>• Lớp 2: Kịch bản thuyết trình gắn trải nghiệm thực nghiệm thật.<br>• Lớp 3: Thiết kế trực quan (dùng tiêu đề kết luận Action Titles, loại bỏ sự chung chung của slide AI tự động).<br>• Lớp 4: Đưa bằng chứng sống (ảnh chạy Harness, báo cáo Tomaca, Zotero, Atomic Notes) lên slide.</td><td>Phác thảo cấu trúc Storyline 10 slide cho bài bảo vệ Đề án cuối khóa của nhóm theo đúng 4 lớp.</td><td>Gamma / PowerPoint / HTML Slides</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Studio Đề án (Chốt Mảnh ghép 3) & Khóa chốt LMS:</strong><br>• Các nhóm hoàn thiện Bản thảo Báo cáo Đề án (Mảnh ghép 3) kèm Ma trận tổng hợp, biên bản Soi 3 phút, bảng kiểm chứng 5 bước và danh mục Zotero.<br>• Hoàn thành phản tư 4F và Quiz Buổi 8.</td><td>Nộp bản thảo Mảnh ghép 3; viết Atomic Note phản tư 4F và hoàn thành Quiz Buổi 8 trên LMS Hub.</td><td>LMS Hub (Quiz 8, Journal 8)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao ở Nhịp 4 (biên tập văn phong), nếu bạn chỉ nói 'Hãy viết lại đoạn này cho hay hơn' mà không cài chốt chặn 'Cấm thay đổi luận điểm, cấm thêm số liệu và giữ nguyên mã trích dẫn Zotero', AI rất dễ phá hỏng tính chính xác khoa học của đoạn văn bạn vừa dày công kiểm chứng?</li>
+      <li>Làm thế nào một tiêu đề slide dạng câu kết luận (Action Title - ví dụ: 'Cổng dừng GATE 1 giúp loại bỏ 100% lỗi lệch số liệu trước khi viết nhận xét') lại hiệu quả hơn tiêu đề dạng danh từ chung chung ('Kết quả thử nghiệm hệ thống')?</li>
+      <li>Trong một nhóm 4 người cùng viết chung một báo cáo Đề án, làm thế nào để sử dụng Zotero Group Library và kho Second Brain chung để không bị trùng lặp hay mất định dạng trích dẫn?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 8 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 8</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 8 theo khung 4F)</strong> và hoàn tất chỉ tiêu tối thiểu <strong>06 Atomic Notes chuyên môn cá nhân</strong> đóng góp vào Đề án nhóm.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Hoàn tất Mảnh ghép 3):</h3>
+        <ul>
+          <li>Hoàn chỉnh toàn văn <strong>Báo cáo Đề án (Mảnh ghép 3)</strong> có đầy đủ Ma trận tổng hợp, Biên bản Soi 3 phút, Bảng kiểm chứng 5 bước + Báo cáo Tomaca và Danh mục tài liệu tham khảo xuất tự động từ Zotero 8.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Điểm khác biệt cốt lõi của Ma trận Tổng hợp (Synthesis Matrix) so với việc tóm tắt từng bài là gì?<br><em>Đáp:</em> Đặt nhiều bài báo đã kiểm chứng lên cùng các cột tiêu chí/chủ đề để đối sánh điểm đồng thuận, điểm mâu thuẫn và làm lộ diện khoảng trống nghiên cứu (Research Gap).</li>
+      <li><strong>Hỏi:</strong> Bốn nhịp của quy trình viết học thuật với AI là gì?<br><em>Đáp:</em> (1) Lắp ghép dàn ý từ Atomic Notes trong Second Brain -> (2) Nhờ AI phản biện dàn ý -> (3) Tự viết bản thảo & chèn trích dẫn từ Zotero 8 -> (4) Dùng AI biên tập ngôn ngữ có ràng buộc giữ nguyên luận điểm và trích dẫn.</li>
+      <li><strong>Hỏi:</strong> Nguyên tắc cốt lõi khi dùng AI hỗ trợ làm slide thuyết trình là gì?<br><em>Đáp:</em> 'AI làm Draft, Người làm Final': con người giữ quyền thiết kế thông điệp kết luận (Action Titles) và đưa bằng chứng thực nghiệm thật của nhóm lên slide.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Hướng dẫn kỹ cho sinh viên cách dùng câu nối tổng hợp đa nguồn (ví dụ: 'Trong khi Nguyễn (2024) và Smith (2025) cùng chỉ ra..., Trần (2026) lại phát hiện rằng...') để nâng tầm văn phong báo cáo.</li>
+      <li>Kiểm tra để đảm bảo danh mục tài liệu tham khảo cuối báo cáo của các nhóm là trường dữ liệu động (dynamic field) do Zotero tạo ra chứ không phải gõ tay.</li>
+    </ul>
+  </div>
+</body>
+</html>

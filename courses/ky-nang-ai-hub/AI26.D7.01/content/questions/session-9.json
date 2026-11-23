@@ -1,0 +1,138 @@
+{
+  "session": 9,
+  "chapter": "Ch.9",
+  "title": "Đạo đức học thuật, Pháp lý (Thông tư 49/2026) & An toàn dữ liệu Ngân hàng",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s09-L1-c9-q1",
+      "type": "mc",
+      "question": "Theo Điều 10 của Thông tư 49/2026/TT-BGDĐT (ban hành ngày 30/6/2026, có hiệu lực từ 15/8/2026 của Bộ Giáo dục và Đào tạo), việc sinh viên sử dụng AI hỗ trợ làm bài nhưng KHÔNG công bố hoặc công bố không đầy đủ khi có yêu cầu được xếp vào loại hành vi nào?",
+      "options": [
+        "A. Là quyền riêng tư bình thường, được khuyến khích",
+        "B. Là hành vi vi phạm liêm chính học thuật trong hoạt động đào tạo và nghiên cứu khoa học (theo Khoản 2 Điểm đ Điều 10)",
+        "C. Chỉ là thiếu sót nhỏ về trình bày, không ảnh hưởng gì",
+        "D. Chỉ áp dụng cho giảng viên, không áp dụng cho sinh viên"
+      ],
+      "correct": "B",
+      "explanation": "Theo Điều 10 (Khoản 2 Điểm đ) của Thông tư 49/2026/TT-BGDĐT (hiệu lực từ 15/8/2026), không công bố hoặc công bố không đầy đủ việc sử dụng AI khi có yêu cầu là hành vi vi phạm liêm chính học thuật."
+    },
+    {
+      "id": "aihub-s09-L1-c9-q2",
+      "type": "mc",
+      "question": "Theo chuẩn mực của Ủy ban Đạo đức Xuất bản Quốc tế (COPE) và ICMJE, tại sao các công cụ AI (như ChatGPT, Claude, Gemini) KHÔNG BAO GIỜ được phép đứng tên làm đồng tác giả (co-author) của một bài báo hay đề án khoa học?",
+      "options": [
+        "A. Vì các công cụ AI không có tư cách pháp nhân và không thể chịu trách nhiệm pháp lý hay đạo đức về tính trung thực, chính xác của công trình khoa học",
+        "B. Vì tên của các công cụ AI quá ngắn",
+        "C. Vì AI chưa đóng phí xuất bản cho tạp chí",
+        "D. Vì AI không có địa chỉ email cá nhân"
+      ],
+      "correct": "A",
+      "explanation": "Theo COPE và ICMJE, công cụ AI không bao giờ được đứng tên làm tác giả vì AI không thể chịu trách nhiệm pháp lý và đạo đức về công trình khoa học."
+    },
+    {
+      "id": "aihub-s09-L1-c9-q3",
+      "type": "mc",
+      "question": "Trong Khung Đèn giao thông cho việc sử dụng AI trong học thuật, hành vi nào dưới đây nằm trong VÙNG ĐỎ (Cấm tuyệt đối)?",
+      "options": [
+        "A. Nhờ AI giải thích một thuật ngữ kinh tế lượng khó hiểu để tự học",
+        "B. Nhờ AI phản biện dàn ý bài viết do chính bạn tự lập",
+        "C. Để AI tự viết phần Kết quả và Thảo luận, dùng trích dẫn chưa qua kiểm chứng hoặc tải dữ liệu mật của khách hàng ngân hàng lên AI công cộng",
+        "D. Nhờ AI kiểm tra lỗi chính tả tiếng Anh sau khi bạn đã tự viết xong đoạn văn"
+      ],
+      "correct": "C",
+      "explanation": "Để AI viết phần Kết quả/Thảo luận, dùng trích dẫn chưa kiểm chứng hoặc tải dữ liệu mật của ngân hàng lên AI công cộng đều thuộc Vùng Đỏ (Cấm tuyệt đối)."
+    },
+    {
+      "id": "aihub-s09-L1-c9-q4",
+      "type": "mc",
+      "question": "Một Bản khai báo việc sử dụng AI (AI Disclosure Statement) đạt chuẩn trong báo cáo Đề án cần nêu rõ những thông tin tối thiểu nào?",
+      "options": [
+        "A. Chỉ cần ghi một câu 'Bài này có dùng AI'",
+        "B. Nêu rõ: (1) Tên công cụ và phiên bản đã dùng, (2) Thời gian sử dụng (tháng/năm), (3) Mục đích và phạm vi công việc cụ thể đã nhờ AI hỗ trợ, và (4) Cam kết đã tự kiểm chứng toàn bộ trích dẫn/số liệu và chịu trách nhiệm 100% về nội dung bài viết",
+        "C. Nêu cấu hình phần cứng máy tính và giá tiền gói cước Internet",
+        "D. Nêu danh sách tất cả các phần mềm từng cài trong máy tính từ năm nhất"
+      ],
+      "correct": "B",
+      "explanation": "Mẫu khai báo AI chuẩn mực phải nêu rõ: Tên công cụ + phiên bản, thời gian dùng, mục đích/phạm vi cụ thể, và lời cam kết đã tự kiểm chứng số liệu/trích dẫn, chịu trách nhiệm 100%."
+    },
+    {
+      "id": "aihub-s09-L2-c9-q1",
+      "type": "mc",
+      "question": "Tại sao việc một nhân viên ngân hàng hoặc sinh viên thực tập dán bảng Excel chứa Họ tên, Số CCCD, Số điện thoại và Lịch sử nợ của 500 khách hàng thật vào một Chatbot AI nước ngoài để nhờ phân loại rủi ro lại vi phạm pháp luật ngay cả khi tài khoản AI đó đã bật chế độ 'Không dùng dữ liệu để huấn luyện' (Opt-out of training)?",
+      "options": [
+        "A. Vì theo Luật Bảo vệ dữ liệu cá nhân 2025 (số 91/2025/QH15) và quy định bảo mật ngân hàng, ngay khoảnh khắc bạn truyền dữ liệu định danh cá nhân thật của khách hàng ra máy chủ nước ngoài khi chưa được phép và chưa đánh giá tác động chuyển dữ liệu xuyên biên giới, hành vi rò rỉ/chuyển giao trái phép đã xảy ra độc lập với việc hãng AI có dùng để training hay không",
+        "B. Vì bảng Excel 500 dòng quá nhỏ so với khả năng của AI",
+        "C. Vì AI nước ngoài không tính được tiền Việt Nam Đồng",
+        "D. Không hề vi phạm gì nếu đã tắt nút training"
+      ],
+      "correct": "A",
+      "explanation": "Theo Luật Bảo vệ dữ liệu cá nhân 2025 (91/2025/QH15), việc tải dữ liệu định danh khách hàng thật lên máy chủ AI nước ngoài đã cấu thành hành vi chuyển dữ liệu xuyên biên giới trái phép, độc lập với chế độ training."
+    },
+    {
+      "id": "aihub-s09-L2-c9-q2",
+      "type": "mc",
+      "question": "Theo nguyên tắc thứ 4 của COPE/ICMJE/Elsevier về 'Bảo mật bản thảo khi phản biện', điều gì bạn cần lưu ý khi thực hiện Kiểm toán chéo (Peer Audit) đề án của nhóm bạn hoặc khi phản biện bài báo khoa học?",
+      "options": [
+        "A. Không được phép tự ý tải toàn bộ tài liệu chưa công bố hoặc dữ liệu nhạy cảm của tác giả khác lên các công cụ AI công cộng bên ngoài khi chưa có sự đồng ý hoặc chưa khử định danh, nhằm bảo vệ quyền sở hữu trí tuệ và bảo mật của nhóm tác giả",
+        "B. Được phép đăng bài của nhóm bạn lên mạng xã hội để nhờ cư dân mạng chấm hộ",
+        "C. Không cần đọc bài của nhóm bạn mà chỉ cần chấm điểm ngẫu nhiên",
+        "D. Phải xóa tên tác giả của nhóm bạn rồi nộp thành bài của nhóm mình"
+      ],
+      "correct": "A",
+      "explanation": "Nguyên tắc thứ 4 của COPE/ICMJE quy định phải bảo mật bản thảo khi phản biện: không được tự ý tải bài làm hoặc dữ liệu chưa công bố của người khác lên AI công cộng khi chưa được phép."
+    },
+    {
+      "id": "aihub-s09-L2-c9-q3",
+      "type": "mc",
+      "question": "Tại sao khuyến nghị của ICMJE lại quy định: 'Không đưa Chatbot tổng quát (như ChatGPT) vào Danh mục tài liệu tham khảo (References) như một nguồn khoa học'?",
+      "options": [
+        "A. Vì văn bản do Chatbot sinh ra biến thiên theo xác suất ở từng phiên chat của từng người, người đọc khác không thể truy xuất và kiểm chứng lại nguồn đó như một bài báo có DOI cố định; do đó việc dùng AI phải được ghi ở mục Phương pháp hoặc Lời cảm ơn/Khai báo AI chứ không phải mục Tài liệu tham khảo",
+        "B. Vì tên ChatGPT khó viết theo chuẩn APA",
+        "C. Vì ICMJE muốn giấu việc các nhà khoa học dùng AI",
+        "D. Vì danh mục tài liệu tham khảo chỉ cho phép tối đa 5 bài"
+      ],
+      "correct": "A",
+      "explanation": "ICMJE khuyến nghị không đưa Chatbot vào Danh mục tài liệu tham khảo vì hội thoại AI không phải nguồn khoa học cố định có thể kiểm chứng lại; việc dùng AI phải khai báo ở mục Phương pháp hoặc Lời cảm ơn."
+    },
+    {
+      "id": "aihub-s09-L2-c9-q4",
+      "type": "mc",
+      "question": "Sự tương đồng cốt lõi nhất giữa Thông tư 49/2026/TT-BGDĐT của Việt Nam, Luật AI 134/2025/QH15, EU AI Act (Điều 50) và tuyên bố của COPE/ICMJE là gì?",
+      "options": [
+        "A. Tất cả đều cấm sinh viên và nhà nghiên cứu sử dụng AI dưới mọi hình thức",
+        "B. Tất cả đều hội tụ về 2 trụ cột: (1) Minh bạch (dùng AI ở đâu phải công khai, khai báo rõ ràng ở đó) và (2) Trách nhiệm giải trình thuộc về con người (AI chỉ là công cụ hỗ trợ, con người chịu trách nhiệm 100% về tính chính xác và trung thực của sản phẩm)",
+        "C. Tất cả đều cho phép AI đứng tên làm tác giả chính",
+        "D. Tất cả đều quy định chỉ được dùng một hãng AI duy nhất"
+      ],
+      "correct": "B",
+      "explanation": "Mọi văn bản pháp lý và chuẩn mực quốc tế (Thông tư 49/2026, Luật AI 134/2025, EU AI Act, COPE) đều hội tụ về 2 nguyên tắc: Minh bạch (khai báo rõ) và Con người chịu trách nhiệm cuối cùng."
+    },
+    {
+      "id": "aihub-s09-L3-c9-q1",
+      "type": "mc",
+      "question": "Bạn đang có một file Excel dữ liệu thật gồm 2.000 hồ sơ vay vốn tại một chi nhánh ngân hàng (có cột Họ tên, CCCD, Thu nhập, Dư nợ, Nhóm nợ) và bạn muốn nhờ AI viết đoạn code Python/R để chạy mô hình hồi quy Logistic dự báo nợ xấu. Cách làm nào dưới đây vừa khai thác được AI tối đa, vừa đảm bảo AN TOÀN DỮ LIỆU tuyệt đối?",
+      "options": [
+        "A. Tải thẳng file Excel 2.000 khách hàng thật đó lên ChatGPT miễn phí và bảo 'Hãy chạy hồi quy giúp tôi'",
+        "B. Tuyệt đối không tải file dữ liệu thật lên AI; chỉ mô tả cho AI cấu trúc tên các cột (schema) cùng kiểu dữ liệu (hoặc tạo 5 dòng dữ liệu giả lập hoàn toàn), nhờ AI viết đoạn code Python/R, sau đó copy đoạn code đó về máy tính cá nhân của mình để tự chạy offline trên file dữ liệu thật và tự kiểm tra kết quả",
+        "C. Chỉ xóa cột Họ tên, giữ nguyên cột số CCCD và số điện thoại thật rồi tải lên AI công cộng",
+        "D. Chụp ảnh màn hình danh sách khách hàng rồi gửi lên AI"
+      ],
+      "correct": "B",
+      "explanation": "Để bảo mật dữ liệu ngân hàng tuyệt đối, chỉ gửi cấu trúc tên cột (schema) hoặc dữ liệu giả lập để nhờ AI viết code Python/R, rồi mang code về máy mình tự chạy offline trên dữ liệu thật."
+    },
+    {
+      "id": "aihub-s09-L3-c9-q2",
+      "type": "mc",
+      "question": "Nhóm bạn sử dụng công cụ 'AI Detector' (phần mềm phát hiện văn bản do AI viết) để quét thử một đoạn văn của thành viên trong nhóm và thấy máy báo '85% khả năng do AI viết'. Theo tinh thần khoa học và hướng dẫn học thuật hiện đại, nhóm nên xử lý kết quả này như thế nào?",
+      "options": [
+        "A. Kết luận ngay lập tức bạn đó gian lận 100% vì máy quét không bao giờ sai",
+        "B. Hiểu rằng các công cụ AI Detector hiện nay có tỷ lệ dương tính giả và âm tính giả rất cao, không được coi là bằng chứng kết tội duy nhất; thay vào đó, nhóm phải kiểm tra xem thành viên đó có chuỗi Atomic Notes quá trình trong Second Brain không, có hiểu sâu để giải thích miệng được đoạn văn đó không, và các nguồn trích dẫn trong đoạn đó có qua 5 bước kiểm chứng trong Zotero hay không",
+        "C. Dùng một công cụ AI khác để xào nấu chữ nghĩa (paraphrase) nhằm qua mặt máy quét mà không cần hiểu nội dung",
+        "D. Xóa bỏ đoạn văn đó mà không cần hỏi tác giả"
+      ],
+      "correct": "B",
+      "explanation": "Các công cụ AI Detector có tỷ lệ báo giả cao nên không được dùng làm bằng chứng kết tội duy nhất; phải đánh giá qua hồ sơ quá trình (Atomic Notes, Zotero, kiểm chứng 5 bước và vấn đáp trực tiếp)."
+    }
+  ]
+}

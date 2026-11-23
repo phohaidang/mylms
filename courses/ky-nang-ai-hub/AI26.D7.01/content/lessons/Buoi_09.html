@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 9: Đạo đức học thuật, Pháp lý (Thông tư 49/2026) & An toàn dữ liệu — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 4: AN TOÀN, ĐẠO ĐỨC, PHÁP LÝ & ĐỒ ÁN TỔNG HỢP</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO5</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 9: Đạo đức học thuật, Pháp lý (Thông tư 49/2026) & An toàn dữ liệu</h1>
+      <p class="subtitle">Thông tư 49/2026/TT-BGDĐT (Điều 10), Luật AI 134/2025, Chuẩn COPE/ICMJE, Đèn giao thông (Xanh-Vàng-Đỏ), Bảo mật dữ liệu ngân hàng & Mẫu khai báo AI</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Nắm vững và vận dụng đúng quy định pháp lý Việt Nam mới nhất về liêm chính học thuật với AI: <strong>Thông tư 49/2026/TT-BGDĐT (Điều 10 - 6 nhóm hành vi vi phạm, nghĩa vụ công bố việc dùng AI)</strong>, <strong>Luật AI 134/2025/QH15</strong> và <strong>Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15</strong> (CLO5).</li>
+      <li>Tuân thủ <strong>4 nguyên tắc xuất bản quốc tế (COPE, ICMJE, ALLEA, WAME, Elsevier)</strong> và phân định chính xác các hành vi theo <strong>Khung Đèn giao thông (Xanh - Vàng - Đỏ)</strong> (CLO5).</li>
+      <li>Áp dụng được <strong>Checklist 3 câu hỏi an toàn dữ liệu</strong> và kỹ thuật <strong>Khử định danh (Data Anonymization & Schema-only prompting)</strong> đối với dữ liệu tài chính - ngân hàng - khách hàng (CLO5).</li>
+      <li>Soạn thảo hoàn chỉnh <strong>Mảnh ghép 4 của Đề án cuối khóa</strong> (Ma trận kiểm soát rủi ro dữ liệu + Bản khai báo sử dụng AI chuẩn mực theo Thông tư 49/2026) (CLO5).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Trong quá trình hoàn thiện Đề án và đi thực tập tại các ngân hàng, công ty chứng khoán hay doanh nghiệp, sinh viên thường xuyên tiếp xúc với bảng dữ liệu khảo sát, báo cáo nội bộ, danh sách khách hàng và các bản thảo nghiên cứu. Nhiều bạn hồn nhiên tải toàn bộ file Excel dữ liệu thật lên các công cụ AI miễn phí để nhờ vẽ biểu đồ, rồi khi nộp báo cáo cho trường thì giấu nhẹm việc mình đã dùng AI vì sợ bị trừ điểm.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Tháng 1/2025, Giáo sư Jeff Hancock của ĐH Stanford (chuyên gia hàng đầu thế giới về thông tin sai lệch, nhận thù lao 600 USD/giờ) đã bị thẩm phán tòa án bang Minnesota loại bỏ toàn bộ bản khai chuyên gia vì để lọt 2 trích dẫn bịa do GPT-4o tạo ra. Tại Việt Nam, kể từ ngày 15/8/2026, Thông tư 49/2026/TT-BGDĐT (Điều 10) của Bộ Giáo dục và Đào tạo chính thức có hiệu lực: quy định rõ hành vi 'không công bố hoặc công bố không đầy đủ việc sử dụng AI khi có yêu cầu' là vi phạm liêm chính học thuật! Đồng thời, việc đưa dữ liệu cá nhân/nội bộ ngân hàng lên AI công cộng có máy chủ nước ngoài có thể vi phạm nghiêm trọng Luật Bảo vệ dữ liệu cá nhân 2025 (91/2025/QH15) và quy định bảo mật ngân hàng.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Đâu là ranh giới pháp lý và đạo đức rõ ràng giữa việc sử dụng AI hợp pháp và gian lận học thuật? Làm thế nào để khai báo AI đúng chuẩn và bảo vệ tuyệt đối an toàn dữ liệu trong môi trường tài chính - ngân hàng?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Tuân thủ nghiêm ngặt Điều 10 Thông tư 49/2026/TT-BGDĐT và 4 nguyên tắc xuất bản quốc tế (COPE/ICMJE); áp dụng Khung Đèn giao thông (Xanh - Vàng - Đỏ) cùng Mẫu câu khai báo AI chuẩn mực; và thực thi Checklist 3 câu hỏi an toàn dữ liệu kèm kỹ thuật khử định danh (Data Anonymization) trước khi chạm vào bất kỳ công cụ AI nào.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 9): Để có số liệu thực tế cho Đề án, một bạn trong nhóm Minh xin được file Excel 500 hồ sơ khách hàng vay vốn từ anh chị đi làm ở ngân hàng (có cả tên, số điện thoại, thu nhập) và định tải thẳng lên ChatGPT miễn phí để nhờ chạy thống kê! Chưa hết, bạn ấy còn bảo: 'Đừng ghi vào báo cáo là nhóm mình có dùng AI, kẻo thầy trừ điểm!'. Minh lập tức ngăn lại, mở nguyên văn Điều 10 Thông tư 49/2026/TT-BGDĐT và Luật Bảo vệ dữ liệu cá nhân 2025 cho cả nhóm xem: Giấu việc dùng AI chính là hành vi vi phạm liêm chính học thuật, còn tải dữ liệu khách hàng thật lên AI công cộng là vi phạm pháp luật bảo mật ngân hàng!</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Theo bạn, giữa một sinh viên 'có dùng AI hỗ trợ tóm tắt và chỉnh văn nhưng cố tình giấu không khai báo' và một sinh viên 'khai báo rõ ràng từng bước đã dùng AI và cam kết đã tự kiểm chứng toàn bộ nguồn', ai mới là người vi phạm quy chế theo Thông tư 49/2026/TT-BGDĐT?</li>
+        <li>Nếu một Giáo sư đầu ngành của ĐH Stanford (nhận thù lao 600 USD/giờ làm nhân chứng chuyên gia trước tòa) để lọt đúng 2 trích dẫn do GPT-4o bịa vào bản khai, theo bạn tòa án sẽ xử lý như thế nào?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Hậu quả thực tế (Vụ GS Hancock) & Hành lang Pháp lý Việt Nam (Thông tư 49/2026):</strong><br>• Chiếu và phân tích vụ GS. Jeff Hancock (ĐH Stanford) bị tòa Minnesota loại toàn bộ bản khai chuyên gia ngày 10/01/2025 vì 2 trích dẫn do GPT-4o bịa.<br>• Phân tích văn bản gốc <strong>Thông tư 49/2026/TT-BGDĐT</strong> (ban hành 30/6/2026, hiệu lực 15/8/2026), <strong>Điều 10</strong>: 6 nhóm hành vi vi phạm liêm chính học thuật (đặc biệt là Khoản 2 Điểm đ: <em>không công bố hoặc công bố không đầy đủ việc sử dụng AI khi có yêu cầu</em>).<br>• Liên hệ <strong>Luật AI 134/2025/QH15 (Điều 4)</strong>, <strong>Thông tư 05/2026</strong> và <strong>EU AI Act (Điều 50)</strong>.</td><td>Đọc trực tiếp văn bản Điều 10 Thông tư 49/2026/TT-BGDĐT; thảo luận mối liên hệ giữa quy định pháp lý và hậu quả thực tế.</td><td>Slide Buổi 9; Văn bản gốc Thông tư 49/2026/TT-BGDĐT</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Chuẩn Quốc tế (COPE, ICMJE), Đèn giao thông (Xanh-Vàng-Đỏ) & Mẫu Khai báo AI:</strong><br>• Bốn nguyên tắc chung của COPE, ICMJE, ALLEA, WAME, Elsevier: (1) AI không làm tác giả & không đưa chatbot vào danh mục References, (2) Công khai cách dùng, (3) Tác giả chịu trách nhiệm toàn bộ, (4) Bảo mật bản thảo khi phản biện.<br>• Thực hành phân loại theo <strong>Đèn giao thông (Xanh - Vàng - Đỏ)</strong>.<br>• Hướng dẫn viết <strong>Mẫu câu khai báo việc dùng AI</strong> chuẩn mực.</td><td>Thảo luận phân vùng Xanh - Vàng - Đỏ cho các tác vụ học tập tại HUB; viết nháp câu khai báo AI cá nhân.</td><td>Bảng Đèn giao thông & Mẫu khai báo AI</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>An toàn & Bảo mật Dữ liệu Đặc thù Ngành Ngân hàng - Tài chính:</strong><br>• Phân tích 2 sự cố rò rỉ dữ liệu thật (Samsung 2023; lỗi hiển thị lịch sử ChatGPT 20/03/2023) và quy định về chuyển dữ liệu cá nhân xuyên biên giới theo <strong>Luật Bảo vệ dữ liệu cá nhân 2025 (91/2025/QH15)</strong>.<br>• Nguyên tắc vàng, Checklist 3 câu hỏi và kỹ thuật <strong>Khử định danh / Chỉ gửi Schema (cấu trúc cột)</strong> khi nhờ AI viết code phân tích dữ liệu.<br>• Trò chơi tranh biện cả lớp: Giơ thẻ phân loại 8 tình huống dữ liệu ngân hàng - học thuật.</td><td>Tham gia tranh biện 8 tình huống bảo mật dữ liệu; thực hành khử định danh một bảng dữ liệu mẫu trước khi đưa vào AI.</td><td>Bộ 8 tình huống phân loại dữ liệu</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Studio Đề án (Hoàn thành Mảnh ghép 4) & Khóa chốt LMS:</strong><br>• Các nhóm hoàn thiện <strong>Mảnh ghép 4</strong>: Bảng kiểm soát rủi ro dữ liệu theo Đèn giao thông + Bản Khai báo Sử dụng AI đầy đủ cho toàn bộ Đề án.<br>• Hoàn thành phản tư 4F và Quiz Buổi 9.</td><td>Soạn thảo xong Mảnh ghép 4 và ghép nối trọn bộ 4 Mảnh ghép của Đề án nhóm; làm Quiz Buổi 9 trên LMS Hub.</td><td>LMS Hub (Quiz 9, Journal 9)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Tại sao ICMJE lại khuyến nghị KHÔNG đưa các Chatbot tổng quát vào Danh mục tài liệu tham khảo (References) cuối bài như một bài báo khoa học, mà phải khai báo ở mục Phương pháp hoặc Lời cảm ơn?</li>
+      <li>Nếu bạn là sinh viên thực tập tại ngân hàng và cần dùng AI để viết công thức Excel / code Python xử lý bảng sao kê của 10.000 khách hàng, bạn sẽ làm thế nào để không một dòng dữ liệu thật nào của khách hàng rời khỏi máy tính nội bộ mà vẫn lấy được đoạn code chuẩn từ AI?</li>
+      <li>Tại sao nguyên tắc 'Không tải bản thảo chưa công bố của người khác lên AI công cộng khi phản biện' (Nguyên tắc 4 của COPE) lại cực kỳ quan trọng khi các bạn thực hiện Kiểm toán chéo (Peer Audit) ở Buổi 10?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 9 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 9</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 9 theo khung 4F)</strong>: Ghi lại bộ quy tắc Đạo đức & Bảo mật dữ liệu của riêng bạn.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Đóng gói trọn bộ Hồ sơ 4 Mảnh ghép cho Phiên Kiểm toán Buổi 10):</h3>
+        <ul>
+          <li>Ghép nối hoàn chỉnh <strong>Bộ Hồ sơ Đề án Ứng dụng AI (đủ 4 Mảnh ghép + File thư viện Zotero + Link/Hồ sơ bộ Harness + Danh sách Atomic Notes cá nhân + Bản khai báo AI theo Thông tư 49/2026)</strong> để nộp ngay đầu Tiết 1 Buổi 10 cho Hội đồng Kiểm toán chéo!</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> Văn bản pháp quy nào của Bộ GD&ĐT (hiệu lực từ 15/8/2026) quy định việc không công bố đầy đủ việc dùng AI khi có yêu cầu là vi phạm liêm chính học thuật?<br><em>Đáp:</em> Thông tư 49/2026/TT-BGDĐT (Điều 10, Khoản 2, Điểm đ).</li>
+      <li><strong>Hỏi:</strong> Bốn nguyên tắc chung của COPE, ICMJE, WAME và Elsevier về AI trong xuất bản khoa học là gì?<br><em>Đáp:</em> (1) AI không làm tác giả, (2) Công bố minh bạch việc dùng AI, (3) Tác giả con người chịu trách nhiệm toàn bộ nội dung, (4) Không tải bản thảo của người khác lên AI công cộng khi phản biện.</li>
+      <li><strong>Hỏi:</strong> Ba chỗ trống bắt buộc phải điền cụ thể trong Mẫu câu khai báo việc dùng AI là gì?<br><em>Đáp:</em> Công cụ nào (kèm phiên bản) - Vào thời gian nào (tháng/năm) - Để làm mục đích/công việc cụ thể gì (kèm cam kết đã tự kiểm chứng và chịu trách nhiệm hoàn toàn).</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Chiếu rõ ảnh trang văn bản Điều 10 Thông tư 49/2026/TT-BGDĐT và câu chuyện GS Jeff Hancock để sinh viên thấy tính nghiêm cẩn pháp lý chứ không chỉ là lời khuyên đạo đức suông.</li>
+      <li>Nhắc các nhóm kiểm tra kỹ quy tắc Điểm liệt Liêm chính trước khi nộp hồ sơ vào Buổi 10.</li>
+    </ul>
+  </div>
+</body>
+</html>

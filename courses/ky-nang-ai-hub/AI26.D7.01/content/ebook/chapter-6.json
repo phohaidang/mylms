@@ -1,0 +1,228 @@
+{
+  "chapter": 6,
+  "title": "Quy trình NCKH với AI (Bước 1 & 2): Tìm nguồn thật, Đọc tóm tắt & 'Soi 3 phút'",
+  "sessions": [
+    6
+  ],
+  "scqa": {
+    "situation": "Bước vào giai đoạn làm nghiên cứu khoa học hoặc cơ sở lý luận cho Đề án ngành Ngân hàng - Kinh tế, sinh viên đứng trước hàng triệu bài báo học thuật bằng tiếng Anh. Để tiết kiệm thời gian, nhiều bạn nhờ AI tìm tài liệu rồi quăng file PDF bài báo cho AI tóm tắt và chép thẳng bảng tóm tắt đó vào bài làm.",
+    "complication": "Trong thực nghiệm trực tiếp tại buổi tọa đàm khoa học (với bài báo mẫu Hemani, 2026), ngay cả khi đã dùng Prompt chuẩn yêu cầu tóm tắt file PDF đính kèm, mô hình AI (DeepSeek) vẫn tự ý nâng cấp một kế hoạch tính toán Excel mơ hồ trong bài gốc thành thuật ngữ chuyên môn 'hệ số tương quan Pearson (Pearson's R)' dù chữ 'Pearson' xuất hiện đúng 0 lần trong toàn bộ bài báo! Hơn thế nữa, AI trích đúng con số cỡ mẫu '192 sinh viên' ở trang 4 nhưng không báo cho người đọc biết trang 3 chỉ ghi ước tính '150-200', cũng như không thể thay người đọc phán đoán việc bài báo chỉ ghi số xấp xỉ (~0.62) mà không có bảng hệ số hay p-value.",
+    "question": "Làm thế nào để tìm đúng nguồn học thuật thật và kiểm soát chặt chẽ bản tóm tắt của AI để không bao giờ bị đánh lừa bởi những chi tiết do AI tự suy diễn thêm hoặc từ chính một bài báo gốc kém chất lượng?",
+    "answer": "Tuân thủ kỷ luật 'Nguồn thật trước, AI sau': tìm bài trên kho dữ liệu học thuật thật (Semantic Scholar, Elicit, Consensus), dùng Prompt tóm tắt 7 mục có chốt chặn 'Không suy đoán', và bắt buộc thực hiện quy trình 'Soi bản tóm tắt trong 3 phút' (Đối chiếu số liệu - Truy chỗ AI thêm - Hỏi ngược về hạn chế)."
+  },
+  "concepts": [
+    {
+      "id": "c6-nguon-that-cong-cu",
+      "session": 6,
+      "term": "Quy tắc 'Nguồn thật trước, AI sau' & Chọn công cụ theo đúng việc",
+      "definition": "Nguyên tắc nền tảng trong nghiên cứu có AI đồng hành: việc nào cần nguồn tài liệu thật thì bắt buộc phải bắt đầu từ công cụ kết nối với cơ sở dữ liệu học thuật thật, tuyệt đối không xin danh mục tài liệu từ Chatbot tổng quát.",
+      "key_points": [
+        "<strong>Phễu thu hẹp câu hỏi nghiên cứu:</strong> Đi từ Chủ đề rộng -> Thêm đối tượng, bối cảnh, biến số -> Câu hỏi nghiên cứu cụ thể -> Xác định loại câu hỏi rồi mới chọn công cụ.",
+        "<strong>Semantic Scholar (semanticscholar.org):</strong> Tìm bài báo khoa học thật, miễn phí trên kho hơn 200 triệu công trình có mã DOI chuẩn.",
+        "<strong>Elicit (elicit.com):</strong> Gom nhiều bài báo thật vào một bảng trích xuất theo các cột do bạn đặt (câu hỏi, phương pháp, cỡ mẫu, kết quả chính).",
+        "<strong>Consensus (consensus.app):</strong> Xem nhanh bằng chứng thực nghiệm nghiêng về phía nào qua Đồng hồ đo (<em>Consensus Meter</em>). Lưu ý: Đồng hồ đo chỉ hợp với câu hỏi <strong>Yes/No dựa trên bằng chứng thực nghiệm</strong>; và chữ 'Yes' chỉ là điểm bắt đầu cho chuỗi 5 câu hỏi đào sâu (Có xảy ra không? Xảy ra bao nhiêu %? Khi nào nặng hơn? Làm sao phát hiện? Hệ quả gì?)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c6-prompt-7-muc",
+        "c6-soi-3-phut"
+      ]
+    },
+    {
+      "id": "c6-prompt-7-muc",
+      "session": 6,
+      "term": "Khung Prompt Tóm tắt Bài báo Khoa học 7 mục",
+      "definition": "Cấu trúc câu lệnh tiêu chuẩn gồm 4 thành phần (Vai trò - Đầu vào PDF 7 mục - Ràng buộc nguồn - Định dạng) giúp trích xuất có kiểm soát một bài báo khoa học đầy đủ.",
+      "key_points": [
+        "<strong>Nguyên tắc đầu vào:</strong> Phải tải trực tiếp file PDF bài báo đầy đủ lên AI (DeepSeek, Claude, Gemini Notebook), không gõ tên bài báo rồi bắt AI nhớ lại.",
+        "<strong>7 mục bắt buộc trong bảng tóm tắt:</strong> (1) Câu hỏi nghiên cứu, (2) Phương pháp, (3) Dữ liệu hoặc cỡ mẫu, (4) Kết quả chính, (5) Hạn chế của nghiên cứu, (6) Đóng góp, (7) Điều người đọc cần kiểm tra lại.",
+        "<strong>Câu khóa ràng buộc nguồn (Quan trọng nhất):</strong> <em>'Mỗi ý ghi rõ số trang hoặc tên mục. Chỗ nào bài không nói, ghi rõ không nêu trong bài, không suy đoán. Tối đa 300 chữ, tiếng Việt, giữ thuật ngữ gốc tiếng Anh trong ngoặc.'</em>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c6-soi-3-phut"
+      ]
+    },
+    {
+      "id": "c6-soi-3-phut",
+      "session": 6,
+      "term": "Kỹ năng 'Soi bản tóm tắt trong 3 phút' & Hai loại lỗi tinh vi của AI",
+      "definition": "Quy trình 3 thao tác kiểm định nhanh bản tóm tắt của AI ngay trên file PDF gốc nhằm phát hiện cả lỗi suy diễn của AI lẫn điểm yếu phương pháp luận của chính bài báo.",
+      "key_points": [
+        "<strong>Thao tác 1 - Đối chiếu số liệu:</strong> Chọn ít nhất 2-3 con số trong bản tóm tắt, mở đúng trang/bảng của bài gốc để so. <em>Bài học từ case Hemani (2026):</em> Các số 82%, 41%, r ~ 0.62 và r ~ -0.48 đều khớp nguyên văn trang 4 bài gốc, nhưng bài gốc chỉ ghi dấu xấp xỉ (~) mà không có bảng hệ số hay p-value -> <strong>Số khớp chứng minh bản tóm tắt trung thực với bài, không chứng minh con số của bài báo đó đáng tin!</strong>",
+        "<strong>Thao tác 2 - Truy chỗ AI thêm & thiếu bối cảnh:</strong> Hỏi AI <em>'Chi tiết này nằm ở đoạn nào trong bài?'</em> và kiểm tra toàn văn. Nhận diện 2 loại lỗi: (a) <em>Đúng chữ nhưng thiếu bối cảnh</em> (AI ghi cỡ mẫu 192 ở phần Kết quả tr.4 nhưng không báo phần Phương pháp tr.3 ghi cỡ mẫu dự kiến là 150-200); (b) <em>Chi tiết AI tự suy diễn thêm nguy hiểm nhất</em> (AI tự ghi phương pháp là <code>Pearson's R</code> trong khi chữ <code>Pearson</code> xuất hiện <strong>0 lần</strong> trong toàn bài!).",
+        "<strong>Thao tác 3 - Hỏi ngược về Hạn chế (Limitations):</strong> Kiểm tra xem bài gốc có tự nêu hạn chế không. Nhờ câu 'không suy đoán', AI mới chịu ghi 'không nêu trong bài' (vì chữ limitation xuất hiện 0 lần trong bài Hemani) rồi mới tách riêng các điểm yếu phương pháp do người đọc/AI nhận xét."
+      ],
+      "case_study": {
+        "title": "Case study thực nghiệm bài báo Hemani (2026) trên DeepSeek",
+        "context": "Đưa bài báo Hemani (2026, tạp chí IJSDR, 6 trang - được chọn có chủ đích vì chất lượng yếu) vào DeepSeek với Prompt 7 mục.",
+        "analysis": "AI tự phát hiện được một số điểm yếu (thiếu p-value, lệch nhãn Bảng 3 và Hình 3), nhưng lại tự bịa thêm chữ 'Pearson's R' vào hàng Phương pháp vì thấy có ký hiệu r ~ 0.62.",
+        "lesson_learned": "AI thêm vào những thuật ngữ nghe cực kỳ chuyên môn chính là loại lỗi dễ đánh lừa sinh viên nhất nếu không mở PDF gốc bấm Ctrl+F để truy nguyên."
+      },
+      "related_concepts": [
+        "c6-prompt-7-muc"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận diện quy trình 4 bước NCKH, công cụ tìm nguồn thật và 3 thao tác soi bản tóm tắt.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c6-q1",
+          "type": "mc",
+          "concept_ref": "c6-nguon-that-cong-cu",
+          "question": "Trong quy trình nghiên cứu khoa học có AI đồng hành gồm 4 bước (1. Tìm -> 2. Đọc -> 3. Tổng hợp -> 4. Viết), hoạt động 'Kiểm chứng' nằm ở vị trí nào?",
+          "options": [
+            "A. Chỉ thực hiện ở bước cuối cùng sau khi đã viết xong toàn bộ khóa luận",
+            "B. Đi xuyên suốt cả 4 bước: kiểm từ nguồn có thật không, tóm tắt có khớp bản gốc không, nhận định tổng hợp có đúng nguồn không, đến trích dẫn có chính xác không",
+            "C. Giao hoàn toàn cho AI tự kiểm chứng, con người không cần can thiệp",
+            "D. Chỉ kiểm chứng khi giảng viên yêu cầu"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c6-q2",
+          "type": "mc",
+          "concept_ref": "c6-nguon-that-cong-cu",
+          "question": "Tính năng Đồng hồ đo (Consensus Meter) trên công cụ Consensus.app phù hợp nhất với loại câu hỏi nghiên cứu nào?",
+          "options": [
+            "A. Câu hỏi Yes/No (Có/Không) dựa trên bằng chứng thực nghiệm (ví dụ: 'Do large language models fabricate citations?')",
+            "B. Câu hỏi yêu cầu viết một bài thơ",
+            "C. Câu hỏi mở mang tính triết học hoặc chuẩn mực đạo đức ('Chúng ta có nên...')",
+            "D. Câu hỏi xin danh sách điểm thi của lớp"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c6-q3",
+          "type": "mc",
+          "concept_ref": "c6-soi-3-phut",
+          "question": "Ba thao tác cốt lõi trong quy trình 'Soi bản tóm tắt bài báo trong 3 phút' là gì?",
+          "options": [
+            "A. Đọc lướt tiêu đề, đếm số trang, và xem ảnh tác giả",
+            "B. (1) Đối chiếu số liệu với bảng/hình gốc, (2) Truy chỗ AI tự thêm hoặc thiếu bối cảnh, và (3) Hỏi ngược về hạn chế (Limitations) của bài báo",
+            "C. Dịch sang tiếng Anh, đổi phông chữ, và in ra giấy",
+            "D. Copy bản tóm tắt sang một Chatbot khác để hỏi xem có hay không"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c6-q4",
+          "type": "mc",
+          "concept_ref": "c6-soi-3-phut",
+          "question": "Trong thực nghiệm Demo 1 với bài báo Hemani (2026), chi tiết nào ở mục Phương pháp đã bị AI tự ý suy diễn thêm dù xuất hiện đúng 0 lần trong toàn bộ bài báo gốc?",
+          "options": [
+            "A. Phần mềm Microsoft Excel",
+            "B. Cụm thuật ngữ hệ số tương quan 'Pearson's R'",
+            "C. Phương pháp lấy mẫu ngẫu nhiên (random sampling)",
+            "D. Bảng hỏi 30 câu"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân tích hai loại lỗi của AI khi tóm tắt và bài học về đọc phê phán.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c6-q1",
+          "type": "mc",
+          "concept_ref": "c6-soi-3-phut",
+          "question": "Khi bạn đối chiếu các con số trong bản tóm tắt của AI (như 82%, 41%, r ~ 0.62) và thấy chúng khớp 100% với trang 4 của bài báo gốc, tại sao bạn vẫn chưa thể kết luận ngay rằng các con số đó đáng tin cậy về mặt khoa học?",
+          "options": [
+            "A. Vì số khớp chỉ chứng minh bản tóm tắt của AI trung thực với văn bản bài báo, chứ không chứng minh phương pháp thu thập và phân tích của chính bài báo đó đạt chuẩn khoa học (ví dụ bài gốc chỉ ghi số xấp xỉ '~' mà không có bảng hệ số hay p-value)",
+            "B. Vì mọi con số trong mọi bài báo khoa học đều là giả",
+            "C. Vì số trang 4 luôn luôn sai",
+            "D. Vì AI đã tự sửa file PDF gốc của bạn"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c6-q2",
+          "type": "mc",
+          "concept_ref": "c6-soi-3-phut",
+          "question": "Trong bài báo Hemani (2026), mục Phương pháp (tr.3) ghi 'Estimated total sample size: 150-200 students', còn mục Kết quả (tr.4) ghi 'out of 192 students surveyed'. Khi AI chỉ trích con số 192 vào bảng tóm tắt, bài học rút ra về việc kiểm chứng là gì?",
+          "options": [
+            "A. AI đã bịa hoàn toàn con số 192",
+            "B. Đây không phải mâu thuẫn của bài báo (150-200 là cỡ mẫu dự kiến khi thiết kế, 192 là mẫu thực tế thu được), nhưng lỗi của AI là trích đúng chữ ở phần Kết quả mà bỏ qua bối cảnh ở phần Phương pháp; người đọc phải luôn hỏi tiếp: 'Trong bài còn chỗ nào nói khác về con số này không?'",
+            "C. Phải lấy 150 cộng 200 chia đôi mới đúng",
+            "D. Không cần quan tâm đến cỡ mẫu khi đọc bài báo"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c6-q3",
+          "type": "mc",
+          "concept_ref": "c6-prompt-7-muc",
+          "question": "Tác dụng trực tiếp nhất của câu ràng buộc 'Chỗ nào bài không nói, ghi không nêu trong bài, không suy đoán' trong Prompt tóm tắt 7 mục là gì?",
+          "options": [
+            "A. Giúp AI biết dừng lại và ghi đúng 'không nêu trong bài' ở những mục bài báo gốc bỏ trống (như mục Limitations của bài Hemani), thay vì tự bịa ra nội dung để điền cho kín bảng 7 mục",
+            "B. Làm cho AI từ chối tóm tắt toàn bộ bài báo",
+            "C. Giúp AI tự động dịch bài báo sang 10 thứ tiếng",
+            "D. Giúp tăng tốc độ mạng Internet"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c6-q4",
+          "type": "mc",
+          "concept_ref": "c6-nguon-that-cong-cu",
+          "question": "Khi dùng Consensus.app để hỏi một câu hỏi thực nghiệm và thấy đồng hồ Consensus Meter chỉ 100% Yes, tại sao người nghiên cứu không nên dừng lại ở chữ Yes đó?",
+          "options": [
+            "A. Vì chữ Yes chỉ trả lời câu hỏi đầu tiên ('Hiện tượng đó có xảy ra không?'); người nghiên cứu cần mở từng bài báo bên dưới để đào sâu chuỗi câu hỏi tiếp theo: Xảy ra ở mức độ bao nhiêu (ví dụ 19.9% hay 1/277)? Khi nào nặng hơn? Cơ chế là gì? Hệ quả ra sao?",
+            "B. Vì đồng hồ Consensus luôn chỉ ngược với sự thật",
+            "C. Vì Consensus không chứa bài báo thật",
+            "D. Vì chữ Yes có nghĩa là đề tài đã bị cấm nghiên cứu"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Thực hành tìm nguồn thật và lập biên bản 'Soi 3 phút' cho Đề án nhóm.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c6-q1",
+          "type": "mc",
+          "concept_ref": "c6-soi-3-phut",
+          "question": "Khi bạn yêu cầu AI tóm tắt một bài báo kinh tế bằng file PDF đính kèm và thấy trong bảng tóm tắt xuất hiện câu: 'Nghiên cứu sử dụng mô hình hồi quy GMM hai bước với p-value < 0.001'. Thao tác kiểm chứng đầu tiên bạn phải làm ngay trong 60 giây là gì?",
+          "options": [
+            "A. Chép luôn câu đó vào báo cáo Đề án vì thuật ngữ GMM nghe rất cao cấp",
+            "B. Mở file PDF bài báo gốc, bấm Ctrl+F tìm từ khóa 'GMM' và '0.001' (hoặc mở đúng số trang AI ghi) để kiểm tra xem bài gốc có thực sự dùng GMM với p < 0.001 hay AI tự suy diễn từ một phương pháp khác",
+            "C. Hỏi lại AI xem GMM là viết tắt của từ gì",
+            "D. Xóa file PDF gốc đi cho nhẹ máy"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c6-q2",
+          "type": "mc",
+          "concept_ref": "c6-nguon-that-cong-cu",
+          "question": "Một bạn sinh viên có ý tưởng ban đầu rất mơ hồ: 'Em muốn nghiên cứu về AI trong ngân hàng'. Trình tự đi qua 'Phễu thu hẹp' và chọn công cụ nào dưới đây là đúng chuẩn phương pháp luận?",
+          "options": [
+            "A. Gõ thẳng chữ 'AI trong ngân hàng' vào Chatbot rồi chép 5 trang đầu tiên nộp bài",
+            "B. Thu hẹp dần: Chủ đề (AI trong ngân hàng) -> Thêm đối tượng & bối cảnh (Khách hàng Gen Z dùng chatbot CSKH tại NHTM Việt Nam) -> Câu hỏi cụ thể (Rủi ro cảm nhận về bảo mật ảnh hưởng thế nào đến ý định tiếp tục sử dụng?) -> Dùng Semantic Scholar và Elicit để tìm và lập bảng các bài báo thực nghiệm thật",
+            "C. Lên mạng xã hội hỏi ý kiến ngẫu nhiên",
+            "D. Bỏ qua bước tìm tài liệu, tự chế số liệu khảo sát ngay lập tức"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c6-essay1",
+          "type": "essay",
+          "concept_ref": "c6-soi-3-phut",
+          "question": "Hãy chọn 01 bài báo khoa học thật (PDF) phục vụ cho Đề án cuối khóa của nhóm bạn (tìm từ Semantic Scholar hoặc Elicit). Chạy Prompt tóm tắt 7 mục và viết 'Biên bản Soi 3 phút' gồm: (1) Thông tin bài báo gốc & DOI, (2) Hai con số bạn đã đối chiếu trực tiếp với trang/bảng gốc (khớp hay lệch?), (3) Một chi tiết bạn đã truy nguyên xem AI có tự suy diễn hay thiếu bối cảnh không, và (4) Nhận định của riêng bạn về chất lượng/hạn chế của bài báo đó.",
+          "rubric": "Nêu rõ bài báo thật có DOI liên quan đến Đề án nhóm (20%) · Đối chiếu cụ thể 2 số liệu kèm số trang/bảng gốc (30%) · Truy nguyên rõ ràng chỗ AI tóm tắt đúng hoặc tự suy diễn/thiếu bối cảnh (30%) · Đưa ra nhận định phê phán độc lập về hạn chế của bài báo (20%)",
+          "max_words": 400
+        }
+      ]
+    }
+  }
+}

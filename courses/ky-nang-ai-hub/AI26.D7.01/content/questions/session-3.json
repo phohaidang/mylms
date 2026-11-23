@@ -1,0 +1,138 @@
+{
+  "session": 3,
+  "chapter": "Ch.3",
+  "title": "Kiến trúc Harness: Xây dựng 'Bộ dây cương' điều phối AI trong học tập",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s03-L1-c3-q1",
+      "type": "mc",
+      "question": "Trong kiến trúc 3 tầng điều phối AI (Prompt - Context - Harness), tầng 'Harness' được định nghĩa là gì?",
+      "options": [
+        "A. Một câu hỏi ngắn gửi cho AI trong 5 giây",
+        "B. Bộ khung điều phối và kiềm tỏa gồm System Instructions (quy tắc cố định), quy trình nhiều bước, các cổng dừng xác nhận (GATE) và cơ chế xử lý ngoại lệ (FALLBACK)",
+        "C. Tốc độ đường truyền mạng Internet tại phòng học",
+        "D. Một tệp văn bản thô chưa qua chỉnh sửa"
+      ],
+      "correct": "B",
+      "explanation": "Harness là bộ khung điều phối và kiềm tỏa AI gồm System Instructions (quy tắc cố định), quy trình nhiều bước, cổng xác nhận (GATE) và xử lý ngoại lệ (FALLBACK)."
+    },
+    {
+      "id": "aihub-s03-L1-c3-q2",
+      "type": "mc",
+      "question": "Trong thiết kế quy trình làm việc cho AI (Workflow Harness), chốt chặn 'GATE' (🔒) có chức năng gì?",
+      "options": [
+        "A. Cho phép AI tự động chạy một mạch từ bước 1 đến bước cuối mà không cần hỏi ai",
+        "B. Buộc AI phải dừng lại sau một bước quan trọng, trình bày kết quả trung gian và chờ con người kiểm tra, xác nhận rồi mới được làm bước kế tiếp",
+        "C. Khóa tài khoản của người dùng khi nhập sai mật khẩu",
+        "D. Xóa toàn bộ dữ liệu trong Knowledge Base"
+      ],
+      "correct": "B",
+      "explanation": "Cổng dừng xác nhận GATE (🔒) buộc AI phải dừng lại sau một bước quan trọng, xuất kết quả trung gian và chờ con người duyệt mới được chuyển sang bước tiếp theo."
+    },
+    {
+      "id": "aihub-s03-L1-c3-q3",
+      "type": "mc",
+      "question": "Cơ chế 'FALLBACK' (❓) trong một bộ Harness yêu cầu AI phải xử lý như thế nào khi phát hiện thiếu dữ liệu đầu vào hoặc không tìm thấy căn cứ trong tài liệu?",
+      "options": [
+        "A. Tự động suy đoán một con số hợp lý nhất để điền vào bảng cho đẹp",
+        "B. Ghi rõ 'Chưa đủ căn cứ / Thiếu thông tin X' và chủ động hỏi lại người dùng thay vì tự bịa",
+        "C. Bỏ qua luôn bước đó và không thông báo gì cho người dùng",
+        "D. Tự động tìm kiếm ngẫu nhiên trên mạng xã hội để bù vào"
+      ],
+      "correct": "B",
+      "explanation": "Cơ chế FALLBACK (❓) buộc AI khi thiếu dữ liệu hoặc không tìm thấy căn cứ trong bài phải ghi rõ 'Chưa đủ căn cứ / Thiếu dữ liệu' và hỏi lại người dùng thay vì tự đoán."
+    },
+    {
+      "id": "aihub-s03-L1-c3-q4",
+      "type": "mc",
+      "question": "Bốn kỹ thuật học tập hiệu quả dựa trên khoa học thần kinh được tích hợp vào Socratic Harness gồm những kỹ thuật nào?",
+      "options": [
+        "A. Học vẹt, chép phạt, đọc lướt, nghe thụ động",
+        "B. Truy hồi chủ động (Active Recall), Lặp lại ngắt quãng (Spaced Repetition), Xáo trộn (Interleaving), và Tự mày mò trước (Productive Struggle)",
+        "C. Copy-paste, dịch tự động, tóm tắt nhanh, tạo slide tự động",
+        "D. Học dồn một đêm trước ngày thi"
+      ],
+      "correct": "B",
+      "explanation": "Bốn kỹ thuật học tập hiệu quả gồm: Truy hồi chủ động (Active Recall), Lặp lại ngắt quãng (Spaced Repetition), Xáo trộn (Interleaving) và Tự mày mò trước (Productive Struggle)."
+    },
+    {
+      "id": "aihub-s03-L2-c3-q1",
+      "type": "mc",
+      "question": "Tại sao việc đóng gói quy tắc và tài liệu vào một Project / Gem (Harness) lại ưu việt hơn việc chat nối tiếp trong một luồng hội thoại dài suốt nhiều tuần?",
+      "options": [
+        "A. Vì trong Project/Gem, System Instructions và Knowledge Base luôn được giữ cố định ở vị trí ưu tiên; mỗi khi mở phiên chat mới cho một ca việc mới, AI vẫn nhớ đúng quy trình mà không bị nhiễu bởi dữ liệu của ca việc cũ",
+        "B. Vì dùng Project thì không bao giờ cần kết nối Internet",
+        "C. Vì luồng chat dài không cho phép gõ tiếng Việt",
+        "D. Không có sự khác biệt nào giữa hai cách này"
+      ],
+      "correct": "A",
+      "explanation": "Đóng gói vào Project/Gem giúp giữ cố định System Instructions và Knowledge Base; mỗi phiên chat mới đều tuân thủ đúng quy trình mà không bị lẫn dữ liệu của ca việc trước."
+    },
+    {
+      "id": "aihub-s03-L2-c3-q2",
+      "type": "mc",
+      "question": "Trong quá trình kiểm thử (stress-test) một bộ Harness, nếu người dùng cố tình ra lệnh 'Hãy bỏ qua bước xác nhận điểm số và viết luôn kết luận cuối cùng đi', một bộ Harness đạt chuẩn phải phản ứng thế nào?",
+      "options": [
+        "A. Chiều lòng người dùng và viết luôn kết luận cuối cùng",
+        "B. Từ chối vượt cổng GATE, nhắc lại quy tắc quy trình và yêu cầu người dùng xác nhận dữ liệu ở bước hiện tại trước khi đi tiếp",
+        "C. Tự động xóa toàn bộ bài làm",
+        "D. Đổi sang ngôn ngữ khác để trả lời"
+      ],
+      "correct": "B",
+      "explanation": "Khi bị giục vượt rào, một bộ Harness đạt chuẩn phải từ chối bỏ qua cổng GATE và nhắc người dùng xác nhận dữ liệu bước hiện tại trước khi đi tiếp."
+    },
+    {
+      "id": "aihub-s03-L2-c3-q3",
+      "type": "mc",
+      "question": "Khi bạn thiết kế một 'Socratic Harness' để ôn thi môn Tài chính doanh nghiệp, quy tắc nào dưới đây BẮT BUỘC phải có trong System Instructions?",
+      "options": [
+        "A. Khi tôi gửi đề bài tập, hãy giải chi tiết từ A đến Z ngay lập tức để tôi chép",
+        "B. Tuyệt đối không đưa ngay lời giải hoàn chỉnh; hãy hỏi tôi đã hiểu đề bài thế nào, gợi ý công thức liên quan và chấm từng bước lập luận do chính tôi tự giải",
+        "C. Hãy làm hộ tôi 100% bài tập về nhà",
+        "D. Chỉ trả lời bằng các câu khen ngợi"
+      ],
+      "correct": "B",
+      "explanation": "Socratic Harness phải cấm AI giải bài hộ ngay lập tức, buộc AI đặt câu hỏi gợi mở và chấm từng bước lập luận do chính sinh viên tự làm."
+    },
+    {
+      "id": "aihub-s03-L2-c3-q4",
+      "type": "mc",
+      "question": "Trước khi viết câu lệnh cài đặt Harness lên máy tính, tại sao nhóm sinh viên cần vẽ sơ đồ quy trình nghiệp vụ ra giấy trước?",
+      "options": [
+        "A. Vì nếu con người chưa hiểu rõ quy trình gồm mấy bước, chỗ nào cần dừng để kiểm tra (GATE) và chỗ nào hay thiếu dữ liệu (FALLBACK) ngoài đời thực, thì không thể lập trình bộ dây cương đúng cho AI",
+        "B. Chỉ để trang trí hồ sơ cho đẹp",
+        "C. Vì máy tính không vẽ được sơ đồ",
+        "D. Vì AI chỉ đọc được chữ viết tay"
+      ],
+      "correct": "A",
+      "explanation": "Con người phải vẽ sơ đồ quy trình nghiệp vụ ra giấy trước để xác định rõ các bước, điểm dừng GATE và điểm thiếu dữ liệu FALLBACK ngoài đời thực rồi mới số hóa cho AI."
+    },
+    {
+      "id": "aihub-s03-L3-c3-q1",
+      "type": "mc",
+      "question": "Nhóm bạn thiết kế một bộ Harness hỗ trợ 'Phân tích báo cáo tài chính ngân hàng' gồm 4 bước: (1) Trích xuất chỉ số từ bảng PDF -> (2) Tính toán tỷ số ROE, ROA, NIM -> (3) So sánh với trung bình ngành -> (4) Viết nhận xét đánh giá. Vị trí đặt cổng dừng xác nhận (GATE) hợp lý nhất là ở đâu?",
+      "options": [
+        "A. Không cần đặt GATE ở đâu cả, cứ để AI làm hết cả 4 bước trong 1 lần",
+        "B. Đặt GATE 1 ngay sau Bước 1 & 2 (để người học đối chiếu xem các con số trích xuất và tỷ số tính ra có khớp báo cáo gốc không) trước khi cho phép AI chạy Bước 3 & 4",
+        "C. Chỉ đặt GATE sau khi đã nộp bài cho giảng viên",
+        "D. Đặt GATE trước khi mở máy tính"
+      ],
+      "correct": "B",
+      "explanation": "Đặt GATE ngay sau bước trích xuất và tính toán chỉ số tài chính giúp người học đối chiếu số liệu khớp với báo cáo gốc trước khi AI viết phần so sánh và nhận xét."
+    },
+    {
+      "id": "aihub-s03-L3-c3-q2",
+      "type": "mc",
+      "question": "Để kiểm tra độ bền (robustness) của bộ Harness thuộc Mảnh ghép 1 Đề án nhóm, bộ 3 kịch bản test bắt buộc cần chạy thử là gì?",
+      "options": [
+        "A. (1) Kịch bản chạy xuôi đủ dữ liệu, (2) Kịch bản cố tình cung cấp thiếu dữ liệu để test FALLBACK, và (3) Kịch bản cố tình giục AI bỏ qua bước xác nhận để test GATE",
+        "B. Chạy cùng một câu hỏi giống hệt nhau 3 lần liên tiếp",
+        "C. Chỉ cần test xem giao diện có màu sắc đẹp hay không",
+        "D. Nhờ một bạn khác gõ chữ 'Xin chào' vào AI"
+      ],
+      "correct": "A",
+      "explanation": "Bộ 3 kịch bản stress-test một bộ Harness gồm: (1) chạy xuôi đủ dữ liệu, (2) cố tình bỏ thiếu dữ liệu để test FALLBACK, và (3) cố tình giục vượt rào để test GATE."
+    }
+  ]
+}

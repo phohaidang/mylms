@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 2: Từ Prompt Engineering đến Context Engineering (Giao diện của Tư duy) — ĐH Ngân hàng TP.HCM (HUB)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fdfaf6;
+      --card: #ffffff;
+      --ink: #1b1714;
+      --ink-soft: #4a413a;
+      --navy: #0f2942;
+      --crimson: #8b2500;
+      --gold: #b8893a;
+      --border: #e0d7cb;
+      --bg-soft: #f3ece2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 36px 20px 72px;
+    }
+    .container { max-width: 920px; margin: 0 auto; }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .badge-crimson {
+      background: #fde8e8;
+      color: var(--crimson);
+      border-color: #f8b4b4;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--crimson);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .card-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .scqa-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .scqa-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .scqa-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--card);
+      font-size: 0.95rem;
+    }
+    .timeline-table th, .timeline-table td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .timeline-table th {
+      background: var(--bg-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .homework-box {
+      background: #fffdf9;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="meta-bar">
+        <span class="badge badge-crimson">MODULE 1: BẢN CHẤT AI, PROMPT, CONTEXT & HARNESS</span>
+        <span class="badge">Thời lượng: 4 tiết (200 phút)</span>
+        <span class="badge">Chuẩn đầu ra: CLO2</span>
+        <span class="badge">GV: ThS. Phó Hải Đăng</span>
+      </div>
+      <h1>Buổi 2: Từ Prompt Engineering đến Context Engineering (Giao diện của Tư duy)</h1>
+      <p class="subtitle">Làm chủ công thức CRISP, 5 kỹ thuật điều khiển suy luận nâng cao, chốt chặn 'Không suy đoán' và nghệ thuật thiết kế ngữ cảnh</p>
+    </header>
+
+    <!-- PHẦN I: BẮT BUỘC CHỨA TỪ KHÓA 'Mục tiêu' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">I. Mục tiêu buổi học</h2>
+    <ul>
+      <li>Vận dụng thành thạo công thức <strong>CRISP (Context - Role - Input/Instruction - Specifics - Performance Criteria)</strong> để cấu trúc hóa yêu cầu học tập và nghiệp vụ (CLO2).</li>
+      <li>Sử dụng kết hợp 5 kỹ thuật nâng cao: <strong>Chain-of-Thought (CoT), Role-based, Few-shot, Iterative Refinement, Negative Prompt</strong> cùng câu khóa <em>'Không suy đoán'</em> (CLO2).</li>
+      <li>Phân biệt và thực hiện được bước chuyển từ viết câu lệnh lẻ (Prompt Engineering) sang <strong>Thiết kế gói ngữ cảnh chuẩn (Context Engineering)</strong> (CLO2).</li>
+      <li>Chốt đề tài Đề án nhóm và thiết kế được <strong>Bộ 3 cụm Prompt + Gói Context chuẩn hóa</strong> cho Đề án (CLO2).</li>
+    </ul>
+
+    <!-- PHẦN II: BẮT BUỘC CHỨA TỪ KHÓA 'SCQA' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">II. Khung SCQA của buổi học</h2>
+    <div class="scqa-grid">
+      <div class="scqa-item">
+        <span class="scqa-label">S — Situation (Bối cảnh quen thuộc)</span>
+        <p>Cùng sử dụng một phiên bản Claude hoặc ChatGPT như nhau trong lớp học, nhưng có sinh viên chỉ mất 15 phút để thu được một bảng phân tích sâu sắc, sát thực tế ngành ngân hàng; trong khi sinh viên ngồi cạnh hỏi đi hỏi lại cả tiếng đồng hồ vẫn chỉ nhận được những đoạn văn chung chung, sáo rỗng.</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">C — Complication (Mâu thuẫn & Rủi ro thực tế)</span>
+        <p>Nhiều bạn nghĩ rằng bí quyết nằm ở việc sưu tầm các 'câu thần chú' (magic prompts) trên mạng. Thực tế, AI không đọc được suy nghĩ trong đầu bạn: khi tư duy của bạn mơ hồ và bạn đưa vào một ngữ cảnh nghèo nàn, AI buộc phải lấy mức trung bình cộng của dữ liệu Internet để trả lời ('Rác vào thì Rác ra').</p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">Q — Question (Câu hỏi trọng tâm)</span>
+        <p><strong>Làm thế nào để chuyển hóa tư duy của người làm chủ thành những chỉ thị sắc bén và thiết kế được 'môi trường ngữ cảnh' (Context) giúp AI làm việc đúng chuẩn chuyên môn ngay từ đầu?</strong></p>
+      </div>
+      <div class="scqa-item">
+        <span class="scqa-label">A — Answer (Định hướng giải quyết trong buổi học)</span>
+        <p>Làm chủ công thức cấu trúc hóa câu lệnh CRISP, kết hợp 5 kỹ thuật điều khiển suy luận nâng cao (đặc biệt là chốt chặn 'Không suy đoán'), và tiến lên tầng Context Engineering: cung cấp dữ liệu nền đã làm sạch cùng tiêu chuẩn đầu ra rõ ràng.</p>
+      </div>
+    </div>
+
+    <!-- PHẦN III & IV: KỊCH BẢN DẠY (LMS TỰ ẨN VỚI SV, HIỂN THỊ CHO GV) -->
+    <h2 class="section-title">III. Story Spine & Khởi động từ Cái Biết của Sinh viên (20 phút)</h2>
+    <div class="card-box">
+      <h3>🎬 Story Spine — Hành trình của Minh tại HUB:</h3>
+      <p>Câu chuyện của Minh (Kỳ 2): Rút kinh nghiệm sau bài tiểu luận 6 điểm, Minh quyết tâm dùng AI nghiêm túc để phân tích báo cáo tài chính của một ngân hàng thương mại. Nhưng Minh chỉ gõ 'Hãy phân tích báo cáo tài chính này giúp tôi' nên AI chỉ trả về những nhận xét chung chung như sách giáo khoa. Khi thấy cô bạn cùng bàn dùng khung CRISP kèm 2 ví dụ mẫu (Few-shot) và chốt chặn 'Không suy đoán' tạo ra bản phân tích sắc sảo chỉ trong 10 phút, Minh nhận ra: Prompt chính là tấm gương phản chiếu độ sắc nét trong tư duy của người hỏi.</p>
+      <h3>❓ Câu hỏi kích hoạt tư duy (Warm-up):</h3>
+      <ol>
+        <li>Hãy mở lại câu lệnh gần nhất bạn gõ vào ChatGPT hoặc Claude tuần qua: câu lệnh đó dài mấy dòng, và trong đó bạn đã cung cấp cho AI những thông tin gì ngoài câu hỏi chính?</li>
+        <li>Tại sao 10 phút suy nghĩ và viết Prompt + Context trên giấy lại giúp tiết kiệm 2 giờ ngồi sửa một kết quả rác?</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">IV. Lộ trình buổi học & Kịch bản chi tiết theo Timeline (4 tiết = 200 phút)</h2>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width: 16%">Thời lượng</th>
+          <th style="width: 44%">Hoạt động Giảng viên & Nội dung cốt lõi</th>
+          <th style="width: 26%">Hoạt động Sinh viên</th>
+          <th style="width: 14%">Học liệu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tiết 1 (00' - 50')</strong></td><td><strong>Prompt là giao diện của tư duy & Khung nền tảng CRISP:</strong><br>• Điểm lại 2 Atomic Notes xuất sắc của Buổi 1.<br>• Giải phẫu 5 thành tố <strong>C - R - I - S - P</strong>.<br>• Live Demo đối chứng 'Trước CRISP vs Sau CRISP' trên bài toán thực tế ngành Ngân hàng / Marketing.</td><td>Quan sát sự thay đổi chất lượng đầu ra giữa câu lệnh tự phát và câu lệnh CRISP; ghi chép cấu trúc 5 thành tố.</td><td>Slide Buổi 2; Cheatsheet CRISP</td></tr>
+        <tr><td><strong>Tiết 2 (50' - 100')</strong></td><td><strong>Năm kỹ thuật Prompt nâng cao & Chốt chặn 'Không suy đoán':</strong><br>• Giảng và demo trực tiếp 5 kỹ thuật: (1) <em>Chain-of-Thought</em>, (2) <em>Role-based / Multi-Persona</em>, (3) <em>Few-shot</em>, (4) <em>Iterative Refinement</em>, (5) <em>Negative Prompt & Chốt chặn 'Không suy đoán'</em>.<br>• Phân tích cơ chế hoạt động của từng kỹ thuật trên mô hình xác suất.</td><td>Thực hành biến đổi một câu lệnh đơn giản bằng cách gắn thêm Few-shot và chốt chặn 'Chỗ nào tài liệu không nêu, ghi rõ không nêu trong bài, tuyệt đối không suy đoán'.</td><td>Claude / ChatGPT / Gemini</td></tr>
+        <tr><td><strong>Tiết 3 (100' - 150')</strong></td><td><strong>Bước chuyển sang Context Engineering & Thực hành '1 Bài toán - 3 Cấp độ':</strong><br>• Khái niệm <em>Context Window</em> (cửa sổ ngữ cảnh trượt), hiện tượng <em>Context Rot</em> (loãng ngữ cảnh) và 4 thành phần của một gói Context sạch.<br>• Tổ chức thực hành va chạm: mỗi nhóm chạy cùng 1 bài toán chuyên ngành ở 3 cấp độ (Hỏi tự nhiên -> CRISP -> CRISP + Few-shot + Context file sạch + Chốt chặn).</td><td>Thực hành nhóm trên máy tính: chạy thử 3 cấp độ, lập bảng so sánh sự khác biệt và trình chiếu kết quả trước lớp.</td><td>Tài liệu chuyên ngành mẫu</td></tr>
+        <tr><td><strong>Tiết 4 (150' - 200')</strong></td><td><strong>Studio Đề án (Thiết kế Bộ Prompt & Context) & Khóa chốt LMS:</strong><br>• Coaching trực tiếp cho các nhóm chốt tên Đề án cuối khóa và viết 3 cụm Prompt + Context.<br>• Hướng dẫn viết Atomic Note Buổi 2 và làm Quiz Active Recall.</td><td>Chốt tên Đề án nhóm; hoàn thành bản thảo 3 cụm Prompt CRISP + danh mục Context của Đề án; viết phản tư 4F và làm Quiz Buổi 2 trên LMS.</td><td>LMS Hub (Quiz 2, Journal 2)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">V. Bảng câu hỏi thảo luận & Va chạm nhận thức</h2>
+    <ol>
+      <li>Trong 5 thành phần của CRISP, thành phần nào sinh viên hay bỏ quên nhất khi giao việc cho AI? Hậu quả của việc bỏ quên thành phần đó là gì?</li>
+      <li>Khi nào bạn nên dùng kỹ thuật Iterative Refinement (sửa dần trong cùng luồng chat), và khi nào bạn nên xóa luồng chat đó đi để sửa lại Prompt + Context gốc ở một phiên chat mới?</li>
+      <li>Tại sao một ví dụ mẫu (Few-shot) kém chất lượng đưa vào Context lại nguy hiểm hơn cả việc không đưa ví dụ nào?</li>
+    </ol>
+
+    <!-- PHẦN VI: BẮT BUỘC CHỨA TỪ KHÓA 'Bài tập về nhà' ĐỂ LMS EXTRACT CHO SV -->
+    <h2 class="section-title">VI. Bài tập về nhà & Cột mốc Đề án cuối khóa (BTVN)</h2>
+    
+      <div class="homework-box">
+        <h3>1. Nhiệm vụ Cá nhân trên LMS Hub:</h3>
+        <ul>
+          <li>Hoàn thành đọc và làm Vòng Test 3 cấp độ của <strong>Chương 2 trên eBook SCQA</strong>.</li>
+          <li>Hoàn thành <strong>Quiz Buổi 2</strong> (Active Recall 5 lượt) và nộp Feedback tải tài liệu buổi học.</li>
+          <li>Viết <strong>Nhật ký học tập (Atomic Note số 2 theo khung 4F)</strong>: Lưu lại 1 mẫu Prompt CRISP tâm đắc nhất bạn đã tự thiết kế cho môn học chuyên ngành của mình.</li>
+        </ul>
+        <h3>2. Nhiệm vụ Nhóm Đề án cuối khóa (Chuẩn bị cho Buổi 3 - Mảnh ghép 1):</h3>
+        <ul>
+          <li>Chuẩn bị sẵn <strong>1-2 tài liệu mẫu thật (đã khử thông tin nhạy cảm)</strong> và quy trình các bước thực hiện của bài toán Đề án nhóm để Buổi 3 đóng gói thành <strong>Bộ AI Harness</strong> hoàn chỉnh.</li>
+        </ul>
+      </div>
+        
+
+    <h2 class="section-title">VII. Câu hỏi ôn tập củng cố cuối buổi (Active Recall)</h2>
+    <ul>
+      <li><strong>Hỏi:</strong> 5 thành tố của khung CRISP là gì?<br><em>Đáp:</em> Context (Bối cảnh) - Role (Vai trò) - Input/Instruction (Dữ liệu & Nhiệm vụ) - Specifics (Ràng buộc cụ thể) - Performance Criteria/Preview (Tiêu chí & Hình dung đầu ra).</li>
+      <li><strong>Hỏi:</strong> Kỹ thuật nào buộc AI trình bày từng bước suy luận logic trước khi kết luận?<br><em>Đáp:</em> Chain-of-Thought (CoT) Prompting.</li>
+      <li><strong>Hỏi:</strong> Câu khóa chốt chặn chống bịa thông tin khi làm việc với tài liệu là gì?<br><em>Đáp:</em> Mỗi ý phải ghi rõ số trang/mục; chỗ nào tài liệu không nêu thì ghi rõ 'không nêu trong bài', tuyệt đối không suy đoán.</li>
+    </ul>
+
+    <h2 class="section-title">VIII. Lưu ý sư phạm & Tình huống dự phòng cho Giảng viên</h2>
+    <ul>
+      <li>Khuyến khích sinh viên viết khung CRISP ra giấy hoặc khung nháp 5 ô trước khi gõ vào AI để rèn thói quen cấu trúc hóa tư duy.</li>
+      <li>Đi kiểm tra từng nhóm ở Tiết 4 để đảm bảo đề tài Đề án nhóm chọn có tính ứng dụng thực chất và vừa sức với thời lượng môn học.</li>
+    </ul>
+  </div>
+</body>
+</html>

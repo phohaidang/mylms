@@ -1,0 +1,138 @@
+{
+  "session": 6,
+  "chapter": "Ch.6",
+  "title": "Quy trình NCKH với AI (Bước 1 & 2): Tìm nguồn thật, Đọc tóm tắt & 'Soi 3 phút'",
+  "time_limit_minutes": 15,
+  "questions": [
+    {
+      "id": "aihub-s06-L1-c6-q1",
+      "type": "mc",
+      "question": "Trong quy trình nghiên cứu khoa học có AI đồng hành gồm 4 bước (1. Tìm -> 2. Đọc -> 3. Tổng hợp -> 4. Viết), hoạt động 'Kiểm chứng' nằm ở vị trí nào?",
+      "options": [
+        "A. Chỉ thực hiện ở bước cuối cùng sau khi đã viết xong toàn bộ khóa luận",
+        "B. Đi xuyên suốt cả 4 bước: kiểm từ nguồn có thật không, tóm tắt có khớp bản gốc không, nhận định tổng hợp có đúng nguồn không, đến trích dẫn có chính xác không",
+        "C. Giao hoàn toàn cho AI tự kiểm chứng, con người không cần can thiệp",
+        "D. Chỉ kiểm chứng khi giảng viên yêu cầu"
+      ],
+      "correct": "B",
+      "explanation": "Trong quy trình NCKH 4 bước (Tìm - Đọc - Tổng hợp - Viết), hoạt động Kiểm chứng đi xuyên suốt cả 4 bước chứ không phải đợi đến cuối mới kiểm."
+    },
+    {
+      "id": "aihub-s06-L1-c6-q2",
+      "type": "mc",
+      "question": "Tính năng Đồng hồ đo (Consensus Meter) trên công cụ Consensus.app phù hợp nhất với loại câu hỏi nghiên cứu nào?",
+      "options": [
+        "A. Câu hỏi Yes/No (Có/Không) dựa trên bằng chứng thực nghiệm (ví dụ: 'Do large language models fabricate citations?')",
+        "B. Câu hỏi yêu cầu viết một bài thơ",
+        "C. Câu hỏi mở mang tính triết học hoặc chuẩn mực đạo đức ('Chúng ta có nên...')",
+        "D. Câu hỏi xin danh sách điểm thi của lớp"
+      ],
+      "correct": "A",
+      "explanation": "Đồng hồ đo Consensus Meter chỉ phù hợp với các câu hỏi Yes/No dựa trên bằng chứng thực nghiệm."
+    },
+    {
+      "id": "aihub-s06-L1-c6-q3",
+      "type": "mc",
+      "question": "Ba thao tác cốt lõi trong quy trình 'Soi bản tóm tắt bài báo trong 3 phút' là gì?",
+      "options": [
+        "A. Đọc lướt tiêu đề, đếm số trang, và xem ảnh tác giả",
+        "B. (1) Đối chiếu số liệu với bảng/hình gốc, (2) Truy chỗ AI tự thêm hoặc thiếu bối cảnh, và (3) Hỏi ngược về hạn chế (Limitations) của bài báo",
+        "C. Dịch sang tiếng Anh, đổi phông chữ, và in ra giấy",
+        "D. Copy bản tóm tắt sang một Chatbot khác để hỏi xem có hay không"
+      ],
+      "correct": "B",
+      "explanation": "Ba thao tác 'Soi bản tóm tắt trong 3 phút' gồm: (1) Đối chiếu số liệu với bảng/hình gốc, (2) Truy chỗ AI tự thêm hoặc thiếu bối cảnh, và (3) Hỏi ngược về hạn chế."
+    },
+    {
+      "id": "aihub-s06-L1-c6-q4",
+      "type": "mc",
+      "question": "Trong thực nghiệm Demo 1 với bài báo Hemani (2026), chi tiết nào ở mục Phương pháp đã bị AI tự ý suy diễn thêm dù xuất hiện đúng 0 lần trong toàn bộ bài báo gốc?",
+      "options": [
+        "A. Phần mềm Microsoft Excel",
+        "B. Cụm thuật ngữ hệ số tương quan 'Pearson's R'",
+        "C. Phương pháp lấy mẫu ngẫu nhiên (random sampling)",
+        "D. Bảng hỏi 30 câu"
+      ],
+      "correct": "B",
+      "explanation": "Trong thực nghiệm với bài báo Hemani (2026), AI đã tự suy diễn thêm thuật ngữ 'Pearson's R' vào hàng Phương pháp dù chữ 'Pearson' xuất hiện 0 lần trong bài gốc."
+    },
+    {
+      "id": "aihub-s06-L2-c6-q1",
+      "type": "mc",
+      "question": "Khi bạn đối chiếu các con số trong bản tóm tắt của AI (như 82%, 41%, r ~ 0.62) và thấy chúng khớp 100% với trang 4 của bài báo gốc, tại sao bạn vẫn chưa thể kết luận ngay rằng các con số đó đáng tin cậy về mặt khoa học?",
+      "options": [
+        "A. Vì số khớp chỉ chứng minh bản tóm tắt của AI trung thực với văn bản bài báo, chứ không chứng minh phương pháp thu thập và phân tích của chính bài báo đó đạt chuẩn khoa học (ví dụ bài gốc chỉ ghi số xấp xỉ '~' mà không có bảng hệ số hay p-value)",
+        "B. Vì mọi con số trong mọi bài báo khoa học đều là giả",
+        "C. Vì số trang 4 luôn luôn sai",
+        "D. Vì AI đã tự sửa file PDF gốc của bạn"
+      ],
+      "correct": "A",
+      "explanation": "Số liệu trong bản tóm tắt khớp với bài báo gốc chỉ chứng minh bản tóm tắt trung thực với văn bản đó, chưa chứng minh con số của bài báo đó đáng tin về mặt khoa học."
+    },
+    {
+      "id": "aihub-s06-L2-c6-q2",
+      "type": "mc",
+      "question": "Trong bài báo Hemani (2026), mục Phương pháp (tr.3) ghi 'Estimated total sample size: 150-200 students', còn mục Kết quả (tr.4) ghi 'out of 192 students surveyed'. Khi AI chỉ trích con số 192 vào bảng tóm tắt, bài học rút ra về việc kiểm chứng là gì?",
+      "options": [
+        "A. AI đã bịa hoàn toàn con số 192",
+        "B. Đây không phải mâu thuẫn của bài báo (150-200 là cỡ mẫu dự kiến khi thiết kế, 192 là mẫu thực tế thu được), nhưng lỗi của AI là trích đúng chữ ở phần Kết quả mà bỏ qua bối cảnh ở phần Phương pháp; người đọc phải luôn hỏi tiếp: 'Trong bài còn chỗ nào nói khác về con số này không?'",
+        "C. Phải lấy 150 cộng 200 chia đôi mới đúng",
+        "D. Không cần quan tâm đến cỡ mẫu khi đọc bài báo"
+      ],
+      "correct": "B",
+      "explanation": "Trong bài Hemani (2026), 150-200 ở tr.3 là cỡ mẫu dự kiến còn 192 ở tr.4 là mẫu thực tế; AI trích đúng số 192 nhưng thiếu bối cảnh, nên người đọc luôn phải hỏi xem trong bài còn chỗ nào nói khác không."
+    },
+    {
+      "id": "aihub-s06-L2-c6-q3",
+      "type": "mc",
+      "question": "Tác dụng trực tiếp nhất của câu ràng buộc 'Chỗ nào bài không nói, ghi không nêu trong bài, không suy đoán' trong Prompt tóm tắt 7 mục là gì?",
+      "options": [
+        "A. Giúp AI biết dừng lại và ghi đúng 'không nêu trong bài' ở những mục bài báo gốc bỏ trống (như mục Limitations của bài Hemani), thay vì tự bịa ra nội dung để điền cho kín bảng 7 mục",
+        "B. Làm cho AI từ chối tóm tắt toàn bộ bài báo",
+        "C. Giúp AI tự động dịch bài báo sang 10 thứ tiếng",
+        "D. Giúp tăng tốc độ mạng Internet"
+      ],
+      "correct": "A",
+      "explanation": "Câu khóa 'không suy đoán' buộc AI phải ghi trung thực 'không nêu trong bài' khi bài báo gốc bỏ trống mục Limitations, thay vì tự bịa nội dung cho kín bảng."
+    },
+    {
+      "id": "aihub-s06-L2-c6-q4",
+      "type": "mc",
+      "question": "Khi dùng Consensus.app để hỏi một câu hỏi thực nghiệm và thấy đồng hồ Consensus Meter chỉ 100% Yes, tại sao người nghiên cứu không nên dừng lại ở chữ Yes đó?",
+      "options": [
+        "A. Vì chữ Yes chỉ trả lời câu hỏi đầu tiên ('Hiện tượng đó có xảy ra không?'); người nghiên cứu cần mở từng bài báo bên dưới để đào sâu chuỗi câu hỏi tiếp theo: Xảy ra ở mức độ bao nhiêu (ví dụ 19.9% hay 1/277)? Khi nào nặng hơn? Cơ chế là gì? Hệ quả ra sao?",
+        "B. Vì đồng hồ Consensus luôn chỉ ngược với sự thật",
+        "C. Vì Consensus không chứa bài báo thật",
+        "D. Vì chữ Yes có nghĩa là đề tài đã bị cấm nghiên cứu"
+      ],
+      "correct": "A",
+      "explanation": "Chữ Yes trên Consensus Meter chỉ là câu hỏi đầu tiên; người nghiên cứu phải mở từng bài báo để đào sâu chuỗi câu hỏi: Xảy ra bao nhiêu %? Khi nào nặng hơn? Cơ chế và hệ quả là gì?"
+    },
+    {
+      "id": "aihub-s06-L3-c6-q1",
+      "type": "mc",
+      "question": "Khi bạn yêu cầu AI tóm tắt một bài báo kinh tế bằng file PDF đính kèm và thấy trong bảng tóm tắt xuất hiện câu: 'Nghiên cứu sử dụng mô hình hồi quy GMM hai bước với p-value < 0.001'. Thao tác kiểm chứng đầu tiên bạn phải làm ngay trong 60 giây là gì?",
+      "options": [
+        "A. Chép luôn câu đó vào báo cáo Đề án vì thuật ngữ GMM nghe rất cao cấp",
+        "B. Mở file PDF bài báo gốc, bấm Ctrl+F tìm từ khóa 'GMM' và '0.001' (hoặc mở đúng số trang AI ghi) để kiểm tra xem bài gốc có thực sự dùng GMM với p < 0.001 hay AI tự suy diễn từ một phương pháp khác",
+        "C. Hỏi lại AI xem GMM là viết tắt của từ gì",
+        "D. Xóa file PDF gốc đi cho nhẹ máy"
+      ],
+      "correct": "B",
+      "explanation": "Khi thấy AI tóm tắt một thuật ngữ chuyên môn cao (như GMM hay Pearson's R), phải mở ngay PDF gốc bấm Ctrl+F hoặc dò đúng số trang xem bài gốc có thực sự dùng phương pháp đó không."
+    },
+    {
+      "id": "aihub-s06-L3-c6-q2",
+      "type": "mc",
+      "question": "Một bạn sinh viên có ý tưởng ban đầu rất mơ hồ: 'Em muốn nghiên cứu về AI trong ngân hàng'. Trình tự đi qua 'Phễu thu hẹp' và chọn công cụ nào dưới đây là đúng chuẩn phương pháp luận?",
+      "options": [
+        "A. Gõ thẳng chữ 'AI trong ngân hàng' vào Chatbot rồi chép 5 trang đầu tiên nộp bài",
+        "B. Thu hẹp dần: Chủ đề (AI trong ngân hàng) -> Thêm đối tượng & bối cảnh (Khách hàng Gen Z dùng chatbot CSKH tại NHTM Việt Nam) -> Câu hỏi cụ thể (Rủi ro cảm nhận về bảo mật ảnh hưởng thế nào đến ý định tiếp tục sử dụng?) -> Dùng Semantic Scholar và Elicit để tìm và lập bảng các bài báo thực nghiệm thật",
+        "C. Lên mạng xã hội hỏi ý kiến ngẫu nhiên",
+        "D. Bỏ qua bước tìm tài liệu, tự chế số liệu khảo sát ngay lập tức"
+      ],
+      "correct": "B",
+      "explanation": "Phễu thu hẹp đi từ Chủ đề rộng -> Thêm đối tượng/bối cảnh ngành -> Câu hỏi nghiên cứu cụ thể -> Dùng công cụ có kho nguồn thật như Semantic Scholar và Elicit."
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "chapter": 2,
+  "title": "Từ Prompt Engineering đến Context Engineering: Giao diện của Tư duy",
+  "sessions": [
+    2
+  ],
+  "scqa": {
+    "situation": "Cùng sử dụng một phiên bản Claude hoặc ChatGPT như nhau trong lớp học, nhưng có sinh viên chỉ mất 15 phút để thu được một bảng phân tích sâu sắc, sát thực tế ngành ngân hàng; trong khi sinh viên ngồi cạnh hỏi đi hỏi lại cả tiếng đồng hồ vẫn chỉ nhận được những đoạn văn chung chung, sáo rỗng.",
+    "complication": "Nhiều bạn nghĩ rằng bí quyết nằm ở việc sưu tầm các 'câu thần chú' (magic prompts) trên mạng. Thực tế, AI không đọc được suy nghĩ trong đầu bạn: khi tư duy của bạn mơ hồ và bạn đưa vào một ngữ cảnh nghèo nàn, AI buộc phải lấy mức trung bình cộng của dữ liệu Internet để trả lời ('Rác vào thì Rác ra').",
+    "question": "Làm thế nào để chuyển hóa tư duy của người làm chủ thành những chỉ thị sắc bén và thiết kế được 'môi trường ngữ cảnh' (Context) giúp AI làm việc đúng chuẩn chuyên môn ngay từ đầu?",
+    "answer": "Làm chủ công thức cấu trúc hóa câu lệnh CRISP, kết hợp 5 kỹ thuật điều khiển suy luận nâng cao (đặc biệt là chốt chặn 'Không suy đoán'), và tiến lên tầng Context Engineering: cung cấp dữ liệu nền đã làm sạch cùng tiêu chuẩn đầu ra rõ ràng."
+  },
+  "concepts": [
+    {
+      "id": "c2-crisp",
+      "session": 2,
+      "term": "Khung cấu trúc câu lệnh CRISP",
+      "definition": "Phương pháp cấu trúc hóa yêu cầu gửi cho AI gồm 5 thành tố cốt lõi giúp loại bỏ sự mơ hồ và định hướng không gian xác suất của mô hình vào đúng mục tiêu chuyên môn.",
+      "key_points": [
+        "<strong>C - Context (Bối cảnh):</strong> Bạn là ai, đang giải quyết bài toán gì, trong môi trường hay điều kiện ràng buộc nào?",
+        "<strong>R - Role (Vai trò):</strong> AI cần đóng vai chuyên gia nào, với góc nhìn và tiêu chuẩn chuyên môn gì?",
+        "<strong>I - Input / Instruction (Dữ liệu đầu vào & Nhiệm vụ):</strong> Tài liệu/số liệu cụ thể bạn cung cấp là gì và nhiệm vụ cốt lõi cần thực hiện là gì?",
+        "<strong>S - Specifics (Yêu cầu cụ thể):</strong> Định dạng đầu ra (bảng, gạch đầu dòng), độ dài, văn phong, thuật ngữ cần giữ.",
+        "<strong>P - Performance Criteria / Preview (Tiêu chí đánh giá & Hình dung kết quả):</strong> Ai sẽ đọc kết quả này, tiêu chuẩn nào để đánh giá là đạt, và những điều gì tuyệt đối không được vi phạm."
+      ],
+      "case_study": {
+        "title": "Phân tích rủi ro khoản vay doanh nghiệp vừa và nhỏ (SME)",
+        "context": "So sánh câu lệnh mơ hồ: 'Phân tích rủi ro cho vay SME' với câu lệnh CRISP đầy đủ bối cảnh ngân hàng thương mại Việt Nam, dữ liệu báo cáo tài chính đính kèm và yêu cầu xuất bảng 5 tiêu chí.",
+        "analysis": "Câu lệnh mơ hồ trả về lý thuyết sách giáo khoa. Câu lệnh CRISP giúp AI tập trung phân tích đúng dòng tiền và vòng quay hàng tồn kho từ dữ liệu đính kèm.",
+        "lesson_learned": "10 phút đầu tư viết Prompt & Context chuẩn CRISP giúp tiết kiệm 2 giờ sửa chữa đầu ra."
+      },
+      "related_concepts": [
+        "c2-5-ky-thuat",
+        "c2-context-engineering"
+      ]
+    },
+    {
+      "id": "c2-5-ky-thuat",
+      "session": 2,
+      "term": "Năm kỹ thuật Prompt nâng cao & Chốt chặn 'Không suy đoán'",
+      "definition": "Bộ 5 kỹ thuật điều khiển luồng suy luận và giới hạn hành vi của AI trong các tác vụ học thuật và phân tích chuyên sâu.",
+      "key_points": [
+        "<strong>1. Chain-of-Thought (CoT - Suy luận từng bước):</strong> Yêu cầu AI trình bày rõ các bước lập luận trung gian trước khi đưa ra kết luận cuối cùng.",
+        "<strong>2. Role-based / Multi-Persona (Đa góc nhìn):</strong> Yêu cầu AI phân tích cùng một vấn đề dưới góc nhìn đối lập (ví dụ: Cán bộ thẩm định rủi ro vs Chuyên viên quan hệ khách hàng).",
+        "<strong>3. Few-shot Prompting (Học qua ví dụ mẫu):</strong> Cung cấp 2-3 ví dụ mẫu đạt chuẩn để AI bắt chước chính xác cấu trúc và giọng điệu.",
+        "<strong>4. Iterative Refinement (Tinh chỉnh đa vòng):</strong> Giữ phần đã đúng, chỉ yêu cầu sửa 1-2 tiêu chí cụ thể qua từng lượt đối thoại.",
+        "<strong>5. Negative Prompt & Chốt chặn 'Không suy đoán':</strong> Chỉ rõ những điều cấm làm. Đặc biệt trong học thuật, luôn cài câu khóa: <em>'Mỗi ý phải ghi rõ số trang/mục trong tài liệu. Chỗ nào tài liệu không nêu, ghi rõ không nêu trong bài, tuyệt đối không suy đoán.'</em>"
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-crisp"
+      ]
+    },
+    {
+      "id": "c2-context-engineering",
+      "session": 2,
+      "term": "Context Engineering (Kỹ nghệ Thiết kế Ngữ cảnh)",
+      "definition": "Bước tiến hóa từ việc 'chăm chút một câu hỏi lẻ' (Prompt Engineering) sang việc 'thiết kế toàn bộ gói thông tin, tài liệu nguồn, ví dụ mẫu và quy tắc biên' được nạp vào cửa sổ ngữ cảnh (Context Window) của AI.",
+      "key_points": [
+        "<strong>Bản chất:</strong> Một Prompt hay đến mấy cũng vô dụng nếu AI không có dữ liệu thật của bài toán. Context Engineering trả lời câu hỏi: <em>AI cần nhìn thấy những tài liệu và quy tắc nào trước khi bắt đầu suy nghĩ?</em>",
+        "<strong>4 thành phần của một Context tốt:</strong> (1) Tài liệu nguồn đã làm sạch (PDF bài báo, bảng số liệu), (2) Rubric hoặc tiêu chuẩn chất lượng, (3) Ví dụ mẫu (Few-shot), (4) Ràng buộc biên (chốt chặn chống suy diễn).",
+        "<strong>Quản trị Context Window:</strong> Cửa sổ ngữ cảnh là bộ nhớ làm việc có giới hạn; đưa tài liệu rác hoặc hội thoại lan man quá dài sẽ làm loãng sự chú ý của mô hình (Context Rot)."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c2-crisp"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nhận diện 5 thành phần khung CRISP và các kỹ thuật Prompt/Context nền tảng.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-crisp",
+          "question": "Trong công thức viết câu lệnh CRISP, chữ 'S' (Specifics) đại diện cho yêu cầu nào?",
+          "options": [
+            "A. Các ràng buộc và yêu cầu cụ thể về định dạng, độ dài, văn phong, ngôn ngữ đầu ra",
+            "B. Tên phần mềm AI được sử dụng",
+            "C. Tốc độ phản hồi của máy chủ AI",
+            "D. Số lượng thành viên trong nhóm học tập"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-5-ky-thuat",
+          "question": "Kỹ thuật cung cấp cho AI từ 2 đến 3 ví dụ mẫu về định dạng đầu ra chuẩn trước khi giao nhiệm vụ chính được gọi là gì?",
+          "options": [
+            "A. Zero-shot prompting",
+            "B. Few-shot prompting",
+            "C. Negative prompting",
+            "D. Hallucination prompting"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-5-ky-thuat",
+          "question": "Câu lệnh ràng buộc nào sau đây đóng vai trò là 'chốt chặn sống còn' giúp giảm thiểu nguy cơ AI tự bịa thêm thông tin khi tóm tắt tài liệu khoa học?",
+          "options": [
+            "A. Hãy viết thật hay và sáng tạo hết mức có thể",
+            "B. Chỗ nào tài liệu không nói, ghi rõ 'không nêu trong bài', tuyệt đối không suy đoán",
+            "C. Hãy tìm mọi cách lấp đầy tất cả các ô trong bảng tóm tắt",
+            "D. Hãy viết dài tối thiểu 2.000 chữ"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c2-q4",
+          "type": "mc",
+          "concept_ref": "c2-context-engineering",
+          "question": "Context Engineering (Kỹ nghệ thiết kế ngữ cảnh) khác với việc gõ một câu hỏi ngắn thông thường ở điểm nào?",
+          "options": [
+            "A. Chỉ dùng từ khóa tiếng Anh thay vì tiếng Việt",
+            "B. Chủ động tuyển chọn, làm sạch và cấu trúc hóa tài liệu nguồn, ví dụ mẫu cùng bộ quy tắc đưa vào cửa sổ ngữ cảnh cho AI",
+            "C. Hỏi AI càng ít thông tin càng tốt để AI tự đoán",
+            "D. Chỉ áp dụng cho lập trình viên hệ thống"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Phân biệt tác dụng của từng kỹ thuật Prompt và Context trong học thuật.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-5-ky-thuat",
+          "question": "Khi giải một bài toán phân tích tài chính hoặc kiểm định giả thuyết gồm nhiều bước logic phức tạp, kỹ thuật nào giúp AI giảm sai sót tính toán/suy luận nhất?",
+          "options": [
+            "A. Yêu cầu AI trả lời ngay kết quả cuối cùng trong 1 chữ",
+            "B. Chain-of-Thought (Yêu cầu AI suy nghĩ và trình bày rõ từng bước lập luận trước khi kết luận)",
+            "C. Yêu cầu AI viết dưới dạng thơ lục bát",
+            "D. Xóa toàn bộ dữ liệu đầu vào"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-context-engineering",
+          "question": "Điều gì sẽ xảy ra khi một cuộc hội thoại với AI kéo dài hàng chục lượt với nhiều chủ đề lộn xộn vượt quá khả năng tập trung của Context Window?",
+          "options": [
+            "A. AI tự động nâng cấp lên phiên bản trả phí",
+            "B. Các chỉ thị và ràng buộc quan trọng ở đầu cuộc trò chuyện bị đẩy ra ngoài hoặc bị loãng (Context Rot), làm AI trả lời lệch chuẩn",
+            "C. AI sẽ nhớ chính xác 100% mọi chi tiết mãi mãi",
+            "D. Máy tính sẽ bị khóa ổ cứng"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c2-q3",
+          "type": "mc",
+          "concept_ref": "c2-5-ky-thuat",
+          "question": "Sau khi AI xuất ra bản nháp đầu tiên đạt 80% ý muốn nhưng giọng văn hơi dài dòng, cách xử lý đúng theo kỹ thuật Iterative Refinement là gì?",
+          "options": [
+            "A. Mở tab mới và gõ lại từ đầu một câu hỏi hoàn toàn khác",
+            "B. Phản hồi ngay trong luồng chat: chỉ rõ phần nội dung cần giữ nguyên và yêu cầu rút gọn độ dài xuống 150 chữ, bỏ các câu mở đầu sáo rỗng",
+            "C. Chấp nhận nộp luôn bản nháp đó mà không sửa",
+            "D. Đổi sang hỏi bằng ngôn ngữ khác"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L2-c2-q4",
+          "type": "mc",
+          "concept_ref": "c2-crisp",
+          "question": "Tại sao nhận định 'Prompt là giao diện của tư duy' lại đúng trong thực tế?",
+          "options": [
+            "A. Vì người dùng chỉ có thể viết được một Prompt rõ bối cảnh, rõ tiêu chí đánh giá (CRISP) khi chính họ đã tư duy rõ về mục tiêu và cấu trúc bài toán",
+            "B. Vì Prompt được thiết kế bằng đồ họa 3D",
+            "C. Vì AI có thể tự đọc suy nghĩ mà không cần gõ chữ",
+            "D. Vì ai gõ bàn phím nhanh hơn sẽ có kết quả tốt hơn"
+          ],
+          "correct": "A"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Thiết kế gói Prompt & Context chuẩn CRISP cho bài toán chuyên ngành.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c2-q1",
+          "type": "mc",
+          "concept_ref": "c2-crisp",
+          "question": "Câu lệnh nào dưới đây hội tụ đầy đủ nhất khung CRISP + Chốt chặn chống bịa khi nhờ AI hỗ trợ đọc tài liệu?",
+          "options": [
+            "A. Tóm tắt file PDF này giúp tôi cho thật hay nhé.",
+            "B. Bạn là chuyên gia tài chính. Hãy nói cho tôi biết xu hướng ngân hàng số năm 2030.",
+            "C. [Context] Tôi là SV năm 3 ngành Ngân hàng đang làm tổng quan tài liệu. [Role] Bạn là trợ lý nghiên cứu học thuật. [Input] Dựa duy nhất vào file PDF bài báo đính kèm. [Specifics] Hãy tóm tắt thành bảng 5 mục (Câu hỏi NC, Phương pháp, Cỡ mẫu, Kết quả, Hạn chế) tối đa 250 chữ. [Performance/Constraint] Mỗi ý bắt buộc ghi số trang; chỗ nào bài không nêu thì ghi 'không nêu trong bài', tuyệt đối không suy đoán.",
+            "D. Hãy viết bài luận 2000 chữ về ngân hàng số kèm 15 trích dẫn APA."
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L3-c2-q2",
+          "type": "mc",
+          "concept_ref": "c2-context-engineering",
+          "question": "Nhóm bạn muốn AI phân tích bảng câu hỏi khảo sát sinh viên HUB theo đúng chuẩn thang đo Likert 5 mức của một bài báo gốc. Gói Context tốt nhất cần nạp cho AI gồm những gì?",
+          "options": [
+            "A. Chỉ cần gõ tên bài báo gốc mà không cần tải file lên",
+            "B. (1) File trích xuất bảng thang đo gốc đã kiểm chứng, (2) Bảng mô tả đối tượng khảo sát tại HUB, (3) 2 ví dụ mẫu biến đổi câu hỏi (Few-shot), và (4) Ràng buộc giữ nguyên ý nghĩa học thuật của biến quan sát",
+            "C. Toàn bộ lịch sử chat linh tinh của nhóm trong 1 tháng qua",
+            "D. Một bức ảnh chụp màn hình trang bìa giáo trình"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L3-c2-essay1",
+          "type": "essay",
+          "concept_ref": "c2-crisp",
+          "question": "Hãy viết một bộ Prompt hoàn chỉnh theo đủ 5 thành phần CRISP (có tích hợp ít nhất 2 kỹ thuật nâng cao và câu chốt chặn 'không suy đoán') để giải quyết bài toán thuộc Đề án cuối khóa của nhóm bạn. Giải thích rõ bạn sẽ nạp những tài liệu nào làm Context đi kèm.",
+          "rubric": "Đủ và rõ 5 thành phần C-R-I-S-P gắn với đề tài Đề án nhóm (40%) · Tích hợp đúng ít nhất 2 kỹ thuật nâng cao và chốt chặn chống suy diễn (30%) · Xác định rõ gói tài liệu Context đầu vào (30%)",
+          "max_words": 350
+        }
+      ]
+    }
+  }
+}

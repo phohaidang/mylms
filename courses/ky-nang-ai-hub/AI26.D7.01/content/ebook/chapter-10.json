@@ -1,0 +1,211 @@
+{
+  "chapter": 10,
+  "title": "Project Clinic & Studio Kiểm toán chéo (Peer Audit Studio)",
+  "sessions": [
+    10
+  ],
+  "scqa": {
+    "situation": "Sau 9 buổi học, các nhóm đều đã lắp ghép đủ 4 Mảnh ghép của Hồ sơ Đề án cuối khóa (Bộ Harness nghiệp vụ, Kho Second Brain + RAG, Báo cáo nghiên cứu có Zotero đã kiểm chứng, và Bản khai báo AI theo Thông tư 49/2026). Ai cũng tin rằng hồ sơ của nhóm mình đã hoàn hảo.",
+    "complication": "Trong thực tế nghiên cứu và làm việc, 'điểm mù của tác giả' khiến chúng ta rất dễ bỏ sót một lỗi suy diễn tinh vi của AI, một lỗ hổng trong cổng dừng GATE của bộ Harness, hoặc một trích dẫn bị lệch năm xuất bản. Mặt khác, ở các lớp học thông thường, hoạt động 'nhận xét chéo giữa các nhóm' thường diễn ra rất hình thức: sinh viên chỉ khen nhau xã giao ('Nhóm bạn làm đẹp lắm') để cả làng cùng vui, khiến hoạt động phản biện mất đi giá trị học thuật.",
+    "question": "Làm thế nào để biến buổi rà soát cuối khóa thành một 'Phiên Kiểm toán Học thuật' (Academic Red-Teaming / Peer Audit) thực chất, giúp từng nhóm phát hiện và vá sạch mọi lỗ hổng trước giờ bảo vệ, đồng thời đo lường chính xác năng lực thẩm định AI của sinh viên?",
+    "answer": "Áp dụng cơ chế Kiểm toán chéo có tính điểm (15% trọng số cuối khóa tính vào năng lực 'soi' lỗi của Hội đồng Kiểm toán): mỗi nhóm dùng chính bộ công cụ đã học (Stress-test 3 kịch bản cho Harness, Tomaca + Checklist 5 bước + Kỹ thuật Soi 3 phút cho danh mục trích dẫn, và Rubric Thông tư 49/2026) để lập Báo cáo Kiểm toán độc lập cho nhóm đối tác."
+  },
+  "concepts": [
+    {
+      "id": "c10-peer-audit-redteam",
+      "session": 10,
+      "term": "Phương pháp Kiểm toán chéo Học thuật (Peer Audit & AI Red-Teaming)",
+      "definition": "Quy trình thẩm định đồng đẳng có cấu trúc, trong đó một nhóm sinh viên đóng vai trò 'Kiểm toán viên độc lập' (Auditor / Red Team) sử dụng các tiêu chuẩn kỹ thuật để kiểm thử độ tin cậy của bộ Harness và tính xác thực của toàn bộ nguồn dữ liệu trong Đề án của nhóm khác.",
+      "key_points": [
+        "<strong>Khác biệt với nhận xét xã giao:</strong> Điểm số của Nhóm Kiểm toán (15% tổng điểm môn học) không phụ thuộc vào việc khen hay chê cảm tính, mà được chấm dựa trên <em>độ chính xác, bằng chứng cụ thể và tính xây dựng</em> trong Biên bản Kiểm toán mà nhóm lập ra.",
+        "<strong>Tinh thần Phản biện Xây dựng (Từ Bi & Chân Thật):</strong> Mục tiêu của Kiểm toán chéo không phải là 'dìm điểm' bạn, mà là giúp nhóm bạn phát hiện ra những 'quả bom nổ chậm' (trích dẫn lỗi, Harness bị lọt cổng GATE) ngay tại Buổi 10 để kịp khắc phục trước khi bước lên bục bảo vệ chính thức ở Buổi 11.",
+        "<strong>Học sâu qua vai trò người thẩm định:</strong> Khi bạn tự tay đi 'soi' 10 trích dẫn và bộ Harness của nhóm khác, kỹ năng kiểm chứng của chính bạn sẽ đạt tới mức phản xạ tự nhiên (bậc Đánh giá - Evaluate cao nhất của thang Bloom)."
+      ],
+      "case_study": {
+        "title": "Phát hiện lỗi lệch bảng số liệu nhờ Kiểm toán chéo",
+        "context": "Trong phiên Peer Audit, Nhóm Kiểm toán B bốc ngẫu nhiên trích dẫn số 4 trong báo cáo của Nhóm A, mở file PDF gốc đối chiếu (Bước 3 & 4) và phát hiện AI của Nhóm A đã lấy nhầm cột số liệu năm 2022 thành năm 2024.",
+        "analysis": "Nhờ phát hiện này ở Buổi 10, Nhóm A kịp sửa lại số liệu đúng trước khi bảo vệ chính thức, còn Nhóm B đạt điểm tối đa cho phần năng lực Kiểm toán.",
+        "lesson_learned": "Một người bạn kiểm toán nghiêm khắc là món quà quý giá nhất trong học thuật."
+      },
+      "related_concepts": [
+        "c10-audit-harness-zotero"
+      ]
+    },
+    {
+      "id": "c10-audit-harness-zotero",
+      "session": 10,
+      "term": "Quy trình 3 Vòng Kiểm toán Hồ sơ Đề án Ứng dụng AI",
+      "definition": "Checklist chuẩn hóa gồm 3 vòng kiểm tra kỹ thuật mà Hội đồng Kiểm toán chéo thực hiện trong 120 phút tại Studio Buổi 10.",
+      "key_points": [
+        "<strong>Vòng 1 - Kiểm toán Bộ Harness & Second Brain (Mảnh ghép 1 & 2):</strong> Nhập 3 kịch bản test vào bộ Harness của nhóm bạn: (a) Dữ liệu chuẩn, (b) Dữ liệu thiếu một biến trọng yếu xem FALLBACK có kích hoạt không, (c) Ra lệnh ép AI bỏ qua GATE xem Harness có chặn đứng được không. Kiểm tra xem mỗi thành viên có đủ >= 6 Atomic Notes viết bằng ngôn từ riêng hay không.",
+        "<strong>Vòng 2 - Kiểm toán Nguồn trích dẫn & Số liệu (Mảnh ghép 3):</strong> Đưa toàn bộ danh mục tài liệu tham khảo của nhóm bạn lên <strong>Tomaca</strong> để quét tự động; sau đó chọn ngẫu nhiên <strong>03 trích dẫn cốt lõi</strong> để mở bản PDF gốc thực hiện đầy đủ <strong>Checklist 5 bước</strong> và <strong>Soi 3 phút</strong> (đối chiếu tận dòng và bảng số liệu).",
+        "<strong>Vòng 3 - Kiểm toán An toàn dữ liệu & Khai báo AI (Mảnh ghép 4):</strong> Đối chiếu xem báo cáo có làm lộ dữ liệu định danh chưa khử mật không, và Bản khai báo AI đã đáp ứng đủ các yếu tố của Điều 10 Thông tư 49/2026/TT-BGDĐT chưa."
+      ],
+      "case_study": null,
+      "related_concepts": [
+        "c10-peer-audit-redteam"
+      ]
+    }
+  ],
+  "tests": {
+    "level_1": {
+      "name": "🎯 Level 1: Khái niệm cốt lõi",
+      "description": "Nắm vững cấu trúc Hồ sơ Đề án 4 mảnh ghép và quy trình Kiểm toán chéo 3 vòng.",
+      "bloom_level": "Remember",
+      "questions": [
+        {
+          "id": "L1-c10-q1",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Bộ Hồ sơ Đề án Ứng dụng AI hoàn chỉnh nộp ở Buổi 10 bao gồm 4 Mảnh ghép lũy tiến nào?",
+          "options": [
+            "A. (1) Thiết kế Kiến trúc AI & Bộ Harness nghiệp vụ; (2) Hệ thống Second Brain (Atomic Notes cá nhân) & Kho RAG; (3) Báo cáo nghiên cứu/nghiệp vụ có Ma trận tổng hợp & Trích dẫn Zotero đã kiểm chứng; (4) Hồ sơ An toàn dữ liệu & Bản khai báo AI theo Thông tư 49/2026",
+            "B. Chỉ gồm 1 file trình chiếu PowerPoint 5 trang không có tài liệu tham khảo",
+            "C. Chỉ gồm ảnh chụp màn hình 1 câu hỏi trên ChatGPT",
+            "D. Gồm 1 bài văn chép tay không dùng máy tính"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L1-c10-q2",
+          "type": "mc",
+          "concept_ref": "c10-peer-audit-redteam",
+          "question": "Trong cơ cấu 100% điểm đánh giá cuối khóa của môn học, hoạt động 'Thuyết trình, Phản biện & Kiểm toán chéo giữa các nhóm (Peer Audit)' chiếm tổng trọng số là bao nhiêu?",
+          "options": [
+            "A. 0% (không tính điểm)",
+            "B. 30% tổng điểm cuối khóa (gồm 15% điểm Thuyết trình & trả lời bảo vệ đề án của nhóm mình + 15% điểm năng lực Kiểm toán chéo & phản biện đề án của nhóm bạn)",
+            "C. 5%",
+            "D. 100%"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c10-q3",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Ở Vòng 2 của quy trình Kiểm toán chéo (Kiểm toán Nguồn trích dẫn & Số liệu), bên cạnh việc quét toàn bộ danh mục bằng công cụ Tomaca, Nhóm Kiểm toán bắt buộc phải làm thêm thao tác thủ công nào?",
+          "options": [
+            "A. Không cần làm gì thêm, tin tuyệt đối 100% vào màu xanh của Tomaca",
+            "B. Chọn ít nhất 03 trích dẫn trọng yếu trong bài của nhóm bạn để mở file PDF bản gốc, thực hiện đầy đủ Checklist 5 bước (đặc biệt là Bước 3 và Bước 4 xem bài gốc có nói đúng luận điểm và khớp số liệu bảng/hình hay không)",
+            "C. Xóa bớt tài liệu tham khảo của nhóm bạn",
+            "D. Đổi tên tác giả trong bài của nhóm bạn"
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "L1-c10-q4",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Theo 'Quy tắc Điểm liệt Liêm chính' (Zero-Tolerance Integrity Rule) của môn học, hậu quả gì sẽ xảy ra nếu trong Hồ sơ Đề án chính thức bị phát hiện có trích dẫn bịa (fabricated citation) hoặc không khai báo AI theo Thông tư 49/2026?",
+          "options": [
+            "A. Được cộng thêm điểm khuyến khích",
+            "B. Bị trừ thẳng 50% tổng điểm Cấu phần 1 (Hồ sơ Đề án nhóm) và bắt buộc phải rà soát, khắc phục lại toàn bộ phần kiểm chứng mới được xét đạt chứng chỉ",
+            "C. Không bị ảnh hưởng gì đến điểm số",
+            "D. Chỉ bị nhắc nhở nhẹ"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_2": {
+      "name": "📝 Level 2: Hiểu và phân biệt",
+      "description": "Hiểu phương pháp Stress-test bộ Harness và cách viết Biên bản Kiểm toán văn minh, dựa trên bằng chứng.",
+      "bloom_level": "Understand",
+      "questions": [
+        {
+          "id": "L2-c10-q1",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Khi Kiểm toán Bộ Harness của nhóm bạn ở Vòng 1, tại sao bạn không nên chỉ thử nghiệm bằng một dữ liệu đẹp và đầy đủ (happy path)?",
+          "options": [
+            "A. Vì một bộ Harness yếu và một câu Prompt sơ sài đều có thể trả lời tốt khi dữ liệu đầu vào hoàn hảo; bản lĩnh thực sự của một bộ Harness chỉ lộ diện khi bị thử thách bằng tình huống biên (thiếu dữ liệu để xem FALLBACK có dừng lại hỏi không, và giục vượt rào xem GATE có giữ vững kỷ luật không)",
+            "B. Vì dữ liệu đầy đủ làm máy tính chạy chậm",
+            "C. Vì mục tiêu của kiểm toán là phá hỏng máy tính của nhóm bạn",
+            "D. Vì AI không đọc được dữ liệu đầy đủ"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c10-q2",
+          "type": "mc",
+          "concept_ref": "c10-peer-audit-redteam",
+          "question": "Nhận xét kiểm toán chéo nào dưới đây thể hiện đúng nhất tinh thần học thuật chuyên nghiệp, có bằng chứng xác thực và mang tính xây dựng?",
+          "options": [
+            "A. 'Nhóm bạn làm bài tốt lắm, slide đẹp, nhóm mình chấm 10/10 không có góp ý gì thêm.'",
+            "B. 'Bài của nhóm bạn dở quá, chắc chắn là nhờ AI viết hết rồi.'",
+            "C. 'Qua kiểm toán Vòng 2, nhóm mình xác nhận 10/11 trích dẫn của nhóm bạn khớp hoàn toàn trên Tomaca và bản PDF gốc. Tuy nhiên, ở trích dẫn số 7 (Phạm, 2025, tr.12), bảng gốc của tác giả ghi tỷ lệ chấp nhận là 64.2% trên mẫu N=310, nhưng trong trang 8 báo cáo của nhóm bạn đang ghi là 74.2%. Đề nghị nhóm kiểm tra và đính chính lại con số này trước buổi bảo vệ.'",
+            "D. 'Nhóm mình không thích màu xanh trên trang bìa báo cáo của nhóm bạn.'"
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "L2-c10-q3",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Làm thế nào để Nhóm Kiểm toán phân biệt được một Atomic Note cá nhân do sinh viên tự tư duy đúc kết với một ghi chú do copy-paste đối phó từ AI?",
+          "options": [
+            "A. Atomic Note thực chất có tiêu đề là một câu khẳng định sắc gọn, nội dung cô đọng (100-200 chữ) gắn chặt với bối cảnh bài toán của nhóm, có liên kết [[...]] hợp lý tới các ghi chú khác và người viết có thể giải thích ngay lập tức ý nghĩa của nó mà không cần nhìn màn hình",
+            "B. Ghi chú nào dài trên 3.000 chữ và có nhiều biểu tượng cảm xúc (emoji) đầu dòng của ChatGPT là ghi chú tốt nhất",
+            "C. Không thể phân biệt được bằng bất kỳ cách nào",
+            "D. Chỉ nhìn vào ngày giờ tạo file"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L2-c10-q4",
+          "type": "mc",
+          "concept_ref": "c10-peer-audit-redteam",
+          "question": "Sau khi nhận được Biên bản Kiểm toán chéo từ nhóm đối tác ở cuối Buổi 10, thái độ và hành động đúng đắn nhất của nhóm sở hữu Đề án là gì?",
+          "options": [
+            "A. Tranh cãi gay gắt để phủ nhận mọi lỗi sai dù bằng chứng PDF gốc đã rõ ràng",
+            "B. Đón nhận các phát hiện kiểm toán như một cơ hội quý báu để hoàn thiện sản phẩm: lập tức đối chiếu lại với nguồn gốc, vá lại các lỗ hổng trong câu lệnh GATE/FALLBACK của bộ Harness, sửa lại các trích dẫn lệch và chuẩn bị slide giải trình rõ những gì nhóm đã nâng cấp cho buổi Bảo vệ ở Buổi 11",
+            "C. Bỏ mặc không sửa gì cả",
+            "D. Tìm cách trả đũa bằng cách chấm điểm thấp vô căn cứ cho nhóm bạn"
+          ],
+          "correct": "B"
+        }
+      ]
+    },
+    "level_3": {
+      "name": "🚀 Level 3: Vận dụng thực tế",
+      "description": "Thực hiện Biên bản Kiểm toán chéo 3 vòng tại Studio Buổi 10.",
+      "bloom_level": "Apply",
+      "questions": [
+        {
+          "id": "L3-c10-q1",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Trong lúc kiểm toán Mảnh ghép 3 của nhóm đối tác, bạn thấy nhóm bạn có đính kèm file thư viện Zotero (`.bib`/`.ris`), nhưng trong file Word báo cáo lại có 3 trích dẫn ở phần Thảo luận không hề nằm trong file Zotero đó và cũng không có trong Danh mục tài liệu tham khảo cuối bài. Phát hiện này cho thấy điều gì?",
+          "options": [
+            "A. Nhóm đối tác đã vi phạm quy trình 'Nguồn vào Zotero trước, vào bài sau' ở phần Thảo luận (rất có thể đã copy-paste trực tiếp một đoạn văn do AI sinh ra kèm trích dẫn trôi nổi vào bài mà quên kiểm chứng và nạp Zotero); cần yêu cầu nhóm đối tác kiểm chứng 5 bước hoặc loại bỏ ngay 3 trích dẫn đó",
+            "B. Đó là cách trích dẫn sáng tạo mới, không cần sửa",
+            "C. Chỉ cần xóa file Zotero đi là xong",
+            "D. Không cần ghi vào biên bản kiểm toán"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c10-q2",
+          "type": "mc",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Khi kiểm toán Mảnh ghép 4 (Hồ sơ An toàn dữ liệu & Đạo đức AI) của một nhóm làm đề tài 'Ứng dụng AI phân tích phản hồi khách hàng trên fanpage Ngân hàng X', bạn thấy nhóm đã xóa toàn bộ tên và số điện thoại khách hàng trong file bình luận mẫu trước khi đưa vào Claude Project, đồng thời có Bản khai báo AI nêu rõ phiên bản Claude, thời gian và các prompt đã dùng. Đánh giá kiểm toán đúng cho Mảnh ghép 4 này là gì?",
+          "options": [
+            "A. Đạt mức Xuất sắc (8.5 - 10 điểm): nhóm đã thực hiện đúng kỹ thuật khử định danh dữ liệu cá nhân (Data Anonymization) và tuân thủ đầy đủ nghĩa vụ công bố minh bạch theo Điều 10 Thông tư 49/2026/TT-BGDĐT",
+            "B. Không đạt vì lẽ ra phải giữ nguyên số điện thoại thật của khách hàng",
+            "C. Không đạt vì đã dùng Claude Project",
+            "D. Không đạt vì khai báo quá chi tiết"
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "L3-c10-essay1",
+          "type": "essay",
+          "concept_ref": "c10-audit-harness-zotero",
+          "question": "Hãy tóm tắt 'Biên bản Kiểm toán chéo (Peer Audit Report)' mà nhóm bạn đã thực hiện đối với Hồ sơ Đề án của nhóm đối tác tại Buổi 10 theo 3 vòng: (1) Kết quả stress-test Bộ Harness & đánh giá Second Brain của nhóm bạn; (2) Kết quả quét Tomaca và đối chiếu Checklist 5 bước trên 3 trích dẫn PDF gốc của nhóm bạn; (3) Đánh giá Bản khai báo AI theo Thông tư 49/2026 và 02 câu hỏi chất vấn sắc bén nhất bạn sẽ đặt cho nhóm đó tại Hội đồng Buổi 11.",
+          "rubric": "Báo cáo rõ kết quả test 3 kịch bản trên bộ Harness của nhóm bạn (25%) · Nêu bằng chứng cụ thể từ việc quét Tomaca và mở 3 bài báo gốc đối chiếu theo Checklist 5 bước (35%) · Đánh giá chính xác mức độ tuân thủ Thông tư 49/2026 và bảo mật dữ liệu (20%) · Đặt được 2 câu hỏi phản biện sâu sắc, mang tính xây dựng cho buổi bảo vệ (20%)",
+          "max_words": 450
+        }
+      ]
+    }
+  }
+}
